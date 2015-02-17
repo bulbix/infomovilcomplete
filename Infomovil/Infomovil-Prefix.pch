@@ -1,0 +1,67 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+    #import <CoreData/CoreData.h>
+    #import <QuartzCore/QuartzCore.h>
+    #import "AlertView.h"
+    #import "DatosUsuario.h"
+    #import "StringUtils.h"
+    #import "ImageUtils.h"
+    #import "CommonUtils.h"
+    #import "NSStringUtiles.h"
+    #import "AppsFlyerTracker.h"
+    #import "GAI.h"
+    #import "GAIDictionaryBuilder.h"
+    #import "DominiosUsuario.h"
+    #import "AppboyKit.h"
+#endif
+
+typedef enum {
+    DomainTypeFree,
+    DomainTypePro
+}DomainType;
+
+//detectar el iphone 5
+#define IS_WIDESCREEN ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
+#define IS_IPHONE_5 ( IS_WIDESCREEN )
+
+#define colorBackground [UIColor colorWithRed:(237/255.0f) green:(229/255.0f) blue:(226/255.0f) alpha:1.0]
+#define colorMorado [UIColor colorWithRed:(81/255.0f) green:(53/255.0f) blue:(93/255.0f) alpha:1.0]
+#define colorFondo [UIColor colorWithRed:(81/255.0f) green:(73/255.0f) blue:(172/255.0f) alpha:1.0]
+#define colorEditar [UIColor colorWithRed:(42/255.0f) green:(217/255.0f) blue:(194/255.0f) alpha:1.0]
+#define colorNombrar [UIColor colorWithRed:(234/255.0f) green:(53/255.0f) blue:(86/255.0f) alpha:1.0]
+#define colorPublicar [UIColor colorWithRed:(245/255.0f) green:(213/255.0f) blue:(7/255.0f) alpha:1.0]
+#define colorFuenteAzul [UIColor colorWithRed:(60/255.0f) green:(74/255.0f) blue:(151/255.0f) alpha:1.0]
+#define colorFuenteVerde [UIColor colorWithRed:(47/255.0f) green:(163/255.0f) blue:(153/255.0f) alpha:1.0]
+
+/* desarrollo */
+#define rutaWS @"http://172.17.3.192:8080"
+//#define rutaWS @"http://172.17.3.181:8080"
+/* productivo */
+//#define rutaWS @"http://info-movil.net"
+//#define rutaWS @"http://104.130.58.203"
+/* test */
+//#define rutaWS @"http://info-movil.com"
+
+//#define nombreServicio @"PreReg"
+#define nombreServicio @"WsInfomovil"
+//#define nombreServicio @"WsInfomovilTelNames"
+//#define nombreServicio @"WsAdminInfomovil"
+//#define nombreServicio @"WsInfomovilEncrypMaven"
+//#define nombreServicio @"Infomobil"
+
+#define requiereEncriptar YES
+#define existeItems YES
+#define passwordEncriptar @"1nf0P30d" //9 no publicado 1 publicado

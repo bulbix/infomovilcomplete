@@ -1,0 +1,496 @@
+//
+//  NombrarViewController.m
+//  Infomovil
+//
+//  Created by Sergio Sánchez Flores on 14/01/14.
+//  Copyright (c) 2014 Sergio Sánchez Flores. All rights reserved.
+//
+
+#import "NombrarViewController.h"
+#import "WS_HandlerDominio.h"
+#import "PublicarViewController.h"
+#import "CompartirPublicacionViewController.h"
+#import "MenuPasosViewController.h"
+#import "WS_HandlerPublicar.h"
+
+@interface NombrarViewController () {
+//    BOOL modifico;
+    BOOL existeDominio;
+    NSInteger operacionWS;//1 consulta dominio 2 creacion usuario y dominio
+    NSInteger idDominio;
+	NSString *nameDominio;
+    BOOL creoDominio;
+	BOOL saliendo;
+}
+
+@property (nonatomic, strong) AlertView *alertActivity;
+@property (nonatomic, strong) NSString *textoDominio;
+@property (nonatomic, strong) NSString *currentElementString;
+
+@end
+
+@implementation NombrarViewController
+
+@synthesize alertActivity, textoDominio;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
+//    [self.tituloVista setText:NSLocalizedString(@"nombrar", @" ")];
+    
+//    [self.vistaCircular setImage:[UIImage imageNamed:@"plecamagenta.png"]];
+//    [self.vistaCircular setImage:[UIImage imageNamed:@"plecacreasitio.png"]];
+	 if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+		 [self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"nombrar", @" ") nombreImagen:@"roja.png"];
+	 }else{
+		 [self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"nombrar", @" ") nombreImagen:@"plecaroja.png"];
+	 }
+    
+    
+//    self.navigationItem.backBarButtonItem = Nil;
+//    self.navigationItem.leftBarButtonItem = Nil;
+//    self.navigationItem.hidesBackButton = YES;
+    self.navigationItem.rightBarButtonItem = Nil;
+    creoDominio = NO;
+    self.nombreDominio.layer.cornerRadius = 5.0f;
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+	
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+	
+	self.navigationItem.hidesBackButton = YES;
+    UIImage *image = [UIImage imageNamed:@"btnregresar.png"];
+    
+    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [backButton setFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
+    [backButton setImage:image forState:UIControlStateNormal];
+    [backButton addTarget:self action:@selector(regresar:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *buttonBack = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+    self.navigationItem.leftBarButtonItem = buttonBack;
+}
+
+-(void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.datosUsuario = [DatosUsuario sharedInstance];
+    //[self.nombreDominio setText:self.datosUsuario.dominio];
+    if (self.datosUsuario.publicoSitio) {
+        [self.nombreDominio setEnabled:NO];
+    }
+    else {
+        [self.nombreDominio setEnabled:YES];
+    }
+	
+	self.label1.text = NSLocalizedString(@"nombrarLabel1", nil);
+	self.label2.text = NSLocalizedString(@"nombrarLabel2", nil);
+	[self.boton setTitle:NSLocalizedString(@"nombrarBoton", nil) forState:UIControlStateNormal] ;
+	
+	saliendo = NO;
+    
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)verificarDominio:(UIButton *)sender {
+    NSLog(@"-%s --", __PRETTY_FUNCTION__);
+    [[self view] endEditing:YES];
+    if ([self validarDominio]) {
+        if ([CommonUtils hayConexion]) {
+            [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
+            textoDominio = self.nombreDominio.text;
+            [self performSelectorInBackground:@selector(checaDominio) withObject:Nil];
+//            existeDominio = YES;
+//            AlertView *alert = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"felicidades", @" ") message:NSLocalizedString(@"nombradoExitoso", @" ") dominio:[NSString stringWithFormat:@"www.infomovil.com/%@", textoDominio] andAlertViewType:AlertViewTypeInfo];
+//            [alert show];
+        
+        }
+        else {
+            AlertView *alert = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+            [alert show];
+        }
+    }
+    else {
+        AlertView *alert = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"error", Nil) message:NSLocalizedString(@"errorDominio", Nil) dominio:Nil andAlertViewType:AlertViewTypeInfo];
+        [alert show];
+    }
+}
+
+-(IBAction)guardarInformacion:(id)sender {
+    [self.view endEditing:YES];
+    if (existeDominio) {
+        if ([CommonUtils hayConexion]) {
+            [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
+            [self performSelectorInBackground:@selector(crearDominio) withObject:Nil];
+        }
+        else {
+			AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+			[alert show];
+		}
+//        textoDominio = [NSString stringWithFormat:@"www.infomovil.com/%@", self.nombreDominio.text];
+//        self.datosUsuario = [DatosUsuario sharedInstance];
+//        self.datosUsuario.dominio = textoDominio;
+//        self.datosUsuario.nombroSitio = YES;
+//        modifico = NO;
+//        NSArray *arraViews = [self.navigationController viewControllers];
+//        [self.navigationController popToViewController:[arraViews objectAtIndex:arraViews.count-3] animated:YES];
+    }
+    else {
+        AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"comprobarDisponibilidad", @" ") andAlertViewType:AlertViewTypeInfo];
+        [alert show];
+    }
+}
+
+#pragma mark - AlertViewDelegate
+
+-(void) accionNo {
+	if(!saliendo){
+		[self.navigationController popViewControllerAnimated:YES];
+		saliendo = NO;
+	}
+	
+}
+
+-(void) accionSi {
+	if(saliendo){
+		self.datosUsuario = [DatosUsuario sharedInstance];
+		[StringUtils deleteResourcesWithExtension:@"jpg"];
+		[StringUtils deleteFile];
+		[self.datosUsuario eliminarDatos];
+		((AppDelegate*)	[[UIApplication sharedApplication] delegate]).statusDominio = @"Gratuito";
+		((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion = NO;
+		[self.navigationController popToRootViewControllerAnimated:YES];
+	}
+    else if (existeDominio) {
+        if ([CommonUtils hayConexion]) {
+            [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
+            [self performSelectorInBackground:@selector(crearDominio) withObject:Nil];
+        }
+        else {
+			AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+			[alert show];
+		}
+//        textoDominio = [NSString stringWithFormat:@"www.infomovil.com/%@", self.nombreDominio.text];
+//        self.datosUsuario = [DatosUsuario sharedInstance];
+//        self.datosUsuario.dominio = textoDominio;
+//        self.datosUsuario.nombroSitio = YES;
+//        NSArray *arraViews = [self.navigationController viewControllers];
+//        [self.navigationController popToViewController:[arraViews objectAtIndex:arraViews.count-3] animated:YES];
+    }
+    else {
+        AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"comprobarDisponibilidad", @" ") andAlertViewType:AlertViewTypeInfo];
+        [alert show];
+    }
+}
+-(void) accionAceptar {
+    if (creoDominio) {
+       // NSArray *arrayControllers = [self.navigationController viewControllers];
+        //[self.navigationController popToViewController:[arrayControllers objectAtIndex:arrayControllers.count-3] animated:YES];
+    }
+}
+
+-(IBAction)regresar:(id)sender {
+    [[self view] endEditing:YES];
+//    AlertView *alertView;
+	if(((AppDelegate*) [[UIApplication sharedApplication] delegate]).logueado){
+		
+		saliendo = YES;
+		
+		[[AlertView initWithDelegate:self message:NSLocalizedString(@"salirMensaje", nil)
+					andAlertViewType:AlertViewTypeQuestion] show];
+		
+	}
+    /*if (modifico) {
+        alertView = [AlertView initWithDelegate:self message:NSLocalizedString(@"preguntaGuardar", @" ") andAlertViewType:AlertViewTypeQuestion];
+        [alertView show];
+    }
+    else {
+        self.datosUsuario = [DatosUsuario sharedInstance];
+        if (self.datosUsuario.nombroSitio) {
+            NSArray *arrayViews = [self.navigationController viewControllers];
+            [self.navigationController popToViewController:[arrayViews objectAtIndex:arrayViews.count-3] animated:YES];
+        }*/
+        else {
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    //}
+}
+
+#pragma mark - UITextFieldDelegate
+-(BOOL) textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    self.modifico = YES;
+    if ([string isEqualToString:@"<"] && [string isEqualToString:@">"]) {
+        return NO;
+    }
+    else {
+        if (existeDominio) {
+            existeDominio = NO;
+            [self.labelEstatusDominio setText:@" "];
+        }
+    }
+    return YES;
+}
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField {
+    if ([[textField text] isEqualToString:@"MiSitio"]) {
+        [self.nombreDominio setText:@" "];
+    }
+}
+
+-(void) mostrarActivity {
+    alertActivity = [AlertView initWithDelegate:self message:NSLocalizedString(@"msgNombrarSitio", Nil) andAlertViewType:AlertViewTypeActivity];
+    [alertActivity show];
+}
+
+-(void) ocultarActivity {
+    if (alertActivity)
+    {
+        [NSThread sleepForTimeInterval:1];
+        [alertActivity hide];
+    }
+    AlertView *alert;
+    if (operacionWS == 1) {
+        if (existeDominio) {
+            self.datosUsuario = [DatosUsuario sharedInstance];
+            self.datosUsuario.dominio = textoDominio;
+            self.modifico = YES;
+//            alert = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"felicidades", @" ") message:NSLocalizedString(@"nombradoExitoso", @" ") dominio:[NSString stringWithFormat:@"www.infomovil.com/%@", textoDominio] andAlertViewType:AlertViewTypeInfo];
+//            [alert show];
+			self.datosUsuario.dominio = self.nombreDominio.text;
+			NSLog(@"Dominio: %@",self.datosUsuario.dominio);
+            PublicarViewController *publicar = [[PublicarViewController alloc] initWithNibName:@"PublicarViewController" bundle:Nil];
+            [self.navigationController pushViewController:publicar animated:YES];
+			
+        }
+        else {
+            alert = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noDisponible", @" ") dominio:nil andAlertViewType:AlertViewTypeInfo];
+			
+            [alert show];
+        }
+    }
+    /*else {
+        if (idDominio == 0) {
+            alert = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"error", Nil) message:NSLocalizedString(@"errorCrearDominio", Nil) dominio:Nil andAlertViewType:AlertViewTypeInfo];
+            [alert show];
+        }
+        else {
+            self.datosUsuario = [DatosUsuario sharedInstance];
+            self.datosUsuario.idDominio = idDominio;
+			self.datosUsuario.dominio = nameDominio;
+            self.datosUsuario.nombroSitio = YES;
+            creoDominio = YES;
+            alert = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"felicidades", @" ") message:NSLocalizedString(@"nombradoExitoso", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+            [alert show];
+			
+			[self.navigationController popViewControllerAnimated:YES];
+			
+			((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio = @"Gratuito";
+			((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion = YES;
+			CompartirPublicacionViewController *compartir = [[CompartirPublicacionViewController alloc] initWithNibName:@"CompartirPublicacionViewController" bundle:nil];
+			
+			UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:compartir];
+			
+			[self.navigationController presentViewController:navController animated:YES completion:Nil];
+        }
+    }*/
+    
+}
+
+-(void) checaDominio {
+    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).itIsInTime) {
+        [((AppDelegate *)[[UIApplication sharedApplication] delegate]) restartDate];
+        operacionWS = 1;
+        WS_HandlerDominio *dominioHandler = [[WS_HandlerDominio alloc] init];
+        [dominioHandler setWSHandlerDelegate:self];
+        [dominioHandler consultaDominio:textoDominio];
+    }
+    else {
+        if (alertActivity)
+        {
+            [NSThread sleepForTimeInterval:1];
+            [alertActivity hide];
+        }
+        self.alertActivity = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionCaduco", Nil) andAlertViewType:AlertViewTypeInfo];
+        [self.alertActivity show];
+        [StringUtils terminarSession];
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
+    
+}
+
+-(void) crearDominio {
+    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).itIsInTime) {
+        [((AppDelegate *)[[UIApplication sharedApplication] delegate]) restartDate];
+        operacionWS = 2;
+        self.datosUsuario = [DatosUsuario sharedInstance];
+        WS_HandlerDominio *dominioHandler = [[WS_HandlerDominio alloc] init];
+        [dominioHandler setWSHandlerDelegate:self];
+        [dominioHandler crearUsuario:self.datosUsuario.emailUsuario conNombre:self.nombreDominio.text password:self.datosUsuario.passwordUsuario status:@"1" nombre:nil direccion1:nil direccion2:nil pais:nil codigoPromocion:@"" tipoDominio:@"recurso" idDominio:[NSString stringWithFormat:@"%i", self.datosUsuario.idDominio]];
+    }
+    else {
+        if (alertActivity)
+        {
+            [NSThread sleepForTimeInterval:1];
+            [alertActivity hide];
+        }
+        self.alertActivity = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionCaduco", Nil) andAlertViewType:AlertViewTypeInfo];
+        [self.alertActivity show];
+        [StringUtils terminarSession];
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
+
+}
+
+-(void) informacionDominio{
+	operacionWS = 3;
+	WS_HandlerPublicar *wsPublicar = [[WS_HandlerPublicar alloc] init];
+	[wsPublicar setWsHandlerDelegate:self];
+	[wsPublicar publicarDominio];
+}
+
+-(void) resultadoConsultaDominio:(NSString *)resultado {
+	self.datosUsuario = [DatosUsuario sharedInstance];
+    if (operacionWS == 1) {
+        if ([resultado isEqualToString:@"No existe"]) {
+            existeDominio = YES;
+			self.datosUsuario.dominio = self.nombreDominio.text;
+			
+			//[self crearDominio];
+			[self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
+        }
+        else {
+            existeDominio = NO;
+			 [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
+        }
+    }
+    /*else if(operacionWS == 2){
+        idDominio = [resultado integerValue];
+		nameDominio = self.nombreDominio.text;
+		//[self informacionDominio];
+		[self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
+    }*/
+	else{
+		[self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
+	}
+   
+}
+-(void) errorToken {
+    if (alertActivity)
+    {
+        [NSThread sleepForTimeInterval:1];
+        [alertActivity hide];
+    }
+    self.alertActivity = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
+    [self.alertActivity show];
+    [StringUtils terminarSession];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+-(void) sessionTimeout
+{
+    if (alertActivity)
+    {
+        [NSThread sleepForTimeInterval:1];
+        [alertActivity hide];
+    }
+    self.alertActivity = [AlertView initWithDelegate:Nil
+                                             message:NSLocalizedString(@"sessionCaduco", Nil)
+                                    andAlertViewType:AlertViewTypeInfo];
+    [self.alertActivity show];
+    [StringUtils terminarSession];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+-(void) errorConsultaWS {
+    [self performSelectorOnMainThread:@selector(errorDominio) withObject:Nil waitUntilDone:YES];
+}
+
+-(void) errorDominio {
+    if (alertActivity)
+    {
+        [NSThread sleepForTimeInterval:1];
+        [alertActivity hide];
+    }
+    [AlertView initWithDelegate:Nil message:NSLocalizedString(@"ocurrioError", Nil) andAlertViewType:AlertViewTypeInfo];
+}
+
+-(BOOL) validarDominio {
+    BOOL dominioCorrecto;
+    if (self.nombreDominio.text.length > 0) {
+        if ([CommonUtils validarDominio:self.nombreDominio.text]) {
+            dominioCorrecto = YES;
+        }
+        else {
+            dominioCorrecto = NO;
+        }
+    }
+    else {
+        dominioCorrecto = NO;
+    }
+    return dominioCorrecto;
+}
+
+#pragma mark - Métodos del teclado
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)keyboardWillShow:(NSNotification *)notification
+{
+	NSLog(@"Height: %f",[[ UIScreen mainScreen ] bounds ].size.height);
+	CGRect rect;
+	if([[ UIScreen mainScreen ] bounds ].size.height == 568.0){
+		rect = CGRectMake(self.view.frame.origin.x,self.view.frame.origin.y-30,self.view.frame.size.width,self.view.frame.size.height);
+	}else{
+		rect = CGRectMake(self.view.frame.origin.x,self.view.frame.origin.y-120,self.view.frame.size.width,self.view.frame.size.height);
+	}
+	
+	[UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationDuration:0.3];
+	
+	self.view.frame = rect;
+	
+	[UIView commitAnimations];
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification
+{
+	CGRect rect;
+    if([[ UIScreen mainScreen ] bounds ].size.height == 568.0){
+		rect = CGRectMake(self.view.frame.origin.x,self.view.frame.origin.y+30,self.view.frame.size.width,self.view.frame.size.height);
+	}else{
+		rect = CGRectMake(self.view.frame.origin.x,self.view.frame.origin.y+120,self.view.frame.size.width,self.view.frame.size.height);
+	}
+	
+	[UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationDuration:0.3];
+	
+	self.view.frame = rect;
+	
+	[UIView commitAnimations];
+}
+
+
+
+@end

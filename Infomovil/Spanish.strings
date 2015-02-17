@@ -1,0 +1,398 @@
+/* 
+  Spanish.strings
+  Infomovil
+
+  Created by Ivan Peña on 01/05/14.
+  Copyright (c) 2014 Sergio Sánchez Flores. All rights reserved.
+*/
+
+
+"preguntaGuardar" = "¿Deseas guardar los cambios antes de salir?";
+"cargando" = "Cargando";
+"tituloFondo" = "Selecciona un fondo";
+"tituloColorfondo" = "Color de fondo";
+"pais" = "País";
+"buscar" = "Buscar";
+"cargandoUbicacion" = "Cargando ubicación";
+"anadirInformacion" = "Añadir información";
+"informacionAdicional" = "Información adicional";
+
+"lunes" = "Lun";
+"martes" = "Mar";
+"miercoles" = "Mié";
+"jueves" = "Jue";
+"viernes" = "Vie";
+"sabado" = "Sáb";
+"domingo" = "Dom";
+
+"describeProductos" = "Describe tus productos y/o servicios";
+"areaGeografica" = "Área geográfica que cubre tu empresa";
+"horario" = "Horario";
+"formasPago" = "Medios de pago aceptados";
+"miembroAsociacion" = "¿Eres miembro de alguna asociación comercial o profesional?";
+"queMasQuiere" = "¿Qué más deseas que la gente sepa acerca de tí?";
+
+"perfil" = "Perfil";
+"productoServicio" = "Productos | Servicios";
+"areaServicio" = "Áreas de servicio";
+"metodosPago" = "Medios de pago";
+"asociaciones" = "Asociaciones";
+"biografia" = "Biografía";
+
+"eliminarImagen" = "¿Deseas eliminar la imágen?";
+"anadirImagen" = "Añadir imágenes";
+"imagenes" = "Imágenes";
+"solo5Imagenes" = "Sólo puedes agregar %i imágenes";
+"paraAgregarImagen" = "Para agregar otra imágen, debes eliminar una antes";
+
+"video" = "Video";
+"noConexion" = "No dispones de conexion a internet";
+
+"promociones" = "Promociones";
+"sinFoto" = "Sin foto";
+"tomarFoto" = "Tomar una foto";
+"fotoExistente" = "Foto existente";
+"noEspecificado" = "No especificado";
+"llamanos" = "Llámanos";
+"enviaEmail" = "Envíanos un email";
+"visitanos" = "Visitanos";
+"clickAqui" = "Click aquí";
+
+"direccion" = "Dirección";
+
+"mapa" = "Mapa";
+"eliminarUbicacion" = "¿Estas seguro que deseas eliminar tu ubicación?";
+
+"contacto" = "Contacto";
+"numeroTelefonico" = "Número telefónico";
+"link" = "Link";
+
+"tipoContacto" = "Tipo de contacto";
+
+"agregaNombreEmpresa" = "Agrega el nombre de tu empresa";
+"agregaDescripcion" = "Agrega una descripción corta de tu negocio o servicio";
+
+"crearEditar" = "Crear | Editar";
+"nombreEmpresa" = "Nombre o Empresa";
+"logo" = "Logo";
+"descripcionCorta" = "Descripción corta";
+"galeriaImagenes" = "Galeria de imágenes";
+
+"buscarVideo" = "Buscar video";
+"registro" = "Registro";
+
+"felicidades" = "¡Felicidades!";
+"nombrarSitio" = "Ahora puedes nombrar tu sitio web";
+"error" = "¡Error!";
+"llenarCampos" = "Debes llenar todos los campos";
+"nombradoExitoso" = "Se ha nombrado exitosamente tu sitio web";
+"sentimos" = "¡Lo sentimos!";
+"comprobarDisponibilidad" = "Debes comprobar primero la disponibilidad";
+"noDisponible" = "El nombre elegido no se encuentra disponible";
+"intentaOtro" = "Intenta con otro";
+
+"nombrar" = "Nombrar";
+"publicar" = "Publicar";
+
+"creaSitio" = "Crea tu sitio web móvil";
+"primeroNombrar" =  "Primero debes nombrar tu sitio web ";
+
+"compartir" = "Compartir";
+
+"reportes" = "Reportes";
+
+"cuenta" = "Cuenta";
+"configuracion" = "Configuración";
+
+"cambioPassword" = "Cambiar contraseña";
+"cambioPassword2" = "Cambio de contraseña";
+"cambioPasswordMensaje" = "Te hemos enviado un email a+con un liga para que cambies tu contraseña";
+
+"errorDominio" = "Verifíca tu dominio";
+"emailIncorrecto" = "Ingresa un email válido";
+"numeroIncorrecto" = "Ingresa un teléfono válido";
+"passwordIncorrcto" = "Verifíca tu contraseña";
+
+"errorCrearDominio" = "Ha ocurrido un error al crear el dominio";
+"mensajePublico" = "Se publicó tu sitio correctamente";
+"errorPublico" = "Ha ocurrido un error al publicar el dominio";
+"errorLogin" = "Ocurrió un error.  Por favor, revisa tu usario y contraseña.";
+
+"actualizacionCorrecta" = "Actualización correcta";
+"errorActualizacion" = "Error en la actualizacion";
+
+//Nuevos mensajes
+
+"seleccionaPais" = "Selecciona código de país";
+"infoDeRegistro" = "Info. de Registro";
+
+"nombreOrganizacion" = "Nombre de la organización";
+"servicioCliente" = "Nombre de contacto";
+"numeroMovil" = "Número móvil";
+"email" = "Email";
+"calleNumero" = "Calle y número";
+"poblacion" = "Población";
+"ciudad" = "Ciudad";
+"estado" = "Estado";
+"cp" = "CP";
+"pais" = "País";
+
+"datosInvalidos" = "¡Datos inválidos!";
+"mensajeVerifica" = "Verifica e ingresalos de nuevo";
+
+"nombreOrganizacionCheck" = "*Nombre de la organización";
+"servicioClienteCheck" = "*Nombre de contacto";
+"numeroMovilCheck" = "*Número móvil";
+"emailCheck" = "*Email";
+"calleNumeroCheck" = "*Calle y número";
+"poblacionCheck" = "*Población";
+"ciudadCheck" = "*Ciudad";
+"estadoCheck" = "*Estado";
+"cpCheck" = "*CP";
+"paisCheck" = "*País";
+
+"visitaPagina" = "%i visitas a tu página web";
+"visitaUltimos" = "%i visitas en los último %i días";
+"estoyLinea" = "Ya estoy en línea con infomovil.com\nVisita mi sitio web\n";
+"noFacebook" = "No hay cuenta de facebook";
+"notwitter" = "No hay cuenta de twitter";
+"visitaSitio" = "Visita mi sitio";
+"noSMS" = "Tu dispositivo no soporta el envío de SMS!";
+"noWhatsapp" = "Tu dispositivo no soporta el envío de Whatsapp!";
+"visitaApp" = "¡Revisa mi nuevo sitio móvil creado con la app infomóvil!";
+"comparteSitio" = "Comparte mi sitio";
+"infoRegistro" = "Información de registro";
+"cambiaPass" = "Cambiar contraseña";
+"eliminaCuenta" = "Eliminar cuenta";
+"salirCuenta" = "Salir de la cuenta";
+"soportaEmail" = "¡Mándanos tus comentarios!";
+"version" = "Versión 1.0";
+"emailAsunto" = "Infomovil iOS v1.0";
+"diasPrueba" = "Te quedan %i días de prueba";
+"empresa" = "Empresa";
+"individual" = "Individual";
+"errorSMS" = "Error al enviar SMS!";
+
+"noGusto" = "No me gustó el servicio";
+"complicada" = "Es muy complicada de usar";
+"noNecesito" = "No necesito el servicio";
+"servicioCaro" = "El servicio es muy caro";
+"otro" = "Otro";
+"eliminar" = "Eliminar cuenta";
+"errorEliminar" = "Ocurrió un error al eliminar la cuenta";
+"motivoEliminacion" = "¿Cuál es el motivo por el que deseas eliminar tu cuenta?";
+"elige" = "Elige una opción";
+"verificaEmail" = "Verifica tu email";
+"ocurrioError" = "Ocurrió un error intenta nuevamente";
+"ingresaEmail" = "Ingresa tu email";
+"hola" = "¡Hola!";
+
+"eligeColor" = "Debes elegir el color de fondo";
+"editaPagina" = "Debes editar tu página";
+"yaNombro" = "Ya has nombrado tu página";
+
+"3Pasos" = "¡Crea tu sitio móvil en 3 sencillos pasos!";
+"tienesCuenta" = "¿Ya tienes cuenta?";
+"aceptaCondiciones" = "Si continúas, aceptas las condiciones del servicio y la Politica de Privacidad de Infomóvil";
+
+"disponible" = "Esta disponible";
+"confirmalo" = "Confirmalo";
+"enLinea" = "Ya estás en línea.";
+"comparteSitio" = "Comparte el sitio con tus amigos y contactos.";
+
+"usuarioNombrado" = "Tu usuario se ha registrado correctamente";
+"seleccionaNombre" = "Para terminar el proceso de registro selecciona el nombre de tu sitio";
+
+"errorEmail" = "¡Email inválido!";
+"emailAsociado" = "Este email ya fue asociado a otra cuenta";
+"requiereDueno" = "Tu sitio requiere un dueño.";
+"registrate" = "Regístrate";
+"contrasena" = "Contraseña";
+
+"yaNombraste" = "Ya nombraste y publicaste tu sitio web";
+"cambiarNombre" = "Si deseas cambiar el nombre, compra uno nuevo aquí";
+"noVideo" = "No se encontraron resultados";
+"buscaVideo" = "Busca tu video en Youtube";
+
+"formasContacto" = "Puedes definir hasta 10 formas de contacto";
+"tipoContacto" = "Tipo Contacto";
+"descripcion" = "Descripción";
+"solo10" = "Solo puede agregar %i contactos";
+
+"botonVerde" = "Para el botón verde de contacto en tu página web, se usa el primer número tel o móvil que pongas.";
+
+"direccion1" = "Dirección 1";
+"direccion2" = "Dirección 2";
+"direccion3" = "Dirección 3";
+
+"imagenPromocion" = "Imágen de promoción";
+"comoRedimir" = "¿Cómo redimir?";
+"nombrePromocion" = "Nombre de la promoción";
+"descripcionPromocion" = "Descripción de la promoción";
+"vigencia" = "Vigencia al:";
+
+"5Imagenes" = "Plan Báscio: Puedes agregar hasta 2 imágenes.\nPlan Pro: puedes agregar hasta 5 imágenes.";
+"galeriaVertical" = "Estas imágenes se mostraran en una galeria vertical";
+"redimensionaImagen" = "Las imágenes serán redimensionadas para adaptarse";
+"noGuardoImagen" = "La imagen no se guardo";
+
+"defineHorario" = "Para cada día, define el inicio y fin del horario";
+
+"cualquierInfo" = "Puedes utilizar este espacio para añadir cualquier información adicional";
+"infoAdicionalTexto" = "Agrega información adicional acerca de ti o tu negocio";
+
+"noDireccion" = "No se encontro la dirección";
+"buscaDireccion" = "Busca una dirección";
+
+"moverEscalar" = "Mover y escalar";
+
+"solo3campos" = "Sólo puede agregar %i campo(s) de información";
+
+"incompletos" = "Datos incompletos";
+
+//"mensageInformacionAdiciona" = "Puedes agregar hasta %i parrafo(s) de 400 caracteres cada uno.";
+//"mensajeInformacionAdicional" = "Plan Básico: agrega una sección Plan Pro: agrega hasta 3 secciones";
+"mensajeInformacionAdicional" = "Plan Básico: agrega una sección.\nPlan Pro: agrega 3 secciones.";
+
+"mensajeContactos" = "Plan Básico: Puedes agregar hasta 3 contactos.\nPlan Pro: puedes agregar hasta 10 contactos.";
+
+"mensajeContactosPrueba" = "Para agregar más contactos, contrata un Plan Pro. ¿Deseas aprender más del Plan Pro?";
+
+"mensajeImagenesPrueba" = "Para agregar más mágenes, contrata un Plan Pro. ¿Deseas aprender más?";
+
+"mensajeInformacionAdicionalPrueba" = "Para agregar más campos, contrata un plan Pro ¿Deseas aprender más del Plan Pro?";
+"mensajeContactoTelefono" = "Se usa el primer número telefónico que pongas (fijo o móvil)";
+"mensajeContactoMail" = "Se usa el primer contacto de email que definas";
+
+//"datosBasicos" = "Datos básicos";
+//"numeroImagenes" = "Agregar hasta 6 imágenes";
+//"videoLigado" = "Ligar un video de YouTube con tu sitio";
+//"numeroContactos" = "Definir hasta 10 contactos";
+//"brand" = "Sin anuncios";
+//"ads" = "Sin promoción de Infomovil";
+//"templates" = "Hosting profesional para asegurar un optimo desempeño";
+
+"datosBasicos" = "Incluye un video en YouTube";
+"numeroImagenes" = "Agrega hasta 6 imágenes";
+"videoLigado" = "Agrega hasta 10 contactos";
+"numeroContactos" = "Ve más estadísticas";
+"brand" = "Quita los anuncios de Infomovil";
+"ads" = "Soporte profesional";
+
+"mensajeCuenta" = "Mejora tu sitio con Plan Pro";
+
+"mensajeNoVideo" = "¡Liga un video de YouTube y haz tu sitio más llamativo! Esta opción es parte del Plan Pro ¿Deseas aprender más del Plan Pro?";
+
+"mensajeNoPrueba" = "Esta opción es parte del Plan Pro ¿Deseas aprender más del Plan Pro?";
+
+"mensajeDominio" = "Próximamente podrás adquirir tu propio dominio .tel \n\n\nwww.mi negocio.tel\n\n\n Un dominio .tel utiliza un sistema avanzado de hosteo para que tu página se cargue más rápidamente. Es la mejor opción si deseas un sitio totalmente profesional.";
+
+"tituloTips" = "Tips";
+
+
+//InicioViewController
+"inicioLabel" = "¡Crea tu sítio móvil en 3 sencillos pasos!";
+"inicioBotonPruebalo" = "Pruébalo";
+"inicioBotonSesion" = "Inicia Sesión";
+
+"inicioLeyenda1" = "Si continúas, aceptas las";
+"inicioLeyenda2" = "condiciones del servicio";
+"inicioLeyenda3" = "y la";
+"inicioLeyenda4" = "política de privacidad";
+"inicioLeyenda5" = "de infomóvil";
+
+//MainViewController
+"mainLabelCorreo" = "Dirección de correo";
+"mainLabelPassword" = "Contraseña";//====================================>Repetido
+"mainLabel" = "¿Olvidaste tu contraseña?";
+"mainBoton" = "Inicia sesión";
+
+//CompartirPublicacionViewController
+"compartirLabel1" = "Felicidades";//=====================================>Repetido
+"compartirLabeñ2" = "Ya estás en línea";//===============================>Repetido
+"compartirLabel3" = "Comparte el sitio con tus amigos y contactos";//====>Repetido
+
+//PublicarViewController
+"publicarLabel1" = "Esta disponible";//====>Repetido
+"PublicarLabel2" = "Confirmalo";//====>Repetido
+"PublicarBoton" = "Confirmalo";//====>Repetido
+
+//TipsViewController
+"tipsTitulo1" = "¡No te equivoques con tus datos";
+"tipsLabel11" = "Es muy fácil hacer errores de dedo con tus números telefónicos y otros datos, para evitar que ésto suceda, abre tu sitio web móvil en tu navegador y revisa que los siguientes botones funcionen correctamente:";
+"tipsLabel12" = "Llámanos";
+"tipsLabel13" = "Ubícanos";
+"tipsLabel14" = "Contáctanos";
+
+"tipsTitulo2" = "¡El poder del video!";
+"tipsLabel21" = "Un video Corto te ayuda a comunicar bien tu mensaje.";
+"tipsLabel22" = "Graba un video sencillo con tu smartphone y subelo a YouTube.";
+"tipsLabel23" = "Muestra tus productos y explica qué productos ofreces.";
+
+"tipsTitulo3" = "¡Información completa y fresca!";
+"tipsLabel31" = "Actualiza tus promociones frecuentemente y no las dejes en tu sitio web móvil si ya venció (eso irrita a tus usuarios).";
+"tipsLabel32" = "Sube nuevas imágenes cada semana.";
+"tipsLabel33" = "Llena con tu información cada sección.";
+
+"tipsTitulo4" = "¡Cuentale a todos de tu sitio!";
+"tipsLabel41" = "Comparte tu sitio web móvil con todos tus amigos y contactos.";
+
+//EstadisticasViewController
+"estadisticasLabel1" = "1S";
+"estadisticasLabel2" = "1M";
+"estadisticasLabel3" = "3M";
+"estadisticasLabel4" = "6M";
+"estadisticasLabel5" = "1A";
+
+//CompartirViewController
+"compartirLabel1" = "Comparte tu sitio web móvil con tus contactos y amigos para sacarle más provecho.";
+"compartirLabel2" = "Ya estoy en línea con infomovil. Visita mi sitio web móvil:";
+
+//CuentaViewController
+"cuentaTituloSegment1" = "Plan Pro";
+"cuentaTituloSegment2" = "Dominio";
+
+"cuentaLabel1" = "¡Quiero mi plan Pro!";
+"cuentaLabel2" = "Seis meses";
+"cuentaLabel3" = "Un año";
+
+//EliminarCuentaViewController
+"eliminarLabel1" = "¿Cuál es el motivo por el que deseas eliminar tu cuenta?";
+"eliminarLabel2" = "Ingresa tu contraseña";
+"eliminarLabel3" = "Especifica";
+
+//CambiarPasswordViewController
+"cambiarLabel1" = "Ingresa tu emal";
+
+//NombrarViewController
+"nombrarLabel1" = "Tu información de usuario es válida";
+"nombrarLabel2" = "Para terminar el proceso de registro selecciona el nombre de tu sitio";
+"nombrarBoton" = "Nombrar";
+
+//ListaTelefonosViewController
+
+"pulsaContacto" = "Pulse sobre cualquier contacto para editarlo";
+"agregaDatos" = "Agrega tus datos de contacto:";
+"datosBotonesGrandes" = "Estos datos se usan en los botones grandes de contacto en tu sitio web.\nCon un Plan Pro, puedes agregar contactos adicionales.";
+
+//VideoViewController
+"buscaVideo" = "Busca en Youtube";
+"tituloVideo" = "Título";
+"categoriaVideo" = "Categoría";
+"autorVideo" = "Autor";
+"datosVideo" = "Datos del video";
+
+//GaleriaImagenes2ViewController
+"tituloFoto" = "Nombre de la imagen";
+
+//InformacionPaso2ViewController
+"agregaTitulo" = "Agrega un título";
+
+//GaleriaCell
+"alto" = "Alto";
+"ancho" = "Ancho";
+"tamano" = "Tamaño";
+
+// xxxx
+"imagenPromoCorrecta" = "Tu imagen se ha procesado correctamente y esta lista para subirse";
+"sessionCaduco" = "";

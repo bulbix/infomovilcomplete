@@ -1,0 +1,220 @@
+@CHARSET "ISO-8859-1";
+.anuncioSugerido, .c-cel, .c-email, .c-facebook, .c-fax, .c-google, .c-linkedin, .contactanos, .contacto, .c-pinterest, .c-secure-web, .c-skype, .c-sms, .c-telefono, .c-twitter, .c-wathsapp, .descuento, .direccion, .email, .facebook, .google, .hideP, .imagenes, .infoAd, .llamanos, .perfil, .showP, .sms, .twitter, .ubicacion, .ubicanos, .usuario, .video, .whatsapp, .logo, .promociones{
+	background: url(http://info-movil.net/images/sprite_mov.png) no-repeat;
+}
+
+.anuncioSugerido{
+	background-position: -139px -173px ;
+	width: 55px;
+	height: 55px;
+}
+
+.c-cel{
+	background-position: -71px -224px ;
+	width: 12px;
+	height: 22px;
+}
+
+.c-email{
+	background-position: -40px -230px ;
+	width: 22px;
+	height: 15px;
+}
+
+.c-facebook{
+	background-position: -7px -225px ;
+	width: 22px;
+	height: 21px;
+}
+
+.c-fax{
+	background-position: -93px -196px ;
+	width: 22px;
+	height: 18px;
+}
+
+.c-google{
+	background-position: -63px -193px ;
+	width: 22px;
+	height: 22px;
+}
+
+.c-linkedin{
+	background-position: -33px -193px ;
+	width: 22px;
+	height: 22px;
+}
+
+.contactanos{
+	background-position: -275px -111px ;
+	width: 90px;
+	height: 89px;
+}
+
+.contacto{
+	background-position: -131px -112px ;
+	width: 54px;
+	height: 55px;
+}
+
+.c-pinterest{
+	background-position: -3px -195px ;
+	width: 22px;
+	height: 22px;
+}
+
+.c-secure-web{
+	background-position: -113px -167px ;
+	width: 15px;
+	height: 21px;
+}
+
+.c-skype{
+	background-position: -82px -164px ;
+	width: 22px;
+	height: 22px;
+}
+
+.c-sms{
+	background-position: -58px -167px ;
+	width: 21px;
+	height: 20px;
+}
+
+.c-telefono{
+	background-position: -34px -164px ;
+	width: 18px;
+	height: 19px;
+}
+
+.c-twitter{
+	background-position: -4px -165px ;
+	width: 22px;
+	height: 22px;
+}
+
+.c-wathsapp{
+	background-position: -54px -139px ;
+	width: 22px;
+	height: 23px;
+}
+
+.descuento{
+	background-position: -268px -5px ;
+	width: 100px;
+	height: 100px;
+}
+
+.direccion{
+	background-position: -209px -175px ;
+	width: 55px;
+	height: 55px;
+}
+
+.email{
+	background-position: -216px -6px ;
+	width: 35px;
+	height: 35px;
+}
+
+.facebook{
+	background-position: -172px -6px ;
+	width: 35px;
+	height: 36px;
+}
+
+.google{
+	background-position: -127px -6px ;
+	width: 35px;
+	height: 35px;
+}
+
+.hideP{
+	background-position: -29px -142px ;
+	width: 15px;
+	height: 13px;
+}
+
+.imagenes{
+	background-position: -206px -111px ;
+	width: 55px;
+	height: 55px;
+}
+
+.infoAd{
+	background-position: -192px -51px ;
+	width: 55px;
+	height: 55px;
+}
+
+.llamanos{
+	background-position: -372px -210px ;
+	width: 90px;
+	height: 90px;
+}
+
+.perfil{
+	background-position: -130px -50px ;
+	width: 55px;
+	height: 55px;
+}
+
+.showP{
+	background-position: -7px -142px ;
+	width: 15px;
+	height: 13px;
+}
+
+.sms{
+	background-position: -85px -4px ;
+	width: 35px;
+	height: 35px;
+}
+
+.twitter{
+	background-position: -44px -4px ;
+	width: 35px;
+	height: 35px;
+}
+
+.ubicacion{
+	background-position: -71px -49px ;
+	width: 55px;
+	height: 55px;
+}
+
+.ubicanos{
+	background-position: -376px -112px ;
+	width: 90px;
+	height: 89px;
+}
+
+.usuario{
+	background-position: -376px -9px ;
+	width: 90px;
+	height: 90px;
+}
+
+.video{
+	background-position: -8px -46px ;
+	width: 55px;
+	height: 55px;
+}
+
+.whatsapp{
+	background-position: -6px -5px ;
+	width: 35px;
+	height: 34px;
+}
+
+.logo{
+	background-position: -17px -111px ;
+	width: 100px;
+	height: 20px;
+}
+
+.promociones{
+	background-position: -293px -213px ;
+	width: 55px;
+	height: 55px;
+}
