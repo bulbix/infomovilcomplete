@@ -135,25 +135,7 @@
 }
 
 -(void) accionSi {
-//    colorAux = colorChip.backgroundColor;
-//    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion) {
-//        if ([CommonUtils hayConexion]) {
-//			self.datosUsuario.colorSeleccionado = colorChip.backgroundColor;
-//            [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
-//            [self performSelectorInBackground:@selector(actualizar) withObject:Nil];
-//        }
-//        else {
-//            AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
-//            [alert show];
-//        }
-//        
-//    }
-//    else {
-//        self.datosUsuario.colorSeleccionado = colorChip.backgroundColor;
-//        self.datosUsuario.eligioColor = YES;
-//        self.modifico = NO;
-//        [self.navigationController popViewControllerAnimated:YES];
-//    }
+
     [self guardarInformacion:nil];
 }
 -(void) accionNo {
@@ -232,7 +214,7 @@
         [NSThread sleepForTimeInterval:1];
         [self.alertActivity hide];
     }
-    [[AlertView initWithDelegate:Nil message:@"Ocurrió un error al publicar" andAlertViewType:AlertViewTypeInfo] show];
+    [[AlertView initWithDelegate:Nil message:@"No se ha publicado, inténtalo nuevamente" andAlertViewType:AlertViewTypeInfo] show];
 }
 -(void) errorToken {
     if ( self.alertActivity )

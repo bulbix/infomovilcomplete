@@ -31,11 +31,7 @@
             NSString *dominioRegex = @"^[_a-z0-9-]+([a-z0-9])$";
             NSPredicate *dominioTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", dominioRegex];
             valido = [dominioTest evaluateWithObject:nombreDominio];
-            
-            //            if (valido)
-            //                valido = NO;
-            //            else
-            //                valido = YES;
+       
         }
         else
             valido = NO;
@@ -86,33 +82,12 @@
 			
             
             if (!valido && !valido2 && ![nombre isEqualToString:contrasena]) {
-                //NSString *contraseniaRegex = @"^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}";
-                //NSString *contraseniaRegex = @"^(?=.*\\d)(?=.*([a-z]|[A-Z])).{8,15}";
+             
 				NSString *contraseniaRegex = @"^(?=.{8,15}$)(?=[^A-Za-z]*[A-Za-z])(?=[^0-9]*[0-9])(?:([\\w\\d])\1?(?!\1))+$";
-//				NSString *contraseniaRegex = @"^(?=.{8,15}$)(?=[^A-Za-z]*[A-Za-z])(?=[^0-9]*[0-9])";
+
                 NSPredicate *contraseniaTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", contraseniaRegex];
                 
                 valido = [contraseniaTest evaluateWithObject:contrasena];
-				
-				/*c = [contrasena UTF8String];
-				
-				char aux1;
-				char aux2;
-				char aux3;
-				size = 0;
-				for(int i = 0;i<strlen(c)-2;i++){
-					aux1 = c[i];
-					aux2 = c[i+1];
-					aux3 = c[i+2];
-					
-					if(aux2 == aux1){
-						if(aux3 != aux2){
-							size++;
-						}
-					}else{
-						size++;
-					}
-				}*/
 				
             }
             else
@@ -122,11 +97,9 @@
             valido = NO;
         }
     }
-	//if(valido && (size+2) == strlen(c))
+
 		return valido;
-	//else{
-	//	return NO;
-	//}
+
 }
 
 /******
@@ -222,15 +195,7 @@
 }
 
 +(NSString *)validaLinkedIn:(NSString *)strLinkedIn{
-	//Eliminamos el https:// de la url dada por el usuario(sólo en caso de que la url posea esta suncadena)
-    //	NSString *strLinkedInValida = [[strLinkedIn stringByReplacingOccurrencesOfString:@"https://" withString:@""] stringByReplacingOccurrencesOfString:@"HTTPS://" withString:@""];
-	
-	//Expresion regular para validar la url de linked in
-    //	NSString *linkedInRegex = @"((WWW|www)\\.){0,1}(([a-zA-Z]){1,3}\\.){0,1}(linkedin|LINKEDIN)\\.(com|COM)\\/(IN|in|PUB|pub|COMPANY|company|title|TITLE)\\/[a-zA-Z0-9\\*\\?\\+\\[\\(\\)\\{\\}\\^\\$\\|\\.\\/\\ ]{1,}";
-    //	NSPredicate * linkedInTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",linkedInRegex];
-    //
-    //	if([linkedInTest evaluateWithObject:strLinkedInValida] == YES)
-    //		return strLinkedInValida;
+
     
 	if ( [strLinkedIn rangeOfString:@"linkedin.com" options:NSCaseInsensitiveSearch].location != NSNotFound )
         return strLinkedIn;

@@ -116,7 +116,7 @@
 "errorCrearDominio" = "Ha ocurrido un error al crear el dominio";
 "mensajePublico" = "Se publicó tu sitio correctamente";
 "errorPublico" = "Ha ocurrido un error al publicar el dominio";
-"errorLogin" = "Ocurrió un error.  Por favor, revisa tu usario y contraseña.";
+"errorLogin" = "Por favor, revisa tu usario y contraseña.";
 
 "actualizacionCorrecta" = "Actualización correcta";
 "errorActualizacion" = "Error en la actualizacion";
@@ -179,11 +179,11 @@
 "servicioCaro" = "El servicio es muy caro";
 "otro" = "Otro";
 "eliminar" = "Eliminar cuenta";
-"errorEliminar" = "Ocurrió un error al eliminar la cuenta";
+"errorEliminar" = "No se elimino la cuenta, inténtalo nuevamente";
 "motivoEliminacion" = "¿Cuál es el motivo por el que deseas eliminar tu cuenta?";
 "elige" = "Elige una opción";
 "verificaEmail" = "Verifica tu email";
-"ocurrioError" = "Ocurrió un error intenta nuevamente";
+"ocurrioError" = "Lo sentimos inténtalo nuevamente";
 "ingresaEmail" = "Ingresa tu email";
 "hola" = "¡Hola!";
 

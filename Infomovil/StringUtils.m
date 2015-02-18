@@ -119,7 +119,7 @@
 }
 
 + (NSMutableArray *)ordenarItems:(NSMutableArray *)items {
-    NSLog(@"NombreEmpresa1: %@",NSLocalizedStringFromTable(@"nombreEmpresa", @"Spanish", nil));
+    NSLog(@"Se mando a llamar ordenarItems en StringUtils ");
     NSArray *arregloTitulos = @[NSLocalizedStringFromTable(@"nombreEmpresa", @"Spanish",@" "), NSLocalizedStringFromTable(@"logo",@"Spanish", @" "), NSLocalizedStringFromTable(@"descripcionCorta", @"Spanish",@" "), NSLocalizedStringFromTable(@"contacto", @"Spanish",@" "), NSLocalizedStringFromTable(@"mapa",@"Spanish", @" "), NSLocalizedStringFromTable(@"video", @"Spanish",@" "), NSLocalizedStringFromTable(@"promociones", @"Spanish",@" "), NSLocalizedStringFromTable(@"galeriaImagenes",@"Spanish", @" "), NSLocalizedStringFromTable(@"perfil",@"Spanish", @" "), NSLocalizedStringFromTable(@"direccion", @"Spanish",@" "),  NSLocalizedStringFromTable(@"informacionAdicional", @"Spanish",@" ")];
     
     NSArray *arregloIdioma = @[NSLocalizedString(@"nombreEmpresa", @" "), NSLocalizedString(@"logo", @" "), NSLocalizedString(@"descripcionCorta", @" "), NSLocalizedString(@"contacto", @" "), NSLocalizedString(@"mapa", @" "), NSLocalizedString(@"video", @" "), NSLocalizedString(@"promociones", @" "), NSLocalizedString(@"galeriaImagenes", @" "), NSLocalizedString(@"perfil", @" "), NSLocalizedString(@"direccion", @" "),  NSLocalizedString(@"informacionAdicional", @" ")];
@@ -132,10 +132,7 @@
         NSString *stringAux = [StringUtils eliminarAcentos:[arregloTitulos objectAtIndex:i]];
         for (int j = 0; j < [arregloItems count]; j++) {
             ItemsDominio *itemDominioAux = [arregloItems objectAtIndex:j];
-            
-            NSLog(@"el arreglo con items es: %@ stringAux igual a %@", [itemDominioAux descripcionItem],  [stringAux uppercaseString] );
-            
-            
+           // NSLog(@"el arreglo con items es: %@ stringAux igual a %@", [itemDominioAux descripcionItem],  [stringAux uppercaseString] );
             if (([[stringAux uppercaseString] isEqualToString:[itemDominioAux descripcionItem]]) || ([stringAux isEqualToString:[itemDominioAux descripcionItem]])) {
                 [itemDominioAux setDescripcionItem:[arregloTitulos objectAtIndex:i]];
                 [itemDominioAux setDescripcionIdioma:[arregloIdioma objectAtIndex:i]];

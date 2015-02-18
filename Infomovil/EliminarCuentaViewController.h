@@ -22,6 +22,9 @@
 @property (strong, nonatomic) IBOutlet UILabel *label;
 
 @property (strong, nonatomic) IBOutlet UILabel *label2;
+// Si se logueo con facebook y quiere eliminar su cuenta //
+@property (weak, nonatomic) IBOutlet UIButton *olvidasteContrasena;
+- (IBAction)olvidasteContraseñaAct:(id)sender;
 
 - (IBAction)mostrarOption:(UIButton *)sender;
 @end

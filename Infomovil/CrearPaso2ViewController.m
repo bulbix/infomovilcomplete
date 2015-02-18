@@ -134,26 +134,12 @@
 #pragma mark - Teclado
 // IDM Al padre
 -(void) apareceTeclado {
-	
-//	CGSize tamanioTeclado = TAMANIO_TECLADO;
-//    UIEdgeInsets edgeInsets = UIEdgeInsetsMake(0, 0, tamanioTeclado.height, 0);
-//    [self.scrollEmpresa setContentInset:edgeInsets];
-//    [self.scrollEmpresa setScrollIndicatorInsets:edgeInsets];
-//	[[self scrollEmpresa] scrollRectToVisible:_vista.frame animated:YES];
-//	
-//	NSLog(@"el frame del textview es %f, %f, %f, %f", textViewEditado.frame.origin.x, textViewEditado.frame.origin.y,
-//		  textViewEditado.frame.size.width, textViewEditado.frame.size.height);
+
 	[self apareceTeclado:_scrollEmpresa withView:_vista];
 }
 // IDM Al padre
 -(void) desapareceElTeclado {
-//    [UIView beginAnimations:nil context:NULL];
-//    [UIView setAnimationDuration:0.3];
-//    UIEdgeInsets edgeInsets = UIEdgeInsetsZero;
-//    [[self scrollEmpresa] setContentInset:edgeInsets];
-//    [[self scrollEmpresa] setScrollIndicatorInsets:edgeInsets];
-//	[[self scrollEmpresa] scrollRectToVisible:_vista.frame animated:YES];
-//    [UIView commitAnimations];
+
 	
 	[self desapareceElTeclado:_scrollEmpresa];
 	[[self scrollEmpresa] scrollRectToVisible:_vista.frame animated:YES];
@@ -422,7 +408,7 @@
 -(void)image:(UIImage *)image finishedSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
 {
     if (error) {
-        NSLog(@"Ocurrió un error al guardar la imagen");
+        NSLog(@"No se guardo la imagen, inténtalo nuevamente");
     } else {
         NSLog(@"La imagen se guardo correctamento");
     }

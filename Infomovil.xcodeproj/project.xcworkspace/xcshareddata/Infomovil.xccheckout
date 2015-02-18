@@ -10,6 +10,8 @@
 	<string>Infomovil</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>79C16B85CF208892E379FC4119DB6AB25D10476D</key>
+		<string>https://bitbucket.org/infomovil_team/infomovilcomplete.git</string>
 		<key>8DB2724D96B0702058B2E462043A8FBBC1E1D343</key>
 		<string>https://bitbucket.org/infomovil_isack/infomovilcomplete.git</string>
 		<key>9BFF755B027D5FDEBE450B1195CF69002D16F343</key>
@@ -21,19 +23,21 @@
 	<string>Infomovil.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
+		<key>79C16B85CF208892E379FC4119DB6AB25D10476D</key>
+		<string>../..</string>
 		<key>8DB2724D96B0702058B2E462043A8FBBC1E1D343</key>
 		<string>../../../infomovil_2.0</string>
 		<key>9BFF755B027D5FDEBE450B1195CF69002D16F343</key>
-		<string>../..</string>
+		<string>../../../Infomovil</string>
 		<key>A4857E6B63C0DDF9746D6BFEACA6849C62764CE8</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://bitbucket.org/infomovil_team/infomovil_2.0.git</string>
+	<string>https://bitbucket.org/infomovil_team/infomovilcomplete.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>9BFF755B027D5FDEBE450B1195CF69002D16F343</string>
+	<string>79C16B85CF208892E379FC4119DB6AB25D10476D</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -59,6 +63,14 @@
 			<string>8DB2724D96B0702058B2E462043A8FBBC1E1D343</string>
 			<key>IDESourceControlWCCName</key>
 			<string>infomovil_2.0</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>79C16B85CF208892E379FC4119DB6AB25D10476D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>infomovilXCODE</string>
 		</dict>
 	</array>
 </dict>

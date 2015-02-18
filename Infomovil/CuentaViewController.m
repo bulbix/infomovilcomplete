@@ -118,20 +118,10 @@ int opcionButton = 0 ;
 	}
     self.labelMisSitios.text = NSLocalizedString(@"txtMisSitios", Nil);
     
-    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    
-    if ([appDelegate.statusDominio isEqualToString:@"Tramite"] || [appDelegate.statusDominio isEqualToString:@"Tramite PRO"]) {
-
-        [self.vistaPlanPro setContentSize:CGSizeMake(320, 568)];
-        [self.scrollContenido setContentSize:CGSizeMake(640, 568)];
-    }
-    else {
+    //AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
         
         [self.vistaPlanPro setContentSize:CGSizeMake(320, 568)];
         [self.scrollContenido setContentSize:CGSizeMake(640, 568)];
-
-
-    }
     
     [self.botonCuenta setFrame:CGRectMake(128, 14, 64, 54)];
 	
@@ -190,29 +180,15 @@ int opcionButton = 0 ;
 
 -(void) viewWillAppear:(BOOL)animated {
 
+    if (tipoVista != 1) {
     
-    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion && [((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Tramite"]) {
-       
-    }
-    if (tipoVista == 1) {  NSLog(@"IRC : entro en tipo de vista 1 ");
-        
-	
-        
-        
-    }
-    else {
 	
 	BOOL sesion = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).existeSesion;
 #ifdef _DEBUG
-	NSLog(@"%@",((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio);
+	NSLog(@"status: %@",((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio);
 #endif
-        NSLog(@"status: %@",((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio);
-	if(sesion &&  ![((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] ){
-		
-		
-		
-		
-	}else if(sesion &&  [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] ){
+        
+	 if(sesion &&  [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] ){
 	
         if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
             self.MensajePlanProComprado.text = [NSString stringWithFormat:@"This site already has a Plan Pro\n\nStart date: %@ \nEnd date: %@",self.datosUsuario.fechaInicial, self.datosUsuario.fechaFinal];

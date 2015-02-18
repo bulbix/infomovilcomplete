@@ -20,10 +20,10 @@
 
 @interface ListaTelefonosViewController () <ContactosCellDelegate> {
     BOOL actualizoContactos;
-//    BOOL self.modifico;
+
     BOOL esReacomodo;
     BOOL esNoPremium;
-	
+ 
 	NSInteger maxNumContactos;
 	AlertView *alertaContactos;
 }
@@ -55,28 +55,21 @@
 {
 	
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-//    [self.tituloVista setText:NSLocalizedString(@"contacto", @" ")];
-//    [self.vistaCircular setImage:[UIImage imageNamed:@"plecaverde.png"]];
-//    [self.vistaCircular setImage:[UIImage imageNamed:@"plecacreasitio.png"]];
+
 	if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
 		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"contacto", @" ") nombreImagen:@"barraverde.png"];
 	}else{
 		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"contacto", @" ") nombreImagen:@"NBverde.png"];
 	}
     self.arregloTitulos = [[NSArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"tipoContacto" ofType:@"plist"]];
-    
-//    [self.labelEditar setText:NSLocalizedString(@"pulsaContacto", Nil)];
+
     [self.labelEditar setText:NSLocalizedString(@"instrucciones", Nil)];
     
     [self mostrarBotones];
 	
 	if(existeItems){
 		 self.datosUsuario = [DatosUsuario sharedInstance];
-//		ItemsDominio * item = [self.datosUsuario.itemsDominio objectAtIndex:3];
-		self.label.text = NSLocalizedString(@"mensajeContactos", @"");
-	}else{
-		//self.label.text = @"Puedes agregar hasta 10 formas de contacto";
+         self.label.text = NSLocalizedString(@"mensajeContactos", @"");
 	}
     self.labelTelefono.text = NSLocalizedString(@"mensajeContactoTelefono", Nil);
     self.labelEmail.text = NSLocalizedString(@"mensajeContactoMail", Nil);
@@ -115,13 +108,11 @@
     
     [self.tablaContactos reloadData];
 	
-//	if(existeItems){
+
 		self.datosUsuario = [DatosUsuario sharedInstance];
 		ItemsDominio * item = [self.datosUsuario.itemsDominio objectAtIndex:4];
 		maxNumContactos = item.estatus;
-//	}else{
-//		maxNumContactos = 10;
-//	}
+
 	
 	[self mostrarBotones];
 }
@@ -189,35 +180,19 @@
     }
 }
 
-//- (void)regresar:(id)sender
-//{
-//	if ( modifico )
-//	{
-//		alertaContactos = [AlertView initWithDelegate:self message:NSLocalizedString(@"preguntaGuardar", @" ") andAlertViewType:AlertViewTypeQuestion];
-//		[alertaContactos show];
-//	} else
-//		[self.navigationController popViewControllerAnimated:YES];
-//}
+
 
 -(void) accionSi
 {
 	[alertaContactos hide];
-//	if ( modifico )
-//	{
-//		NSLog(@"Es loq ue quiero");
-//		[self editarTabla:nil];
-//		[self.navigationController popViewControllerAnimated:YES];
-//	} else {
+
 		CuentaViewController *cuenta = [[CuentaViewController alloc] initWithNibName:@"CuentaViewController" bundle:Nil];
 		[self.navigationController pushViewController:cuenta animated:YES];
-//	}
+
 }
 
 -(void) accionNo{
-//	if ( modifico )
-//	{
-//		[self.navigationController popViewControllerAnimated:YES];
-//	}
+
 	[alertaContactos hide];
 }
 
@@ -232,6 +207,9 @@
                 [self performSelectorInBackground:@selector(actualizarContactos) withObject:Nil];
             }
             else {
+                NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+                [prefs setInteger:0 forKey:@"ActualizandoEstatus1SolaVez"];
+                [prefs synchronize];
                 AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
                 [alert show];
             }
@@ -263,11 +241,9 @@
     Contacto *contacto = [arregloContactos objectAtIndex:indexPath.row];
     cell.delegate = self;
     [cell setContacto:contacto];
-	if([[cell contacto].idPais isEqualToString:@"+52"]){
-		//[cell contacto].noContacto = [[cell contacto].noContacto substringFromIndex:1];
-	}
+	
     NSDictionary *dict = [self.arregloTitulos objectAtIndex:contacto.indice];
-//    [cell.imagenTipo setImage:[UIImage imageNamed:[dict objectForKey:@"image"]]];
+
     [cell.btnTipo setBackgroundImage:[UIImage imageNamed:[dict objectForKey:@"image"]] forState:UIControlStateNormal];
     return cell;
 }
@@ -305,12 +281,16 @@
 
 -(void)cell:(ContactosCell *)cell changeSwitchValue:(UISwitch *)aSwitch
 {
+    NSLog(@"Cuantas veces entras aki!!!!");
+    
     if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion)
     {
         esReacomodo = YES;
+        
         self.contactoCelda = cell.contacto;
         if ([CommonUtils hayConexion])
         {
+           
             if (aSwitch.on)
                 cell.contacto.habilitado = YES;
             else
@@ -321,11 +301,15 @@
             [self performSelectorInBackground:@selector(actualizarContactos) withObject:Nil];
         }
         else {
+            NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+            [prefs setInteger:0 forKey:@"ActualizandoEstatus1SolaVez"];
+            [prefs synchronize];
             aSwitch.on = !aSwitch.on;
             AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
             [alert show];
         }
     }
+ 
 }
 
 #pragma mark
@@ -339,6 +323,9 @@
 }
 
 -(void) ocultarActivity {
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    [prefs setInteger:0 forKey:@"ActualizandoEstatus1SolaVez"];
+    [prefs synchronize];
     if (self.alertaLista)
     {
         [NSThread sleepForTimeInterval:1];

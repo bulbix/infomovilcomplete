@@ -656,9 +656,6 @@
 		BFAD5A571A8D10E900749320 /* bgPro.png in Resources */ = {isa = PBXBuildFile; fileRef = BFAD5A261A8D10E900749320 /* bgPro.png */; };
 		BFAD5A581A8D10E900749320 /* bgPro@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFAD5A271A8D10E900749320 /* bgPro@2x.png */; };
 		BFAD5A591A8D10E900749320 /* bgPro@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFAD5A281A8D10E900749320 /* bgPro@3x.png */; };
-		BFAD5A5A1A8D10E900749320 /* planpro.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BFAD5A291A8D10E900749320 /* planpro.jpg */; };
-		BFAD5A5B1A8D10E900749320 /* planpro@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BFAD5A2A1A8D10E900749320 /* planpro@2x.jpg */; };
-		BFAD5A5C1A8D10E900749320 /* planpro@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BFAD5A2B1A8D10E900749320 /* planpro@3x.jpg */; };
 		BFAD5A5E1A8D3E5300749320 /* FacebookSDKOverrides.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BFAD5A5D1A8D3E5300749320 /* FacebookSDKOverrides.bundle */; };
 		BFAD5A601A8D777500749320 /* MenuRegistroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFAD5A5F1A8D777500749320 /* MenuRegistroViewController.xib */; };
 		BFAD5A661A8D7AD300749320 /* MenuRegistroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFAD5A651A8D7AD300749320 /* MenuRegistroViewController.m */; };
@@ -1571,9 +1568,6 @@
 		BFAD5A261A8D10E900749320 /* bgPro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgPro.png; sourceTree = "<group>"; };
 		BFAD5A271A8D10E900749320 /* bgPro@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bgPro@2x.png"; sourceTree = "<group>"; };
 		BFAD5A281A8D10E900749320 /* bgPro@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bgPro@3x.png"; sourceTree = "<group>"; };
-		BFAD5A291A8D10E900749320 /* planpro.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = planpro.jpg; sourceTree = "<group>"; };
-		BFAD5A2A1A8D10E900749320 /* planpro@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "planpro@2x.jpg"; sourceTree = "<group>"; };
-		BFAD5A2B1A8D10E900749320 /* planpro@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "planpro@3x.jpg"; sourceTree = "<group>"; };
 		BFAD5A5D1A8D3E5300749320 /* FacebookSDKOverrides.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FacebookSDKOverrides.bundle; sourceTree = "<group>"; };
 		BFAD5A5F1A8D777500749320 /* MenuRegistroViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuRegistroViewController.xib; sourceTree = "<group>"; };
 		BFAD5A641A8D7AD300749320 /* MenuRegistroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuRegistroViewController.h; sourceTree = "<group>"; };
@@ -2932,9 +2926,6 @@
 				BFAD5A261A8D10E900749320 /* bgPro.png */,
 				BFAD5A271A8D10E900749320 /* bgPro@2x.png */,
 				BFAD5A281A8D10E900749320 /* bgPro@3x.png */,
-				BFAD5A291A8D10E900749320 /* planpro.jpg */,
-				BFAD5A2A1A8D10E900749320 /* planpro@2x.jpg */,
-				BFAD5A2B1A8D10E900749320 /* planpro@3x.jpg */,
 			);
 			path = imagenesPlanPro;
 			sourceTree = "<group>";
@@ -3173,7 +3164,6 @@
 				65581B1719350C8000B5D4ED /* btnfreesiteEn@2x.png in Resources */,
 				0F65E93D187620A70009EC3F /* TipoContactoViewController.xib in Resources */,
 				0F9F52DF189890C6000F9FA5 /* previsualizador.png in Resources */,
-				BFAD5A5B1A8D10E900749320 /* planpro@2x.jpg in Resources */,
 				0F9F533C18989413000F9FA5 /* ctwitter@2x.png in Resources */,
 				0F70B50D18AD4BB700049C47 /* VideoCell.xib in Resources */,
 				65714AD41919AD8900BC2647 /* micompartir@2x.png in Resources */,
@@ -3255,11 +3245,9 @@
 				0F9F534B18989413000F9FA5 /* mireporteson@2x.png in Resources */,
 				BFAD5A2E1A8D10E900749320 /* 12mAc-en@3x.png in Resources */,
 				0F5244F018FE037D001902E6 /* infomovillogonuevo@2x.png in Resources */,
-				BFAD5A5C1A8D10E900749320 /* planpro@3x.jpg in Resources */,
 				0F6C72E3189ACCD0000B2E51 /* FormularioRegistroViewController.xib in Resources */,
 				0FC6C6D118DD1208009E69A2 /* plecaazul.png in Resources */,
 				0F6C72EB189B223A000B2E51 /* mifondo@2x.png in Resources */,
-				BFAD5A5A1A8D10E900749320 /* planpro.jpg in Resources */,
 				BFAD5A4C1A8D10E900749320 /* 6mInac-en@2x.png in Resources */,
 				0F65B85A18AC1E9400FF80E8 /* Map-Reticle.png in Resources */,
 				0F9F534618989413000F9FA5 /* miconfiguracionon@2x.png in Resources */,

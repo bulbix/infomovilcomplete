@@ -75,14 +75,20 @@
                      "<sistema>%@</sistema>"
                      "<suscrito>%@</suscrito>"
                      "<tipoPlan>%@</tipoPlan>"
+                     "<medioPago>%@</medioPago>"
                      "</ws:getDomain>"
                      "</soapenv:Body>"
-                     "</soapenv:Envelope>", [StringUtils encriptar:usuario conToken:passwordEncriptar], [StringUtils encriptar:password conToken:passwordEncriptar],[StringUtils encriptar:self.redSocial conToken:passwordEncriptar],[StringUtils encriptar:@"0" conToken:passwordEncriptar],
-                     [StringUtils encriptar:@"IOS" conToken:passwordEncriptar],[StringUtils encriptar:@"false" conToken:passwordEncriptar],[StringUtils encriptar:@"" conToken:passwordEncriptar]];
-        NSLog(@"El usuario es: %@  pass: %@  redsocial: %@", usuario, password, self.redSocial);
+                     "</soapenv:Envelope>",
+                     [StringUtils encriptar:usuario conToken:passwordEncriptar],
+                     [StringUtils encriptar:password conToken:passwordEncriptar],
+                     [StringUtils encriptar:self.redSocial conToken:passwordEncriptar],
+                     [StringUtils encriptar:@"0" conToken:passwordEncriptar],
+                     [StringUtils encriptar:@"IOS" conToken:passwordEncriptar],
+                     [StringUtils encriptar:@"false" conToken:passwordEncriptar],
+                     [StringUtils encriptar:@"" conToken:passwordEncriptar],
+                     [StringUtils encriptar:@"APP STORE" conToken:passwordEncriptar]];
     
-    
-    
+                        NSLog(@"El usuario es: %@  pass: %@  redsocial: %@", usuario, password, self.redSocial);
     stringXML = [NSString decodificaHtml:stringXML];
 #ifdef DEBUG
     NSLog(@"El string es %@", stringXML);

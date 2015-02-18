@@ -180,7 +180,7 @@
 "servicioCaro" = "El servicio es muy caro";
 "otro" = "Otro";
 "eliminar" = "Eliminar cuenta";
-"errorEliminar" = "Ocurrió un error al eliminar la cuenta";
+"errorEliminar" = "No se elimino la cuenta, inténtalo nuevamente";
 "motivoEliminacion" = "¿Cuál es el motivo por el que deseas eliminar tu cuenta?";
 "elige" = "Elige una opción";
 "verificaEmail" = "Verifica tu e-mail";
@@ -485,7 +485,7 @@
 "ubicacionVista2" = "Ubícanos";
 "contactoVista" = "Contáctanos";
 "movilMexico" = "Recuerda que para recibir llamadas internacionales el formato es (1) XXX-XXX-XXXX (10 dígitos)";
-"errorSimple" = "Ocurrió un error, revisa tu conexión a internet";
+"errorSimple" = "Lo sentimos, revisa tu conexión a internet";
 "nuevaLocalizacion" = "Esta acción elimina la ubicación anterior y marca una nueva";
 "elijeUbicacion" = "Elija una ubicación";
 "imagenRedimension" = "Esta imagen puede ser redimensionada";

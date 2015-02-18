@@ -47,13 +47,13 @@ typedef enum {
 #define colorFuenteVerde [UIColor colorWithRed:(47/255.0f) green:(163/255.0f) blue:(153/255.0f) alpha:1.0]
 
 /* desarrollo */
-#define rutaWS @"http://172.17.3.192:8080"
+ //#define rutaWS @"http://172.17.3.192:8080"
 //#define rutaWS @"http://172.17.3.181:8080"
 /* productivo */
 //#define rutaWS @"http://info-movil.net"
 //#define rutaWS @"http://104.130.58.203"
 /* test */
-//#define rutaWS @"http://info-movil.com"
+#define rutaWS @"http://info-movil.com"
 
 //#define nombreServicio @"PreReg"
 #define nombreServicio @"WsInfomovil"

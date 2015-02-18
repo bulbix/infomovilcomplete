@@ -54,7 +54,7 @@
     NSLog(@"El string es %@", stringXML);
     self.strSoapAction = @"WSInfomovilDomain";
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
-    NSLog(@"La Respuesta es %s", [dataResult bytes]);
+    NSLog(@"WS_ActualizarDireccion: La Respuesta es %s", [dataResult bytes]);
     if (dataResult != nil) {
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
         [parser setDelegate:self];
@@ -123,7 +123,7 @@
     NSLog(@"El string es %@", stringXML);
     self.strSoapAction = @"WSInfomovilDomain";
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
-    NSLog(@"La Respuesta es %s", [dataResult bytes]);
+    NSLog(@"WS_ActualizarDireccion La Respuesta es %s", [dataResult bytes]);
     if (dataResult != nil) {
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
         [parser setDelegate:self];
@@ -132,15 +132,7 @@
             if (requiereEncriptar) {
                 datos = [DatosUsuario sharedInstance];
                 datos.token = self.token;
-//                NSArray *arrayKeys = [self.diccionarioId allKeys];
-//                NSMutableDictionary *dictionaryEnviar = [[NSMutableDictionary alloc] init];
-////                for (NSString *valueKey in arrayKeys) {
-////                    NSString *idKey = [self.diccionarioId objectForKey:valueKey];
-////                    [dictionaryEnviar setObject:[StringUtils desEncriptar:idKey conToken:datos.token] forKey:[StringUtils desEncriptar:valueKey conToken:datos.token]];
-////                }
-//                for (int i = 0; i < [self.diccionarioId count]; i++) {
-//                    KeywordDataModel keyAux = [self.diccionarioId objectAtIndex:i];
-//                }
+
                 if (self.token == nil) {
                     [self.direccionDelegate errorToken];
                 } if ([self.resultado isEqualToString:@"SessionTO"])
@@ -149,7 +141,7 @@
                     if (self.diccionarioId!= nil && [self.diccionarioId count] == 7 ) {
                         datos.direccion = self.diccionarioId;
                         [self.direccionDelegate resultadoInsertarDireccion:@"Exito"];
-                        //[self.direccionDelegate resultadoInsertarDireccion:self.diccionarioId];
+                       
                     }else{
                         [self.direccionDelegate resultadoInsertarDireccion:@"No Exito"];
                     }
@@ -204,7 +196,7 @@
     NSLog(@"El string es %@", stringXML);
     self.strSoapAction = @"WSInfomovilDomain";
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
-    NSLog(@"La Respuesta es %s", [dataResult bytes]);
+    NSLog(@"WS_ActualizarDireccion La Respuesta es %s", [dataResult bytes]);
     
     if (dataResult != nil) {
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
@@ -276,7 +268,7 @@
     NSLog(@"El string es %@", stringXML);
     self.strSoapAction = @"WSInfomovilDomain";
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
-    NSLog(@"La Respuesta es %s", [dataResult bytes]);
+    NSLog(@" WS_ActualizarDireccionLa Respuesta es %s", [dataResult bytes]);
     if (dataResult != nil) {
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
         [parser setDelegate:self];
@@ -362,7 +354,7 @@
     NSLog(@"El string es %@", stringXML);
     self.strSoapAction = @"WSInfomovilDomain";
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
-    NSLog(@"La Respuesta es %s", [dataResult bytes]);
+    NSLog(@"WS_ActualizarDireccion La Respuesta es %s", [dataResult bytes]);
     if (dataResult != nil) {
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
         [parser setDelegate:self];
@@ -441,7 +433,7 @@
     NSLog(@"El string es %@", stringXML);
     self.strSoapAction = @"WSInfomovilDomain";
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
-    NSLog(@"La Respuesta es %s", [dataResult bytes]);
+    NSLog(@"WS_ActualizarDireccion La Respuesta es %s", [dataResult bytes]);
     if (dataResult != nil) {
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
         [parser setDelegate:self];
@@ -525,7 +517,7 @@
     NSLog(@"El string es %@", stringXML);
     self.strSoapAction = @"WSInfomovilDomain";
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
-    NSLog(@"La Respuesta es %s", [dataResult bytes]);
+    NSLog(@"WS_ActualizarDireccion La Respuesta es %s", [dataResult bytes]);
     if (dataResult != nil) {
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
         [parser setDelegate:self];
@@ -533,8 +525,7 @@
             datos = [DatosUsuario sharedInstance];
             if (requiereEncriptar) {
                 datos.token = self.token;
-//                NSString *valor = [StringUtils desEncriptar:self.resultado conToken:datos.token];
-//                NSLog(@"El valor es %@", valor);
+
                 NSString *x = [StringUtils desEncriptar:self.idDominio conToken:self.token];
                 NSLog(@"El x es %@", x);
                 
@@ -603,7 +594,7 @@
     self.strSoapAction = @"WSInfomovilDomain";
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
     if (dataResult != nil) {
-        NSLog(@"La Respuesta es %s", [dataResult bytes]);
+        NSLog(@"WS_ActualizarDireccion La Respuesta es %s", [dataResult bytes]);
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
         [parser setDelegate:self];
         if ([parser parse]) {

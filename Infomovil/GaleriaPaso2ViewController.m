@@ -703,7 +703,7 @@
  contextInfo:(void *)contextInfo
 {
     if (error) {
-        NSLog(@"Ocurrió un error al guardar la imagen");
+        NSLog(@"No se guardo la imagen, inténtalo nuevamente");
     } else {
         NSLog(@"La imagen se guardo correctamento");
     }

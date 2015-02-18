@@ -386,7 +386,7 @@
 }
 
 -(void) resultadoConsultaDominio:(NSString *)resultado {
-    NSLog(@"La operacion es: %d y el existeUsuario %hhd", operacionWS,existeUsuario);
+    NSLog(@"resultadoConsultaDominio: La operacion es: %d y el existeUsuario %hhd", operacionWS,existeUsuario);
 	if(operacionWS == 1){
 		if ([resultado isEqualToString:@"No existe"]) {
 			existeUsuario = YES;
@@ -405,6 +405,7 @@
 }
 
 -(void) resultadoLogin:(NSInteger) idDominioLogin {
+     NSLog(@"resultadoLogin: La operacion es: %d y el existeUsuario %hhd", operacionWS,existeUsuario);
     if (idDominioLogin > 0) {
         loginExitoso = YES;
         idDominio = idDominioLogin;

@@ -555,11 +555,7 @@
 					[alertView show];
 				}
 				else{
-//					AlertView *alertView = [AlertView initWithDelegate:self message:NSLocalizedString(@"preguntaGuardar", @" ") andAlertViewType:AlertViewTypeQuestion];
-//					[alertView show];
-					//[self accionSi];
-					
-					//if (self.contactosOperacion == ContactosOperacionAgregar) {
+
 						Contacto *contacto = [[Contacto alloc] initWithNumber:url description:[self.txtDescripcion text] andStatus:YES];
 						[contacto setIndice:self.opcionSeleccionada];
 						[contacto setHabilitado:YES];
@@ -591,7 +587,7 @@
 							NSArray *arregloVistas = [self.navigationController viewControllers];
 							[self.navigationController popToViewController:[arregloVistas objectAtIndex:arregloVistas.count-3] animated:YES];
 						}
-					//}
+					
 
 				}
 			}
@@ -836,7 +832,7 @@
 }
 
 -(void) sessionTimeout
-{
+{   
     if ( self.alertaContacto )
     {
         [NSThread sleepForTimeInterval:1];

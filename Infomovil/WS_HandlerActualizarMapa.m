@@ -50,7 +50,7 @@
     NSLog(@"El string es %@", stringXML);
     self.strSoapAction = @"WSInfomovilDomain";
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
-    NSLog(@"La Respuesta es %s", [dataResult bytes]);
+    NSLog(@"WS_ActualizarMapa La Respuesta es %s", [dataResult bytes]);
     if (dataResult != nil) {
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
         [parser setDelegate:self];

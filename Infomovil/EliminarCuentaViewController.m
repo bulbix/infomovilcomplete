@@ -8,6 +8,7 @@
 
 #import "EliminarCuentaViewController.h"
 #import "WS_HandlerDominio.h"
+#import "CambiarPasswordViewController.h"
 
 @interface EliminarCuentaViewController () {
     BOOL selectOculto;
@@ -99,6 +100,12 @@
 
 #pragma mark
 
+- (IBAction)olvidasteContraseñaAct:(id)sender {
+    CambiarPasswordViewController *cambiaPass = [[CambiarPasswordViewController alloc] initWithNibName:@"CambiarPasswordViewController" bundle:Nil];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:cambiaPass];
+    [self.navigationController presentViewController:navController animated:YES completion:Nil];
+}
+
 - (IBAction)mostrarOption:(UIButton *)sender {
     if (selectOculto) {
         [UIView animateWithDuration:0.5f animations:^{
@@ -121,11 +128,13 @@
     if (opcionSeleccionada == 4) {
         [self.labelEspecifica setHidden:NO];
         [self.labelPassword setHidden:NO];
+        [self.olvidasteContrasena setHidden:NO];
         [self.txtPassword setHidden:NO];
         [self.textEspecifica setHidden:NO];
         
         [self.labelEspecifica setFrame:CGRectMake(20, 94, 280, 21)];
         [self.textEspecifica setFrame:CGRectMake(20, 123, 280, 65)];
+        [self.olvidasteContrasena setFrame:CGRectMake(120, 153, 180, 50)];
         [self.labelPassword setFrame:CGRectMake(20, 196, 280, 21)];
         [self.txtPassword setFrame:CGRectMake(20, 225, 280, 30)];
         esOtro = YES;
@@ -133,11 +142,13 @@
     else {
         [self.labelEspecifica setHidden:YES];
         [self.labelPassword setHidden:NO];
+        [self.olvidasteContrasena setHidden:NO];
         [self.txtPassword setHidden:NO];
         [self.textEspecifica setHidden:YES];
         
         [self.labelPassword setFrame:CGRectMake(20, 94, 280, 21)];
         [self.txtPassword setFrame:CGRectMake(20, 123, 280, 30)];
+        [self.olvidasteContrasena setFrame:CGRectMake(120, 153, 180, 50)];
         esOtro = NO;
     }
 }

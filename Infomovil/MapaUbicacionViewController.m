@@ -9,21 +9,18 @@
 #import "MapaUbicacionViewController.h"
 #import "WS_HandlerActualizarMapa.h"
 
-@interface MapaUbicacionViewController () {
-//    BOOL self.modifico;
+@interface MapaUbicacionViewController () <CLLocationManagerDelegate>{
     BOOL borrar;
     BOOL exito;
     BOOL mostroElimar;
     BOOL mostroCambiar;
     BOOL hayAnotacion;
     CLLocation *auxLocation;;
-	
 	NSInteger contador;
 }
 
 @property (nonatomic, strong) CLLocation *location;
 @property (nonatomic, strong) AlertView *alertaMapa;
-
 
 @end
 
@@ -40,11 +37,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-//    [super mostrarMenuMapa];
-//    [self.tituloVista setText:NSLocalizedString(@"mapa", @" ")];
-//    [self.vistaCircular setImage:[UIImage imageNamed:@"plecaverde.png"]];
-//    [self.vistaCircular setImage:[UIImage imageNamed:@"plecacreasitio.png"]];
+  
 	if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
 		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"mapa", @" ") nombreImagen:@"barraverde.png"];
 	}else{
@@ -56,7 +49,6 @@
     self.alertaMapa = [AlertView initWithDelegate:nil message:NSLocalizedString(@"txtInfoMapa", Nil) andAlertViewType:AlertViewInfoMapa];
     [self.alertaMapa show];
     
-    
     UIImage *image = [UIImage imageNamed:@"btnregresar.png"];
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [backButton setFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
@@ -65,8 +57,6 @@
     
     UIBarButtonItem *buttonBack = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     self.navigationItem.leftBarButtonItem = buttonBack;
-//    self.navigationItem.rightBarButtonItem = Nil;
-//    self.mapView.userTrackingMode = MKUserTrackingModeFollow;
     self.modifico = NO;
     borrar = NO;
     self.datosUsuario = [DatosUsuario sharedInstance];
@@ -75,11 +65,11 @@
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
         hayAnotacion = NO;
         self.locationManager.distanceFilter = kCLDistanceFilterNone;
-        
+        if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+            [self.locationManager requestWhenInUseAuthorization];
+        }
         if([CLLocationManager locationServicesEnabled]){
             self.locationManager.delegate = self;
-            
-            
             [self.locationManager startUpdatingLocation];
         }
     }
@@ -133,14 +123,7 @@
     }
     else {
         if (!mostroCambiar && contador == 0) {
-           // mostroCambiar = YES;
-//			if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-//				[[AlertView initWithDelegate:self message:@"This will remove the old location and mark a new" andAlertViewType:AlertViewTypeInfo3] show];
-//			}else{
-//				[[AlertView initWithDelegate:self message:@"Esta acción elimina la ubicación anterior y marca una nueva" andAlertViewType:AlertViewTypeInfo3] show];
-//			}
             [[AlertView initWithDelegate:self message:NSLocalizedString(@"nuevaLocalizacion",nil) andAlertViewType:AlertViewTypeInfo3] show];
-            
 			contador = 1;
 			
         }
@@ -232,13 +215,7 @@
         }
     }
 	else if(self.location == nil){
-//		if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-//			AlertView *alert = [AlertView initWithDelegate:nil message:@"Choose a location" andAlertViewType:AlertViewTypeInfo];
-//			[alert show];
-//		}else{
-//			AlertView *alert = [AlertView initWithDelegate:nil message:@"Elija una ubicación" andAlertViewType:AlertViewTypeInfo];
-//			[alert show];
-//		}
+
         AlertView *alert = [AlertView initWithDelegate:nil message:NSLocalizedString(@"elijeUbicacion",nil) andAlertViewType:AlertViewTypeInfo];
         [alert show];
         
@@ -257,7 +234,6 @@
 
 - (NSString *)title
 {
-//    return @"Infomovil";
     return @" ";
 }
 
@@ -295,9 +271,6 @@
 -(void) accionSi {
     if (borrar) {
         [self.mapView removeAnnotation:self];
-//        self.datosUsuario = [DatosUsuario sharedInstance];
-//        self.location = Nil;
-//        self.datosUsuario.localizacion = Nil;
         hayAnotacion = NO;
         [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:5 withObject:@NO];
         if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion) {
@@ -316,19 +289,6 @@
         }
     }
     else {
-        /*self.datosUsuario = [DatosUsuario sharedInstance];
-        self.datosUsuario.localizacion = self.location;
-        self.datosUsuario = [DatosUsuario sharedInstance];
-        if (self.datosUsuario.localizacion == nil) {
-            [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:4 withObject:@NO];
-        }
-        else {
-            [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:4 withObject:@YES];
-        }
-        self.modifico = NO;
-        [self.navigationController popViewControllerAnimated:YES];*/
-		
-		
         [self guardarInformacion:Nil];
 
     }

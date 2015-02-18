@@ -45,21 +45,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-//    [self.tituloVista setText:NSLocalizedString(@"nombrar", @" ")];
-    
-//    [self.vistaCircular setImage:[UIImage imageNamed:@"plecamagenta.png"]];
-//    [self.vistaCircular setImage:[UIImage imageNamed:@"plecacreasitio.png"]];
 	 if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
 		 [self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"nombrar", @" ") nombreImagen:@"roja.png"];
 	 }else{
 		 [self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"nombrar", @" ") nombreImagen:@"plecaroja.png"];
 	 }
-    
-    
-//    self.navigationItem.backBarButtonItem = Nil;
-//    self.navigationItem.leftBarButtonItem = Nil;
-//    self.navigationItem.hidesBackButton = YES;
+
     self.navigationItem.rightBarButtonItem = Nil;
     creoDominio = NO;
     self.nombreDominio.layer.cornerRadius = 5.0f;
@@ -119,9 +110,6 @@
             [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
             textoDominio = self.nombreDominio.text;
             [self performSelectorInBackground:@selector(checaDominio) withObject:Nil];
-//            existeDominio = YES;
-//            AlertView *alert = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"felicidades", @" ") message:NSLocalizedString(@"nombradoExitoso", @" ") dominio:[NSString stringWithFormat:@"www.infomovil.com/%@", textoDominio] andAlertViewType:AlertViewTypeInfo];
-//            [alert show];
         
         }
         else {
@@ -189,12 +177,7 @@
 			AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
 			[alert show];
 		}
-//        textoDominio = [NSString stringWithFormat:@"www.infomovil.com/%@", self.nombreDominio.text];
-//        self.datosUsuario = [DatosUsuario sharedInstance];
-//        self.datosUsuario.dominio = textoDominio;
-//        self.datosUsuario.nombroSitio = YES;
-//        NSArray *arraViews = [self.navigationController viewControllers];
-//        [self.navigationController popToViewController:[arraViews objectAtIndex:arraViews.count-3] animated:YES];
+
     }
     else {
         AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"comprobarDisponibilidad", @" ") andAlertViewType:AlertViewTypeInfo];
@@ -210,30 +193,9 @@
 
 -(IBAction)regresar:(id)sender {
     [[self view] endEditing:YES];
-//    AlertView *alertView;
-	if(((AppDelegate*) [[UIApplication sharedApplication] delegate]).logueado){
-		
-		saliendo = YES;
-		
-		[[AlertView initWithDelegate:self message:NSLocalizedString(@"salirMensaje", nil)
-					andAlertViewType:AlertViewTypeQuestion] show];
-		
-	}
-    /*if (modifico) {
-        alertView = [AlertView initWithDelegate:self message:NSLocalizedString(@"preguntaGuardar", @" ") andAlertViewType:AlertViewTypeQuestion];
-        [alertView show];
-    }
-    else {
-        self.datosUsuario = [DatosUsuario sharedInstance];
-        if (self.datosUsuario.nombroSitio) {
-            NSArray *arrayViews = [self.navigationController viewControllers];
-            [self.navigationController popToViewController:[arrayViews objectAtIndex:arrayViews.count-3] animated:YES];
-        }*/
-        else {
-            [self.navigationController popViewControllerAnimated:YES];
-        }
-    //}
-}
+    [self.navigationController popViewControllerAnimated:YES];
+
+ }
 
 #pragma mark - UITextFieldDelegate
 -(BOOL) textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {

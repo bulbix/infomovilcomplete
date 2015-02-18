@@ -276,6 +276,7 @@
         [self.alerta hide];
     }
     [[AlertView initWithDelegate:Nil message:NSLocalizedString(@"errorSimple", nil) andAlertViewType:AlertViewTypeInfo] show];
+    [self fbDidlogout];
 }
 
 -(void) consultaLogin {
@@ -419,6 +420,13 @@
         [self.recordarLogin1 setBackgroundImage:[UIImage imageNamed:@"recordarOn.png"] forState:UIControlStateNormal];
     }
 
+}
+
+- (void)fbDidlogout {
+    FBSession* session = [FBSession activeSession];
+    [session closeAndClearTokenInformation];
+    [session close];
+    [FBSession setActiveSession:nil];
 }
 
 @end

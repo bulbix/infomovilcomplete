@@ -39,16 +39,21 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
     [Appboy startWithApiKey:@"773948d3-24b7-422e-8a53-f3b1be2834d0"
               inApplication:application
           withLaunchOptions:launchOptions];
-    //[RageIAPHelper sharedInstance];
-#if !TARGET_IPHONE_SIMULATOR
-        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
-	
-#endif
+  
+    //-- Set Notification
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.000000) {
+        UIUserNotificationSettings * settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+    } else {
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+    }
+    
 	
 	
 	[GPPSignIn sharedInstance].clientID = kClientId;
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     InicioViewController *inicioController = [[InicioViewController alloc] initWithNibName:@"InicioViewController" bundle:nil];
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:inicioController];
@@ -85,7 +90,9 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
         [prefsLogin synchronize];
     }
     
-    
+    [self fbDidlogout];
+   
+  
     return YES;
 }
 

@@ -258,7 +258,7 @@
         [NSThread sleepForTimeInterval:1];
         [self.alertVideo hide];
     }
-    [[AlertView initWithDelegate:Nil message:@"Ocurrió un error al publicar" andAlertViewType:AlertViewTypeInfo] show];
+    [[AlertView initWithDelegate:Nil message:@"No se ha publicado, inténtalo nuevamente" andAlertViewType:AlertViewTypeInfo] show];
 	[self revertirGuardado];
 }
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5053" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EliminarCuentaViewController">
@@ -12,6 +12,7 @@
                 <outlet property="labelEspecifica" destination="ST6-ie-mzF" id="mTD-IS-TYG"/>
                 <outlet property="labelOpcionSeleccionada" destination="Lge-fi-wiX" id="SlT-Gl-hKv"/>
                 <outlet property="labelPassword" destination="Ipd-0Y-EYY" id="AYX-Bg-HcE"/>
+                <outlet property="olvidasteContrasena" destination="luH-jp-yWj" id="IFH-YN-9Sy"/>
                 <outlet property="scrollEliminarCuenta" destination="zfS-iF-HDU" id="Sa1-Ij-pHY"/>
                 <outlet property="tablaOption" destination="wzF-TR-S2z" id="rlq-Uq-cYs"/>
                 <outlet property="textEspecifica" destination="FbO-bD-DqS" id="fdq-Ys-VuJ"/>
@@ -54,6 +55,18 @@
                             <color key="textColor" red="0.1843137255" green="0.63921568630000003" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="luH-jp-yWj">
+                            <rect key="frame" x="137" y="263" width="163" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                            <state key="normal" title="¿Olvidaste tu contraseña?">
+                                <color key="titleColor" red="0.18431372549019609" green="0.63921568627450975" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="olvidasteContraseñaAct:" destination="-1" eventType="touchUpInside" id="kgp-zf-1tb"/>
+                            </connections>
+                        </button>
                         <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="5m1-FI-06A">
                             <rect key="frame" x="20" y="225" width="280" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -116,11 +129,14 @@
                 </scrollView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
     <resources>
         <image name="btnsiguiente2.png" width="18" height="11"/>
     </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
 </document>

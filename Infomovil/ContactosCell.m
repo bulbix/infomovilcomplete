@@ -22,7 +22,9 @@
 
 -(id) init {
     self = [super init];
-    
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    [prefs setInteger:0 forKey:@"ActualizandoEstatus1SolaVez"];
+    [prefs synchronize];
     return self;
 }
 
@@ -36,7 +38,7 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     self.switchActivo.hidden = self.editing;
-    //[self.labelTelefono setText:[self.contacto noContacto]];
+    
 	if([self.contacto.idPais isEqualToString:@"+52"] && [[self.contacto.noContacto substringToIndex:1] isEqualToString:@"1"] && self.contacto.indice == 1){
 		[self.labelTelefono setText:[[self.contacto noContacto] substringFromIndex:1]];
 	}else{
@@ -57,6 +59,11 @@
 }
 
 - (IBAction)cambiarEstatus:(UISwitch *)sender {
-    [self.delegate cell:self changeSwitchValue:self.switchActivo];
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    if([prefs integerForKey:@"ActualizandoEstatus1SolaVez"] == 0){
+        [self.delegate cell:self changeSwitchValue:self.switchActivo];
+    }
+    [prefs setInteger:1 forKey:@"ActualizandoEstatus1SolaVez"];
+    [prefs synchronize];
 }
 @end
