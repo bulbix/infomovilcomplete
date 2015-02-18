@@ -493,3 +493,8 @@
 // Mensaje pantalla Registrar Usuario //
 "msjRegistrarUsuarioFB" = "If you register with Facebook never post to your wall without your permission";
 
+//Pantalla Crear Editar //
+"inicioRapido" = "Quick Start";
+"verTutorial" = "See Tutorial";
+"verEjemplo" = "See Example";
+"errorAlCargar" = "Check your internet connection and try again";

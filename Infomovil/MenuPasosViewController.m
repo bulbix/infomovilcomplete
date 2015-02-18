@@ -17,6 +17,11 @@
 #import "NombrarViewController.h"
 #import "WS_HandlerDominio.h"
 #import "AppboyKit.h"
+#import "InicioRapidoViewController.h"
+#import "VerTutorialViewController.h"
+
+#define IS_IPHONE5 (([[UIScreen mainScreen] bounds].size.height-568)?NO:YES)
+
 @interface MenuPasosViewController ()
 
 @end
@@ -94,7 +99,10 @@
         [[AlertView initWithDelegate:nil message:strMensaje andAlertViewType:AlertViewTypeInfo] show];
     }
 	
-	
+    self.verTutorialbtn.layer.cornerRadius = 15.0f;
+    self.inicioRapidobtn.layer.cornerRadius = 15.0f;
+    self.botonEjemplo.layer.cornerRadius = 15.0f;
+	self.botonEjemplo2.layer.cornerRadius = 15.0f;
 }
 
 
@@ -115,17 +123,34 @@
 	{
         DominiosUsuario *dominioUsuario = [self.datosUsuario.dominiosUsuario objectAtIndex:0];
 		self.dominio.hidden	= NO;
-		NSLog(@"Dominio: %@",self.datosUsuario.dominio);
-		self.dominio.text	= [NSString stringWithFormat:@"www.infomovil.com/%@", dominioUsuario.domainName];
-        //[self.botonPublicar setBackgroundImage:[UIImage imageNamed:@"tips.png"] forState:UIControlStateNormal];
+		NSLog(@"MenuPasosViewController - Dominio: %@",self.datosUsuario.dominio);
+        
+        if(dominioUsuario.domainName){
+            self.dominio.text	= [NSString stringWithFormat:@"www.infomovil.com/%@", dominioUsuario.domainName];
+            if(IS_IPHONE5){
+                self.viewDominioPublicado.frame = CGRectMake(0, 320, 320, 90);
+            }else{
+                self.viewDominioPublicado.frame = CGRectMake(0, 300, 320, 90);
+            }
+            [self.view addSubview:self.viewDominioPublicado];
+        }else{
+            if(IS_IPHONE5){
+                self.viewDominioNoPublicado.frame = CGRectMake(0, 310, 320, 90);
+            }else{
+                self.viewDominioNoPublicado.frame = CGRectMake(0, 280, 320, 90);
+            }
+            [self.view addSubview:self.viewDominioNoPublicado];
+        }
     }
     else {
-       // [self.botonPublicar setBackgroundImage:[UIImage imageNamed:@"nombrarpublicar.png"] forState:UIControlStateNormal];
 		self.dominio.hidden = YES;
     }
 	
     [self.tituloVista setTextColor:[UIColor whiteColor]];
-	
+    [self.inicioRapidobtn setTitle:NSLocalizedString(@"inicioRapido", Nil) forState:UIControlStateNormal];
+    [self.verTutorialbtn setTitle:NSLocalizedString(@"verTutorial", Nil) forState:UIControlStateNormal];
+    [self.botonEjemplo setTitle:NSLocalizedString(@"verEjemplo", Nil) forState:UIControlStateNormal];
+    [self.botonEjemplo2 setTitle:NSLocalizedString(@"verEjemplo", Nil) forState:UIControlStateNormal];
 	if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
 		[self.botonFondo setBackgroundImage:[UIImage imageNamed:@"btnbackgroundEn.png"] forState:UIControlStateNormal];
 		[self.botonCrear setBackgroundImage:[UIImage imageNamed:@"btncreateeditEn.png"] forState:UIControlStateNormal];
@@ -134,7 +159,7 @@
 		}else{
 			[self.botonPublicar setBackgroundImage:[UIImage imageNamed:@"btnnamepublishEn.png"] forState:UIControlStateNormal];
 		}
-		[self.botonEjemplo setBackgroundImage:[UIImage imageNamed:@"btnexampleEn.png"] forState:UIControlStateNormal];
+      
 	}else{
 		[self.botonFondo setBackgroundImage:[UIImage imageNamed:@"elegirfondo.png"] forState:UIControlStateNormal];
 		[self.botonCrear setBackgroundImage:[UIImage imageNamed:@"creareditar.png"] forState:UIControlStateNormal];
@@ -143,8 +168,11 @@
 		}else{
 			[self.botonPublicar setBackgroundImage:[UIImage imageNamed:@"nombrarpublicar.png"] forState:UIControlStateNormal];
 		}
-		[self.botonEjemplo setBackgroundImage:[UIImage imageNamed:@"verejemplo.png"] forState:UIControlStateNormal];
+	
+        
 	}
+    
+   
 	
 }
 
@@ -154,9 +182,17 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+
+- (IBAction)verTutorialAct:(id)sender {
+       VerTutorialViewController *tutorial = [[VerTutorialViewController alloc] initWithNibName:@"VerTutorialViewController" bundle:nil];
+        [self.navigationController pushViewController:tutorial animated:YES];
+    
+    
+}
+
 - (IBAction)elegirFondo:(UIButton *)sender {
-//    FondoPaso1ViewController *paso1 = [[FondoPaso1ViewController alloc] initWithNibName:@"FondoPaso1ViewController" bundle:nil];
-//    [self.navigationController pushViewController:paso1 animated:YES];
+
     ColorPickerViewController *colorPicker = [[ColorPickerViewController alloc] initWithNibName:@"ColorPickerViewController" bundle:Nil];
     [self.navigationController pushViewController:colorPicker animated:YES];
 }
@@ -197,8 +233,7 @@
 - (IBAction)publicar:(UIButton *)sender {
     self.datosUsuario = [DatosUsuario sharedInstance];
     if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion && ![((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio hasPrefix:@"Tramite"]) {
-//        DominioRegistradoViewController *dominioRegistrado = [[DominioRegistradoViewController alloc] initWithNibName:@"DominioRegistradoViewController" bundle:Nil];
-//        [self.navigationController pushViewController:dominioRegistrado animated:YES];
+
         TipsViewController *tipsController = [[TipsViewController alloc] initWithNibName:@"TipsViewController" bundle:Nil];
         [self.navigationController pushViewController:tipsController animated:YES];
     }
@@ -213,18 +248,12 @@
                 [vistaNotificacion show];
             }
         }
-       /* else {
-            DominioRegistradoViewController *dominioRegistrado = [[DominioRegistradoViewController alloc] initWithNibName:@"DominioRegistradoViewController" bundle:Nil];
-            [self.navigationController pushViewController:dominioRegistrado animated:YES];
-        }*/
+       
     }
     
 }
 
 - (IBAction)verEjemplo:(UIButton *)sender {
-    
-//    NSURL *url = [NSURL URLWithString:@"http://twitter.com/home/?status=Hola%20visita%20mi%20dominio"];
-//    [[UIApplication sharedApplication] openURL:url];
     VistaPreviaViewController *vistaPrevia = [[VistaPreviaViewController alloc] initWithNibName:@"VistaPreviaViewController" bundle:Nil];
     [vistaPrevia setTipoVista:PreviewTypeEjemplo];
     [self.navigationController pushViewController:vistaPrevia animated:YES];
@@ -272,5 +301,12 @@
     [self.navigationItem setHidesBackButton:YES animated:YES];
     [self.vistaInferior setHidden:NO];
 }
+
+- (IBAction)irInicioRapido:(id)sender {
+    InicioRapidoViewController *inicioRapido = [[InicioRapidoViewController alloc] initWithNibName:@"InicioRapidoViewController" bundle:Nil];
+    [self.navigationController pushViewController:inicioRapido animated:YES];
+}
+
+
 
 @end

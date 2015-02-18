@@ -606,6 +606,10 @@
 		BF4B7E951A8A686300D049CD /* WS_PlanPro.m in Sources */ = {isa = PBXBuildFile; fileRef = BF4B7E941A8A686300D049CD /* WS_PlanPro.m */; };
 		BF60DE911A89111F008D963E /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BF60DE8E1A89111F008D963E /* IAPHelper.m */; };
 		BF60DE921A89111F008D963E /* RageIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BF60DE901A89111F008D963E /* RageIAPHelper.m */; };
+		BF648FAB1A94FC5900AFDEAD /* InicioRapidoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF648FA91A94FC5900AFDEAD /* InicioRapidoViewController.m */; };
+		BF648FAC1A94FC5900AFDEAD /* InicioRapidoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF648FAA1A94FC5900AFDEAD /* InicioRapidoViewController.xib */; };
+		BF648FAF1A950ED600AFDEAD /* VerTutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF648FAE1A950ED600AFDEAD /* VerTutorialViewController.m */; };
+		BF648FB11A950F0300AFDEAD /* VerTutorialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF648FB01A950F0300AFDEAD /* VerTutorialViewController.xib */; };
 		BFA7018A1A817A3B00F685C3 /* libAdIdAccess.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFA701861A817A3B00F685C3 /* libAdIdAccess.a */; };
 		BFA7018B1A817A3B00F685C3 /* libAppsFlyerLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFA701871A817A3B00F685C3 /* libAppsFlyerLib.a */; };
 		BFA7018C1A817A3B00F685C3 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFA701881A817A3B00F685C3 /* libGoogleAnalyticsServices.a */; };
@@ -1518,6 +1522,12 @@
 		BF60DE8E1A89111F008D963E /* IAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPHelper.m; sourceTree = "<group>"; };
 		BF60DE8F1A89111F008D963E /* RageIAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RageIAPHelper.h; sourceTree = "<group>"; };
 		BF60DE901A89111F008D963E /* RageIAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RageIAPHelper.m; sourceTree = "<group>"; };
+		BF648FA81A94FC5900AFDEAD /* InicioRapidoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InicioRapidoViewController.h; sourceTree = "<group>"; };
+		BF648FA91A94FC5900AFDEAD /* InicioRapidoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InicioRapidoViewController.m; sourceTree = "<group>"; };
+		BF648FAA1A94FC5900AFDEAD /* InicioRapidoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InicioRapidoViewController.xib; sourceTree = "<group>"; };
+		BF648FAD1A950ED600AFDEAD /* VerTutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerTutorialViewController.h; sourceTree = "<group>"; };
+		BF648FAE1A950ED600AFDEAD /* VerTutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerTutorialViewController.m; sourceTree = "<group>"; };
+		BF648FB01A950F0300AFDEAD /* VerTutorialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VerTutorialViewController.xib; sourceTree = "<group>"; };
 		BFA701861A817A3B00F685C3 /* libAdIdAccess.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAdIdAccess.a; sourceTree = "<group>"; };
 		BFA701871A817A3B00F685C3 /* libAppsFlyerLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAppsFlyerLib.a; sourceTree = "<group>"; };
 		BFA701881A817A3B00F685C3 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
@@ -2363,6 +2373,9 @@
 		0FC0F3761888C1DC000ED438 /* CrearEditar */ = {
 			isa = PBXGroup;
 			children = (
+				BF648FA81A94FC5900AFDEAD /* InicioRapidoViewController.h */,
+				BF648FA91A94FC5900AFDEAD /* InicioRapidoViewController.m */,
+				BF648FAA1A94FC5900AFDEAD /* InicioRapidoViewController.xib */,
 				0FC0F3701888B6C9000ED438 /* SeleccionaVideoViewController.h */,
 				0FC0F3711888B6C9000ED438 /* SeleccionaVideoViewController.m */,
 				0FFDEB491911D46B0023943D /* SeleccionaVideoViewController.xib */,
@@ -2441,6 +2454,9 @@
 				0F8B2FDC19B8D9EE007045F5 /* EditarVideoViewController.h */,
 				0F8B2FDD19B8D9EE007045F5 /* EditarVideoViewController.m */,
 				0F8B2FDE19B8D9EE007045F5 /* EditarVideoViewController.xib */,
+				BF648FAD1A950ED600AFDEAD /* VerTutorialViewController.h */,
+				BF648FAE1A950ED600AFDEAD /* VerTutorialViewController.m */,
+				BF648FB01A950F0300AFDEAD /* VerTutorialViewController.xib */,
 			);
 			name = CrearEditar;
 			sourceTree = "<group>";
@@ -3379,6 +3395,7 @@
 				0F8B214A18849EDB00F016B3 /* GaleriaPaso2ViewController.xib in Resources */,
 				0F59BEB118CA2EE70037FE8A /* direccion.png in Resources */,
 				65714ADC1919AF4900BC2647 /* share.png in Resources */,
+				BF648FAC1A94FC5900AFDEAD /* InicioRapidoViewController.xib in Resources */,
 				0FF61CC818A2FB51004025CD /* BuscaDireccionViewController.xib in Resources */,
 				65065DD3190FEB6600189316 /* tips4.png in Resources */,
 				0FCB0F6B18E2139600C37A37 /* compartirwhatsapp@2x.png in Resources */,
@@ -3523,6 +3540,7 @@
 				0FC6C6BD18DD0E5C009E69A2 /* boton@2x.png in Resources */,
 				0F6CBD3019085F0B0077B065 /* tip4.png in Resources */,
 				AB60A84B1980662000E1C476 /* logoRegistrado@2x.png in Resources */,
+				BF648FB11A950F0300AFDEAD /* VerTutorialViewController.xib in Resources */,
 				0F11EDF8190712C700401686 /* facebookcompartir@2x.png in Resources */,
 				65714AD31919AD8900BC2647 /* micompartir.png in Resources */,
 				0F6CBD2E19085F0B0077B065 /* tip2.png in Resources */,
@@ -3739,6 +3757,7 @@
 				0F59BEBA18CA5BF40037FE8A /* WS_HandlerVideo.m in Sources */,
 				BFB69B581A83DB6B0022107C /* SDWebImageCompat.m in Sources */,
 				0F079BFC1871D2BD007AFCC2 /* InfomovilViewController.m in Sources */,
+				BF648FAB1A94FC5900AFDEAD /* InicioRapidoViewController.m in Sources */,
 				65011513191D4707004D90EA /* GTLPlusActivity.m in Sources */,
 				0F408BCF18E1166E0010FFC5 /* NSData+Base64.m in Sources */,
 				BFB69B641A83DB6B0022107C /* UIView+WebCacheOperation.m in Sources */,
@@ -3769,6 +3788,7 @@
 				0F5873A418F6E99900DA0CFD /* PNLineChartData.m in Sources */,
 				0F73163618F84FED008DBA22 /* VisitasModel.m in Sources */,
 				0F65E93C187620A70009EC3F /* TipoContactoViewController.m in Sources */,
+				BF648FAF1A950ED600AFDEAD /* VerTutorialViewController.m in Sources */,
 				0F5EF9D918C96E080013D37B /* WS_ActualizarDireccion.m in Sources */,
 				65011526191D4707004D90EA /* GTMHTTPFetcherLogging.m in Sources */,
 				0FE02847186E49CD007C27B0 /* MainViewController.m in Sources */,

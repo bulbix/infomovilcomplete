@@ -606,3 +606,9 @@
 "BeneficiosCuentaPlanPro" = "BENEFICIOS DEL PLAN PRO";
 // Mensaje pantalla Registrar Usuario //
 "msjRegistrarUsuarioFB" = "Si te registras con Facebook jamás publicaremos en tu muro sin tu permiso";
+
+//Pantalla Crear Editar //
+"inicioRapido" = "Inicio Rápido";
+"verTutorial" = "Ver Tutorial";
+"verEjemplo" = "Ver Ejemplo";
+"errorAlCargar" = "Revisa tu conexión a internet e intenta nuevamente";

@@ -73,7 +73,6 @@
                                 [[ItemsDominio alloc] initWithDescripcion:NSLocalizedString(@"direccion", @" ") andStatus:7],
                                 [[ItemsDominio alloc] initWithDescripcion:NSLocalizedString(@"informacionAdicional", @" ") andStatus:1]];
         
-        //NSLocalizedString(@"logo", @" "), NSLocalizedString(@"descripcionCorta", @" "), NSLocalizedString(@"contacto", @" "), NSLocalizedString(@"mapa", @" "), NSLocalizedString(@"video", @" "), NSLocalizedString(@"promociones", @" "), NSLocalizedString(@"galeriaImagenes", @" "), NSLocalizedString(@"perfil", @" "), NSLocalizedString(@"direccion", @" "),  NSLocalizedString(@"informacionAdicional", @" ")];
         arregloCampos = [[NSMutableArray alloc] initWithArray:arregloAux];
         self.datosUsuario.itemsDominio = arregloCampos;
     }
@@ -86,8 +85,7 @@
     }
     
     self.tablaEditar.layer.cornerRadius = 5;
-//    [self.vistaCircular setImage:[UIImage imageNamed:@"plecaverde.png"]];
-//    [self.vistaCircular setImage:[UIImage imageNamed:@"plecacreasitio.png"]];
+
     
     UIImage *imagenBoton = [UIImage imageNamed:@"btnprevisualizar.png"];
     UIButton *botonPrevisualizar = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -105,7 +103,7 @@
 		}
 	}
 	
-	//[[AppsFlyerTracker sharedTracker] trackEvent:@"Crear_Editar_campos_llenados" withValue:[NSString stringWithFormat:@"%i",editados]];
+
 	
     
 }
@@ -114,7 +112,7 @@
     [super viewWillAppear:animated];
     [self.tituloVista setHidden:NO];
     self.datosUsuario = [DatosUsuario sharedInstance];
-//    [self.tituloVista setText:NSLocalizedString(@"crearEditar", @" ")];
+
     [self.tablaEditar reloadData];
 	if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
 		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"crearEditar", Nil) nombreImagen:@"barraverde.png"];
@@ -147,17 +145,12 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellInfo"];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cellInfo"];
-//        if (indexPath.row != 6) {
-//            UIImageView *imagenAccesory = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"btnsiguiente.png"]];
-//            [cell setAccessoryView:imagenAccesory];
-//        }
+
     }
-//    if ([self.datosUsuario.arregloEstatusEdicion count] == 0) {
-//        [cell.imageView setImage:[UIImage imageNamed:@"noeditado.png"]];
-//        [cell.textLabel setTextColor:colorFuenteVerde];
-//    }
-//    else {
-    if ([((AppDelegate *)[[UIApplication sharedApplication] delegate]).statusDominio hasPrefix:@"Tramite"] && [CommonUtils perfilEditado] && indexPath.row == [arregloCampos count]) {
+    
+    NSLog(@"El dominio en la tabla es: %@", ((AppDelegate *)[[UIApplication sharedApplication] delegate]).statusDominio);
+
+    if ([((AppDelegate *)[[UIApplication sharedApplication] delegate]).statusDominio hasPrefix:@"Tramite"]  && [CommonUtils perfilEditado] && indexPath.row == [arregloCampos count]) {
         [cell.imageView setImage:[UIImage imageNamed:@"noeditado.png"]];
         [cell.textLabel setTextColor:colorFuenteVerde];
         [cell.textLabel setText:NSLocalizedString(@"txtPublicar", Nil)];
@@ -175,13 +168,9 @@
         arregloCampos = self.datosUsuario.itemsDominio;
         [cell.textLabel setText:[[arregloCampos objectAtIndex:indexPath.row] descripcionIdioma]];
         
-//        if (indexPath.row == 6) {
-//            [cell setAccessoryView:nil];
-//        }
-//        else if (cell.accessoryView == nil){
         UIImageView *imagenAccesory = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"btnsiguiente.png"]];
         [cell setAccessoryView:imagenAccesory];
-//        }
+
 
     }
     
@@ -193,12 +182,9 @@
 #pragma mark - UITableView Delegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    if (indexPath.row == 6) {
-//        return 0;
-//    }
-//    else {
+
         return 50;
-//    }
+
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -217,7 +203,6 @@
     
     if (indexPath.row == 4) {
         ListaTelefonosViewController *listaTelefono = [[ListaTelefonosViewController alloc] initWithNibName:@"ListaTelefonosViewController" bundle:Nil];
-//        TipoContactoViewController *tipoContacto = [[TipoContactoViewController alloc] initWithNibName:@"TipoContactoViewController" bundle:Nil];
         [listaTelefono setIndiceSeleccionado:indexPath.row];
         [self.navigationController pushViewController:listaTelefono animated:YES];
     }
@@ -301,7 +286,7 @@
 			}else{
 				[paso2 setTituloPaso:NSLocalizedString(@"descripcionCorta", nil)];
 			}
-			//[paso2 setTituloPaso:itemSeleccionado.descripcionItem];
+			
 		}
 		else {
 			[paso2 setTituloPaso:[arregloCampos objectAtIndex:indexPath.row]];
