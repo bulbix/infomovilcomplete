@@ -148,13 +148,13 @@ int opcionButton = 0 ;
 #ifdef _DEBUG
 	NSLog(@"status: %@",((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio);
 #endif
-	if(sesion &&  ![((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] ){
-		
-		[self.vistaInferior setHidden:YES];
-		
+	if(sesion &&  [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] ){
+        self.viewCompraPlanPro.hidden = YES;
+        self.viewPlanProComprado.hidden = NO;
+        [self.vistaInferior setHidden:NO];
 	}else{
-
-		[self.vistaInferior setHidden:NO];
+        [self.vistaInferior setHidden:YES];
+		
 	}
 	
 	[self.selector setTitle:NSLocalizedString(@"cuentaTituloSegment1", nil) forSegmentAtIndex:0];

@@ -206,11 +206,15 @@
 	if (existeItems && indexPath.row < 12) {
         arregloCampos = self.datosUsuario.itemsDominio;
     }
-	
-//    ItemsDominio *itemSeleccionado;
-//    if (existeItems) {
-//        itemSeleccionado = [arregloCampos objectAtIndex:indexPath.row];
-//    }
+	//IRC//
+    ItemsDominio *itemSeleccionado;
+    if (existeItems) {
+        itemSeleccionado = [arregloCampos objectAtIndex:indexPath.row];
+    }
+    
+    
+    
+    
     if (indexPath.row == 4) {
         ListaTelefonosViewController *listaTelefono = [[ListaTelefonosViewController alloc] initWithNibName:@"ListaTelefonosViewController" bundle:Nil];
 //        TipoContactoViewController *tipoContacto = [[TipoContactoViewController alloc] initWithNibName:@"TipoContactoViewController" bundle:Nil];
@@ -242,20 +246,23 @@
         [self.navigationController pushViewController:galeria animated:YES];
     }
     else if (indexPath.row == 6) {
-//        if (existeItems) {
-//            if ([itemSeleccionado estatus] > 0 && [((AppDelegate *)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"]) {
-//                VideoViewController *video = [[VideoViewController alloc] initWithNibName:@"VideoViewController" bundle:nil];
-//                [self.navigationController pushViewController:video animated:YES];
-//            }
-//            else {
-//                alertaVideo = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeNoVideo", Nil) andAlertViewType:AlertViewTypeQuestion];
-//				[alertaVideo show];
-//            }
-//        }
-//        else {
+
+        
+        
+        if (existeItems) {
+            if ([itemSeleccionado estatus] > 0 && [((AppDelegate *)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"]) {
+                VideoViewController *video = [[VideoViewController alloc] initWithNibName:@"VideoViewController" bundle:nil];
+                [self.navigationController pushViewController:video animated:YES];
+            }
+            else {
+                alertaVideo = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeNoVideo", Nil) andAlertViewType:AlertViewTypeQuestion];
+				[alertaVideo show];
+            }
+        }
+        else {
             VideoViewController *video = [[VideoViewController alloc] initWithNibName:@"VideoViewController" bundle:nil];
             [self.navigationController pushViewController:video animated:YES];
-//        }
+        }
         
         
     }

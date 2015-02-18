@@ -45,9 +45,9 @@
     }
     
     [self.navigationController.navigationBar setHidden:NO];
-
+    
     [self.view setBackgroundColor:colorBackground];
-	if([UINavigationBar instancesRespondToSelector:@selector(setBarTintColor:)])
+    if([UINavigationBar instancesRespondToSelector:@selector(setBarTintColor:)])
     {
         self.edgesForExtendedLayout = UIRectEdgeNone;
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
@@ -58,7 +58,7 @@
     }
     
     
-	[self setBotonRegresar];
+    [self setBotonRegresar];
     
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
@@ -67,7 +67,7 @@
     [btAceptar setFrame:CGRectMake(0, 0, imagenSalvar.size.width, imagenSalvar.size.height)];
     [btAceptar setImage:imagenSalvar forState:UIControlStateNormal];
     [btAceptar addTarget:self action:@selector(guardarInformacion:) forControlEvents:UIControlEventTouchUpInside];
-
+    
     UIBarButtonItem *buttonSave = [[UIBarButtonItem alloc] initWithCustomView:btAceptar];
     self.navigationItem.rightBarButtonItem = buttonSave;
     vistaCircular = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 42)];
@@ -82,12 +82,12 @@
     [tituloVista setAdjustsFontSizeToFitWidth:YES];
     [self.view addSubview:tituloVista];
     
-        if (IS_IPHONE_5) {
-            vistaInferior = [[UIView alloc] initWithFrame:CGRectMake(0, 440, 320, 68)];//458
-        }
-        else {
-            vistaInferior = [[UIView alloc] initWithFrame:CGRectMake(0, 352, 320, 68)];//370
-        }
+    if (IS_IPHONE_5) {
+        vistaInferior = [[UIView alloc] initWithFrame:CGRectMake(0, 440, 320, 68)];//458
+    }
+    else {
+        vistaInferior = [[UIView alloc] initWithFrame:CGRectMake(0, 352, 320, 68)];//370
+    }
     
     
     
@@ -118,15 +118,15 @@
     
     
     
-        if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion && (![((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Tramite"] && ![((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Tramite PRO"])) {
-            [self.vistaInferior setHidden:NO];
-        }
-        else {
-            [self.vistaInferior setHidden:YES];
-        }
-        
-        [self.view addSubview:vistaInferior];
-
+    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion && (![((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Tramite"] && ![((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Tramite PRO"])) {
+        [self.vistaInferior setHidden:NO];
+    }
+    else {
+        [self.vistaInferior setHidden:YES];
+    }
+    
+    [self.view addSubview:vistaInferior];
+    
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(vistaPulsada)];
     [tapRecognizer setCancelsTouchesInView:NO];
     [[self view] addGestureRecognizer:tapRecognizer];
@@ -137,16 +137,16 @@
     if (!self.guardarVista) {
         ((AppDelegate *)[[UIApplication sharedApplication] delegate]).ultimoView = self;
     }
-	
-	
-	if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion && (![((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Tramite"] && ![((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Tramite PRO"])) {
-		[self.vistaInferior setHidden:NO];
-	}
-	else {
-		[self.vistaInferior setHidden:YES];
-	}
-	
-	
+    
+    
+    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion && (![((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Tramite"] && ![((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Tramite PRO"])) {
+        [self.vistaInferior setHidden:NO];
+    }
+    else {
+        [self.vistaInferior setHidden:YES];
+    }
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -203,17 +203,17 @@
     [self.view addSubview:labelHola];
 }
 
-#pragma mark 
+#pragma mark
 - (void)setBotonRegresar
 {
-	self.navigationItem.hidesBackButton = YES;
+    self.navigationItem.hidesBackButton = YES;
     UIImage *image						= [UIImage imageNamed:@"btnregresar.png"];
-	UIButton *backButton				= [UIButton buttonWithType:UIButtonTypeCustom];
-	
+    UIButton *backButton				= [UIButton buttonWithType:UIButtonTypeCustom];
+    
     [backButton setFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
     [backButton setImage:image forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(regresar:) forControlEvents:UIControlEventTouchUpInside];
-	
+    
     UIBarButtonItem *buttonBack				= [[UIBarButtonItem alloc] initWithCustomView:backButton];
     self.navigationItem.leftBarButtonItem	= buttonBack;
 }
@@ -229,7 +229,7 @@
 
 -(IBAction)regresar:(id)sender
 {
-	[self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
@@ -264,15 +264,15 @@
     [imagenBarra setImage:[UIImage imageNamed:@"sbarnuevo.png"]];
     [self.view addSubview:imagenBarra];
     [self.vistaCircular setFrame:CGRectMake(27, 52, 267, 49)];
-	[self.vistaCircular setImage:[UIImage imageNamed:@"logoRegistrado.png"]];
+    [self.vistaCircular setImage:[UIImage imageNamed:@"logoRegistrado.png"]];
 }
 
 -(void) mostrarLogo6 {
     [self.navigationController.navigationBar setTintColor:[UIColor redColor]];
-	
+    
     [self.vistaCircular setFrame:CGRectMake(27, 52, 267, 49)];
-//    [self.vistaCircular setImage:[UIImage imageNamed:@"logonuevo.png"]];
-	[self.vistaCircular setImage:[UIImage imageNamed:@"logoRegistrado.png"]];
+    //    [self.vistaCircular setImage:[UIImage imageNamed:@"logonuevo.png"]];
+    [self.vistaCircular setImage:[UIImage imageNamed:@"logoRegistrado.png"]];
 }
 
 -(void) mostrarLogoBarraNavegacion {
@@ -297,7 +297,7 @@
 
 -(void) mostrarLogoBarraNavegacion6 {
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"NBlila.png"] forBarMetrics:UIBarMetricsDefault];
-	
+    
     [self.navigationItem setTitle:@"Ingresa a tu cuenta"];
     UIFont *fuente = [UIFont fontWithName:@"Avenir-Book" size:19];
     
@@ -331,9 +331,9 @@
     }else{
         [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:_strImagenTitulo]
                                                       forBarMetrics:UIBarMetricsDefault];
-		self.navigationController.navigationBar.tintColor = [UIColor redColor];
-	}
-//    [self.navigationController.navigationItem setTitle:titulo];
+        self.navigationController.navigationBar.tintColor = [UIColor redColor];
+    }
+    //    [self.navigationController.navigationItem setTitle:titulo];
     [self.navigationItem setTitle:_strTituloVista];
     UIFont *fuente = [UIFont fontWithName:@"Avenir-Heavy" size:19];
     UIColor *colorTexto = [UIColor whiteColor];
@@ -375,16 +375,16 @@
 - (BOOL)shouldChangeText:(NSString *)string withLimit:(NSInteger)maxLength forFinalLenght:(NSInteger)textoLength
 {
     if ( [string isEqualToString:@"<"] || [string isEqualToString:@">"] || textoLength > maxLength )
-		return NO;
-	
-	if ( textoLength <= maxLength )
-	{
-		[_labelInfo setText:[NSString stringWithFormat:@"%i/%li", textoLength, (long)maxLength]];
-		modifico = YES;
-		return YES;
+        return NO;
+    
+    if ( textoLength <= maxLength )
+    {
+        [_labelInfo setText:[NSString stringWithFormat:@"%i/%li", textoLength, (long)maxLength]];
+        modifico = YES;
+        return YES;
     }
-	
-	return NO;
+    
+    return NO;
 }
 
 - (void)muestraContadorTexto:(NSInteger)contador conLimite:(NSInteger)limite paraVista:(UIView *)view
