@@ -134,13 +134,7 @@
 			AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
 			[alert show];
 		}
-//        textoDominio = [NSString stringWithFormat:@"www.infomovil.com/%@", self.nombreDominio.text];
-//        self.datosUsuario = [DatosUsuario sharedInstance];
-//        self.datosUsuario.dominio = textoDominio;
-//        self.datosUsuario.nombroSitio = YES;
-//        modifico = NO;
-//        NSArray *arraViews = [self.navigationController viewControllers];
-//        [self.navigationController popToViewController:[arraViews objectAtIndex:arraViews.count-3] animated:YES];
+
     }
     else {
         AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"comprobarDisponibilidad", @" ") andAlertViewType:AlertViewTypeInfo];
@@ -233,10 +227,7 @@
     if (operacionWS == 1) {
         if (existeDominio) {
             self.datosUsuario = [DatosUsuario sharedInstance];
-            self.datosUsuario.dominio = textoDominio;
             self.modifico = YES;
-//            alert = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"felicidades", @" ") message:NSLocalizedString(@"nombradoExitoso", @" ") dominio:[NSString stringWithFormat:@"www.infomovil.com/%@", textoDominio] andAlertViewType:AlertViewTypeInfo];
-//            [alert show];
 			self.datosUsuario.dominio = self.nombreDominio.text;
 			NSLog(@"Dominio: %@",self.datosUsuario.dominio);
             PublicarViewController *publicar = [[PublicarViewController alloc] initWithNibName:@"PublicarViewController" bundle:Nil];
@@ -283,6 +274,7 @@
         operacionWS = 1;
         WS_HandlerDominio *dominioHandler = [[WS_HandlerDominio alloc] init];
         [dominioHandler setWSHandlerDelegate:self];
+        NSLog(@"NombrarViewController: el textoDominio es: %@", textoDominio);
         [dominioHandler consultaDominio:textoDominio];
     }
     else {
@@ -335,8 +327,6 @@
         if ([resultado isEqualToString:@"No existe"]) {
             existeDominio = YES;
 			self.datosUsuario.dominio = self.nombreDominio.text;
-			
-			//[self crearDominio];
 			[self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
         }
         else {

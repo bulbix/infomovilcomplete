@@ -612,3 +612,10 @@
 "verTutorial" = "Ver tutorial";
 "verEjemplo" = "Ver ejemplo";
 "errorAlCargar" = "Revisa tu conexión a internet e intenta nuevamente";
+
+//IRC inicio //
+"recordarCuenta" = "Recordar";
+"crearCuentaRegistrar" = "Crear cuenta";
+"contrasenaRegistrar" = "Contraseña";
+"confirmarContrasena" = "Confirmar contraseña";
+"olvidasteContrasenaElimininarCuenta" = "¿Olvidaste tu contraseña?";

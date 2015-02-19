@@ -125,6 +125,8 @@
         [self.recordarLogin1 setBackgroundImage:[UIImage imageNamed:@"recordarOff.png"] forState:UIControlStateNormal];
     }
   
+    
+    
 	
 }
 
@@ -138,11 +140,11 @@
     [botonRegresar addTarget:self action:@selector(regresarMenu:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:botonRegresar];
 	
+    [self.recordarbtn setTitle:NSLocalizedString(@"recordarCuenta", nil) forState:UIControlStateNormal]  ;
 	self.txtEmail.placeholder = NSLocalizedString(@"mainLabelCorreo", nil);
 	self.txtPassword.placeholder = NSLocalizedString(@"contrasena", nil);
 	self.label.text = NSLocalizedString(@"mainLabel", nil);
 	[self.boton setTitle:NSLocalizedString(@"mainBoton", nil) forState:UIControlStateNormal]  ;
-	
 	[self.vistaInferior setHidden:YES];
     
 }

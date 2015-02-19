@@ -19,6 +19,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *label;
 @property (strong, nonatomic) IBOutlet UIButton *boton;
 
+@property (weak, nonatomic) IBOutlet UIButton *recordarbtn;
 
 - (IBAction)iniciarSesion:(id)sender;
 - (IBAction)cambiarPassword:(UIButton *)sender;

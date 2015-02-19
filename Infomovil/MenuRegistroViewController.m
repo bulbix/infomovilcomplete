@@ -125,6 +125,8 @@
 -(void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
    
+    
+    [self.llamarCrearCuenta setTitle:NSLocalizedString(@"crearCuentaRegistrar", nil) forState:UIControlStateNormal]  ;
     self.msjRegistrarConFacebook.text = NSLocalizedString(@"msjRegistrarUsuarioFB", nil);
     
     [self.navigationController.navigationBar setHidden:YES];

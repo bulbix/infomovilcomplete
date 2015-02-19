@@ -129,6 +129,11 @@
         [self.txtContrasena setEnabled:NO];
     }
 	
+    //
+    
+    self.txtContrasena.placeholder = NSLocalizedString(@"contrasenaRegistrar", nil);
+    self.txtContrasenaConfirmar.placeholder = NSLocalizedString(@"confirmarContrasena", nil);
+    
 	self.label1.text = NSLocalizedString(@"requiereDueno", nil);
 	self.label2.text = NSLocalizedString(@"registrarMensaje", nil);
 	self.label4.text = NSLocalizedString(@"pais", nil);

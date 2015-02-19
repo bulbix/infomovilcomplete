@@ -227,14 +227,14 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
     NSLog(@"%@",strError);
 #endif
 }
-
+/*
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
 	
 	return [GPPURLHandler handleURL:url
 				  sourceApplication:sourceApplication
 						 annotation:annotation];
 }
-
+*/
 - (BOOL) itIsInTime {
     BOOL enTiempo = YES;
 #ifdef _CON_SESION
@@ -262,6 +262,19 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
     [session closeAndClearTokenInformation];
     [session close];
     [FBSession setActiveSession:nil];
+}
+
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    
+    BOOL wasHandled = [FBAppCall handleOpenURL:url
+                             sourceApplication:sourceApplication];
+    
+    // add app-specific handling code here
+    return wasHandled;
 }
 
 @end

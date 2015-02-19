@@ -328,13 +328,9 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLName</key>
-			<string>com.bancoazteca.handheld.Infomovil</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.bancoazteca.handheld.Infomovil</string>
+				<string>fb346859792130678</string>
 			</array>
 		</dict>
 	</array>

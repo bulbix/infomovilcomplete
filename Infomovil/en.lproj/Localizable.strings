@@ -224,7 +224,7 @@
 
 "mainLabelCorreo"="E-mail";
 "mainLabelPassword"="Password";
-"mainLabel"="Forgotten your password?";
+"mainLabel"="Forget password?";
 "mainBoton"="Log in";
 
 "compartirLabel1"="Congratulations!\n\n";
@@ -498,3 +498,10 @@
 "verTutorial" = "See tutorial";
 "verEjemplo" = "See example";
 "errorAlCargar" = "Check your internet connection and try again";
+
+//IRC inicio //
+"recordarCuenta" = "Remember";
+"crearCuentaRegistrar" = "Create account";
+"contrasenaRegistrar" = "Password";
+"confirmarContrasena" = "Confirm password";
+"olvidasteContrasenaElimininarCuenta" = "Forgot password?";

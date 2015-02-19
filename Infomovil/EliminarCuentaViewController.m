@@ -63,6 +63,8 @@
     
     [self.botonConfiguracion setBackgroundImage:[UIImage imageNamed:@"settingsEn.png"] forState:UIControlStateNormal];
     [self.botonConfiguracion setFrame:CGRectMake(192, 14, 64, 54)];
+    
+    [self.olvidasteContrasena setTitle:NSLocalizedString(@"olvidasteContrasenaElimininarCuenta", nil) forState:UIControlStateNormal]  ;
 }
 
 

@@ -65,10 +65,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-//    [self.tituloVista setText:NSLocalizedString(@"publicar", @" ")];
-//    [self.vistaCircular setImage:[UIImage imageNamed:@"plecamagenta.png"]];
-//    [self.vistaCircular setImage:[UIImage imageNamed:@"plecacreasitio.png"]];
+
 	if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
 		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"publicar", @" ") nombreImagen:@"roja.png"];
 	}else{
@@ -76,12 +73,7 @@
 	}
     operacionWS = WSOperacionNombrar;
     publicoDominio = NO;
-//    self.navigationItem.backBarButtonItem = Nil;
-//    self.navigationItem.leftBarButtonItem = Nil;
-//    self.navigationItem.hidesBackButton = YES;
-	
 	creoDominio = NO;
-	
 	codigoPais = [NSLocale ISOCountryCodes];
     local = [[NSLocale alloc] initWithLocaleIdentifier:[[NSLocale currentLocale] localeIdentifier]];
     _arregloPais = [[NSMutableArray alloc] initWithCapacity:[codigoPais count]];
@@ -184,7 +176,12 @@
         self.datosUsuario = [DatosUsuario sharedInstance];
         WS_HandlerDominio *dominioHandler = [[WS_HandlerDominio alloc] init];
         [dominioHandler setWSHandlerDelegate:self];
+        
+        NSLog(@"Los valores que envio desde crearDominio en PublicarViewController: crearUsuario: %@ /n nombreDominio: %@ /n password: %@ /n nombre: %@ /n direccion %@ /n direccion %@ /n pais %@ /n codigo %@ /n idDominio: %i " ,self.datosUsuario.emailUsuario,self.datosUsuario.dominio, self.datosUsuario.passwordUsuario, self.txtNombre.text, self.txtDir1.text,self.txtDir2.text, self.nPais, self.datosUsuario.codigoRedimir, self.datosUsuario.idDominio);
+        
         [dominioHandler crearUsuario:self.datosUsuario.emailUsuario conNombre:self.datosUsuario.dominio password:self.datosUsuario.passwordUsuario status:@"1" nombre:self.txtNombre.text direccion1:self.txtDir1.text direccion2:self.txtDir2.text pais:self.nPais codigoPromocion:self.datosUsuario.codigoRedimir==nil?@" ":self.datosUsuario.codigoRedimir tipoDominio:@"recurso" idDominio:[NSString stringWithFormat:@"%i", self.datosUsuario.idDominio]];
+
+        
         
         
     }
@@ -272,9 +269,11 @@
 }
 
 -(void) resultadoConsultaDominio:(NSString *)resultado {
-	self.datosUsuario = [DatosUsuario sharedInstance];
+	NSLog(@"El resultado de checaDominio en PublicarViewController es: %@", resultado);
+    self.datosUsuario = [DatosUsuario sharedInstance];
 	if(operacionWS == 1){
-		if ([resultado isEqualToString:@"No existe"]) {
+        if ([resultado isEqualToString:@"No existe"]) {
+            NSLog(@"ENTRO A USUARIO NO EXISTE PERO ESA OPCION NO EXISTE AQUI NUNCA DEBIO O DEBE ENTRAR PORQUE NO EXISTE");
             existeDominio = YES;
 			[self performSelectorInBackground:@selector(crearDominio2) withObject:Nil];
         }
@@ -339,10 +338,6 @@
     [[AlertView initWithDelegate:Nil message:NSLocalizedString(@"ocurrioError", Nil) andAlertViewType:AlertViewTypeInfo] show];
 }
 
-//-(void) accionAceptar {
-////    NSArray *viewControllers = [self.navigationController viewControllers];
-////    [self.navigationController popToViewController:[viewControllers objectAtIndex:[viewControllers count] -4] animated:YES];
-//}
 
 -(void) textFieldDidBeginEditing:(UITextField *)textField {
     txtSeleccionado = textField;
@@ -368,12 +363,8 @@
 -(void) apareceTeclado {
     CGSize tamanioTeclado = TAMANIO_TECLADO;// CGSizeMake(320, 235);
     UIEdgeInsets edgeInsets;
-//    if (IS_IPHONE_5) {
-        edgeInsets = UIEdgeInsetsMake(0, 0, tamanioTeclado.height+15, 0);
-//    }
-//    else {
-//        edgeInsets = UIEdgeInsetsMake(0, 0, tamanioTeclado.height+30, 0);
-//    }
+    edgeInsets = UIEdgeInsetsMake(0, 0, tamanioTeclado.height+15, 0);
+
     
     [self.scroll setContentInset:edgeInsets];
     [self.scroll setScrollIndicatorInsets:edgeInsets];
@@ -400,28 +391,11 @@
     [[self scroll] setContentInset:edgeInsets];
     [[self scroll] setScrollIndicatorInsets:edgeInsets];
     [UIView commitAnimations];
-	
-
 	[[self scroll] scrollRectToVisible:CGRectMake(0,0, self.scroll.frame.size.width, self.scroll.frame.size.height) animated:YES];
 	 
 }
 
-- (IBAction)mostrarOpcion:(UIButton *)sender {/*
-	if (selectOculto) {
-        [UIView animateWithDuration:0.5f animations:^{
-            [self.tablaPais setFrame:CGRectMake(20, 79, 280, 220)];
-        } completion:^(BOOL finished) {
-            selectOculto = NO;
-        }];
-    }
-    else {
-        [UIView animateWithDuration:0.5f animations:^{
-            [self.tablaPais setFrame:CGRectMake(20, 297, 280, 30)];
-        } completion:^(BOOL finished) {
-            selectOculto = YES;
-        }];
-    }*/
-	
+- (IBAction)mostrarOpcion:(UIButton *)sender {
 	SelectorPaisViewController *selector = [[SelectorPaisViewController alloc] initWithNibName:@"SelectorPaisViewController" bundle:Nil];
     selector.publicarController = self;
 	if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
@@ -453,6 +427,7 @@
         operacionWS = 1;
         WS_HandlerDominio *dominioHandler = [[WS_HandlerDominio alloc] init];
         [dominioHandler setWSHandlerDelegate:self];
+        NSLog(@"El dominio que se checara si esta disponible en PublicarViewController es: %@", datos.dominio);
         [dominioHandler consultaDominio:datos.dominio];
     }
     else {
