@@ -61,6 +61,7 @@
     self.navigationItem.leftBarButtonItem = buttonBack;
 	
 	self.label.text = NSLocalizedString(@"cambiarLabel1", nil);
+    [self.vistaInferior setHidden:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -80,9 +81,7 @@
 			AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
 			[alert show];
 		}
-        /*[[AlertView initWithDelegate:self titulo:NSLocalizedString(@"cambioPassword2", Nil) message:NSLocalizedString(@"cambioPasswordMensaje", Nil) dominio:self.txtEmail.text andAlertViewType:AlertViewTypeInfo2] show];
-		
-		[self.navigationController popViewControllerAnimated:YES];*/
+    
     }
     else {
         [[AlertView initWithDelegate:nil message:NSLocalizedString(@"verificaEmail", Nil) andAlertViewType:AlertViewTypeInfo] show];
@@ -117,19 +116,11 @@
     }
 }
 -(void) actualizarPassword {
-//    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).itIsInTime) {
-//        [((AppDelegate *)[[UIApplication sharedApplication] delegate]) restartDate];
+
         WS_HandlerCambiarPassword *handlerPass = [[WS_HandlerCambiarPassword alloc] init];
         [handlerPass setCambiarPasswordDelegate:self];
         [handlerPass actualizaPasswordConEmail:[self.txtEmail text]];
-//    }
-//    else {
-//        [self.alertaContacto hide];
-//        self.alertaContacto = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionCaduco", Nil) andAlertViewType:AlertViewTypeInfo];
-//        [self.alertaContacto show];
-//        [StringUtils terminarSession];
-//        [self.navigationController popToRootViewControllerAnimated:YES];
-//    }
+
 }
 
 -(void) resultadoPassword:(NSString *)resultado {
@@ -148,9 +139,7 @@
 -(void) errorConsultaWS {
     [self performSelectorOnMainThread:@selector(errorContacto) withObject:Nil waitUntilDone:YES];
 }
-//-(void) errorToken {
-//    
-//}
+
 
 - (void)errorToken
 {

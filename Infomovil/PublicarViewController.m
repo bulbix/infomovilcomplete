@@ -273,16 +273,10 @@
 
 -(void) resultadoConsultaDominio:(NSString *)resultado {
 	self.datosUsuario = [DatosUsuario sharedInstance];
-    /*if (operacionWS == WSOperacionNombrar) {
-        idDominio = [resultado integerValue];
-		nameDominio = self.datosUsuario.dominio;
-    }*/
 	if(operacionWS == 1){
 		if ([resultado isEqualToString:@"No existe"]) {
             existeDominio = YES;
-			
 			[self performSelectorInBackground:@selector(crearDominio2) withObject:Nil];
-			//[self crearDominio2];
         }
         else {
             existeDominio = NO;
@@ -443,12 +437,9 @@
 	BOOL resultado = [self validarCampos];
 	
 	[[self view] endEditing:YES];
-//	[self desapareceTeclado]; // IDM
 	if(resultado){
-		//[self checaDominio];
 		[self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:NO]; // IDM
 		[self performSelectorInBackground:@selector(checaDominio) withObject:Nil];
-		//[self performSelectorInBackground:@selector(crearDominio) withObject:Nil];
 	}else{
 		AlertView * alert = [AlertView initWithDelegate:nil message:mensajeError andAlertViewType:AlertViewTypeInfo];
 		[alert show];
@@ -480,8 +471,6 @@
 
 -(void)crearDominio2{
 	operacionWS = 2;
-	
-	//[self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
 	[self performSelectorInBackground:@selector(crearDominio) withObject:Nil];
 }
 
@@ -504,10 +493,8 @@
 -(void) accionAceptar {
     if (statusRespuesta == RespuestaStatusPendiente) {
         MenuPasosViewController *pasoView = [[MenuPasosViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
-        //            UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:pasoView];
         [self.navigationController pushViewController:pasoView animated:YES];
     }
-    
 }
 
 #pragma mark Keyboard Controls Delegate

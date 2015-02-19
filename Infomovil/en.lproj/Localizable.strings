@@ -494,7 +494,7 @@
 "msjRegistrarUsuarioFB" = "If you register with Facebook never post to your wall without your permission";
 
 //Pantalla Crear Editar //
-"inicioRapido" = "Quick Start";
-"verTutorial" = "See Tutorial";
-"verEjemplo" = "See Example";
+"inicioRapido" = "Quick start";
+"verTutorial" = "See tutorial";
+"verEjemplo" = "See example";
 "errorAlCargar" = "Check your internet connection and try again";

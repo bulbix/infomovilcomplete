@@ -26,12 +26,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -87,37 +81,7 @@
     
     return cell;
 }
-/*
--(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:indexPath.row];
-    if (indexPath.row == 0 && [usuarioDom.domainType isEqualToString:@"recurso"]) {
-        NSMutableParagraphStyle *paragraphStyle = NSMutableParagraphStyle.new;
-        paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
-        paragraphStyle.alignment = NSTextAlignmentCenter;
-        
-        NSAttributedString *title = [[NSAttributedString alloc] initWithString:@"Plan Pro" attributes:@{NSFontAttributeName : [UIFont fontWithName:@"Avenir-Book" size:17], NSParagraphStyleAttributeName : paragraphStyle}];
-        NSAttributedString *lineOne = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"www.infomovil.com/%@", usuarioDom.domainName] attributes:@{NSFontAttributeName : [UIFont fontWithName:@"Avenir-Book" size:17], NSParagraphStyleAttributeName : paragraphStyle}];
-        
-        NSAttributedString *buttonTitle = [[NSAttributedString alloc] initWithString:@"Actualizar" attributes:@{NSFontAttributeName : [UIFont fontWithName:@"Avenir-Book" size:17], NSForegroundColorAttributeName : [UIColor whiteColor], NSParagraphStyleAttributeName : paragraphStyle}];
-        
-        CNPPopupButtonItem *buttonItem = [CNPPopupButtonItem defaultButtonItemWithTitle:buttonTitle backgroundColor:[UIColor colorWithRed:0.46 green:0.8 blue:1.0 alpha:1.0]];
-        buttonItem.tag = 10;
-        buttonItem.selectionHandler = ^(CNPPopupButtonItem *item){
-            NSLog(@"Block for button: %@", item.buttonTitle.string);
-        };
-        
-        self.popupController = [[CNPPopupController alloc] initWithTitle:title contents:@[lineOne] buttonItems:@[buttonItem]];
-        self.popupController.theme = [CNPPopupTheme defaultTheme];
-        self.popupController.theme.popupStyle = CNPPopupStyleCentered;
-        self.popupController.delegate = self;
-        self.popupController.theme.presentationStyle = CNPPopupPresentationStyleSlideInFromBottom;
-        [self.popupController presentPopupControllerAnimated:YES];
-    }
-    else {
-    }
-}
-*/
+
 - (void)popupController:(CNPPopupController *)controller didDismissWithButtonTag:(NSInteger)tag {
     
 }

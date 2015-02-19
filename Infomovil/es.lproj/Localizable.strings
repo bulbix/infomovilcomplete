@@ -608,7 +608,7 @@
 "msjRegistrarUsuarioFB" = "Si te registras con Facebook jamás publicaremos en tu muro sin tu permiso";
 
 //Pantalla Crear Editar //
-"inicioRapido" = "Inicio Rápido";
-"verTutorial" = "Ver Tutorial";
-"verEjemplo" = "Ver Ejemplo";
+"inicioRapido" = "Inicio rápido";
+"verTutorial" = "Ver tutorial";
+"verEjemplo" = "Ver ejemplo";
 "errorAlCargar" = "Revisa tu conexión a internet e intenta nuevamente";

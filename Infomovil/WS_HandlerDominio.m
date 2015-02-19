@@ -26,7 +26,6 @@
 @implementation WS_HandlerDominio
 
 -(void) consultaDominio:(NSString *) dominio {
-//    WS_Handler *handler = [[WS_Handler alloc] init];
     NSString *stringXML = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.webservice.infomovil.org/\">"
                                "<soapenv:Header/>"
                                "<soapenv:Body>"
@@ -40,7 +39,7 @@
     NSLog(@"el string es %@", stringXML);
     self.strSoapAction = @"WSInfomovilDomain";
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
-    NSLog(@"La respuesta es %s", [dataResult bytes]);
+    NSLog(@"La respuesta de WS_HandlerDominio es %s", [dataResult bytes]);
     if (dataResult != nil) {
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
         [parser setDelegate:self];
@@ -48,8 +47,6 @@
             if (requiereEncriptar) {
                 [StringUtils deleteResourcesWithExtension:@"js"];
                 [StringUtils deleteResourcesWithExtension:@"css"];
-//                DatosUsuario *datos = [DatosUsuario sharedInstance];
-//                da	tos.token = self.token;
                 NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:passwordEncriptar];
                 if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                     [self.wSHandlerDelegate errorToken];
@@ -89,7 +86,7 @@
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
 }
 
-//-(void) crearUsuario:(NSString *)usuario conMovil:(NSString *)numeroMovil password:(NSString *)pass yDominio:(NSString *)dominio {
+
 -(void) crearUsuario:(NSString *)email conNombre:(NSString *)user password:(NSString *)pass status:(NSString *)s nombre:(NSString *)nom direccion1:(NSString *)dir1 direccion2:(NSString *)dir2 pais:(NSString *) nPais codigoPromocion:(NSString *)codProm tipoDominio:(NSString *)domainType idDominio:(NSString *)idDominio {
     DatosUsuario *datos = [DatosUsuario sharedInstance];
     NSString *stringXML;
@@ -157,7 +154,6 @@
         self.arregloItems = [[NSMutableArray alloc] init];
         if ([parser parse]) {
             if (requiereEncriptar) {
-//                DatosUsuario *datos = [DatosUsuario sharedInstance];
                 datos.token = self.token;
                 datos.codigoRedimir = codigoPromocional;
                 NSString * stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
@@ -511,17 +507,7 @@
     DatosUsuario *datos = [DatosUsuario sharedInstance];
     NSString *stringXML;
     if (requiereEncriptar) {
-        /*stringXML = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.webservice.infomovil.org/\">"
-                     "<soapenv:Header/>"
-                     "<soapenv:Body>"
-                     "<ws:cancelarCuenta>"
-                     "<Usuario>%@</Usuario>"
-                     "<descripcion>%@</descripcion>"
-                     "<token>%@</token>"
-                     "</ws:cancelarCuenta>"
-                     "</soapenv:Body>"
-                     "</soapenv:Envelope>", [StringUtils encriptar:datos.emailUsuario conToken:datos.token], [StringUtils encriptar:motivo conToken:datos.token], [StringUtils encriptar:datos.emailUsuario conToken:passwordEncriptar]];
-		 */
+      
 		stringXML = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.webservice.infomovil.org/\">"
 					 "<soapenv:Header/>"
 					 "<soapenv:Body>"
@@ -690,7 +676,6 @@
 #pragma mark - NSXMLParserDelegate
 
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
-    //[self.wSHandlerDelegate errorConsultaWS];
 }
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {

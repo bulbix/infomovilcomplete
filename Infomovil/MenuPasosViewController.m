@@ -108,7 +108,7 @@
 
 
 
--(void) viewWillAppear:(BOOL)animated {
+-(void) viewWillAppear:(BOOL)animated { NSLog(@"Entro a viewwillAppear de MenuPasosViewController");
 	self.datosUsuario = [DatosUsuario sharedInstance];
     [super viewWillAppear:animated];
     [self.tituloVista setHidden:NO];
@@ -118,15 +118,21 @@
 	}else{
 		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"creaSitio", @" ") nombreImagen:@"NBlila.png"];
 	}
-    self.datosUsuario = [DatosUsuario sharedInstance];
-    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion && ![((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio hasPrefix:@"Tramite"])
-	{
+    
+        self.datosUsuario = [DatosUsuario sharedInstance];
         DominiosUsuario *dominioUsuario = [self.datosUsuario.dominiosUsuario objectAtIndex:0];
-		self.dominio.hidden	= NO;
-		NSLog(@"MenuPasosViewController - Dominio: %@",self.datosUsuario.dominio);
+		NSLog(@"MenuPasosViewController - Dominio: %@ y el dominioUsuario es: %@",self.datosUsuario.dominio, dominioUsuario.domainName);
         
-        if(dominioUsuario.domainName){
-            self.dominio.text	= [NSString stringWithFormat:@"www.infomovil.com/%@", dominioUsuario.domainName];
+        if(self.datosUsuario.dominio && ![self.datosUsuario.dominio isEqualToString:@""] && ! (self.datosUsuario.dominio == (id)[NSNull null])){
+            self.dominio.hidden	= NO;
+            [self.viewDominioNoPublicado setHidden:YES];
+            [self.viewDominioPublicado setHidden:NO];
+            if([((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio hasPrefix:@"Pago"]){
+                self.dominio.text	= [NSString stringWithFormat:@"www.%@.tel", self.datosUsuario.dominio];
+            }else{
+                self.dominio.text	= [NSString stringWithFormat:@"www.infomovil.com/%@", self.datosUsuario.dominio];
+            }
+            
             if(IS_IPHONE5){
                 self.viewDominioPublicado.frame = CGRectMake(0, 320, 320, 90);
             }else{
@@ -134,6 +140,9 @@
             }
             [self.view addSubview:self.viewDominioPublicado];
         }else{
+            [self.viewDominioPublicado setHidden:YES];
+            [self.viewDominioNoPublicado setHidden:NO];
+            self.dominio.hidden = YES;
             if(IS_IPHONE5){
                 self.viewDominioNoPublicado.frame = CGRectMake(0, 310, 320, 90);
             }else{
@@ -141,10 +150,7 @@
             }
             [self.view addSubview:self.viewDominioNoPublicado];
         }
-    }
-    else {
-		self.dominio.hidden = YES;
-    }
+  
 	
     [self.tituloVista setTextColor:[UIColor whiteColor]];
     [self.inicioRapidobtn setTitle:NSLocalizedString(@"inicioRapido", Nil) forState:UIControlStateNormal];
@@ -303,8 +309,22 @@
 }
 
 - (IBAction)irInicioRapido:(id)sender {
-    InicioRapidoViewController *inicioRapido = [[InicioRapidoViewController alloc] initWithNibName:@"InicioRapidoViewController" bundle:Nil];
-    [self.navigationController pushViewController:inicioRapido animated:YES];
+    self.datosUsuario = [DatosUsuario sharedInstance];
+#ifdef _DEBUG
+    self.datosUsuario.eligioColor = YES;
+#endif
+    if (self.datosUsuario.eligioColor) {
+        InicioRapidoViewController *inicioRapido = [[InicioRapidoViewController alloc] initWithNibName:@"InicioRapidoViewController" bundle:Nil];
+        [self.navigationController pushViewController:inicioRapido animated:YES];
+    }
+    else {
+        AlertView *vistaNotificacion = [AlertView initWithDelegate:self message:NSLocalizedString(@"eligeColor", Nil) andAlertViewType:AlertViewTypeInfo];
+        [vistaNotificacion show];
+    }
+    
+    
+    
+    
 }
 
 

@@ -148,7 +148,7 @@
 
     }
     
-    NSLog(@"El dominio en la tabla es: %@", ((AppDelegate *)[[UIApplication sharedApplication] delegate]).statusDominio);
+    //NSLog(@"El dominio en la tabla es: %@", ((AppDelegate *)[[UIApplication sharedApplication] delegate]).statusDominio);
 
     if ([((AppDelegate *)[[UIApplication sharedApplication] delegate]).statusDominio hasPrefix:@"Tramite"]  && [CommonUtils perfilEditado] && indexPath.row == [arregloCampos count]) {
         [cell.imageView setImage:[UIImage imageNamed:@"noeditado.png"]];

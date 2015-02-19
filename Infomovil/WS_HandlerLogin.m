@@ -47,7 +47,7 @@
 @end
 
 @implementation WS_HandlerLogin
-//Para obtener el nombre del dispoditivo y el identificador [UIDevice currentDevice].identifierForVendor.UUIDString, [UIDevice currentDevice].name
+
 -(void) obtieneLogin:(NSString *)usuario conPassword:(NSString *)password {
     if (self.redSocial == nil) {
         self.redSocial = @"";
@@ -283,8 +283,6 @@
             ((AppDelegate *) [[UIApplication sharedApplication] delegate]).fechaLogin = [NSDate date];
             [self.loginDelegate resultadoLogin:self.idDominio];
             
-            //borrar solo se usa para volver a publicar
-            //        self.datosUsuario.publicoSitio = NO;
         }
         else {
             [self.loginDelegate errorConsultaWS];
