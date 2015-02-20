@@ -53,6 +53,7 @@
                 } else if ([stringResult isEqualToString:@"SessionTO"])
                     [self.wSHandlerDelegate sessionTimeout];
                 else {
+                    NSLog(@"El resultado regresado es: %@", stringResult);
                     [self.wSHandlerDelegate resultadoConsultaDominio:stringResult];
                 }
                 
@@ -147,7 +148,7 @@
     self.strSoapAction = @"wsInfomovildomain";
     NSLog(@"la peticion es %@", stringXML);
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
-    NSLog(@"La respuesta es %s", [dataResult bytes]);
+    NSLog(@"La respuesta es en CrearUsuario WS_HandelDominio %s", [dataResult bytes]);
     if (dataResult != nil) {
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
         [parser setDelegate:self];
@@ -204,6 +205,9 @@
                             appDelegate.statusDominio = statusDominio;
                         }
                         NSLog(@"token::: %@",datos.token);
+                        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+                        [prefs setObject:user forKey:@"dominioPublicado"];
+                        [prefs synchronize];
                         [self.wSHandlerDelegate resultadoConsultaDominio:@"Exito"];
                     }
                     else if (respuestaInt == -3 || respuestaInt == -5) {
@@ -321,21 +325,21 @@
                     datos.itemsDominio = [StringUtils ordenarItems:self.arregloItems];
                     datos.idDominio = [stringResult intValue];
                     datos.codigoError = codigoError.length > 0 ? codigoError.intValue : 0;
-//                    NSString *auxStr = [StringUtils desEncriptar:self.telIni conToken:datos.token];
+
                     datos.fechaInicialTel = [NSDateFormatter changeDateFormatOfString:[StringUtils desEncriptar:self.telIni
                                                                                                        conToken:datos.token]
                                                                                  from:@"yyyy-MM-dd"
                                                                                    to:@"dd-MM-yyy"];
-//                    auxStr = [StringUtils desEncriptar:self.telFin conToken:datos.token];
+
                     datos.fechaFinalTel = [NSDateFormatter changeDateFormatOfString:[StringUtils desEncriptar:self.telFin
                                                                                                      conToken:datos.token]
                                                                                from:@"yyyy-MM-dd"
                                                                                  to:@"dd-MM-yyy"];
-//                    auxStr = [StringUtils desEncriptar:self.fechaInicio conToken:datos.token];
+
                     datos.fechaInicial = [NSDateFormatter changeDateFormatOfString:[StringUtils desEncriptar:self.fechaInicio conToken:datos.token]
                                                                               from:@"yyyy-MM-dd"
                                                                                 to:@"dd-MM-yyy"];
-//                    auxStr = [StringUtils desEncriptar:self.fechaFinal conToken:datos.token];
+
                     datos.fechaFinal = [NSDateFormatter changeDateFormatOfString:[StringUtils desEncriptar:self.fechaFinal
                                                                                                   conToken:datos.token]
                                                                             from:@"yyyy-MM-dd"

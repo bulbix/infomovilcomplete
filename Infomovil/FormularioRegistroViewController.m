@@ -128,8 +128,7 @@
         [self.txtNumero setEnabled:NO];
         [self.txtContrasena setEnabled:NO];
     }
-	
-    //
+
     
     self.txtContrasena.placeholder = NSLocalizedString(@"contrasenaRegistrar", nil);
     self.txtContrasenaConfirmar.placeholder = NSLocalizedString(@"confirmarContrasena", nil);
@@ -146,9 +145,6 @@
     [botonRegresar setFrame:CGRectMake(10, 25, 36, 36)];
     [botonRegresar addTarget:self action:@selector(regresarMenu:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:botonRegresar];
-    
-    
-    [self.boton setTitle:NSLocalizedString(@"mainBoton", nil) forState:UIControlStateNormal]  ;
     
     [self.vistaInferior setHidden:YES];
     

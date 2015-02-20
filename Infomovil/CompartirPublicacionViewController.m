@@ -254,42 +254,6 @@
 
 - (IBAction)compartirGooglePlus:(id)sender {
 
-	
-	/*GPPSignIn *signIn = [GPPSignIn sharedInstance];
-	 // Previamente habrás configurado kClientID en el paso "Inicializa el cliente de Google+"
-	 signIn.clientID = @"585514192998.apps.googleusercontent.com";
-	 signIn.scopes = [NSArray arrayWithObjects:
-	 kGTLAuthScopePlusLogin, // definido en GTLPlusConstants.h
-	 nil];
-	 signIn.delegate = self;
-	 
-	 //[signIn authenticate];
-	 if (![signIn trySilentAuthentication]){
-	 [signIn authenticate];
-	 }*/
-	
-	/*GPPShare *gppShare = [GPPShare sharedInstance];
-	 [[gppShare shareDialog] open];
-	 
-	 id<GPPNativeShareBuilder> shareBuilder = [[GPPShare sharedInstance] nativeShareDialog];
-	 
-	 NSString *inputURL = [@"http://infomovil.com/" stringByAppendingString:self.datosUsuario.dominio] ;//@"http://developers.google.com/+/mobile/ios/";
-	 NSURL *urlToShare = [inputURL length] ? [NSURL URLWithString:inputURL] : nil;
-	 if (urlToShare) {
-	 [shareBuilder setURLToShare:urlToShare];
-	 }
-	 NSString *message = NSLocalizedString(@"estoyLinea", Nil);
-	 NSString *inputText = [NSString stringWithFormat:@"%@ http://infomovil.com/%@",message, self.datosUsuario.dominio];
-	 NSString *text = [inputText length] ? inputText : nil;
-	 if (text) {
-	 [shareBuilder setPrefillText:text];
-	 }
-	 
-	 //[shareBuilder open];
-	 
-	 NSLog(@"Aqui");
-	 if (![shareBuilder open]) {
-	 NSLog(@"Aqui2");*/
 	id<GPPShareBuilder> shareBuilder2 = [[GPPShare sharedInstance] shareDialog];
 	
 	NSString *inputURL = [self.datosUsuario.dominio stringByAppendingString:@".tel"] ;//@"http://developers.google.com/+/mobile/ios/";

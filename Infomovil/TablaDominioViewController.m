@@ -9,7 +9,8 @@
 #import "TablaDominioViewController.h"
 #import "DominiosUsuario.h"
 #import "CNPPopupController.h"
-
+#import "DatosUsuario.h"
+#import "CommonUtils.h"
 @interface TablaDominioViewController () <CNPPopupControllerDelegate>
 
 @property (nonatomic, strong) NSMutableArray *arregloDominios;
@@ -56,6 +57,8 @@
     [cell.detailTextLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:15]];
     //}
     DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:indexPath.row];
+   
+    /*
     if ([usuarioDom.statusDominio isEqualToString:@"Tramite"]) {
         if ([CommonUtils validaMail:usuarioDom.domainName]) {
             [cell.textLabel setText:[NSString stringWithFormat:@".%@", [usuarioDom domainType]]];
@@ -66,13 +69,37 @@
         }
     }
     else {
-        if ([usuarioDom.domainType isEqualToString:@"recurso"]) {
-            [cell.textLabel setText:[NSString stringWithFormat:@"infomovil.com/%@", usuarioDom.domainName]];
+       if ([usuarioDom.domainType isEqualToString:@"recurso"]) {
+            [cell.textLabel setText:[NSString stringWithFormat:@"info-movil.com/%@", usuarioDom.domainName]];
         }
         else {
-            [cell.textLabel setText:[NSString stringWithFormat:@"%@.%@", usuarioDom.domainName, usuarioDom.domainType]];
+        [cell.textLabel setText:[NSString stringWithFormat:@"%@.%@", usuarioDom.domainName, usuarioDom.domainType]];
         }
     }
+    */
+    
+    
+        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+       if([prefs stringForKey:@"dominioPublicado"]){
+            [cell.textLabel setText:[NSString stringWithFormat:@"%@.tel",[prefs stringForKey:@"dominioPublicado"]]];
+            
+       }else  if ([usuarioDom.domainType isEqualToString:@"recurso"]) {
+           [cell.textLabel setText:[NSString stringWithFormat:@"info-movil.com/%@", usuarioDom.domainName]];
+       }
+       else if([usuarioDom.domainType isEqualToString:@"tel"]){
+           [cell.textLabel setText:[NSString stringWithFormat:@"%@.%@", usuarioDom.domainName, usuarioDom.domainType]];
+       }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     [cell.textLabel setTextColor:colorFuenteAzul];
     cell.textLabel.textAlignment = NSTextAlignmentLeft;
     

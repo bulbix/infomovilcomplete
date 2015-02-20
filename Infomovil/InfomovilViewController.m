@@ -14,7 +14,6 @@
 #import "UIViewDefs.h"
 #import "NSStringUtiles.h"
 
-//#define SYSTEM_VERSION_LESS_THAN(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 
 @interface InfomovilViewController ()
 
@@ -26,7 +25,7 @@
 @synthesize vistaCircular;// esMapa;
 @synthesize keyboardControls;
 @synthesize modifico;
-//@synthesize labelInfo;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

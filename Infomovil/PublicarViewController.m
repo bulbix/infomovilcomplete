@@ -108,7 +108,6 @@
 -(void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.datosUsuario = [DatosUsuario sharedInstance];
-    //[self.labelDominio setText:[NSString stringWithFormat:@"http://infomovil.com/%@", [self.datosUsuario dominio]]];
 	
 	self.label1.text = [NSString stringWithFormat:NSLocalizedString(@"disponible", nil),[self.datosUsuario dominio]];
 	self.label2.text = NSLocalizedString(@"confirmalo", nil);
@@ -134,32 +133,14 @@
 }
 
 -(IBAction)guardarInformacion:(id)sender {
-//    self.datosUsuario = [DatosUsuario sharedInstance];
-//    self.datosUsuario.publicoSitio = YES;
-//	[self desapareceTeclado];
-//    [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:NO];
-//    [self performSelectorInBackground:@selector(consultaDominio) withObject:Nil];
-	
 	[self confirmarDominio:nil];
-    
 }
 
 -(void) consultaDominio {
     self.datosUsuario = [DatosUsuario sharedInstance];
-   // if (operacionWS == WSOperacionNombrar) {
         WS_HandlerDominio *dominioHandler = [[WS_HandlerDominio alloc] init];
         [dominioHandler setWSHandlerDelegate:self];
-       // [dominioHandler crearUsuario:self.datosUsuario.emailUsuario conMovil:self.datosUsuario.numeroUsuario password:self.datosUsuario.passwordUsuario yDominio:self.datosUsuario.dominio];
-		
-		
-    //}
-    //else {
-        /*WS_HandlerPublicar *wsPublicar = [[WS_HandlerPublicar alloc] init];
-        [wsPublicar setWsHandlerDelegate:self];
-        [wsPublicar publicarDominio];
-		 */
-		
-   // }
+   
 }
 
 -(void) mostrarActivity {
@@ -221,22 +202,27 @@
 			[self.navigationController popViewControllerAnimated:YES];
         }
         else if (statusRespuesta == RespuestaStatusExito) {
-        //    [[AppsFlyerTracker sharedTracker] trackEvent:@"Publicar Dominio" withValue:@""];
+            [[AppsFlyerTracker sharedTracker] trackEvent:@"Publicar Dominio" withValue:@""];
             [[Appboy sharedInstance] logCustomEvent:@"Publicar Dominio"];
             [self enviarEventoGAconCategoria:@"Publicar" yEtiqueta:@"Dominio"];
            
             self.datosUsuario.nombroSitio = YES;
             creoDominio = YES;
-			
+            
+            
+            
+          
+            
             alert = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"felicidades", @" ") message:NSLocalizedString(@"nombradoExitoso", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
             [alert show];
-			
-			//[self.navigationController popViewControllerAnimated:YES];
+    
             NSInteger lessVC;
             if (self.datosUsuario.vistaOrigen == 12) {
+                NSLog(@"IRC Me envio a la pantalla -4 en publicarViewController");
                 lessVC = 4;
             }
             else {
+                NSLog(@"IRC Me envio a la pantalla -3 publicarViewController");
                 lessVC = 3;
             }
 			[self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex: self.navigationController.viewControllers.count-lessVC] animated:YES];
@@ -273,7 +259,7 @@
     self.datosUsuario = [DatosUsuario sharedInstance];
 	if(operacionWS == 1){
         if ([resultado isEqualToString:@"No existe"]) {
-            NSLog(@"ENTRO A USUARIO NO EXISTE PERO ESA OPCION NO EXISTE AQUI NUNCA DEBIO O DEBE ENTRAR PORQUE NO EXISTE");
+            NSLog(@"Entro a el dominio No existe IRC publicarViewController");
             existeDominio = YES;
 			[self performSelectorInBackground:@selector(crearDominio2) withObject:Nil];
         }
@@ -283,7 +269,7 @@
         }
 	}
 	else if(operacionWS2 == 2){
-		//self.datosUsuario.idDominio = [resultado integerValue];
+		
         if ([resultado isEqualToString:@"Exito"]) {
             statusRespuesta = RespuestaStatusExito;
         }

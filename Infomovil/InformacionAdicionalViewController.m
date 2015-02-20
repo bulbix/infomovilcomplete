@@ -37,9 +37,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    [self.vistaCircular setImage:[UIImage imageNamed:@"plecaverde.png"]];
-//    [self.vistaCircular setImage:[UIImage imageNamed:@"plecacreasitio.png"]];
-	
 	if(existeItems){
 		self.datosUsuario = [DatosUsuario sharedInstance];
 		ItemsDominio * item = [self.datosUsuario.itemsDominio objectAtIndex:11];
@@ -123,7 +120,6 @@
         [self.navigationController pushViewController:info animated:YES];
     }
 	else{
-//        AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
 		if(self.datosUsuario.arregloInformacionAdicional.count == maxNumInformacion && ((AppDelegate*)[[UIApplication sharedApplication] delegate]).existeSesion && ([((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] || [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Tramite PRO"])){
 			AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeInformacionPro", nil) andAlertViewType:AlertViewTypeInfo];
 			[alert show];

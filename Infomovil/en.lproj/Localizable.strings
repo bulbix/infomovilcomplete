@@ -181,7 +181,9 @@
 "nombrePromocion"="Promotion name";
 "descripcionPromocion"="Promotion description";
 "vigencia"="Valid until";
-"5Imagenes"="You can add up to %i images																																																																																																				";
+"5Imagenes"="Basic Plan: Add up to 2 images. \nplan Pro: Adds up to 12 images.
+
+";
 "galeriaVertical"="These images will be displayed vertically";
 "redimensionaImagen"="Images will be resized automatically";
 "noGuardoImagen"="Image not saved";
@@ -369,7 +371,7 @@
 "ubicacionVista2" = "Find Us";
 "contactoVista" = "Contact Us";
 "movilMexico" = "Remember that to receive international calls the format is (1) XXX-XXX-XXXX (10 digits)";
-"errorSimple" = "An error occurred";
+"errorSimple" = "Check your internet connection and try again";
 "nuevaLocalizacion" = "This will remove the old location and mark a new";
 "elijeUbicacion" = "Choose a location";
 "imagenRedimension" = "This image can be resized";
@@ -505,3 +507,5 @@
 "contrasenaRegistrar" = "Password";
 "confirmarContrasena" = "Confirm password";
 "olvidasteContrasenaElimininarCuenta" = "Forgot password?";
+
+

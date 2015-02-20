@@ -37,7 +37,7 @@
     
     self.navigationItem.rightBarButtonItem = Nil;
     
-    ((AppDelegate *)[[UIApplication sharedApplication] delegate]).ultimoView = self;
+   // ((AppDelegate *)[[UIApplication sharedApplication] delegate]).ultimoView = self;
     
     
     self.navigationItem.hidesBackButton = YES;

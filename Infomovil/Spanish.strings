@@ -40,7 +40,7 @@
 "biografia" = "Biografía";
 
 "eliminarImagen" = "¿Deseas eliminar la imágen?";
-"anadirImagen" = "Añadir imágenes";
+"anadirImagen" = "Añadir imágen";
 "imagenes" = "Imágenes";
 "solo5Imagenes" = "Sólo puedes agregar %i imágenes";
 "paraAgregarImagen" = "Para agregar otra imágen, debes eliminar una antes";
@@ -231,7 +231,7 @@
 "descripcionPromocion" = "Descripción de la promoción";
 "vigencia" = "Vigencia al:";
 
-"5Imagenes" = "Plan Báscio: Puedes agregar hasta 2 imágenes.\nPlan Pro: puedes agregar hasta 5 imágenes.";
+"5Imagenes" = "Plan Báscio: Puedes agregar hasta 2 imágenes.\nPlan Pro: puedes agregar hasta 12 imágenes.";
 "galeriaVertical" = "Estas imágenes se mostraran en una galeria vertical";
 "redimensionaImagen" = "Las imágenes serán redimensionadas para adaptarse";
 "noGuardoImagen" = "La imagen no se guardo";
@@ -250,9 +250,8 @@
 
 "incompletos" = "Datos incompletos";
 
-//"mensageInformacionAdiciona" = "Puedes agregar hasta %i parrafo(s) de 400 caracteres cada uno.";
-//"mensajeInformacionAdicional" = "Plan Básico: agrega una sección Plan Pro: agrega hasta 3 secciones";
-"mensajeInformacionAdicional" = "Plan Básico: agrega una sección.\nPlan Pro: agrega 3 secciones.";
+
+"mensajeInformacionAdicional" = "Plan Básico: agrega una sección.\nPlan Pro: agrega hasta 2 secciones.";
 
 "mensajeContactos" = "Plan Básico: Puedes agregar hasta 3 contactos.\nPlan Pro: puedes agregar hasta 10 contactos.";
 

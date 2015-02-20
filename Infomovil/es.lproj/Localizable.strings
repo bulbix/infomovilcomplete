@@ -40,7 +40,7 @@
 "biografia" = "Biografía";
 
 "eliminarImagen" = "¿Deseas eliminar la imagen?";
-"anadirImagen" = "Añadir imágenes";
+"anadirImagen" = "Añadir imágen";
 "imagenes" = "Imágenes";
 "solo5Imagenes" = "Sólo puedes agregar %i imágenes";
 "paraAgregarImagen" = "Para agregar otra imagen, debes eliminar una antes";
@@ -232,7 +232,9 @@
 "descripcionPromocion" = "Descripción de la promoción";
 "vigencia" = "Vigencia al:";
 
-"5Imagenes" = "Plan Básico: agrega hasta 2 imágenes.\nPlan Pro: agrega hasta 10 imágenes.";
+"5Imagenes" = "Plan Básico: agrega hasta 2 imágenes.\nPlan Pro: agrega hasta 12 imágenes.
+
+";
 "5ImagenesPro" = "Actualiza tus 10 imágenes y destaca de la competencia.";
 "galeriaVertical" = "Estas imágenes se mostrarán en una galería vertical";
 "redimensionaImagen" = "Las imágenes serán redimensionadas para adaptarse";
@@ -252,9 +254,8 @@
 
 "incompletos" = "Datos incompletos";
 
-//"mensageInformacionAdiciona" = "Puedes agregar hasta %i parrafo(s) de 400 caracteres cada uno.";
-//"mensajeInformacionAdicional" = "Plan Básico: agrega una sección Plan Pro: agrega hasta 3 secciones";
-"mensajeInformacionAdicional" = "Plan Básico: agrega una sección.\nPlan Pro: agrega hasta 3 secciones.";
+
+"mensajeInformacionAdicional" = "Plan Básico: agrega una sección.\nPlan Pro: agrega hasta 2 secciones.";
 "mensajeInformacionAdicionalPro" = "Agrega más informacion a tu sitio web móvil para tus clientes y destaca de la competencia.";
 
 "mensajeContactos" = "Plan Básico: Puedes agregar hasta 3 contactos.\nPlan Pro: puedes agregar hasta 10 contactos.";
@@ -619,3 +620,4 @@
 "contrasenaRegistrar" = "Contraseña";
 "confirmarContrasena" = "Confirmar contraseña";
 "olvidasteContrasenaElimininarCuenta" = "¿Olvidaste tu contraseña?";
+

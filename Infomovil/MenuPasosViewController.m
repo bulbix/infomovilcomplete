@@ -37,7 +37,7 @@
     return self;
 }
 
-- (void)viewDidLoad{
+- (void)viewDidLoad{ NSLog(@"ViewDidload MenuPasosViewController");
 	NSLog(@"statusDominio: %@", ((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio );
     [super viewDidLoad];
 	
@@ -103,6 +103,29 @@
     self.inicioRapidobtn.layer.cornerRadius = 15.0f;
     self.botonEjemplo.layer.cornerRadius = 15.0f;
 	self.botonEjemplo2.layer.cornerRadius = 15.0f;
+    
+    if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
+        [self.botonFondo setBackgroundImage:[UIImage imageNamed:@"btnbackgroundEn.png"] forState:UIControlStateNormal];
+        [self.botonCrear setBackgroundImage:[UIImage imageNamed:@"btncreateeditEn.png"] forState:UIControlStateNormal];
+        if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion && self.datosUsuario.dominio && ![self.datosUsuario.dominio isEqualToString:@""] && ! (self.datosUsuario.dominio == (id)[NSNull null]) && ![CommonUtils validarEmail:self.datosUsuario.dominio]){
+            [self.botonPublicar setBackgroundImage:[UIImage imageNamed:@"tips.png"] forState:UIControlStateNormal];
+            [self.vistaInferior setHidden:NO];
+        }else{
+            [self.botonPublicar setBackgroundImage:[UIImage imageNamed:@"btnnamepublishEn.png"] forState:UIControlStateNormal];
+            [self.vistaInferior setHidden:YES];
+        }
+        
+    }else{
+        [self.botonFondo setBackgroundImage:[UIImage imageNamed:@"elegirfondo.png"] forState:UIControlStateNormal];
+        [self.botonCrear setBackgroundImage:[UIImage imageNamed:@"creareditar.png"] forState:UIControlStateNormal];
+        if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion && self.datosUsuario.dominio && ![self.datosUsuario.dominio isEqualToString:@""] && ! (self.datosUsuario.dominio == (id)[NSNull null])){
+            [self.botonPublicar setBackgroundImage:[UIImage imageNamed:@"tips.png"] forState:UIControlStateNormal];
+            [self.vistaInferior setHidden:NO];
+        }else{
+            [self.botonPublicar setBackgroundImage:[UIImage imageNamed:@"nombrarpublicar.png"] forState:UIControlStateNormal];
+            [self.vistaInferior setHidden:YES];
+        }
+    }
 }
 
 
@@ -120,17 +143,25 @@
 	}
     
         self.datosUsuario = [DatosUsuario sharedInstance];
-        DominiosUsuario *dominioUsuario = [self.datosUsuario.dominiosUsuario objectAtIndex:0];
-		NSLog(@"MenuPasosViewController - Dominio: %@ y el dominioUsuario es: %@",self.datosUsuario.dominio, dominioUsuario.domainName);
+    
+            NSLog(@"MenuPasosViewController - Dominio: %@ ",self.datosUsuario.dominio);
         
-        if(self.datosUsuario.dominio && ![self.datosUsuario.dominio isEqualToString:@""] && ! (self.datosUsuario.dominio == (id)[NSNull null])){
+        if(self.datosUsuario.dominio && ![self.datosUsuario.dominio isEqualToString:@""] && ! (self.datosUsuario.dominio == (id)[NSNull null]) && ![CommonUtils validarEmail:self.datosUsuario.dominio]){
             self.dominio.hidden	= NO;
             [self.viewDominioNoPublicado setHidden:YES];
             [self.viewDominioPublicado setHidden:NO];
-            if([((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio hasPrefix:@"Pago"]){
+           
+            for(int i= 0; [self.datosUsuario.dominiosUsuario count] > i ; i++){
+                DominiosUsuario *dominioUsuario = [self.datosUsuario.dominiosUsuario objectAtIndex:i];
+                if([dominioUsuario.domainType isEqualToString:@"tel"]){
+                    self.dominio.text	= [NSString stringWithFormat:@"www.%@.tel", self.datosUsuario.dominio];
+                }else{
+                    self.dominio.text	= [NSString stringWithFormat:@"www.info-movil.com/%@", self.datosUsuario.dominio];
+                }
+            }
+            
+            if([self.dominio.text isEqualToString:@""] || self.dominio.text == nil || (self.datosUsuario.dominio == (id)[NSNull null]) ){
                 self.dominio.text	= [NSString stringWithFormat:@"www.%@.tel", self.datosUsuario.dominio];
-            }else{
-                self.dominio.text	= [NSString stringWithFormat:@"www.infomovil.com/%@", self.datosUsuario.dominio];
             }
             
             if(IS_IPHONE5){
@@ -140,6 +171,7 @@
             }
             [self.view addSubview:self.viewDominioPublicado];
         }else{
+            self.datosUsuario.dominio = nil;
             [self.viewDominioPublicado setHidden:YES];
             [self.viewDominioNoPublicado setHidden:NO];
             self.dominio.hidden = YES;
@@ -157,27 +189,29 @@
     [self.verTutorialbtn setTitle:NSLocalizedString(@"verTutorial", Nil) forState:UIControlStateNormal];
     [self.botonEjemplo setTitle:NSLocalizedString(@"verEjemplo", Nil) forState:UIControlStateNormal];
     [self.botonEjemplo2 setTitle:NSLocalizedString(@"verEjemplo", Nil) forState:UIControlStateNormal];
-	if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-		[self.botonFondo setBackgroundImage:[UIImage imageNamed:@"btnbackgroundEn.png"] forState:UIControlStateNormal];
-		[self.botonCrear setBackgroundImage:[UIImage imageNamed:@"btncreateeditEn.png"] forState:UIControlStateNormal];
-		if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion && ![((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio hasPrefix:@"Tramite"]){
-			[self.botonPublicar setBackgroundImage:[UIImage imageNamed:@"tips.png"] forState:UIControlStateNormal];
-		}else{
-			[self.botonPublicar setBackgroundImage:[UIImage imageNamed:@"btnnamepublishEn.png"] forState:UIControlStateNormal];
-		}
-      
-	}else{
-		[self.botonFondo setBackgroundImage:[UIImage imageNamed:@"elegirfondo.png"] forState:UIControlStateNormal];
-		[self.botonCrear setBackgroundImage:[UIImage imageNamed:@"creareditar.png"] forState:UIControlStateNormal];
-		if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion && ![((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio hasPrefix:@"Tramite"]){
-			[self.botonPublicar setBackgroundImage:[UIImage imageNamed:@"tips.png"] forState:UIControlStateNormal];
-		}else{
-			[self.botonPublicar setBackgroundImage:[UIImage imageNamed:@"nombrarpublicar.png"] forState:UIControlStateNormal];
-		}
 	
+    if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
+        [self.botonFondo setBackgroundImage:[UIImage imageNamed:@"btnbackgroundEn.png"] forState:UIControlStateNormal];
+        [self.botonCrear setBackgroundImage:[UIImage imageNamed:@"btncreateeditEn.png"] forState:UIControlStateNormal];
+        if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion && self.datosUsuario.dominio && ![self.datosUsuario.dominio isEqualToString:@""] && ! (self.datosUsuario.dominio == (id)[NSNull null]) && ![CommonUtils validarEmail:self.datosUsuario.dominio]){
+            [self.botonPublicar setBackgroundImage:[UIImage imageNamed:@"tips.png"] forState:UIControlStateNormal];
+            [self.vistaInferior setHidden:NO];
+        }else{
+            [self.botonPublicar setBackgroundImage:[UIImage imageNamed:@"btnnamepublishEn.png"] forState:UIControlStateNormal];
+            [self.vistaInferior setHidden:YES];
+        }
         
-	}
-    
+    }else{
+        [self.botonFondo setBackgroundImage:[UIImage imageNamed:@"elegirfondo.png"] forState:UIControlStateNormal];
+        [self.botonCrear setBackgroundImage:[UIImage imageNamed:@"creareditar.png"] forState:UIControlStateNormal];
+        if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion && self.datosUsuario.dominio && ![self.datosUsuario.dominio isEqualToString:@""] && ! (self.datosUsuario.dominio == (id)[NSNull null])){
+            [self.botonPublicar setBackgroundImage:[UIImage imageNamed:@"tips.png"] forState:UIControlStateNormal];
+            [self.vistaInferior setHidden:NO];
+        }else{
+            [self.botonPublicar setBackgroundImage:[UIImage imageNamed:@"nombrarpublicar.png"] forState:UIControlStateNormal];
+            [self.vistaInferior setHidden:YES];
+        }
+    }
    
 	
 }
@@ -280,7 +314,7 @@
 }
 
 
--(IBAction)regresar:(id)sender {
+-(IBAction)regresar:(id)sender { NSLog(@"Alerta de Cerrar sesión!");
 	[[AlertView initWithDelegate:self message:NSLocalizedString(@"salirMensaje", nil)
 				andAlertViewType:AlertViewTypeQuestion] show];
 }

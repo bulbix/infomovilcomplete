@@ -336,8 +336,14 @@
 }
 
 +(BOOL) perfilEditado {
+    
     BOOL fueEditado = NO;
     DatosUsuario *datosUsuario = [DatosUsuario sharedInstance];
+    
+  
+    NSLog(@"La cantidad de items en arreglo de arregloEstatusEdicion es : %i", [datosUsuario.arregloEstatusEdicion count]);
+    
+    
     if ([datosUsuario.arregloEstatusEdicion count] > 0) {
         for (int i = 0; i < [datosUsuario.arregloEstatusEdicion count]; i++) {
             if ([[datosUsuario.arregloEstatusEdicion objectAtIndex:i]  isEqual: @YES]) {

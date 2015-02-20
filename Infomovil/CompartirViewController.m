@@ -316,50 +316,7 @@
 	} else {
 		
 	}
-	
-	/*
-	NSLog(@"authentication object %@",[[GPPSignIn sharedInstance] authentication]);
-	NSLog(@"scopes object %@",[[GPPSignIn sharedInstance] scopes]);
-	
-	id<GPPNativeShareBuilder> shareBuilder = [[GPPShare sharedInstance] nativeShareDialog];
-	
-	NSString *inputURL = [@"http://infomovil.com/" stringByAppendingString:self.datosUsuario.dominio] ;//@"http://developers.google.com/+/mobile/ios/";
-	NSURL *urlToShare = [inputURL length] ? [NSURL URLWithString:inputURL] : nil;
-	if (urlToShare) {
-		[shareBuilder setURLToShare:urlToShare];
-	}
-	
-	NSString *inputText = [NSString stringWithFormat:@"Ya estoy en línea con infomovil.com. Visita mi sitio web http://infomovil.com/%@", self.datosUsuario.dominio];
-	NSString *text = [inputText length] ? inputText : nil;
-	if (text) {
-		[shareBuilder setPrefillText:text];
-	}
-	
-	//[shareBuilder open];
-	
-	NSLog(@"Aqui");
-	if (![shareBuilder open]) {
-		NSLog(@"Aqui2");
-		id<GPPShareBuilder> shareBuilder2 = [[GPPShare sharedInstance] shareDialog];
-		
-		NSString *inputURL = [@"http://infomovil.com/" stringByAppendingString:self.datosUsuario.dominio] ;//@"http://developers.google.com/+/mobile/ios/";
-		NSURL *urlToShare = [inputURL length] ? [NSURL URLWithString:inputURL] : nil;
-		if (urlToShare) {
-			[shareBuilder2 setURLToShare:urlToShare];
-		}
-		
-		NSString *inputText = [NSString stringWithFormat:@"Ya estoy en línea con infomovil.com. Visita mi sitio web http://infomovil.com/%@", self.datosUsuario.dominio];
-		NSString *text = [inputText length] ? inputText : nil;
-		if (text) {
-			[shareBuilder2 setPrefillText:text];
-		}
-		
-		if (![shareBuilder2 open]) {
-			//shareStatus_.text = @"Status: Error (see console).";
-		}
-	}
 
-	*/ 
 }
 
 

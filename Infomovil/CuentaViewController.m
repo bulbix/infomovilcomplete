@@ -224,7 +224,7 @@ int opcionButton = 0 ;
 			[dateFormat setDateFormat:@"dd-MM-yyyy"];
 			NSString *inicio = [dateFormat stringFromDate:dateInit];
 			NSString *fin = [dateFormat stringFromDate:dateFinal];
-			
+		
 			self.datosUsuario.fechaInicial = inicio;
 			self.datosUsuario.fechaFinal = fin;
 			
@@ -495,6 +495,7 @@ int opcionButton = 0 ;
     }
     @catch (NSException *exception) {
         NSLog(@"La NSException en comprar12mesesBtn es: %@", exception.reason);
+        [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
     }
 }
 

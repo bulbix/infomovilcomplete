@@ -11,6 +11,7 @@
 #import "Base64.h"
 #import "ItemsDominio.h"
 #import "AppDelegate.h"
+#import "NSDateFormatterUtiles.h"
 
 @interface WS_CompraDominio (){
 	
@@ -133,6 +134,16 @@
     }
     else if ([elementName isEqualToString:@"referencia"]) {
         self.currentElementString = [[NSMutableString alloc] init];
+    }else if ([elementName isEqualToString:@"fechaIni"]){
+        self.currentElementString = [[NSMutableString alloc] init];
+    }
+    else if ([elementName isEqualToString:@"fechaFin"]){
+        self.currentElementString = [[NSMutableString alloc] init];
+    }else if ([elementName isEqualToString:@"fTelNamesIni"]){
+        self.currentElementString = [[NSMutableString alloc] init];
+    }
+    else if ([elementName isEqualToString:@"fTelNamesFin"]){
+        self.currentElementString = [[NSMutableString alloc] init];
     }
 }
 
@@ -148,6 +159,44 @@
         self.resultado = self.currentElementString;
        NSLog(@"Valor de Pago id:  %@",self.resultado);
         
+    }else if([elementName isEqualToString:@"ns2:compraDominioResponse"]){
+        self.datosUsuario = [DatosUsuario sharedInstance];
+        self.datosUsuario.itemsDominio = items;
+        
+        for(ItemsDominio * item in self.datosUsuario.itemsDominio)
+            NSLog(@"items: %@ , descripcion: %@ , status: %i", item, item.descripcionItem, item.estatus);
+    }else if([elementName isEqualToString:@"statusDominio"]){
+        
+        ((AppDelegate*)	[[UIApplication sharedApplication] delegate]).statusDominio = self.currentElementString;
+        
+    }else if ([elementName isEqualToString:@"fechaFin"]){
+        if(requiereEncriptar){
+            self.datosUsuario.fechaFinal = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
+        }else{
+            self.datosUsuario.fechaFinal = self.currentElementString;
+        }
+    }
+    else if ([elementName isEqualToString:@"fTelNamesIni"]){
+        NSString *strAux;
+        if(requiereEncriptar){
+            strAux = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
+        }else{
+            strAux = self.currentElementString;
+        }
+        self.datosUsuario.fechaInicialTel = [NSDateFormatter changeDateFormatOfString:strAux
+                                                                                 from:@"yyyy-MM-dd"
+                                                                                   to:@"dd-MM-yyy"];
+    }
+    else if ([elementName isEqualToString:@"fTelNamesFin"]){
+        NSString *strAux;
+        if(requiereEncriptar){
+            strAux = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
+        }else{
+            strAux = self.currentElementString;
+        }
+        self.datosUsuario.fechaFinalTel = [NSDateFormatter changeDateFormatOfString:strAux
+                                                                               from:@"yyyy-MM-dd"
+                                                                                 to:@"dd-MM-yyy"];
     }
  /*   else if([elementName isEqualToString:@"status"]){
         status = [self.currentElementString integerValue];
@@ -172,18 +221,8 @@
 		NSLog(@"%i",status);
 
 	}
-	else if([elementName isEqualToString:@"ns2:compraDominioResponse"]){
-		self.datosUsuario = [DatosUsuario sharedInstance];
-		self.datosUsuario.itemsDominio = items;
-		
-		for(ItemsDominio * item in self.datosUsuario.itemsDominio)
-			NSLog(@"items: %@ , descripcion: %@ , status: %i", item, item.descripcionItem, item.estatus);
-	}
-	else if([elementName isEqualToString:@"statusDominio"]){
-		
-			((AppDelegate*)	[[UIApplication sharedApplication] delegate]).statusDominio = self.currentElementString;
-		
-	}
+	
+	
     else if ([elementName isEqualToString:@"respuesta"]) {
         self.resultado = self.currentElementString;
     }
@@ -199,10 +238,22 @@
 }
 /*
 -(void) ordenarItems {
-    NSArray *arregloTitulos = @[NSLocalizedStringFromTable(@"nombreEmpresa", @"Spanish",@" "), NSLocalizedStringFromTable(@"logo",@"Spanish", @" "), NSLocalizedStringFromTable(@"descripcionCorta", @"Spanish",@" "), NSLocalizedStringFromTable(@"contacto", @"Spanish",@" "), NSLocalizedStringFromTable(@"mapa",@"Spanish", @" "), NSLocalizedStringFromTable(@"video", @"Spanish",@" "), NSLocalizedStringFromTable(@"promociones", @"Spanish",@" "), NSLocalizedStringFromTable(@"galeriaImagenes",@"Spanish", @" "), NSLocalizedStringFromTable(@"perfil",@"Spanish", @" "), NSLocalizedStringFromTable(@"direccion", @"Spanish",@" "),  NSLocalizedStringFromTable(@"informacionAdicional", @"Spanish",@" ")];
+    NSArray *arregloTitulos = @[NSLocalizedStringFromTable(@"nombreEmpresa", @"Spanish",@" "), NSLocalizedStringFromTable(@"logo",@"Spanish", @" "), NSLocalizedStringFromTable(@"descripcionCorta", @"Spanish",@" "), NSLocalizedStringFromTable(@"contacto", @"Spanish",@" "), NSLocalizedStringFromTable(@"mapa",@"Spanish", @" "),
+        NSLocalizedStringFromTable(@"video", @"Spanish",@" "),
+        NSLocalizedStringFromTable(@"promociones", @"Spanish",@" "), NSLocalizedStringFromTable(@"galeriaImagenes",@"Spanish", @" "), NSLocalizedStringFromTable(@"perfil",@"Spanish", @" "), NSLocalizedStringFromTable(@"direccion", @"Spanish",@" "),  NSLocalizedStringFromTable(@"informacionAdicional", @"Spanish",@" ")];
     DatosUsuario *datosUsuario = self.datosUsuario;//[DatosUsuario sharedInstance];
     
-    NSArray *arregloIdioma = @[NSLocalizedString(@"nombreEmpresa", @" "), NSLocalizedString(@"logo", @" "), NSLocalizedString(@"descripcionCorta", @" "), NSLocalizedString(@"contacto", @" "), NSLocalizedString(@"mapa", @" "), NSLocalizedString(@"video", @" "), NSLocalizedString(@"promociones", @" "), NSLocalizedString(@"galeriaImagenes", @" "), NSLocalizedString(@"perfil", @" "), NSLocalizedString(@"direccion", @" "),  NSLocalizedString(@"informacionAdicional", @" ")];
+    NSArray *arregloIdioma = @[NSLocalizedString(@"nombreEmpresa", @" "),
+        NSLocalizedString(@"logo", @" "),
+        NSLocalizedString(@"descripcionCorta", @" "),
+        NSLocalizedString(@"contacto", @" "),
+        NSLocalizedString(@"mapa", @" "),
+        NSLocalizedString(@"video", @" "),
+        NSLocalizedString(@"promociones", @" "),
+        NSLocalizedString(@"galeriaImagenes", @" "),
+        NSLocalizedString(@"perfil", @" "),
+        NSLocalizedString(@"direccion", @" "),
+        NSLocalizedString(@"informacionAdicional", @" ")];
     NSMutableArray *arregloItems = datosUsuario.itemsDominio;
     NSMutableArray *arregloItemsAux = [[NSMutableArray alloc] init];
     for (int i = 0; i < [arregloTitulos count]; i++) {

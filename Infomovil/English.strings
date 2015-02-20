@@ -189,7 +189,7 @@
 "moverEscalar"="Move and resize";
 "solo3campos"="You can only add %i data fields";
 "incompletos"="Incomplete data";
-"mensajeInformacionAdicional"="You can add %i paragraphs of 400 characters each";
+"mensajeInformacionAdicional"="Basic Plan: Adds a section.\nPlan Pro: adds up to two sections";
 "mensajeContactos"="You can define up to %i forms of contact.";
 "mensajeContactosPrueba"="Upgrade to our Pro Plan to add more contacts. Would you like to learn more?";
 "mensajeImagenesPrueba"="Upgrade to our Pro Plan to add more images. Would you like to learn more?";

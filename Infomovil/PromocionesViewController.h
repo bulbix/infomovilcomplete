@@ -24,7 +24,6 @@
 @property (weak, nonatomic) IBOutlet UIView *vistaVigencia;
 @property (weak, nonatomic) IBOutlet UITableView *tablaPromociones;
 @property (weak, nonatomic) IBOutlet UILabel *labelVigencia;
-//@property (weak, nonatomic) IBOutlet UILabel *labelInfo;
 @property (weak, nonatomic) IBOutlet UILabel *labelNombrePromocion;
 @property (weak, nonatomic) IBOutlet UILabel *labelDescripcionPromocion;
 @property (weak, nonatomic) IBOutlet UILabel *labelVigenciaAl;

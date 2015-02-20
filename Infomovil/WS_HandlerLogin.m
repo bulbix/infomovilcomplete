@@ -96,7 +96,7 @@
     
     self.strSoapAction = @"WSInfomovilDomain";
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
-    NSLog(@"IRC : La respuesta es del login es: %s", [dataResult bytes]);
+  //  NSLog(@"IRC : La respuesta es del login es: %s", [dataResult bytes]);
     if (dataResult != nil) {
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
         [parser setDelegate:self];
@@ -269,6 +269,9 @@
             if ([self.arregloItems count] > 0) {
                 self.datosUsuario.itemsDominio = self.arregloItems;
                 self.datosUsuario.itemsDominio = [StringUtils ordenarItems:self.arregloItems];
+                for(int x = 0; x< [self.datosUsuario.itemsTipoDominio count]; x++){
+                    NSLog(@"GETDOMAIN WS_HANDLERLOGIN items que me da el server en el getDomain es: %@", self.datosUsuario.itemsTipoDominio);
+                }
             }
             if ([self.arregloTiposDominio count] > 0) {
                 self.datosUsuario.itemsTipoDominio = self.arregloTiposDominio;
@@ -746,7 +749,7 @@
         self.currentElementString = [[NSMutableString alloc] init];
     }//keywordData
     else if ([elementName isEqualToString:@"listKeywordVO"]) {
-        NSLog(@"La llave es %@", self.keywordData.keywordField);
+        //NSLog(@"La llave es %@", self.keywordData.keywordField);
         NSInteger inter;
         if (requiereEncriptar) {
             inter = [self buscarEnArreglo:self.diccionarioInformacion conLlave:[StringUtils desEncriptar:self.keywordData.keywordField conToken:self.token]];
@@ -967,9 +970,11 @@
     }
     else if ([elementName isEqualToString:@"domainCtrlName"]) {
         [dominioUsuario setDomainName:[StringUtils desEncriptar:self.currentElementString conToken:self.token]];
+        NSLog(@"EL DOMINIO QUE ME ENVIA EL SERVER ES: %@ EN WS_HANDLERLOGIN", dominioUsuario.domainName);
     }
     else if ([elementName isEqualToString:@"domainType"]) {
         NSString *typeAux = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
+        NSLog(@"El tipo de Dominio es : %@", typeAux);
         if ([typeAux isEqualToString:@"recurso"]) {
             esRecurso = YES;
         }

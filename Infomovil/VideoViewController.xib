@@ -68,7 +68,7 @@
                                     </connections>
                                 </textField>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bYC-zR-FOq">
-                                    <rect key="frame" x="28" y="274" width="263" height="57"/>
+                                    <rect key="frame" x="60" y="274" width="200" height="35"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                     <state key="normal" title="Buscar" backgroundImage="btnazulnuevo.png">
