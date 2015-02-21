@@ -10,4 +10,6 @@
 
 @interface TablaDominioViewController : UITableViewController
 
+@property (nonatomic, strong) DatosUsuario *datosUsuario;
+
 @end

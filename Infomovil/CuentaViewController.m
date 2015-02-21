@@ -179,7 +179,10 @@ int opcionButton = 0 ;
 
 
 -(void) viewWillAppear:(BOOL)animated {
-
+   
+  
+    
+    
     if (tipoVista != 1) {
     
 	
@@ -575,7 +578,14 @@ int opcionButton = 0 ;
 
 		}
 		
-
+        if (tablaDominio == nil) {
+            tablaDominio = [[TablaDominioViewController alloc] init];
+        }
+        
+        
+        [tablaSitios setDelegate:tablaDominio];
+        [tablaSitios setDataSource:tablaDominio];
+        tablaDominio.view = tablaDominio.tableView;
         [self.scrollContenido scrollRectToVisible:CGRectMake(320, 0, self.scrollContenido.frame.size.width, self.scrollContenido.frame.size.height) animated:YES];
 	}
 	

@@ -204,6 +204,7 @@
                         else {
                             appDelegate.statusDominio = statusDominio;
                         }
+                        NSLog(@"LA CREACIÓN DEL DOMINIO FUE UN EXITO!!!");
                         NSLog(@"token::: %@",datos.token);
                         NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
                         [prefs setObject:user forKey:@"dominioPublicado"];
