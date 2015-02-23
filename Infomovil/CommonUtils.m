@@ -341,7 +341,7 @@
     DatosUsuario *datosUsuario = [DatosUsuario sharedInstance];
     
   
-    NSLog(@"La cantidad de items en arreglo de arregloEstatusEdicion es : %i", [datosUsuario.arregloEstatusEdicion count]);
+  //  NSLog(@"La cantidad de items en arreglo de arregloEstatusEdicion es : %i", [datosUsuario.arregloEstatusEdicion count]);
     
     
     if ([datosUsuario.arregloEstatusEdicion count] > 0) {

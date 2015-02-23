@@ -149,8 +149,6 @@ int opcionButton = 0 ;
 	NSLog(@"status: %@",((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio);
 #endif
 	if(sesion &&  [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] ){
-        self.viewCompraPlanPro.hidden = YES;
-        self.viewPlanProComprado.hidden = NO;
         [self.vistaInferior setHidden:NO];
 	}else{
         [self.vistaInferior setHidden:YES];
@@ -179,69 +177,54 @@ int opcionButton = 0 ;
 
 
 -(void) viewWillAppear:(BOOL)animated {
-   
-  
-    
-    
     if (tipoVista != 1) {
-    
-	
 	BOOL sesion = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).existeSesion;
 #ifdef _DEBUG
 	NSLog(@"status: %@",((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio);
 #endif
         
-	 if(sesion &&  [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] ){
+        if(sesion &&  [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] ){
 	
-        if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-            self.MensajePlanProComprado.text = [NSString stringWithFormat:@"This site already has a Plan Pro\n\nStart date: %@ \nEnd date: %@",self.datosUsuario.fechaInicial, self.datosUsuario.fechaFinal];
+            if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
+                self.MensajePlanProComprado.text = [NSString stringWithFormat:@"This site already has a Plan Pro\n\nStart date: %@ \nEnd date: %@",self.datosUsuario.fechaInicial, self.datosUsuario.fechaFinal];
+            }else{
+                self.MensajePlanProComprado.text = [NSString stringWithFormat:@"Este sitio ya cuenta con PLAN PRO disfruta sus beneficios.\n\nFecha de inicio: %@\nFecha de término: %@",self.datosUsuario.fechaInicial, self.datosUsuario.fechaFinal];
+            }
+            self.viewCompraPlanPro.hidden = YES;
+            self.viewPlanProComprado.hidden = NO;
+            self.datosUsuario = [DatosUsuario sharedInstance];
+            [self.vistaInferior setHidden:NO];
+		
         }else{
-            self.MensajePlanProComprado.text = [NSString stringWithFormat:@"Este sitio ya cuenta con PLAN PRO disfruta sus beneficios.\n\nFecha de inicio: %@\nFecha de término: %@",self.datosUsuario.fechaInicial, self.datosUsuario.fechaFinal];
+            self.viewCompraPlanPro.hidden = NO;
+            self.viewPlanProComprado.hidden = YES;
+            [self.vistaInferior setHidden:YES];
         }
-        self.viewCompraPlanPro.hidden = YES;
-        self.viewPlanProComprado.hidden = NO;
-		self.datosUsuario = [DatosUsuario sharedInstance];
-		
-		
-	}
-	else{
-
-        self.viewCompraPlanPro.hidden = NO;
-        self.viewPlanProComprado.hidden = YES;
-		[self.vistaInferior setHidden:YES];
-		
-		
-	}
 	
-	self.datosUsuario = [DatosUsuario sharedInstance];
-	if(self.datosUsuario.nombroSitio || ![((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Tramite"]){
-		if ([self.datosUsuario.fechaInicialTel isEqualToString:@""] && [self.datosUsuario.fechaFinalTel isEqualToString:@""]) {
-			NSDate *dateInit = [NSDate date];
-			NSDateComponents *setMonths			= [[NSDateComponents alloc] init];
-			NSCalendar		*calendar			= [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+        self.datosUsuario = [DatosUsuario sharedInstance];
+        if(self.datosUsuario.nombroSitio || ![((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Tramite"]){
+            if ([self.datosUsuario.fechaInicialTel isEqualToString:@""] && [self.datosUsuario.fechaFinalTel isEqualToString:@""]) {
+                NSDate *dateInit = [NSDate date];
+                NSDateComponents *setMonths			= [[NSDateComponents alloc] init];
+                NSCalendar		*calendar			= [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
 			
-			[setMonths setMonth:12];
-			NSDate *dateFinal = [calendar dateByAddingComponents:setMonths toDate:dateInit options:0];
+                [setMonths setMonth:12];
+                NSDate *dateFinal = [calendar dateByAddingComponents:setMonths toDate:dateInit options:0];
 			
-			NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
-			[dateFormat setDateFormat:@"dd-MM-yyyy"];
-			NSString *inicio = [dateFormat stringFromDate:dateInit];
-			NSString *fin = [dateFormat stringFromDate:dateFinal];
+                NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
+                [dateFormat setDateFormat:@"dd-MM-yyyy"];
+                NSString *inicio = [dateFormat stringFromDate:dateInit];
+                NSString *fin = [dateFormat stringFromDate:dateFinal];
 		
-			self.datosUsuario.fechaInicial = inicio;
-			self.datosUsuario.fechaFinal = fin;
+                self.datosUsuario.fechaInicial = inicio;
+                self.datosUsuario.fechaFinal = fin;
 			
 			
-		}else{
-		
-		}
-	}
-	
-
+            }else{
+            }
+        }
         [self enviarEventoGAconCategoria:@"Ver" yEtiqueta:@"Plan Pro"];
     }
-    
-    
 }
 
 

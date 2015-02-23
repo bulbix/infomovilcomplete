@@ -470,6 +470,7 @@
     }
 	else if ([elementName isEqualToString:@"statusDominio"]){
         NSString *valor = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
+        NSLog(@"EL VALOR QUE ME ENVIO COMO ESTATUSDOMINIO ES: %@", valor);
         if ([valor isEqualToString:@"Mes PRO"] || [valor isEqualToString:@"Anual PRO"]) {
             ((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio = @"Pago";
         }

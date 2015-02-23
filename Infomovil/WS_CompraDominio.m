@@ -84,8 +84,11 @@
 				if(requiereEncriptar){
 					((AppDelegate*)	[[UIApplication sharedApplication] delegate]).statusDominio = [StringUtils desEncriptar:((AppDelegate*)	[[UIApplication sharedApplication] delegate]).statusDominio conToken: self.datosUsuario.token ];
 				}
-				self.datosUsuario.itemsDominio = [StringUtils ordenarItems:self.datosUsuario.itemsDominio];
-                self.datosUsuario.datosPago.pagoId = [[StringUtils desEncriptar:self.resultado conToken:self.datosUsuario.token] integerValue];
+				//self.datosUsuario.itemsDominio = [StringUtils ordenarItemsCompraDominio:self.datosUsuario.itemsDominio];
+            //NSLog(@"La cantidad de items en WS_CompraDomini al realizar la compra es : %i", [self.datosUsuario.itemsDominio count]);
+           // [self.datosUsuario.itemsDominio = [self ordenarItemsCompraDom];
+           // [self ordenarItemsCompraDom];
+            self.datosUsuario.datosPago.pagoId = [[StringUtils desEncriptar:self.resultado conToken:self.datosUsuario.token] integerValue];
             NSLog(@"El valor que me envio el server es: %i", self.datosUsuario.datosPago.pagoId);
             if(self.datosUsuario.datosPago.pagoId > 0){
 				[self.compraDominioDelegate resultadoCompraDominio:YES];
@@ -117,6 +120,7 @@
 		descripcion = @"";
 		status = 255;
     }
+    
 	else if ([elementName isEqualToString:@"descripcionItem"]) {
 		descripcion = @"";
     }
@@ -159,12 +163,13 @@
         self.resultado = self.currentElementString;
        NSLog(@"Valor de Pago id:  %@",self.resultado);
         
-    }else if([elementName isEqualToString:@"ns2:compraDominioResponse"]){
+    /* }else if([elementName isEqualToString:@"ns2:compraDominioResponse"]){
         self.datosUsuario = [DatosUsuario sharedInstance];
         self.datosUsuario.itemsDominio = items;
         
         for(ItemsDominio * item in self.datosUsuario.itemsDominio)
             NSLog(@"items: %@ , descripcion: %@ , status: %i", item, item.descripcionItem, item.estatus);
+        */
     }else if([elementName isEqualToString:@"statusDominio"]){
         
         ((AppDelegate*)	[[UIApplication sharedApplication] delegate]).statusDominio = self.currentElementString;
@@ -236,8 +241,8 @@
   */
     
 }
-/*
--(void) ordenarItems {
+
+-(void) ordenarItemsCompraDom{
     NSArray *arregloTitulos = @[NSLocalizedStringFromTable(@"nombreEmpresa", @"Spanish",@" "), NSLocalizedStringFromTable(@"logo",@"Spanish", @" "), NSLocalizedStringFromTable(@"descripcionCorta", @"Spanish",@" "), NSLocalizedStringFromTable(@"contacto", @"Spanish",@" "), NSLocalizedStringFromTable(@"mapa",@"Spanish", @" "),
         NSLocalizedStringFromTable(@"video", @"Spanish",@" "),
         NSLocalizedStringFromTable(@"promociones", @"Spanish",@" "), NSLocalizedStringFromTable(@"galeriaImagenes",@"Spanish", @" "), NSLocalizedStringFromTable(@"perfil",@"Spanish", @" "), NSLocalizedStringFromTable(@"direccion", @"Spanish",@" "),  NSLocalizedStringFromTable(@"informacionAdicional", @"Spanish",@" ")];
@@ -271,5 +276,5 @@
     NSLog(@"Termino");
 
 }
-*/
+
 @end

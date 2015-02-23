@@ -152,12 +152,14 @@
             [self.viewDominioPublicado setHidden:NO];
            
             for(int i= 0; [self.datosUsuario.dominiosUsuario count] > i ; i++){
-                DominiosUsuario *dominioUsuario = [self.datosUsuario.dominiosUsuario objectAtIndex:i];
-                if([dominioUsuario.domainType isEqualToString:@"tel"]){
-                    self.dominio.text	= [NSString stringWithFormat:@"www.%@.tel", self.datosUsuario.dominio];
-                }else{
+             //   DominiosUsuario *dominioUsuario = [self.datosUsuario.dominiosUsuario objectAtIndex:i];
+             //   if([dominioUsuario.domainType isEqualToString:@"tel"]){
+          
+          self.dominio.text	= [NSString stringWithFormat:@"www.%@.tel", self.datosUsuario.dominio];
+             /*  }else{
                     self.dominio.text	= [NSString stringWithFormat:@"www.info-movil.com/%@", self.datosUsuario.dominio];
                 }
+              */
             }
             
             if([self.dominio.text isEqualToString:@""] || self.dominio.text == nil || (self.datosUsuario.dominio == (id)[NSNull null]) ){

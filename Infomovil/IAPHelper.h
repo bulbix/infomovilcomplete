@@ -7,7 +7,6 @@
 //
 
 #import <StoreKit/StoreKit.h>
-#import "InfomovilViewController.h"
 
 UIKIT_EXTERN NSString *const IAPHelperProductPurchasedNotification;
 
@@ -20,5 +19,10 @@ typedef void (^RequestProductsCompletionHandler)(BOOL success, NSArray * product
 - (void)buyProduct:(SKProduct *)product;
 - (BOOL)productPurchased:(NSString *)productIdentifier;
 - (void)restoreCompletedTransactions;
+
+-(int)daysRemainingOnSubscription;
+-(NSString *)getExpiryDateString;
+-(NSDate *)getExpiryDateForMonths:(int)months;
+-(void)purchaseSubscriptionWithMonths:(int)months;
 
 @end

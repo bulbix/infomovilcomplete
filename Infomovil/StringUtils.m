@@ -120,9 +120,16 @@
 
 + (NSMutableArray *)ordenarItems:(NSMutableArray *)items {
     NSLog(@"Se mando a llamar ordenarItems en StringUtils ");
-    NSArray *arregloTitulos = @[NSLocalizedStringFromTable(@"nombreEmpresa", @"Spanish",@" "), NSLocalizedStringFromTable(@"logo",@"Spanish", @" "), NSLocalizedStringFromTable(@"descripcionCorta", @"Spanish",@" "), NSLocalizedStringFromTable(@"contacto", @"Spanish",@" "), NSLocalizedStringFromTable(@"mapa",@"Spanish", @" "),
+    NSArray *arregloTitulos = @[NSLocalizedStringFromTable(@"nombreEmpresa", @"Spanish",@" "), NSLocalizedStringFromTable(@"logo",@"Spanish", @" "),
+        NSLocalizedStringFromTable(@"descripcionCorta", @"Spanish",@" "),
+        NSLocalizedStringFromTable(@"contacto", @"Spanish",@" "),
+        NSLocalizedStringFromTable(@"mapa",@"Spanish", @" "),
         NSLocalizedStringFromTable(@"video", @"Spanish",@" "),
-        NSLocalizedStringFromTable(@"promociones", @"Spanish",@" "), NSLocalizedStringFromTable(@"galeriaImagenes",@"Spanish", @" "), NSLocalizedStringFromTable(@"perfil",@"Spanish", @" "), NSLocalizedStringFromTable(@"direccion", @"Spanish",@" "),  NSLocalizedStringFromTable(@"informacionAdicional", @"Spanish",@" ")];
+        NSLocalizedStringFromTable(@"promociones", @"Spanish",@" "),
+        NSLocalizedStringFromTable(@"galeriaImagenes",@"Spanish", @" "),
+        NSLocalizedStringFromTable(@"perfil",@"Spanish", @" "),
+        NSLocalizedStringFromTable(@"direccion", @"Spanish",@" "),
+        NSLocalizedStringFromTable(@"informacionAdicional", @"Spanish",@" ")];
     
     NSArray *arregloIdioma = @[NSLocalizedString(@"nombreEmpresa", @" "),
         NSLocalizedString(@"logo", @" "),
@@ -138,13 +145,13 @@
      NSMutableArray *arregloItemsAux = [[NSMutableArray alloc] init];
     if (items != nil) {
     NSMutableArray *arregloItems = items;
-       
+        NSLog(@"la cantidad de campos en arregloItems es: %i y arregloTitulos tiene : %i", [arregloItems count] , [arregloTitulos count]);
         
     for (int i = 0; i < [arregloTitulos count]; i++) {
         NSString *stringAux = [StringUtils eliminarAcentos:[arregloTitulos objectAtIndex:i]];
         for (int j = 0; j < [arregloItems count]; j++) {
             ItemsDominio *itemDominioAux = [arregloItems objectAtIndex:j];
-            //NSLog(@"el arreglo con items es: %@ stringAux igual a %@", [itemDominioAux descripcionItem],  [stringAux uppercaseString] );
+       
             if (([[stringAux uppercaseString] isEqualToString:[itemDominioAux descripcionItem]]) || ([stringAux isEqualToString:[itemDominioAux descripcionItem]])) {
                 [itemDominioAux setDescripcionItem:[arregloTitulos objectAtIndex:i]];
                 [itemDominioAux setDescripcionIdioma:[arregloIdioma objectAtIndex:i]];
