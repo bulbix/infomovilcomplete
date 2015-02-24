@@ -41,12 +41,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.datosUsuario = [DatosUsuario sharedInstance];
-//    if (existeItems) {
-        maxNumeroImagenes = [[self.datosUsuario.itemsDominio objectAtIndex:self.indiceItem] estatus];
-//    }
-//    else {
-//        maxNumeroImagenes = 5;
-//    }
+    maxNumeroImagenes = [[self.datosUsuario.itemsDominio objectAtIndex:self.indiceItem] estatus];
+
     UIImage *imagenAgregar = [UIImage imageNamed:@"btnagregar.png"];
     UIButton *botonAgregar = [UIButton buttonWithType:UIButtonTypeCustom];
     [botonAgregar setFrame:CGRectMake(0, 0, imagenAgregar.size.width, imagenAgregar.size.height)];
@@ -55,9 +51,7 @@
     
     UIBarButtonItem *buttonAdd = [[UIBarButtonItem alloc] initWithCustomView:botonAgregar];
     self.navigationItem.rightBarButtonItem = buttonAdd;
-//    [self.tituloVista setText:NSLocalizedString(@"imagenes", @" ")];
-//    [self.vistaCircular setImage:[UIImage imageNamed:@"plecaverde.png"]];
-//    [self.vistaCircular setImage:[UIImage imageNamed:@"plecacreasitio.png"]];
+
 	if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
 		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"imagenes", @" ") nombreImagen:@"barraverde.png"];
 	}else{
@@ -165,27 +159,42 @@
 }
 
 -(IBAction)agregarImagen:(id)sender {
-    if ([self.arregloImagenes count] >= maxNumeroImagenes) {
-		if([self.arregloImagenes count] == maxNumeroImagenes && ((AppDelegate*)[[UIApplication sharedApplication] delegate]).existeSesion && ([((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] || [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Tramite PRO"])){
-			alertaImagenes = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeImagenesPro", nil) andAlertViewType:AlertViewTypeInfo];
-			[alertaImagenes show];
-		}
-		else if(!((AppDelegate*)[[UIApplication sharedApplication] delegate]).existeSesion){
-			alertaImagenes = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeImagenesPrueba", Nil) andAlertViewType:AlertViewTypeQuestion];
-			[alertaImagenes show];
-		}else{
-            
-            AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeImagenesPrueba", Nil) andAlertViewType:AlertViewTypeQuestion];
-			[alert show];
-		}
-    }
-    else {
+    NSLog(@"EL NUMERO MAXIMO DE IMAGENES PARA AGREGAR ES : %i y el arreglo contiene: %i", maxNumeroImagenes , [self.arregloImagenes count]);
+ 
+    
+    if(!((AppDelegate*)[[UIApplication sharedApplication] delegate]).existeSesion){
+        AlertView *alert = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionCaduco", Nil) andAlertViewType:AlertViewTypeInfo];
+        [alert show];
+        [StringUtils terminarSession];
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    
+    }else if ([self.arregloImagenes count] < 2) {
         GaleriaPaso2ViewController *galeria = [[GaleriaPaso2ViewController alloc] initWithNibName:@"GaleriaPaso2ViewController" bundle:nil];
         [galeria setOperacion:GaleriaImagenesAgregar];
         [galeria setGaleryType:PhotoGaleryTypeImage];
         [galeria setTituloPaso:NSLocalizedString(@"anadirImagen", @" ")];
         [self.navigationController pushViewController:galeria animated:YES];
+        
+    }else if([self.arregloImagenes count] >= 2 && [self.arregloImagenes count] < maxNumeroImagenes && [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && ![self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]){
+        GaleriaPaso2ViewController *galeria = [[GaleriaPaso2ViewController alloc] initWithNibName:@"GaleriaPaso2ViewController" bundle:nil];
+        [galeria setOperacion:GaleriaImagenesAgregar];
+        [galeria setGaleryType:PhotoGaleryTypeImage];
+        [galeria setTituloPaso:NSLocalizedString(@"anadirImagen", @" ")];
+        [self.navigationController pushViewController:galeria animated:YES];
+    
+    }else if([self.arregloImagenes count] >= 2 && [self.arregloImagenes count] < maxNumeroImagenes && [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && [self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]){
+        AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeImagenesPrueba", Nil) andAlertViewType:AlertViewTypeQuestion];
+        [alert show];
+    }else if([self.arregloImagenes count] >= 2 && [self.arregloImagenes count] < maxNumeroImagenes && ![((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] ){
+        AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeImagenesPrueba", Nil) andAlertViewType:AlertViewTypeQuestion];
+        [alert show];
+        
+    }else if([self.arregloImagenes count] > 12){
+        alertaImagenes = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeImagenesPro", nil) andAlertViewType:AlertViewTypeInfo];
+        [alertaImagenes show];
     }
+    
+    
 }
 
 -(void) accionSi{
@@ -213,7 +222,6 @@
         cell = [nib objectAtIndex:0];
     }
     cell.vistaGaleria.layer.cornerRadius = 5.0f;
-
     NSData *pngData = [NSData dataWithContentsOfFile:imagen.rutaImagen];
     UIImage *image = [UIImage imageWithData:pngData];
     [cell.imagenPrevia setImage:image];
@@ -224,6 +232,13 @@
     [cell.labelAlto setText:NSLocalizedString(@"alto", Nil)];
     [cell.labelAncho setText:NSLocalizedString(@"ancho", Nil)];
     [cell.labelTamano setText:NSLocalizedString(@"tamano", Nil)];
+    
+    if( [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && [self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"] && indexPath.row > 1){
+        cell.sombrearCelda.hidden = NO;
+    }else{
+        cell.sombrearCelda.hidden = YES;
+    }
+    
     NSLog(@"El peso de la imagen es %lu, el id es:%i", (unsigned long)[pngData length],imagen.idImagen);
     if ([tableView isHidden]) {
         NSLog(@"la tabla no se ve");
@@ -235,13 +250,16 @@
 #pragma mark - UITableViewDelegate
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    GaleriaPaso2ViewController *galeria = [[GaleriaPaso2ViewController alloc] initWithNibName:@"GaleriaPaso2ViewController" bundle:nil];
-    [galeria setOperacion:GaleriaImagenesEditar];
-    [galeria setTituloPaso:NSLocalizedString(@"anadirImagen", @" ")];
-    [galeria setGaleryType:PhotoGaleryTypeImage];
-    [galeria setIndex:indexPath.row];
-    [self.navigationController pushViewController:galeria animated:YES];
+    NSLog(@"EL INDEXPATH DE LA TABLA DE IMAGENES ES %i", indexPath.row);
+    if(indexPath.row <= 1 && [self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]){
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        GaleriaPaso2ViewController *galeria = [[GaleriaPaso2ViewController alloc] initWithNibName:@"GaleriaPaso2ViewController" bundle:nil];
+        [galeria setOperacion:GaleriaImagenesEditar];
+        [galeria setTituloPaso:NSLocalizedString(@"anadirImagen", @" ")];
+        [galeria setGaleryType:PhotoGaleryTypeImage];
+        [galeria setIndex:indexPath.row];
+        [self.navigationController pushViewController:galeria animated:YES];
+    }
 }
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {

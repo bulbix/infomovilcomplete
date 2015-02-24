@@ -21,5 +21,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelAncho;
 @property (weak, nonatomic) IBOutlet UILabel *labelAlto;
 @property (weak, nonatomic) IBOutlet UILabel *labelTamano;
+@property (weak, nonatomic) IBOutlet UILabel *sombrearCelda;
 
 @end

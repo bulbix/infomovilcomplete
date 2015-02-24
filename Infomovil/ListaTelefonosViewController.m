@@ -159,33 +159,40 @@
 }
 
 -(IBAction)agregarContacto:(id)sender {
-    
-    if ([self.datosUsuario.arregloContacto count] < maxNumContactos) {
+    NSLog(@"El numero maximo de contactos es: %i", maxNumContactos);
+  
+    if (!((AppDelegate*)[[UIApplication sharedApplication] delegate]).existeSesion){
+             AlertView *alert = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionCaduco", Nil) andAlertViewType:AlertViewTypeInfo];
+             [alert show];
+             [StringUtils terminarSession];
+             [self.navigationController popToRootViewControllerAnimated:YES];
+    }else if([self.datosUsuario.arregloContacto count] < 2) {
+            TipoContactoViewController *tipoContacto = [[TipoContactoViewController alloc] initWithNibName:@"TipoContactoViewController" bundle:Nil];
+            [self.navigationController pushViewController:tipoContacto animated:YES];
+    }else if([self.datosUsuario.arregloContacto count] >= 2 && [self.datosUsuario.arregloContacto count] < maxNumContactos && [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && ![self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]){
         TipoContactoViewController *tipoContacto = [[TipoContactoViewController alloc] initWithNibName:@"TipoContactoViewController" bundle:Nil];
         [self.navigationController pushViewController:tipoContacto animated:YES];
-    }
-	
-    else {
-		if([self.datosUsuario.arregloContacto count] == maxNumContactos && ((AppDelegate*)[[UIApplication sharedApplication] delegate]).existeSesion && ([((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] || [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Tramite PRO"])){
-			alertaContactos = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeContactosPro", nil) andAlertViewType:AlertViewTypeInfo];
-			[alertaContactos show];
-		}
-		else if(!((AppDelegate*)[[UIApplication sharedApplication] delegate]).existeSesion){
-			alertaContactos = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeContactosPrueba", Nil) andAlertViewType:AlertViewTypeQuestion];
-			[alertaContactos show];
-		}else{
-			alertaContactos = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeContactosPrueba", Nil) andAlertViewType:AlertViewTypeQuestion];
-			[alertaContactos show];
-		}
-    }
+    
+     }else if([self.datosUsuario.arregloContacto count] >= 2 && [self.datosUsuario.arregloContacto count] < maxNumContactos && [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && [self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]){
+         alertaContactos = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeContactosPrueba", Nil) andAlertViewType:AlertViewTypeQuestion];
+         [alertaContactos show];
+    
+     }else if([self.datosUsuario.arregloContacto count] == 2 && ![((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"]){
+         alertaContactos = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeContactosPrueba", Nil) andAlertViewType:AlertViewTypeQuestion];
+         [alertaContactos show];
+     
+     }else if([self.datosUsuario.arregloContacto count] >= maxNumContactos){
+         alertaContactos = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeContactosPro", nil) andAlertViewType:AlertViewTypeInfo];
+         [alertaContactos show];
+     
+     }
 }
 
 
 
 -(void) accionSi
 {
-	[alertaContactos hide];
-
+        [alertaContactos hide];
 		CuentaViewController *cuenta = [[CuentaViewController alloc] initWithNibName:@"CuentaViewController" bundle:Nil];
 		[self.navigationController pushViewController:cuenta animated:YES];
 

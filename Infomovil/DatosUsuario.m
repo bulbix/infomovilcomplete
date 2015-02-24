@@ -147,6 +147,8 @@
 	
 	self.fechaInicialTel = Nil;
 	self.fechaFinalTel = Nil;
+    
+    self.descripcionDominio = Nil;
 	 
 }
 

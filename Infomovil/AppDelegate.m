@@ -91,7 +91,9 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
     }
     
     [self fbDidlogout];
-   
+   // Se limpian los datos al entrar a la aplicación //
+    self.datosUsuario = [DatosUsuario sharedInstance];
+    [self.datosUsuario eliminarDatos];
   
     return YES;
 }
@@ -123,6 +125,10 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
     [session closeAndClearTokenInformation];
     [session close];
     [FBSession setActiveSession:nil];
+    
+    // Se limpian los datos al salir de la aplicación //
+    self.datosUsuario = [DatosUsuario sharedInstance];
+    [self.datosUsuario eliminarDatos];
 }
 
 -(void) realizaConsultaItems {

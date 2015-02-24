@@ -137,14 +137,7 @@
     self.datosUsuario = [DatosUsuario sharedInstance];
     if (index == 2)
 	{
-//        if (self.datosUsuario.arregloHorario.count > 0) {
-//            self.arrayDataContent = self.datosUsuario.arregloHorario;
-//            estaEditando = YES;
-//        }
-//        else {
-//            self.arrayDataContent = [[NSMutableArray alloc] init];
-        
-//        }
+
         self.arrayDataContent = [[NSMutableArray alloc] init];
         KeywordDataModel *keyAux = [self.datosUsuario.arregloDatosPerfil objectAtIndex:index];
         if (keyAux.keywordValue != nil && keyAux.keywordValue.length > 0)
@@ -238,37 +231,14 @@
         modificoPickerC1 = YES;
         anterior1 = row;
         [horarioSeleccionado setInicio:[arrayHorarios objectAtIndex:row]];
-//        if (row+1 < [arrayHorarios count]) {
-//            anterior2 = row+1;
-//            [horarioSeleccionado setCierre:[arrayHorarios objectAtIndex:row+1]];
-//            [pickerView selectRow:row+1 inComponent:1 animated:YES];
-//            modificoPickerC2 = YES;
-//        }
-//        else {
-//            anterior2 = row;
-//            [horarioSeleccionado setCierre:[arrayHorarios objectAtIndex:row]];
-//            [pickerView selectRow:row inComponent:1 animated:YES];
-//            modificoPickerC2 = YES;
-//        }
+
         
     }
     else {
         modificoPickerC2 = YES;
         [horarioSeleccionado setCierre:[arrayHorarios objectAtIndex:row]];
         anterior2 = row;
-//		if([self.pickerHorarios selectedRowInComponent:0]>=row){
-//            if (row > 0) {
-//                [pickerView selectRow:row-1 inComponent:0 animated:YES];
-//                anterior1 = row-1;
-//                [horarioSeleccionado setInicio:[arrayHorarios objectAtIndex:row-1]];
-//            }
-//            else {
-//                [pickerView selectRow:row inComponent:0 animated:YES];
-//                anterior1 = row;
-//                [horarioSeleccionado setInicio:[arrayHorarios objectAtIndex:row]];
-//            }
-//			modificoPickerC1 = YES;
-//		}
+
     }
 }
 
@@ -387,21 +357,7 @@
     estaEliminando = YES;
     self.alertPerfil = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeEliminarPerfil", nil) andAlertViewType:AlertViewTypeQuestion];
     [self.alertPerfil show];
-//	NSMutableArray *aux = [[NSMutableArray alloc] init];
-//	
-//	for (int i = 0; i < arrayDias.count; i++) {
-//		ListaHorarios *lista = [[ListaHorarios alloc] init];
-//		[lista setDia:[arrayDias objectAtIndex:i]];
-//		[lista setInicio:@"00:00"];
-//		[lista setCierre:@"00:00"];
-//		[lista setEditado:NO];
-//		[aux addObject:lista];
-//		estaEditando = YES;
-//	}
-//	
-//	self.arrayDataContent = aux;
-//	
-//	[self guardaDatos];
+
 }
 
 -(IBAction)guardarInformacion:(id)sender {
@@ -419,13 +375,7 @@
 				}
 			}
 			if(aux > 0){
-//				if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-//					AlertView *alert = [AlertView initWithDelegate:nil message:@"Enter opening hours" andAlertViewType:AlertViewTypeInfo];
-//					[alert show];
-//				}else{
-//					AlertView *alert = [AlertView initWithDelegate:nil message:@"Ingresa horario de atención" andAlertViewType:AlertViewTypeInfo];
-//					[alert show];
-//				}
+
                 AlertView *alert = [AlertView initWithDelegate:nil message:NSLocalizedString(@"ingresaHorario",nil) andAlertViewType:AlertViewTypeInfo];
                 [alert show];
 			}else{
@@ -434,13 +384,7 @@
 			}
 		}else{
 			if([self.txtDescripcion.text isEqualToString:@""]){
-//				if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-//					AlertView *alert = [AlertView initWithDelegate:nil message:@"Enter desired text" andAlertViewType:AlertViewTypeInfo];
-//					[alert show];
-//				}else{
-//					AlertView *alert = [AlertView initWithDelegate:nil message:@"Ingresa texto deseado" andAlertViewType:AlertViewTypeInfo];
-//					[alert show];
-//				}
+
                 AlertView *alert = [AlertView initWithDelegate:nil message:NSLocalizedString(@"ingresaTexto",nil) andAlertViewType:AlertViewTypeInfo];
                 [alert show];
 			}else{
@@ -529,14 +473,7 @@
     }
 }
 
-//-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
-//    
-//    if ([text isEqualToString:@"<"] || [text isEqualToString:@">"]) {
-//        return NO;
-//    }
-//    self.modifico = YES;
-//    return YES;
-//}
+
 
 -(void) apareceDatePicker:(NSIndexPath *)indexPath {
     CGSize tamanioTeclado;

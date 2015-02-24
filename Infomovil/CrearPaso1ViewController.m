@@ -236,7 +236,7 @@
         
         
         if (existeItems) {
-            if ([itemSeleccionado estatus] > 0 && [((AppDelegate *)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"]) {
+            if ([itemSeleccionado estatus] > 0 && [((AppDelegate *)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && ![self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]) {
                 VideoViewController *video = [[VideoViewController alloc] initWithNibName:@"VideoViewController" bundle:nil];
                 [self.navigationController pushViewController:video animated:YES];
             }

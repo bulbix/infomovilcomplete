@@ -183,7 +183,7 @@ int opcionButton = 0 ;
 	NSLog(@"status: %@",((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio);
 #endif
         
-        if(sesion &&  [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] ){
+        if(sesion &&  [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && ![self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]){
 	
             if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
                 self.MensajePlanProComprado.text = [NSString stringWithFormat:@"This site already has a Plan Pro\n\nStart date: %@ \nEnd date: %@",self.datosUsuario.fechaInicial, self.datosUsuario.fechaFinal];
@@ -497,80 +497,46 @@ int opcionButton = 0 ;
 
 - (IBAction)tipoCuenta:(id)sender {
 	/////////////////////////////////// COMPRAR PLAN PRO //////////////////////////////////
-	
+	self.datosUsuario = [DatosUsuario sharedInstance];
     if(self.selector.selectedSegmentIndex == 0){
-        
 		BOOL sesion = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).existeSesion;
-		if(sesion &&  [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] ){
-		
-			
-			
-			self.datosUsuario = [DatosUsuario sharedInstance];
-			
-			
-		}else if(sesion &&  ![((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] ){
+        if(sesion &&  ![((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] ){
 			arreglo = pro;
 			tipo = NO;
 			self.tituloPlanPro.text = NSLocalizedString(@"mensajeCuenta", @" ");
-			
 			self.vistaPlanPro.hidden = NO;
 		
-			BOOL sesion = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).existeSesion;
-			if(sesion &&  ![((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] ){
-				
-			}else{
-
-			}
-			
 		}else{
 			arreglo = pro;
 			tipo = NO;
 			self.tituloPlanPro.text = NSLocalizedString(@"mensajeCuenta", @" ");
-			
-
-			
-			
-			BOOL sesion = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).existeSesion;
-			if(sesion &&  ![((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] ){
-				
-			}else{
-
-			}
+			//BOOL sesion = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).existeSesion;
+		
 		}
         [self.scrollContenido scrollRectToVisible:CGRectMake(0, 0, self.scrollContenido.frame.size.width, self.scrollContenido.frame.size.height) animated:YES];
 
 	}else if(self.selector.selectedSegmentIndex == 1){
-        
         /////////////////////////////////  COMPRAR DOMINIO   //////////////////////////////
-        
-        
-		self.tituloPlanPro.text = @"";
-		
+		/*self.tituloPlanPro.text = @"";
         if ([((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pendiente"]) {
             [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
-          // IRC Este selector se trae el estados
-          //   [self performSelectorInBackground:@selector(consultaEstatus) withObject:Nil];
         }
-		else if(self.datosUsuario.nombroSitio || ![((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Tramite"]){
-			
-
+         */
+        
+        BOOL sesion = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).existeSesion;
+        if(sesion ){
             
-		}else{
-			
-            
-
-		}
-		
+        
+        
         if (tablaDominio == nil) {
             tablaDominio = [[TablaDominioViewController alloc] init];
         }
-        
-        
         [tablaSitios setDelegate:tablaDominio];
         [tablaSitios setDataSource:tablaDominio];
         tablaDominio.view = tablaDominio.tableView;
         [self.scrollContenido scrollRectToVisible:CGRectMake(320, 0, self.scrollContenido.frame.size.width, self.scrollContenido.frame.size.height) animated:YES];
-	}
+        }
+    }
 	
 	
 }
@@ -619,6 +585,7 @@ int opcionButton = 0 ;
     
     if ([[notification name] isEqualToString:@"FailedTransactionNotification"]){
         self.datosUsuario.datosPago.statusPago = @"INTENTO PAGO";
+        self.datosUsuario.descripcionDominio = @"";
         NSLog (@" IRC --------------------------- Fallo la transaccion!");
     }
     else if ([[notification name] isEqualToString:@"CompleteTransactionNotification"]){
@@ -631,6 +598,7 @@ int opcionButton = 0 ;
         self.viewCompraPlanPro.hidden = YES;
         self.viewPlanProComprado.hidden = NO;
         self.datosUsuario.datosPago.statusPago = @"PAGADO";
+        self.datosUsuario.descripcionDominio = @"";
         [self compra];
         NSLog (@" IRC --------------------------- Se completo la transaccion !");
     }

@@ -945,9 +945,8 @@
                                                                                  to:@"dd-MM-yyy"];
 	}
     else if ([elementName isEqualToString:@"descripcionDominio"]) {
-        NSString *strAux = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
-        // [dominioUsuario setStatusVisible:[strAux integerValue]];
-        NSLog(@"LA DESCRIPCION DOMINIO ES: %@",strAux );
+        self.datosUsuario.descripcionDominio =  [StringUtils desEncriptar:self.currentElementString conToken:self.token];
+        NSLog(@"LA DESCRIPCION DOMINIO ES: %@",self.datosUsuario.descripcionDominio );
     }
     else if ([elementName isEqualToString:@"codeCamp"]) {
         self.datosUsuario.codigoRedimir = [StringUtils desEncriptar:self.currentElementString conToken:self.token];

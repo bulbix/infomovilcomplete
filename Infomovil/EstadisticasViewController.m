@@ -188,7 +188,7 @@
             break;
         case 1: //por mes
             opcionConsulta = 3;
-            if ([((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"]) {
+            if ([((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && ![self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]) {
                 consultar = YES;
             }
             else {
@@ -198,7 +198,7 @@
             break;
         case 2: //por 3 meses
             opcionConsulta = 4;
-            if ([((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"]) {
+            if ([((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && ![self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]) {
                 consultar = YES;
             }
             else {
@@ -207,7 +207,7 @@
             break;
         case 3: //por 6 meses
             opcionConsulta = 5;
-            if ([((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"]) {
+            if ([((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && ![self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]) {
                 consultar = YES;
             }
             else {

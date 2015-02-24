@@ -38,7 +38,7 @@
 }
 
 - (void)viewDidLoad{ NSLog(@"ViewDidload MenuPasosViewController");
-	NSLog(@"statusDominio: %@", ((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio );
+	NSLog(@"statusDominio : %@", ((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio );
     [super viewDidLoad];
 	
     self.datosUsuario				= [DatosUsuario sharedInstance];

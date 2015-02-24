@@ -73,7 +73,6 @@
     
     UIBarButtonItem *buttonAdd = [[UIBarButtonItem alloc] initWithCustomView:botonAgregar];
     self.navigationItem.rightBarButtonItem = buttonAdd;
-//    [self.tituloVista setText:NSLocalizedString(@"informacionAdicional", @" ")];
 	if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
 		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"informacionAdicional", @" ") nombreImagen:@"barraverde.png"];
 	}else{
@@ -114,24 +113,36 @@
 
 -(IBAction)agregarInformacion:(id)sender {
     self.datosUsuario = [DatosUsuario sharedInstance];
-    if (self.datosUsuario.arregloInformacionAdicional.count < maxNumInformacion) {
+    NSLog(@"El numero maximo de información es: %i", maxNumInformacion);
+ 
+    if(!((AppDelegate*)[[UIApplication sharedApplication] delegate]).existeSesion){
+        AlertView *alert = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionCaduco", Nil) andAlertViewType:AlertViewTypeInfo];
+        [alert show];
+        [StringUtils terminarSession];
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    
+    }else if (self.datosUsuario.arregloInformacionAdicional.count < 1) {
         InformacionPaso2ViewController *info = [[InformacionPaso2ViewController alloc] initWithNibName:@"InformacionPaso2ViewController" bundle:Nil];
         [info setOperacionInformacion: InfoAdicionalOperacionAgregar];
         [self.navigationController pushViewController:info animated:YES];
+    
+    }else if(self.datosUsuario.arregloInformacionAdicional.count == 1 && ((AppDelegate*)[[UIApplication sharedApplication] delegate]).existeSesion && [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && ![self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]){
+        InformacionPaso2ViewController *info = [[InformacionPaso2ViewController alloc] initWithNibName:@"InformacionPaso2ViewController" bundle:Nil];
+        [info setOperacionInformacion: InfoAdicionalOperacionAgregar];
+        [self.navigationController pushViewController:info animated:YES];
+        
+    }else if(self.datosUsuario.arregloInformacionAdicional.count == 1 && ((AppDelegate*)[[UIApplication sharedApplication] delegate]).existeSesion && [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && [self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]){
+        alertaIndormacion = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeInformacionAdicionalPrueba", @" ") andAlertViewType:AlertViewTypeQuestion];
+        [alertaIndormacion show];
+        
+    
+    }else if(self.datosUsuario.arregloInformacionAdicional.count == maxNumInformacion){
+        AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeInformacionPro", nil) andAlertViewType:AlertViewTypeInfo];
+        [alert show];
     }
-	else{
-		if(self.datosUsuario.arregloInformacionAdicional.count == maxNumInformacion && ((AppDelegate*)[[UIApplication sharedApplication] delegate]).existeSesion && ([((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] || [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Tramite PRO"])){
-			AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeInformacionPro", nil) andAlertViewType:AlertViewTypeInfo];
-			[alert show];
-		}
-		else if(!((AppDelegate*)[[UIApplication sharedApplication] delegate]).existeSesion){
-			alertaIndormacion = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeInformacionAdicionalPrueba", @" ") andAlertViewType:AlertViewTypeQuestion];
-			[alertaIndormacion show];
-		}else{
-			AlertView *alert = [AlertView initWithDelegate:self message:[NSString stringWithFormat:NSLocalizedString(@"mensajeInformacionAdicionalPrueba", @" "),maxNumInformacion] andAlertViewType:AlertViewTypeQuestion];
-			[alert show];
-		}
-	}
+    
+    
+    
 }
 
 -(void) accionSi{

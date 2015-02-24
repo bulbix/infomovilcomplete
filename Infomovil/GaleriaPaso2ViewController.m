@@ -386,12 +386,11 @@
         
         if (self.modifico) {
             [self performSelectorInBackground:@selector(salvaImagen) withObject:Nil];
-//            self.datosUsuario.rutaImagenPromocion = [self salvaImagen];
-//            [self salvaImagen];
+
             [self mostrarActivity];
         }
         else {
-//            self.datosUsuario.rutaImagenPromocion = self.imagenActual.rutaImagen;
+
             [self.navigationController popViewControllerAnimated:YES];
         }
         return;
@@ -427,17 +426,12 @@
 }
 
 -(void) terminaRegreso:(NSString *) path {
-//    self.datosUsuario.rutaImagenPromocion = path;
     [self ocultarActivity];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void) salvaImagen {
-//    NSString *path;
-////    void dispatch_sync(
-//    dispatch_queue_t backgroundQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
-//    dispatch_sync(backgroundQueue, ^{
-    
+  
         NSString *nombreImagen = [StringUtils randomStringWithLength:15];
         UIImage *imagenTomada = [self.vistaPreviaImagen image];
         NSData *pngData = UIImageJPEGRepresentation(imagenTomada, 1.0); //UIImagePNGRepresentation(imagenTomada);
@@ -467,6 +461,7 @@
     
     
         self.imagenActual = [[GaleriaImagenes alloc] initWithPath:path andFooter:[pieFoto text]];
+        NSLog(@"El tamño de las imagenes tomadas es: %f y alto %f",imagenTomada.size.width, imagenTomada.size.height);
         [self.imagenActual setAncho:imagenTomada.size.width];
         [self.imagenActual setAlto:imagenTomada.size.height];
     if (self.galeryType == PhotoGaleryTypeOffer) {
@@ -477,7 +472,7 @@
     }
     
         
-//    });
+
     
 }
 
@@ -501,30 +496,11 @@
     }
     else {
         if (self.galeryType == PhotoGaleryTypeOffer) {
-//            self.datosUsuario = [DatosUsuario sharedInstance];
-//            self.datosUsuario.rutaImagenPromocion = @"";
             [self.navigationController popViewControllerAnimated:YES];
         }
         
         else {
-//            if(cambioPie)
-//            {
-//                if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion)
-//                {
-//                    if ([CommonUtils hayConexion]) {
-//                        estaBorrando = NO;
-//                        [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
-//                        [self performSelectorInBackground:@selector(modificarImagen) withObject:Nil];
-//                    }
-//                    else {
-//                        AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
-//                        [alert show];
-//                    }
-//                }
-//                else {
-//                    [self.navigationController popViewControllerAnimated:YES];
-//                }
-//            }else{
+
             
                 if (self.galeryType == PhotoGaleryTypeImage) {
                     self.imagenActual = [self.arregloImagenes objectAtIndex:self.index];
@@ -547,7 +523,7 @@
                 else {
                     [self.navigationController popViewControllerAnimated:YES];
                 }
-//            }
+
         }
     }
     }

@@ -32,10 +32,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-//    [self.vistaCircular setImage:[UIImage imageNamed:@"plecaverde.png"]];
-//    [self.vistaCircular setImage:[UIImage imageNamed:@"plecacreasitio.png"]];
-//    [self.tituloVista setText:NSLocalizedString(@"tipoContacto", @" ")];
+
 	if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
 		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"tipoContacto", @" ") nombreImagen:@"barraverde.png"];
 	}else{

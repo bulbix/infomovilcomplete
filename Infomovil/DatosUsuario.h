@@ -99,6 +99,7 @@
 @property (nonatomic) NSInteger vistaOrigen;
 
 @property (nonatomic, strong) NSString *redSocial;
+@property (nonatomic, strong) NSString *descripcionDominio;
 
 //@property NSString
 
