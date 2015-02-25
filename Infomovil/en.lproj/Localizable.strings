@@ -60,7 +60,7 @@
 "buscarVideo"="Search for video";
 "registro"="Create an account";
 "felicidades"="Congratulations!";
-"nombrarSitio"="Now you can name your mobile website!";
+"nombrarSitio"="Now you can name your website!";
 "error"="Error!";
 "llenarCampos"="You need to fill in all the fields";
 "nombradoExitoso"="Congratulations! You've successfully named your website.";
@@ -70,7 +70,7 @@
 "intentaOtro"="Try another one";
 "nombrar"="Name your site";
 "publicar"="Publish your site!";
-"creaSitio"="Create your mobile website";
+"creaSitio"="Create your website";
 "primeroNombrar"="First you need to name your website";
 "compartir"="Share with everyone!";
 "reportes"="Reports";
@@ -114,13 +114,13 @@
 "paisCheck"="Country";
 "visitaPagina"="%i pageviews";
 "visitaUltimos"="%i  pageviews since %i";
-"estoyLinea"="I'm online with infomovil.com Visit my new mobile website at:";
+"estoyLinea"="I'm online with infomovil.com Visit my new website at:";
 "noFacebook"="You haven't set up a Facebook account";
 "notwitter"="You haven''t set up a Twitter account";
 "visitaSitio"="Visit my site";
 "noSMS"="We can't send an SMS from this device.";
 "noWhatsapp"="We can't send a Whatsapp message from this device.";
-"visitaApp"="Visit my new mobile website created with the Infomovil app!";
+"visitaApp"="Visit my new website created with the Infomovil app!";
 "comparteSitio"="Share it with your friends and contacts!";
 "infoRegistro"="Account information";
 "cambiaPass"="Change password";
@@ -148,8 +148,8 @@
 "hola"="Hello!";
 "eligeColor"="You must first choose a background colour";
 "editaPagina"="You must first edit your page";
-"yaNombro"="Congratulations! You've successfully named your mobile website!";
-"3Pasos"="Crear a mobile website in 3 simple steps!";
+"yaNombro"="Congratulations! You've successfully named your website!";
+"3Pasos"="Join this digital world and mobile!";
 "tienesCuenta"="Already have an account?";
 "aceptaCondiciones"="By continuing, you accept the Terms and Privacy Conditions of Infomovil";
 "disponible"="www.%@.tel is available\nRegister it to publish your website.";
@@ -158,13 +158,13 @@
 "enLinea"="Your mobile site is now online!";
 
 "usuarioNombrado"="Success! Your account name has been created!";
-"seleccionaNombre"="To complete the registration process, choose a name for your mobile website.";
+"seleccionaNombre"="To complete the registration process, choose a name for your website.";
 "errorEmail"="Invalid e-mail";
 "emailAsociado"="This e-mail address is already associated with another account";
 "requiereDueno"="You're almost ready to get online.";
 "registrate"="Just create an account, choose a name and publish your site!";
 "contrasena"="Password";
-"yaNombraste"="You've just named and published your mobile website!";
+"yaNombraste"="You've just named and published your website!";
 "cambiarNombre" = "";
 "noVideo"="No matching results were found.";
 "buscaVideo"="Add a Youtube video";
@@ -215,7 +215,7 @@
 "mensajeDominio"="When you publish your website, we offer you a unique and memorable domain:\n\nwww.mysite.tel";//"Coming soon!  Purchase your own .tel domain.\n\n\n\n";
 
 "tituloTips"="Tips";
-"inicioLabel"="Create your mobile website in 3 simple steps";
+"inicioLabel"="Join the digital and mobile world!";
 "inicioBotonPruebalo"="Create a free site!";//"Try it";
 "inicioBotonSesion"="Log in";
 "inicioLeyenda1"="By continuing, you accept the";
@@ -224,14 +224,14 @@
 "inicioLeyenda4" = "Privacy Conditions";
 "inicioLeyenda5" = "of Infomovil";
 
-"mainLabelCorreo"="E-mail";
-"mainLabelPassword"="Password";
+"mainLabelCorreo"=" E-mail";
+"mainLabelPassword"=" Password";
 "mainLabel"="Forget password?";
 "mainBoton"="Log in";
 
 "compartirLabel1"="Congratulations!\n\n";
 "compartirlaben2"="You're now online";
-"compartirLabel3"="Share your mobile website with your friends and contacts";
+"compartirLabel3"="Share your website with your friends and contacts";
 
 "publicarLabel1"="Available";
 "PublicarLabel2"="Confirm";
@@ -260,7 +260,7 @@
 "estadisticasLabel4"="6M";
 "estadisticasLabel5"="1Y";
 
-"compartirLabel2"="I'm online with infomovil.com \nVisit my new mobile website at:";
+"compartirLabel2"="I'm online with infomovil.com \nVisit my new website at:";
 
 "cuentaTituloSegment1"="Pro Plan";
 "cuentaTituloSegment2"="Domain";
@@ -328,7 +328,7 @@
 
 "noGeolocalizacion" = "The geolocation services are disabled";
 
-"felicidades2" = "Your mobile website has been registered!";
+"felicidades2" = "Your website has been registered!";
 "tiempoPublica" = "It might take a few minutes before you can see it online.";
 "fechas" = "Renewal Date:% @";
 "valido" = "This domain is valid for 1 year.\nWe will contact you to renew in 11 months.";
@@ -379,8 +379,8 @@
 "ingresaTexto" = "Enter desired text";
 "condicionesServicio" = "Terms of Service";
 "politicaPrivacidad" = "Privacy Policy";
-"checaMiSitio" = "Check our mobile website";
-"creeMiSitio" = "I just created a mobile website with infomovil.com.\nCheck it out and help us grow!\nwww.%@.tel";
+"checaMiSitio" = "Check our website";
+"creeMiSitio" = "I just created a website with infomovil.com.\nCheck it out and help us grow!\nwww.%@.tel";
 
 "txtMsjSessionActiva" = "You already have a session open. To open a new one on this device, we need to close it.";
 "txtCerrarBackground" = "Your session has been closed for your security, log in again";
@@ -471,7 +471,7 @@
 /*Web View Default Button Labels*/
 "Appboy.slideup.webview.done-button.title" = "Done";
 
-"labelInicioRapidoTexto" = "Llena estos datos clave, selecciona un nombre y pública tu sitio web móvil.\nTiempo estimado:  5 minutos.";
+"labelInicioRapidoTexto" = "Llena estos datos clave, selecciona un nombre y pública tu sitio web.\nTiempo estimado:  5 minutos.";
 "labelVerEjemplo" = "See example";
 "labelInicioRapido" = "Quick start";
 "mensajeInicioRapido" = "Please fill the sections";
@@ -504,8 +504,9 @@
 //IRC inicio //
 "recordarCuenta" = "Remember";
 "crearCuentaRegistrar" = "Create account";
-"contrasenaRegistrar" = "Password";
-"confirmarContrasena" = "Confirm password";
+"contrasenaRegistrar" = " Password";
+"confirmarContrasena" = " Confirm password";
 "olvidasteContrasenaElimininarCuenta" = "Forgot password?";
 
-
+"sesionFaceCerrada" = "closed session";
+"mensajePost" = "Your message has been successfully posted to your Wall";

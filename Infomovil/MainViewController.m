@@ -368,7 +368,7 @@
     NSLog(@"Entrando a loginView:handleError:");
     NSLog(@"El error de facebook es %@  ***********", [error description]);
 #endif
-    [[AlertView initWithDelegate:nil message:@"Sesión cerrada" andAlertViewType:AlertViewTypeInfo] show];
+    [[AlertView initWithDelegate:nil message:NSLocalizedString(@"sesionFaceCerrada", nil) andAlertViewType:AlertViewTypeInfo] show];
 }
 
 - (void)loginViewFetchedUserInfo:(FBLoginView *)loginView

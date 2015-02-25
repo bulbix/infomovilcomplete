@@ -9,6 +9,8 @@
             <connections>
                 <outlet property="botonPruebalo" destination="Q2w-gF-0Kk" id="Enh-F0-B5C"/>
                 <outlet property="botonSesion" destination="SUk-Al-Xp3" id="5m8-xa-Ncg"/>
+                <outlet property="conoceMas" destination="wMQ-Rm-RnG" id="Z1n-uQ-YO0"/>
+                <outlet property="conoceMasPlay" destination="mPc-AF-IfB" id="rqN-ok-J2r"/>
                 <outlet property="label" destination="393-yJ-Glf" id="eNz-Z1-e8v"/>
                 <outlet property="leyenda1" destination="00z-Rp-a1D" id="3Qf-Kd-D0K"/>
                 <outlet property="leyenda2" destination="Dcx-Wb-tmW" id="P0r-su-LBN"/>
@@ -36,7 +38,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Q2w-gF-0Kk">
-                    <rect key="frame" x="30" y="290" width="260" height="55"/>
+                    <rect key="frame" x="30" y="247" width="260" height="55"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <inset key="insetFor6xAndEarlier" minX="0.0" minY="-15" maxX="0.0" maxY="15"/>
                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
@@ -55,7 +57,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="SUk-Al-Xp3">
-                    <rect key="frame" x="30" y="386" width="260" height="55"/>
+                    <rect key="frame" x="30" y="322" width="260" height="55"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
                     <state key="normal" backgroundImage="btniPhone.png">
@@ -63,6 +65,28 @@
                     </state>
                     <connections>
                         <action selector="loguearInfomovil:" destination="-1" eventType="touchUpInside" id="swT-UK-Wbf"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="mPc-AF-IfB">
+                    <rect key="frame" x="86" y="418" width="35" height="35"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" image="play.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="conoceMasPlayAct:" destination="-1" eventType="touchUpInside" id="m49-9M-wIe"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wMQ-Rm-RnG">
+                    <rect key="frame" x="126" y="421" width="143" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
+                    <state key="normal" title="Conoce más">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="conoceMasAct:" destination="-1" eventType="touchUpInside" id="UxR-u0-rBj"/>
                     </connections>
                 </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Si continuas, aceptas las" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="00z-Rp-a1D">
@@ -139,6 +163,7 @@
         <image name="btnfreesiteEn.png" width="265" height="58"/>
         <image name="btniPhone.png" width="265" height="59"/>
         <image name="iPhone.png" width="322" height="568"/>
+        <image name="play.png" width="35" height="35"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

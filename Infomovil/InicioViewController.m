@@ -333,4 +333,9 @@
 -(void) accionCancelar {
 }
 
+- (IBAction)conoceMasAct:(id)sender {
+}
+
+- (IBAction)conoceMasPlayAct:(id)sender {
+}
 @end

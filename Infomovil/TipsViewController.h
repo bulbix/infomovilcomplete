@@ -41,6 +41,9 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *vineta32;
 
+@property (nonatomic, retain) UIAlertView *dialogoFacebook;
+@property (nonatomic, retain) UIAlertView *dialogoTwitter;
+
 - (IBAction)cambiarPagina:(UIPageControl *)sender;
 
 - (IBAction)compartirFacebook:(UIButton *)sender;

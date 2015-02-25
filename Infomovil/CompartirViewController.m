@@ -125,7 +125,7 @@
             [self dismissViewControllerAnimated:YES completion:Nil];
         };
 		if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-			[controller setInitialText:[NSString stringWithFormat: @"I just created a mobile website with infomovil.com.\nCheck it out and help us grow!\nwww.%@.tel",self.datosUsuario.dominio]];
+			[controller setInitialText:[NSString stringWithFormat: @"I just created a website with infomovil.com.\nCheck it out and help us grow!\nwww.%@.tel",self.datosUsuario.dominio]];
 		}else{
 			[controller setInitialText:[NSString stringWithFormat: @"Acabo de crear un sitio web móvil con infomovil.com.\n¡Visítalo y ayúdanos a crecer!\nwww.%@.tel",self.datosUsuario.dominio]];
 		}
@@ -162,7 +162,7 @@
             [self dismissViewControllerAnimated:YES completion:Nil];
         };
 		if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-			[controller setInitialText:[NSString stringWithFormat:@"I just created a mobile website with infomovil.com.\nCheck it out and help us grow!\nwww.%@.tel",self.datosUsuario.dominio]];
+			[controller setInitialText:[NSString stringWithFormat:@"I just created a website with infomovil.com.\nCheck it out and help us grow!\nwww.%@.tel",self.datosUsuario.dominio]];
 		}else{
 			[controller setInitialText:[NSString stringWithFormat:@"Acabo de crear un sitio web móvil con infomovil.com.\n¡Visítalo y ayúdanos a crecer!\nwww.%@.tel",self.datosUsuario.dominio]];
 		}
@@ -188,11 +188,11 @@
 		
 		NSString *message;
 		if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-			[controller setSubject:@"Check our mobile website"];
-			message = [[NSString stringWithFormat:@"I just created a mobile website with infomovil.com.\nCheck it out and help us grow!\nwww.%@.tel",self.datosUsuario.dominio] stringByReplacingOccurrencesOfString:@"\n" withString:@"<br>"];
+			[controller setSubject:@"Check our website"];
+			message = [[NSString stringWithFormat:@"I just created a website with infomovil.com.\nCheck it out and help us grow!\nwww.%@.tel",self.datosUsuario.dominio] stringByReplacingOccurrencesOfString:@"\n" withString:@"<br>"];
 		}else{
-			[controller setSubject:@"Checa nuestro sitio web móvil"];
-			message = [[NSString stringWithFormat:@"Acabo de crear un sitio web móvil con infomovil.com.\n¡Visítalo y ayúdanos a crecer!\nwww.%@.tel",self.datosUsuario.dominio] stringByReplacingOccurrencesOfString:@"\n" withString:@"<br>"];
+			[controller setSubject:@"Checa nuestro sitio web"];
+			message = [[NSString stringWithFormat:@"Acabo de crear un sitio web con infomovil.com.\n¡Visítalo y ayúdanos a crecer!\nwww.%@.tel",self.datosUsuario.dominio] stringByReplacingOccurrencesOfString:@"\n" withString:@"<br>"];
 		}
 		
 		[controller setMessageBody:message isHTML:YES];
@@ -215,9 +215,9 @@
     }
 	NSString *mensaje;
 	if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-		mensaje = @"I just created a mobile website with infomovil.com.\nCheck it out and help us grow!\nwww.%@.tel";
+		mensaje = @"I just created a website with infomovil.com.\nCheck it out and help us grow!\nwww.%@.tel";
 	}else{
-		mensaje = @"Acabo de crear un sitio web móvil con infomovil.com.\n¡Visítalo y ayúdanos a crecer!\nwww.%@.tel";
+		mensaje = @"Acabo de crear un sitio web con infomovil.com.\n¡Visítalo y ayúdanos a crecer!\nwww.%@.tel";
 	}
 	
     NSString *message = [NSString stringWithFormat: mensaje,self.datosUsuario.dominio];
@@ -262,7 +262,7 @@
 	
 	NSString *message;
 	if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-		message = @"I just created a mobile website with infomovil.com.\nCheck it out and help us grow!\nwww.%@.tel";
+		message = @"I just created a website with infomovil.com.\nCheck it out and help us grow!\nwww.%@.tel";
 	}else{
 		message = @"Acabo de crear un sitio web móvil con infomovil.com.\n¡Visítalo y ayúdanos a crecer!\nwww.%@.tel";
 	}

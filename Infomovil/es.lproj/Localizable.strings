@@ -40,7 +40,7 @@
 "biografia" = "Biografía";
 
 "eliminarImagen" = "¿Deseas eliminar la imagen?";
-"anadirImagen" = "Añadir imágen";
+"anadirImagen" = "Añadir imagen";
 "imagenes" = "Imágenes";
 "solo5Imagenes" = "Sólo puedes agregar %i imágenes";
 "paraAgregarImagen" = "Para agregar otra imagen, debes eliminar una antes";
@@ -95,7 +95,7 @@
 "nombrar" = "Nombra tu sitio";
 "publicar" = "¡Publícalo!";
 
-"creaSitio" = "Crea tu sitio web móvil";
+"creaSitio" = "Crea tu sitio web";
 "primeroNombrar" =  "Primero debes nombrar tu sitio web ";
 
 "compartir" = "¡Compártelo con todos!";
@@ -160,7 +160,7 @@
 "visitaSitio" = "Visita mi sitio";
 "noSMS" = "Tu dispositivo no soporta el envío de SMS!";
 "noWhatsapp" = "Tu dispositivo no soporta el envío de Whatsapp!";
-"visitaApp" = "¡Revisa mi nuevo sitio móvil creado con la app infomovil!";
+"visitaApp" = "¡Revisa mi nuevo sitio creado con la app infomovil!";
 
 "infoRegistro" = "Información de registro";
 "cambiaPass" = "Cambiar contraseña";
@@ -192,7 +192,7 @@
 "editaPagina" = "Debes editar tu página";
 "yaNombro" = "Ya has nombrado tu página";
 
-"3Pasos" = "¡Crea tu sitio web móvil en 3 sencillos pasos!";
+"3Pasos" = "¡Únete al mundo digital y móvil!";
 "tienesCuenta" = "¿Ya tienes cuenta?";
 "aceptaCondiciones" = "Si continúas, aceptas las condiciones del servicio y la Política de Privacidad de Infomovil";
 
@@ -232,9 +232,7 @@
 "descripcionPromocion" = "Descripción de la promoción";
 "vigencia" = "Vigencia al:";
 
-"5Imagenes" = "Plan Básico: agrega hasta 2 imágenes.\nPlan Pro: agrega hasta 12 imágenes.
-
-";
+"5Imagenes" = "Plan Básico: agrega hasta 2 imágenes.\nPlan Pro: agrega hasta 12 imágenes.";
 "5ImagenesPro" = "Actualiza tus 10 imágenes y destaca de la competencia.";
 "galeriaVertical" = "Estas imágenes se mostrarán en una galería vertical";
 "redimensionaImagen" = "Las imágenes serán redimensionadas para adaptarse";
@@ -256,7 +254,7 @@
 
 
 "mensajeInformacionAdicional" = "Plan Básico: agrega una sección.\nPlan Pro: agrega hasta 2 secciones.";
-"mensajeInformacionAdicionalPro" = "Agrega más informacion a tu sitio web móvil para tus clientes y destaca de la competencia.";
+"mensajeInformacionAdicionalPro" = "Agrega más informacion a tu sitio web para tus clientes y destaca de la competencia.";
 
 "mensajeContactos" = "Plan Básico: Puedes agregar hasta 3 contactos.\nPlan Pro: puedes agregar hasta 10 contactos.";
 
@@ -281,13 +279,13 @@
 
 "mensajeNoPrueba" = "Esta opción es parte del Plan Pro ¿Deseas aprender más del Plan Pro?";
 
-"mensajeDominio" = "Al nombrar tu sitio web móvil, te damos una dirección única y memorable:\n\nwww.minegocio.tel";//;"Próximamente podrás adquirir tu propio dominio .tel \n\nwww.mi negocio.tel\n\n Un dominio .tel utiliza un sistema avanzado de hosteo para que tu página se cargue más rápidamente. Es la mejor opción si deseas un sitio totalmente profesional.";
+"mensajeDominio" = "Al nombrar tu sitio web, te damos una dirección única y memorable:\n\nwww.minegocio.tel";//;"Próximamente podrás adquirir tu propio dominio .tel \n\nwww.mi negocio.tel\n\n Un dominio .tel utiliza un sistema avanzado de hosteo para que tu página se cargue más rápidamente. Es la mejor opción si deseas un sitio totalmente profesional.";
 
 "tituloTips" = "Tips";
 
 
 //InicioViewController
-"inicioLabel" = "¡Crea tu sitio web móvil \nen 3 sencillos pasos!";
+"inicioLabel" = "¡Únete al mundo digital y móvil!";
 "inicioBotonPruebalo" = "Pruébalo";
 "inicioBotonSesion" = "Inicia sesión";
 
@@ -298,8 +296,8 @@
 "inicioLeyenda5" = "de infomovil";
 
 //MainViewController
-"mainLabelCorreo" = "Dirección de correo";
-"mainLabelPassword" = "Contraseña";//====================================>Repetido
+"mainLabelCorreo" = " Dirección de correo";
+"mainLabelPassword" = " Contraseña";//====================================>Repetido
 "mainLabel" = "¿Olvidaste tu contraseña?";
 "mainBoton" = "Inicia sesión";
 
@@ -324,7 +322,7 @@
 "tipsLabel21" = "A la gente le gusta mucho ver videos";
 "tipsLabel22" = "Graba un video corto con tu smartphone para explicar tus productos y servicios";
 "tipsLabel23" = "Súbelo a YouTube";
-"tipsLabel24" = "Lígalo con tu sitio web móvil																					";
+"tipsLabel24" = "Lígalo con tu sitio web																					";
 
 "tipsTitulo3" = "¡Refresca tu contenido!";
 "tipsLabel31" = "Actualiza tus promociones y nunca dejes promociones vencidas ";
@@ -332,7 +330,7 @@
 "tipsLabel33" = "Llena todas las secciones";
 
 "tipsTitulo4" = "¡Cuéntale a todos de tu sitio!";
-"tipsLabel41" = "Comparte tu sitio web móvil con todos tus amigos y contactos";
+"tipsLabel41" = "Comparte tu sitio web con todos tus amigos y contactos";
 
 //EstadisticasViewController
 "estadisticasLabel1" = "1S";
@@ -342,8 +340,8 @@
 "estadisticasLabel5" = "1A";
 
 //CompartirViewController
-"compartirLabel1" = "Comparte tu sitio web móvil con tus contactos y amigos para sacarle más provecho.";
-"compartirLabel2" = "Ya estoy en línea con infomovil. Visita mi sitio web móvil:";
+"compartirLabel1" = "Comparte tu sitio web con tus contactos y amigos para sacarle más provecho.";
+"compartirLabel2" = "Ya estoy en línea con infomovil. Visita mi sitio web:";
 
 //CuentaViewController
 "cuentaTituloSegment1" = "Plan Pro";
@@ -436,7 +434,7 @@
 
 "noGeolocalizacion" = "Los servicios de geolocalización están desactivados";
 
-"felicidades2" = "¡Tu sitio web móvil se ha registrado!";
+"felicidades2" = "¡Tu sitio web se ha registrado!";
 "tiempoPublica" = "El proceso de publicación puede tardar unos minutos.";
 "fechas" = "Próxima renovación:%@";
 "valido" = "Este dominio es válido por 1 año.\nTe contactaremos para renovarlo en 11 meses.";
@@ -446,10 +444,10 @@
 "verificaDatos" = "Verifica tus datos";
 
 "mensajeGoogle" = "www.%@.tel\nCreado con infomovil.com";
-"mensajeTwitter" = "%@\nMuy buen sitio web móvil\nwww.%@.tel";
+"mensajeTwitter" = "%@\nMuy buen sitio web\nwww.%@.tel";
 "mensajeEmail1" = "%@ checa este sitio!";
-"mensajeEmail2" = "Checa este sitio web móvil\nwww.%@.tel\nCreado con infomovil.com";
-"mensajeSms" = "Checa este sitio web móvil\nwww.%@.tel";
+"mensajeEmail2" = "Checa este sitio web\nwww.%@.tel\nCreado con infomovil.com";
+"mensajeSms" = "Checa este sitio web \nwww.%@.tel";
 
 "mensajePromocion1" = "No se han realizado cambios en la información aún";
 "mensajePromocion2" = "Por favor, introduce un título";
@@ -494,8 +492,8 @@
 "ingresaTexto" = "Ingresa texto deseado";
 "condicionesServicio" = "Condiciones del Servicio";
 "politicaPrivacidad" = "Política de privacidad";
-"checaMiSitio" = "Checa nuestro sitio web móvil";
-"creeMiSitio" = "Acabo de crear un sitio web móvil con infomovil.com.\n¡Visítalo y ayúdanos a crecer!\nwww.%@.tel";
+"checaMiSitio" = "Checa nuestro sitio web";
+"creeMiSitio" = "Acabo de crear un sitio web con infomovil.com.\n¡Visítalo y ayúdanos a crecer!\nwww.%@.tel";
 
 "txtMsjSessionActiva" = "Tienes otra sesión abierta, si continúas cerrarás la sesión anterior.";
 "txtCerrarBackground" = "Por tu seguridad la sesión se ha cerrado, ingresa nuevamente";
@@ -585,7 +583,7 @@
 /*Web View Default Button Labels*/
 "Appboy.slideup.webview.done-button.title" = "Terminar";
 
-"labelInicioRapidoTexto" = "Llena estos datos clave, selecciona un nombre y pública tu sitio web móvil.\nTiempo estimado:  5 minutos.";
+"labelInicioRapidoTexto" = "Llena estos datos clave, selecciona un nombre y pública tu sitio web.\nTiempo estimado:  5 minutos.";
 "labelVerEjemplo" = "Ver ejemplo";
 "labelInicioRapido" = "Inicio rápido";
 "mensajeInicioRapido" = "Por favor llena las secciones";
@@ -617,7 +615,9 @@
 //IRC inicio //
 "recordarCuenta" = "Recordar";
 "crearCuentaRegistrar" = "Crear cuenta";
-"contrasenaRegistrar" = "Contraseña";
-"confirmarContrasena" = "Confirmar contraseña";
+"contrasenaRegistrar" = " Contraseña";
+"confirmarContrasena" = " Confirmar contraseña";
 "olvidasteContrasenaElimininarCuenta" = "¿Olvidaste tu contraseña?";
 
+"sesionFaceCerrada" = "Sesión cerrada";
+"mensajePost" = "El mensaje se ha publicado correctamente en tu muro";

@@ -603,6 +603,8 @@
 		AB5280DC19AE593B001AB735 /* InstruccionesContacto.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB5280DA19AE593B001AB735 /* InstruccionesContacto.xib */; };
 		AB60A849198065E300E1C476 /* logoRegistrado.png in Resources */ = {isa = PBXBuildFile; fileRef = AB60A848198065E300E1C476 /* logoRegistrado.png */; };
 		AB60A84B1980662000E1C476 /* logoRegistrado@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB60A84A1980661F00E1C476 /* logoRegistrado@2x.png */; };
+		BF35BAE11A9D5BE200E85F7A /* play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF35BAE01A9D5BE200E85F7A /* play@2x.png */; };
+		BF35BAE31A9D5C0600E85F7A /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = BF35BAE21A9D5C0600E85F7A /* play.png */; };
 		BF4B7E951A8A686300D049CD /* WS_PlanPro.m in Sources */ = {isa = PBXBuildFile; fileRef = BF4B7E941A8A686300D049CD /* WS_PlanPro.m */; };
 		BF60DE911A89111F008D963E /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BF60DE8E1A89111F008D963E /* IAPHelper.m */; };
 		BF60DE921A89111F008D963E /* RageIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BF60DE901A89111F008D963E /* RageIAPHelper.m */; };
@@ -613,6 +615,7 @@
 		BF66CE151A966FE500EA6D00 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF66CE141A966FE500EA6D00 /* FacebookSDK.framework */; };
 		BF66CE181A96709D00EA6D00 /* FacebookSDKOverrides.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = BF66CE161A96709D00EA6D00 /* FacebookSDKOverrides.bundle */; };
 		BF66CE191A96709D00EA6D00 /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF66CE171A96709D00EA6D00 /* FBAudienceNetwork.framework */; };
+		BF9DB6FA1A9D15D4009C5A58 /* icono57.png in Resources */ = {isa = PBXBuildFile; fileRef = BF9DB6F91A9D15D4009C5A58 /* icono57.png */; };
 		BFA7018A1A817A3B00F685C3 /* libAdIdAccess.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFA701861A817A3B00F685C3 /* libAdIdAccess.a */; };
 		BFA7018B1A817A3B00F685C3 /* libAppsFlyerLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFA701871A817A3B00F685C3 /* libAppsFlyerLib.a */; };
 		BFA7018C1A817A3B00F685C3 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFA701881A817A3B00F685C3 /* libGoogleAnalyticsServices.a */; };
@@ -1517,6 +1520,8 @@
 		AB5280DD19AE594D001AB735 /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = es.lproj/InstruccionesContacto.xib; sourceTree = "<group>"; };
 		AB60A848198065E300E1C476 /* logoRegistrado.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoRegistrado.png; sourceTree = "<group>"; };
 		AB60A84A1980661F00E1C476 /* logoRegistrado@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logoRegistrado@2x.png"; sourceTree = "<group>"; };
+		BF35BAE01A9D5BE200E85F7A /* play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play@2x.png"; sourceTree = "<group>"; };
+		BF35BAE21A9D5C0600E85F7A /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
 		BF4B7E931A8A686300D049CD /* WS_PlanPro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WS_PlanPro.h; sourceTree = "<group>"; };
 		BF4B7E941A8A686300D049CD /* WS_PlanPro.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WS_PlanPro.m; sourceTree = "<group>"; };
 		BF60DE8D1A89111F008D963E /* IAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelper.h; sourceTree = "<group>"; };
@@ -1532,6 +1537,7 @@
 		BF66CE141A966FE500EA6D00 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = Infomovil/FacebookSDK.framework; sourceTree = "<group>"; };
 		BF66CE161A96709D00EA6D00 /* FacebookSDKOverrides.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FacebookSDKOverrides.bundle; path = Infomovil/FacebookSDKOverrides.bundle; sourceTree = "<group>"; };
 		BF66CE171A96709D00EA6D00 /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBAudienceNetwork.framework; path = Infomovil/FBAudienceNetwork.framework; sourceTree = "<group>"; };
+		BF9DB6F91A9D15D4009C5A58 /* icono57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icono57.png; path = Infomovil/Images.xcassets/AppIcon.appiconset/icono57.png; sourceTree = SOURCE_ROOT; };
 		BFA701861A817A3B00F685C3 /* libAdIdAccess.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAdIdAccess.a; sourceTree = "<group>"; };
 		BFA701871A817A3B00F685C3 /* libAppsFlyerLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAppsFlyerLib.a; sourceTree = "<group>"; };
 		BFA701881A817A3B00F685C3 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
@@ -1889,6 +1895,7 @@
 		0F5CFA49189733E100D27B2E /* imagenesInfomovil */ = {
 			isa = PBXGroup;
 			children = (
+				BF9DB6F91A9D15D4009C5A58 /* icono57.png */,
 				BFBF24681A9277D70034F5DD /* RecordarCuenta */,
 				BFBF245D1A9273D30034F5DD /* LoginFacebook */,
 				BFAD59FA1A8D10E900749320 /* imagenesPlanPro */,
@@ -1902,6 +1909,7 @@
 		0F5CFA4A189733E100D27B2E /* iPhone */ = {
 			isa = PBXGroup;
 			children = (
+				BF35BAE21A9D5C0600E85F7A /* play.png */,
 				BFB69B6F1A8426BD0022107C /* miFeed.png */,
 				0F65559319CBAA5D00C90B80 /* logoyoutube.png */,
 				AB60A848198065E300E1C476 /* logoRegistrado.png */,
@@ -2201,6 +2209,7 @@
 		0F9F52E218989413000F9FA5 /* iPhoneRet */ = {
 			isa = PBXGroup;
 			children = (
+				BF35BAE01A9D5BE200E85F7A /* play@2x.png */,
 				BFB69B711A8427360022107C /* miFeed@2x.png */,
 				0F65559519CBAA7500C90B80 /* logoyoutube@2x.png */,
 				AB60A84A1980661F00E1C476 /* logoRegistrado@2x.png */,
@@ -3235,6 +3244,7 @@
 				0F68946018E5404C00025050 /* nombrarpublicar@2x.png in Resources */,
 				0F9F533518989413000F9FA5 /* color@2x.png in Resources */,
 				0F408BC518E0FF0C0010FFC5 /* botonaceptar@2x.png in Resources */,
+				BF35BAE11A9D5BE200E85F7A /* play@2x.png in Resources */,
 				0F9F52B8189890C6000F9FA5 /* btnyoutube.png in Resources */,
 				65581B2B19350C9300B5D4ED /* reportsEn.png in Resources */,
 				0F69406218E09112008A8F07 /* linea.png in Resources */,
@@ -3277,6 +3287,7 @@
 				0FD40D8A18D8F6EB004BE3B2 /* perfil.png in Resources */,
 				0F680EE318EC75E500A02347 /* barraroja.png in Resources */,
 				0F9F52D8189890C6000F9FA5 /* plecaamarilla.png in Resources */,
+				BF9DB6FA1A9D15D4009C5A58 /* icono57.png in Resources */,
 				0FF4211E1899845B003EEBB1 /* tomarfoto@2x.png in Resources */,
 				0F9F532E18989413000F9FA5 /* camara@2x.png in Resources */,
 				0F9F52D6189890C6000F9FA5 /* mireporteson.png in Resources */,
@@ -3516,6 +3527,7 @@
 				0F7B986B197EE0D100AA41D1 /* PromocionesViewController.xib in Resources */,
 				65581B071934F78600B5D4ED /* roja@2x.png in Resources */,
 				0F9F52C6189890C6000F9FA5 /* ctelefono.png in Resources */,
+				BF35BAE31A9D5C0600E85F7A /* play.png in Resources */,
 				0FE02827186E48FF007C27B0 /* Images.xcassets in Resources */,
 				0F680EE518EC75E500A02347 /* barraverde.png in Resources */,
 				0F3D87B118AD7E9B0006E5BC /* VistaVideoViewController.xib in Resources */,

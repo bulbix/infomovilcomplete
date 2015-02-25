@@ -40,7 +40,7 @@
 "biografia" = "Biografía";
 
 "eliminarImagen" = "¿Deseas eliminar la imágen?";
-"anadirImagen" = "Añadir imágen";
+"anadirImagen" = "Añadir imagen";
 "imagenes" = "Imágenes";
 "solo5Imagenes" = "Sólo puedes agregar %i imágenes";
 "paraAgregarImagen" = "Para agregar otra imágen, debes eliminar una antes";
@@ -94,7 +94,7 @@
 "nombrar" = "Nombrar";
 "publicar" = "Publicar";
 
-"creaSitio" = "Crea tu sitio web móvil";
+"creaSitio" = "Crea tu sitio web";
 "primeroNombrar" =  "Primero debes nombrar tu sitio web ";
 
 "compartir" = "Compartir";
@@ -159,7 +159,7 @@
 "visitaSitio" = "Visita mi sitio";
 "noSMS" = "Tu dispositivo no soporta el envío de SMS!";
 "noWhatsapp" = "Tu dispositivo no soporta el envío de Whatsapp!";
-"visitaApp" = "¡Revisa mi nuevo sitio móvil creado con la app infomóvil!";
+"visitaApp" = "¡Revisa mi nuevo sitio creado con la app infomóvil!";
 "comparteSitio" = "Comparte mi sitio";
 "infoRegistro" = "Información de registro";
 "cambiaPass" = "Cambiar contraseña";
@@ -191,7 +191,7 @@
 "editaPagina" = "Debes editar tu página";
 "yaNombro" = "Ya has nombrado tu página";
 
-"3Pasos" = "¡Crea tu sitio móvil en 3 sencillos pasos!";
+"3Pasos" = "¡Crea tu sitio web en 3 sencillos pasos!";
 "tienesCuenta" = "¿Ya tienes cuenta?";
 "aceptaCondiciones" = "Si continúas, aceptas las condiciones del servicio y la Politica de Privacidad de Infomóvil";
 
@@ -206,8 +206,8 @@
 "errorEmail" = "¡Email inválido!";
 "emailAsociado" = "Este email ya fue asociado a otra cuenta";
 "requiereDueno" = "Tu sitio requiere un dueño.";
-"registrate" = "Regístrate";
-"contrasena" = "Contraseña";
+"registrate" = "¡Regístrate!";
+"contrasena" = " Contraseña";
 
 "yaNombraste" = "Ya nombraste y publicaste tu sitio web";
 "cambiarNombre" = "Si deseas cambiar el nombre, compra uno nuevo aquí";
@@ -263,13 +263,6 @@
 "mensajeContactoTelefono" = "Se usa el primer número telefónico que pongas (fijo o móvil)";
 "mensajeContactoMail" = "Se usa el primer contacto de email que definas";
 
-//"datosBasicos" = "Datos básicos";
-//"numeroImagenes" = "Agregar hasta 6 imágenes";
-//"videoLigado" = "Ligar un video de YouTube con tu sitio";
-//"numeroContactos" = "Definir hasta 10 contactos";
-//"brand" = "Sin anuncios";
-//"ads" = "Sin promoción de Infomovil";
-//"templates" = "Hosting profesional para asegurar un optimo desempeño";
 
 "datosBasicos" = "Incluye un video en YouTube";
 "numeroImagenes" = "Agrega hasta 6 imágenes";
@@ -290,7 +283,7 @@
 
 
 //InicioViewController
-"inicioLabel" = "¡Crea tu sítio móvil en 3 sencillos pasos!";
+"inicioLabel" = "¡Únete al mundo digital y móvil!";
 "inicioBotonPruebalo" = "Pruébalo";
 "inicioBotonSesion" = "Inicia Sesión";
 
@@ -318,7 +311,7 @@
 
 //TipsViewController
 "tipsTitulo1" = "¡No te equivoques con tus datos";
-"tipsLabel11" = "Es muy fácil hacer errores de dedo con tus números telefónicos y otros datos, para evitar que ésto suceda, abre tu sitio web móvil en tu navegador y revisa que los siguientes botones funcionen correctamente:";
+"tipsLabel11" = "Es muy fácil hacer errores de dedo con tus números telefónicos y otros datos, para evitar que ésto suceda, abre tu sitio web en tu navegador y revisa que los siguientes botones funcionen correctamente:";
 "tipsLabel12" = "Llámanos";
 "tipsLabel13" = "Ubícanos";
 "tipsLabel14" = "Contáctanos";
@@ -329,12 +322,12 @@
 "tipsLabel23" = "Muestra tus productos y explica qué productos ofreces.";
 
 "tipsTitulo3" = "¡Información completa y fresca!";
-"tipsLabel31" = "Actualiza tus promociones frecuentemente y no las dejes en tu sitio web móvil si ya venció (eso irrita a tus usuarios).";
+"tipsLabel31" = "Actualiza tus promociones frecuentemente y no las dejes en tu sitio web si ya venció (eso irrita a tus usuarios).";
 "tipsLabel32" = "Sube nuevas imágenes cada semana.";
 "tipsLabel33" = "Llena con tu información cada sección.";
 
 "tipsTitulo4" = "¡Cuentale a todos de tu sitio!";
-"tipsLabel41" = "Comparte tu sitio web móvil con todos tus amigos y contactos.";
+"tipsLabel41" = "Comparte tu sitio web con todos tus amigos y contactos.";
 
 //EstadisticasViewController
 "estadisticasLabel1" = "1S";
@@ -344,8 +337,8 @@
 "estadisticasLabel5" = "1A";
 
 //CompartirViewController
-"compartirLabel1" = "Comparte tu sitio web móvil con tus contactos y amigos para sacarle más provecho.";
-"compartirLabel2" = "Ya estoy en línea con infomovil. Visita mi sitio web móvil:";
+"compartirLabel1" = "Comparte tu sitio web con tus contactos y amigos para sacarle más provecho.";
+"compartirLabel2" = "Ya estoy en línea con infomovil. Visita mi sitio web:";
 
 //CuentaViewController
 "cuentaTituloSegment1" = "Plan Pro";

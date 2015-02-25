@@ -30,6 +30,10 @@
 - (IBAction)loguearInfomovil:(UIButton *)sender;
 - (IBAction)mostrarTerminos:(id)sender;
 - (IBAction)mostrarCondiciones:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *conoceMas;
+@property (weak, nonatomic) IBOutlet UIButton *conoceMasPlay;
+- (IBAction)conoceMasAct:(id)sender;
+- (IBAction)conoceMasPlayAct:(id)sender;
 
 @end
 

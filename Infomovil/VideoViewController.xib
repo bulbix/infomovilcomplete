@@ -57,7 +57,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="eW6-KF-2HC">
-                                    <rect key="frame" x="20" y="223" width="280" height="30"/>
+                                    <rect key="frame" x="20" y="223" width="280" height="35"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                     <color key="textColor" red="0.23529411759999999" green="0.2901960784" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>

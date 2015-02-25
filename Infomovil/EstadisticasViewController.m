@@ -46,11 +46,7 @@
     [super viewDidLoad];
     self.guardarVista = YES;
     
-//    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).ultimoView == Nil) {
-//        NSArray *arrayControllers = [self.navigationController viewControllers];
-//        ((AppDelegate *)[[UIApplication sharedApplication] delegate]).ultimoView = [arrayControllers objectAtIndex:arrayControllers.count-2];
-//        NSLog(@"la clase es %@", [arrayControllers objectAtIndex:arrayControllers.count-2]);
-//    }
+
     NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
                                 [UIFont fontWithName:@"Avenir-Book" size:12], UITextAttributeFont, nil];
     [self.botonCambioEstadisticas setTitleTextAttributes:attributes forState:UIControlStateNormal];
@@ -110,8 +106,7 @@
 		[self.botonEstadisticas setBackgroundImage:[UIImage imageNamed:@"mireporteson.png"] forState:UIControlStateNormal];
 	}
 	
-//	NSString * language = [[NSLocale preferredLanguages] objectAtIndex:0];
-//	UILabel *labelTexto = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 140, 44)];
+
 	if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
 		[self.botonTotales setTitle:@"Total Visits" forSegmentAtIndex:0];
 		[self.botonTotales setTitle:@"Unique visitors" forSegmentAtIndex:1];
@@ -133,12 +128,7 @@
 }
 
 -(IBAction)regresar:(id)sender {
-    
-//    MenuPasosViewController *mPasos = [[MenuPasosViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:nil];
-//    [self.navigationController pushViewController:mPasos animated:YES];
-//    UIViewController *controllerAux = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).ultimoView;
-//    [self.navigationController popToViewController:controllerAux animated:YES];
-//    ((AppDelegate *)[[UIApplication sharedApplication] delegate]).ultimoView = Nil;
+ 
 	[self.navigationController popToViewController:((AppDelegate *)[[UIApplication sharedApplication] delegate]).ultimoView
 										  animated:YES];
 }
@@ -146,23 +136,11 @@
 -(void) consultaVisitas {
     if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).itIsInTime)
     {
-//        [((AppDelegate *)[[UIApplication sharedApplication] delegate]) restartDate];
         self.datosUsuario = [DatosUsuario sharedInstance];
-//        visitantesTotales = YES;
         WS_HandlerVisitas *handlerVisitas = [[WS_HandlerVisitas alloc] init];
         [handlerVisitas setWSHandlerDelegate:self];
-//        if (visitantesTotales) {
-//            if ([((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"]) {
-//                [handlerVisitas consultaVisitantesUnicosDominio:self.datosUsuario.dominio];
-//            }
-//            else {
-//                [handlerVisitas consultarVisitantesDominio:self.datosUsuario.dominio];
-//            }
-//            
-//        }
-//        else {
-            [handlerVisitas consultaVisitasDominio:self.datosUsuario.dominio conOpcionConsulta:opcionConsulta];
-//        }
+        [handlerVisitas consultaVisitasDominio:self.datosUsuario.dominio conOpcionConsulta:opcionConsulta];
+
     }
     else {
         if (self.alertActivity)
@@ -242,10 +220,15 @@
 }
 
 - (IBAction)cambiarVisitas:(UISegmentedControl *)sender {
-    if (![((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"]) {
+    if (![((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] ) {
         if (sender.selectedSegmentIndex == 1) {
             [[AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeNoPrueba", Nil) andAlertViewType:AlertViewTypeQuestion] show];
         }
+    }else if([((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && [self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]){
+        if (sender.selectedSegmentIndex == 1) {
+            [[AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeNoPrueba", Nil) andAlertViewType:AlertViewTypeQuestion] show];
+        }
+        
     }
     
     [sender setSelectedSegmentIndex:0];
@@ -373,7 +356,6 @@
             
 			[labelTexto setTextAlignment:NSTextAlignmentCenter];
             UIImage *imagenAux = [labelTexto imageFromLayer];
-            //            [self.botonTotales setTitle:[NSString stringWithFormat:@"Visitas Totales\n%i", [[self.datosUsuario.arregloVisitantes objectAtIndex:0] visitas]] forSegmentAtIndex:0];
             UILabel *labelTexto2 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 140, 29)];
             [labelTexto2 setNumberOfLines:2];
             [labelTexto2 setFont:[UIFont fontWithName:@"Avenir-Book" size:15]];
@@ -414,16 +396,9 @@
 }
 
 -(void) resultadoConsultaDominio:(NSString *)resultado {
-//    if (visitantesTotales) {
-//        visitantesTotales = NO;
-//        self.datosUsuario = [DatosUsuario sharedInstance];
-//        WS_HandlerVisitas *handlerVisitas = [[WS_HandlerVisitas alloc] init];
-//        [handlerVisitas setWSHandlerDelegate:self];
-//        [handlerVisitas consultaVisitasDominio:self.datosUsuario.dominio conOpcionConsulta:opcionConsulta];
-//    }
-//    else {
+
         [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
-//    }
+
     
 }
 
@@ -443,17 +418,6 @@
 
 #pragma - mark PNChartDelegate
 -(void)userClickedOnLineKeyPoint:(CGPoint)point lineIndex:(NSInteger)lineIndex andPointIndex:(NSInteger)pointIndex{
-//    productTourView = [[CRProductTour alloc] initWithFrame:self.botonCambioEstadisticas.frame] ;
-//    
-//    CRBubble *bubbleButton1 = [[CRBubble alloc] initWithFrame:CGRectMake(point.x, self.botonCambioEstadisticas.frame.origin.y-100, 100, 80) title:@"Contraseña" description:@"infomóvil" arrowPosition:CRArrowPositionBottom andColor:[UIColor whiteColor]];
-////    [bubbleButton1 setFrame:CGRectMake(point.x, point.y, 100, 80)];
-//    [bubbleButton1 setAlpha:0.0];
-//    [bubbleButton1 setHidden:NO];
-//    
-//    NSMutableArray *bubbleArray = [[NSMutableArray alloc] initWithObjects:bubbleButton1, nil];
-//    [productTourView setBubbles:bubbleArray];
-//    [self.view addSubview:bubbleButton1];
-//    [self.vistaEstadisticas setHidden:YES];
 #ifdef _DEBUG
     NSLog(@"Click Key on line %f, %f line index is %d and point index is %d",point.x, point.y,(int)lineIndex, (int)pointIndex);
 #endif

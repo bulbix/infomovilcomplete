@@ -279,7 +279,11 @@
         TipsViewController *tipsController = [[TipsViewController alloc] initWithNibName:@"TipsViewController" bundle:Nil];
         [self.navigationController pushViewController:tipsController animated:YES];
     }
-    else {
+    else if(((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion && ![((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio hasPrefix:@"Pago"]) {
+        TipsViewController *tipsController = [[TipsViewController alloc] initWithNibName:@"TipsViewController" bundle:Nil];
+        [self.navigationController pushViewController:tipsController animated:YES];
+    }else{
+        
         if (!self.datosUsuario.nombroSitio) {
             if ([self perfilEditado]) {
                 NombrarViewController *nombrar = [[NombrarViewController alloc] initWithNibName:@"NombrarViewController" bundle:nil];
