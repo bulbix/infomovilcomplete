@@ -609,6 +609,7 @@
 //Pantalla Crear Editar //
 "inicioRapido" = "Inicio rápido";
 "verTutorial" = "Ver tutorial";
+"verTutorialInicio" = "Tutorial";
 "verEjemplo" = "Ver ejemplo";
 "errorAlCargar" = "Revisa tu conexión a internet e intenta nuevamente";
 
@@ -621,3 +622,4 @@
 
 "sesionFaceCerrada" = "Sesión cerrada";
 "mensajePost" = "El mensaje se ha publicado correctamente en tu muro";
+"conoceMasInicio" = "Conoce más";

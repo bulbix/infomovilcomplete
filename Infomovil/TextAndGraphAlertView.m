@@ -69,6 +69,11 @@
 #pragma mark -
 - (void)setUpContacto
 {
+    if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
+        [self.presionarAceptarBtn setTitle:@"Accept" forState:UIControlStateNormal];
+    }else{
+        [self.presionarAceptarBtn setTitle:@"Aceptar" forState:UIControlStateNormal];
+    }
     _lblTitulo.text = NSLocalizedString(@"instrucciones", nil);
     _lblTexto1.text = NSLocalizedString(@"pulsaContacto", nil);
     _lblTexto2.text = NSLocalizedString(@"mostrarContacto", nil);

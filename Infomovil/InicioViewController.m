@@ -20,6 +20,7 @@
 #import "GAI.h"
 #import "GAIDictionaryBuilder.h"
 #import "MenuRegistroViewController.h"
+#import "VerTutorialViewController.h"
 
 @interface InicioViewController () {
     BOOL loginExitoso, buscandoSesion, existeUnaSesion;
@@ -59,23 +60,25 @@
 		self.leyenda3.frame = CGRectMake(37, 532, 28, 21);
 		self.leyenda4.frame = CGRectMake(65, 533, 144, 21);
 		self.leyenda5.frame = CGRectMake(202,532, 83, 21);
-		
+	
 		
 	}
-	((AppDelegate *)[[UIApplication sharedApplication] delegate]).logueado = NO;
+    [self.navigationController.navigationBar setHidden:YES];
+    if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+        [self mostrarLogo];
+    }
+    else {
+        [self mostrarLogo6];
+    }
+    
 }
 
 
 -(void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.navigationController.navigationBar setHidden:YES];
-    if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
-        [self.vistaCircular setFrame:CGRectMake(0, 0, 320, 190)];
-        [self mostrarLogo];
-    }
-    else {
-		[self mostrarLogo6];
-    }
+    
+   
+    [self.conoceMas setTitle:NSLocalizedString(@"conoceMasInicio", nil) forState:UIControlStateNormal] ;
 	
 	self.label.text = NSLocalizedString(@"inicioLabel", nil);
 	[self.botonPruebalo setTitle:NSLocalizedString(@"inicioBotonPruebalo", nil) forState:UIControlStateNormal];
@@ -88,9 +91,9 @@
 	self.leyenda5.text = NSLocalizedString(@"inicioLeyenda5", nil);
 	
 	self.version.text = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleShortVersionString"];
-	
+	 datosUsuario = [DatosUsuario sharedInstance];
 	if (existeItems) {
-        datosUsuario = [DatosUsuario sharedInstance];
+       
         if ([CommonUtils hayConexion]) {
             if ([datosUsuario.fechaConsulta compare:[NSDate date]] == NSOrderedAscending || datosUsuario.fechaConsulta == nil) {
                 datosUsuario.fechaConsulta = [NSDate date];
@@ -98,20 +101,26 @@
         }
 
     }
-    datosUsuario = [DatosUsuario sharedInstance];
+   
 	
 	if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
 		[self.botonPruebalo setBackgroundImage:[UIImage imageNamed:@"btnfreesiteEn.png"] forState:UIControlStateNormal];
 	}
 	
 	((AppDelegate *)[[UIApplication sharedApplication] delegate]).logueado = NO;
-	
-	[self.vistaInferior setHidden:YES];
-	
-	self.datosUsuario = [DatosUsuario sharedInstance];
-    ((AppDelegate*)	[[UIApplication sharedApplication] delegate]).statusDominio = @"Gratuito";
+	 ((AppDelegate*)	[[UIApplication sharedApplication] delegate]).statusDominio = @"Gratuito";
     ((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion = NO;
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    ((AppDelegate *)[[UIApplication sharedApplication] delegate]).logueado = NO;
+    if(! IS_IPHONE_5){
+        self.conoceMas.frame = CGRectMake(126, 380, 143 , 30);
+        self.conoceMasPlay.frame = CGRectMake(83, 375, 35, 35);
+        self.botonPruebalo.frame = CGRectMake(30, 220, 260, 55);
+        self.botonSesion.frame = CGRectMake(32, 290, 256, 55);
+        self.label.frame = CGRectMake(20, 118, 280, 97);
+    }
+    [self.vistaInferior setHidden:YES];
+     [self.navigationController.navigationBar setHidden:YES];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -334,8 +343,18 @@
 }
 
 - (IBAction)conoceMasAct:(id)sender {
+    [self videoConoceMas];
 }
 
 - (IBAction)conoceMasPlayAct:(id)sender {
+    [self videoConoceMas];
 }
+
+-(void)videoConoceMas{
+    VerTutorialViewController *verTutorial = [[VerTutorialViewController alloc] initWithNibName:@"VerTutorialViewController" bundle:nil];
+    [self.navigationController pushViewController:verTutorial animated:YES];
+
+}
+
+
 @end

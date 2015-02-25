@@ -498,6 +498,7 @@
 //Pantalla Crear Editar //
 "inicioRapido" = "Quick start";
 "verTutorial" = "See tutorial";
+"verTutorialInicio" = "Tutorial";
 "verEjemplo" = "See example";
 "errorAlCargar" = "Check your internet connection and try again";
 
@@ -508,5 +509,7 @@
 "confirmarContrasena" = " Confirm password";
 "olvidasteContrasenaElimininarCuenta" = "Forgot password?";
 
-"sesionFaceCerrada" = "closed session";
+"sesionFaceCerrada" = "Closed session";
 "mensajePost" = "Your message has been successfully posted to your Wall";
+
+"conoceMasInicio" = "Learn more";

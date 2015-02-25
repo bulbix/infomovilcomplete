@@ -8,39 +8,25 @@
 
 #import "VerTutorialViewController.h"
 #import "CommonUtils.h"
+
 @interface VerTutorialViewController ()
-
-
 @property (nonatomic, strong) AlertView *alertaContacto;
-
-
+@property (nonatomic,assign) BOOL pagCargada;
 @end
-
-
 
 
 @implementation VerTutorialViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.pagCargada = NO;
     // Do any additional setup after loading the view.
     
     self.webView.delegate = self;
-    
-    [self.navigationItem hidesBackButton];
-    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion)
-    {
-        self.navigationItem.backBarButtonItem	= Nil;
-        self.navigationItem.leftBarButtonItem	= Nil;
-        self.navigationItem.hidesBackButton		= YES;
-    }
-    
     self.navigationItem.rightBarButtonItem = Nil;
-    
-   // ((AppDelegate *)[[UIApplication sharedApplication] delegate]).ultimoView = self;
-    
-    
-    self.navigationItem.hidesBackButton = YES;
+    if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+        [self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"verTutorialInicio", @" ") nombreImagen:@"barramorada.png"];
+    }
     UIImage *image = [UIImage imageNamed:@"btnregresar.png"];
     
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -60,27 +46,24 @@
 }
 
 -(IBAction)regresar:(id)sender {
+    self.pagCargada = NO;
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     NSLog(@"Termino de cargar");
+    self.pagCargada = YES;
     [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
-    
 }
 
 
 -(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
+    if(!self.pagCargada){
+        [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
+        AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"errorAlCargar", Nil) andAlertViewType:AlertViewTypeInfo];
+        [alert show];
+    }
 
-   [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
-    AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"errorAlCargar", Nil) andAlertViewType:AlertViewTypeInfo];
-    [alert show];
-
-}
-
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
-{
-    return YES;
 }
 
 
@@ -100,22 +83,10 @@
 }
 
 
-
-
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
