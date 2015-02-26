@@ -83,7 +83,7 @@
                                                 <color key="titleColor" red="0.23529411759999999" green="0.2901960784" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="titleShadowColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                             </state>
-                                            <state key="selected" backgroundImage="6mInac.png"/>
+                                            <state key="selected" backgroundImage="6mInac-es.png"/>
                                             <connections>
                                                 <action selector="comprar6mesesBtn:" destination="-1" eventType="touchUpInside" id="sSn-uX-7UE"/>
                                             </connections>
@@ -123,7 +123,7 @@
                                                 <color key="titleColor" red="0.23529411764705882" green="0.29019607843137252" blue="0.59215686274509804" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="titleShadowColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                             </state>
-                                            <state key="selected" backgroundImage="12mAc.png"/>
+                                            <state key="selected" backgroundImage="12mAc-es.png"/>
                                             <connections>
                                                 <action selector="comprar1mesBtn:" destination="-1" eventType="touchUpInside" id="Dz0-VZ-n0g"/>
                                             </connections>
@@ -203,11 +203,9 @@
     </objects>
     <resources>
         <image name="12mAc-es.png" width="210" height="210"/>
-        <image name="12mAc.png" width="108" height="108"/>
         <image name="1mInac-es.png" width="210" height="210"/>
         <image name="1mInac.png" width="105" height="105"/>
         <image name="6mInac-es.png" width="210" height="210"/>
-        <image name="6mInac.png" width="108" height="108"/>
         <image name="beneficios-es.png" width="740" height="360"/>
         <image name="bgPro.png" width="320" height="131"/>
         <image name="btnazulnuevo.png" width="263" height="57"/>

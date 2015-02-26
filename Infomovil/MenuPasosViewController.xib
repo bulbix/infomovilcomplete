@@ -12,7 +12,7 @@
                 <outlet property="botonEjemplo2" destination="xLT-3j-I3g" id="cuP-yg-GcJ"/>
                 <outlet property="botonFondo" destination="hMc-Bf-QfE" id="iQL-Bj-YVz"/>
                 <outlet property="botonPublicar" destination="62k-ps-wSC" id="lvZ-ly-Snm"/>
-                <outlet property="dominio" destination="I3P-vx-3jE" id="yZO-jS-eBd"/>
+                <outlet property="dominio" destination="seu-Of-MKT" id="tb3-Gq-cx2"/>
                 <outlet property="inicioRapidobtn" destination="h28-rV-Yfl" id="T7A-Yi-pLg"/>
                 <outlet property="verTutorialbtn" destination="XkS-n1-KKW" id="Xyg-bv-kQv"/>
                 <outlet property="view" destination="1" id="3"/>
@@ -69,12 +69,17 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="linea.png" translatesAutoresizingMaskIntoConstraints="NO" id="f7I-mn-zdJ">
                     <rect key="frame" x="20" y="277" width="280" height="3"/>
                 </imageView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3P-vx-3jE">
-                    <rect key="frame" x="0.0" y="11" width="320" height="21"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="seu-Of-MKT">
+                    <rect key="frame" x="0.0" y="7" width="320" height="30"/>
                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
-                    <color key="textColor" red="0.1843137255" green="0.63921568630000003" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                    <state key="normal">
+                        <color key="titleColor" red="0.18431372549019609" green="0.63921568627450975" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="IrAlDominio:" destination="-1" eventType="touchUpInside" id="vdB-Ak-Mfg"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
         </view>

@@ -503,7 +503,7 @@
 "errorAlCargar" = "Check your internet connection and try again";
 
 //IRC inicio //
-"recordarCuenta" = "Remember";
+"recordarCuenta" = "Remember me";
 "crearCuentaRegistrar" = "Create account";
 "contrasenaRegistrar" = " Password";
 "confirmarContrasena" = " Confirm password";
@@ -513,3 +513,5 @@
 "mensajePost" = "Your message has been successfully posted to your Wall";
 
 "conoceMasInicio" = "Learn more";
+
+"verEjemploInicio" = "Ejemplo";

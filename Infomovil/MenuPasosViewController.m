@@ -12,13 +12,16 @@
 #import "FormularioRegistroViewController.h"
 #import "PublicarViewController.h"
 #import "DominioRegistradoViewController.h"
-#import "VistaPreviaViewController.h"
+#import "VistaPreviaWebViewController.h"
 #import "TipsViewController.h"
 #import "NombrarViewController.h"
 #import "WS_HandlerDominio.h"
 #import "AppboyKit.h"
 #import "InicioRapidoViewController.h"
 #import "VerTutorialViewController.h"
+#import "VerEjemploViewController.h"
+#import "AppsFlyerTracker.h"
+#import "AppDelegate.h"
 
 #define IS_IPHONE5 (([[UIScreen mainScreen] bounds].size.height-568)?NO:YES)
 
@@ -155,16 +158,16 @@
             for(int i= 0; [self.datosUsuario.dominiosUsuario count] > i ; i++){
              //   DominiosUsuario *dominioUsuario = [self.datosUsuario.dominiosUsuario objectAtIndex:i];
              //   if([dominioUsuario.domainType isEqualToString:@"tel"]){
+            [self.dominio setTitle:[NSString stringWithFormat:@"www.%@.tel", self.datosUsuario.dominio] forState:UIControlStateNormal];
           
-          self.dominio.text	= [NSString stringWithFormat:@"www.%@.tel", self.datosUsuario.dominio];
              /*  }else{
                     self.dominio.text	= [NSString stringWithFormat:@"www.info-movil.com/%@", self.datosUsuario.dominio];
                 }
               */
             }
             
-            if([self.dominio.text isEqualToString:@""] || self.dominio.text == nil || (self.datosUsuario.dominio == (id)[NSNull null]) || ![CommonUtils validarEmail:self.datosUsuario.dominio] || ![self.datosUsuario.dominio isEqualToString:@"(null)"] ){
-                self.dominio.text	= [NSString stringWithFormat:@"www.%@.tel", self.datosUsuario.dominio];
+            if([self.dominio.titleLabel.text isEqualToString:@""] || self.dominio.titleLabel.text == nil || (self.datosUsuario.dominio == (id)[NSNull null]) || ![CommonUtils validarEmail:self.datosUsuario.dominio] || ![self.datosUsuario.dominio isEqualToString:@"(null)"] ){
+                [self.dominio setTitle:[NSString stringWithFormat:@"www.%@.tel", self.datosUsuario.dominio] forState:UIControlStateNormal];
             }
             
             if(IS_IPHONE5){
@@ -274,47 +277,24 @@
 }
 
 - (IBAction)publicar:(UIButton *)sender {
-/*    self.datosUsuario = [DatosUsuario sharedInstance];
+    self.datosUsuario = [DatosUsuario sharedInstance];
     NSLog(@" EL VALOR DE STATUS DOMINIO ES: %@", ((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio);
-    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion && ![((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio hasPrefix:@"Tramite"]) {
-
+    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion && self.datosUsuario.dominio && ![self.datosUsuario.dominio isEqualToString:@""] && ! (self.datosUsuario.dominio == (id)[NSNull null]) && ![CommonUtils validarEmail:self.datosUsuario.dominio] && ![self.datosUsuario.dominio isEqualToString:@"(null)"]) {
+        
         TipsViewController *tipsController = [[TipsViewController alloc] initWithNibName:@"TipsViewController" bundle:Nil];
         [self.navigationController pushViewController:tipsController animated:YES];
-    }
-    else if(((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion && ![((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio hasPrefix:@"Pago"]) {
-        TipsViewController *tipsController = [[TipsViewController alloc] initWithNibName:@"TipsViewController" bundle:Nil];
-        [self.navigationController pushViewController:tipsController animated:YES];
+        
+    }else if(((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion && [self perfilEditado]) {
+        NombrarViewController *nombrar = [[NombrarViewController alloc] initWithNibName:@"NombrarViewController" bundle:nil];
+        [self.navigationController pushViewController:nombrar animated:YES];
     }else{
-        NSLog(@"EL VALOR DE NOMBRO SITUO ES: %hhd", self.datosUsuario.nombroSitio);
-        if (!self.datosUsuario.nombroSitio) {
-            
-            if ([self perfilEditado]) {
-                NombrarViewController *nombrar = [[NombrarViewController alloc] initWithNibName:@"NombrarViewController" bundle:nil];
-                [self.navigationController pushViewController:nombrar animated:YES];
-            }
-            else {
-                AlertView *vistaNotificacion = [AlertView initWithDelegate:self message:NSLocalizedString(@"editaPagina", Nil) andAlertViewType:AlertViewTypeInfo];
-                [vistaNotificacion show];
-            }
-        }
-       
-    }
-  */
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
+        AlertView *vistaNotificacion = [AlertView initWithDelegate:self message:NSLocalizedString(@"editaPagina", Nil) andAlertViewType:AlertViewTypeInfo];
+        [vistaNotificacion show];
+    }    }
 
 - (IBAction)verEjemplo:(UIButton *)sender {
-    VistaPreviaViewController *vistaPrevia = [[VistaPreviaViewController alloc] initWithNibName:@"VistaPreviaViewController" bundle:Nil];
-    [vistaPrevia setTipoVista:PreviewTypeEjemplo];
-    [self.navigationController pushViewController:vistaPrevia animated:YES];
+    VerEjemploViewController *verEjemplo = [[VerEjemploViewController alloc] initWithNibName:@"VerEjemplo" bundle:Nil];
+    [self.navigationController pushViewController:verEjemplo animated:YES];
 }
 
 -(BOOL) perfilEditado {
@@ -358,6 +338,9 @@
     self.navigationItem.leftBarButtonItem = Nil;
     [self.navigationItem setHidesBackButton:YES animated:YES];
     [self.vistaInferior setHidden:NO];
+}
+
+- (IBAction)IrAlDominio:(id)sender {
 }
 
 - (IBAction)irInicioRapido:(id)sender {

@@ -81,7 +81,7 @@
 	btextField = NO;
 	
 
-	[self.scroll setContentSize:CGSizeMake(3200, 4000)];
+	//[self.scroll setContentSize:CGSizeMake(3200, 4000)];
 }
 
 - (void)didReceiveMemoryWarning
@@ -113,14 +113,7 @@
 #pragma mark UITextViewDelegate
 
 -(void)textViewDidBeginEditing:(UITextView *)textView {
-//    if ([textView.text isEqualToString:@"Puedes utilizar este espacio para añadir cualquier información adicional"]) {
-//        [textView setText:@" "];
-//    }
-//    NSInteger textoLength = [textView.text length];
-//    [self.labelInfo setText:[NSString stringWithFormat:@"%i/%i", textoLength, 255]];
-//    [UIView animateWithDuration:0.4f animations:^{
-//        [self.labelInfo setFrame:CGRectMake(20, textView.frame.origin.y + textView.frame.size.height, 33, 21)];
-//    }];
+
     [self muestraContadorTexto:[textView.text length] conLimite:400 paraVista:textView];
 	[self apareceElTeclado];
 }

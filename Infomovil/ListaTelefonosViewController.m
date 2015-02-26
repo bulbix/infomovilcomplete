@@ -17,6 +17,8 @@
 #import "ItemsDominio.h"
 #import "CuentaViewController.h"
 #import "TextAndGraphAlertView.h"
+#import "AppsFlyerTracker.h"
+#import "AppDelegate.h"
 
 @interface ListaTelefonosViewController () <ContactosCellDelegate> {
     BOOL actualizoContactos;
@@ -181,7 +183,7 @@
          alertaContactos = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeContactosPrueba", Nil) andAlertViewType:AlertViewTypeQuestion];
          [alertaContactos show];
      
-     }else if([self.datosUsuario.arregloContacto count] >= maxNumContactos){
+     }else if([self.datosUsuario.arregloContacto count] >= 12){
          alertaContactos = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeContactosPro", nil) andAlertViewType:AlertViewTypeInfo];
          [alertaContactos show];
      
@@ -237,6 +239,9 @@
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
+
+
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellIdentifierContacto = @"ContactoCell";
     ContactosCell *cell = (ContactosCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifierContacto];
@@ -252,8 +257,20 @@
     NSDictionary *dict = [self.arregloTitulos objectAtIndex:contacto.indice];
 
     [cell.btnTipo setBackgroundImage:[UIImage imageNamed:[dict objectForKey:@"image"]] forState:UIControlStateNormal];
+    
+    
+    if( [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && [self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"] && indexPath.row > 2){
+        cell.opacarContacto.hidden = NO;
+    }else{
+        cell.opacarContacto.hidden = YES;
+    }
+    
     return cell;
 }
+
+
+
+
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;

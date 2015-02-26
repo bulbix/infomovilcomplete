@@ -14,10 +14,11 @@
 @property (weak, nonatomic) IBOutlet UIButton *botonFondo;
 @property (weak, nonatomic) IBOutlet UIButton *botonCrear;
 @property (weak, nonatomic) IBOutlet UIButton *botonPublicar;
-@property (strong, nonatomic) IBOutlet UILabel *dominio;
+
 @property (strong, nonatomic) IBOutlet UIButton *botonEjemplo;
 @property (strong, nonatomic) IBOutlet UIButton *botonEjemplo2;
 @property (weak, nonatomic) IBOutlet UIButton *inicioRapidobtn;
+@property (weak, nonatomic) IBOutlet UIButton *dominio;
 
 
 @property (weak, nonatomic) IBOutlet UIButton *verTutorialbtn;
@@ -34,8 +35,7 @@
 - (IBAction)verEjemplo:(UIButton *)sender;
 - (void) pantallaAcomodaPublicar;
 
-
-
+- (IBAction)IrAlDominio:(id)sender;
 
 
 @end

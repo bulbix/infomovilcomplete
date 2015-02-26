@@ -12,7 +12,7 @@
 #import "PerfilPaso2ViewController.h"
 #import "MapaUbicacionViewController.h"
 #import "NombrarViewController.h"
-#import "VistaPreviaViewController.h"
+#import "VistaPreviaWebViewController.h"
 
 @interface InicioRapidoViewController ()
 
@@ -203,8 +203,8 @@
 }
 
 -(IBAction)mostrarWeb:(id)sender {
-    VistaPreviaViewController *vistaPrevia = [[VistaPreviaViewController alloc] initWithNibName:@"VistaPreviaViewController" bundle:Nil];
-    [vistaPrevia setTipoVista:PreviewTypePrevia];
+    VistaPreviaWebViewController *vistaPrevia = [[VistaPreviaWebViewController alloc] initWithNibName:@"VistaPreviaViewController" bundle:Nil];
+    //[vistaPrevia setTipoVista:PreviewTypePrevia];
     [self.navigationController pushViewController:vistaPrevia animated:YES];
 }
 

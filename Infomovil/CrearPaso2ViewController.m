@@ -15,6 +15,7 @@
 #import "WS_HandlerGaleria.h"
 #import "UIViewDefs.h"
 #import "AppsFlyerTracker.h"
+#import "AppDelegate.h"
 
 @interface CrearPaso2ViewController () {
     id textoPulsado;

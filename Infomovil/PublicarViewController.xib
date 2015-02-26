@@ -57,7 +57,7 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             <color key="textColor" red="0.23529411759999999" green="0.2901960784" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                            <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="yes"/>
                             <connections>
                                 <outlet property="delegate" destination="-1" id="uk9-JF-6B4"/>
                             </connections>
@@ -68,7 +68,7 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             <color key="textColor" red="0.23529411759999999" green="0.2901960784" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                            <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="yes"/>
                             <connections>
                                 <outlet property="delegate" destination="-1" id="TWv-D9-JSk"/>
                             </connections>

@@ -85,8 +85,6 @@
 		0F514C2718CF853A00817774 /* csecureweb.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F514C2518CF853A00817774 /* csecureweb.png */; };
 		0F514C2A18CF855A00817774 /* ccelular@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F514C2818CF855A00817774 /* ccelular@2x.png */; };
 		0F514C2B18CF855A00817774 /* csecureweb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F514C2918CF855A00817774 /* csecureweb@2x.png */; };
-		0F51C7F518B838AD008966C3 /* VistaPreviaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F51C7F318B838AD008966C3 /* VistaPreviaViewController.m */; };
-		0F51C7F618B838AD008966C3 /* VistaPreviaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F51C7F418B838AD008966C3 /* VistaPreviaViewController.xib */; };
 		0F5244E618FDA574001902E6 /* UIView+LayerShot.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5244E518FDA574001902E6 /* UIView+LayerShot.m */; };
 		0F5244ED18FE037D001902E6 /* backNuevo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F5244E718FE037D001902E6 /* backNuevo@2x.png */; };
 		0F5244EE18FE037D001902E6 /* btnazulnuevo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F5244E818FE037D001902E6 /* btnazulnuevo@2x.png */; };
@@ -700,6 +698,10 @@
 		BFC14ED01A83086600EBA7A8 /* ABKIdentifierForAdvertisingProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC14EB11A83086600EBA7A8 /* ABKIdentifierForAdvertisingProvider.m */; };
 		BFC14ED11A83086600EBA7A8 /* Appboy.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BFC14EB21A83086600EBA7A8 /* Appboy.bundle */; };
 		BFC14ED21A83086600EBA7A8 /* libAppboyKitLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFC14ECF1A83086600EBA7A8 /* libAppboyKitLibrary.a */; };
+		BFD0AB951A9E44E800D5FF63 /* VerEjemplo.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFD0AB941A9E44E800D5FF63 /* VerEjemplo.xib */; };
+		BFD0AB981A9E44FF00D5FF63 /* VerEjemploViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD0AB971A9E44FF00D5FF63 /* VerEjemploViewController.m */; };
+		BFD0AB9B1A9E4DE500D5FF63 /* VistaPreviaWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD0AB9A1A9E4DE500D5FF63 /* VistaPreviaWebViewController.m */; };
+		BFD0AB9D1A9E4F9900D5FF63 /* vistaPreviaWeb.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFD0AB9C1A9E4F9900D5FF63 /* vistaPreviaWeb.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -822,9 +824,6 @@
 		0F514C2518CF853A00817774 /* csecureweb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = csecureweb.png; sourceTree = "<group>"; };
 		0F514C2818CF855A00817774 /* ccelular@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ccelular@2x.png"; sourceTree = "<group>"; };
 		0F514C2918CF855A00817774 /* csecureweb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "csecureweb@2x.png"; sourceTree = "<group>"; };
-		0F51C7F218B838AD008966C3 /* VistaPreviaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VistaPreviaViewController.h; sourceTree = "<group>"; };
-		0F51C7F318B838AD008966C3 /* VistaPreviaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VistaPreviaViewController.m; sourceTree = "<group>"; };
-		0F51C7F418B838AD008966C3 /* VistaPreviaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VistaPreviaViewController.xib; sourceTree = "<group>"; };
 		0F5244E418FDA574001902E6 /* UIView+LayerShot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+LayerShot.h"; sourceTree = "<group>"; };
 		0F5244E518FDA574001902E6 /* UIView+LayerShot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+LayerShot.m"; sourceTree = "<group>"; };
 		0F5244E718FE037D001902E6 /* backNuevo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backNuevo@2x.png"; sourceTree = "<group>"; };
@@ -1667,6 +1666,12 @@
 		BFC14ECD1A83086600EBA7A8 /* Appboy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Appboy.h; sourceTree = "<group>"; };
 		BFC14ECE1A83086600EBA7A8 /* AppboyKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppboyKit.h; sourceTree = "<group>"; };
 		BFC14ECF1A83086600EBA7A8 /* libAppboyKitLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAppboyKitLibrary.a; sourceTree = "<group>"; };
+		BFD0AB941A9E44E800D5FF63 /* VerEjemplo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VerEjemplo.xib; sourceTree = "<group>"; };
+		BFD0AB961A9E44FF00D5FF63 /* VerEjemploViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerEjemploViewController.h; sourceTree = "<group>"; };
+		BFD0AB971A9E44FF00D5FF63 /* VerEjemploViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerEjemploViewController.m; sourceTree = "<group>"; };
+		BFD0AB991A9E4DE500D5FF63 /* VistaPreviaWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VistaPreviaWebViewController.h; sourceTree = "<group>"; };
+		BFD0AB9A1A9E4DE500D5FF63 /* VistaPreviaWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VistaPreviaWebViewController.m; sourceTree = "<group>"; };
+		BFD0AB9C1A9E4F9900D5FF63 /* vistaPreviaWeb.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = vistaPreviaWeb.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2470,6 +2475,9 @@
 				BF648FAD1A950ED600AFDEAD /* VerTutorialViewController.h */,
 				BF648FAE1A950ED600AFDEAD /* VerTutorialViewController.m */,
 				BF648FB01A950F0300AFDEAD /* VerTutorialViewController.xib */,
+				BFD0AB991A9E4DE500D5FF63 /* VistaPreviaWebViewController.h */,
+				BFD0AB9A1A9E4DE500D5FF63 /* VistaPreviaWebViewController.m */,
+				BFD0AB9C1A9E4F9900D5FF63 /* vistaPreviaWeb.xib */,
 			);
 			name = CrearEditar;
 			sourceTree = "<group>";
@@ -2517,15 +2525,15 @@
 				0F011ADE1890545C00E279A8 /* InicioViewController.h */,
 				0F011ADF1890545C00E279A8 /* InicioViewController.m */,
 				0F36CCC81911E02600363C61 /* InicioViewController.xib */,
-				0F51C7F218B838AD008966C3 /* VistaPreviaViewController.h */,
-				0F51C7F318B838AD008966C3 /* VistaPreviaViewController.m */,
-				0F51C7F418B838AD008966C3 /* VistaPreviaViewController.xib */,
 				0F578E2F18BBB13700888C87 /* TerminosCondicionesViewController.h */,
 				0F578E3018BBB13700888C87 /* TerminosCondicionesViewController.m */,
 				0F578E3118BBB13700888C87 /* TerminosCondicionesViewController.xib */,
 				BFAD5A641A8D7AD300749320 /* MenuRegistroViewController.h */,
 				BFAD5A651A8D7AD300749320 /* MenuRegistroViewController.m */,
 				BFAD5A5F1A8D777500749320 /* MenuRegistroViewController.xib */,
+				BFD0AB961A9E44FF00D5FF63 /* VerEjemploViewController.h */,
+				BFD0AB971A9E44FF00D5FF63 /* VerEjemploViewController.m */,
+				BFD0AB941A9E44E800D5FF63 /* VerEjemplo.xib */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -3179,7 +3187,6 @@
 				0F9F52B7189890C6000F9FA5 /* btnsiguiente.png in Resources */,
 				0F68946418E5409B00025050 /* plecamagenta.png in Resources */,
 				65581B1A19350C8000B5D4ED /* settingsEn@2x.png in Resources */,
-				0F51C7F618B838AD008966C3 /* VistaPreviaViewController.xib in Resources */,
 				0F6CBD2019081E170077B065 /* tips@2x.png in Resources */,
 				65714ADE1919AF6000BC2647 /* share@2x.png in Resources */,
 				0F680EF118ECD76000A02347 /* mireportes@2x.png in Resources */,
@@ -3367,6 +3374,7 @@
 				0FB346E8187C6E1900E3A734 /* MapaUbicacionViewController.xib in Resources */,
 				0FA8C1FB18724FA300384F0E /* CrearPaso2ViewController.xib in Resources */,
 				0F578E3518BC0A0900888C87 /* barra.png in Resources */,
+				BFD0AB9D1A9E4F9900D5FF63 /* vistaPreviaWeb.xib in Resources */,
 				0F9F52CC189890C6000F9FA5 /* miborrar.png in Resources */,
 				0F65559419CBAA5D00C90B80 /* logoyoutube.png in Resources */,
 				0FC6C6BF18DD0EE0009E69A2 /* topbar@2x.png in Resources */,
@@ -3480,6 +3488,7 @@
 				6850120719ED9CC000389185 /* iVersion.bundle in Resources */,
 				0F6C72E9189B2227000B2E51 /* mifondo.png in Resources */,
 				0F9F52D4189890C6000F9FA5 /* milocalizar.png in Resources */,
+				BFD0AB951A9E44E800D5FF63 /* VerEjemplo.xib in Resources */,
 				0F6CBD3719085F180077B065 /* tip3@2x.png in Resources */,
 				0F5244FB18FE038E001902E6 /* btnblanconuevo.png in Resources */,
 				65BC0C14191BEE6800067C4D /* SelectorPaisViewController.xib in Resources */,
@@ -3673,7 +3682,6 @@
 				BFB69B631A83DB6B0022107C /* UIImageView+WebCache.m in Sources */,
 				65011509191D4707004D90EA /* GTLBase64.m in Sources */,
 				0FB4F38B18DBC83A0035363E /* NSMutableDataUtiles.m in Sources */,
-				0F51C7F518B838AD008966C3 /* VistaPreviaViewController.m in Sources */,
 				0F3D87B018AD7E9B0006E5BC /* VistaVideoViewController.m in Sources */,
 				0F70613F188ED0BB00B3B7DB /* VistaContactos.m in Sources */,
 				6501150C191D4707004D90EA /* GTLDateTime.m in Sources */,
@@ -3792,6 +3800,7 @@
 				0F5EF9DF18C9870F0013D37B /* WS_HandlerGaleria.m in Sources */,
 				BFB69B601A83DB6B0022107C /* UIImage+MultiFormat.m in Sources */,
 				65011529191D4707004D90EA /* GTMHTTPUploadFetcher.m in Sources */,
+				BFD0AB9B1A9E4DE500D5FF63 /* VistaPreviaWebViewController.m in Sources */,
 				BF4B7E951A8A686300D049CD /* WS_PlanPro.m in Sources */,
 				6501150B191D4707004D90EA /* GTLBatchResult.m in Sources */,
 				68C200CA19F9654E0062B2D3 /* TablaPlanProViewController.m in Sources */,
@@ -3804,6 +3813,7 @@
 				0F5873A418F6E99900DA0CFD /* PNLineChartData.m in Sources */,
 				0F73163618F84FED008DBA22 /* VisitasModel.m in Sources */,
 				0F65E93C187620A70009EC3F /* TipoContactoViewController.m in Sources */,
+				BFD0AB981A9E44FF00D5FF63 /* VerEjemploViewController.m in Sources */,
 				BF648FAF1A950ED600AFDEAD /* VerTutorialViewController.m in Sources */,
 				0F5EF9D918C96E080013D37B /* WS_ActualizarDireccion.m in Sources */,
 				65011526191D4707004D90EA /* GTMHTTPFetcherLogging.m in Sources */,

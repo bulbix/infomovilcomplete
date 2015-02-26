@@ -339,14 +339,16 @@ int opcionButton = 0 ;
 
 -(void)resultadoCompraDominio:(BOOL)estado{
     if(estado && ![self.datosUsuario.datosPago.statusPago isEqualToString: @"PAGADO"]){
-      if(opcionButton == 1)
-        [self compraProducto1mes];
-      else if(opcionButton == 2)
+        if(opcionButton == 1){
+            [self compraProducto1mes];
+        }else if(opcionButton == 2){
           [self compraProducto6meses];
-        else if(opcionButton == 3)
+        }else if(opcionButton == 3){
             [self compraProducto12meses];
+        }
     }
 }
+
 
 - (IBAction)comprar1mesBtn:(id)sender {
     
@@ -589,7 +591,18 @@ int opcionButton = 0 ;
         NSLog (@" IRC --------------------------- Fallo la transaccion!");
     }
     else if ([[notification name] isEqualToString:@"CompleteTransactionNotification"]){
-        ((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio = @"Pago";
+       
+        if([self.datosUsuario.datosPago.plan isEqualToString:@"PLAN PRO MENSUAL"]){
+            [[AppsFlyerTracker sharedTracker] trackEvent:@"Plan Pro 1 Mes" withValue:@""];
+            [[Appboy sharedInstance] logCustomEvent:@"Plan Pro 1 Mes"];
+        }else if([self.datosUsuario.datosPago.plan isEqualToString:@"PLAN PRO 6 MESES"]){
+            [[AppsFlyerTracker sharedTracker] trackEvent:@"Plan Pro 6 Meses" withValue:@""];
+            [[Appboy sharedInstance] logCustomEvent:@"Plan Pro 6 Meses"];
+        }else if([self.datosUsuario.datosPago.plan isEqualToString:@"PLAN PRO 12 MESES"]){
+            [[AppsFlyerTracker sharedTracker] trackEvent:@"Plan Pro 12 Meses" withValue:@""];
+            [[Appboy sharedInstance] logCustomEvent:@"Plan Pro 12 Meses"];
+        }
+        
         if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
             self.MensajePlanProComprado.text = [NSString stringWithFormat:@"This site already has a Plan Pro\n\nStart date: %@ \nEnd date: %@",self.datosUsuario.fechaInicial, self.datosUsuario.fechaFinal];
         }else{
@@ -602,6 +615,8 @@ int opcionButton = 0 ;
         [self compra];
         NSLog (@" IRC --------------------------- Se completo la transaccion !");
     }
+    ((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio = @"Pago";
+    NSLog(@"CONFIRMANDO QUE EL STATUSDOMINIO CAMBIO :  %@", ((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio);
      [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
 }
 

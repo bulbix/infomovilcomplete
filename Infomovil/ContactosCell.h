@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIView *vistaContenedora;
 @property (nonatomic, assign) id<ContactosCellDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UIButton *btnTipo;
+@property (weak, nonatomic) IBOutlet UILabel *opacarContacto;
 
 @property (nonatomic, strong) Contacto *contacto;
 

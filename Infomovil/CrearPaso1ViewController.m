@@ -17,13 +17,15 @@
 #import "PerfilViewController.h"
 #import "InformacionAdicionalViewController.h"
 #import "ListaTelefonosViewController.h"
-#import "VistaPreviaViewController.h"
+#import "VistaPreviaWebViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "ItemsDominio.h"
 #import "CuentaViewController.h"
 #import "GaleriaPaso2ViewController.h"
 #import "PerfilPaso2ViewController.h"
 #import "NombrarViewController.h"
+#import "AppsFlyerTracker.h"
+#import "AppDelegate.h"
 
 @interface CrearPaso1ViewController (){
 	AlertView * alertaVideo;
@@ -236,11 +238,13 @@
         
         
         if (existeItems) {
-            if ([itemSeleccionado estatus] > 0 && [((AppDelegate *)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && ![self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]) {
+            NSLog(@"El statusDominio en CrearPaso1ViewController es: %@ y %@", ((AppDelegate *)[[UIApplication sharedApplication] delegate]).statusDominio , self.datosUsuario.descripcionDominio);
+            
+            if ( [((AppDelegate *)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && ![self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]) {
                 VideoViewController *video = [[VideoViewController alloc] initWithNibName:@"VideoViewController" bundle:nil];
                 [self.navigationController pushViewController:video animated:YES];
-            }
-            else {
+                
+            }else {
                 alertaVideo = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeNoVideo", Nil) andAlertViewType:AlertViewTypeQuestion];
 				[alertaVideo show];
             }
@@ -298,11 +302,17 @@
    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-
+/*
 -(IBAction)mostrarWeb:(id)sender {
     VistaPreviaViewController *vistaPrevia = [[VistaPreviaViewController alloc] initWithNibName:@"VistaPreviaViewController" bundle:Nil];
     [vistaPrevia setTipoVista:PreviewTypePrevia];
     [self.navigationController pushViewController:vistaPrevia animated:YES];
+}
+*/
+
+-(IBAction)mostrarWeb:(id)sender {
+
+
 }
 
 -(void) accionSi{

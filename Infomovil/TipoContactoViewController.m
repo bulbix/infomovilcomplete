@@ -9,6 +9,8 @@
 #import "TipoContactoViewController.h"
 #import "ContactoPaso2ViewController.h"
 #import "TipoContactoCell.h"
+#import "AppsFlyerTracker.h"
+#import "AppDelegate.h"
 
 @interface TipoContactoViewController ()
 

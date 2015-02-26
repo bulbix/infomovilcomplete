@@ -30,6 +30,11 @@
 	items = [[NSMutableArray alloc] init];
     self.datosUsuario = [DatosUsuario sharedInstance];
     PagoModel *pago = [self.datosUsuario datosPago];
+    
+    if([self.datosUsuario.dominio isEqualToString:@"(null)"] || self.datosUsuario.dominio == nil || [self.datosUsuario.dominio isEqualToString:@""] || !self.datosUsuario.dominio || [self.datosUsuario.dominio isKindOfClass:[NSNull class]] ){
+        self.datosUsuario.dominio = self.datosUsuario.emailUsuario;
+    }
+    
 	NSString *stringXML;
 	
 		stringXML = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.webservice.infomovil.org/\">"
@@ -82,7 +87,7 @@
         if ([parser parse]) {
                 self.datosUsuario.token = self.token;
 				if(requiereEncriptar){
-					((AppDelegate*)	[[UIApplication sharedApplication] delegate]).statusDominio = [StringUtils desEncriptar:((AppDelegate*)	[[UIApplication sharedApplication] delegate]).statusDominio conToken: self.datosUsuario.token ];
+					((AppDelegate*)	[[UIApplication sharedApplication] delegate]).statusDominio = [StringUtils desEncriptar:((AppDelegate*)[[UIApplication sharedApplication]delegate]).statusDominio conToken: self.datosUsuario.token ];
 				}
 				//self.datosUsuario.itemsDominio = [StringUtils ordenarItemsCompraDominio:self.datosUsuario.itemsDominio];
             //NSLog(@"La cantidad de items en WS_CompraDomini al realizar la compra es : %i", [self.datosUsuario.itemsDominio count]);
@@ -171,7 +176,7 @@
             NSLog(@"items: %@ , descripcion: %@ , status: %i", item, item.descripcionItem, item.estatus);
         */
     }else if([elementName isEqualToString:@"statusDominio"]){
-        
+        NSLog(@"El estatusDominio es: %@ esto es en WS_COMPRADOMINIO", ((AppDelegate*)	[[UIApplication sharedApplication] delegate]).statusDominio);
         ((AppDelegate*)	[[UIApplication sharedApplication] delegate]).statusDominio = self.currentElementString;
         
     }else if ([elementName isEqualToString:@"fechaFin"]){

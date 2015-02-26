@@ -13,6 +13,8 @@
 #import "WS_HandlerGaleria.h"
 #import "ItemsDominio.h"
 #import "CuentaViewController.h"
+#import "AppsFlyerTracker.h"
+#import "AppDelegate.h"
 
 @interface GaleriaImagenesViewController () {
     BOOL exito;

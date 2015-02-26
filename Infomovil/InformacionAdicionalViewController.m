@@ -12,6 +12,8 @@
 #import "KeywordDataModel.h"
 #import "ItemsDominio.h"
 #import "CuentaViewController.h"
+#import "AppsFlyerTracker.h"
+#import "AppDelegate.h"
 
 @interface InformacionAdicionalViewController (){
 	
@@ -136,7 +138,11 @@
         [alertaIndormacion show];
         
     
-    }else if(self.datosUsuario.arregloInformacionAdicional.count == maxNumInformacion){
+    }else if(self.datosUsuario.arregloInformacionAdicional.count == 1){
+        NSLog(@"no mames : %i y maximo %i", self.datosUsuario.arregloInformacionAdicional.count, maxNumInformacion);
+        alertaIndormacion = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeInformacionAdicionalPrueba", @" ") andAlertViewType:AlertViewTypeQuestion];
+        [alertaIndormacion show];
+    }else if(self.datosUsuario.arregloInformacionAdicional.count >= 2){
         AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeInformacionPro", nil) andAlertViewType:AlertViewTypeInfo];
         [alert show];
     }
