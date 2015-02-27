@@ -412,6 +412,7 @@
         idDominio = idDominioLogin;
         existeUsuario = YES;
         self.datosUsuario.redSocial = @"Facebook";
+        [[Appboy sharedInstance] changeUser:self.txtNombre.text];
     }
     else {
         respuestaError = idDominioLogin;

@@ -17,7 +17,7 @@
 #import "AppDelegate.h"
 #import "DominiosUsuario.h"
 #import "AppboyKit.h"
-
+#import "Appboy.h"
 
 @interface WS_HandlerLogin () {
     BOOL esLogo;
@@ -285,7 +285,7 @@
             
             ((AppDelegate *) [[UIApplication sharedApplication] delegate]).fechaLogin = [NSDate date];
            
-            [[Appboy sharedInstance] changeUser:self.datosUsuario.emailUsuario];
+            
           
             [self.loginDelegate resultadoLogin:self.idDominio];
             

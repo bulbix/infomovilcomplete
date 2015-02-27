@@ -618,6 +618,11 @@
 		BFA7018B1A817A3B00F685C3 /* libAppsFlyerLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFA701871A817A3B00F685C3 /* libAppsFlyerLib.a */; };
 		BFA7018C1A817A3B00F685C3 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFA701881A817A3B00F685C3 /* libGoogleAnalyticsServices.a */; };
 		BFA7018F1A817ADA00F685C3 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFA7018E1A817ADA00F685C3 /* libcrypto.a */; };
+		BFA858901AA018AE00A9CB6F /* Default-568h@2x-iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = BFA8588B1AA018AE00A9CB6F /* Default-568h@2x-iphone.png */; };
+		BFA858911AA018AE00A9CB6F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BFA8588C1AA018AE00A9CB6F /* Default.png */; };
+		BFA858921AA018AE00A9CB6F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFA8588D1AA018AE00A9CB6F /* Default@2x.png */; };
+		BFA858931AA018AE00A9CB6F /* splash-1242x2208@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFA8588E1AA018AE00A9CB6F /* splash-1242x2208@2x.png */; };
+		BFA858941AA018AE00A9CB6F /* splash-750x1334@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFA8588F1AA018AE00A9CB6F /* splash-750x1334@2x.png */; };
 		BFAD5A2C1A8D10E900749320 /* 12mAc-en.png in Resources */ = {isa = PBXBuildFile; fileRef = BFAD59FB1A8D10E900749320 /* 12mAc-en.png */; };
 		BFAD5A2D1A8D10E900749320 /* 12mAc-en@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFAD59FC1A8D10E900749320 /* 12mAc-en@2x.png */; };
 		BFAD5A2E1A8D10E900749320 /* 12mAc-en@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFAD59FD1A8D10E900749320 /* 12mAc-en@3x.png */; };
@@ -1541,6 +1546,11 @@
 		BFA701871A817A3B00F685C3 /* libAppsFlyerLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAppsFlyerLib.a; sourceTree = "<group>"; };
 		BFA701881A817A3B00F685C3 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		BFA7018E1A817ADA00F685C3 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
+		BFA8588B1AA018AE00A9CB6F /* Default-568h@2x-iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x-iphone.png"; sourceTree = "<group>"; };
+		BFA8588C1AA018AE00A9CB6F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		BFA8588D1AA018AE00A9CB6F /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		BFA8588E1AA018AE00A9CB6F /* splash-1242x2208@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash-1242x2208@2x.png"; sourceTree = "<group>"; };
+		BFA8588F1AA018AE00A9CB6F /* splash-750x1334@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash-750x1334@2x.png"; sourceTree = "<group>"; };
 		BFAD59FB1A8D10E900749320 /* 12mAc-en.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "12mAc-en.png"; sourceTree = "<group>"; };
 		BFAD59FC1A8D10E900749320 /* 12mAc-en@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "12mAc-en@2x.png"; sourceTree = "<group>"; };
 		BFAD59FD1A8D10E900749320 /* 12mAc-en@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "12mAc-en@3x.png"; sourceTree = "<group>"; };
@@ -1900,6 +1910,7 @@
 		0F5CFA49189733E100D27B2E /* imagenesInfomovil */ = {
 			isa = PBXGroup;
 			children = (
+				BFA8588A1AA018AE00A9CB6F /* splash */,
 				BF9DB6F91A9D15D4009C5A58 /* icono57.png */,
 				BFBF24681A9277D70034F5DD /* RecordarCuenta */,
 				BFBF245D1A9273D30034F5DD /* LoginFacebook */,
@@ -2915,6 +2926,18 @@
 			path = CNPPopupController;
 			sourceTree = "<group>";
 		};
+		BFA8588A1AA018AE00A9CB6F /* splash */ = {
+			isa = PBXGroup;
+			children = (
+				BFA8588B1AA018AE00A9CB6F /* Default-568h@2x-iphone.png */,
+				BFA8588C1AA018AE00A9CB6F /* Default.png */,
+				BFA8588D1AA018AE00A9CB6F /* Default@2x.png */,
+				BFA8588E1AA018AE00A9CB6F /* splash-1242x2208@2x.png */,
+				BFA8588F1AA018AE00A9CB6F /* splash-750x1334@2x.png */,
+			);
+			path = splash;
+			sourceTree = "<group>";
+		};
 		BFAD59FA1A8D10E900749320 /* imagenesPlanPro */ = {
 			isa = PBXGroup;
 			children = (
@@ -3265,6 +3288,7 @@
 				0F11EDF9190712C700401686 /* smscompartir@2x.png in Resources */,
 				65608FEC1970886C00B3C914 /* btniPhone.png in Resources */,
 				65581B2C19350C9300B5D4ED /* settingsEn.png in Resources */,
+				BFA858931AA018AE00A9CB6F /* splash-1242x2208@2x.png in Resources */,
 				0FCB0F6118E2137600C37A37 /* compartirwhatsapp.png in Resources */,
 				BFBF246B1A9277D80034F5DD /* recordarOn.png in Resources */,
 				BFAD5A431A8D10E900749320 /* 1mInac-es@3x.png in Resources */,
@@ -3300,6 +3324,7 @@
 				0F9F52D6189890C6000F9FA5 /* mireporteson.png in Resources */,
 				AB5280DC19AE593B001AB735 /* InstruccionesContacto.xib in Resources */,
 				0F11EDFA190712C700401686 /* twittercompartir@2x.png in Resources */,
+				BFA858921AA018AE00A9CB6F /* Default@2x.png in Resources */,
 				0F6EDD111909E27D007F3480 /* logonuevo@2x.png in Resources */,
 				0F11EDED190712B300401686 /* emailcompartir.png in Resources */,
 				0F9F532118989413000F9FA5 /* basura@2x.png in Resources */,
@@ -3471,6 +3496,7 @@
 				65065DD1190FEB6600189316 /* tips2.png in Resources */,
 				0F6CBD3819085F180077B065 /* tip4@2x.png in Resources */,
 				0F889B3618E336D000F26B7D /* plecamensaje.png in Resources */,
+				BFA858911AA018AE00A9CB6F /* Default.png in Resources */,
 				BFAD5A401A8D10E900749320 /* 1mInac-en@3x.png in Resources */,
 				0F514C2B18CF855A00817774 /* csecureweb@2x.png in Resources */,
 				0F68945A18E53E2E00025050 /* btniniciarsesion.png in Resources */,
@@ -3516,12 +3542,14 @@
 				65065DD5190FEB6600189316 /* tipsFace.png in Resources */,
 				655F6C2918EDC2CF00C4347A /* NBlila.png in Resources */,
 				0F9F52C2189890C6000F9FA5 /* cpinterest.png in Resources */,
+				BFA858901AA018AE00A9CB6F /* Default-568h@2x-iphone.png in Resources */,
 				0F5244F218FE037D001902E6 /* sbarnuevo@2x.png in Resources */,
 				BFAD5A371A8D10E900749320 /* 12mInac-es@3x.png in Resources */,
 				0F9F535618989413000F9FA5 /* usuario@2x.png in Resources */,
 				BFAD5A551A8D10E900749320 /* beneficios-es@2x.png in Resources */,
 				0F68945C18E53E3800025050 /* btniniciarsesion@2x.png in Resources */,
 				65608FEB1970886C00B3C914 /* logoiPhone.png in Resources */,
+				BFA858941AA018AE00A9CB6F /* splash-750x1334@2x.png in Resources */,
 				BFAD5A3A1A8D10E900749320 /* 1mAc-en@3x.png in Resources */,
 				0F9F534818989413000F9FA5 /* micuentaon@2x.png in Resources */,
 				0F680EF918ECD79300A02347 /* mireportes.png in Resources */,

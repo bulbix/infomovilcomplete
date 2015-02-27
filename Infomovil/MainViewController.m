@@ -15,6 +15,7 @@
 #import "NombrarViewController.h"
 #import "AppsFlyerTracker.h"
 #import <FacebookSDK/FacebookSDK.h>
+#import "AppboyKit.h"
 @import LocalAuthentication;
 
 @interface MainViewController () <FBLoginViewDelegate> {
@@ -221,6 +222,7 @@
     }
     else {
     if (loginExitoso) {  NSLog(@"ENTRO A LOGIN EXITOSO");
+        [[Appboy sharedInstance] changeUser:self.txtEmail.text];
         self.datosUsuario.existeLogin = YES;
         if (![self.datosUsuario.redSocial isEqualToString:@"Facebook"]) {
             [self.datosUsuario setEmailUsuario:self.txtEmail.text];
