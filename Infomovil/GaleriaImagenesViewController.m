@@ -177,21 +177,21 @@
         [galeria setTituloPaso:NSLocalizedString(@"anadirImagen", @" ")];
         [self.navigationController pushViewController:galeria animated:YES];
         
-    }else if([self.arregloImagenes count] >= 2 && [self.arregloImagenes count] < maxNumeroImagenes && [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && ![self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]){
+    }else if([self.arregloImagenes count] >= 2 && [self.arregloImagenes count] < 12 && [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && ![self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]){
         GaleriaPaso2ViewController *galeria = [[GaleriaPaso2ViewController alloc] initWithNibName:@"GaleriaPaso2ViewController" bundle:nil];
         [galeria setOperacion:GaleriaImagenesAgregar];
         [galeria setGaleryType:PhotoGaleryTypeImage];
         [galeria setTituloPaso:NSLocalizedString(@"anadirImagen", @" ")];
         [self.navigationController pushViewController:galeria animated:YES];
     
-    }else if([self.arregloImagenes count] >= 2 && [self.arregloImagenes count] < maxNumeroImagenes && [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && [self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]){
+    }else if([self.arregloImagenes count] >= 2 && [self.arregloImagenes count] < 12 && [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && [self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]){
         AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeImagenesPrueba", Nil) andAlertViewType:AlertViewTypeQuestion];
         [alert show];
-    }else if([self.arregloImagenes count] >= 2 && [self.arregloImagenes count] < maxNumeroImagenes && ![((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] ){
+    }else if([self.arregloImagenes count] >= 2 && [self.arregloImagenes count] < 12 && ![((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] ){
         AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeImagenesPrueba", Nil) andAlertViewType:AlertViewTypeQuestion];
         [alert show];
         
-    }else if([self.arregloImagenes count] > 12){
+    }else if([self.arregloImagenes count] >= 12){
         alertaImagenes = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeImagenesPro", nil) andAlertViewType:AlertViewTypeInfo];
         [alertaImagenes show];
     }
@@ -253,7 +253,7 @@
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"EL INDEXPATH DE LA TABLA DE IMAGENES ES %i", indexPath.row);
-    if(indexPath.row <= 1 && [self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]){
+    if(indexPath.row <= 1 ){
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         GaleriaPaso2ViewController *galeria = [[GaleriaPaso2ViewController alloc] initWithNibName:@"GaleriaPaso2ViewController" bundle:nil];
         [galeria setOperacion:GaleriaImagenesEditar];
@@ -261,6 +261,15 @@
         [galeria setGaleryType:PhotoGaleryTypeImage];
         [galeria setIndex:indexPath.row];
         [self.navigationController pushViewController:galeria animated:YES];
+    }else if(indexPath.row > 1 && ![self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]){
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        GaleriaPaso2ViewController *galeria = [[GaleriaPaso2ViewController alloc] initWithNibName:@"GaleriaPaso2ViewController" bundle:nil];
+        [galeria setOperacion:GaleriaImagenesEditar];
+        [galeria setTituloPaso:NSLocalizedString(@"anadirImagen", @" ")];
+        [galeria setGaleryType:PhotoGaleryTypeImage];
+        [galeria setIndex:indexPath.row];
+        [self.navigationController pushViewController:galeria animated:YES];
+    
     }
 }
 

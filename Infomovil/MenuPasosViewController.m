@@ -22,6 +22,7 @@
 #import "VerEjemploViewController.h"
 #import "AppsFlyerTracker.h"
 #import "AppDelegate.h"
+#import "AppboyKit.h"
 
 #define IS_IPHONE5 (([[UIScreen mainScreen] bounds].size.height-568)?NO:YES)
 
@@ -47,7 +48,9 @@
     self.datosUsuario				= [DatosUsuario sharedInstance];
     self.datosUsuario.editoPagina	= NO;
     
-     [[Appboy sharedInstance] changeUser:self.datosUsuario.emailUsuario];
+    
+    
+        
     [self.navigationItem hidesBackButton];
     if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion)
 	{
@@ -159,7 +162,9 @@
              //   DominiosUsuario *dominioUsuario = [self.datosUsuario.dominiosUsuario objectAtIndex:i];
              //   if([dominioUsuario.domainType isEqualToString:@"tel"]){
             [self.dominio setTitle:[NSString stringWithFormat:@"www.%@.tel", self.datosUsuario.dominio] forState:UIControlStateNormal];
-          
+#if DEBUG
+                [self.dominio setTitle:[NSString stringWithFormat:@"www.info-movil.com/%@", self.datosUsuario.dominio] forState:UIControlStateNormal];
+#endif
              /*  }else{
                     self.dominio.text	= [NSString stringWithFormat:@"www.info-movil.com/%@", self.datosUsuario.dominio];
                 }
@@ -168,6 +173,9 @@
             
             if([self.dominio.titleLabel.text isEqualToString:@""] || self.dominio.titleLabel.text == nil || (self.datosUsuario.dominio == (id)[NSNull null]) || ![CommonUtils validarEmail:self.datosUsuario.dominio] || ![self.datosUsuario.dominio isEqualToString:@"(null)"] ){
                 [self.dominio setTitle:[NSString stringWithFormat:@"www.%@.tel", self.datosUsuario.dominio] forState:UIControlStateNormal];
+#if DEBUG
+                [self.dominio setTitle:[NSString stringWithFormat:@"www.info-movil.com/%@", self.datosUsuario.dominio] forState:UIControlStateNormal];
+#endif
             }
             
             if(IS_IPHONE5){

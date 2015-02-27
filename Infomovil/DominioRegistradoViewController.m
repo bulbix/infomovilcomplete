@@ -26,10 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-//    [self.tituloVista setText:NSLocalizedString(@"nombrar", @" ")];
-//    [self.vistaCircular setImage:[UIImage imageNamed:@"plecamagenta.png"]];
-//    [self.vistaCircular setImage:[UIImage imageNamed:@"plecacreasitio.png"]];
+ 
 	if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
 		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"nombrar", @" ") nombreImagen:@"roja.png"];
 	}else{
@@ -37,6 +34,9 @@
 	}
     self.datosUsuario = [DatosUsuario sharedInstance];
     [self.labelDominio setText:[NSString stringWithFormat:@"www.%@.tel", self.datosUsuario.dominio]];
+#if DEBUG
+    [self.labelDominio setText:[NSString stringWithFormat:@"www.info-movil.com/%@", self.datosUsuario.dominio]];
+#endif
 	
     self.navigationItem.rightBarButtonItem = Nil;
 	self.btnComprar.hidden = YES;

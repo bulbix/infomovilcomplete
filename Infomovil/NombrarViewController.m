@@ -94,6 +94,13 @@
 	
 	saliendo = NO;
     
+    
+    
+#if DEBUG
+    [self.labelDominio setText:[NSString stringWithFormat:@"www.info-movil.com/misitio"]];
+#endif
+    
+    
 }
 
 - (void)didReceiveMemoryWarning

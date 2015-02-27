@@ -73,7 +73,10 @@
     
    
     [cell.textLabel setText:[NSString stringWithFormat:@"%@.tel", self.datosUsuario.dominio]];
-   
+#if DEBUG
+    [cell.textLabel setText:[NSString stringWithFormat:@"info-movil.com/%@", self.datosUsuario.dominio]];
+#endif
+    
     /* PARA LA VERSION DE DOMINIOS */
     /*
      DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:indexPath.row];

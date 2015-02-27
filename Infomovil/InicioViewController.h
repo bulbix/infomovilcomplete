@@ -14,8 +14,8 @@
 @property (nonatomic, strong) AlertView *alerta;
 
 @property (strong, nonatomic) IBOutlet UILabel *label;
-@property (strong, nonatomic) IBOutlet UIButton *botonPruebalo;
-@property (strong, nonatomic) IBOutlet UIButton *botonSesion;
+@property (strong, nonatomic) IBOutlet UIButton *botonPruebalos;
+@property (strong, nonatomic) IBOutlet UIButton *botonSesions;
 @property (strong, nonatomic) IBOutlet UILabel *leyenda1;
 @property (strong, nonatomic) IBOutlet UIButton *leyenda2;
 @property (strong, nonatomic) IBOutlet UILabel *leyenda3;

@@ -16,7 +16,7 @@
 #import "ItemsDominio.h"
 #import "AppDelegate.h"
 #import "DominiosUsuario.h"
-
+#import "AppboyKit.h"
 
 
 @interface WS_HandlerLogin () {
@@ -96,7 +96,7 @@
     
     self.strSoapAction = @"WSInfomovilDomain";
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
-  //  NSLog(@"IRC : La respuesta es del login es: %s", [dataResult bytes]);
+   NSLog(@"IRC : La respuesta es del login es: %s", [dataResult bytes]);
     if (dataResult != nil) {
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
         [parser setDelegate:self];
@@ -284,6 +284,9 @@
             }
             
             ((AppDelegate *) [[UIApplication sharedApplication] delegate]).fechaLogin = [NSDate date];
+           
+            [[Appboy sharedInstance] changeUser:self.datosUsuario.emailUsuario];
+          
             [self.loginDelegate resultadoLogin:self.idDominio];
             
         }
@@ -914,6 +917,7 @@
 		}else{
 			self.datosUsuario.fechaInicial = self.currentElementString;
 		}
+        NSLog(@"LA FECHA INICIAL EN GETDOMAIN ES: %@", self.datosUsuario.fechaInicial);
 	}
 	else if ([elementName isEqualToString:@"fechaFin"]){
 		if(requiereEncriptar){
@@ -921,6 +925,7 @@
 		}else{
 			self.datosUsuario.fechaFinal = self.currentElementString;
 		}
+         NSLog(@"LA FECHA FINAL EN GETDOMAIN ES: %@", self.datosUsuario.fechaFinal);
 	}
 	else if ([elementName isEqualToString:@"fTelNamesIni"]){
         NSString *strAux;

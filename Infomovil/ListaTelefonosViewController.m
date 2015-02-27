@@ -171,11 +171,11 @@
     }else if([self.datosUsuario.arregloContacto count] < 2) {
             TipoContactoViewController *tipoContacto = [[TipoContactoViewController alloc] initWithNibName:@"TipoContactoViewController" bundle:Nil];
             [self.navigationController pushViewController:tipoContacto animated:YES];
-    }else if([self.datosUsuario.arregloContacto count] >= 2 && [self.datosUsuario.arregloContacto count] < maxNumContactos && [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && ![self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]){
+    }else if([self.datosUsuario.arregloContacto count] >= 2 && [self.datosUsuario.arregloContacto count] < 10 && [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && ![self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]){
         TipoContactoViewController *tipoContacto = [[TipoContactoViewController alloc] initWithNibName:@"TipoContactoViewController" bundle:Nil];
         [self.navigationController pushViewController:tipoContacto animated:YES];
     
-     }else if([self.datosUsuario.arregloContacto count] >= 2 && [self.datosUsuario.arregloContacto count] < maxNumContactos && [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && [self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]){
+     }else if([self.datosUsuario.arregloContacto count] >= 2 && [self.datosUsuario.arregloContacto count] < 10 && [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && [self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]){
          alertaContactos = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeContactosPrueba", Nil) andAlertViewType:AlertViewTypeQuestion];
          [alertaContactos show];
     

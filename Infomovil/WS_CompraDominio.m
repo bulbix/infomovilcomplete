@@ -185,6 +185,15 @@
         }else{
             self.datosUsuario.fechaFinal = self.currentElementString;
         }
+        NSLog(@"La fecha ini en WS_CompraDominio es: %@", self.datosUsuario.fechaFinal);
+    }
+    else if ([elementName isEqualToString:@"fechaIni"]){
+        if(requiereEncriptar){
+            self.datosUsuario.fechaInicial = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
+        }else{
+            self.datosUsuario.fechaInicial = self.currentElementString;
+        }
+        NSLog(@"La fecha ini en WS_CompraDominio es: %@", self.datosUsuario.fechaInicial);
     }
     else if ([elementName isEqualToString:@"fTelNamesIni"]){
         NSString *strAux;

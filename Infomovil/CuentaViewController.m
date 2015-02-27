@@ -37,7 +37,7 @@
 	NSInteger compraSeleccionada;
 	BOOL edo;
     SKProduct *productoElegido;
-	
+    BOOL noSeRepiteOprimirElBoton;
     NSArray *_products;
     NSNumberFormatter * _priceFormatter;
   
@@ -67,7 +67,7 @@ int opcionButton = 0 ;
 - (void)viewDidLoad{
     [super viewDidLoad];
     [self obtenerProductos];
-    
+    noSeRepiteOprimirElBoton = YES;
     opcionButton = 0;
    
     if (tablaDominio == nil) {
@@ -177,6 +177,7 @@ int opcionButton = 0 ;
 
 
 -(void) viewWillAppear:(BOOL)animated {
+    noSeRepiteOprimirElBoton = YES;
     if (tipoVista != 1) {
 	BOOL sesion = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).existeSesion;
 #ifdef _DEBUG
@@ -351,7 +352,8 @@ int opcionButton = 0 ;
 
 
 - (IBAction)comprar1mesBtn:(id)sender {
-    
+if(noSeRepiteOprimirElBoton){
+    noSeRepiteOprimirElBoton = NO;
     opcionButton = 1;
     [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
     
@@ -396,10 +398,13 @@ int opcionButton = 0 ;
         NSLog(@"La NSException en comprar1mesBtn es: %@", exception.reason);
     }
 }
+}
 
 
 
 - (IBAction)comprar6mesesBtn:(id)sender {
+    if(noSeRepiteOprimirElBoton){
+    noSeRepiteOprimirElBoton = NO;
     opcionButton = 2;
     [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
     @try {
@@ -442,10 +447,12 @@ int opcionButton = 0 ;
             [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
             NSLog(@"La NSException en comprar6mesesBtn es: %@", exception.reason);
         }
-    
+    }
 }
 
 - (IBAction)comprar12mesesBtn:(id)sender {
+if(noSeRepiteOprimirElBoton){
+    noSeRepiteOprimirElBoton = NO;
     opcionButton = 3;
     [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
     @try {
@@ -485,6 +492,7 @@ int opcionButton = 0 ;
         NSLog(@"La NSException en comprar12mesesBtn es: %@", exception.reason);
         [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
     }
+}
 }
 
 // IRC OBTIENE LOS IDENTIFICADORES DE LOS PRODUCTOS EN APPSTORE  //
@@ -552,17 +560,12 @@ int opcionButton = 0 ;
 
 -(void) mostrarActivity {
     NSLog(@"Mostrar actividad de espera!");
-    self.comprar1mes.enabled = NO;
-    self.comprar6meses.enabled = NO;
-    self.comprar12meses.enabled = NO;
     self.alerta = [AlertView initWithDelegate:self message:NSLocalizedString(@"cargando", Nil) andAlertViewType:AlertViewTypeActivity];
     [self.alerta show];
 }
 -(void) ocultarActivity {
+    noSeRepiteOprimirElBoton = YES;
     NSLog(@"Ocultar actividad de espera!");
-    self.comprar1mes.enabled = YES;
-    self.comprar6meses.enabled = YES;
-    self.comprar12meses.enabled = YES;
     if (self.alerta)
     {
         [NSThread sleepForTimeInterval:1];
@@ -581,14 +584,13 @@ int opcionButton = 0 ;
 
 - (void) receiveTestNotification:(NSNotification *) notification
 {
-    self.comprar1mes.enabled = YES;
-    self.comprar6meses.enabled = YES;
-    self.comprar12meses.enabled = YES;
     
     if ([[notification name] isEqualToString:@"FailedTransactionNotification"]){
         self.datosUsuario.datosPago.statusPago = @"INTENTO PAGO";
         self.datosUsuario.descripcionDominio = @"";
         NSLog (@" IRC --------------------------- Fallo la transaccion!");
+        ((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio = @"Tramite";
+        NSLog(@"CONFIRMANDO QUE EL STATUSDOMINIO CAMBIO :  %@", ((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio);
     }
     else if ([[notification name] isEqualToString:@"CompleteTransactionNotification"]){
        
@@ -614,9 +616,11 @@ int opcionButton = 0 ;
         self.datosUsuario.descripcionDominio = @"";
         [self compra];
         NSLog (@" IRC --------------------------- Se completo la transaccion !");
+        ((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio = @"Pago";
+        NSLog(@"CONFIRMANDO QUE EL STATUSDOMINIO CAMBIO :  %@", ((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio);
     }
-    ((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio = @"Pago";
-    NSLog(@"CONFIRMANDO QUE EL STATUSDOMINIO CAMBIO :  %@", ((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio);
+    
+    
      [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
 }
 

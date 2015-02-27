@@ -35,8 +35,13 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // APPBOY // IRC //
+    // d29d6238-1791-4676-ac40-27522240abf4  DESARROLLO
+    // 30a24474-60de-4ed4-b7cf-367ad7234aa0  QA
+    // 773948d3-24b7-422e-8a53-f3b1be2834d0  PRODUCCION
     
-    [Appboy startWithApiKey:@"773948d3-24b7-422e-8a53-f3b1be2834d0"
+    
+    [Appboy startWithApiKey:@"30a24474-60de-4ed4-b7cf-367ad7234aa0"
               inApplication:application
           withLaunchOptions:launchOptions];
   
@@ -63,8 +68,8 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
 	
 	
 	//AppsFlyer
-	[AppsFlyerTracker sharedTracker].appsFlyerDevKey = @"5KoF92vzAFbhSj9PRduNCn";
-	[AppsFlyerTracker sharedTracker].appleAppID = @"898313250";
+	//[AppsFlyerTracker sharedTracker].appsFlyerDevKey = @"5KoF92vzAFbhSj9PRduNCn";
+	//[AppsFlyerTracker sharedTracker].appleAppID = @"898313250";
     
     [GAI sharedInstance].trackUncaughtExceptions = YES;
     [GAI sharedInstance].dispatchInterval = 20;

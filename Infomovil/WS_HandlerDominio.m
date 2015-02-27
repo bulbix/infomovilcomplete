@@ -654,14 +654,16 @@
                 } else if ([stringResult isEqualToString:@"SessionTO"])
                     [self.wSHandlerDelegate sessionTimeout];
                 else {
-                    datos.fechaInicialTel = [NSDateFormatter changeDateFormatOfString:[StringUtils desEncriptar:self.telIni
+                    datos.fechaInicialTel = [NSDateFormatter changeDateFormatOfString:[StringUtils desEncriptar:self.fechaInicio
                                                                                                        conToken:datos.token]
                                                                                  from:@"yyyy-MM-dd"
                                                                                    to:@"dd-MM-yyy"];
-                    datos.fechaFinalTel = [NSDateFormatter changeDateFormatOfString:[StringUtils desEncriptar:self.telFin
+                    datos.fechaFinalTel = [NSDateFormatter changeDateFormatOfString:[StringUtils desEncriptar:self.fechaFinal
                                                                                                      conToken:datos.token]
                                                                                from:@"yyyy-MM-dd"
                                                                                  to:@"dd-MM-yyy"];
+                    
+                    NSLog(@"La fecha inicial es: %@ y la final es %@", datos.fechaInicialTel, datos.fechaFinalTel);
                     ((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio = stringResult;
                     NSLog(@"token::: %@",datos.token);
                     [self.wSHandlerDelegate resultadoConsultaDominio:@"Exito"];

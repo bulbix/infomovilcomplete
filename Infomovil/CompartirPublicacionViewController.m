@@ -41,6 +41,11 @@
 	
     [self.labelDominio setText:[NSString stringWithFormat:@"www.%@.tel", self.datosUsuario.dominio]];
     
+#if DEBUG
+    [self.labelDominio setText:[NSString stringWithFormat:@"www.info-movil.com/%@", self.datosUsuario.dominio]];
+#endif
+    
+    
     UIImage *image = [UIImage imageNamed:@"btnregresar.png"];
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [backButton setFrame:CGRectMake(0, 0, image.size.width, image.size.height)];

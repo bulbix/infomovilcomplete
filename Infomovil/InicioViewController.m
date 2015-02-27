@@ -42,8 +42,12 @@
 
 - (void)viewDidLoad
 {
-
     [super viewDidLoad];
+    
+    if(self.navigationController.navigationBar.hidden == NO){
+        [self.navigationController.navigationBar setHidden:YES];
+    }
+    
     [self.vistaInferior setHidden:YES];
 	
 	if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
@@ -77,12 +81,13 @@
 -(void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    
    
     [self.conoceMas setTitle:NSLocalizedString(@"conoceMasInicio", nil) forState:UIControlStateNormal] ;
 	
 	self.label.text = NSLocalizedString(@"inicioLabel", nil);
-	[self.botonPruebalo setTitle:NSLocalizedString(@"inicioBotonPruebalo", nil) forState:UIControlStateNormal];
-	[self.botonSesion setTitle:NSLocalizedString(@"inicioBotonSesion", nil) forState:UIControlStateNormal] ;
+	[self.botonPruebalos setTitle:NSLocalizedString(@"inicioBotonPruebalo", nil) forState:UIControlStateNormal];
+	[self.botonSesions setTitle:NSLocalizedString(@"inicioBotonSesion", nil) forState:UIControlStateNormal] ;
 	
 	self.leyenda1.text = NSLocalizedString(@"inicioLeyenda1", nil);
 	[self.leyenda2 setTitle:NSLocalizedString(@"inicioLeyenda2", nil) forState:UIControlStateNormal] ;
@@ -104,22 +109,29 @@
    
 	
 	if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-		[self.botonPruebalo setBackgroundImage:[UIImage imageNamed:@"btnfreesiteEn.png"] forState:UIControlStateNormal];
+		[self.botonPruebalos setBackgroundImage:[UIImage imageNamed:@"btnfreesiteEn.png"] forState:UIControlStateNormal];
 	}
 	
 	((AppDelegate *)[[UIApplication sharedApplication] delegate]).logueado = NO;
 	 ((AppDelegate*)	[[UIApplication sharedApplication] delegate]).statusDominio = @"Gratuito";
     ((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion = NO;
     ((AppDelegate *)[[UIApplication sharedApplication] delegate]).logueado = NO;
-    if(! IS_IPHONE_5){
+    
+    if(self.navigationController.navigationBar.hidden == NO){
+        [self.navigationController.navigationBar setHidden:YES];
+    }
+   
+    if(! IS_IPHONE_5 ){
         self.conoceMas.frame = CGRectMake(126, 380, 143 , 30);
         self.conoceMasPlay.frame = CGRectMake(83, 375, 35, 35);
-        self.botonPruebalo.frame = CGRectMake(30, 220, 260, 55);
-        self.botonSesion.frame = CGRectMake(32, 290, 256, 55);
+        self.botonPruebalos.frame = CGRectMake(30, 220, 260, 55);
+        self.botonSesions.frame = CGRectMake(32, 290, 256, 55);
+        NSLog(@"el boton pruebalo es: %f", self.botonPruebalos.frame.origin.y);
         self.label.frame = CGRectMake(20, 118, 280, 97);
     }
+   
     [self.vistaInferior setHidden:YES];
-     [self.navigationController.navigationBar setHidden:YES];
+    
 
 }
 
