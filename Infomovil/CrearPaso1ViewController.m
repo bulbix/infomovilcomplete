@@ -26,6 +26,7 @@
 #import "NombrarViewController.h"
 #import "AppsFlyerTracker.h"
 #import "AppDelegate.h"
+#import "VistaPreviaViewController.h"
 
 @interface CrearPaso1ViewController (){
 	AlertView * alertaVideo;
@@ -256,6 +257,7 @@
                 alertaVideo = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeNoVideo", Nil) andAlertViewType:AlertViewTypeQuestion];
 				[alertaVideo show];
             }
+            
         }
         else {
             VideoViewController *video = [[VideoViewController alloc] initWithNibName:@"VideoViewController" bundle:nil];
@@ -310,18 +312,15 @@
    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-/*
+
 -(IBAction)mostrarWeb:(id)sender {
     VistaPreviaViewController *vistaPrevia = [[VistaPreviaViewController alloc] initWithNibName:@"VistaPreviaViewController" bundle:Nil];
     [vistaPrevia setTipoVista:PreviewTypePrevia];
     [self.navigationController pushViewController:vistaPrevia animated:YES];
 }
-*/
-
--(IBAction)mostrarWeb:(id)sender {
 
 
-}
+
 
 -(void) accionSi{
 	[alertaVideo hide];

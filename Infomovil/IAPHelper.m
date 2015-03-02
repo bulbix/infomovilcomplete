@@ -95,18 +95,13 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
     }@catch (NSException *exception) {
         NSLog(@"No pudo recuperar los datos de los produsctos de compra");
     }
-   
-    
 }
 
 - (void)request:(SKRequest *)request didFailWithError:(NSError *)error {
-    
     NSLog(@"Failed to load list of products.");
     _productsRequest = nil;
-    
     _completionHandler(NO, nil);
     _completionHandler = nil;
-    
 }
 
 #pragma mark SKPaymentTransactionOBserver
@@ -141,7 +136,6 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
 
 - (void)restoreTransaction:(SKPaymentTransaction *)transaction {
     NSLog(@"restoreTransaction...");
-    
     [self provideContentForProductIdentifier:transaction.originalTransaction.payment.productIdentifier];
     [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
 }

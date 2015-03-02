@@ -67,6 +67,8 @@
     [self.labelAutorVideo setText:NSLocalizedString(@"autorVideo", Nil)];
     [self.labelCategoriaVideo setText:NSLocalizedString(@"categoriaVideo", Nil)];
     [self.labelUrlVideo setText:NSLocalizedString(@"labelURLVideo", Nil)];
+    
+    self.buscarBtn.layer.cornerRadius = 12.0f;
 }
 
 -(void) viewWillAppear:(BOOL)animated {

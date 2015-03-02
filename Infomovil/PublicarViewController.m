@@ -71,6 +71,7 @@
 	}else{
 		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"publicar", @" ") nombreImagen:@"plecaroja.png"];
 	}
+     
     operacionWS = WSOperacionNombrar;
     publicoDominio = NO;
 	creoDominio = NO;

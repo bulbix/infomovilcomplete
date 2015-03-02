@@ -40,11 +40,16 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
     // 30a24474-60de-4ed4-b7cf-367ad7234aa0  QA
     // 773948d3-24b7-422e-8a53-f3b1be2834d0  PRODUCCION
     
-    
-    [Appboy startWithApiKey:@"30a24474-60de-4ed4-b7cf-367ad7234aa0"
+  /*
+    [Appboy startWithApiKey:@"773948d3-24b7-422e-8a53-f3b1be2834d0"
               inApplication:application
           withLaunchOptions:launchOptions];
-  
+    
+    //AppsFlyer
+    [AppsFlyerTracker sharedTracker].appsFlyerDevKey = @"5KoF92vzAFbhSj9PRduNCn";
+    [AppsFlyerTracker sharedTracker].appleAppID = @"898313250";
+    */
+    
     //-- Set Notification
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.000000) {
         UIUserNotificationSettings * settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
@@ -67,9 +72,7 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
     self.ultimoView = Nil;
 	
 	
-	//AppsFlyer
-	//[AppsFlyerTracker sharedTracker].appsFlyerDevKey = @"5KoF92vzAFbhSj9PRduNCn";
-	//[AppsFlyerTracker sharedTracker].appleAppID = @"898313250";
+	
     
     [GAI sharedInstance].trackUncaughtExceptions = YES;
     [GAI sharedInstance].dispatchInterval = 20;

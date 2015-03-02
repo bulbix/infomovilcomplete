@@ -52,7 +52,7 @@
 	</dict>
 	<dict>
 		<key>ejemplo</key>
-		<string>info@infomovil.com</string>
+		<string> </string>
 		<key>mensaje</key>
 		<string>E-mail</string>
 		<key>expresion</key>

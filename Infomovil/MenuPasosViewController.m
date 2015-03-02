@@ -23,6 +23,7 @@
 #import "AppsFlyerTracker.h"
 #import "AppDelegate.h"
 #import "AppboyKit.h"
+#import "VistaPreviaViewController.h"
 
 #define IS_IPHONE5 (([[UIScreen mainScreen] bounds].size.height-568)?NO:YES)
 
@@ -301,9 +302,15 @@
     }    }
 
 - (IBAction)verEjemplo:(UIButton *)sender {
-    VerEjemploViewController *verEjemplo = [[VerEjemploViewController alloc] initWithNibName:@"VerEjemplo" bundle:Nil];
+   VerEjemploViewController *verEjemplo = [[VerEjemploViewController alloc] initWithNibName:@"VerEjemplo" bundle:Nil];
     [self.navigationController pushViewController:verEjemplo animated:YES];
-}
+
+    /*
+    VistaPreviaViewController *vistaPrevia = [[VistaPreviaViewController alloc] initWithNibName:@"VistaPreviaViewController" bundle:Nil];
+    [vistaPrevia setTipoVista:PreviewTypeEjemplo];
+    [self.navigationController pushViewController:vistaPrevia animated:YES];
+   */
+   }
 
 -(BOOL) perfilEditado {
     BOOL fueEditado = NO;

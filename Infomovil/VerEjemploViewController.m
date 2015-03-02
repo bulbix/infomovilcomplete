@@ -37,11 +37,13 @@
     UIBarButtonItem *buttonBack = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     self.navigationItem.leftBarButtonItem = buttonBack;
     
-    NSString *htmlStringToLoad = @"http://172.3.17.181:8080/Dir/templates/generico/index.html";
+    NSString *htmlStringToLoad = @"http://pizzastibonetes.tel/";
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:htmlStringToLoad]]];
     [self.view addSubview:self.webView];
     [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
     
+    
+  
     
     
 }
@@ -82,6 +84,7 @@
     }
     
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

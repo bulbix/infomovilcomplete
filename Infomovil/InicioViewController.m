@@ -208,8 +208,8 @@
 -(void) ocultarActivity {
     self.datosUsuario = [DatosUsuario sharedInstance];
     if (buscandoSesion) {
-        if (existeUnaSesion) {
-            if (self.alerta)
+       /*if (existeUnaSesion) {
+        if (self.alerta)
             {
                 [NSThread sleepForTimeInterval:1];
                 [self.alerta hide];
@@ -221,6 +221,11 @@
             buscandoSesion = NO;
             [self performSelectorInBackground:@selector(consultaLogin) withObject:Nil];
         }
+        */
+        buscandoSesion = NO;
+        [self performSelectorInBackground:@selector(consultaLogin) withObject:Nil];
+
+        
     }
     else {
     if (loginExitoso) {

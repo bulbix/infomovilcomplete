@@ -29,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *txtUrlVideo;
 @property (nonatomic, strong) NSMutableArray *arregloVideos;
 @property (weak, nonatomic) IBOutlet UILabel *labelUrlVideo;
+@property (weak, nonatomic) IBOutlet UIButton *buscarBtn;
 
 @property (nonatomic) NSInteger tipoBusqueda;
 

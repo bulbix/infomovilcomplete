@@ -258,11 +258,11 @@
 
 "mensajeContactos" = "Plan Básico: Puedes agregar hasta 3 contactos.\nPlan Pro: puedes agregar hasta 10 contactos.";
 
-"mensajeContactosPrueba" = "Para agregar más contactos, contrata un Plan Pro. ¿Deseas aprender más del Plan Pro?";
+"mensajeContactosPrueba" = "Para agregar más contactos, contrata un Plan Pro. ¿Deseas aprender más?";
 
 "mensajeImagenesPrueba" = "Para agregar más imágenes, contrata un Plan Pro. ¿Deseas aprender más?";
 
-"mensajeInformacionAdicionalPrueba" = "Para agregar más campos, contrata un plan Pro ¿Deseas aprender más del Plan Pro?";
+"mensajeInformacionAdicionalPrueba" = "Para agregar más información, contrata un Plan Pro ¿Deseas aprender más?";
 "mensajeContactoTelefono" = "Define un número telefónico";
 "mensajeContactoMail" = "Define un e-mail";
 
@@ -275,9 +275,9 @@
 
 "mensajeCuenta" = "Crea una imagen profesional con Plan Pro";
 
-"mensajeNoVideo" = "¡Liga un video de YouTube y haz tu sitio más llamativo! Esta opción es parte del Plan Pro ¿Deseas aprender más del Plan Pro?";
+"mensajeNoVideo" = "¡Liga un video de YouTube y haz tu sitio más llamativo! Esta opción es parte del Plan Pro ¿Deseas aprender más?";
 
-"mensajeNoPrueba" = "Esta opción es parte del Plan Pro ¿Deseas aprender más del Plan Pro?";
+"mensajeNoPrueba" = "Esta opción es parte del Plan Pro ¿Deseas aprender más?";
 
 "mensajeDominio" = "Al nombrar tu sitio web, te damos una dirección única y memorable:\n\nwww.minegocio.tel";//;"Próximamente podrás adquirir tu propio dominio .tel \n\nwww.mi negocio.tel\n\n Un dominio .tel utiliza un sistema avanzado de hosteo para que tu página se cargue más rápidamente. Es la mejor opción si deseas un sitio totalmente profesional.";
 
@@ -293,7 +293,7 @@
 "inicioLeyenda2" = "condiciones del servicio";
 "inicioLeyenda3" = "y la";
 "inicioLeyenda4" = "política de privacidad";
-"inicioLeyenda5" = "de infomovil";
+"inicioLeyenda5" = "de Infomovil";
 
 //MainViewController
 "mainLabelCorreo" = " Dirección de correo";
@@ -428,7 +428,7 @@
 "mensajeCompra" = "Compra exitosa";
 "mensajeComprando" = "¡Está a punto de realizar la compra de un Plan Pro!";
 
-"labelProximamente" = "Próximamente";
+"labelProximamente" = "PRÓXIMAMENTE";
 
 "cuentaEliminada" = "Cuenta eliminada exitosamente";
 
@@ -473,7 +473,8 @@
 
 "sessionCaduco" = "Tu sesión caducó. Por favor, ingresa tus datos otra vez.";
 
-"sessionUsada" = "Ya tienes otra sesión abierta. Ingresa tus datos de nuevo para abrir una nueva.";
+
+"sessionUsada" = "Por razones de seguridad es necesario volver a ingresar sesión";
 "codigoRedimir" = "Campaña canal";
 "tituloCampania" = "Campaña";
 "txtSinCampania" = "Sin campaña dejar en blanco";
@@ -495,7 +496,7 @@
 "checaMiSitio" = "Checa nuestro sitio web";
 "creeMiSitio" = "Acabo de crear un sitio web con infomovil.com.\n¡Visítalo y ayúdanos a crecer!\nwww.%@.tel";
 
-"txtMsjSessionActiva" = "Tienes otra sesión abierta, si continúas cerrarás la sesión anterior.";
+"txtMsjSessionActiva" = "Tienes otra sesión abierta, deseas cerrarla y abrir una nueva?.";
 "txtCerrarBackground" = "Por tu seguridad la sesión se ha cerrado, ingresa nuevamente";
 "txtProcesoPub" = "Tu sitio se encuentra en proceso de publicación";
 "mensajeProcesoPublicacion" = "Este dominio se encuentra en proceso de publicación, ingresa a la pantalla de cuenta en la pestaña de dominio para conocer su estatus";
@@ -543,7 +544,7 @@
 
 //CuentaViewController
 
-"txtMisSitios" = "Mis sitios";
+"txtMisSitios" = "Mi sitio";
 "txtComprar" = "Comprar";
 "txtDominioDisponible" = "Disponible";
 
@@ -623,6 +624,6 @@
 "sesionFaceCerrada" = "Sesión cerrada";
 "mensajePost" = "El mensaje se ha publicado correctamente en tu muro";
 "conoceMasInicio" = "Conoce más";
-
-
 "verEjemploInicio" = "Ejemplo";
+
+"proximamentePlanPro" = "¡PRÓXIMAMENTE!";

@@ -15,9 +15,9 @@
     static RageIAPHelper * sharedInstance;
     dispatch_once(&once, ^{
         NSSet * productIdentifiers = [NSSet setWithObjects:
-                                      @"com.infomovil.infomovil.price1_month",
-                                      @"com.infomovil.infomovil.price6_months",
-                                      @"com.infomovil.infomovil.price12_months",
+                                      @"com.infomovil.infomovil.prices3_months",
+                                      @"com.infomovil.infomovil.prices6_months",
+                                      @"com.infomovil.infomovil.prices12_months",
                                       nil];
         sharedInstance = [[self alloc] initWithProductIdentifiers:productIdentifiers];
     });

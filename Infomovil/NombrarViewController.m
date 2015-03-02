@@ -193,6 +193,7 @@
 }
 
 -(IBAction)regresar:(id)sender {
+    self.datosUsuario.dominio = @"";
     [[self view] endEditing:YES];
     [self.navigationController popViewControllerAnimated:YES];
 
@@ -236,7 +237,7 @@
             self.datosUsuario = [DatosUsuario sharedInstance];
             self.modifico = YES;
 			self.datosUsuario.dominio = self.nombreDominio.text;
-			NSLog(@"Dominio: %@",self.datosUsuario.dominio);
+			NSLog(@"El Dominio en NombrarViewController es: %@",self.datosUsuario.dominio);
             PublicarViewController *publicar = [[PublicarViewController alloc] initWithNibName:@"PublicarViewController" bundle:Nil];
             [self.navigationController pushViewController:publicar animated:YES];
 			
@@ -333,7 +334,7 @@
     if (operacionWS == 1) {
         if ([resultado isEqualToString:@"No existe"]) {
             existeDominio = YES;
-			self.datosUsuario.dominio = self.nombreDominio.text;
+			//self.datosUsuario.dominio = self.nombreDominio.text;
 			[self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
         }
         else {

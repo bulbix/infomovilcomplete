@@ -97,6 +97,8 @@
     self.txtEmail.layer.cornerRadius = 15.0f;
     self.txtPassword.layer.cornerRadius = 15.4f;
     
+    self.boton.layer.cornerRadius = 12.0f;
+    
     UILabel * leftView = [[UILabel alloc] initWithFrame:CGRectMake(10,0,10,50)];
     leftView.backgroundColor = [UIColor clearColor];
     self.txtEmail.leftView = leftView;
@@ -108,6 +110,8 @@
     self.txtPassword.leftView = leftView2;
     self.txtPassword.leftViewMode = UITextFieldViewModeAlways;
     self.txtPassword.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    
+    
     
     
     NSUserDefaults *prefsLogin = [NSUserDefaults standardUserDefaults];

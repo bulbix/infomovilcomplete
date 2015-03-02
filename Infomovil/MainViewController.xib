@@ -33,8 +33,9 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Juy-4m-fqk">
                             <rect key="frame" x="20" y="410" width="280" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.23529411764705882" green="0.29019607843137252" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
-                            <state key="normal" title="Inicia sesión" backgroundImage="btnazulnuevo.png">
+                            <state key="normal" title="Inicia sesión">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </state>
@@ -140,7 +141,6 @@
         </view>
     </objects>
     <resources>
-        <image name="btnazulnuevo.png" width="263" height="57"/>
         <image name="iPhone.png" width="322" height="568"/>
         <image name="logoRegistrado.png" width="267" height="49"/>
         <image name="recordarOff.png" width="225" height="225"/>

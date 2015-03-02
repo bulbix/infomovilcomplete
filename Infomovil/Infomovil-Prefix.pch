@@ -51,7 +51,6 @@ typedef enum {
 //#define rutaWS @"http://172.17.3.181:8080"
 /* productivo */
 //#define rutaWS @"http://info-movil.net"
-//#define rutaWS @"http://104.130.58.203"
 /* test */
 #define rutaWS @"http://info-movil.com"
 

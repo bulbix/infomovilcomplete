@@ -322,7 +322,7 @@
 
 "mensajeComprando" = "You are about to make the purchase of a Plan Pro!";
 
-"labelProximamente" = "Coming soon!";
+"labelProximamente" = "COMING SOON!";
 
 "cuentaEliminada" = "Account deleted successfully";
 
@@ -360,7 +360,7 @@
 "registrarMensaje" =  "Please create an account with your e-mail and password.";
 
 "sessionCaduco" = "Your session has expired. Please log-in again";
-"sessionUsada" = "You already have a session open. Log-in again to open a new one.";
+"sessionUsada" = "For security reasons you need to log in again.";
 "codigoRedimir" = "Channel campaing";
 "tituloCampania" = "Campaign";
 "txtSinCampania" = "Blanc if no campaing";
@@ -430,7 +430,7 @@
 
 //CuentaViewController
 
-"txtMisSitios" = "My sites";
+"txtMisSitios" = "My site";
 "txtComprar" = "Buy";
 "txtDominioDisponible" = "Available";
 
@@ -515,3 +515,5 @@
 "conoceMasInicio" = "Learn more";
 
 "verEjemploInicio" = "Example";
+
+"proximamentePlanPro" = "COMING SOON!";

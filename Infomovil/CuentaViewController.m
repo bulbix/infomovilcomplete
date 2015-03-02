@@ -133,7 +133,9 @@ int opcionButton = 0 ;
 		   nil];
 	arreglo = pro;
 	tipo = NO;
-	self.tituloPlanPro.text = NSLocalizedString(@"mensajeCuenta", nil);//@"Características de Cuenta Pro";
+	// IRC PARA PLAN PRO
+    //self.tituloPlanPro.text = NSLocalizedString(@"mensajeCuenta", nil);//@"Características de Cuenta Pro";
+    self.tituloPlanPro.text = NSLocalizedString(@"mensajeCuenta", @" ");
     self.navigationItem.rightBarButtonItem = Nil;
 	
 	
@@ -146,7 +148,7 @@ int opcionButton = 0 ;
 	BOOL sesion = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).existeSesion;
 
 #ifdef _DEBUG
-	NSLog(@"status: %@",((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio);
+	NSLog(@"En CuentaViewController statusDominio del appdelegate 2 es: %@",((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio);
 #endif
 	if(sesion &&  [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] ){
         [self.vistaInferior setHidden:NO];
@@ -181,7 +183,7 @@ int opcionButton = 0 ;
     if (tipoVista != 1) {
 	BOOL sesion = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).existeSesion;
 #ifdef _DEBUG
-	NSLog(@"status: %@",((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio);
+	NSLog(@"En CuentaViewController statusDominio del appdelegate 1 es: %@",((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio);
 #endif
         
         if(sesion &&  [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && ![self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]){
@@ -254,7 +256,7 @@ int opcionButton = 0 ;
             if([CommonUtils hayConexion]){
                 for(int i = 0 ; [_products count] > 0; i++){
                     SKProduct *product = _products[i];
-                    if([product.productIdentifier isEqualToString:@"com.infomovil.infomovil.price1_month"]){
+                    if([product.productIdentifier isEqualToString:@"com.infomovil.infomovil.prices3_months"]){
                         self.datosUsuario.datosPago.montoBruto = [NSString stringWithFormat:@"%i", product.price.integerValue ];
                         [[RageIAPHelper sharedInstance] buyProduct:product];
                         break;
@@ -287,7 +289,7 @@ int opcionButton = 0 ;
             if([CommonUtils hayConexion]){
                 for(int i = 0 ; [_products count] > 0; i++){
                     SKProduct *product = _products[i];
-                    if([product.productIdentifier isEqualToString:@"com.infomovil.infomovil.price6_months"]){
+                    if([product.productIdentifier isEqualToString:@"com.infomovil.infomovil.prices6_months"]){
                         self.datosUsuario.datosPago.montoBruto = [NSString stringWithFormat:@"%i", product.price.integerValue ];
                         [[RageIAPHelper sharedInstance] buyProduct:product];
                         break;
@@ -320,7 +322,7 @@ int opcionButton = 0 ;
             if([CommonUtils hayConexion]){
                 for(int i = 0 ; [_products count] > 0; i++){
                     SKProduct *product = _products[i];
-                    if([product.productIdentifier isEqualToString:@"com.infomovil.infomovil.price12_months"]){
+                    if([product.productIdentifier isEqualToString:@"com.infomovil.infomovil.prices12_months"]){
                         self.datosUsuario.datosPago.montoBruto = [NSString stringWithFormat:@"%i", product.price.integerValue ];
                         [[RageIAPHelper sharedInstance] buyProduct:product];
                         break;
@@ -371,9 +373,9 @@ if(noSeRepiteOprimirElBoton){
             if([CommonUtils hayConexion]){
                 for(int i = 0 ; [_products count] > 0; i++){
                     SKProduct *product = _products[i];
-                    if([product.productIdentifier isEqualToString:@"com.infomovil.infomovil.price1_month"]){
+                    if([product.productIdentifier isEqualToString:@"com.infomovil.infomovil.prices3_months"]){
                         NSLog(@"Comprando item 0: %@", product.productIdentifier);
-                        self.datosUsuario.datosPago.plan =@"PLAN PRO MENSUAL";
+                        self.datosUsuario.datosPago.plan =@"PLAN PRO 3 MESES";
                         self.datosUsuario.datosPago.comision = @"27";
                         self.datosUsuario.datosPago.statusPago = @"INTENTO PAGO";
                         self.datosUsuario.datosPago.tipoCompra = @"PP";
@@ -421,7 +423,7 @@ if(noSeRepiteOprimirElBoton){
                 if([CommonUtils hayConexion]){
                     for(int i = 0 ; [_products count] > 0; i++){
                         SKProduct *product = _products[i];
-                        if([product.productIdentifier isEqualToString:@"com.infomovil.infomovil.price6_months"]){
+                        if([product.productIdentifier isEqualToString:@"com.infomovil.infomovil.prices6_months"]){
                             NSLog(@"Comprando item 0: %@", product.productIdentifier);
                             self.datosUsuario.datosPago.plan =@"PLAN PRO 6 MESES";
                             self.datosUsuario.datosPago.comision = @"17";
@@ -468,7 +470,7 @@ if(noSeRepiteOprimirElBoton){
             if([CommonUtils hayConexion]){
                 for(int i = 0 ; [_products count] > 0; i++){
                     SKProduct *product = _products[i];
-                    if([product.productIdentifier isEqualToString:@"com.infomovil.infomovil.price12_months"]){
+                    if([product.productIdentifier isEqualToString:@"com.infomovil.infomovil.prices12_months"]){
                         self.datosUsuario.datosPago.plan =@"PLAN PRO 12 MESES";
                         self.datosUsuario.datosPago.comision = @"23";
                         self.datosUsuario.datosPago.statusPago = @"INTENTO PAGO";
@@ -513,13 +515,19 @@ if(noSeRepiteOprimirElBoton){
         if(sesion &&  ![((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] ){
 			arreglo = pro;
 			tipo = NO;
-			self.tituloPlanPro.text = NSLocalizedString(@"mensajeCuenta", @" ");
+            // IRC para plan Pro
+			//self.tituloPlanPro.text = NSLocalizedString(@"mensajeCuenta", @" ");
+            // IRC Temporal
+            self.tituloPlanPro.text = NSLocalizedString(@"mensajeCuenta", @" ");
+            
 			self.vistaPlanPro.hidden = NO;
 		
 		}else{
 			arreglo = pro;
 			tipo = NO;
-			self.tituloPlanPro.text = NSLocalizedString(@"mensajeCuenta", @" ");
+            // IRC para plan Pro
+			//self.tituloPlanPro.text = NSLocalizedString(@"mensajeCuenta", @" ");
+            self.tituloPlanPro.text = NSLocalizedString(@"mensajeCuenta", @" ");
 			//BOOL sesion = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).existeSesion;
 		
 		}
@@ -594,9 +602,9 @@ if(noSeRepiteOprimirElBoton){
     }
     else if ([[notification name] isEqualToString:@"CompleteTransactionNotification"]){
        
-        if([self.datosUsuario.datosPago.plan isEqualToString:@"PLAN PRO MENSUAL"]){
-            [[AppsFlyerTracker sharedTracker] trackEvent:@"Plan Pro 1 Mes" withValue:@""];
-            [[Appboy sharedInstance] logCustomEvent:@"Plan Pro 1 Mes"];
+        if([self.datosUsuario.datosPago.plan isEqualToString:@"PLAN PRO 3 MESES"]){
+            [[AppsFlyerTracker sharedTracker] trackEvent:@"Plan Pro 3 Meses" withValue:@""];
+            [[Appboy sharedInstance] logCustomEvent:@"Plan Pro 3 Meses"];
         }else if([self.datosUsuario.datosPago.plan isEqualToString:@"PLAN PRO 6 MESES"]){
             [[AppsFlyerTracker sharedTracker] trackEvent:@"Plan Pro 6 Meses" withValue:@""];
             [[Appboy sharedInstance] logCustomEvent:@"Plan Pro 6 Meses"];

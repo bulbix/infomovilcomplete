@@ -60,22 +60,21 @@
     NSLog(@"Ahora si entro");
     self.datosUsuario = [DatosUsuario sharedInstance];
     NSLog(@"MenuPasosViewController - Dominio en TablaDominioViewController: %@ ",self.datosUsuario.dominio);
-    
-    
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellInfoDominio"];
+     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellInfoDominio"];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cellInfoDominio"];
     }
     [cell.textLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:17]];
     [cell.detailTextLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:15]];
-    
-    
    
+    if(![self.datosUsuario.dominio isEqualToString:@"(null)"] && ![self.datosUsuario.dominio isEqualToString:@""] && ![self.datosUsuario.dominio isEqual:[NSNull null]] && !(self.datosUsuario.dominio == nil)){
+    
     [cell.textLabel setText:[NSString stringWithFormat:@"%@.tel", self.datosUsuario.dominio]];
 #if DEBUG
     [cell.textLabel setText:[NSString stringWithFormat:@"info-movil.com/%@", self.datosUsuario.dominio]];
 #endif
+    
+    }
     
     /* PARA LA VERSION DE DOMINIOS */
     /*
