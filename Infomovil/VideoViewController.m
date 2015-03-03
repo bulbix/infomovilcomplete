@@ -39,26 +39,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //    [self.tituloVista setText:NSLocalizedString(@"video", @" ")];
-    // Do any additional setup after loading the view from its nib.
     [self.scrollVideo setContentSize:CGSizeMake(320, 450)];
-    //    [self.vistaCircular setImage:[UIImage imageNamed:@"plecaverde.png"]];
-    //    [self.vistaCircular setImage:[UIImage imageNamed:@"plecacreasitio.png"]];
 	if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
 		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"video", @" ") nombreImagen:@"barraverde.png"];
 	}else{
 		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"video", @" ") nombreImagen:@"NBverde.png"];
 	}
     self.txtUrlVideo.layer.cornerRadius = 5.0f;
-    
-    //    UIImage *image = [UIImage imageNamed:@"btnregresar.png"];
-    //    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    //    [backButton setFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
-    //    [backButton setImage:image forState:UIControlStateNormal];
-    //    [backButton addTarget:self action:@selector(regresar:) forControlEvents:UIControlEventTouchUpInside];
-    //
-    //    UIBarButtonItem *buttonBack = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-    //    self.navigationItem.leftBarButtonItem = buttonBack;
     
     self.navigationItem.rightBarButtonItem = Nil;
     [self.labelBuscaYoutube setText:NSLocalizedString(@"buscaVideo", Nil)];
@@ -67,13 +54,20 @@
     [self.labelAutorVideo setText:NSLocalizedString(@"autorVideo", Nil)];
     [self.labelCategoriaVideo setText:NSLocalizedString(@"categoriaVideo", Nil)];
     [self.labelUrlVideo setText:NSLocalizedString(@"labelURLVideo", Nil)];
-    
     self.buscarBtn.layer.cornerRadius = 12.0f;
 }
 
 -(void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.datosUsuario = [DatosUsuario sharedInstance];
+    
+    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion && self.datosUsuario.dominio && ![self.datosUsuario.dominio isEqualToString:@""] && ! (self.datosUsuario.dominio == (id)[NSNull null]) && ![CommonUtils validarEmail:self.datosUsuario.dominio] && ![self.datosUsuario.dominio isEqualToString:@"(null)"] ){
+        [self.vistaInferior setHidden:NO];
+    }else{
+        [self.vistaInferior setHidden:YES];
+    }
+    
+    
     if (self.datosUsuario.videoSeleccionado == Nil && self.datosUsuario.urlVideo == Nil) {
         [self.vistaSeleccionaVideo setHidden:NO];
         [self.vistaVisualizaVideo setHidden:YES];
