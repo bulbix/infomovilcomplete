@@ -927,7 +927,7 @@
 		}
          NSLog(@"LA FECHA FINAL EN GETDOMAIN ES: %@", self.datosUsuario.fechaFinal);
 	}
-	else if ([elementName isEqualToString:@"fTelNamesIni"]){
+/*	else if ([elementName isEqualToString:@"fTelNamesIni"]){
         NSString *strAux;
 		if(requiereEncriptar){
 			strAux = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
@@ -949,6 +949,7 @@
                                                                                from:@"yyyy-MM-dd"
                                                                                  to:@"dd-MM-yyy"];
 	}
+ */
     else if ([elementName isEqualToString:@"descripcionDominio"]) {
         self.datosUsuario.descripcionDominio =  [StringUtils desEncriptar:self.currentElementString conToken:self.token];
         NSLog(@"LA DESCRIPCION DOMINIO ES: %@",self.datosUsuario.descripcionDominio );

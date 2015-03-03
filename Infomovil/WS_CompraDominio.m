@@ -185,7 +185,7 @@
         }else{
             self.datosUsuario.fechaFinal = self.currentElementString;
         }
-        NSLog(@"La fecha ini en WS_CompraDominio es: %@", self.datosUsuario.fechaFinal);
+        NSLog(@"La fecha Finn en WS_CompraDominio es: %@", self.datosUsuario.fechaFinal);
     }
     else if ([elementName isEqualToString:@"fechaIni"]){
         if(requiereEncriptar){
@@ -193,9 +193,9 @@
         }else{
             self.datosUsuario.fechaInicial = self.currentElementString;
         }
-        NSLog(@"La fecha ini en WS_CompraDominio es: %@", self.datosUsuario.fechaInicial);
+        NSLog(@"La fecha inin en WS_CompraDominio es: %@", self.datosUsuario.fechaInicial);
     }
-    else if ([elementName isEqualToString:@"fTelNamesIni"]){
+ /*   else if ([elementName isEqualToString:@"fTelNamesIni"]){
         NSString *strAux;
         if(requiereEncriptar){
             strAux = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
@@ -217,7 +217,7 @@
                                                                                from:@"yyyy-MM-dd"
                                                                                  to:@"dd-MM-yyy"];
     }
- /*   else if([elementName isEqualToString:@"status"]){
+    else if([elementName isEqualToString:@"status"]){
         status = [self.currentElementString integerValue];
         NSLog(@"El status es: %i",status);
         

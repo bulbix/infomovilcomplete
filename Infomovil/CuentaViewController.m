@@ -105,13 +105,13 @@ int opcionButton = 0 ;
 	}
 	if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
 		[self.botonCuenta setBackgroundImage:[UIImage imageNamed:@"acountEn.png"] forState:UIControlStateNormal];
-        [self.comprar1mes setBackgroundImage:[UIImage imageNamed:@"1mInac-en.png" ] forState:UIControlStateNormal];
+        [self.comprar1mes setBackgroundImage:[UIImage imageNamed:@"3mInac-en.png" ] forState:UIControlStateNormal];
         [self.comprar6meses setBackgroundImage:[UIImage imageNamed:@"6mInac-en.png" ] forState:UIControlStateNormal];
         [self.comprar12meses setBackgroundImage:[UIImage imageNamed:@"12mAc-en.png" ] forState:UIControlStateNormal];
         _imgBeneficios.image = [UIImage imageNamed:@"beneficios-en.png"];
 	}else{
 		[self.botonCuenta setBackgroundImage:[UIImage imageNamed:@"micuentaon.png"] forState:UIControlStateNormal];
-        [self.comprar1mes setBackgroundImage:[UIImage imageNamed:@"1mInac-es.png"] forState:UIControlStateNormal];
+        [self.comprar1mes setBackgroundImage:[UIImage imageNamed:@"3mInac-es.png"] forState:UIControlStateNormal];
         [self.comprar6meses setBackgroundImage:[UIImage imageNamed:@"6mInac-es.png" ] forState:UIControlStateNormal];
         [self.comprar12meses setBackgroundImage:[UIImage imageNamed:@"12mAc-es.png" ] forState:UIControlStateNormal];
         _imgBeneficios.image = [UIImage imageNamed:@"beneficios-es.png"];
@@ -179,6 +179,7 @@ int opcionButton = 0 ;
 
 
 -(void) viewWillAppear:(BOOL)animated {
+    self.datosUsuario = [DatosUsuario sharedInstance];
     noSeRepiteOprimirElBoton = YES;
     if (tipoVista != 1) {
 	BOOL sesion = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).existeSesion;
@@ -195,7 +196,6 @@ int opcionButton = 0 ;
             }
             self.viewCompraPlanPro.hidden = YES;
             self.viewPlanProComprado.hidden = NO;
-            self.datosUsuario = [DatosUsuario sharedInstance];
             [self.vistaInferior setHidden:NO];
 		
         }else{
@@ -256,7 +256,7 @@ int opcionButton = 0 ;
             if([CommonUtils hayConexion]){
                 for(int i = 0 ; [_products count] > 0; i++){
                     SKProduct *product = _products[i];
-                    if([product.productIdentifier isEqualToString:@"com.infomovil.infomovil.prices3_months"]){
+                    if([product.productIdentifier isEqualToString:@"com.infomovil.infomovil.prices_3_months"]){
                         self.datosUsuario.datosPago.montoBruto = [NSString stringWithFormat:@"%i", product.price.integerValue ];
                         [[RageIAPHelper sharedInstance] buyProduct:product];
                         break;
@@ -289,7 +289,7 @@ int opcionButton = 0 ;
             if([CommonUtils hayConexion]){
                 for(int i = 0 ; [_products count] > 0; i++){
                     SKProduct *product = _products[i];
-                    if([product.productIdentifier isEqualToString:@"com.infomovil.infomovil.prices6_months"]){
+                    if([product.productIdentifier isEqualToString:@"com.infomovil.infomovil.prices_6_months"]){
                         self.datosUsuario.datosPago.montoBruto = [NSString stringWithFormat:@"%i", product.price.integerValue ];
                         [[RageIAPHelper sharedInstance] buyProduct:product];
                         break;
@@ -322,7 +322,7 @@ int opcionButton = 0 ;
             if([CommonUtils hayConexion]){
                 for(int i = 0 ; [_products count] > 0; i++){
                     SKProduct *product = _products[i];
-                    if([product.productIdentifier isEqualToString:@"com.infomovil.infomovil.prices12_months"]){
+                    if([product.productIdentifier isEqualToString:@"com.infomovil.infomovil.prices_12_months"]){
                         self.datosUsuario.datosPago.montoBruto = [NSString stringWithFormat:@"%i", product.price.integerValue ];
                         [[RageIAPHelper sharedInstance] buyProduct:product];
                         break;
@@ -373,7 +373,7 @@ if(noSeRepiteOprimirElBoton){
             if([CommonUtils hayConexion]){
                 for(int i = 0 ; [_products count] > 0; i++){
                     SKProduct *product = _products[i];
-                    if([product.productIdentifier isEqualToString:@"com.infomovil.infomovil.prices3_months"]){
+                    if([product.productIdentifier isEqualToString:@"com.infomovil.infomovil.prices_3_months"]){
                         NSLog(@"Comprando item 0: %@", product.productIdentifier);
                         self.datosUsuario.datosPago.plan =@"PLAN PRO 3 MESES";
                         self.datosUsuario.datosPago.comision = @"27";
@@ -423,7 +423,7 @@ if(noSeRepiteOprimirElBoton){
                 if([CommonUtils hayConexion]){
                     for(int i = 0 ; [_products count] > 0; i++){
                         SKProduct *product = _products[i];
-                        if([product.productIdentifier isEqualToString:@"com.infomovil.infomovil.prices6_months"]){
+                        if([product.productIdentifier isEqualToString:@"com.infomovil.infomovil.prices_6_months"]){
                             NSLog(@"Comprando item 0: %@", product.productIdentifier);
                             self.datosUsuario.datosPago.plan =@"PLAN PRO 6 MESES";
                             self.datosUsuario.datosPago.comision = @"17";
@@ -470,7 +470,7 @@ if(noSeRepiteOprimirElBoton){
             if([CommonUtils hayConexion]){
                 for(int i = 0 ; [_products count] > 0; i++){
                     SKProduct *product = _products[i];
-                    if([product.productIdentifier isEqualToString:@"com.infomovil.infomovil.prices12_months"]){
+                    if([product.productIdentifier isEqualToString:@"com.infomovil.infomovil.prices_12_months"]){
                         self.datosUsuario.datosPago.plan =@"PLAN PRO 12 MESES";
                         self.datosUsuario.datosPago.comision = @"23";
                         self.datosUsuario.datosPago.statusPago = @"INTENTO PAGO";
@@ -576,6 +576,12 @@ if(noSeRepiteOprimirElBoton){
     NSLog(@"Ocultar actividad de espera!");
     if (self.alerta)
     {
+        if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
+            self.MensajePlanProComprado.text = [NSString stringWithFormat:@"This site already has a Plan Pro\n\nStart date: %@ \nEnd date: %@",self.datosUsuario.fechaInicial, self.datosUsuario.fechaFinal];
+        }else{
+            self.MensajePlanProComprado.text = [NSString stringWithFormat:@"Este sitio ya cuenta con PLAN PRO disfruta sus beneficios.\n\nFecha de inicio: %@\nFecha de término: %@",self.datosUsuario.fechaInicial, self.datosUsuario.fechaFinal];
+        }
+        
         [NSThread sleepForTimeInterval:1];
         [self.alerta hide];
     }
