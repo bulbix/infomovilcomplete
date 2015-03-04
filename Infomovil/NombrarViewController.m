@@ -306,7 +306,7 @@
         self.datosUsuario = [DatosUsuario sharedInstance];
         WS_HandlerDominio *dominioHandler = [[WS_HandlerDominio alloc] init];
         [dominioHandler setWSHandlerDelegate:self];
-        [dominioHandler crearUsuario:self.datosUsuario.emailUsuario conNombre:self.nombreDominio.text password:self.datosUsuario.passwordUsuario status:@"1" nombre:nil direccion1:nil direccion2:nil pais:nil codigoPromocion:@"" tipoDominio:@"recurso" idDominio:[NSString stringWithFormat:@"%i", self.datosUsuario.idDominio]];
+        [dominioHandler crearUsuario:self.datosUsuario.emailUsuario conNombre:self.nombreDominio.text password:self.datosUsuario.passwordUsuario status:@"1" nombre:nil direccion1:nil direccion2:nil pais:nil codigoPromocion:@"" tipoDominio:dominioTipo idDominio:[NSString stringWithFormat:@"%i", self.datosUsuario.idDominio]];
     }
     else {
         if (alertActivity)

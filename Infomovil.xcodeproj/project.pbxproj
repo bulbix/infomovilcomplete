@@ -701,6 +701,12 @@
 		BFC14ED01A83086600EBA7A8 /* ABKIdentifierForAdvertisingProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC14EB11A83086600EBA7A8 /* ABKIdentifierForAdvertisingProvider.m */; };
 		BFC14ED11A83086600EBA7A8 /* Appboy.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BFC14EB21A83086600EBA7A8 /* Appboy.bundle */; };
 		BFC14ED21A83086600EBA7A8 /* libAppboyKitLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFC14ECF1A83086600EBA7A8 /* libAppboyKitLibrary.a */; };
+		BFCB96DA1AA610B800DDD753 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFCB96D91AA610B800DDD753 /* MobileCoreServices.framework */; };
+		BFCB96DC1AA610C100DDD753 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFCB96DB1AA610C100DDD753 /* QuickLook.framework */; };
+		BFCB96E81AA611B600DDD753 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFCB96E21AA611B600DDD753 /* HockeySDK.framework */; };
+		BFCB96E91AA611B600DDD753 /* HockeySDK.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = BFCB96E41AA611B600DDD753 /* HockeySDK.xcconfig */; };
+		BFCB96EA1AA611B600DDD753 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BFCB96E51AA611B600DDD753 /* HockeySDKResources.bundle */; };
+		BFCB96EB1AA611B600DDD753 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = BFCB96E61AA611B600DDD753 /* LICENSE */; };
 		BFCBE91A1AA0C7FB006FEC4A /* VistaPreviaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFCBE9181AA0C7FB006FEC4A /* VistaPreviaViewController.m */; };
 		BFCBE91B1AA0C7FB006FEC4A /* VistaPreviaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFCBE9191AA0C7FB006FEC4A /* VistaPreviaViewController.xib */; };
 		BFD0AB951A9E44E800D5FF63 /* VerEjemplo.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFD0AB941A9E44E800D5FF63 /* VerEjemplo.xib */; };
@@ -1674,6 +1680,12 @@
 		BFC14ECD1A83086600EBA7A8 /* Appboy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Appboy.h; sourceTree = "<group>"; };
 		BFC14ECE1A83086600EBA7A8 /* AppboyKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppboyKit.h; sourceTree = "<group>"; };
 		BFC14ECF1A83086600EBA7A8 /* libAppboyKitLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAppboyKitLibrary.a; sourceTree = "<group>"; };
+		BFCB96D91AA610B800DDD753 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		BFCB96DB1AA610C100DDD753 /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
+		BFCB96E21AA611B600DDD753 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HockeySDK.framework; sourceTree = "<group>"; };
+		BFCB96E41AA611B600DDD753 /* HockeySDK.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = HockeySDK.xcconfig; sourceTree = "<group>"; };
+		BFCB96E51AA611B600DDD753 /* HockeySDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HockeySDKResources.bundle; sourceTree = "<group>"; };
+		BFCB96E61AA611B600DDD753 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		BFCBE9171AA0C7FB006FEC4A /* VistaPreviaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VistaPreviaViewController.h; sourceTree = "<group>"; };
 		BFCBE9181AA0C7FB006FEC4A /* VistaPreviaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VistaPreviaViewController.m; sourceTree = "<group>"; };
 		BFCBE9191AA0C7FB006FEC4A /* VistaPreviaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VistaPreviaViewController.xib; sourceTree = "<group>"; };
@@ -1690,6 +1702,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFCB96DC1AA610C100DDD753 /* QuickLook.framework in Frameworks */,
+				BFCB96DA1AA610B800DDD753 /* MobileCoreServices.framework in Frameworks */,
 				BF66CE181A96709D00EA6D00 /* FacebookSDKOverrides.bundle in Frameworks */,
 				BF66CE191A96709D00EA6D00 /* FBAudienceNetwork.framework in Frameworks */,
 				BF66CE151A966FE500EA6D00 /* FacebookSDK.framework in Frameworks */,
@@ -1718,6 +1732,7 @@
 				0F413A4B18B6B3A800196307 /* SystemConfiguration.framework in Frameworks */,
 				0F65B85C18AC3DE300FF80E8 /* CoreLocation.framework in Frameworks */,
 				BFA7018C1A817A3B00F685C3 /* libGoogleAnalyticsServices.a in Frameworks */,
+				BFCB96E81AA611B600DDD753 /* HockeySDK.framework in Frameworks */,
 				0F9F526D18983C0F000F9FA5 /* QuartzCore.framework in Frameworks */,
 				0F7422D1187DA7080053383E /* MapKit.framework in Frameworks */,
 				BFC14ED21A83086600EBA7A8 /* libAppboyKitLibrary.a in Frameworks */,
@@ -2575,6 +2590,9 @@
 		0FE0280E186E48FF007C27B0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BFCB96DF1AA611B600DDD753 /* HockeySDK-iOS */,
+				BFCB96DB1AA610C100DDD753 /* QuickLook.framework */,
+				BFCB96D91AA610B800DDD753 /* MobileCoreServices.framework */,
 				BF66CE161A96709D00EA6D00 /* FacebookSDKOverrides.bundle */,
 				BF66CE171A96709D00EA6D00 /* FBAudienceNetwork.framework */,
 				BF66CE141A966FE500EA6D00 /* FacebookSDK.framework */,
@@ -3104,6 +3122,33 @@
 			path = AppboyKitLibrary;
 			sourceTree = "<group>";
 		};
+		BFCB96DF1AA611B600DDD753 /* HockeySDK-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				BFCB96E11AA611B600DDD753 /* HockeySDK.embeddedframework */,
+				BFCB96E61AA611B600DDD753 /* LICENSE */,
+			);
+			path = "HockeySDK-iOS";
+			sourceTree = "<group>";
+		};
+		BFCB96E11AA611B600DDD753 /* HockeySDK.embeddedframework */ = {
+			isa = PBXGroup;
+			children = (
+				BFCB96E21AA611B600DDD753 /* HockeySDK.framework */,
+				BFCB96E31AA611B600DDD753 /* Resources */,
+			);
+			path = HockeySDK.embeddedframework;
+			sourceTree = "<group>";
+		};
+		BFCB96E31AA611B600DDD753 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BFCB96E41AA611B600DDD753 /* HockeySDK.xcconfig */,
+				BFCB96E51AA611B600DDD753 /* HockeySDKResources.bundle */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -3114,6 +3159,7 @@
 				0FE02808186E48FF007C27B0 /* Sources */,
 				0FE02809186E48FF007C27B0 /* Frameworks */,
 				0FE0280A186E48FF007C27B0 /* Resources */,
+				BFCB96D81AA6109400DDD753 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -3231,6 +3277,7 @@
 				0F680EE718EC889700A02347 /* SBinicio.png in Resources */,
 				0F6C72ED189B2243000B2E51 /* grafica@2x.png in Resources */,
 				0FC99A9118F30479005EBF5A /* twitterprevia.png in Resources */,
+				BFCB96EB1AA611B600DDD753 /* LICENSE in Resources */,
 				0F5E042918EF8CC000AC4657 /* login@2x.png in Resources */,
 				0F9F533318989413000F9FA5 /* cgoogle+@2x.png in Resources */,
 				0F6CBD2F19085F0B0077B065 /* tip3.png in Resources */,
@@ -3576,6 +3623,7 @@
 				0FF421181899845B003EEBB1 /* fotoexistente@2x.png in Resources */,
 				0FF421171899845B003EEBB1 /* colordefondo@2x.png in Resources */,
 				0F7422D6187DB07C0053383E /* EditarPaso2ViewController.xib in Resources */,
+				BFCB96E91AA611B600DDD753 /* HockeySDK.xcconfig in Resources */,
 				0F9B36DC18A1B65600B47E1D /* BSKeyboardControls.strings in Resources */,
 				0F850DF81885B0820008A0CA /* InformacionPaso2ViewController.xib in Resources */,
 				BF15BD381AA54DD2009A6398 /* 12mInac-es.png in Resources */,
@@ -3634,6 +3682,7 @@
 				BF15BD581AA54DD2009A6398 /* 6mAc-es@2x.png in Resources */,
 				0F59BEB718CA32E70037FE8A /* c-email.png in Resources */,
 				65608FF11970887E00B3C914 /* iPhone@2x.png in Resources */,
+				BFCB96EA1AA611B600DDD753 /* HockeySDKResources.bundle in Resources */,
 				65581B2719350C9300B5D4ED /* btncreateeditEn.png in Resources */,
 				0F9F52C7189890C6000F9FA5 /* ctwitter.png in Resources */,
 				65C4FDE51926D53D0022B429 /* tipoContacto.plist in Resources */,
@@ -3656,6 +3705,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BFCB96D81AA6109400DDD753 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "FILE=\"${SRCROOT}/HockeySDK-iOS/BuildAgent\"\nif [ -f \"$FILE\" ]; then\n\"$FILE\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0FE02808186E48FF007C27B0 /* Sources */ = {
@@ -4058,6 +4123,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Infomovil",
+					"$(PROJECT_DIR)/HockeySDK-iOS/HockeySDK.embeddedframework",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Infomovil/Infomovil-Prefix.pch";
@@ -4100,6 +4166,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Infomovil",
+					"$(PROJECT_DIR)/HockeySDK-iOS/HockeySDK.embeddedframework",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Infomovil/Infomovil-Prefix.pch";

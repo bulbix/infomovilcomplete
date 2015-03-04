@@ -47,12 +47,14 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
+  /*  // Return the number of rows in the section.
     NSLog(@"El numero de filas es: %i",[self.arregloDominios count]);
     if([self.arregloDominios count] == 0 )
         return 1;
     else
     return [self.arregloDominios count];
+   */
+    return 1;
 }
 
 
@@ -60,50 +62,36 @@
     NSLog(@"Ahora si entro");
     self.datosUsuario = [DatosUsuario sharedInstance];
     NSLog(@"MenuPasosViewController - Dominio en TablaDominioViewController: %@ ",self.datosUsuario.dominio);
-     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellInfoDominio"];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellInfoDominio"];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cellInfoDominio"];
     }
     [cell.textLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:17]];
     [cell.detailTextLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:15]];
+    
    
-    if(![self.datosUsuario.dominio isEqualToString:@"(null)"] && ![self.datosUsuario.dominio isEqualToString:@""] && ![self.datosUsuario.dominio isEqual:[NSNull null]] && !(self.datosUsuario.dominio == nil)){
     
-    [cell.textLabel setText:[NSString stringWithFormat:@"%@.tel", self.datosUsuario.dominio]];
+
+    for(int i= 0; i< [self.arregloDominios count]; i++){
+        DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:i];
+        NSLog(@"l [usuarioDom.domainType isEqualToString es: %@", usuarioDom.domainType);
 #if DEBUG
-    [cell.textLabel setText:[NSString stringWithFormat:@"info-movil.com/%@", self.datosUsuario.dominio]];
+        if(![self.datosUsuario.dominio isEqualToString:@"(null)"] && ![self.datosUsuario.dominio isEqualToString:@""] && ![self.datosUsuario.dominio isEqual:[NSNull null]] && !(self.datosUsuario.dominio == nil) && [usuarioDom.domainType isEqualToString:@"recurso"]){
+            [cell.textLabel setText:[NSString stringWithFormat:@"info-movil.com/%@", self.datosUsuario.dominio]];
+        }
+#else
+        if(![self.datosUsuario.dominio isEqualToString:@"(null)"] && ![self.datosUsuario.dominio isEqualToString:@""] && ![self.datosUsuario.dominio isEqual:[NSNull null]] && !(self.datosUsuario.dominio == nil) && [usuarioDom.domainType isEqualToString:@"tel"]){
+            [cell.textLabel setText:[NSString stringWithFormat:@"%@.tel", self.datosUsuario.dominio]];
+        }
 #endif
-    
+        
+        [cell.textLabel setTextColor:colorFuenteAzul];
+        cell.textLabel.textAlignment = NSTextAlignmentLeft;
+        
+        [cell.detailTextLabel setTextColor:colorFuenteVerde];
+        cell.detailTextLabel.textAlignment = NSTextAlignmentRight;
     }
-    
-    /* PARA LA VERSION DE DOMINIOS */
-    /*
-     DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:indexPath.row];
-     
-     if ([usuarioDom.statusDominio isEqualToString:@"Tramite"]) {
-        if ([CommonUtils validaMail:usuarioDom.domainName]) {
-            [cell.textLabel setText:[NSString stringWithFormat:@".%@", [usuarioDom domainType]]];
-            [cell.detailTextLabel setText:NSLocalizedString(@"txtDominioDisponible", nil)];
-        }
-        else {
-            [cell.textLabel setText:[NSString stringWithFormat:@"%@.tel", self.datosUsuario.dominio]];
-        }
-    }
-    else {
-        if ([usuarioDom.domainType isEqualToString:@"recurso"]) {
-            [cell.textLabel setText:[NSString stringWithFormat:@"infomovil.com/%@", usuarioDom.domainName]];
-        }
-        else {
-            [cell.textLabel setText:[NSString stringWithFormat:@"%@.tel", self.datosUsuario.dominio]];
-        }
-    }
-     */
-    [cell.textLabel setTextColor:colorFuenteAzul];
-    cell.textLabel.textAlignment = NSTextAlignmentLeft;
-    
-    [cell.detailTextLabel setTextColor:colorFuenteVerde];
-    cell.detailTextLabel.textAlignment = NSTextAlignmentRight;
-    
+
     return cell;
 }
 /*

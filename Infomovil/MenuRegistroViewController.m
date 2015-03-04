@@ -310,7 +310,7 @@
     [dominioHandler setWSHandlerDelegate:self];
     codPromocion = codPromocion == nil?@"":codPromocion;
     codPromocion = [NSString trim:codPromocion];
-    [dominioHandler crearUsuario:nombre conNombre:@"" password:password status:@"9" nombre:nil direccion1:nil direccion2:nil pais:nil codigoPromocion:codPromocion tipoDominio:@"recurso" idDominio:@""];
+    [dominioHandler crearUsuario:nombre conNombre:@"" password:password status:@"9" nombre:nil direccion1:nil direccion2:nil pais:nil codigoPromocion:codPromocion tipoDominio:dominioTipo idDominio:@""];
 }
 
 -(void) ocultarActivity {

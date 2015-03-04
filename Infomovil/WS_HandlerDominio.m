@@ -34,7 +34,7 @@
                                "<domainType>%@</domainType>"
                                "</ws:getExistDomain>"
                                "</soapenv:Body>"
-                               "</soapenv:Envelope>", [StringUtils encriptar:dominio conToken:passwordEncriptar], [StringUtils encriptar:@"recurso" conToken:passwordEncriptar]];
+                               "</soapenv:Envelope>", [StringUtils encriptar:dominio conToken:passwordEncriptar], [StringUtils encriptar:dominioTipo conToken:passwordEncriptar]];
     
     NSLog(@"el string es %@", stringXML);
     self.strSoapAction = @"WSInfomovilDomain";
@@ -784,6 +784,11 @@
     else if ([elementName isEqualToString:@"codeCamp"]) {
 
         codigoPromocional = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
+    }
+    
+    else if ([elementName isEqualToString:@"domainType"]) {
+        
+        NSLog(@"SI ES QUE TIENE DOMAINTYPE %@" ,[StringUtils desEncriptar:self.currentElementString conToken:self.token]);
     }
 }
 
