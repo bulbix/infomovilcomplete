@@ -29,7 +29,7 @@
     NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:dataWeb options:kNilOptions error:&error];
     self.arregloVideos = [[NSMutableArray alloc] init];
     if (error != nil) {
-        //        <#statements#>
+        //        
     }
     else {
         NSArray *arreglo;

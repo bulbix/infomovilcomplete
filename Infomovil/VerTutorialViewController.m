@@ -59,7 +59,7 @@
 
 
 -(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
-    if(!self.pagCargada){
+    if(self.pagCargada == NO){
         [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
         AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"errorAlCargar", Nil) andAlertViewType:AlertViewTypeInfo];
         [alert show];

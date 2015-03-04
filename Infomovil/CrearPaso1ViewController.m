@@ -317,6 +317,35 @@
     VistaPreviaViewController *vistaPrevia = [[VistaPreviaViewController alloc] initWithNibName:@"VistaPreviaViewController" bundle:Nil];
     [vistaPrevia setTipoVista:PreviewTypePrevia];
     [self.navigationController pushViewController:vistaPrevia animated:YES];
+    
+    
+    // IRC // ESTO YA ESTA FUNCIONAL PARA VISTA PREVIA DE TEMPLATES
+    /*  self.datosUsuario	= [DatosUsuario sharedInstance];
+     if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion && self.datosUsuario.dominio && ![self.datosUsuario.dominio isEqualToString:@""] && ! (self.datosUsuario.dominio == (id)[NSNull null]) && ![CommonUtils validarEmail:self.datosUsuario.dominio] && ![self.datosUsuario.dominio isEqualToString:@"(null)"]){
+      
+         NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+         // saving an NSString
+         [prefs setObject:[NSString stringWithFormat:@"http://info-movil.com/%@?vistaPrevia=true", self.datosUsuario.dominio] forKey:@"urlVistaPrevia"];
+         [prefs synchronize];
+         
+         VistaPreviaWebViewController *vistaPrevia = [[VistaPreviaWebViewController alloc] initWithNibName:@"vistaPreviaWeb" bundle:Nil];
+         //[vistaPrevia setTipoVista:PreviewTypePrevia];
+         [self.navigationController pushViewController:vistaPrevia animated:YES];
+     }else if(self.datosUsuario.idDominio){
+         NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+         // saving an NSString
+         [prefs setObject:[NSString stringWithFormat:@"http://info-movil.com/xxx?vistaPrevia=true&idDominio=%ld", (long)self.datosUsuario.idDominio] forKey:@"urlVistaPrevia"];
+         [prefs synchronize];
+         
+         VistaPreviaWebViewController *vistaPrevia = [[VistaPreviaWebViewController alloc] initWithNibName:@"vistaPreviaWeb" bundle:Nil];
+         //[vistaPrevia setTipoVista:PreviewTypePrevia];
+         [self.navigationController pushViewController:vistaPrevia animated:YES];
+     
+     }
+    
+    */
+    
+    
 }
 
 

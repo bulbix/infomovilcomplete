@@ -48,10 +48,6 @@
 	
     self.datosUsuario				= [DatosUsuario sharedInstance];
     self.datosUsuario.editoPagina	= NO;
-    
-    
-    
-        
     [self.navigationItem hidesBackButton];
     if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion)
 	{
