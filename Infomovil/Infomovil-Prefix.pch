@@ -50,11 +50,11 @@ typedef enum {
 //#define rutaWS @"http://172.17.3.192:8080"
 //#define rutaWS @"http://172.17.3.181:8080"
 /* productivo */
-//#define dominioTipo @"tel"
-//#define rutaWS @"http://info-movil.net"
-/* test */
 #define dominioTipo @"tel"
-#define rutaWS @"http://info-movil.com"
+#define rutaWS @"http://info-movil.net"
+/* test */
+//#define dominioTipo @"tel"
+//#define rutaWS @"http://info-movil.com"
 
 //#define nombreServicio @"PreReg"
 #define nombreServicio @"WsInfomovil"

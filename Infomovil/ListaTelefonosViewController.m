@@ -183,7 +183,8 @@
          alertaContactos = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeContactosPrueba", Nil) andAlertViewType:AlertViewTypeQuestion];
          [alertaContactos show];
      
-     }else if([self.datosUsuario.arregloContacto count] >= 12){
+     }else if([self.datosUsuario.arregloContacto count] >= 10){
+         NSLog(@"Si entro pero no mostro la alarma!");
          alertaContactos = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeContactosPro", nil) andAlertViewType:AlertViewTypeInfo];
          [alertaContactos show];
      
