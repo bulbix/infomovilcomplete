@@ -651,6 +651,8 @@
 		BF4B7E951A8A686300D049CD /* WS_PlanPro.m in Sources */ = {isa = PBXBuildFile; fileRef = BF4B7E941A8A686300D049CD /* WS_PlanPro.m */; };
 		BF60DE911A89111F008D963E /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BF60DE8E1A89111F008D963E /* IAPHelper.m */; };
 		BF60DE921A89111F008D963E /* RageIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BF60DE901A89111F008D963E /* RageIAPHelper.m */; };
+		BF6378681AA7716C00AD052A /* IrAMisitio.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF6378671AA7716C00AD052A /* IrAMisitio.xib */; };
+		BF63786B1AA7718900AD052A /* IrAMiSitioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF63786A1AA7718900AD052A /* IrAMiSitioViewController.m */; };
 		BF648FAB1A94FC5900AFDEAD /* InicioRapidoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF648FA91A94FC5900AFDEAD /* InicioRapidoViewController.m */; };
 		BF648FAC1A94FC5900AFDEAD /* InicioRapidoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF648FAA1A94FC5900AFDEAD /* InicioRapidoViewController.xib */; };
 		BF648FAF1A950ED600AFDEAD /* VerTutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF648FAE1A950ED600AFDEAD /* VerTutorialViewController.m */; };
@@ -1583,6 +1585,9 @@
 		BF60DE8E1A89111F008D963E /* IAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPHelper.m; sourceTree = "<group>"; };
 		BF60DE8F1A89111F008D963E /* RageIAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RageIAPHelper.h; sourceTree = "<group>"; };
 		BF60DE901A89111F008D963E /* RageIAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RageIAPHelper.m; sourceTree = "<group>"; };
+		BF6378671AA7716C00AD052A /* IrAMisitio.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IrAMisitio.xib; sourceTree = "<group>"; };
+		BF6378691AA7718900AD052A /* IrAMiSitioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IrAMiSitioViewController.h; sourceTree = "<group>"; };
+		BF63786A1AA7718900AD052A /* IrAMiSitioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IrAMiSitioViewController.m; sourceTree = "<group>"; };
 		BF648FA81A94FC5900AFDEAD /* InicioRapidoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InicioRapidoViewController.h; sourceTree = "<group>"; };
 		BF648FA91A94FC5900AFDEAD /* InicioRapidoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InicioRapidoViewController.m; sourceTree = "<group>"; };
 		BF648FAA1A94FC5900AFDEAD /* InicioRapidoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InicioRapidoViewController.xib; sourceTree = "<group>"; };
@@ -2563,6 +2568,9 @@
 				BFD0AB961A9E44FF00D5FF63 /* VerEjemploViewController.h */,
 				BFD0AB971A9E44FF00D5FF63 /* VerEjemploViewController.m */,
 				BFD0AB941A9E44E800D5FF63 /* VerEjemplo.xib */,
+				BF6378691AA7718900AD052A /* IrAMiSitioViewController.h */,
+				BF63786A1AA7718900AD052A /* IrAMiSitioViewController.m */,
+				BF6378671AA7716C00AD052A /* IrAMisitio.xib */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -3385,6 +3393,7 @@
 				0F9F52CD189890C6000F9FA5 /* mibuscar.png in Resources */,
 				0F43B2AB18E5FB3100E2AAE7 /* checkActivo.png in Resources */,
 				0FC6C6A718DD0BFD009E69A2 /* btnorganizar@2x.png in Resources */,
+				BF6378681AA7716C00AD052A /* IrAMisitio.xib in Resources */,
 				0F59BEA918CA24F90037FE8A /* llamanos.png in Resources */,
 				0FC6C69D18DD0AEA009E69A2 /* btnadelante@2x.png in Resources */,
 				65065DE7190FEB8000189316 /* tips4@2x.png in Resources */,
@@ -3757,6 +3766,7 @@
 				68C200CD19F965610062B2D3 /* TablaDominioViewController.m in Sources */,
 				0F59473C1891F6700045EA85 /* PEResizeControl.m in Sources */,
 				0FFF9E01188DE99E00079A57 /* CompartirViewController.m in Sources */,
+				BF63786B1AA7718900AD052A /* IrAMiSitioViewController.m in Sources */,
 				0FA8C1FA18724FA300384F0E /* CrearPaso2ViewController.m in Sources */,
 				0F5EF9D618C955360013D37B /* WS_HandlerActualizarMapa.m in Sources */,
 				65011525191D4707004D90EA /* GTMHTTPFetcher.m in Sources */,

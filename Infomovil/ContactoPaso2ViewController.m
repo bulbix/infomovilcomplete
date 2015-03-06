@@ -51,9 +51,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    [self.vistaCircular setImage:[UIImage imageNamed:@"plecaverde.png"]];
-//    [self.vistaCircular setImage:[UIImage imageNamed:@"plecacreasitio.png"]];
-//    [self.tituloVista setText:NSLocalizedString(@"contacto", @" ")];
 	if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
 		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"contacto", @" ") nombreImagen:@"barraverde.png"];
 	}else{
@@ -76,16 +73,11 @@
     [self.labelDescripcion setText:NSLocalizedString(@"descripcion", Nil)];
     _labelInfoMexico.text = NSLocalizedString(@"movilMexico", Nil);
     self.txtDescripcion.layer.cornerRadius = 5;
-    
     self.modifico = NO;
     self.txtLada.layer.cornerRadius = 5;
-    
     self.txtTelefono.layer.cornerRadius = 5.0f;
-    
     self.vistaPais.layer.cornerRadius = 5;
-	
 	self.casillaMovil.hidden = YES;
-	
 	url = @"";
 }
 
@@ -111,17 +103,13 @@
             case 2:
             case 4:
                 [self.vistaPais setHidden:NO];
-//                [self.txtLada setHidden:NO];
                 [self.txtTelefono setHidden:NO];
                 [self.txtTelefono setKeyboardType:UIKeyboardTypePhonePad];
                 [self.btnSeleccionarPais setHidden:NO];
-//                [self.labelNumeroTelefonico setText:NSLocalizedString(@"numeroTelefonico", @" ")];
                 [self.labelDescripcion setFrame:CGRectMake(self.labelDescripcion.frame.origin.x, 158, self.labelDescripcion.frame.size.width, self.labelDescripcion.frame.size.height)];
                 [self.txtDescripcion setFrame:CGRectMake(self.txtDescripcion.frame.origin.x, 181, self.txtDescripcion.frame.size.width, self.txtDescripcion.frame.size.height)];
                 [self.scrollVista setContentSize:CGSizeMake(320, 280)];
-                if (self.opcionSeleccionada == 1 && [self.labelCodigo.text isEqualToString:@"+52"]){ //&& [self.txtTelefono.text length] == 0) {
-//                    [self.txtTelefono setText:@"1"];
-                    [self.labelInfoMexico setHidden:NO];
+                if (self.opcionSeleccionada == 1 && [self.labelCodigo.text isEqualToString:@"+52"]){                     [self.labelInfoMexico setHidden:NO];
 					[self.txtTelefono setFrame:CGRectMake(70, 120, 230, 30)];
 					self.casillaMovil.hidden = NO;
 					self.casillaMovil.layer.cornerRadius = 5;
@@ -135,32 +123,19 @@
 					self.casillaMovil.hidden = YES;
 					[self.labelInfoMexico setHidden:YES];
 				}
-//                seleccionoPais = NO;
                 break;
                 
             default:
 				seleccionoPais = NO;
                 [self.vistaPais setHidden:YES];
-//                [self.txtLada setHidden:YES];
                 [self.txtTelefono setFrame:CGRectMake(20, 86, 280, 30)];
                 [self.txtTelefono setHidden:NO];
                 [self.btnSeleccionarPais setHidden:YES];
                 [self.txtTelefono setPlaceholder:@""];
                 [self.txtTelefono setKeyboardType:UIKeyboardTypeURL];
-//                if (self.opcionSeleccionada == 3) {
-//                    [self.labelNumeroTelefonico setText:@"Email"];
-//                }
-//                else {
-//                    [self.labelNumeroTelefonico setText:NSLocalizedString(@"link", @" ")];
-//                }
-                
                 [self.labelDescripcion setFrame:CGRectMake(self.labelDescripcion.frame.origin.x, 124, self.labelDescripcion.frame.size.width, self.labelDescripcion.frame.size.height)];
                 [self.txtDescripcion setFrame:CGRectMake(self.txtDescripcion.frame.origin.x, 153, self.txtDescripcion.frame.size.width, self.txtDescripcion.frame.size.height)];
                 [self.scrollVista setContentSize:CGSizeMake(320, 250)];
-                //seleccionoPais = YES;
-				
-				
-				
                 break;
         }
         
@@ -309,14 +284,6 @@
     else {
         if (textoLength < maxLength) {
             if ([string isEqualToString:@""]) {
-                /*if (self.opcionSeleccionada == 1 && [self.labelCodigo.text isEqualToString:@"+52"] && [textField.text length] == 1) {
-//                    [labelInfo setText:[NSString stringWithFormat:@"%i/%i", textoLength-1, maxLength]];
-                    return NO;
-                }
-                else {
-                    [labelInfo setText:[NSString stringWithFormat:@"%i/%i", textoLength-1, maxLength]];
-                    return YES;
-                }*/
             }
             else {
                 [labelInfo setText:[NSString stringWithFormat:@"%i/%i", textoLength+1, maxLength]];
@@ -331,7 +298,6 @@
             return NO;
         }
     }
-//    return [self shouldChangeText:string withLimit:255 forFinalLenght:[textField.text length] - range.length + [string length]];
 }
 
 -(BOOL) textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
@@ -647,7 +613,7 @@
 	
 	if (![url isEqualToString:NSLocalizedString(@"urlInvalida", @" ")] && ![url isEqualToString:NSLocalizedString(@"numeroInvalido", @" ")] && ![url isEqualToString:NSLocalizedString(@"emailInvalido", @" ")] && ![url isEqualToString:NSLocalizedString(@"cuentaInvalida", @" ")]) {
 		AlertView *alertView;
-		if (self.modifico) {
+		if (self.modifico && [CommonUtils hayConexion]) {
                 alertView = [AlertView initWithDelegate:self message:NSLocalizedString(@"preguntaGuardar", @" ") andAlertViewType:AlertViewTypeQuestion];
                 [alertView show];
 		}
@@ -701,11 +667,6 @@
             [self.navigationController popViewControllerAnimated:YES];
         }
     }
-//    else {
-//        if (!estaGuardando) {
-//            <#statements#>
-//        }
-//    }
 }
 
 -(void) mostrarActivity {
@@ -814,8 +775,8 @@
         [NSThread sleepForTimeInterval:1];
         [self.alertaContacto hide];
     }
-    //[self revertirGuardado];
-    [[AlertView initWithDelegate:Nil message:NSLocalizedString(@"errorSimple",nil) andAlertViewType:AlertViewTypeInfo] show];
+    AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+    [alert show];
 }
 
 

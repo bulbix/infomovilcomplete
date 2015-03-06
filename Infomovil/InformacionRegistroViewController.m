@@ -318,7 +318,7 @@
     ((AppDelegate *)[[UIApplication sharedApplication] delegate]).ultimoView = Nil;*/
 	[[self view] endEditing:YES];
 	AlertView *alertView;
-    if (self.modifico) {
+    if (self.modifico && [CommonUtils hayConexion]) {
 		alertView = [AlertView initWithDelegate:self message:NSLocalizedString(@"preguntaGuardar", @" ") andAlertViewType:AlertViewTypeQuestion];
 		[alertView show];
     }
@@ -1013,7 +1013,8 @@
         [NSThread sleepForTimeInterval:1];
         [self.alertaContacto hide];
     }
-    [[AlertView initWithDelegate:Nil message:NSLocalizedString(@"errorSimple",nil) andAlertViewType:AlertViewTypeInfo] show];
+    AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+    [alert show];
 }
 
 

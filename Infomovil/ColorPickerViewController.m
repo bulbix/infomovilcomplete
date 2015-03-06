@@ -124,7 +124,7 @@
 -(IBAction)regresar:(id)sender {
     [[self view] endEditing:YES];
     AlertView *alertView;
-    if (self.modifico) {
+    if (self.modifico && [CommonUtils hayConexion]) {
         alertView = [AlertView initWithDelegate:self message:NSLocalizedString(@"preguntaGuardar", @" ") andAlertViewType:AlertViewTypeQuestion];
         [alertView show];
     }
@@ -214,7 +214,9 @@
         [NSThread sleepForTimeInterval:1];
         [self.alertActivity hide];
     }
+    
     [[AlertView initWithDelegate:Nil message:@"No se ha publicado, inténtalo nuevamente" andAlertViewType:AlertViewTypeInfo] show];
+    [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
 }
 -(void) errorToken {
     if ( self.alertActivity )
@@ -225,7 +227,9 @@
     self.alertActivity = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
     [self.alertActivity show];
     [StringUtils terminarSession];
+    [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
     [self.navigationController popToRootViewControllerAnimated:YES];
+    
 }
 -(void) sessionTimeout
 {

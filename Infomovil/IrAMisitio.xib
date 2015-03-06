@@ -5,29 +5,29 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VerEjemploViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IrAMiSitioViewController">
             <connections>
-                <outlet property="view" destination="4cf-4z-gkx" id="DNd-W3-6ek"/>
-                <outlet property="webView" destination="yj0-gL-WK4" id="0kD-q6-HEj"/>
+                <outlet property="view" destination="zeV-fv-1MJ" id="XFp-XI-hi1"/>
+                <outlet property="webView" destination="DlH-3s-VSE" id="5DZ-NP-0lm"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="4cf-4z-gkx">
+        <view contentMode="scaleToFill" id="zeV-fv-1MJ">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <webView contentMode="left" fixedFrame="YES" scalesPageToFit="YES" allowsInlineMediaPlayback="NO" mediaPlaybackRequiresUserAction="NO" mediaPlaybackAllowsAirPlay="NO" keyboardDisplayRequiresUserAction="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yj0-gL-WK4">
+                <webView contentMode="scaleToFill" fixedFrame="YES" scalesPageToFit="YES" allowsInlineMediaPlayback="NO" mediaPlaybackRequiresUserAction="NO" mediaPlaybackAllowsAirPlay="NO" keyboardDisplayRequiresUserAction="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DlH-3s-VSE">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" address="YES"/>
                     <connections>
-                        <outlet property="delegate" destination="-1" id="Dxm-zE-squ"/>
+                        <outlet property="delegate" destination="-1" id="q3U-bL-2T1"/>
                     </connections>
                 </webView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-            <point key="canvasLocation" x="297" y="512"/>
+            <point key="canvasLocation" x="326" y="562"/>
         </view>
     </objects>
 </document>

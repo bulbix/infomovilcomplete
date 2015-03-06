@@ -175,8 +175,7 @@
 
 #pragma mark - BuscaDireccionProtocol
 -(void)buscaDireccionViewController:(BuscaDireccionViewController *)controller conLocalizacion:(CLLocation *)location yDireccion:(NSString *)direccion {
-	//[];
-    //if (!hayAnotacion) {
+
         self.location = location;
         if (CLLocationCoordinate2DIsValid(location.coordinate)) {
             self.modifico = YES;
@@ -186,19 +185,14 @@
             [self.mapView setRegion:region];
             [self.mapView addAnnotation:self];
         }
-   // }
+
 }
 
 -(IBAction)guardarInformacion:(id)sender {
     if (self.modifico) {
         self.datosUsuario = [DatosUsuario sharedInstance];
         auxLocation = self.location;
-        //self.datosUsuario.localizacion = self.location;
-        
-        
         self.datosUsuario = [DatosUsuario sharedInstance];
-        
-        
         self.modifico = NO;
         if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion) {
             if ([CommonUtils hayConexion]) {
@@ -221,7 +215,9 @@
         
 	}
 	else{
-		[self.navigationController popViewControllerAnimated:YES];
+        
+        AlertView *alertView = [AlertView initWithDelegate:nil message:NSLocalizedString(@"elijeUbicacion", @" ") andAlertViewType:AlertViewTypeInfo];
+        [alertView show];
 	}
 }
 
@@ -251,7 +247,7 @@
 -(IBAction)regresar:(id)sender {
     [[self view] endEditing:YES];
     AlertView *alertView;
-    if (self.modifico) {
+    if (self.modifico && [CommonUtils hayConexion]) {
         alertView = [AlertView initWithDelegate:self message:NSLocalizedString(@"preguntaGuardar", @" ") andAlertViewType:AlertViewTypeQuestion];
         [alertView show];
     }
@@ -316,7 +312,6 @@
             [alert show];
         }
     }
-	
 	[self.navigationController popViewControllerAnimated:YES];
     
 }

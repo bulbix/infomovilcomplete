@@ -69,18 +69,19 @@ int opcionButton = 0 ;
     [self obtenerProductos];
     noSeRepiteOprimirElBoton = YES;
     opcionButton = 0;
-   
+   // IRC SE OCULTA LA TABLA PARA MOSTRAR EL DOMINIO Y LA DURACIÓN DEL MISMO //
+    // IRC CUANDOS SE QUIERA HACER DOMINIOS SE DEBE DESCOMENTAR LA TABLA //
+    /*
     if (tablaDominio == nil) {
         tablaDominio = [[TablaDominioViewController alloc] init];
     }
-   
-    
     [tablaSitios setDelegate:tablaDominio];
     [tablaSitios setDataSource:tablaDominio];
-    
-    
     tablaDominio.view = tablaDominio.tableView;
-    
+    tablaSitios.layer.cornerRadius = 5.0f;
+     
+    self.labelMisSitios.text = NSLocalizedString(@"txtMisSitios", Nil);
+    */
 	self.guardarVista = YES;
     self.datosUsuario = [DatosUsuario sharedInstance];
     if (self.datosUsuario.datosPago == nil) {
@@ -116,7 +117,7 @@ int opcionButton = 0 ;
         [self.comprar12meses setBackgroundImage:[UIImage imageNamed:@"12mAc-es.png" ] forState:UIControlStateNormal];
         _imgBeneficios.image = [UIImage imageNamed:@"beneficios-es.png"];
 	}
-    self.labelMisSitios.text = NSLocalizedString(@"txtMisSitios", Nil);
+    
     
     //AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
         
@@ -139,7 +140,7 @@ int opcionButton = 0 ;
     self.navigationItem.rightBarButtonItem = Nil;
 	
 	
-    tablaSitios.layer.cornerRadius = 5.0f;
+    
 	
 	medio = NO;
 	uno = NO;
@@ -544,18 +545,80 @@ if(noSeRepiteOprimirElBoton){
         BOOL sesion = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).existeSesion;
         if(sesion ){
             
-        
-        
-        if (tablaDominio == nil) {
-            tablaDominio = [[TablaDominioViewController alloc] init];
-        }
-        [tablaSitios setDelegate:tablaDominio];
-        [tablaSitios setDataSource:tablaDominio];
-        tablaDominio.view = tablaDominio.tableView;
-        [self.scrollContenido scrollRectToVisible:CGRectMake(320, 0, self.scrollContenido.frame.size.width, self.scrollContenido.frame.size.height) animated:YES];
-        }
+                // IRC ESTAS LINEAS SE COMENTAN PARA OCULTAR LA TABLA DE DOMINIOS //
+            /*
+             if (tablaDominio == nil) {
+                tablaDominio = [[TablaDominioViewController alloc] init];
+             }
+             [tablaSitios setDelegate:tablaDominio];
+             [tablaSitios setDataSource:tablaDominio];
+             tablaDominio.view = tablaDominio.tableView;
+             [self.scrollContenido scrollRectToVisible:CGRectMake(320, 0, self.scrollContenido.frame.size.width, self.scrollContenido.frame.size.height) animated:YES];
+             */
+            
+            // ESTAS LINEAS SE CREARON MIENTRAS NO EXISTE SUBDOMINIOS
+
+            // IRC DOMINIO
+            self.datosUsuario = [DatosUsuario sharedInstance];
+            UIFont * customFont = [UIFont fontWithName:@"Avenir-Medium" size:16];
+            
+            UILabel *dominio = [[UILabel alloc]initWithFrame:CGRectMake(0, 40, 320, 100)];
+            if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
+                dominio.text = [NSString stringWithFormat:@"My website\n\n http://%@.tel",self.datosUsuario.dominio] ;
+            
+#if DEBUG
+                dominio.text = [NSString stringWithFormat:@"My website\n\nhttp://info-movil.com/%@",self.datosUsuario.dominio] ;
+#endif
+            }else{
+                dominio.text = [NSString stringWithFormat:@"Mi sitio web\n\n http://%@.tel",self.datosUsuario.dominio] ;
+#if DEBUG
+                dominio.text = [NSString stringWithFormat:@"Mi sitio web\n\nhttp://info-movil.com/%@",self.datosUsuario.dominio] ;
+#endif
+            }
+            
+            dominio.font = customFont;
+            dominio.numberOfLines = 5;
+            dominio.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
+            dominio.adjustsFontSizeToFitWidth = YES;
+           // dominio.minimumScaleFactor = 10.0f/12.0f;
+            dominio.clipsToBounds = YES;
+            dominio.backgroundColor = [UIColor clearColor];
+            dominio.textColor = [UIColor colorWithRed:47.0f/255.0f
+                                                  green:163.0f/255.0f
+                                                   blue:153.0f/255.0f
+                                                  alpha:1.0f];
+
+            dominio.textAlignment = NSTextAlignmentCenter;
+            [self.vistaDominio addSubview:dominio];
+            
+            // IRC FECHA INICIO Y FIN
+            UILabel *fechas = [[UILabel alloc]initWithFrame:CGRectMake(0, 120,320, 100)];
+            fechas.text = [NSString stringWithFormat: @"Fecha de inicio: %@\n Fecha de término: %@", self.datosUsuario.fechaInicialTel, self.datosUsuario.fechaFinalTel ];
+            fechas.font = customFont;
+            fechas.numberOfLines = 5;
+            fechas.baselineAdjustment = UIBaselineAdjustmentAlignBaselines;
+            fechas.adjustsFontSizeToFitWidth = YES;
+           // fechas.minimumScaleFactor = 10.0f/12.0f;
+            fechas.clipsToBounds = YES;
+            fechas.backgroundColor = [UIColor clearColor];
+            fechas.textColor = [UIColor colorWithRed:47.0f/255.0f
+                                                  green:163.0f/255.0f
+                                                   blue:153.0f/255.0f
+                                                  alpha:1.0f];
+            ;
+            fechas.textAlignment = NSTextAlignmentCenter;
+            [self.vistaDominio addSubview:fechas];
+            
+            
+            [self.scrollContenido scrollRectToVisible:CGRectMake(320, 0, self.scrollContenido.frame.size.width, self.scrollContenido.frame.size.height) animated:YES];
+            
+      }
+      
     }
 	
+            
+            
+            
 	
 }
 
@@ -610,13 +673,22 @@ if(noSeRepiteOprimirElBoton){
        
         if([self.datosUsuario.datosPago.plan isEqualToString:@"PLAN PRO 3 MESES"]){
             [[AppsFlyerTracker sharedTracker] trackEvent:@"Plan Pro 3 Meses" withValue:@""];
-            [[Appboy sharedInstance] logCustomEvent:@"Plan Pro 3 Meses"];
+           // [[Appboy sharedInstance] logCustomEvent:@"Plan Pro 3 Meses"];
+            [[Appboy sharedInstance] logPurchase:@"PP3"
+                                      inCurrency:@"MXN"
+                                         atPrice:[[NSDecimalNumber alloc] initWithString:@"199.00"]];
         }else if([self.datosUsuario.datosPago.plan isEqualToString:@"PLAN PRO 6 MESES"]){
             [[AppsFlyerTracker sharedTracker] trackEvent:@"Plan Pro 6 Meses" withValue:@""];
-            [[Appboy sharedInstance] logCustomEvent:@"Plan Pro 6 Meses"];
+           // [[Appboy sharedInstance] logCustomEvent:@"Plan Pro 6 Meses"];
+            [[Appboy sharedInstance] logPurchase:@"PP6"
+                                      inCurrency:@"MXN"
+                                         atPrice:[[NSDecimalNumber alloc] initWithString:@"349.00"]];
         }else if([self.datosUsuario.datosPago.plan isEqualToString:@"PLAN PRO 12 MESES"]){
             [[AppsFlyerTracker sharedTracker] trackEvent:@"Plan Pro 12 Meses" withValue:@""];
-            [[Appboy sharedInstance] logCustomEvent:@"Plan Pro 12 Meses"];
+           // [[Appboy sharedInstance] logCustomEvent:@"Plan Pro 12 Meses"];
+            [[Appboy sharedInstance] logPurchase:@"PP12"
+                                      inCurrency:@"MXN"
+                                         atPrice:[[NSDecimalNumber alloc] initWithString:@"599.00"]];
         }
         
         if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
@@ -642,4 +714,5 @@ if(noSeRepiteOprimirElBoton){
 
 
 @end
+
 

@@ -318,8 +318,7 @@
 
 -(IBAction)regresar:(id)sender {
     [[self view] endEditing:YES];
-  
-        [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
    
 }
 
@@ -427,8 +426,10 @@
         [NSThread sleepForTimeInterval:1];
         [self.alerta hide];
     }
+    /*
     self.alerta = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"ocurrioError", Nil) andAlertViewType:AlertViewTypeInfo];
     [self.alerta show];
+    */
     [StringUtils terminarSession];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
@@ -458,7 +459,7 @@
         [NSThread sleepForTimeInterval:1];
         [self.alerta hide];
     }
-    [[AlertView initWithDelegate:Nil message:NSLocalizedString(@"ocurrioError", Nil) andAlertViewType:AlertViewTypeInfo] show];
+   // [[AlertView initWithDelegate:Nil message:NSLocalizedString(@"ocurrioError", Nil) andAlertViewType:AlertViewTypeInfo] show];
 }
 
 -(BOOL) validaCampos {

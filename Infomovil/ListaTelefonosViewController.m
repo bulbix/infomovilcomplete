@@ -58,6 +58,11 @@
 	
     [super viewDidLoad];
 
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    [prefs setInteger:0 forKey:@"ActualizandoEstatus1SolaVez"];
+    [prefs synchronize];
+    
+    
 	if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
 		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"contacto", @" ") nombreImagen:@"barraverde.png"];
 	}else{
@@ -260,7 +265,7 @@
     [cell.btnTipo setBackgroundImage:[UIImage imageNamed:[dict objectForKey:@"image"]] forState:UIControlStateNormal];
     
     
-    if( [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && [self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"] && indexPath.row > 2){
+    if( [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && [self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"] && indexPath.row > 1){
         cell.opacarContacto.hidden = NO;
     }else{
         cell.opacarContacto.hidden = YES;
@@ -293,6 +298,26 @@
 
 #pragma mark - UITableViewDelegate 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+   /* if(indexPath.row <= 1){
+        ContactoPaso2ViewController *contactoPaso2 = [[ContactoPaso2ViewController alloc] initWithNibName:@"ContactoPaso2ViewController" bundle:Nil];
+        Contacto *contactoSeleccionado = [arregloContactos objectAtIndex:indexPath.row];
+        [contactoPaso2 setContactoSeleccionado:contactoSeleccionado];
+        [contactoPaso2 setIndexContacto:indexPath.row];
+        [contactoPaso2 setContactosOperacion:ContactosOperacionEditar];
+        [self.navigationController pushViewController:contactoPaso2 animated:YES];
+        [self.tablaContactos deselectRowAtIndexPath:indexPath animated:NO];
+    }else if( [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && [self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"] && indexPath.row > 1){
+       
+   }else if([((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && ![self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"] && indexPath.row > 1){
+    ContactoPaso2ViewController *contactoPaso2 = [[ContactoPaso2ViewController alloc] initWithNibName:@"ContactoPaso2ViewController" bundle:Nil];
+    Contacto *contactoSeleccionado = [arregloContactos objectAtIndex:indexPath.row];
+    [contactoPaso2 setContactoSeleccionado:contactoSeleccionado];
+    [contactoPaso2 setIndexContacto:indexPath.row];
+    [contactoPaso2 setContactosOperacion:ContactosOperacionEditar];
+    [self.navigationController pushViewController:contactoPaso2 animated:YES];
+    [self.tablaContactos deselectRowAtIndexPath:indexPath animated:NO];
+   }
+    */
     ContactoPaso2ViewController *contactoPaso2 = [[ContactoPaso2ViewController alloc] initWithNibName:@"ContactoPaso2ViewController" bundle:Nil];
     Contacto *contactoSeleccionado = [arregloContactos objectAtIndex:indexPath.row];
     [contactoPaso2 setContactoSeleccionado:contactoSeleccionado];
@@ -402,6 +427,7 @@
     [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
 }
 -(void) errorToken {
+    actualizoContactos = NO;
     if (self.alertaLista)
     {
         [NSThread sleepForTimeInterval:1];
@@ -411,6 +437,9 @@
     [self.alertaLista show];
     [StringUtils terminarSession];
     [self.navigationController popToRootViewControllerAnimated:YES];
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    [prefs setInteger:0 forKey:@"ActualizandoEstatus1SolaVez"];
+    [prefs synchronize];
 }
 -(void) sessionTimeout
 {
@@ -432,12 +461,17 @@
 }
 
 -(void) errorContacto {
+    actualizoContactos = NO;
     if (self.alertaLista)
     {
         [NSThread sleepForTimeInterval:1];
         [self.alertaLista hide];
     }
-    [[AlertView initWithDelegate:Nil message:NSLocalizedString(@"ocurrioError", Nil) andAlertViewType:AlertViewTypeInfo] show];
+ //   [[AlertView initWithDelegate:Nil message:NSLocalizedString(@"ocurrioError", Nil) andAlertViewType:AlertViewTypeInfo] show];
+    [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    [prefs setInteger:0 forKey:@"ActualizandoEstatus1SolaVez"];
+    [prefs synchronize];
 }
 
 - (IBAction)muestraInstrucciones:(id)sender

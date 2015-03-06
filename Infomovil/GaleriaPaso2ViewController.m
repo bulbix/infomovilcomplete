@@ -151,12 +151,7 @@
                 [_imagenActual setRutaImagen:_strImagenPath];
                 self.operacion = GaleriaImagenesEditar;
                 estaEditando = YES;
-//            if (self.datosUsuario.promocionActual.pathImageOffer != nil && self.datosUsuario.promocionActual.pathImageOffer.length > 0) {
-//                self.imagenActual = [[GaleriaImagenes alloc] init];
-//                [self.imagenActual setRutaImagen:self.datosUsuario.promocionActual.pathImageOffer];
-//                self.operacion = GaleriaImagenesEditar;
-//                estaEditando = YES;
-//            }
+
             } else {
                 self.imagenActual = [[GaleriaImagenes alloc] init];
             }
@@ -189,8 +184,6 @@
     UIImage *image = [UIImage imageWithData:pngData];
     [self.vistaPreviaImagen setImage:image];
     [self.btnEliminar setEnabled:YES];
-//    [self.btnTomarFoto setEnabled:NO];
-//    [self.btnUsarFoto setEnabled:NO];
     existeFoto = YES;
     [self.pieFoto setEnabled:YES];
     [self.pieFoto setText:[self.imagenActual pieFoto]];
@@ -236,12 +229,7 @@
     if (self.operacion == GaleriaImagenesEditar) {
         estaBorrando = YES;
         
-    }
-    else {
-//        [self.btnEliminar setEnabled:NO];
-//        [self.vistaPreviaImagen setImage:[UIImage imageNamed:@"previsualizador.png"]];
-//        [self validaEditados];
-//        [self.navigationController popViewControllerAnimated:YES];
+    }else {
         noEditando = YES;
     }
     AlertView *alerta = [AlertView initWithDelegate:self message:NSLocalizedString(@"eliminarImagen", @" ") andAlertViewType:AlertViewTypeQuestion];
@@ -249,17 +237,6 @@
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-//    [self.vistaPreviaImagen setImage:[info objectForKey:UIImagePickerControllerOriginalImage]];
-//    [self.btnEliminar setEnabled:YES];
-//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-//    self.modifico = YES;
-//    seleccionoImagen = YES;
-//    [picker dismissViewControllerAnimated:NO completion:^{
-//        if (esCamara) {
-//            [self guardarCarrete: [info objectForKey:UIImagePickerControllerOriginalImage]];
-//        }
-//        [self openEditor:Nil];
-//    }];
     self.imagenTemp = [info objectForKey:UIImagePickerControllerOriginalImage];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     [picker dismissViewControllerAnimated:NO completion:^{
@@ -295,8 +272,6 @@
 }
 
 - (void)cropViewController:(PECropViewController *)controller didFinishCroppingImage:(UIImage *)croppedImage {
-//    [controller dismissViewControllerAnimated:YES completion:NULL];
-//    [self.vistaPreviaImagen setImage:croppedImage];
     [controller dismissViewControllerAnimated:YES completion:NULL];
     [self.vistaPreviaImagen setImage:croppedImage];
     self.modifico = YES;
@@ -306,7 +281,6 @@
 }
 
 - (void)cropViewControllerDidCancel:(PECropViewController *)controller {
-//    [controller dismissViewControllerAnimated:YES completion:];
     [controller dismissViewControllerAnimated:YES completion:^{
         [self.vistaPreviaImagen setImage:[UIImage imageNamed:@"previsualizador.png"]];
         self.modifico = NO;
@@ -366,6 +340,7 @@
                 else {
                     AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
                     [alert show];
+                    [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
                 }
             }
 		}else{
@@ -396,16 +371,17 @@
         return;
     }
     else {
-        if (self.modifico && seleccionoImagen) {
+        if (self.modifico && seleccionoImagen && [CommonUtils hayConexion]  ) {
             AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"preguntaGuardar", @" ") andAlertViewType:AlertViewTypeQuestion];
             [alert show];
         }
-        else if (self.modifico) {
+        else if (self.modifico && [CommonUtils hayConexion]) {
             AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"preguntaGuardar", @" ") andAlertViewType:AlertViewTypeQuestion];
             [alert show];
         }
         else {
             [self validaEditados];
+            [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
             [self.navigationController popViewControllerAnimated:YES];
         }
     }
@@ -470,10 +446,6 @@
     else {
         [self performSelectorOnMainThread:@selector(terminaGuardado) withObject:Nil waitUntilDone:YES];
     }
-    
-        
-
-    
 }
 
 -(void)accionSi {
@@ -485,14 +457,17 @@
         [self.btnEliminar setEnabled:NO];
         [self.vistaPreviaImagen setImage:[UIImage imageNamed:@"previsualizador.png"]];
         self.modifico = NO;
-//        [self validaEditados];
-//        [self.navigationController popViewControlle
     }
     else {
     
-    if ( !estaBorrando &&
-        (self.operacion == GaleriaImagenesAgregar || self.operacion == GaleriaImagenesEditar) ) {
-        [self guardarInformacion:nil];
+    if ( !estaBorrando && (self.operacion == GaleriaImagenesAgregar || self.operacion == GaleriaImagenesEditar) ) {
+        if([CommonUtils hayConexion]){
+            [self guardarInformacion:nil];
+        }else{
+            AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+            [alert show];
+            [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
+            }
     }
     else {
         if (self.galeryType == PhotoGaleryTypeOffer) {
@@ -500,8 +475,6 @@
         }
         
         else {
-
-            
                 if (self.galeryType == PhotoGaleryTypeImage) {
                     self.imagenActual = [self.arregloImagenes objectAtIndex:self.index];
                 }
@@ -523,7 +496,6 @@
                 else {
                     [self.navigationController popViewControllerAnimated:YES];
                 }
-
         }
     }
     }
@@ -552,11 +524,10 @@
 }
 
 -(void) ocultarActivity {
-    if (self.alertGaleria)
-    {
+    
         [NSThread sleepForTimeInterval:1];
         [self.alertGaleria hide];
-    }
+    
     if ( _galeryType == PhotoGaleryTypeOffer )
     {
         AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"imagenPromoCorrecta", Nil) andAlertViewType:AlertViewTypeInfo];
@@ -639,6 +610,7 @@
     self.alertGaleria = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionCaduco", Nil) andAlertViewType:AlertViewTypeInfo];
     [self.alertGaleria show];
     [StringUtils terminarSession];
+    [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 -(void) sessionTimeout
@@ -653,6 +625,7 @@
                                     andAlertViewType:AlertViewTypeInfo];
     [self.alertGaleria show];
     [StringUtils terminarSession];
+    [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 -(void) errorConsultaWS {
@@ -665,7 +638,8 @@
         [NSThread sleepForTimeInterval:1];
         [self.alertGaleria hide];
     }
-    [[AlertView initWithDelegate:Nil message:NSLocalizedString(@"noGuardoImagen", Nil) andAlertViewType:AlertViewTypeInfo] show];
+   // [[AlertView initWithDelegate:Nil message:NSLocalizedString(@"noGuardoImagen", Nil) andAlertViewType:AlertViewTypeInfo] show];
+    [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
 }
 
 -(void) guardarCarrete:(UIImage *) imagen {
@@ -680,6 +654,7 @@
 {
     if (error) {
         NSLog(@"No se guardo la imagen, inténtalo nuevamente");
+        [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
     } else {
         NSLog(@"La imagen se guardo correctamento");
     }
@@ -734,6 +709,7 @@
         else {
             AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
             [alert show];
+            [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
         }
     }
 }

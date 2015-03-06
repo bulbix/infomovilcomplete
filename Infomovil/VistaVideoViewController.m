@@ -115,7 +115,7 @@
 
 -(IBAction)regresar:(id)sender {
     AlertView *alertView;
-    if (self.modifico) {
+    if (self.modifico && [CommonUtils hayConexion]) {
         alertView = [AlertView initWithDelegate:self message:NSLocalizedString(@"preguntaGuardar", @" ") andAlertViewType:AlertViewTypeQuestion];
         [alertView show];
     }

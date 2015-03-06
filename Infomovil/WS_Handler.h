@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-#define TIMEOUTREQUEST 60
+#define TIMEOUTREQUEST 20
 
 @interface WS_Handler : NSObject <NSXMLParserDelegate>
 {

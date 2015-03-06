@@ -46,7 +46,7 @@
         [stringXML appendFormat:@"<token>%@</token></ws:updateImage></soapenv:Body></soapenv:Envelope>", [StringUtils encriptar:datos.emailUsuario conToken:passwordEncriptar]];
     }
     
-    NSLog(@"El string es %@", stringXML);
+   // NSLog(@"El string es %@", stringXML);
     self.strSoapAction = @"WSInfomovilDomain";
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
     NSLog(@"La Respuesta es %s", [dataResult bytes]);
@@ -135,7 +135,7 @@
     }
     
     
-    NSLog(@"El string es %@", stringXML);
+   // NSLog(@"El string es %@", stringXML);
     self.strSoapAction = @"WSInfomovilDomain";
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
     NSLog(@"La Respuesta es %s", [dataResult bytes]);
@@ -225,7 +225,7 @@
          "</soapenv:Body>"
          "</soapenv:Envelope>" ];
     }
-    NSLog(@"El string es %@", stringXML);
+   // NSLog(@"El string es %@", stringXML);
     self.strSoapAction = @"WSInfomovilDomain";
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
     if (dataResult != nil) {

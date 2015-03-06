@@ -39,7 +39,7 @@
     NSLog(@"el string es %@", stringXML);
     self.strSoapAction = @"WSInfomovilDomain";
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
-    NSLog(@"La respuesta de WS_HandlerDominio es %s", [dataResult bytes]);
+    NSLog(@"La respuesta de WS_HandlerDominio consultaDominio es %s", [dataResult bytes]);
     if (dataResult != nil) {
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
         [parser setDelegate:self];
@@ -148,7 +148,7 @@
     self.strSoapAction = @"wsInfomovildomain";
     NSLog(@"la peticion es %@", stringXML);
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
-    NSLog(@"La respuesta es en CrearUsuario WS_HandelDominio %s", [dataResult bytes]);
+    NSLog(@"La respuesta es en CrearUsuario WS_HandelDominio crearUsuario %s", [dataResult bytes]);
     if (dataResult != nil) {
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
         [parser setDelegate:self];
@@ -306,7 +306,7 @@
     self.strSoapAction = @"wsInfomovildomain";
     NSLog(@"la peticion es %@", stringXML);
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
-    NSLog(@"La respuesta es %s", [dataResult bytes]);
+    NSLog(@"La respuesta es en ws_handlerdominio redimirCodigo %s", [dataResult bytes]);
     if (dataResult != nil) {
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
         self.arregloItems = [[NSMutableArray alloc] init];
@@ -417,7 +417,7 @@
     self.strSoapAction = @"wsInfomovildomain";
     NSLog(@"la peticion es %@", stringXML);
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
-    NSLog(@"La respuesta es %s", [dataResult bytes]);
+    NSLog(@"La respuesta es en ws_handlerdominio consultaVisitasDominio %s", [dataResult bytes]);
     if (dataResult != nil) {
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
         [parser setDelegate:self];
@@ -477,7 +477,7 @@
     self.strSoapAction = @"wsInfomovildomain";
     NSLog(@"la peticion es %@", stringXML);
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
-    NSLog(@"La respuesta es %s", [dataResult bytes]);
+    NSLog(@"La respuesta es en ws_handlerdominio consultaExpiraciondominio %s", [dataResult bytes]);
     if (dataResult != nil) {
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
         [parser setDelegate:self];
@@ -543,7 +543,7 @@
     self.strSoapAction = @"wsInfomovildomain";
     NSLog(@"la peticion es %@", stringXML);
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
-    NSLog(@"La respuesta es %s", [dataResult bytes]);
+    NSLog(@"La respuesta es en ws_handlerDominio cancelarcuenta %s", [dataResult bytes]);
     if (dataResult != nil) {
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
         [parser setDelegate:self];
@@ -583,7 +583,7 @@
                            "</soapenv:Body>"
                            "</soapenv:Envelope>", [StringUtils encriptar:usuario conToken:passwordEncriptar]];
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
-   // NSLog(@"La respuesta es %s", [dataResult bytes]);
+    NSLog(@"La respuesta es en ws_handlerdominio consultasession %s", [dataResult bytes]);
     if (dataResult != nil) {
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
         [parser setDelegate:self];
@@ -614,7 +614,7 @@
                            "</soapenv:Envelope>", [StringUtils encriptar:usuario conToken:passwordEncriptar],
                            [StringUtils encriptar:datosUsuario.token conToken:passwordEncriptar]];
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
-    NSLog(@"La respuesta es %s", [dataResult bytes]);
+    NSLog(@"La respuesta es en ws_handlerdominio cerrar sesion %s", [dataResult bytes]);
     if (dataResult != nil) {
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
         [parser setDelegate:self];
@@ -641,7 +641,7 @@
                            [StringUtils encriptar:[NSString stringWithFormat:@"%i", datosUsuario.idDominio] conToken:datosUsuario.token],
                            [StringUtils encriptar:datosUsuario.emailUsuario conToken:passwordEncriptar]];
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
-    NSLog(@"La respuesta es %s", [dataResult bytes]);
+    NSLog(@"La respuesta es en ws_handlerdominio consultaEstatusDominio %s", [dataResult bytes]);
     if (dataResult != nil) {
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
         [parser setDelegate:self];
@@ -683,6 +683,7 @@
 #pragma mark - NSXMLParserDelegate
 
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
+    NSLog(@"Veamos que pone de error %@ y el code es: %i", parseError.userInfo, parseError.code);
 }
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {

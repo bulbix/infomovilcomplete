@@ -179,17 +179,31 @@
     [cell.textLabel setText:[info keywordField]];
     [cell.textLabel setTextColor:colorFuenteAzul];
     [cell.textLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
+    
+    if( [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && [self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"] && indexPath.row > 0){
+        [cell setBackgroundColor:[UIColor colorWithRed:202.0f/255.0f
+                                                 green:202.0f/255.0f
+                                                  blue:202.0f/255.0f
+                                                 alpha:0.55f]];
+    }else{
+        [cell setBackgroundColor:[UIColor whiteColor]];
+    }
+    
     return cell;
 }
 
 #pragma mark - UITableViewDelegate
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    InformacionPaso2ViewController *informacion = [[InformacionPaso2ViewController alloc] initWithNibName:@"InformacionPaso2ViewController" bundle:Nil];
-    [informacion setOperacionInformacion:InfoAdicionalOperacionEditar];
-    [informacion setIndex:indexPath.row];
-    [self.navigationController pushViewController:informacion animated:YES];
+    if( [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && [self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"] && indexPath.row > 0){
+    
+    }else{
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        InformacionPaso2ViewController *informacion = [[InformacionPaso2ViewController alloc] initWithNibName:@"InformacionPaso2ViewController" bundle:Nil];
+        [informacion setOperacionInformacion:InfoAdicionalOperacionEditar];
+        [informacion setIndex:indexPath.row];
+        [self.navigationController pushViewController:informacion animated:YES];
+    }
 }
 
 @end

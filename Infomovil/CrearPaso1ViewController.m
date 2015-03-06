@@ -93,7 +93,10 @@
     
     self.tablaEditar.layer.cornerRadius = 5;
 
+    /* IRC boton de vista previa, se oculto para Plan Pro  */
+    self.navigationItem.rightBarButtonItem = nil;
     
+   /*
     UIImage *imagenBoton = [UIImage imageNamed:@"btnprevisualizar.png"];
     UIButton *botonPrevisualizar = [UIButton buttonWithType:UIButtonTypeCustom];
     [botonPrevisualizar setFrame:CGRectMake(0, 0, imagenBoton.size.width, imagenBoton.size.height)];
@@ -102,7 +105,7 @@
     
     UIBarButtonItem *botonDerecha = [[UIBarButtonItem alloc] initWithCustomView:botonPrevisualizar];
     self.navigationItem.rightBarButtonItem = botonDerecha;
-	
+	*/
 	int editados = 0;
 	for(int i=0;i<[self.datosUsuario.arregloEstatusEdicion count];i++){
 		if([[self.datosUsuario.arregloEstatusEdicion objectAtIndex:i] isEqual:@YES]){

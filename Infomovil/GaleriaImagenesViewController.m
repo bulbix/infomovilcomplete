@@ -81,14 +81,14 @@
         [self.tablaGaleria setHidden:NO];
         [self.vistaInfo setHidden:YES];
         [self.tablaGaleria reloadData];
-        NSLog(@"La cuenta es mayor a 0");
+        //NSLog(@"La cuenta es mayor a 0");
         [self mostrarBotones];
         [arrayAux replaceObjectAtIndex:8 withObject:@YES];
     }
     else {
         [self.tablaGaleria setHidden:YES];
         [self.vistaInfo setHidden:NO];
-        NSLog(@"La cuenta es 0");
+      //  NSLog(@"La cuenta es 0");
         [arrayAux replaceObjectAtIndex:8 withObject:@NO];
         
         self.navigationItem.rightBarButtonItems = Nil;
@@ -369,6 +369,7 @@
         self.alertaGaleria = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionCaduco", Nil) andAlertViewType:AlertViewTypeInfo];
         [self.alertaGaleria show];
         [StringUtils terminarSession];
+        [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
         [self.navigationController popToRootViewControllerAnimated:YES];
     }
 }
@@ -393,6 +394,7 @@
     self.alertaGaleria = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
     [self.alertaGaleria show];
     [StringUtils terminarSession];
+    [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 -(void) sessionTimeout
@@ -407,6 +409,7 @@
                                     andAlertViewType:AlertViewTypeInfo];
     [self.alertaGaleria show];
     [StringUtils terminarSession];
+    [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
@@ -420,6 +423,7 @@
         [NSThread sleepForTimeInterval:1];
         [self.alertaGaleria hide];
     }
-    [[AlertView initWithDelegate:Nil message:NSLocalizedString(@"ocurrioError", Nil) andAlertViewType:AlertViewTypeInfo] show];
+    [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
+   // [[AlertView initWithDelegate:Nil message:NSLocalizedString(@"ocurrioError", Nil) andAlertViewType:AlertViewTypeInfo] show];
 }
 @end

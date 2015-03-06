@@ -35,6 +35,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     self.tablaInicio.layer.cornerRadius = 5;
     self.arregloStatusInicio = [[NSMutableArray alloc] initWithObjects:@NO, @NO, @NO, @NO, @NO, @NO, nil];
     self.datosUsuario = [DatosUsuario sharedInstance];
@@ -72,6 +73,11 @@
         [self.arregloStatusInicio replaceObjectAtIndex:2 withObject:[self.datosUsuario.arregloEstatusEdicion objectAtIndex:4]];
         [self.arregloStatusInicio replaceObjectAtIndex:4 withObject:[self.datosUsuario.arregloEstatusEdicion objectAtIndex:5]];
     }
+   
+    
+    // IRC Se quita boton derecho para plan pro //
+    self.navigationItem.rightBarButtonItem = nil;
+    /*
     UIImage *imagenBoton = [UIImage imageNamed:@"btnprevisualizar.png"];
     UIButton *botonPrevisualizar = [UIButton buttonWithType:UIButtonTypeCustom];
     [botonPrevisualizar setFrame:CGRectMake(0, 0, imagenBoton.size.width, imagenBoton.size.height)];
@@ -80,7 +86,7 @@
     
     UIBarButtonItem *botonDerecha = [[UIBarButtonItem alloc] initWithCustomView:botonPrevisualizar];
     self.navigationItem.rightBarButtonItem = botonDerecha;
-    
+    */
     if (self.datosUsuario.arregloEstatusPerfil != nil) {
         [self.arregloStatusInicio replaceObjectAtIndex:3 withObject:[self.datosUsuario.arregloEstatusPerfil objectAtIndex:0]];
     }

@@ -22,9 +22,6 @@
 
 -(id) init {
     self = [super init];
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    [prefs setInteger:0 forKey:@"ActualizandoEstatus1SolaVez"];
-    [prefs synchronize];
     return self;
 }
 
@@ -59,11 +56,23 @@
 }
 
 - (IBAction)cambiarEstatus:(UISwitch *)sender {
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    if([prefs integerForKey:@"ActualizandoEstatus1SolaVez"] == 0){
-        [self.delegate cell:self changeSwitchValue:self.switchActivo];
+    if([CommonUtils hayConexion]){
+        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+        if([prefs integerForKey:@"ActualizandoEstatus1SolaVez"] == 0){
+            [self.delegate cell:self changeSwitchValue:self.switchActivo];
+        }
+        [prefs setInteger:1 forKey:@"ActualizandoEstatus1SolaVez"];
+        [prefs synchronize];
+    }else{
+          NSLog(@"El valor de default para swithc es: %i", self.switchActivo.on);
+        if(self.switchActivo.on){
+            [self.switchActivo setOn:NO animated:YES];
+        }else{
+            [self.switchActivo setOn:NO animated:YES];
+            
+        }
+        NSLog(@"El valor 2 de default para swithc es: %i", self.switchActivo.on);
     }
-    [prefs setInteger:1 forKey:@"ActualizandoEstatus1SolaVez"];
-    [prefs synchronize];
 }
+
 @end

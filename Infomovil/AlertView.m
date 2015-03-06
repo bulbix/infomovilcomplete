@@ -63,12 +63,6 @@
     self.vistaAlert = [[UIView alloc] initWithFrame:CGRectMake(21, 150, 278, 200)];
     [self.vistaAlert setBackgroundColor:colorBackground];
     
-//    self.imagenEncabezado = [[UIImageView alloc] initWithFrame:CGRectMake(120, 5, 36, 36)];
-//    [self.imagenEncabezado setImage:[UIImage imageNamed:@"imagenalerta.png"]];
-//    [self.vistaAlert addSubview:self.imagenEncabezado];
-    
-//    self.vistaAlert.layer.cornerRadius = 2;
-    
     self.labelTitulo = [[UILabel alloc] initWithFrame:CGRectMake(5, 33, 268, 100)];
     [self.labelTitulo setFont:[UIFont fontWithName:@"Avenir-Book" size:17]];
     [self.labelTitulo setTextColor:[UIColor blackColor]];

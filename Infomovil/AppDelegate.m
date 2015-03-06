@@ -43,7 +43,7 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
     // ce1afa14-800b-4b45-8e8b-3a7696c3ef26
     // PRODUCCION
     // 773948d3-24b7-422e-8a53-f3b1be2834d0
-    
+   /*
   
     [Appboy startWithApiKey:@"ce1afa14-800b-4b45-8e8b-3a7696c3ef26"
               inApplication:application
@@ -56,14 +56,14 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
     
     
     
-    /* HOCKEYAPP  */
+    //HOCKEYAPP  //
     
     [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"6d7f6a5334d44a52f5fb2761f6666f31"];
     [[BITHockeyManager sharedHockeyManager] startManager];
     [[BITHockeyManager sharedHockeyManager].authenticator
      authenticateInstallation];
     
-    
+    */
     
     //-- Set Notification
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.000000) {

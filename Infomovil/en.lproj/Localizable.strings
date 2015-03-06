@@ -32,7 +32,7 @@
 "solo5Imagenes"="You can only add %i images";
 "paraAgregarImagen"="To add another image, delete an existing one first.";
 "video"="Video";
-"noConexion"="There seems to be a problem with your internet connection";
+"noConexion"="There is a problem with your internet. Check it and try again.";
 "noEspeciales" = "No special characters are allowed";
 "promociones"="Promotions";
 "sinFoto"="No photo";
@@ -143,7 +143,7 @@
 "motivoEliminacion"="Why do you want to delete your account?";
 "elige"="Select an option";
 "verificaEmail"="Check your e-mail";
-"ocurrioError"="Sorry, there's an error. Please try again.";
+"ocurrioError"="There's an error. Please try again.";
 "ingresaEmail"="Add your e-mail";
 "hola"="Hello!";
 "eligeColor"="You must first choose a background colour";
@@ -371,7 +371,6 @@
 "ubicacionVista2" = "Find Us";
 "contactoVista" = "Contact Us";
 "movilMexico" = "Remember that to receive international calls the format is (1) XXX-XXX-XXXX (10 digits)";
-"errorSimple" = "Check your internet connection and try again";
 "nuevaLocalizacion" = "This will remove the old location and mark a new";
 "elijeUbicacion" = "Choose a location";
 "imagenRedimension" = "This image can be resized";
@@ -500,7 +499,7 @@
 "verTutorial" = "See tutorial";
 "verTutorialInicio" = "Tutorial";
 "verEjemplo" = "See example";
-"errorAlCargar" = "Check your internet connection and try again";
+
 
 //IRC inicio //
 "recordarCuenta" = "Remember me";
@@ -509,7 +508,7 @@
 "confirmarContrasena" = " Confirm password";
 "olvidasteContrasenaElimininarCuenta" = "Forgot password?";
 
-"sesionFaceCerrada" = "Closed session";
+"sesionFaceCerrada" = "Could not connect to facebook";
 "mensajePost" = "Your message has been successfully posted to your Wall";
 
 "conoceMasInicio" = "Learn more";

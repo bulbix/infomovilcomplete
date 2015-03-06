@@ -354,7 +354,7 @@
 	NSURL *url = [[NSURL alloc] initWithString:strServiceUrl];
 	NSMutableURLRequest *urlRequest = [[NSMutableURLRequest alloc] initWithURL:url];
 	[url release];
-    [urlRequest setTimeoutInterval:60];
+    [urlRequest setTimeoutInterval:20];
 	
 	[urlRequest addValue:@"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
 	[urlRequest addValue:[NSString stringWithFormat:@"%d",[dataPeticion length]] forHTTPHeaderField:@"Content-Length"];
@@ -378,11 +378,20 @@
 
 	if( error )
 	{
-		NSLog(@"Error: %@", [error localizedDescription]);
+        NSLog(@"El codigo de error en WS_Handler es: %ld", (long)error.code);
+        if(error.code == -1005) {
+            AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+            [alert show];
+        }else if(error.code == -1003) {
+            AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"ocurrioError", nil) dominio:Nil andAlertViewType:AlertViewTypeInfo];
+            [alert show];
+        }
+		NSLog(@"Error en getXmlRespuesta: %@", [error localizedDescription]);
 		NSLog(@"%@", [error localizedFailureReason]);
 		NSLog(@"%@", [error localizedRecoverySuggestion]);
 		
-		return [[error localizedDescription] dataUsingEncoding:NSUTF8StringEncoding];
+		//return [[error localizedDescription] dataUsingEncoding:NSUTF8StringEncoding];
+        return [[error localizedDescription] dataUsingEncoding:NSASCIIStringEncoding];
 	}
 	
 	return dataResp;

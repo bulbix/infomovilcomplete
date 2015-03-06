@@ -161,8 +161,8 @@
             [self.navigationController pushViewController:estadisticas animated:YES];
         }
         else {
-            AlertView *alerta = [AlertView initWithDelegate:nil message:NSLocalizedString(@"noConexion", @"") andAlertViewType:AlertViewTypeInfo];
-            [alerta show];
+            AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+            [alert show];
         }
     }
     else {

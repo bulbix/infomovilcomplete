@@ -173,7 +173,12 @@
             buscandoSesion = YES;
             [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
             [self performSelectorInBackground:@selector(consultaLogin) withObject:Nil];
+        }else{
+            AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+            [alert show];
         }
+        
+        
 	}else{
 		AlertView *alert = [AlertView initWithDelegate:nil message:NSLocalizedString(@"incompletos", @" ") andAlertViewType:AlertViewTypeInfo];
 		[alert show];
@@ -225,7 +230,7 @@
         
     }
     else {
-    if (loginExitoso) {  NSLog(@"ENTRO A LOGIN EXITOSO");
+    if (loginExitoso) {  
         [[Appboy sharedInstance] changeUser:self.txtEmail.text];
         self.datosUsuario.existeLogin = YES;
         if (![self.datosUsuario.redSocial isEqualToString:@"Facebook"]) {
@@ -283,7 +288,8 @@
         [NSThread sleepForTimeInterval:1];
         [self.alerta hide];
     }
-    [[AlertView initWithDelegate:Nil message:NSLocalizedString(@"errorSimple", nil) andAlertViewType:AlertViewTypeInfo] show];
+    AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+    [alert show];
     [self fbDidlogout];
 }
 

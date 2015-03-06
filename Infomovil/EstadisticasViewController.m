@@ -315,6 +315,7 @@
             UILabel *labelTexto2 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 140, 29)];
             [labelTexto2 setNumberOfLines:2];
             [labelTexto2 setFont:[UIFont fontWithName:@"Avenir-Book" size:15]];
+            
             if ([((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && ![self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]) {
                 if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
                     [labelTexto2 setText:[NSString stringWithFormat:@"Unique visitors %i", [visitaTotales visitas]]];
@@ -361,7 +362,7 @@
             UILabel *labelTexto2 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 140, 29)];
             [labelTexto2 setNumberOfLines:2];
             [labelTexto2 setFont:[UIFont fontWithName:@"Avenir-Book" size:15]];
-            if ([((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"]) {
+            if ([((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && ![self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]) {
                 if([language rangeOfString:@"es"].location != NSNotFound ){
                     [labelTexto2 setText:[NSString stringWithFormat:@"Visitantes Únicos %i", [visitaTotales visitas]]];
                 }else if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){

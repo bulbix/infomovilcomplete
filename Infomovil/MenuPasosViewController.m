@@ -12,7 +12,7 @@
 #import "FormularioRegistroViewController.h"
 #import "PublicarViewController.h"
 #import "DominioRegistradoViewController.h"
-#import "VistaPreviaWebViewController.h"
+#import "IrAMiSitioViewController.h"
 #import "TipsViewController.h"
 #import "NombrarViewController.h"
 #import "WS_HandlerDominio.h"
@@ -23,7 +23,7 @@
 #import "AppsFlyerTracker.h"
 #import "AppDelegate.h"
 #import "AppboyKit.h"
-#import "VistaPreviaViewController.h"
+
 
 #define IS_IPHONE5 (([[UIScreen mainScreen] bounds].size.height-568)?NO:YES)
 
@@ -300,13 +300,7 @@
 - (IBAction)verEjemplo:(UIButton *)sender {
    VerEjemploViewController *verEjemplo = [[VerEjemploViewController alloc] initWithNibName:@"VerEjemplo" bundle:Nil];
     [self.navigationController pushViewController:verEjemplo animated:YES];
-
-    /*
-    VistaPreviaViewController *vistaPrevia = [[VistaPreviaViewController alloc] initWithNibName:@"VistaPreviaViewController" bundle:Nil];
-    [vistaPrevia setTipoVista:PreviewTypeEjemplo];
-    [self.navigationController pushViewController:vistaPrevia animated:YES];
-   */
-   }
+}
 
 -(BOOL) perfilEditado {
     BOOL fueEditado = NO;
@@ -352,6 +346,16 @@
 }
 
 - (IBAction)IrAlDominio:(id)sender {
+    NSLog(@"LA URL A CARGAR es: %@", self.dominio.titleLabel.text);
+    if([self.dominio.titleLabel.text length] > 0){
+        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+        [prefs setObject:[NSString stringWithFormat:@"http://%@", self.dominio.titleLabel.text] forKey:@"urlMisitio"];
+        [prefs synchronize];
+        IrAMiSitioViewController *verMiSitio = [[IrAMiSitioViewController alloc] initWithNibName:@"IrAMisitio" bundle:Nil];
+        [self.navigationController pushViewController:verMiSitio animated:YES];
+    
+    }
+    
 }
 
 - (IBAction)irInicioRapido:(id)sender {

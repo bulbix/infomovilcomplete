@@ -195,7 +195,7 @@
         }
         NSLog(@"La fecha inin en WS_CompraDominio es: %@", self.datosUsuario.fechaInicial);
     }
- /*   else if ([elementName isEqualToString:@"fTelNamesIni"]){
+    else if ([elementName isEqualToString:@"fTelNamesIni"]){
         NSString *strAux;
         if(requiereEncriptar){
             strAux = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
@@ -217,6 +217,7 @@
                                                                                from:@"yyyy-MM-dd"
                                                                                  to:@"dd-MM-yyy"];
     }
+    /*
     else if([elementName isEqualToString:@"status"]){
         status = [self.currentElementString integerValue];
         NSLog(@"El status es: %i",status);

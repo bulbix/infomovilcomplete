@@ -46,7 +46,7 @@
 "paraAgregarImagen" = "Para agregar otra imagen, debes eliminar una antes";
 
 "video" = "Video";
-"noConexion" = "Revisa tu conexión a internet";
+"noConexion" = "Parece que hay un problema con tu conexión a internet. Revísala e intenta de nuevo.";
 "noEspeciales" = "No son permitidos los caracteres especiales";
 
 "promociones" = "Promociones";
@@ -184,7 +184,7 @@
 "motivoEliminacion" = "¿Cuál es el motivo por el que deseas eliminar tu cuenta?";
 "elige" = "Elige una opción";
 "verificaEmail" = "Verifica tu e-mail";
-"ocurrioError" = "Intenta nuevamente";
+"ocurrioError" = "Inténtalo nuevamente";
 "ingresaEmail" = "Ingresa tu e-mail";
 "hola" = "¡Hola!";
 
@@ -275,7 +275,7 @@
 
 "mensajeCuenta" = "Crea una imagen profesional con Plan Pro";
 
-"mensajeNoVideo" = "¡Liga un video de YouTube y haz tu sitio más llamativo! Esta opción es parte del Plan Pro ¿Deseas aprender más?";
+"mensajeNoVideo" = "¡Liga un video de YouTube y has tu sitio más llamativo! Esta opción es parte del Plan Pro ¿Deseas aprender más?";
 
 "mensajeNoPrueba" = "Esta opción es parte del Plan Pro ¿Deseas aprender más?";
 
@@ -313,7 +313,7 @@
 
 //TipsViewController
 "tipsTitulo1" = "¡Cuida los detalles y prueba tu sitio web!";
-"tipsLabel11" = "1. Ten cuidado para evitar errores de dedo.\n2. Haz pruebas con tu sitio:\nwww.%@.tel";
+"tipsLabel11" = "1. Ten cuidado para evitar errores de dedo.\n2. Has pruebas con tu sitio:\nwww.%@.tel";
 "tipsLabel12" = "Abre el sitio en un explorador";
 "tipsLabel13" = "Prueba los botones de contacto (tel, e-mail)";
 "tipsLabel14" = "Revisa bien todos los textos";
@@ -394,11 +394,11 @@
 "tamano" = "Tamaño";
 
 //ListaTelefonosviewController
-"mensajeContactosPro" = "Haz alcanzado el número máximo de contactos";
+"mensajeContactosPro" = "Has alcanzado el número máximo de contactos";
 
-"mensajeImagenesPro" = "Haz alcanzado el número máximo de imágenes";
+"mensajeImagenesPro" = "Has alcanzado el número máximo de imágenes";
 
-"mensajeInformacionPro" = "Haz alcanzado el número máximo de campos de información";
+"mensajeInformacionPro" = "Has alcanzado el número máximo de campos de información";
 
 //Salir de cuenta
 "salirTitulo" = "Salir de Cuenta";
@@ -485,7 +485,6 @@
 "ubicacionVista2" = "Ubícanos";
 "contactoVista" = "Contáctanos";
 "movilMexico" = "Recuerda que para recibir llamadas internacionales el formato es (1) XXX-XXX-XXXX (10 dígitos)";
-"errorSimple" = "Lo sentimos, revisa tu conexión a internet";
 "nuevaLocalizacion" = "Esta acción elimina la ubicación anterior y marca una nueva";
 "elijeUbicacion" = "Elija una ubicación";
 "imagenRedimension" = "Esta imagen puede ser redimensionada";
@@ -612,7 +611,7 @@
 "verTutorial" = "Ver tutorial";
 "verTutorialInicio" = "Tutorial";
 "verEjemplo" = "Ver ejemplo";
-"errorAlCargar" = "Revisa tu conexión a internet e intenta nuevamente";
+
 
 //IRC inicio //
 "recordarCuenta" = "Recordar";
@@ -621,7 +620,7 @@
 "confirmarContrasena" = " Confirmar contraseña";
 "olvidasteContrasenaElimininarCuenta" = "¿Olvidaste tu contraseña?";
 
-"sesionFaceCerrada" = "Sesión cerrada";
+"sesionFaceCerrada" = "No se pudo conectar a facebook";
 "mensajePost" = "El mensaje se ha publicado correctamente en tu muro";
 "conoceMasInicio" = "Conoce más";
 "verEjemploInicio" = "Ejemplo";

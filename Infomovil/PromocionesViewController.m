@@ -471,11 +471,8 @@
 -(IBAction)regresar:(id)sender
 {
     [[self view] endEditing:YES];
-    if ( self.modifico )
-	{
-        AlertView *alertView = [AlertView initWithDelegate:self
-												   message:NSLocalizedString(@"preguntaGuardar", @" ")
-										  andAlertViewType:AlertViewTypeQuestion];
+    if (self.modifico && [CommonUtils hayConexion]) {
+        AlertView *alertView = [AlertView initWithDelegate:self message:NSLocalizedString(@"preguntaGuardar", @" ") andAlertViewType:AlertViewTypeQuestion];
         [alertView show];
     } else {
         [self.navigationController popViewControllerAnimated:YES];

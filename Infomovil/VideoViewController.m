@@ -122,7 +122,7 @@
         [self.navigationController pushViewController:seleccionaVideo animated:YES];
     }
     else {
-        AlertView *alerta = [AlertView initWithDelegate:self message:NSLocalizedString(@"noConexion", @" ") andAlertViewType:AlertViewTypeInfo];
+        AlertView *alerta = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
         [alerta show];
     }
     
@@ -223,7 +223,7 @@
 -(IBAction)regresar:(id)sender {
     [[self view] endEditing:YES];
     AlertView *alertView;
-    if (self.modifico) {
+    if (self.modifico && [CommonUtils hayConexion]) {
         alertView = [AlertView initWithDelegate:self message:NSLocalizedString(@"preguntaGuardar", @" ") andAlertViewType:AlertViewTypeQuestion];
         [alertView show];
     }
