@@ -142,9 +142,12 @@
         NSLog(@"no mames : %i y maximo %i", self.datosUsuario.arregloInformacionAdicional.count, maxNumInformacion);
         alertaIndormacion = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeInformacionAdicionalPrueba", @" ") andAlertViewType:AlertViewTypeQuestion];
         [alertaIndormacion show];
-    }else if(self.datosUsuario.arregloInformacionAdicional.count >= 2){
-        AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeInformacionPro", nil) andAlertViewType:AlertViewTypeInfo];
+    }else if(self.datosUsuario.arregloInformacionAdicional.count >= 2 && [self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]){
+        AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeInformacionAdicionalPrueba", nil) andAlertViewType:AlertViewTypeInfo];
         [alert show];
+    }else if(self.datosUsuario.arregloInformacionAdicional.count >= 2 && ![self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]){
+        AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeInformacionPro", nil) andAlertViewType:AlertViewTypeInfo];
+             [alert show];
     }
     
     
