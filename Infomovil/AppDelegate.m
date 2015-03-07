@@ -43,7 +43,7 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
     // ce1afa14-800b-4b45-8e8b-3a7696c3ef26
     // PRODUCCION
     // 773948d3-24b7-422e-8a53-f3b1be2834d0
-   /*
+   
   
     [Appboy startWithApiKey:@"ce1afa14-800b-4b45-8e8b-3a7696c3ef26"
               inApplication:application
@@ -63,7 +63,7 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
     [[BITHockeyManager sharedHockeyManager].authenticator
      authenticateInstallation];
     
-    */
+    
     
     //-- Set Notification
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.000000) {

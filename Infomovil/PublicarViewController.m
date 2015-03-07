@@ -44,10 +44,7 @@
 
 @property (nonatomic, strong) AlertView *alertView;
 @property (nonatomic, strong) NSMutableArray *arregloPais;
-//@property (nonatomic, strong) NSDictionary *ccMapping;
 @property (nonatomic, strong) NSDictionary *prefijos;
-
-
 
 @end
 
@@ -182,7 +179,8 @@
 
 
 -(void) ocultarActivity {
-	
+    [NSThread sleepForTimeInterval:1];
+    [self.alertView hide];
 	if(!existeDominio){
 		AlertView *alert = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noDisponible", @" ") dominio:nil andAlertViewType:AlertViewTypeInfo];
 		[alert show];
@@ -296,6 +294,7 @@
     self.alertView = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
     [self.alertView show];
     [StringUtils terminarSession];
+    [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 -(void) sessionTimeout
@@ -310,6 +309,7 @@
                                     andAlertViewType:AlertViewTypeInfo];
     [self.alertView show];
     [StringUtils terminarSession];
+    [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 -(void) errorConsultaWS {
@@ -322,7 +322,8 @@
         [NSThread sleepForTimeInterval:1];
         [self.alertView hide];
     }
-    [[AlertView initWithDelegate:Nil message:NSLocalizedString(@"ocurrioError", Nil) andAlertViewType:AlertViewTypeInfo] show];
+    [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
+   // [[AlertView initWithDelegate:Nil message:NSLocalizedString(@"ocurrioError", Nil) andAlertViewType:AlertViewTypeInfo] show];
 }
 
 
@@ -398,12 +399,13 @@
 	BOOL resultado = [self validarCampos];
 	
 	[[self view] endEditing:YES];
-	if(resultado){
-		[self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:NO]; // IDM
+    if(resultado && [CommonUtils hayConexion]){
+		[self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
 		[self performSelectorInBackground:@selector(checaDominio) withObject:Nil];
+    
 	}else{
-		AlertView * alert = [AlertView initWithDelegate:nil message:mensajeError andAlertViewType:AlertViewTypeInfo];
-		[alert show];
+        AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+        [alert show];
 	}
 }
 

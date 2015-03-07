@@ -382,10 +382,11 @@
         if(error.code == -1005) {
             AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
             [alert show];
-        }else if(error.code == -1003) {
+        }/*else if(error.code == -1003) {
             AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"ocurrioError", nil) dominio:Nil andAlertViewType:AlertViewTypeInfo];
             [alert show];
         }
+          */
 		NSLog(@"Error en getXmlRespuesta: %@", [error localizedDescription]);
 		NSLog(@"%@", [error localizedFailureReason]);
 		NSLog(@"%@", [error localizedRecoverySuggestion]);
