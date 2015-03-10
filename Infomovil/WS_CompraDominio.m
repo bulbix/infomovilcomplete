@@ -202,9 +202,10 @@
         }else{
             strAux = self.currentElementString;
         }
-        self.datosUsuario.fechaInicialTel = [NSDateFormatter changeDateFormatOfString:strAux
-                                                                                 from:@"yyyy-MM-dd"
-                                                                                   to:@"dd-MM-yyy"];
+        if(strAux != nil && ![strAux isEqualToString:@"(null)"]){
+            self.datosUsuario.fechaInicialTel =strAux;
+        }
+        //[NSDateFormatter changeDateFormatOfString:strAux from:@"yyyy-MM-dd" to:@"dd-MM-yyy"];
     }
     else if ([elementName isEqualToString:@"fTelNamesFin"]){
         NSString *strAux;
@@ -213,9 +214,10 @@
         }else{
             strAux = self.currentElementString;
         }
-        self.datosUsuario.fechaFinalTel = [NSDateFormatter changeDateFormatOfString:strAux
-                                                                               from:@"yyyy-MM-dd"
-                                                                                 to:@"dd-MM-yyy"];
+        if(strAux != nil && ![strAux isEqualToString:@"(null)"]){
+            self.datosUsuario.fechaFinalTel =strAux;
+        }
+        //[NSDateFormatter changeDateFormatOfString:strAux from:@"yyyy-MM-dd" to:@"dd-MM-yyy"];
     }
     /*
     else if([elementName isEqualToString:@"status"]){
