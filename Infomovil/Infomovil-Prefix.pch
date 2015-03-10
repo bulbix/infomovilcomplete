@@ -54,7 +54,7 @@ typedef enum {
 #define rutaWS @"http://info-movil.net"
 /* test */
 //#define dominioTipo @"recurso"
-// #define rutaWS @"http://info-movil.com"
+//#define rutaWS @"http://info-movil.com"
 
 //#define nombreServicio @"PreReg"
 #define nombreServicio @"WsInfomovil"
