@@ -392,7 +392,7 @@
 		NSLog(@"%@", [error localizedRecoverySuggestion]);
 		
 		//return [[error localizedDescription] dataUsingEncoding:NSUTF8StringEncoding];
-        return [[error localizedDescription] dataUsingEncoding:NSASCIIStringEncoding];
+        return [[error localizedDescription] dataUsingEncoding:NSUTF8StringEncoding];
 	}
 	
 	return dataResp;

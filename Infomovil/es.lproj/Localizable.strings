@@ -160,7 +160,7 @@
 "visitaSitio" = "Visita mi sitio";
 "noSMS" = "Tu dispositivo no soporta el envío de SMS!";
 "noWhatsapp" = "Tu dispositivo no soporta el envío de Whatsapp!";
-"visitaApp" = "¡Revisa mi nuevo sitio creado con la app infomovil!";
+"visitaApp" = "¡Revisa mi nuevo sitio creado con la app Infomovil!";
 
 "infoRegistro" = "Información de registro";
 "cambiaPass" = "Cambiar contraseña";
@@ -341,7 +341,7 @@
 
 //CompartirViewController
 "compartirLabel1" = "Comparte tu sitio web con tus contactos y amigos para sacarle más provecho.";
-"compartirLabel2" = "Ya estoy en línea con infomovil. Visita mi sitio web:";
+"compartirLabel2" = "Ya estoy en línea con Infomovil. Visita mi sitio web:";
 
 //CuentaViewController
 "cuentaTituloSegment1" = "Plan Pro";
@@ -443,10 +443,10 @@
 
 "verificaDatos" = "Verifica tus datos";
 
-"mensajeGoogle" = "www.%@.tel\nCreado con infomovil.com";
+"mensajeGoogle" = "www.%@.tel\nCreado con Infomovil.com";
 "mensajeTwitter" = "%@\nMuy buen sitio web\nwww.%@.tel";
 "mensajeEmail1" = "%@ checa este sitio!";
-"mensajeEmail2" = "Checa este sitio web\nwww.%@.tel\nCreado con infomovil.com";
+"mensajeEmail2" = "Checa este sitio web\nwww.%@.tel\nCreado con Infomovil.com";
 "mensajeSms" = "Checa este sitio web \nwww.%@.tel";
 
 "mensajePromocion1" = "No se han realizado cambios en la información aún";
@@ -466,7 +466,7 @@
 
 "paso2Eliminar" = "¿Estás seguro que deseas eliminar los datos?";
 
-"errorPassword" = "Contraseña debe tener de 8 a 15 caracteres\n(letras y números)\nNo puede contener la palabra infomovil\nNo puede ser igual al correo";
+"errorPassword" = "Contraseña debe tener de 8 a 15 caracteres\n(letras y números)\nNo puede contener la palabra Infomovil\nNo puede ser igual al correo";
 "imagenPromoCorrecta" = "Tu imagen se ha procesado correctamente y esta lista para subirse";
 
 "registrarMensaje" =  "Por favor, crea una cuenta con tu\ne-mail y una contraseña.";

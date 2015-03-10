@@ -365,7 +365,7 @@
             [self mostrarActivity];
         }
         else {
-
+         
             [self.navigationController popViewControllerAnimated:YES];
         }
         return;
@@ -381,7 +381,8 @@
         }
         else {
             [self validaEditados];
-            [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
+            [NSThread sleepForTimeInterval:1];
+            [self.alertGaleria hide];
             [self.navigationController popViewControllerAnimated:YES];
         }
     }

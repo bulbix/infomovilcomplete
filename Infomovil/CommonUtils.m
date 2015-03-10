@@ -185,7 +185,7 @@
 	NSString *strSkypeValida = [[[[[[[[strSkype stringByReplacingOccurrencesOfString:@"https://" withString:@""] stringByReplacingOccurrencesOfString:@"HTTPS://" withString:@""] stringByReplacingOccurrencesOfString:@"www." withString:@""] stringByReplacingOccurrencesOfString:@"WWW." withString:@""]stringByReplacingOccurrencesOfString:@".com" withString:@""] stringByReplacingOccurrencesOfString:@".COM" withString:@""] stringByReplacingOccurrencesOfString:@"SKYPE/" withString:@""] stringByReplacingOccurrencesOfString:@"skype/" withString:@""];
 	
 	//Expresion regular para validar la url de skype
-	NSString *skypeRegex = @"[a-zA-Z0-9\\*\\?\\+\\[\\(\\)\\{\\}\\^\\$\\|\\.\\/\\ ]{1,}";
+	NSString *skypeRegex = @"[a-zA-Z0-9\\*\\?\\+\\_\\[\\(\\)\\{\\}\\^\\$\\|\\.\\/\\ ]{1,}";
 	NSPredicate * skypeTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",skypeRegex];
 	
 	if([skypeTest evaluateWithObject:strSkypeValida] == YES)

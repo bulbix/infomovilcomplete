@@ -14,7 +14,7 @@
 #import <Social/Social.h>
 #import <FacebookSDK/FacebookSDK.h>
 #import <Twitter/Twitter.h>
-@interface TipsViewController () {
+@interface TipsViewController () <FBLoginViewDelegate>{
     NSInteger pagSeleccionada;
 }
 
@@ -38,6 +38,24 @@
 
 - (void)viewDidLoad
 {
+    
+    FBLoginView *loginView = [[FBLoginView alloc] init];
+    loginView.delegate = self;
+    loginView.readPermissions = @[@"public_profile", @"email"];
+   
+    
+    if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {
+        
+        // If there's one, just open the session silently, without showing the user the login UI
+        [FBSession openActiveSessionWithReadPermissions:@[@"public_profile"]
+                                           allowLoginUI:NO
+                                      completionHandler:^(FBSession *session, FBSessionState state, NSError *error) {
+                                          
+                                          NSLog(@"Entrando a sesion activa");
+                                      }];
+    }
+     FBSession* session = [FBSession activeSession];
+    
     [super viewDidLoad];
     if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
         [self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"tituloTips", @" ") nombreImagen:@"barrarosa.png"];
@@ -53,6 +71,12 @@
     self.myPageControl.frame = CGRectMake(112, 300, 97, 37);
 
 
+}
+
+- (void)loginViewShowingLoggedInUser:(FBLoginView *)loginView {
+#ifdef _DEBUG
+    NSLog(@"Entrando a loginViewShowingLoggedInUser:");
+#endif
 }
 
 -(void) viewWillAppear:(BOOL)animated{
@@ -127,7 +151,7 @@
      @"http://www.infomovil.com/", @"link",
      @"http://info-movil.com/images/259-X-49.png",@"picture",
      nil];
-    
+    FBSession* session = [FBSession activeSession];
     // Invoke the dialog
     [FBWebDialogs presentFeedDialogModallyWithSession:nil
                                            parameters:params
@@ -154,7 +178,17 @@
      }];
 }
 
-
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    
+    BOOL wasHandled = [FBAppCall handleOpenURL:url
+                             sourceApplication:sourceApplication];
+    
+    // add app-specific handling code here
+    return wasHandled;
+}
 
 
 
@@ -229,37 +263,7 @@
 }
 
 - (IBAction)compartirTwitter:(UIButton *)sender {
-   /* if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]) {
 
-        SLComposeViewController *controller = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
-        controller.completionHandler = ^(SLComposeViewControllerResult result){
-            if (result == SLComposeViewControllerResultCancelled) {
-                NSLog(@"FB sharing cancelled");
-            } else {
-                NSLog(@"FB sharing successful");
-            }
-            [self dismissViewControllerAnimated:YES completion:Nil];
-        };
-		if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-			[controller setInitialText:[NSString stringWithFormat:@"I just created a website with infomovil.com.\nCheck it out and help us grow!\nwww.%@.tel",self.datosUsuario.dominio]];
-		}else{
-			[controller setInitialText:[NSString stringWithFormat:@"Acabo de crear un sitio web con infomovil.com.\n¡Visítalo y ayúdanos a crecer!\nwww.%@.tel",self.datosUsuario.dominio]];
-		}
-		
-        [self presentViewController:controller animated:YES completion:nil];
-    }
-    else {
-
-		NSLog(@"Twitter: %@",[NSString stringWithFormat: @"http://twitter.com/intent/tweet?text=Acabo%%20de%%20crear%%20un%%20sitio%%20web%%20movil%%20con%%20infomovil.com.%%0A¡Visitalo%%20y%%20ayudanos%%20a%%20crecer!%%0Awww.%@.tel" ,self.datosUsuario.dominio]);
-		if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-			[[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat: @"http://twitter.com/intent/tweet?text=I%%20just%%20created%%20a%%20mobile%%20website%%20with%%20infomovil.com.%%0ACheck%%20it%%20out%%20and%%20help%%20us%%20grow%%0Awww.%@.tel" ,self.datosUsuario.dominio]]];
-		}else{
-			[[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat: @"http://twitter.com/intent/tweet?text=Acabo%%20de%%20crear%%20un%%20sitio%%20web%%20movil%%20con%%20infomovil.com.%%0AVisitalo%%20y%%20ayudanos%%20a%%20crecer%%0Awww.%@.tel" ,self.datosUsuario.dominio]]];
-		}
-		
-		
-    }
-*/
     NSString *mensaje = nil;
     NSString *titulo = nil;
     NSString *advertencia = nil;
@@ -355,9 +359,9 @@
 	
 	NSURL *whatsappURL;
 	if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-		whatsappURL = [NSURL URLWithString:[NSString stringWithFormat:@"whatsapp://send?text=I%%20just%%20created%%20a%%20mobile%%20website%%20with%%20infomovil.com.%%0ACheck%%20it%%20out%%20and%%20help%%20us%%20grow%%0Awww.%@.tel", self.datosUsuario.dominio]];
+		whatsappURL = [NSURL URLWithString:[NSString stringWithFormat:@"whatsapp://send?text=I%%20just%%20created%%20a%%20website%%20with%%20infomovil.com.%%0ACheck%%20it%%20out%%20and%%20help%%20us%%20grow%%0Awww.%@.tel", self.datosUsuario.dominio]];
 	}else{
-		whatsappURL = [NSURL URLWithString:[NSString stringWithFormat:@"whatsapp://send?text=Acabo%%20de%%20crear%%20un%%20sitio%%20web%%20movil%%20con%%20infomovil.com.%%0AVisitalo%%20y%%20ayudanos%%20a%%20crecer%%0Awww.%@.tel", self.datosUsuario.dominio]];
+		whatsappURL = [NSURL URLWithString:[NSString stringWithFormat:@"whatsapp://send?text=Acabo%%20de%%20crear%%20un%%20sitio%%20web%%20con%%20infomovil.com.%%0AVisitalo%%20y%%20ayudanos%%20a%%20crecer%%0Awww.%@.tel", self.datosUsuario.dominio]];
 	}
 	
 	NSLog(@"La url whatsapp es %@, dominio:%@", whatsappURL,self.datosUsuario.dominio);
@@ -409,6 +413,13 @@
 
 - (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult) result {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+- (void)loginViewFetchedUserInfo:(FBLoginView *)loginView
+                            user:(id<FBGraphUser>)user {
+
+    
 }
 
 

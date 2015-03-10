@@ -564,15 +564,15 @@ if(noSeRepiteOprimirElBoton){
             
             UILabel *dominio = [[UILabel alloc]initWithFrame:CGRectMake(0, 40, 320, 100)];
             if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-                dominio.text = [NSString stringWithFormat:@"My website\n\n http://%@.tel",self.datosUsuario.dominio] ;
+                dominio.text = [NSString stringWithFormat:@"My website\n\n www.%@.tel",self.datosUsuario.dominio] ;
             
 #if DEBUG
-                dominio.text = [NSString stringWithFormat:@"My website\n\nhttp://info-movil.com/%@",self.datosUsuario.dominio] ;
+                dominio.text = [NSString stringWithFormat:@"My website\n\nwww.info-movil.com/%@",self.datosUsuario.dominio] ;
 #endif
             }else{
-                dominio.text = [NSString stringWithFormat:@"Mi sitio web\n\n http://%@.tel",self.datosUsuario.dominio] ;
+                dominio.text = [NSString stringWithFormat:@"Mi sitio web\n\n www.%@.tel",self.datosUsuario.dominio] ;
 #if DEBUG
-                dominio.text = [NSString stringWithFormat:@"Mi sitio web\n\nhttp://info-movil.com/%@",self.datosUsuario.dominio] ;
+                dominio.text = [NSString stringWithFormat:@"Mi sitio web\n\nwww.info-movil.com/%@",self.datosUsuario.dominio] ;
 #endif
             }
             

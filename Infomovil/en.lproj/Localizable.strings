@@ -114,7 +114,7 @@
 "paisCheck"="Country";
 "visitaPagina"="%i pageviews";
 "visitaUltimos"="%i  pageviews since %i";
-"estoyLinea"="I'm online with infomovil.com Visit my new website at:";
+"estoyLinea"="I'm online with Infomovil.com Visit my new website at:";
 "noFacebook"="You haven't set up a Facebook account";
 "notwitter"="You haven''t set up a Twitter account";
 "visitaSitio"="Visit my site";
@@ -260,7 +260,7 @@
 "estadisticasLabel4"="6M";
 "estadisticasLabel5"="1Y";
 
-"compartirLabel2"="I'm online with infomovil.com \nVisit my new website at:";
+"compartirLabel2"="I'm online with Infomovil.com \nVisit my new website at:";
 
 "cuentaTituloSegment1"="Pro Plan";
 "cuentaTituloSegment2"="Domain";
@@ -354,7 +354,7 @@
 
 "eliminaImagenAviso" = "You must first remove the picture";
 
-"errorPassword" = "Password must be 8 or more characters\n(letters and numbers)\nCan not contain the word infomovil";
+"errorPassword" = "Password must be 8 or more characters\n(letters and numbers)\nCan not contain the word Infomovil";
 "imagenPromoCorrecta" = "Your image is now ready to be uploaded";
 
 "registrarMensaje" =  "Please create an account with your e-mail and password.";
@@ -379,7 +379,7 @@
 "condicionesServicio" = "Terms of Service";
 "politicaPrivacidad" = "Privacy Policy";
 "checaMiSitio" = "Check our website";
-"creeMiSitio" = "I just created a website with infomovil.com.\nCheck it out and help us grow!\nwww.%@.tel";
+"creeMiSitio" = "I just created a website with Infomovil.com.\nCheck it out and help us grow!\nwww.%@.tel";
 
 "txtMsjSessionActiva" = "You already have a session open. To open a new one on this device, we need to close it.";
 "txtCerrarBackground" = "Your session has been closed for your security, log in again";

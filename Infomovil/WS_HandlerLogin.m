@@ -97,6 +97,7 @@
     self.strSoapAction = @"WSInfomovilDomain";
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
    NSLog(@"IRC : La respuesta es del login es: %s", [dataResult bytes]);
+    self.contactoActual = [[Contacto alloc] init];
     if (dataResult != nil) {
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
         [parser setDelegate:self];
@@ -137,6 +138,7 @@
                 if (self.descipcionAux.length > 0 && self.descipcionAux != Nil) {
                     self.descipcionAux = [StringUtils desEncriptar:self.descipcionAux conToken:self.datosUsuario.token];
                     if ((self.descipcionAux.length > 0 && ![self.descipcionAux isEqualToString:@"Título"]) && ![self.descipcionAux isEqualToString:@"(null)"]) {
+                        NSLog(@"A VER QUE VALOR ME DA AQUÍ %@   ", self.descipcionAux);
                         self.datosUsuario.descripcion = self.descipcionAux;
                         [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:3 withObject:@YES];
                     }
@@ -158,6 +160,7 @@
                 
                 
                 [self acomodaContactos];
+            NSLog(@"SEGUNDO");
                 self.datosUsuario.arregloContacto = self.arregloContactos;
                 for (NSInteger i = 0; i < [self.arregloImagenes count]; i++) {
                     GaleriaImagenes *galImagenes = [self.arregloImagenes objectAtIndex:i];
@@ -269,9 +272,6 @@
             if ([self.arregloItems count] > 0) {
                 self.datosUsuario.itemsDominio = self.arregloItems;
                 self.datosUsuario.itemsDominio = [StringUtils ordenarItems:self.arregloItems];
-                for(int x = 0; x< [self.datosUsuario.itemsTipoDominio count]; x++){
-                    NSLog(@"GETDOMAIN WS_HANDLERLOGIN items que me da el server en el getDomain es: %@", self.datosUsuario.itemsTipoDominio);
-                }
             }
             if ([self.arregloTiposDominio count] > 0) {
                 self.datosUsuario.itemsTipoDominio = self.arregloTiposDominio;
@@ -284,9 +284,6 @@
             }
             
             ((AppDelegate *) [[UIApplication sharedApplication] delegate]).fechaLogin = [NSDate date];
-           
-            
-          
             [self.loginDelegate resultadoLogin:self.idDominio];
             
         }
@@ -312,8 +309,12 @@
         self.currentElementString = [[NSMutableString alloc] init];
     }
     else if ([elementName isEqualToString:@"listRecordNaptrVo"]) {
+        self.contactoActual = nil;
         self.contactoActual = [[Contacto alloc] init];
         [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:4 withObject:@YES];
+    }
+    else if ([elementName isEqualToString:@"longLabelNaptr"]) {
+        self.currentElementString = [[NSMutableString alloc] init];
     }
     else if ([elementName isEqualToString:@"listOffertRecordVO"]) {
         self.promocionElegida = [[OffertRecord alloc] init];
@@ -484,6 +485,7 @@
 	}
     else if ([elementName isEqualToString:@"listRecordNaptrVo"]) {
         [self.arregloContactos addObject:self.contactoActual];
+        NSLog(@"LOS VALORES DE DESCRIPCIÒN SON: %@ ** con tooken %@ ** y la descripcion es: %@  mas --- %@  mas --- %ld", [StringUtils desEncriptar:self.contactoActual.descripcion conToken:self.token], self.token, self.contactoActual.descripcion, self.contactoActual.noContacto,(long)self.contactoActual.idContacto);
         self.currentElementString = [[NSMutableString alloc] init];
     }
     else if ([elementName isEqualToString:@"claveContacto"]) {
@@ -917,7 +919,6 @@
 		}else{
 			self.datosUsuario.fechaInicial = self.currentElementString;
 		}
-   
 	}
 	else if ([elementName isEqualToString:@"fechaFin"]){
 		if(requiereEncriptar){
@@ -925,7 +926,6 @@
 		}else{
 			self.datosUsuario.fechaFinal = self.currentElementString;
 		}
-        
 	}
 	else if ([elementName isEqualToString:@"fTelNamesIni"]){
         NSString *strAux;
@@ -934,11 +934,8 @@
 		}else{
 			strAux = self.currentElementString;
 		}
-       
-        self.datosUsuario.fechaInicialTel = [NSDateFormatter changeDateFormatOfString:strAux
-                                                                                 from:@"yyyy-MM-dd"
-                                                                                   to:@"dd-MM-yyy"];
-      
+        self.datosUsuario.fechaInicialTel = strAux;
+        //[NSDateFormatter changeDateFormatOfString:strAux from:@"yyyy-MM-dd" to:@"dd-MM-yyy"];
 	}
 	else if ([elementName isEqualToString:@"fTelNamesFin"]){
         NSString *strAux;
@@ -947,12 +944,9 @@
 		}else{
 			strAux = self.currentElementString;
 		}
-        self.datosUsuario.fechaFinalTel = [NSDateFormatter changeDateFormatOfString:strAux
-                                                                               from:@"yyyy-MM-dd"
-                                                                                 to:@"dd-MM-yyy"];
-        
+        self.datosUsuario.fechaFinalTel = strAux;
+        //[NSDateFormatter changeDateFormatOfString:strAux from:@"yyyy-MM-dd" to:@"dd-MM-yyy"];
 	}
- 
     else if ([elementName isEqualToString:@"descripcionDominio"]) {
         self.datosUsuario.descripcionDominio =  [StringUtils desEncriptar:self.currentElementString conToken:self.token];
         NSLog(@"LA DESCRIPCION DOMINIO ES: %@",self.datosUsuario.descripcionDominio );
