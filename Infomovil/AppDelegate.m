@@ -45,7 +45,7 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
     // 773948d3-24b7-422e-8a53-f3b1be2834d0
   
   
-    [Appboy startWithApiKey:@"ce1afa14-800b-4b45-8e8b-3a7696c3ef26"
+    [Appboy startWithApiKey:@"773948d3-24b7-422e-8a53-f3b1be2834d0"
               inApplication:application
           withLaunchOptions:launchOptions];
     
