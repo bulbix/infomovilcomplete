@@ -121,8 +121,18 @@ int opcionButton = 0 ;
     
     //AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
         
+    
+    
+    if(IS_STANDARD_IPHONE_6){
+        [self.vistaPlanPro setContentSize:CGSizeMake(375, 568)];
+        [self.scrollContenido setContentSize:CGSizeMake(750, 568)];
+        self.imgBackgroundBotones.frame = CGRectMake(0, 68, 350, 143);
+    }else{
         [self.vistaPlanPro setContentSize:CGSizeMake(320, 568)];
         [self.scrollContenido setContentSize:CGSizeMake(640, 568)];
+    }
+    
+    
     
     [self.botonCuenta setFrame:CGRectMake(128, 14, 64, 54)];
 	
@@ -561,8 +571,16 @@ if(noSeRepiteOprimirElBoton){
             // IRC DOMINIO
             self.datosUsuario = [DatosUsuario sharedInstance];
             UIFont * customFont = [UIFont fontWithName:@"Avenir-Medium" size:16];
+            UILabel *dominio;
+            if(IS_STANDARD_IPHONE_6){
+                dominio = [[UILabel alloc]initWithFrame:CGRectMake(40, 40, 375, 100)];
+            }else{
+                dominio = [[UILabel alloc]initWithFrame:CGRectMake(0, 40, 320, 100)];
+            }
             
-            UILabel *dominio = [[UILabel alloc]initWithFrame:CGRectMake(0, 40, 320, 100)];
+            
+            
+            
             if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
                 dominio.text = [NSString stringWithFormat:@"My website\n\n www.%@.tel",self.datosUsuario.dominio] ;
             
@@ -580,7 +598,6 @@ if(noSeRepiteOprimirElBoton){
             dominio.numberOfLines = 5;
             dominio.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
             dominio.adjustsFontSizeToFitWidth = YES;
-           // dominio.minimumScaleFactor = 10.0f/12.0f;
             dominio.clipsToBounds = YES;
             dominio.backgroundColor = [UIColor clearColor];
             dominio.textColor = [UIColor colorWithRed:47.0f/255.0f
@@ -592,7 +609,12 @@ if(noSeRepiteOprimirElBoton){
             [self.vistaDominio addSubview:dominio];
             
             // IRC FECHA INICIO Y FIN
-            UILabel *fechas = [[UILabel alloc]initWithFrame:CGRectMake(0, 120,320, 100)];
+            UILabel *fechas;
+            if(IS_STANDARD_IPHONE_6){
+                fechas = [[UILabel alloc]initWithFrame:CGRectMake(40, 120,375, 100)];
+            }else{
+                fechas = [[UILabel alloc]initWithFrame:CGRectMake(0, 120,320, 100)];
+            }
             fechas.text = [NSString stringWithFormat: @"Fecha de inicio: %@\n Fecha de término: %@", self.datosUsuario.fechaInicialTel, self.datosUsuario.fechaFinalTel ];
             fechas.font = customFont;
             fechas.numberOfLines = 5;
@@ -609,8 +631,12 @@ if(noSeRepiteOprimirElBoton){
             fechas.textAlignment = NSTextAlignmentCenter;
             [self.vistaDominio addSubview:fechas];
             
+            if(IS_STANDARD_IPHONE_6){
+                [self.scrollContenido scrollRectToVisible:CGRectMake(375, 0, self.scrollContenido.frame.size.width, self.scrollContenido.frame.size.height) animated:YES];
+            }else{
+                [self.scrollContenido scrollRectToVisible:CGRectMake(320, 0, self.scrollContenido.frame.size.width, self.scrollContenido.frame.size.height) animated:YES];
             
-            [self.scrollContenido scrollRectToVisible:CGRectMake(320, 0, self.scrollContenido.frame.size.width, self.scrollContenido.frame.size.height) animated:YES];
+            }
             
       }
       

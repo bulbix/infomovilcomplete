@@ -9,14 +9,14 @@
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell autoresizesSubviews="NO" contentMode="scaleToFill" restorationIdentifier="ContactoCell" selectionStyle="default" indentationWidth="10" rowHeight="63" id="YNc-W7-N2h" customClass="ContactosCell">
             <rect key="frame" x="0.0" y="0.0" width="280" height="63"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YNc-W7-N2h" id="TB6-0y-AZh">
                 <rect key="frame" x="0.0" y="0.0" width="280" height="62"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" id="ejC-P1-nXM">
                         <rect key="frame" x="0.0" y="0.0" width="280" height="62"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="vGr-rB-8T7">
                                 <rect key="frame" x="6" y="13" width="35" height="35"/>

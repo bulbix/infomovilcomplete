@@ -48,7 +48,18 @@
     FBLoginView *loginView = [[FBLoginView alloc] init];
     loginView.delegate = self;
     loginView.readPermissions = @[@"public_profile", @"email"];
-    loginView.frame = CGRectMake(20, 130, 280, 55);
+    
+   
+    if(IS_STANDARD_IPHONE_6){
+        loginView.frame = CGRectMake(20, 130, 335, 55);
+        loginView.frame = CGRectMake(20, 130, 335, 55);
+        self.raya1.frame = CGRectMake(20, 220, 155, 2);
+        self.o.frame = CGRectMake(178, 212, 155, 20);
+        self.raya2.frame = CGRectMake(195, 220, 155, 2);
+    
+    }else{
+        loginView.frame = CGRectMake(20, 130, 280, 55);
+    }
     
     for (id obj in loginView.subviews)
     {
@@ -56,8 +67,20 @@
         if ([obj isKindOfClass:[UIButton class]])
         {
             UIButton * loginButton =  obj;
-            loginButton.frame =CGRectMake(0,0, 280, 55);
-            UIImage *loginImage = [UIImage imageNamed:@"btn_RegistroFacebook"];
+            
+            if(IS_STANDARD_IPHONE_6){
+                loginButton.frame =CGRectMake(0,0, 1000, 55);
+                
+            }else{
+                loginButton.frame =CGRectMake(0,0, 280, 55);
+            }
+            UIImage *loginImage;
+            if(IS_STANDARD_IPHONE_6){
+                loginImage = [UIImage imageNamed:@"btn_RegistroFacebook_copia.png"];
+                
+            }else{
+                loginImage = [UIImage imageNamed:@"btn_RegistroFacebook.png"];
+            }
             [loginButton setBackgroundImage:loginImage forState:UIControlStateNormal];
             [loginButton setBackgroundImage:nil forState:UIControlStateSelected];
             [loginButton setBackgroundImage:nil forState:UIControlStateHighlighted];
@@ -72,14 +95,25 @@
                 loginLabel.text =@"Inicia sesión con Facebook";
             }
             loginLabel.textAlignment = NSTextAlignmentCenter;
-            loginLabel.frame =CGRectMake(15,6, 280, 45);
+            
+            if(IS_STANDARD_IPHONE_6){
+                loginLabel.frame =CGRectMake(15,6, 335, 45);
+                
+            }else{
+                loginLabel.frame =CGRectMake(15,6, 280, 45);
+            }
             [loginLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
         }
         
     }
-    
-    
+    if(IS_STANDARD_IPHONE_6){
+        [self.scrollLogin setContentSize:CGSizeMake(375, 420)];
+    }else{
+        [self.scrollLogin setContentSize:CGSizeMake(320, 420)];
+    }
     [self.scrollLogin addSubview:loginView];
+    
+   
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(apareceElTeclado:)
@@ -90,7 +124,9 @@
                                              selector:@selector(desapareceElTeclado:)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
-    [self.scrollLogin setContentSize:CGSizeMake(320, 420)];
+    
+    
+    
     
     self.keyboardControls = [[BSKeyboardControls alloc] initWithFields:@[self.txtEmail, self.txtPassword]];
     [self.keyboardControls setDelegate:self];

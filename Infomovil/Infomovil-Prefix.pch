@@ -37,6 +37,18 @@ typedef enum {
 #define IS_WIDESCREEN ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
 #define IS_IPHONE_5 ( IS_WIDESCREEN )
 
+#define IS_WIDESCREEN2 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )480 ) < DBL_EPSILON )
+#define IS_IPHONE_4 ( IS_WIDESCREEN2 )
+
+
+#define IS_OS_8_OR_LATER    ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
+
+#define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+
+#define IS_STANDARD_IPHONE_6 (IS_IPHONE && [[UIScreen mainScreen] bounds].size.height == 667.0  && IS_OS_8_OR_LATER && [UIScreen mainScreen].nativeScale == [UIScreen mainScreen].scale)
+
+#define IS_STANDARD_IPHONE_6_PLUS (IS_IPHONE && [[UIScreen mainScreen] bounds].size.height == 736.0)
+
 #define colorBackground [UIColor colorWithRed:(237/255.0f) green:(229/255.0f) blue:(226/255.0f) alpha:1.0]
 #define colorMorado [UIColor colorWithRed:(81/255.0f) green:(53/255.0f) blue:(93/255.0f) alpha:1.0]
 #define colorFondo [UIColor colorWithRed:(81/255.0f) green:(73/255.0f) blue:(172/255.0f) alpha:1.0]
@@ -50,11 +62,11 @@ typedef enum {
 //#define rutaWS @"http://172.17.3.192:8080"
 //#define rutaWS @"http://172.17.3.181:9090"
 /* productivo */
-#define dominioTipo @"tel"
-#define rutaWS @"http://info-movil.net"
+//#define dominioTipo @"tel"
+//#define rutaWS @"http://info-movil.net"
 /* test */
-//#define dominioTipo @"recurso"
-//#define rutaWS @"http://info-movil.com"
+#define dominioTipo @"recurso"
+#define rutaWS @"http://info-movil.com"
 
 //#define nombreServicio @"PreReg"
 #define nombreServicio @"WsInfomovil"

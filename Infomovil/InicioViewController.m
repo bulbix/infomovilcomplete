@@ -52,17 +52,26 @@
 	
 	if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
 		self.leyenda1.frame = CGRectMake(47, 510, 200, 21);
-		self.leyenda2.frame = CGRectMake(217, 511, 80, 21);
+		
 		
 		self.leyenda3.frame = CGRectMake(45, 532, 28, 21);
-		self.leyenda4.frame = CGRectMake(65, 533, 144, 21);
+        if(IS_STANDARD_IPHONE_6){
+            self.leyenda4.frame = CGRectMake(90, 533, 144, 21);
+            self.leyenda2.frame = CGRectMake(190, 511, 80, 21);
+        }else{
+            self.leyenda4.frame = CGRectMake(65, 533, 144, 21);
+            self.leyenda2.frame = CGRectMake(217, 511, 80, 21);
+        }
 		self.leyenda5.frame = CGRectMake(190,532, 83, 21);
 	}else{
 		self.leyenda1.frame = CGRectMake(6, 510, 152, 21);
 		self.leyenda2.frame = CGRectMake(160, 511, 152, 21);
-		
 		self.leyenda3.frame = CGRectMake(37, 532, 28, 21);
-		self.leyenda4.frame = CGRectMake(65, 533, 144, 21);
+        if(IS_STANDARD_IPHONE_6){
+            self.leyenda4.frame = CGRectMake(65, 533, 144, 21);
+        }else{
+            self.leyenda4.frame = CGRectMake(65, 533, 144, 21);
+        }
 		self.leyenda5.frame = CGRectMake(202,532, 83, 21);
 	
 		
@@ -121,13 +130,21 @@
         [self.navigationController.navigationBar setHidden:YES];
     }
    
-    if(! IS_IPHONE_5 ){
+    if( IS_IPHONE_4 ){
         self.conoceMas.frame = CGRectMake(126, 380, 143 , 30);
         self.conoceMasPlay.frame = CGRectMake(83, 375, 35, 35);
         self.botonPruebalos.frame = CGRectMake(30, 220, 260, 55);
         self.botonSesions.frame = CGRectMake(32, 290, 256, 55);
         NSLog(@"el boton pruebalo es: %f", self.botonPruebalos.frame.origin.y);
         self.label.frame = CGRectMake(20, 118, 280, 97);
+    }else if(IS_STANDARD_IPHONE_6){
+        self.conoceMas.frame = CGRectMake(170, 380, 143 , 30);
+        self.conoceMasPlay.frame = CGRectMake(120, 375, 35, 35);
+        self.botonPruebalos.frame = CGRectMake(35, 220, 305, 55);
+        self.botonSesions.frame = CGRectMake(35, 290, 305, 55);
+        NSLog(@"el boton pruebalo es: %f", self.botonPruebalos.frame.origin.y);
+        self.label.frame = CGRectMake(30, 118, 315, 97);
+        
     }
    
     [self.vistaInferior setHidden:YES];

@@ -36,6 +36,7 @@
 @property (weak, nonatomic) IBOutlet UIView *viewPlanProComprado;
 
 
+@property (weak, nonatomic) IBOutlet UIImageView *imgBackgroundBotones;
 
 
 

@@ -695,9 +695,6 @@
 		BFB69B6C1A83DD6D0022107C /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFB69B6B1A83DD6D0022107C /* CoreImage.framework */; };
 		BFB69B701A8426BD0022107C /* miFeed.png in Resources */ = {isa = PBXBuildFile; fileRef = BFB69B6F1A8426BD0022107C /* miFeed.png */; };
 		BFB69B721A8427360022107C /* miFeed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFB69B711A8427360022107C /* miFeed@2x.png */; };
-		BFBF24631A9273D30034F5DD /* btn_RegistroFacebook.png in Resources */ = {isa = PBXBuildFile; fileRef = BFBF245E1A9273D30034F5DD /* btn_RegistroFacebook.png */; };
-		BFBF24641A9273D30034F5DD /* btn_RegistroFacebook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFBF245F1A9273D30034F5DD /* btn_RegistroFacebook@2x.png */; };
-		BFBF24651A9273D30034F5DD /* btn_RegistroFacebook@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFBF24601A9273D30034F5DD /* btn_RegistroFacebook@3x.png */; };
 		BFBF246B1A9277D80034F5DD /* recordarOn.png in Resources */ = {isa = PBXBuildFile; fileRef = BFBF24691A9277D80034F5DD /* recordarOn.png */; };
 		BFBF246C1A9277D80034F5DD /* recordarOff.png in Resources */ = {isa = PBXBuildFile; fileRef = BFBF246A1A9277D80034F5DD /* recordarOff.png */; };
 		BFC14ED01A83086600EBA7A8 /* ABKIdentifierForAdvertisingProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC14EB11A83086600EBA7A8 /* ABKIdentifierForAdvertisingProvider.m */; };
@@ -715,6 +712,10 @@
 		BFD0AB981A9E44FF00D5FF63 /* VerEjemploViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD0AB971A9E44FF00D5FF63 /* VerEjemploViewController.m */; };
 		BFD0AB9B1A9E4DE500D5FF63 /* VistaPreviaWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD0AB9A1A9E4DE500D5FF63 /* VistaPreviaWebViewController.m */; };
 		BFD0AB9D1A9E4F9900D5FF63 /* vistaPreviaWeb.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFD0AB9C1A9E4F9900D5FF63 /* vistaPreviaWeb.xib */; };
+		BFED496B1AAFBB4C009E33A9 /* btn_RegistroFacebook.png in Resources */ = {isa = PBXBuildFile; fileRef = BFED49671AAFBB4C009E33A9 /* btn_RegistroFacebook.png */; };
+		BFED496C1AAFBB4C009E33A9 /* btn_RegistroFacebook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFED49681AAFBB4C009E33A9 /* btn_RegistroFacebook@2x.png */; };
+		BFED496D1AAFBB4C009E33A9 /* btn_RegistroFacebook@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFED49691AAFBB4C009E33A9 /* btn_RegistroFacebook@3x.png */; };
+		BFED496E1AAFBB4C009E33A9 /* btn_RegistroFacebook_copia.png in Resources */ = {isa = PBXBuildFile; fileRef = BFED496A1AAFBB4C009E33A9 /* btn_RegistroFacebook_copia.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1651,9 +1652,6 @@
 		BFB69B6B1A83DD6D0022107C /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		BFB69B6F1A8426BD0022107C /* miFeed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = miFeed.png; sourceTree = "<group>"; };
 		BFB69B711A8427360022107C /* miFeed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "miFeed@2x.png"; sourceTree = "<group>"; };
-		BFBF245E1A9273D30034F5DD /* btn_RegistroFacebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_RegistroFacebook.png; sourceTree = "<group>"; };
-		BFBF245F1A9273D30034F5DD /* btn_RegistroFacebook@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_RegistroFacebook@2x.png"; sourceTree = "<group>"; };
-		BFBF24601A9273D30034F5DD /* btn_RegistroFacebook@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_RegistroFacebook@3x.png"; sourceTree = "<group>"; };
 		BFBF24691A9277D80034F5DD /* recordarOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recordarOn.png; sourceTree = "<group>"; };
 		BFBF246A1A9277D80034F5DD /* recordarOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recordarOff.png; sourceTree = "<group>"; };
 		BFC14EB11A83086600EBA7A8 /* ABKIdentifierForAdvertisingProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABKIdentifierForAdvertisingProvider.m; sourceTree = "<group>"; };
@@ -1700,6 +1698,10 @@
 		BFD0AB991A9E4DE500D5FF63 /* VistaPreviaWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VistaPreviaWebViewController.h; sourceTree = "<group>"; };
 		BFD0AB9A1A9E4DE500D5FF63 /* VistaPreviaWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VistaPreviaWebViewController.m; sourceTree = "<group>"; };
 		BFD0AB9C1A9E4F9900D5FF63 /* vistaPreviaWeb.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = vistaPreviaWeb.xib; sourceTree = "<group>"; };
+		BFED49671AAFBB4C009E33A9 /* btn_RegistroFacebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_RegistroFacebook.png; sourceTree = "<group>"; };
+		BFED49681AAFBB4C009E33A9 /* btn_RegistroFacebook@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_RegistroFacebook@2x.png"; sourceTree = "<group>"; };
+		BFED49691AAFBB4C009E33A9 /* btn_RegistroFacebook@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_RegistroFacebook@3x.png"; sourceTree = "<group>"; };
+		BFED496A1AAFBB4C009E33A9 /* btn_RegistroFacebook_copia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_RegistroFacebook_copia.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1931,10 +1933,10 @@
 		0F5CFA49189733E100D27B2E /* imagenesInfomovil */ = {
 			isa = PBXGroup;
 			children = (
+				BFED49661AAFBB4C009E33A9 /* LoginFacebook */,
 				BF15BCF41AA54DD2009A6398 /* imagenesPlanPro */,
 				BFA8588A1AA018AE00A9CB6F /* splash */,
 				BFBF24681A9277D70034F5DD /* RecordarCuenta */,
-				BFBF245D1A9273D30034F5DD /* LoginFacebook */,
 				0F59BEA518CA225B0037FE8A /* imagenesWeb */,
 				0F9F52E218989413000F9FA5 /* iPhoneRet */,
 				0F5CFA4A189733E100D27B2E /* iPhone */,
@@ -3059,16 +3061,6 @@
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
-		BFBF245D1A9273D30034F5DD /* LoginFacebook */ = {
-			isa = PBXGroup;
-			children = (
-				BFBF245E1A9273D30034F5DD /* btn_RegistroFacebook.png */,
-				BFBF245F1A9273D30034F5DD /* btn_RegistroFacebook@2x.png */,
-				BFBF24601A9273D30034F5DD /* btn_RegistroFacebook@3x.png */,
-			);
-			path = LoginFacebook;
-			sourceTree = "<group>";
-		};
 		BFBF24681A9277D70034F5DD /* RecordarCuenta */ = {
 			isa = PBXGroup;
 			children = (
@@ -3155,6 +3147,17 @@
 				BFCB96E51AA611B600DDD753 /* HockeySDKResources.bundle */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		BFED49661AAFBB4C009E33A9 /* LoginFacebook */ = {
+			isa = PBXGroup;
+			children = (
+				BFED49671AAFBB4C009E33A9 /* btn_RegistroFacebook.png */,
+				BFED49681AAFBB4C009E33A9 /* btn_RegistroFacebook@2x.png */,
+				BFED49691AAFBB4C009E33A9 /* btn_RegistroFacebook@3x.png */,
+				BFED496A1AAFBB4C009E33A9 /* btn_RegistroFacebook_copia.png */,
+			);
+			path = LoginFacebook;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -3244,7 +3247,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				654A09FC193E16E6000A9340 /* functions.js in Resources */,
-				BFBF24631A9273D30034F5DD /* btn_RegistroFacebook.png in Resources */,
 				0FA01C0D18EB6D7500F5AB8C /* function.x in Resources */,
 				0F5104D818BEC36A00538435 /* flechas.png in Resources */,
 				0F9F535418989413000F9FA5 /* previsualizador@2x.png in Resources */,
@@ -3287,6 +3289,7 @@
 				0FC99A9118F30479005EBF5A /* twitterprevia.png in Resources */,
 				BFCB96EB1AA611B600DDD753 /* LICENSE in Resources */,
 				0F5E042918EF8CC000AC4657 /* login@2x.png in Resources */,
+				BFED496D1AAFBB4C009E33A9 /* btn_RegistroFacebook@3x.png in Resources */,
 				0F9F533318989413000F9FA5 /* cgoogle+@2x.png in Resources */,
 				0F6CBD2F19085F0B0077B065 /* tip3.png in Resources */,
 				0F68946218E5408400025050 /* plecamagenta@2x.png in Resources */,
@@ -3340,6 +3343,7 @@
 				BF15BD481AA54DD2009A6398 /* 3mAc-en.png in Resources */,
 				0F9F532D18989413000F9FA5 /* btnyoutube@2x.png in Resources */,
 				65065DEC190FEB8000189316 /* tipsTwit@2x.png in Resources */,
+				BFED496C1AAFBB4C009E33A9 /* btn_RegistroFacebook@2x.png in Resources */,
 				0F9F533718989413000F9FA5 /* cpinterest@2x.png in Resources */,
 				BF15BD571AA54DD2009A6398 /* 6mAc-es.png in Resources */,
 				0FCB0F6A18E2139600C37A37 /* compartirtwitter@2x.png in Resources */,
@@ -3390,6 +3394,7 @@
 				0F850DFD1885B36E0008A0CA /* NombrarViewController.xib in Resources */,
 				0F680EF018ECD76000A02347 /* micuenta@2x.png in Resources */,
 				BFB69B701A8426BD0022107C /* miFeed.png in Resources */,
+				BFED496E1AAFBB4C009E33A9 /* btn_RegistroFacebook_copia.png in Resources */,
 				0F9F52CD189890C6000F9FA5 /* mibuscar.png in Resources */,
 				0F43B2AB18E5FB3100E2AAE7 /* checkActivo.png in Resources */,
 				0FC6C6A718DD0BFD009E69A2 /* btnorganizar@2x.png in Resources */,
@@ -3493,7 +3498,6 @@
 				0F6CBD2819081F540077B065 /* TipsViewController.xib in Resources */,
 				0FC6C6A918DD0C1D009E69A2 /* btnorganizar.png in Resources */,
 				65B38AA11912BE280073DCBD /* CompartirPublicacionViewController.xib in Resources */,
-				BFBF24641A9273D30034F5DD /* btn_RegistroFacebook@2x.png in Resources */,
 				65581B1419350C8000B5D4ED /* btnbackgroundEn@2x.png in Resources */,
 				0F8B214A18849EDB00F016B3 /* GaleriaPaso2ViewController.xib in Resources */,
 				0F59BEB118CA2EE70037FE8A /* direccion.png in Resources */,
@@ -3617,6 +3621,7 @@
 				0F69406018E09109008A8F07 /* linea@2x.png in Resources */,
 				0F7B986B197EE0D100AA41D1 /* PromocionesViewController.xib in Resources */,
 				BF15BD4E1AA54DD2009A6398 /* 3mInac-en.png in Resources */,
+				BFED496B1AAFBB4C009E33A9 /* btn_RegistroFacebook.png in Resources */,
 				65581B071934F78600B5D4ED /* roja@2x.png in Resources */,
 				BF15BD301AA54DD2009A6398 /* 12mAc-en@2x.png in Resources */,
 				0F9F52C6189890C6000F9FA5 /* ctelefono.png in Resources */,
@@ -3643,7 +3648,6 @@
 				BF15BD541AA54DD2009A6398 /* 6mAc-en.png in Resources */,
 				0F680EEF18ECD76000A02347 /* miconfiguracion@2x.png in Resources */,
 				655F6C2B18EDC2CF00C4347A /* NBverde.png in Resources */,
-				BFBF24651A9273D30034F5DD /* btn_RegistroFacebook@3x.png in Resources */,
 				0F9F52C4189890C6000F9FA5 /* cskype.png in Resources */,
 				65B38AA51912BFEB0073DCBD /* English.strings in Resources */,
 				0F5244F918FE038E001902E6 /* backNuevo.png in Resources */,
