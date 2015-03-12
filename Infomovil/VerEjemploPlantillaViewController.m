@@ -1,32 +1,39 @@
 //
-//  VerEjemploViewController.m
+//  VerEjemploPlantillaViewController.m
 //  Infomovil
 //
-//  Created by Isaac Rosas Camarillo on 25/02/15.
+//  Created by Isaac Rosas Camarillo on 3/11/15.
 //  Copyright (c) 2015 Sergio Sánchez Flores. All rights reserved.
 //
 
-#import "VerEjemploViewController.h"
- #import "CommonUtils.h"
+#import "VerEjemploPlantillaViewController.h"
 
-@interface VerEjemploViewController ()
+@interface VerEjemploPlantillaViewController ()
 @property (nonatomic, strong) AlertView *alertaContacto;
 @property (nonatomic,assign) BOOL pagCargada;
 @end
 
-@implementation VerEjemploViewController
+@implementation VerEjemploPlantillaViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.pagCargada = NO;
     // Do any additional setup after loading the view.
-    
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     self.webView.delegate = self;
     self.navigationItem.rightBarButtonItem = Nil;
-    if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
-        [self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"verEjemploInicio", @" ") nombreImagen:@"barramorada.png"];
-    }
+    
+    [self.navigationItem setTitle:[prefs stringForKey:@"urlMisitio"]];
+    UIFont *fuente = [UIFont fontWithName:@"Avenir-Heavy" size:15];
+    UIColor *colorTexto = [UIColor whiteColor];
+    NSDictionary *atributos = @{
+                                NSFontAttributeName: fuente,
+                                NSForegroundColorAttributeName: colorTexto,
+                                };
+    
+    [self.navigationController.navigationBar setTitleTextAttributes:atributos];
+  
     UIImage *image = [UIImage imageNamed:@"btnregresar.png"];
     
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -37,11 +44,14 @@
     UIBarButtonItem *buttonBack = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     self.navigationItem.leftBarButtonItem = buttonBack;
     
-    NSString *htmlStringToLoad = @"http://pizzastibonetes.tel/";
-    // PARA CUANDO SE APUREN ESTOS CHAVOS LA URL SERA! // http://info-movil.com/templates/Divertido/index.html //
+    
+    NSString *htmlStringToLoad = [prefs stringForKey:@"urlMisitio"];
+    
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:htmlStringToLoad]]];
     [self.view addSubview:self.webView];
     [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
+
+    self.vistaInferior.hidden=YES;
     
 }
 
@@ -58,6 +68,7 @@
 
 
 -(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
+    
     NSLog(@"El error es: %@ con codigo : %ld", error.userInfo, (long)error.code);
     if(!self.pagCargada){
         [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
@@ -83,13 +94,4 @@
     
 }
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
-
 @end
-

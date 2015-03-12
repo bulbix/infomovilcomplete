@@ -149,6 +149,7 @@
 	self.fechaFinalTel = Nil;
     
     self.descripcionDominio = Nil;
+    self.plantilla = Nil;
 	 
 }
 

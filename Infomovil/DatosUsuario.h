@@ -90,6 +90,8 @@
 @property (nonatomic, strong) NSString * fechaInicialTel;
 @property (nonatomic, strong) NSString * fechaFinalTel;
 
+@property (nonatomic, strong) NSString * plantilla;
+
 @property (nonatomic, strong) OffertRecord *promocionActual;
 
 @property (nonatomic, strong) PagoModel *datosPago;

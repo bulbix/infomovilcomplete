@@ -23,6 +23,7 @@
 #import "AppsFlyerTracker.h"
 #import "AppDelegate.h"
 #import "AppboyKit.h"
+#import "ElegirPlantillaViewController.h"
 
 
 #define IS_IPHONE5 (([[UIScreen mainScreen] bounds].size.height-568)?NO:YES)
@@ -241,12 +242,22 @@
     
     
 }
-
+// IRC se deshabilito para Templates
+/*
 - (IBAction)elegirFondo:(UIButton *)sender {
 
     ColorPickerViewController *colorPicker = [[ColorPickerViewController alloc] initWithNibName:@"ColorPickerViewController" bundle:Nil];
     [self.navigationController pushViewController:colorPicker animated:YES];
 }
+*/
+
+- (IBAction)elegirPlantilla:(UIButton *)sender {
+    ElegirPlantillaViewController *elegirPlantillaBtn = [[ElegirPlantillaViewController alloc] initWithNibName:@"ElegirPlantillaViewController" bundle:Nil];
+    [self.navigationController pushViewController:elegirPlantillaBtn animated:YES];
+}
+
+
+
 
 - (IBAction)crearEditar:(UIButton *)sender {
     self.datosUsuario = [DatosUsuario sharedInstance];
