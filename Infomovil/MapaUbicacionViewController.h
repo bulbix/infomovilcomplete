@@ -16,6 +16,12 @@
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
 
+//MBC
+@property (weak, nonatomic) IBOutlet UIButton *btnBuscar;
+@property (weak, nonatomic) IBOutlet UIButton *btnUbicar;
+@property (weak, nonatomic) IBOutlet UIButton *btnEliminar;
+
+
 -(IBAction)buscarDireccion:(id)sender;
 -(IBAction)guardarDireccion:(id)sender;
 -(IBAction)borrarDireccion:(id)sender;

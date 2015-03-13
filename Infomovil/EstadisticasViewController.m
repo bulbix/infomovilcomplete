@@ -48,6 +48,14 @@
     [super viewDidLoad];
     self.guardarVista = YES;
     
+    //MBC
+    if(IS_STANDARD_IPHONE_6_PLUS){
+        [self.botonCambioEstadisticas setFrame:CGRectMake(20, 570, 280, 29)];
+    }
+    else{
+        [self.botonCambioEstadisticas setFrame:CGRectMake(20, 320, 280, 29)];
+    }
+    
 
     NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
                                 [UIFont fontWithName:@"Avenir-Book" size:12], UITextAttributeFont, nil];

@@ -85,6 +85,10 @@
         vistaInferior = [[UIView alloc] initWithFrame:CGRectMake(0, 440, 320, 68)];//458
     }else if(IS_STANDARD_IPHONE_6){
         vistaInferior = [[UIView alloc] initWithFrame:CGRectMake(0, 540, 400, 88)];//458
+    }
+    //MBC
+    else if(IS_STANDARD_IPHONE_6_PLUS){
+        vistaInferior = [[UIView alloc] initWithFrame:CGRectMake(35, 607, 400, 88)];//458
     }else {
         vistaInferior = [[UIView alloc] initWithFrame:CGRectMake(0, 352, 320, 68)];//370
     }

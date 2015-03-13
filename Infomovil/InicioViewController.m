@@ -146,6 +146,16 @@
         self.label.frame = CGRectMake(30, 118, 315, 97);
         
     }
+    //MBC
+    else if(IS_STANDARD_IPHONE_6_PLUS){
+        self.label.frame = CGRectMake(50, 118, 315, 97);
+        self.conoceMas.frame = CGRectMake(190, 420, 143 , 30);
+        self.leyenda1.frame = CGRectMake(70, 510, 200, 21);
+        self.leyenda2.frame = CGRectMake(240, 511, 80, 21);
+        self.leyenda3.frame = CGRectMake(90, 532, 28, 21);
+        self.leyenda4.frame = CGRectMake(110, 533, 144, 21);
+        self.leyenda5.frame = CGRectMake(236,532, 83, 21);
+    }
    
     [self.vistaInferior setHidden:YES];
     

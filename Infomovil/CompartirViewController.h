@@ -20,6 +20,14 @@
 
 @property (retain, nonatomic) IBOutlet GPPSignInButton *signInButton;
 
+//MBC
+@property (retain, nonatomic) IBOutlet UIButton *btnFacebook;
+@property (retain, nonatomic) IBOutlet UIButton *btnGooglePlus;
+@property (retain, nonatomic) IBOutlet UIButton *btnTwitter;
+@property (retain, nonatomic) IBOutlet UIButton *btnMail;
+@property (retain, nonatomic) IBOutlet UIButton *btnSMS;
+@property (retain, nonatomic) IBOutlet UIButton *btnWhat;
+
 
 - (IBAction)compartirFacebook:(UIButton *)sender;
 - (IBAction)compartirTwitter:(UIButton *)sender;

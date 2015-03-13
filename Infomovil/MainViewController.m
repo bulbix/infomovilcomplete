@@ -57,7 +57,15 @@
         self.o.frame = CGRectMake(178, 212, 155, 20);
         self.raya2.frame = CGRectMake(195, 220, 155, 2);
     
-    }else{
+    }
+    //MBC
+    else if(IS_STANDARD_IPHONE_6_PLUS){
+        loginView.frame = CGRectMake(20, 130, 335, 55);
+        self.raya1.frame = CGRectMake(20, 220, 180, 2);
+        self.o.frame = CGRectMake(205, 212, 155, 20);
+        self.raya2.frame = CGRectMake(225, 220, 180, 2);
+    }
+    else{
         loginView.frame = CGRectMake(20, 130, 280, 55);
     }
     
@@ -75,7 +83,7 @@
                 loginButton.frame =CGRectMake(0,0, 280, 55);
             }
             UIImage *loginImage;
-            if(IS_STANDARD_IPHONE_6){
+            if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
                 loginImage = [UIImage imageNamed:@"btn_RegistroFacebook_copia.png"];
                 
             }else{
@@ -255,6 +263,7 @@
 
 -(void) mostrarActivity {
     self.alerta = [AlertView initWithDelegate:self message:NSLocalizedString(@"msgValidandoUsuario", Nil) andAlertViewType:AlertViewTypeActivity];
+    //self.alerta.transform = CGAffineTransformTranslate( _alerta.transform, 20.0, 100.0 );
     [self.alerta show];
 }
 -(void) ocultarActivity {

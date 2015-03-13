@@ -45,6 +45,17 @@
 - (void)viewDidLoad{ NSLog(@"ViewDidload MenuPasosViewController");
 	NSLog(@"statusDominio : %@", ((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio );
     [super viewDidLoad];
+    
+    //MBC
+    if(IS_STANDARD_IPHONE_6){
+        
+    }
+    else if(IS_STANDARD_IPHONE_6_PLUS){
+        self.botonFondo.frame = CGRectMake(20, 46, 340, 55);
+        self.botonCrear.frame = CGRectMake(20, 130, 340, 55);
+        self.botonPublicar.frame = CGRectMake(20, 214, 340, 55);
+        self.botonEjemplo2.frame = CGRectMake(100, 250, 200, 50);
+    }
 	
     self.datosUsuario				= [DatosUsuario sharedInstance];
     self.datosUsuario.editoPagina	= NO;

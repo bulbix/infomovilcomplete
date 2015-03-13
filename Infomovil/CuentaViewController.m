@@ -201,6 +201,11 @@ int opcionButton = 0 ;
         if(sesion &&  [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && ![self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]){
 	
             if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
+                //MBC
+                if(IS_STANDARD_IPHONE_6_PLUS){
+                    [self.MensajePlanProComprado setFrame:CGRectMake(0, 40, 220, 150)];
+                }
+                
                 self.MensajePlanProComprado.text = [NSString stringWithFormat:@"This site already has a Plan Pro\n\nStart date: %@ \nEnd date: %@",self.datosUsuario.fechaInicial, self.datosUsuario.fechaFinal];
             }else{
                 self.MensajePlanProComprado.text = [NSString stringWithFormat:@"Este sitio ya cuenta con PLAN PRO disfruta sus beneficios.\n\nFecha de inicio: %@\nFecha de término: %@",self.datosUsuario.fechaInicial, self.datosUsuario.fechaFinal];
@@ -574,7 +579,13 @@ if(noSeRepiteOprimirElBoton){
             UILabel *dominio;
             if(IS_STANDARD_IPHONE_6){
                 dominio = [[UILabel alloc]initWithFrame:CGRectMake(40, 40, 375, 100)];
-            }else{
+            }
+            //MBC
+            else if(IS_STANDARD_IPHONE_6_PLUS){
+                dominio = [[UILabel alloc]initWithFrame:CGRectMake(0, 40, 375, 100)];
+            }
+            
+            else{
                 dominio = [[UILabel alloc]initWithFrame:CGRectMake(0, 40, 320, 100)];
             }
             
@@ -612,7 +623,12 @@ if(noSeRepiteOprimirElBoton){
             UILabel *fechas;
             if(IS_STANDARD_IPHONE_6){
                 fechas = [[UILabel alloc]initWithFrame:CGRectMake(40, 120,375, 100)];
-            }else{
+            }
+            //MBC
+            else if(IS_STANDARD_IPHONE_6_PLUS){
+                fechas = [[UILabel alloc]initWithFrame:CGRectMake(0, 120,375, 100)];
+            }
+            else{
                 fechas = [[UILabel alloc]initWithFrame:CGRectMake(0, 120,320, 100)];
             }
             fechas.text = [NSString stringWithFormat: @"Fecha de inicio: %@\n Fecha de término: %@", self.datosUsuario.fechaInicialTel, self.datosUsuario.fechaFinalTel ];
@@ -633,7 +649,12 @@ if(noSeRepiteOprimirElBoton){
             
             if(IS_STANDARD_IPHONE_6){
                 [self.scrollContenido scrollRectToVisible:CGRectMake(375, 0, self.scrollContenido.frame.size.width, self.scrollContenido.frame.size.height) animated:YES];
-            }else{
+            }
+            //MBC
+            else if(IS_STANDARD_IPHONE_6_PLUS){
+                [self.scrollContenido scrollRectToVisible:CGRectMake(400, 0, self.scrollContenido.frame.size.width, self.scrollContenido.frame.size.height) animated:YES];
+            }
+            else{
                 [self.scrollContenido scrollRectToVisible:CGRectMake(320, 0, self.scrollContenido.frame.size.width, self.scrollContenido.frame.size.height) animated:YES];
             
             }

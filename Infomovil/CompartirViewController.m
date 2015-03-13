@@ -40,6 +40,26 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
+    //MBC
+    if(IS_STANDARD_IPHONE_6_PLUS){
+        [self.btnFacebook setFrame:CGRectMake(102, 243, 47, 47)];
+        [self.btnGooglePlus setFrame:CGRectMake(185, 243, 47, 47)];
+        [self.btnTwitter setFrame:CGRectMake(271, 243, 47, 47)];
+        [self.btnMail setFrame:CGRectMake(102, 298, 47, 47)];
+        [self.btnSMS setFrame:CGRectMake(185, 298, 47, 47)];
+        [self.btnWhat setFrame:CGRectMake(271, 298, 47, 47)];
+    }
+    else{
+        [self.btnFacebook setFrame:CGRectMake(52, 243, 47, 47)];
+        [self.btnGooglePlus setFrame:CGRectMake(135, 243, 47, 47)];
+        [self.btnTwitter setFrame:CGRectMake(221, 243, 47, 47)];
+        [self.btnMail setFrame:CGRectMake(52, 298, 47, 47)];
+        [self.btnSMS setFrame:CGRectMake(135, 298, 47, 47)];
+        [self.btnWhat setFrame:CGRectMake(221, 298, 47, 47)];
+    }
+    
     self.vistaContenidoCompartir.layer.cornerRadius = 5.0f;
 	self.guardarVista = YES;
 	if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
@@ -88,7 +108,13 @@
 	
 	if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
 		[self.botonNotificaciones setBackgroundImage:[UIImage imageNamed:@"shareEn.png"] forState:UIControlStateNormal];
-		self.vistaContenidoCompartir.frame = CGRectMake(17, 80, 287, 130);
+        //MBC
+        if(IS_STANDARD_IPHONE_6_PLUS){
+            self.vistaContenidoCompartir.frame = CGRectMake(70, 80, 287, 130);
+        } else{
+            self.vistaContenidoCompartir.frame = CGRectMake(17, 80, 287, 130);
+        }
+        
 	}else{
 		[self.botonNotificaciones setBackgroundImage:[UIImage imageNamed:@"micompartiron.png"] forState:UIControlStateNormal];
 	}

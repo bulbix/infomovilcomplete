@@ -37,6 +37,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //MBC
+    if(IS_STANDARD_IPHONE_6_PLUS){
+        [self.btnBuscar setFrame:CGRectMake(83, 0, 78, 52)];
+        [self.btnUbicar setFrame:CGRectMake(161, 0, 78, 52)];
+        [self.btnEliminar setFrame:CGRectMake(239, 0, 78, 52)];
+    }
   
 	if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
 		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"mapa", @" ") nombreImagen:@"barraverde.png"];
