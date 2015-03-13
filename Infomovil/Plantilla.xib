@@ -7,6 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PlantillaViewController">
             <connections>
+                <outlet property="btnTemplateSeleccionado" destination="mpi-9O-oQl" id="Is8-dc-O9e"/>
+                <outlet property="btnVerEjemploPlantilla" destination="L8O-12-rXd" id="Tch-Ub-U4g"/>
                 <outlet property="descripcionPlantilla" destination="LxY-9J-8uW" id="mZI-9x-uZO"/>
                 <outlet property="imgTemplate" destination="nWC-ta-cmz" id="wVc-8y-v3P"/>
                 <outlet property="nombrePlantilla" destination="z3m-Dv-beW" id="DdO-DM-uxf"/>
@@ -19,7 +21,7 @@
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nombre Plantilla" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="z3m-Dv-beW">
-                    <rect key="frame" x="8" y="316" width="137" height="21"/>
+                    <rect key="frame" x="8" y="325" width="137" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -33,7 +35,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="L8O-12-rXd">
-                    <rect key="frame" x="172" y="312" width="133" height="30"/>
+                    <rect key="frame" x="172" y="319" width="133" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
                     <state key="normal" title="Ver Ejemplo">
@@ -42,10 +44,18 @@
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="nWC-ta-cmz">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="315"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mpi-9O-oQl">
+                    <rect key="frame" x="8" y="276" width="68" height="41"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.71125252016129037" green="0.21210307459677419" blue="0.85389364919354838" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="NO">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="422" y="454"/>
         </view>

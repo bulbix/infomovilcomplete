@@ -7,15 +7,17 @@
 //
 
 #import "InfomovilViewController.h"
+#import "WS_HandlerProtocol.h"
 
-@interface ElegirPlantillaViewController : InfomovilViewController
+@interface ElegirPlantillaViewController : InfomovilViewController<UIScrollViewDelegate, AlertViewDelegate, WS_HandlerProtocol>
 {
 
     NSArray * nombrePlantilla;
+    NSArray * nombreWebServiceTemplate;
     NSArray * descripcionPlantilla;
 }
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollTemplate;
-
-
+@property(weak, weak) NSString * plantillaSeccionada;
+@property(nonatomic) NSInteger plantillaAPublicar;
 @end

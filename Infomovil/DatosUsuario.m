@@ -92,7 +92,7 @@
     
     self.colorSeleccionado = Nil;
     self.pathFondo = Nil;
-    self.eligioColor = NO;
+    self.eligioTemplate = NO;
     //    self.telefonosContacto = datosOrigen.telefonosContacto;
     self.direccion = Nil;
     

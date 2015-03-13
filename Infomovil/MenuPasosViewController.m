@@ -261,10 +261,12 @@
 
 - (IBAction)crearEditar:(UIButton *)sender {
     self.datosUsuario = [DatosUsuario sharedInstance];
+    /*
 #ifdef _DEBUG
-	self.datosUsuario.eligioColor = YES;
+	self.datosUsuario.eligioTemplate = YES;
 #endif
-    if (self.datosUsuario.eligioColor) {
+     */
+    if (self.datosUsuario.eligioTemplate) {
         CrearPaso1ViewController *crear = [[CrearPaso1ViewController alloc] initWithNibName:@"CrearPaso1ViewController" bundle:nil];
         [self.navigationController pushViewController:crear animated:YES];
     }
@@ -371,10 +373,12 @@
 
 - (IBAction)irInicioRapido:(id)sender {
     self.datosUsuario = [DatosUsuario sharedInstance];
+    /*
 #ifdef _DEBUG
-    self.datosUsuario.eligioColor = YES;
+    self.datosUsuario.eligioTemplate = YES;
 #endif
-    if (self.datosUsuario.eligioColor) {
+     */
+    if (self.datosUsuario.eligioTemplate) {
         InicioRapidoViewController *inicioRapido = [[InicioRapidoViewController alloc] initWithNibName:@"InicioRapidoViewController" bundle:Nil];
         [self.navigationController pushViewController:inicioRapido animated:YES];
     }

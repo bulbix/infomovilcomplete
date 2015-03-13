@@ -12,5 +12,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imgTemplate;
 @property (weak, nonatomic) IBOutlet UILabel *nombrePlantilla;
 @property (weak, nonatomic) IBOutlet UILabel *descripcionPlantilla;
+@property (weak, nonatomic) IBOutlet UIButton *btnVerEjemploPlantilla;
+@property (weak, nonatomic) IBOutlet UIButton *btnTemplateSeleccionado;
+
 
 @end

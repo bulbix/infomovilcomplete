@@ -15,17 +15,48 @@
 
 @implementation VerEjemploPlantillaViewController
 
+@synthesize index;
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     self.pagCargada = NO;
-    // Do any additional setup after loading the view.
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     self.webView.delegate = self;
     self.navigationItem.rightBarButtonItem = Nil;
     
-    [self.navigationItem setTitle:[prefs stringForKey:@"urlMisitio"]];
-    UIFont *fuente = [UIFont fontWithName:@"Avenir-Heavy" size:15];
+    NSString *htmlStringToLoad;
+    
+    switch (index) {
+        case 0:
+            htmlStringToLoad = @"http://info-movil.com/divertido?vistaPrevia=true";
+            [self.navigationItem setTitle:@"Divertido"];
+            break;
+        case 1:
+            htmlStringToLoad = @"http://info-movil.com/clasico?vistaPrevia=true";
+            [self.navigationItem setTitle:@"Clásico"];
+            break;
+        case 2:
+            htmlStringToLoad = @"http://info-movil.com/creativo?vistaPrevia=true";
+            [self.navigationItem setTitle:@"Creativo"];
+            break;
+        case 3:
+            htmlStringToLoad = @"http://info-movil.com/moderno?vistaPrevia=true";
+            [self.navigationItem setTitle:@"Moderno"];
+            break;
+        case 4:
+            htmlStringToLoad = @"http://info-movil.com/estandar1?vistaPrevia=true";
+            [self.navigationItem setTitle:@"Estandar"];
+            break;
+        default:
+            break;
+    }
+    
+    
+    
+    // TITULO DEL TEMPLATE //
+    
+    UIFont *fuente = [UIFont fontWithName:@"Avenir-Heavy" size:20];
     UIColor *colorTexto = [UIColor whiteColor];
     NSDictionary *atributos = @{
                                 NSFontAttributeName: fuente,
@@ -34,18 +65,16 @@
     
     [self.navigationController.navigationBar setTitleTextAttributes:atributos];
   
+    // BOTON DE REGRESAR //
     UIImage *image = [UIImage imageNamed:@"btnregresar.png"];
-    
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [backButton setFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
     [backButton setImage:image forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(regresar:) forControlEvents:UIControlEventTouchUpInside];
-    
     UIBarButtonItem *buttonBack = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     self.navigationItem.leftBarButtonItem = buttonBack;
     
-    
-    NSString *htmlStringToLoad = [prefs stringForKey:@"urlMisitio"];
+    // URL PARA CARGAR //
     
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:htmlStringToLoad]]];
     [self.view addSubview:self.webView];

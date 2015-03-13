@@ -14,5 +14,5 @@
 
 
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
-
+@property (nonatomic) NSInteger index;
 @end
