@@ -411,7 +411,7 @@
         idDominio = idDominioLogin;
         existeUsuario = YES;
         self.datosUsuario.redSocial = @"Facebook";
-        [[Appboy sharedInstance] changeUser:self.txtNombre.text];
+      //  [[Appboy sharedInstance] changeUser:self.txtNombre.text];
     }
     else {
         respuestaError = idDominioLogin;
@@ -522,7 +522,6 @@
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-	NSLog(@"Campo: %i",textField.tag);
 	if(textField.tag < 3){
 		NSInteger nextTag = textField.tag + 1;
 		// Try to find next responder

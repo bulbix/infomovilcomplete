@@ -267,7 +267,7 @@
     }
     else {
     if (loginExitoso) {  
-        [[Appboy sharedInstance] changeUser:self.txtEmail.text];
+       // [[Appboy sharedInstance] changeUser:self.txtEmail.text];
         self.datosUsuario.existeLogin = YES;
         if (![self.datosUsuario.redSocial isEqualToString:@"Facebook"]) {
             [self.datosUsuario setEmailUsuario:self.txtEmail.text];

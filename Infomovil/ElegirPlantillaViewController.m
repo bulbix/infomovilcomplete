@@ -30,13 +30,17 @@ BOOL actualizo;
     self.scrollTemplate.delegate = self;
     
     self.datosUsuario = [DatosUsuario sharedInstance];
+    if(self.datosUsuario.nombreTemplate  == nil || [self.datosUsuario.nombreTemplate isEqualToString:@""] || [self.datosUsuario.nombreTemplate isEqualToString:@"(null)"])
+    {
+        self.datosUsuario.nombreTemplate = @"Estandar1";
+    }
     NSLog(@"La plantilla seleccionada es: %@", self.datosUsuario.nombreTemplate);
     [self setupScrollView];
     UIPageControl *pgCtr = [[UIPageControl alloc] initWithFrame:CGRectMake(0, 450, 320, 20)];
     [pgCtr setTag:5];
     pgCtr.numberOfPages=5;
     pgCtr.autoresizingMask=UIViewAutoresizingNone;
-    [self.view addSubview:pgCtr];
+   // [self.view addSubview:pgCtr];
     
     if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
         [self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"elegirEstilo", nil) nombreImagen:@"barraturquesa.png"];
@@ -53,6 +57,14 @@ BOOL actualizo;
     UIBarButtonItem *botonAceptar = [[UIBarButtonItem alloc] initWithCustomView:btAceptar];
     self.navigationItem.rightBarButtonItem = botonAceptar;
     
+    UIImage *image = [UIImage imageNamed:@"btnregresar.png"];
+    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [backButton setFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
+    [backButton setImage:image forState:UIControlStateNormal];
+    [backButton addTarget:self action:@selector(regresar:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    
 }
 -(void)viewWillAppear:(BOOL)animated{
     if(self.vistaInferior.hidden==NO){
@@ -62,42 +74,69 @@ BOOL actualizo;
 }
 
 - (void)setupScrollView {
-    nombrePlantilla = @[@"Estilo Divertido", @"Estilo Clásico", @"Estilo Creativo",
-                        @"Estilo Moderno", @"Estilo Estándar"];
+    nombrePlantilla = @[@"DIVERTIDO", @"CLÁSICO", @"CREATIVO",
+                        @"MODERNO", @"ESTÁNDAR"];
+    
+    nombrePlantillaEn = @[@"FUNNY", @"CLASSIC", @"CREATIVE",
+                         @"MODERN", @"STANDARD"];
     
     nombreWebServiceTemplate = @[@"Divertido", @"Clasico", @"Creativo",@"Moderno", @"Estandar1"];
     
     descripcionPlantilla = @[@"Estilo popular para Restaurantes, Pizzerias, Taquerías, Antros, Bares, etc.", @"Estilo popular para eventos formales, bodas, quinceaños, abogados, despachos, profesionistas, etc.", @"Estilo popular para creativos, músicos, estudiantes, fotógrafos, agencias, diseñadores, artistas,etc.",@"Estilo popular para empresas de tecnología, freelancers, distribuidoras de productos electrónicos, etc.", @"Estilo popular para todo tipo de productos y servicios."];
+    
+    descripcionPlantillaEn = @[@"Popular style for Restaurants, Pizzerias, Taquerías, Nightclubs, Bars, etc.", @"Popular style for formal events, weddings, quinceanera, lawyers, law firms, professionals, etc.", @"Popular style for creatives, musicians, students, photographers, agencies, designers, artists, etc.", @"Popular style for technology companies, freelancers, distributors of electronic products, etc.", @"Popular style for all kinds of products and services"];
+    
+    
     self.scrollTemplate.tag = 1;
     self.scrollTemplate.autoresizingMask=UIViewAutoresizingNone;
     
     
     for (int i=0; i<5; i++) {
        PlantillaViewController *pController = [[PlantillaViewController alloc] initWithNibName:@"Plantilla" bundle:[NSBundle mainBundle]];
-        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"t%i.png",i+1]];
-        pController.view.frame = CGRectMake(320*i, 0, 320, 420);
+        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"template%i",i+1]];
+        pController.view.frame = CGRectMake(320*i, 0, 320, 480);
         [pController.imgTemplate setImage:image];
-        pController.nombrePlantilla.text = [nombrePlantilla objectAtIndex:i];
        
-        if([[nombreWebServiceTemplate objectAtIndex:i] isEqualToString:self.datosUsuario.nombreTemplate]){
-            [pController.btnTemplateSeleccionado setImage:[UIImage imageNamed:@"recordarOn"] forState:UIControlStateNormal];
+        if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
+            pController.nombrePlantilla.text = [nombrePlantillaEn objectAtIndex:i];
+            pController.descripcionPlantilla.text = [descripcionPlantillaEn objectAtIndex:i];
+            [pController.btnVerEjemploPlantilla setBackgroundImage:[UIImage imageNamed:@"verEjemplo-en.png"] forState:UIControlStateNormal];
         }else{
-            [pController.btnTemplateSeleccionado setImage:[UIImage imageNamed:@"recordarOff"] forState:UIControlStateNormal];
+            pController.nombrePlantilla.text = [nombrePlantilla objectAtIndex:i];
+            pController.descripcionPlantilla.text = [descripcionPlantilla objectAtIndex:i];
+            [pController.btnVerEjemploPlantilla setBackgroundImage:[UIImage imageNamed:@"verEjemplo-es.png"] forState:UIControlStateNormal];
+        }
+        NSString *bullString =  [NSString stringWithFormat:@"slider%i",i+1];
+        UIImage *imgBullet = [UIImage imageNamed:bullString];
+        pController.imgBullets.image = imgBullet;
+        
+        pController.etiquetaEstatica.text = NSLocalizedString(@"etiquetaEstilo", nil);
+        
+        if([[nombreWebServiceTemplate objectAtIndex:i] isEqualToString:self.datosUsuario.nombreTemplate]){
+            [pController.btnTemplateSeleccionado setImage:[UIImage imageNamed:@"tempOn.png"] forState:UIControlStateNormal];
+        }else{
+            [pController.btnTemplateSeleccionado setImage:[UIImage imageNamed:@"tempOff.png"] forState:UIControlStateNormal];
         }
         
-        pController.descripcionPlantilla.text = [descripcionPlantilla objectAtIndex:i];
         pController.btnVerEjemploPlantilla.tag = i;
         [pController.btnVerEjemploPlantilla addTarget:self
                                                action:@selector(irVerEjemplo:)
          forControlEvents:UIControlEventTouchUpInside];
         pController.btnTemplateSeleccionado.tag =  i;
-        [pController.btnTemplateSeleccionado addTarget:self action:@selector(estiloSeccionado:) forControlEvents:UIControlEventTouchUpInside];
+        //[pController.btnTemplateSeleccionado addTarget:self action:@selector(estiloSeccionado:) forControlEvents:UIControlEventTouchUpInside];
+        if(IS_IPHONE_5){
+            pController.btnTemplateSeleccionado.frame = CGRectMake(20, 320, 36, 37);
+            pController.etiquetaEstatica.frame = CGRectMake(20, 365, 52, 21);
+            pController.nombrePlantilla.frame = CGRectMake(77, 365, 84, 21);
+            pController.btnVerEjemploPlantilla.frame = CGRectMake(201, 361, 97, 25);
+            pController.descripcionPlantilla.frame = CGRectMake(20, 386, 280, 67);
+        }
         
         [self.scrollTemplate addSubview:pController.view];
     }
    
      [self.scrollTemplate setContentSize:CGSizeMake(self.scrollTemplate.frame.size.width*5, self.scrollTemplate.frame.size.height)];
-    [NSTimer scheduledTimerWithTimeInterval:6000 target:self selector:@selector(scrollingTimer) userInfo:nil repeats:YES];
+  //  [NSTimer scheduledTimerWithTimeInterval:6000 target:self selector:@selector(scrollingTimer) userInfo:nil repeats:YES];
 }
 
 -(void)irVerEjemplo:(UIButton*)sender{
@@ -140,9 +179,6 @@ BOOL actualizo;
     }
 }
 
--(void)estiloSeccionado:(UIButton*)sender{
- 
-}
 
 
 
@@ -158,6 +194,10 @@ BOOL actualizo;
         previousPage = page;
     }
     
+}
+
+-(IBAction)regresar:(id)sender {
+        [self.navigationController popViewControllerAnimated:YES];
 }
 
 
@@ -223,6 +263,7 @@ BOOL actualizo;
     if (actualizo) {
         self.alertActivity = [AlertView initWithDelegate:self message:NSLocalizedString(@"actualizacionCorrecta", Nil) andAlertViewType:AlertViewTypeInfo];
         [self.alertActivity show];
+        [self.navigationController popViewControllerAnimated:YES];
     }
 }
 
@@ -231,8 +272,10 @@ BOOL actualizo;
 
 
 -(void) resultadoConsultaDominio:(NSString *)resultado {
+    self.datosUsuario = [DatosUsuario sharedInstance];
     if ([resultado isEqualToString:@"Exito"]) {
         actualizo = YES;
+        self.datosUsuario.eligioTemplate = YES;
     }
     else {
         actualizo = NO;

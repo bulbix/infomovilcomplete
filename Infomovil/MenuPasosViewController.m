@@ -109,7 +109,7 @@
 	self.botonEjemplo2.layer.cornerRadius = 15.0f;
     
     if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-        [self.botonFondo setBackgroundImage:[UIImage imageNamed:@"btnbackgroundEn.png"] forState:UIControlStateNormal];
+        [self.botonFondo setBackgroundImage:[UIImage imageNamed:@"elegirestilo-en.png"] forState:UIControlStateNormal];
         [self.botonCrear setBackgroundImage:[UIImage imageNamed:@"btncreateeditEn.png"] forState:UIControlStateNormal];
        
         if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion && self.datosUsuario.dominio && ![self.datosUsuario.dominio isEqualToString:@""] && ! (self.datosUsuario.dominio == (id)[NSNull null]) && ![CommonUtils validarEmail:self.datosUsuario.dominio] && ![self.datosUsuario.dominio isEqualToString:@"(null)"] ){
@@ -121,7 +121,7 @@
         }
         
     }else{
-        [self.botonFondo setBackgroundImage:[UIImage imageNamed:@"elegirfondo.png"] forState:UIControlStateNormal];
+        [self.botonFondo setBackgroundImage:[UIImage imageNamed:@"elegirestilo-es.png"] forState:UIControlStateNormal];
         [self.botonCrear setBackgroundImage:[UIImage imageNamed:@"creareditar.png"] forState:UIControlStateNormal];
         if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion && self.datosUsuario.dominio && ![self.datosUsuario.dominio isEqualToString:@""] && ! (self.datosUsuario.dominio == (id)[NSNull null]) && ![CommonUtils validarEmail:self.datosUsuario.dominio] && ![self.datosUsuario.dominio isEqualToString:@"(null)"]){
             [self.botonPublicar setBackgroundImage:[UIImage imageNamed:@"tips.png"] forState:UIControlStateNormal];
@@ -203,7 +203,7 @@
     [self.botonEjemplo2 setTitle:NSLocalizedString(@"verEjemplo", Nil) forState:UIControlStateNormal];
 	
     if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-        [self.botonFondo setBackgroundImage:[UIImage imageNamed:@"btnbackgroundEn.png"] forState:UIControlStateNormal];
+        [self.botonFondo setBackgroundImage:[UIImage imageNamed:@"elegirestilo-en.png"] forState:UIControlStateNormal];
         [self.botonCrear setBackgroundImage:[UIImage imageNamed:@"btncreateeditEn.png"] forState:UIControlStateNormal];
         if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion && self.datosUsuario.dominio && ![self.datosUsuario.dominio isEqualToString:@""] && ! (self.datosUsuario.dominio == (id)[NSNull null]) && ![CommonUtils validarEmail:self.datosUsuario.dominio] && ![CommonUtils validarEmail:self.datosUsuario.dominio] && ![self.datosUsuario.dominio isEqualToString:@"(null)"]){
             [self.botonPublicar setBackgroundImage:[UIImage imageNamed:@"tips.png"] forState:UIControlStateNormal];
@@ -214,7 +214,7 @@
         }
         
     }else{
-        [self.botonFondo setBackgroundImage:[UIImage imageNamed:@"elegirfondo.png"] forState:UIControlStateNormal];
+        [self.botonFondo setBackgroundImage:[UIImage imageNamed:@"elegirestilo-es.png"] forState:UIControlStateNormal];
         [self.botonCrear setBackgroundImage:[UIImage imageNamed:@"creareditar.png"] forState:UIControlStateNormal];
         if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion && self.datosUsuario.dominio && ![self.datosUsuario.dominio isEqualToString:@""] && ! (self.datosUsuario.dominio == (id)[NSNull null]) && ![CommonUtils validarEmail:self.datosUsuario.dominio] && ![self.datosUsuario.dominio isEqualToString:@"(null)"]){
             [self.botonPublicar setBackgroundImage:[UIImage imageNamed:@"tips.png"] forState:UIControlStateNormal];
@@ -271,7 +271,7 @@
         [self.navigationController pushViewController:crear animated:YES];
     }
     else {
-        AlertView *vistaNotificacion = [AlertView initWithDelegate:self message:NSLocalizedString(@"eligeColor", Nil) andAlertViewType:AlertViewTypeInfo];
+        AlertView *vistaNotificacion = [AlertView initWithDelegate:self message:NSLocalizedString(@"eligeTemplate", Nil) andAlertViewType:AlertViewTypeInfo];
         [vistaNotificacion show];
     }
 }
@@ -383,7 +383,7 @@
         [self.navigationController pushViewController:inicioRapido animated:YES];
     }
     else {
-        AlertView *vistaNotificacion = [AlertView initWithDelegate:self message:NSLocalizedString(@"eligeColor", Nil) andAlertViewType:AlertViewTypeInfo];
+        AlertView *vistaNotificacion = [AlertView initWithDelegate:self message:NSLocalizedString(@"eligeTemplate", Nil) andAlertViewType:AlertViewTypeInfo];
         [vistaNotificacion show];
     }
     

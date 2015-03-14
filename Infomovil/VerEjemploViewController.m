@@ -37,7 +37,7 @@
     UIBarButtonItem *buttonBack = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     self.navigationItem.leftBarButtonItem = buttonBack;
     
-    NSString *htmlStringToLoad = @"http://pizzastibonetes.tel/";
+    NSString *htmlStringToLoad = @"http://info-movil.net/divertido?vistaPrevia=true";
     // PARA CUANDO SE APUREN ESTOS CHAVOS LA URL SERA! // http://info-movil.com/templates/Divertido/index.html //
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:htmlStringToLoad]]];
     [self.view addSubview:self.webView];

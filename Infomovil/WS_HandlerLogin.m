@@ -16,8 +16,7 @@
 #import "ItemsDominio.h"
 #import "AppDelegate.h"
 #import "DominiosUsuario.h"
-#import "AppboyKit.h"
-#import "Appboy.h"
+
 
 @interface WS_HandlerLogin () {
     BOOL esLogo;
@@ -543,7 +542,7 @@
             else {
                 self.datosUsuario.colorSeleccionado = [StringUtils colorFromHexString:self.currentElementString];
             }
-            self.datosUsuario.eligioColor = YES;
+            //self.datosUsuario.eligioColor = YES;
         }
         else {
             self.datosUsuario.colorSeleccionado = [UIColor whiteColor];
@@ -901,28 +900,20 @@
         [self.arregloItems addObject:itemDominio];
       
     }
-    /*          // IRC //
+    
     else if ([elementName isEqualToString:@"template"]) {
-        
-       self.datosUsuario.nombreTemplate  = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
-        if(self.datosUsuario.nombreTemplate  == nil || [self.datosUsuario.nombreTemplate isEqualToString:@""])
+        self.datosUsuario.nombreTemplate  = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
+       
+        if(self.datosUsuario.nombreTemplate  == nil || [self.datosUsuario.nombreTemplate isEqualToString:@""] || [self.datosUsuario.nombreTemplate isEqualToString:@"(null)"])
         {
             self.datosUsuario.nombreTemplate = @"Estandar1";
         }
+        self.datosUsuario.eligioTemplate = YES;
         NSLog(@"EL NOMBRE DEL TEMPLATE ES: %@", self.datosUsuario.nombreTemplate);
         
-        if (requiereEncriptar) {
-            self.colorAux = self.currentElementString;
-        }
-        else {
-            self.datosUsuario.colorSeleccionado = [StringUtils colorFromHexString:self.currentElementString];
-        }
-        self.datosUsuario.eligioColor = YES;
-        
-        
     }
-     */
-    else if ([elementName isEqualToString:@"descripcionItem"]) {
+    
+    else if ([elementName isEqualToString:@"descripcionItem"]) { 
         if (requiereEncriptar) {
             itemDominio.descripcionItem = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
         }

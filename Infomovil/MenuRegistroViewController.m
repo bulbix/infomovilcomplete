@@ -352,9 +352,9 @@
         }else{
             
           
-            [[AppsFlyerTracker sharedTracker] trackEvent:@"Registro Usuario" withValue:@""];
-            [[Appboy sharedInstance] logCustomEvent:@"Registro Usuario"];
-            [self enviarEventoGAconCategoria:@"Registrar" yEtiqueta:@"Usuario"];
+           // [[AppsFlyerTracker sharedTracker] trackEvent:@"Registro Usuario" withValue:@""];
+           // [[Appboy sharedInstance] logCustomEvent:@"Registro Usuario"];
+           // [self enviarEventoGAconCategoria:@"Registrar" yEtiqueta:@"Usuario"];
             // IRC Dominio
             ((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio = @"Tramite";
             ((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion = YES;

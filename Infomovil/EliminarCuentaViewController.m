@@ -235,8 +235,8 @@
         [self.alertEliminar hide];
     }
     if (exito) {
-        [[AppsFlyerTracker sharedTracker] trackEvent:@"Cancelar Cuenta" withValue:@""];
-        [[Appboy sharedInstance] logCustomEvent:@"Cancelar Cuenta"];
+      //  [[AppsFlyerTracker sharedTracker] trackEvent:@"Cancelar Cuenta" withValue:@""];
+       // [[Appboy sharedInstance] logCustomEvent:@"Cancelar Cuenta"];
         [self.navigationController popToRootViewControllerAnimated:YES];
 		self.alertEliminar = [AlertView initWithDelegate:self message:NSLocalizedString(@"cuentaEliminada", nil) andAlertViewType:AlertViewTypeInfo];
 		[self.alertEliminar show];

@@ -114,7 +114,7 @@
     }
     else {
         self.datosUsuario.colorSeleccionado = colorChip.backgroundColor;
-        self.datosUsuario.eligioColor = YES;
+        //self.datosUsuario.eligioColor = YES;
         self.modifico = NO;
         [self.navigationController popViewControllerAnimated:YES];
     }
@@ -161,7 +161,7 @@
     if (actualizo) {
         self.datosUsuario = [DatosUsuario sharedInstance];
         self.datosUsuario.colorSeleccionado = colorAux;
-        self.datosUsuario.eligioColor = YES;
+        //self.datosUsuario.eligioColor = YES;
         self.modifico = NO;
         AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"actualizacionCorrecta", Nil) andAlertViewType:AlertViewTypeInfo];
         [alert show];

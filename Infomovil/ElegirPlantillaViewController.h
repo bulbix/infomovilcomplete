@@ -13,8 +13,10 @@
 {
 
     NSArray * nombrePlantilla;
+    NSArray * nombrePlantillaEn;
     NSArray * nombreWebServiceTemplate;
     NSArray * descripcionPlantilla;
+    NSArray * descripcionPlantillaEn;
 }
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollTemplate;

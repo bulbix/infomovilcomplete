@@ -32,7 +32,7 @@
                      "</soapenv:Body>"
                      "</soapenv:Envelope>",metodo,
                      [StringUtils encriptar:datos.nombreTemplate conToken:datos.token],
-                     [StringUtils encriptar:[StringUtils hexFromUIColor:datos.colorSeleccionado] conToken:datos.token],
+                     [StringUtils encriptar:@"" conToken:datos.token],
                      [StringUtils encriptar:self.descripcion conToken:datos.token],
                      [StringUtils encriptar:datos.dominio conToken:datos.token],
                      [StringUtils encriptar:self.nombre conToken:datos.token],

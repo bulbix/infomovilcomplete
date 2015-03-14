@@ -189,6 +189,7 @@
 "hola" = "¡Hola!";
 
 "eligeColor" = "Debes elegir el color de fondo";
+"eligeTemplate" = "Debes elegir un estilo";
 "editaPagina" = "Debes editar tu página";
 "yaNombro" = "Ya has nombrado tu página";
 
@@ -629,3 +630,4 @@
 
 "vistaPreviaPlanPro" = "Vista previa";
 "elegirEstilo" = "Elegir estilo";
+"etiquetaEstilo" = "ESTILO";

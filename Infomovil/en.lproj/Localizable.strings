@@ -147,6 +147,7 @@
 "ingresaEmail"="Add your e-mail";
 "hola"="Hello!";
 "eligeColor"="You must first choose a background colour";
+"eligeTemplate" = "You must first choose a style";
 "editaPagina"="You must first edit your page";
 "yaNombro"="Congratulations! You've successfully named your website!";
 "3Pasos"="Join this digital world and mobile!";
@@ -520,3 +521,4 @@
 "vistaPreviaPlanPro" = "Previous view";
 
 "elegirEstilo" = "Choose style";
+"etiquetaEstilo" = "STYLE";

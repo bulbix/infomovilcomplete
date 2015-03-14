@@ -29,23 +29,23 @@
     
     switch (index) {
         case 0:
-            htmlStringToLoad = @"http://info-movil.com/divertido?vistaPrevia=true";
+            htmlStringToLoad = @"http://info-movil.net/divertido?vistaPrevia=true";
             [self.navigationItem setTitle:@"Divertido"];
             break;
         case 1:
-            htmlStringToLoad = @"http://info-movil.com/clasico?vistaPrevia=true";
+            htmlStringToLoad = @"http://info-movil.net/clasico?vistaPrevia=true";
             [self.navigationItem setTitle:@"Clásico"];
             break;
         case 2:
-            htmlStringToLoad = @"http://info-movil.com/creativo?vistaPrevia=true";
+            htmlStringToLoad = @"http://info-movil.net/creativo?vistaPrevia=true";
             [self.navigationItem setTitle:@"Creativo"];
             break;
         case 3:
-            htmlStringToLoad = @"http://info-movil.com/moderno?vistaPrevia=true";
+            htmlStringToLoad = @"http://info-movil.net/moderno?vistaPrevia=true";
             [self.navigationItem setTitle:@"Moderno"];
             break;
         case 4:
-            htmlStringToLoad = @"http://info-movil.com/estandar1?vistaPrevia=true";
+            htmlStringToLoad = @"http://info-movil.net/estandar1?vistaPrevia=true";
             [self.navigationItem setTitle:@"Estandar"];
             break;
         default:
