@@ -45,11 +45,32 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	 if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
-		 [self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"nombrar", @" ") nombreImagen:@"roja.png"];
-	 }else{
-		 [self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"nombrar", @" ") nombreImagen:@"plecaroja.png"];
-	 }
+    
+    //MBC
+    if(IS_STANDARD_IPHONE_6_PLUS){
+        [self.label1 setFrame:CGRectMake(60, 47, 280, 97)];
+        [self.label2 setFrame:CGRectMake(60, 97, 280, 101)];
+        [self.labelW setFrame:CGRectMake(61, 178, 52, 24)];
+        [self.nombreDominio setFrame:CGRectMake(113, 175, 200, 30)];
+        [self.labelTel setFrame:CGRectMake(311, 178, 28, 24)];
+        [self.labelDominio setFrame:CGRectMake(70, 223, 280, 24)];
+        [self.boton setFrame:CGRectMake(113, 266, 200, 35)];
+    }
+    else{
+        [self.label1 setFrame:CGRectMake(20, 47, 280, 47)];
+        [self.label2 setFrame:CGRectMake(20, 97, 280, 61)];
+        [self.labelW setFrame:CGRectMake(11, 178, 52, 24)];
+        [self.nombreDominio setFrame:CGRectMake(63, 175, 200, 30)];
+        [self.labelTel setFrame:CGRectMake(261, 178, 28, 24)];
+        [self.labelDominio setFrame:CGRectMake(20, 223, 280, 24)];
+        [self.boton setFrame:CGRectMake(63, 266, 200, 35)];
+    }
+    
+    if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+        [self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"nombrar", @" ") nombreImagen:@"roja.png"];
+    }else{
+        [self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"nombrar", @" ") nombreImagen:@"plecaroja.png"];
+    }
 
     self.navigationItem.rightBarButtonItem = Nil;
     creoDominio = NO;

@@ -32,6 +32,15 @@
 //    [self.tituloVista setText:NSLocalizedString(@"buscar", @" ")];
 //    [self.vistaCircular setImage:[UIImage imageNamed:@"plecaverde.png"]];
 //    [self.vistaCircular setImage:[UIImage imageNamed:@"plecacreasitio.png"]];
+    
+    //MBC
+    if(IS_STANDARD_IPHONE_6_PLUS){
+        [self.cajaBusqueda setFrame:CGRectMake(70, 83, 280, 30)];
+    }
+    else{
+        [self.cajaBusqueda setFrame:CGRectMake(20, 83, 280, 30)];
+    }
+    
 	if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
 		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"buscar", @" ") nombreImagen:@"barraverde.png"];
 	}else{

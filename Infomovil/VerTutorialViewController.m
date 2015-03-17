@@ -19,6 +19,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //MBC
+    if(IS_STANDARD_IPHONE_6_PLUS){
+        [self.webView setFrame:CGRectMake(0, 0, 540, 960)];
+    }
+    else{
+        [self.webView setFrame:CGRectMake(0, 0, 320, 568)];
+    }
+    
     self.pagCargada = NO;
     // Do any additional setup after loading the view.
     

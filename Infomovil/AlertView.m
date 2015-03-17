@@ -159,7 +159,13 @@
             break;
             
         case AlertViewTypeInfo:
-            [self.vistaAlert setFrame:CGRectMake(21, 150, 278, 200)];
+            //MBC
+            if(IS_STANDARD_IPHONE_6_PLUS){
+                [self.vistaAlert setFrame:CGRectMake(80, 150, 278, 200)];
+            }
+            else{
+                [self.vistaAlert setFrame:CGRectMake(21, 150, 278, 200)];
+            }
             
             self.labelMensaje = [[UILabel alloc] initWithFrame:CGRectMake(10, 70, 263, 75)];
             [self.labelMensaje setFont:[UIFont fontWithName:@"Avenir-Book" size:17]];
@@ -188,9 +194,21 @@
             [self.vistaAlert addSubview:self.botonAceptar];
 			
             if (tipo == 1) {
-                [self.vistaAlert setFrame:CGRectMake(21, 150, 278, 182)];
+                //MBC
+                if(IS_STANDARD_IPHONE_6_PLUS){
+                    [self.vistaAlert setFrame:CGRectMake(80, 150, 278, 200)];
+                }
+                else{
+                    [self.vistaAlert setFrame:CGRectMake(21, 150, 278, 182)];
+                }
                 self.labelDominio.hidden = YES;
-                [self.botonAceptar setFrame:CGRectMake(0, 128, 278, 54)];
+                //MBC
+                if(IS_STANDARD_IPHONE_6_PLUS){
+                    [self.botonAceptar setFrame:CGRectMake(0, 170, 278, 54)];
+                }
+                else{
+                    [self.botonAceptar setFrame:CGRectMake(0, 128, 278, 54)];
+                }
                 [self.labelTitulo setFont:[UIFont fontWithName:@"Avenir-Book" size:17]];
                 [self.labelTitulo setFrame:CGRectMake(10, 50, 258, 70)];
             }
@@ -245,7 +263,13 @@
             
             break;
         case AlertViewInfoMapa:
-            [self.vistaAlert setFrame:CGRectMake(21, 150, 278, 182)];
+            //MBC
+            if(IS_STANDARD_IPHONE_6_PLUS){
+                [self.vistaAlert setFrame:CGRectMake(80, 150, 278, 200)];
+            }
+            else{
+                [self.vistaAlert setFrame:CGRectMake(21, 150, 278, 182)];
+            }
             [self.labelTitulo setHidden:YES];
             self.labelMensaje = [[UILabel alloc] initWithFrame:CGRectMake(10, 15, 263, 25)];
             [self.labelMensaje setFont:[UIFont fontWithName:@"Avenir-Book" size:17]];
@@ -268,7 +292,7 @@
             [self.vistaAlert addSubview:self.imagenLogo];
             
             self.botonAceptar = [UIButton buttonWithType:UIButtonTypeCustom];
-            [self.botonAceptar setFrame:CGRectMake(0, 128, 278, 54)];
+            [self.botonAceptar setFrame:CGRectMake(0, 140, 278, 54)];
             [self.botonAceptar setBackgroundImage:[UIImage imageNamed:@"btnaceptarmensajes.png"] forState:UIControlStateNormal];
             if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
 				[self.botonAceptar setTitle:@"Accept" forState:UIControlStateNormal];

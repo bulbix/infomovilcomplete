@@ -55,6 +55,9 @@
         self.botonCrear.frame = CGRectMake(20, 130, 340, 55);
         self.botonPublicar.frame = CGRectMake(20, 214, 340, 55);
         self.botonEjemplo2.frame = CGRectMake(100, 250, 200, 50);
+        self.inicioRapidobtn.frame = CGRectMake(70, 24, 280, 35);
+        self.verTutorialbtn.frame = CGRectMake(70, 72, 137, 35);
+        self.botonEjemplo.frame = CGRectMake(213, 72, 137, 35);
     }
 	
     self.datosUsuario				= [DatosUsuario sharedInstance];
