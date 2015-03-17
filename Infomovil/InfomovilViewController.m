@@ -235,7 +235,9 @@
 
 -(IBAction)mostrarFeed:(id)sender {
     ABKFeedViewControllerNavigationContext *feedNavigationContext = [[ABKFeedViewControllerNavigationContext alloc] init];
-    [feedNavigationContext setAppboyDelegate:self];
+   
+    // IRC comentado APPBOY //
+    // [feedNavigationContext setAppboyDelegate:self];
     
     UIImage *image = [UIImage imageNamed:@"btnregresar.png"];
     

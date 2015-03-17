@@ -202,6 +202,7 @@
         }
         else if (statusRespuesta == RespuestaStatusExito) {
             [[AppsFlyerTracker sharedTracker] trackEvent:@"Publicar Dominio" withValue:@""];
+            // IRC APPBOY //
             [[Appboy sharedInstance] logCustomEvent:@"Publicar Dominio"];
             [self enviarEventoGAconCategoria:@"Publicar" yEtiqueta:@"Dominio"];
            

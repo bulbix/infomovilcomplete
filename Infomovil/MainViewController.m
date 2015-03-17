@@ -266,9 +266,16 @@
         
     }
     else {
-    if (loginExitoso) {  
-       // [[Appboy sharedInstance] changeUser:self.txtEmail.text];
+    if (loginExitoso) {
+        // IRC APPBOY //
+        NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+        NSDictionary *launch =  [defaults objectForKey:@"launchingWithOptions"];
+        [Appboy startWithApiKey:@"418813e5-5c95-4710-8ce1-d23d55fb4d5d"
+                  inApplication:[UIApplication sharedApplication]
+              withLaunchOptions:launch];
+        [[Appboy sharedInstance] changeUser:self.txtEmail.text];
         self.datosUsuario.existeLogin = YES;
+        
         if (![self.datosUsuario.redSocial isEqualToString:@"Facebook"]) {
             [self.datosUsuario setEmailUsuario:self.txtEmail.text];
         }

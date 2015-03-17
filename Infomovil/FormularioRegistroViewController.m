@@ -14,7 +14,7 @@
 #import "MenuPasosViewController.h"
 #import "AppsFlyerTracker.h"
 #import "WS_HandlerLogin.h"
-
+#import "AppboyKit.h"
 
 @interface FormularioRegistroViewController (){
     UITextField *textoSeleccionado;
@@ -364,7 +364,16 @@
             
             [[AppsFlyerTracker sharedTracker] setCustomerUserID:self.txtNombre.text];
             [[AppsFlyerTracker sharedTracker] trackEvent:@"Registro Usuario" withValue:@""];
-            [[Appboy sharedInstance] logCustomEvent:@"Registro Usuario"];
+            // IRC APPBOY //
+            // IRC APPBOY //
+            NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+            NSDictionary *launch =  [defaults objectForKey:@"launchingWithOptions"];
+            [Appboy startWithApiKey:@"418813e5-5c95-4710-8ce1-d23d55fb4d5d"
+                      inApplication:[UIApplication sharedApplication]
+                  withLaunchOptions:launch];
+            [[Appboy sharedInstance] changeUser:self.txtNombre.text];
+            
+            
             [self enviarEventoGAconCategoria:@"Registrar" yEtiqueta:@"Usuario"];
             // IRC Dominio
              ((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio = @"Tramite";
@@ -411,7 +420,6 @@
         idDominio = idDominioLogin;
         existeUsuario = YES;
         self.datosUsuario.redSocial = @"Facebook";
-      //  [[Appboy sharedInstance] changeUser:self.txtNombre.text];
     }
     else {
         respuestaError = idDominioLogin;
