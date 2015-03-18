@@ -38,21 +38,9 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // APPBOY // IRC //
-    // PREPRODUCCION
-    // ce1afa14-800b-4b45-8e8b-3a7696c3ef26
-    // PRODUCCION
-    // 773948d3-24b7-422e-8a53-f3b1be2834d0
-    // ios_app_qa
-    // 418813e5-5c95-4710-8ce1-d23d55fb4d5d
-  
- /*
-    [Appboy startWithApiKey:@"418813e5-5c95-4710-8ce1-d23d55fb4d5d"
-              inApplication:application
-          withLaunchOptions:launchOptions];
-   */
+   
     
-    //save
+    // Lo guardo como default para utilizarlo en appboy
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:launchOptions forKey:@"launchingWithOptions"];
     [defaults synchronize];

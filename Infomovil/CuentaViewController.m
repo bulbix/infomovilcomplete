@@ -582,15 +582,19 @@ if(noSeRepiteOprimirElBoton){
             
             
             if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-                dominio.text = [NSString stringWithFormat:@"My website\n\n www.%@.tel",self.datosUsuario.dominio] ;
+                
             
 #if DEBUG
                 dominio.text = [NSString stringWithFormat:@"My website\n\nwww.info-movil.com/%@",self.datosUsuario.dominio] ;
+#else
+                dominio.text = [NSString stringWithFormat:@"My website\n\n www.%@.tel",self.datosUsuario.dominio] ;
 #endif
             }else{
-                dominio.text = [NSString stringWithFormat:@"Mi sitio web\n\n www.%@.tel",self.datosUsuario.dominio] ;
+                
 #if DEBUG
                 dominio.text = [NSString stringWithFormat:@"Mi sitio web\n\nwww.info-movil.com/%@",self.datosUsuario.dominio] ;
+#else
+                dominio.text = [NSString stringWithFormat:@"Mi sitio web\n\n www.%@.tel",self.datosUsuario.dominio] ;
 #endif
             }
             

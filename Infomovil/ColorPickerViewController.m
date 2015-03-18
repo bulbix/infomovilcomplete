@@ -215,7 +215,7 @@
         [self.alertActivity hide];
     }
     
-    [[AlertView initWithDelegate:Nil message:@"No se ha publicado, inténtalo nuevamente" andAlertViewType:AlertViewTypeInfo] show];
+    [[AlertView initWithDelegate:Nil message:NSLocalizedString(@"errorActualizacion", Nil) andAlertViewType:AlertViewTypeInfo] show];
     [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
 }
 -(void) errorToken {

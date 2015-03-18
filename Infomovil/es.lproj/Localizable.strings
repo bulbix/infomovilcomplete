@@ -120,7 +120,7 @@
 "errorLogin" = "La dirección de e-mail o la contraseña no son correctas.";
 
 "actualizacionCorrecta" = "Actualización correcta";
-"errorActualizacion" = "Error en la actualización";
+"errorActualizacion" = "No se ha publicado el cambio, inténtalo nuevamente";
 
 //Nuevos mensajes
 

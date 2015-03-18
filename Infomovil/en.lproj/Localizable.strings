@@ -88,7 +88,7 @@
 "errorPublico"="Sorry, there was an error publishing your site";
 "errorLogin"="The e-mail or password is not correct.";// !!!: traduccion debe revisarse
 "actualizacionCorrecta"="The update was successful";
-"errorActualizacion"="Error with the update";
+"errorActualizacion" = "No change has been published, try again";
 "seleccionaPais"="Select your country code";
 "infoDeRegistro"="Account information";
 "nombreOrganizacion"="Name of organizastion";

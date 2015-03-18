@@ -357,7 +357,7 @@
             // IRC APPBOY //
             NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
             NSDictionary *launch =  [defaults objectForKey:@"launchingWithOptions"];
-            [Appboy startWithApiKey:@"418813e5-5c95-4710-8ce1-d23d55fb4d5d"
+            [Appboy startWithApiKey:llaveAppboy
                       inApplication:[UIApplication sharedApplication]
                   withLaunchOptions:launch];
              [[Appboy sharedInstance] changeUser:self.datosUsuario.emailUsuario];
