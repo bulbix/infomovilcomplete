@@ -114,7 +114,7 @@
     }
     else {
         self.datosUsuario.colorSeleccionado = colorChip.backgroundColor;
-        self.datosUsuario.eligioColor = YES;
+        //self.datosUsuario.eligioColor = YES;
         self.modifico = NO;
         [self.navigationController popViewControllerAnimated:YES];
     }
@@ -161,7 +161,7 @@
     if (actualizo) {
         self.datosUsuario = [DatosUsuario sharedInstance];
         self.datosUsuario.colorSeleccionado = colorAux;
-        self.datosUsuario.eligioColor = YES;
+        //self.datosUsuario.eligioColor = YES;
         self.modifico = NO;
         AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"actualizacionCorrecta", Nil) andAlertViewType:AlertViewTypeInfo];
         [alert show];
@@ -215,7 +215,7 @@
         [self.alertActivity hide];
     }
     
-    [[AlertView initWithDelegate:Nil message:@"No se ha publicado, inténtalo nuevamente" andAlertViewType:AlertViewTypeInfo] show];
+    [[AlertView initWithDelegate:Nil message:NSLocalizedString(@"errorActualizacion", Nil) andAlertViewType:AlertViewTypeInfo] show];
     [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
 }
 -(void) errorToken {

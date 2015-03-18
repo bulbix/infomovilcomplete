@@ -275,9 +275,17 @@
         
     }
     else {
-    if (loginExitoso) {  
+    if (loginExitoso) {
+        NSLog(@"SE LOGUEO POR MAIL");
+        // IRC APPBOY //
+        NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+        NSDictionary *launch =  [defaults objectForKey:@"launchingWithOptions"];
+        [Appboy startWithApiKey:llaveAppboy
+                  inApplication:[UIApplication sharedApplication]
+              withLaunchOptions:launch];
         [[Appboy sharedInstance] changeUser:self.txtEmail.text];
         self.datosUsuario.existeLogin = YES;
+        
         if (![self.datosUsuario.redSocial isEqualToString:@"Facebook"]) {
             [self.datosUsuario setEmailUsuario:self.txtEmail.text];
         }
@@ -293,10 +301,7 @@
         [self.navigationController pushViewController:menuPasos animated:YES];
     }
     else {
-        FBSession* session = [FBSession activeSession];
-        [session closeAndClearTokenInformation];
-        [session close];
-        [FBSession setActiveSession:nil];
+        [self fbDidlogout]; // CErrar sesion de facebook
         NSString *strMensaje;
         switch (respuestaError) {
             case -4:

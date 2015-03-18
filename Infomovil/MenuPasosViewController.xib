@@ -34,7 +34,7 @@
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="elegirFondo:" destination="-1" eventType="touchUpInside" id="7Uv-yf-6xB"/>
+                        <action selector="elegirPlantilla:" destination="-1" eventType="touchUpInside" id="lKe-Vw-IJs"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="62k-ps-wSC">

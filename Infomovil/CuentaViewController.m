@@ -593,15 +593,19 @@ if(noSeRepiteOprimirElBoton){
             
             
             if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-                dominio.text = [NSString stringWithFormat:@"My website\n\n www.%@.tel",self.datosUsuario.dominio] ;
+                
             
 #if DEBUG
                 dominio.text = [NSString stringWithFormat:@"My website\n\nwww.info-movil.com/%@",self.datosUsuario.dominio] ;
+#else
+                dominio.text = [NSString stringWithFormat:@"My website\n\n www.%@.tel",self.datosUsuario.dominio] ;
 #endif
             }else{
-                dominio.text = [NSString stringWithFormat:@"Mi sitio web\n\n www.%@.tel",self.datosUsuario.dominio] ;
+                
 #if DEBUG
                 dominio.text = [NSString stringWithFormat:@"Mi sitio web\n\nwww.info-movil.com/%@",self.datosUsuario.dominio] ;
+#else
+                dominio.text = [NSString stringWithFormat:@"Mi sitio web\n\n www.%@.tel",self.datosUsuario.dominio] ;
 #endif
             }
             
@@ -720,19 +724,16 @@ if(noSeRepiteOprimirElBoton){
        
         if([self.datosUsuario.datosPago.plan isEqualToString:@"PLAN PRO 3 MESES"]){
             [[AppsFlyerTracker sharedTracker] trackEvent:@"Plan Pro 3 Meses" withValue:@""];
-           // [[Appboy sharedInstance] logCustomEvent:@"Plan Pro 3 Meses"];
             [[Appboy sharedInstance] logPurchase:@"PP3"
                                       inCurrency:@"MXN"
                                          atPrice:[[NSDecimalNumber alloc] initWithString:@"199.00"]];
         }else if([self.datosUsuario.datosPago.plan isEqualToString:@"PLAN PRO 6 MESES"]){
             [[AppsFlyerTracker sharedTracker] trackEvent:@"Plan Pro 6 Meses" withValue:@""];
-           // [[Appboy sharedInstance] logCustomEvent:@"Plan Pro 6 Meses"];
             [[Appboy sharedInstance] logPurchase:@"PP6"
                                       inCurrency:@"MXN"
                                          atPrice:[[NSDecimalNumber alloc] initWithString:@"349.00"]];
         }else if([self.datosUsuario.datosPago.plan isEqualToString:@"PLAN PRO 12 MESES"]){
             [[AppsFlyerTracker sharedTracker] trackEvent:@"Plan Pro 12 Meses" withValue:@""];
-           // [[Appboy sharedInstance] logCustomEvent:@"Plan Pro 12 Meses"];
             [[Appboy sharedInstance] logPurchase:@"PP12"
                                       inCurrency:@"MXN"
                                          atPrice:[[NSDecimalNumber alloc] initWithString:@"599.00"]];

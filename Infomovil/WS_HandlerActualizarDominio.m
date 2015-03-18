@@ -20,6 +20,7 @@
                      "<soapenv:Body>"
                      "<ws:%@>"
                      "<DomainVO>"
+                     "<template>%@</template>"
                      "<colour>%@</colour>"
                      "<displayString>%@</displayString>"
                      "<domainName>%@</domainName>"
@@ -29,29 +30,17 @@
                      "<token>%@</token>"
                      "</ws:%@>"
                      "</soapenv:Body>"
-                     "</soapenv:Envelope>",metodo, [StringUtils encriptar:[StringUtils hexFromUIColor:datos.colorSeleccionado] conToken:datos.token],
+                     "</soapenv:Envelope>",metodo,
+                     [StringUtils encriptar:datos.nombreTemplate conToken:datos.token],
+                     [StringUtils encriptar:@"" conToken:datos.token],
                      [StringUtils encriptar:self.descripcion conToken:datos.token],
                      [StringUtils encriptar:datos.dominio conToken:datos.token],
                      [StringUtils encriptar:self.nombre conToken:datos.token],
                      [StringUtils encriptar:[NSString stringWithFormat:@"%i", datos.idDominio] conToken:datos.token],
-                     [StringUtils encriptar:datos.emailUsuario conToken:passwordEncriptar],metodo];
+                     [StringUtils encriptar:datos.emailUsuario conToken:passwordEncriptar],
+                     metodo];
     }
-//    else {
-//        stringXML = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.webservice.infomovil.org/\">"
-//                     "<soapenv:Header/>"
-//                     "<soapenv:Body>"
-//                     "<ws:updateDomain>"
-//                     "<DomainVO>"
-//                     "<colour>%@</colour>"
-//                     "<displayString>%@</displayString>"
-//                     "<domainName>%@</domainName>"
-//                     "<textRecord>%@</textRecord>"
-//                     "</DomainVO>"
-//                     "<idDomain>%i</idDomain>"
-//                     "</ws:updateDomain>"
-//                     "</soapenv:Body>"
-//                     "</soapenv:Envelope>", [StringUtils hexFromUIColor:datos.colorSeleccionado], self.descripcion, datos.dominio, self.nombre, datos.idDominio];
-//    }
+
     
     self.strSoapAction = @"WSInfomovilDomain";
      NSLog(@"La peticion es %@", stringXML);
@@ -93,6 +82,14 @@
     }
     
 }
+
+
+
+
+
+
+
+
 
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
     //[self.actualizarDominioDelegate errorConsultaWS];

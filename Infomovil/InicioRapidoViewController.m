@@ -76,8 +76,8 @@
    
     
     // IRC Se quita boton derecho para plan pro //
-    self.navigationItem.rightBarButtonItem = nil;
-    /*
+   // self.navigationItem.rightBarButtonItem = nil;
+    
     UIImage *imagenBoton = [UIImage imageNamed:@"btnprevisualizar.png"];
     UIButton *botonPrevisualizar = [UIButton buttonWithType:UIButtonTypeCustom];
     [botonPrevisualizar setFrame:CGRectMake(0, 0, imagenBoton.size.width, imagenBoton.size.height)];
@@ -86,7 +86,7 @@
     
     UIBarButtonItem *botonDerecha = [[UIBarButtonItem alloc] initWithCustomView:botonPrevisualizar];
     self.navigationItem.rightBarButtonItem = botonDerecha;
-    */
+    
     if (self.datosUsuario.arregloEstatusPerfil != nil) {
         [self.arregloStatusInicio replaceObjectAtIndex:3 withObject:[self.datosUsuario.arregloEstatusPerfil objectAtIndex:0]];
     }
@@ -210,7 +210,6 @@
 
 -(IBAction)mostrarWeb:(id)sender {
     VistaPreviaWebViewController *vistaPrevia = [[VistaPreviaWebViewController alloc] initWithNibName:@"VistaPreviaViewController" bundle:Nil];
-    //[vistaPrevia setTipoVista:PreviewTypePrevia];
     [self.navigationController pushViewController:vistaPrevia animated:YES];
 }
 

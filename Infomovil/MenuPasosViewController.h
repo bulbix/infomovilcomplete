@@ -28,7 +28,7 @@
 @property (strong, nonatomic) IBOutlet UIView *viewDominioPublicado;
 
 
-- (IBAction)elegirFondo:(UIButton *)sender;
+- (IBAction)elegirPlantilla:(UIButton *)sender;
 - (IBAction)crearEditar:(UIButton *)sender;
 - (IBAction)nombrar:(UIButton *)sender;
 - (IBAction)publicar:(UIButton *)sender;

@@ -16,8 +16,7 @@
 #import "ItemsDominio.h"
 #import "AppDelegate.h"
 #import "DominiosUsuario.h"
-#import "AppboyKit.h"
-#import "Appboy.h"
+
 
 @interface WS_HandlerLogin () {
     BOOL esLogo;
@@ -43,6 +42,8 @@
 @property (nonatomic, strong) NSMutableArray *arregloItems;
 @property (nonatomic, strong) NSMutableArray *arregloTiposDominio;
 @property (nonatomic, strong) NSMutableArray *arregloDominiosUsuario;
+
+@property (nonatomic, strong) NSString *nombreTemplate;
 
 @end
 
@@ -128,13 +129,15 @@
                 self.datosUsuario.idDominio = [auxIdDom integerValue];
                 self.idDominio = [auxIdDom integerValue];
                 
+                /*
                 if (self.colorAux.length > 0 && self.colorAux != Nil) {
                     auxIdDom = [StringUtils desEncriptar:self.colorAux conToken:self.datosUsuario.token];
                     if (auxIdDom.length > 6) {
                         self.datosUsuario.colorSeleccionado = [StringUtils colorFromHexString:auxIdDom];
-                        self.datosUsuario.eligioColor = YES;
+                        self.datosUsuario.eligioC = YES;
                     }
                 }
+                 */
                 if (self.descipcionAux.length > 0 && self.descipcionAux != Nil) {
                     self.descipcionAux = [StringUtils desEncriptar:self.descipcionAux conToken:self.datosUsuario.token];
                     if ((self.descipcionAux.length > 0 && ![self.descipcionAux isEqualToString:@"Título"]) && ![self.descipcionAux isEqualToString:@"(null)"]) {
@@ -393,6 +396,10 @@
         itemDominio = [[ItemsDominio alloc] init];
         self.currentElementString = [[NSMutableString alloc] init];
     }
+    else if ([elementName isEqualToString:@"template"]) {
+        self.currentElementString = [[NSMutableString alloc] init];
+       
+    }
     else if ([elementName isEqualToString:@"descripcionItem"]) {
         self.currentElementString = [[NSMutableString alloc] init];
     }
@@ -527,7 +534,7 @@
         [self.contactoActual setValorVisible:self.currentElementString];
         self.currentElementString = [[NSMutableString alloc] init];
     }
-    else if ([elementName isEqualToString:@"colour"]) {
+   /* else if ([elementName isEqualToString:@"colour"]) {
         if (self.currentElementString.length > 6) {
             if (requiereEncriptar) {
                 self.colorAux = self.currentElementString;
@@ -535,13 +542,14 @@
             else {
                 self.datosUsuario.colorSeleccionado = [StringUtils colorFromHexString:self.currentElementString];
             }
-            self.datosUsuario.eligioColor = YES;
+            //self.datosUsuario.eligioColor = YES;
         }
         else {
             self.datosUsuario.colorSeleccionado = [UIColor whiteColor];
         }
         self.currentElementString = [[NSMutableString alloc] init];
     }
+    */
     else if ([elementName isEqualToString:@"cssTemplate"]) {
         self.currentElementString = [[NSMutableString alloc] init];
     }
@@ -890,8 +898,22 @@
 	}
     else if ([elementName isEqualToString:@"listStatusDomainVO"]) {
         [self.arregloItems addObject:itemDominio];
+      
     }
-    else if ([elementName isEqualToString:@"descripcionItem"]) {
+    
+    else if ([elementName isEqualToString:@"template"]) {
+        self.datosUsuario.nombreTemplate  = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
+       
+        if(self.datosUsuario.nombreTemplate  == nil || [self.datosUsuario.nombreTemplate isEqualToString:@""] || [self.datosUsuario.nombreTemplate isEqualToString:@"(null)"])
+        {
+            self.datosUsuario.nombreTemplate = @"Estandar1";
+        }
+        self.datosUsuario.eligioTemplate = YES;
+        NSLog(@"EL NOMBRE DEL TEMPLATE ES: %@", self.datosUsuario.nombreTemplate);
+        
+    }
+    
+    else if ([elementName isEqualToString:@"descripcionItem"]) { 
         if (requiereEncriptar) {
             itemDominio.descripcionItem = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
         }

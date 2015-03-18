@@ -23,6 +23,7 @@
 #import "AppsFlyerTracker.h"
 #import "AppDelegate.h"
 #import "AppboyKit.h"
+#import "ElegirPlantillaViewController.h"
 
 
 #define IS_IPHONE5 (([[UIScreen mainScreen] bounds].size.height-568)?NO:YES)
@@ -128,7 +129,7 @@
 	self.botonEjemplo2.layer.cornerRadius = 15.0f;
     
     if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-        [self.botonFondo setBackgroundImage:[UIImage imageNamed:@"btnbackgroundEn.png"] forState:UIControlStateNormal];
+        [self.botonFondo setBackgroundImage:[UIImage imageNamed:@"elegirestilo-en.png"] forState:UIControlStateNormal];
         [self.botonCrear setBackgroundImage:[UIImage imageNamed:@"btncreateeditEn.png"] forState:UIControlStateNormal];
        
         if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion && self.datosUsuario.dominio && ![self.datosUsuario.dominio isEqualToString:@""] && ! (self.datosUsuario.dominio == (id)[NSNull null]) && ![CommonUtils validarEmail:self.datosUsuario.dominio] && ![self.datosUsuario.dominio isEqualToString:@"(null)"] ){
@@ -140,7 +141,7 @@
         }
         
     }else{
-        [self.botonFondo setBackgroundImage:[UIImage imageNamed:@"elegirfondo.png"] forState:UIControlStateNormal];
+        [self.botonFondo setBackgroundImage:[UIImage imageNamed:@"elegirestilo-es.png"] forState:UIControlStateNormal];
         [self.botonCrear setBackgroundImage:[UIImage imageNamed:@"creareditar.png"] forState:UIControlStateNormal];
         if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion && self.datosUsuario.dominio && ![self.datosUsuario.dominio isEqualToString:@""] && ! (self.datosUsuario.dominio == (id)[NSNull null]) && ![CommonUtils validarEmail:self.datosUsuario.dominio] && ![self.datosUsuario.dominio isEqualToString:@"(null)"]){
             [self.botonPublicar setBackgroundImage:[UIImage imageNamed:@"tips.png"] forState:UIControlStateNormal];
@@ -222,7 +223,7 @@
     [self.botonEjemplo2 setTitle:NSLocalizedString(@"verEjemplo", Nil) forState:UIControlStateNormal];
 	
     if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-        [self.botonFondo setBackgroundImage:[UIImage imageNamed:@"btnbackgroundEn.png"] forState:UIControlStateNormal];
+        [self.botonFondo setBackgroundImage:[UIImage imageNamed:@"elegirestilo-en.png"] forState:UIControlStateNormal];
         [self.botonCrear setBackgroundImage:[UIImage imageNamed:@"btncreateeditEn.png"] forState:UIControlStateNormal];
         if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion && self.datosUsuario.dominio && ![self.datosUsuario.dominio isEqualToString:@""] && ! (self.datosUsuario.dominio == (id)[NSNull null]) && ![CommonUtils validarEmail:self.datosUsuario.dominio] && ![CommonUtils validarEmail:self.datosUsuario.dominio] && ![self.datosUsuario.dominio isEqualToString:@"(null)"]){
             [self.botonPublicar setBackgroundImage:[UIImage imageNamed:@"tips.png"] forState:UIControlStateNormal];
@@ -233,7 +234,7 @@
         }
         
     }else{
-        [self.botonFondo setBackgroundImage:[UIImage imageNamed:@"elegirfondo.png"] forState:UIControlStateNormal];
+        [self.botonFondo setBackgroundImage:[UIImage imageNamed:@"elegirestilo-es.png"] forState:UIControlStateNormal];
         [self.botonCrear setBackgroundImage:[UIImage imageNamed:@"creareditar.png"] forState:UIControlStateNormal];
         if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion && self.datosUsuario.dominio && ![self.datosUsuario.dominio isEqualToString:@""] && ! (self.datosUsuario.dominio == (id)[NSNull null]) && ![CommonUtils validarEmail:self.datosUsuario.dominio] && ![self.datosUsuario.dominio isEqualToString:@"(null)"]){
             [self.botonPublicar setBackgroundImage:[UIImage imageNamed:@"tips.png"] forState:UIControlStateNormal];
@@ -261,24 +262,36 @@
     
     
 }
-
+// IRC se deshabilito para Templates
+/*
 - (IBAction)elegirFondo:(UIButton *)sender {
 
     ColorPickerViewController *colorPicker = [[ColorPickerViewController alloc] initWithNibName:@"ColorPickerViewController" bundle:Nil];
     [self.navigationController pushViewController:colorPicker animated:YES];
 }
+*/
+
+- (IBAction)elegirPlantilla:(UIButton *)sender {
+    ElegirPlantillaViewController *elegirPlantillaBtn = [[ElegirPlantillaViewController alloc] initWithNibName:@"ElegirPlantillaViewController" bundle:Nil];
+    [self.navigationController pushViewController:elegirPlantillaBtn animated:YES];
+}
+
+
+
 
 - (IBAction)crearEditar:(UIButton *)sender {
     self.datosUsuario = [DatosUsuario sharedInstance];
+    /*
 #ifdef _DEBUG
-	self.datosUsuario.eligioColor = YES;
+	self.datosUsuario.eligioTemplate = YES;
 #endif
-    if (self.datosUsuario.eligioColor) {
+     */
+    if (self.datosUsuario.eligioTemplate) {
         CrearPaso1ViewController *crear = [[CrearPaso1ViewController alloc] initWithNibName:@"CrearPaso1ViewController" bundle:nil];
         [self.navigationController pushViewController:crear animated:YES];
     }
     else {
-        AlertView *vistaNotificacion = [AlertView initWithDelegate:self message:NSLocalizedString(@"eligeColor", Nil) andAlertViewType:AlertViewTypeInfo];
+        AlertView *vistaNotificacion = [AlertView initWithDelegate:self message:NSLocalizedString(@"eligeTemplate", Nil) andAlertViewType:AlertViewTypeInfo];
         [vistaNotificacion show];
     }
 }
@@ -380,15 +393,17 @@
 
 - (IBAction)irInicioRapido:(id)sender {
     self.datosUsuario = [DatosUsuario sharedInstance];
+    /*
 #ifdef _DEBUG
-    self.datosUsuario.eligioColor = YES;
+    self.datosUsuario.eligioTemplate = YES;
 #endif
-    if (self.datosUsuario.eligioColor) {
+     */
+    if (self.datosUsuario.eligioTemplate) {
         InicioRapidoViewController *inicioRapido = [[InicioRapidoViewController alloc] initWithNibName:@"InicioRapidoViewController" bundle:Nil];
         [self.navigationController pushViewController:inicioRapido animated:YES];
     }
     else {
-        AlertView *vistaNotificacion = [AlertView initWithDelegate:self message:NSLocalizedString(@"eligeColor", Nil) andAlertViewType:AlertViewTypeInfo];
+        AlertView *vistaNotificacion = [AlertView initWithDelegate:self message:NSLocalizedString(@"eligeTemplate", Nil) andAlertViewType:AlertViewTypeInfo];
         [vistaNotificacion show];
     }
     

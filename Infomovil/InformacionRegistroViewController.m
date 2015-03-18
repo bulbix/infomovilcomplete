@@ -816,7 +816,6 @@
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
 	campo = textField.placeholder;
-	NSLog(@"campo: %@",campo);
 	
 	if(([campo isEqualToString:NSLocalizedString(@"nombreOrganizacion", @" ")] || [campo isEqualToString:NSLocalizedString(@"nombreOrganizacionCheck", @" ")]) && !bNombre){
 		textField.text = @"";

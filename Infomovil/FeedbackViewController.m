@@ -52,8 +52,7 @@
 - (IBAction)guardarInformacion:(id)sender {
     self.datosUsuario = [DatosUsuario sharedInstance];
     if ([self.txtMensaje.text length] > 0) {
-        [[Appboy sharedInstance] submitFeedback:self.datosUsuario.emailUsuario message:[self.txtMensaje text] isReportingABug:esBug];
-        [[Appboy sharedInstance] logFeedbackDisplayed];
+       
         [self.navigationController dismissViewControllerAnimated:YES completion:Nil];
     }
     else {

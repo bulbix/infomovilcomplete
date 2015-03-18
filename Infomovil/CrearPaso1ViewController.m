@@ -68,7 +68,6 @@
         NSLog(@"Selecciono el arreglo auxiliar donde no tiene perfinNegocioProfesion");
         NSArray *arregloAux = @[[[ItemsDominio alloc] initWithDescripcion:NSLocalizedString(@"nombreEmpresa", @" ") andStatus:1],
                                 [[ItemsDominio alloc] initWithDescripcion:NSLocalizedString(@"logo", @" ") andStatus:1],
-                               // [[ItemsDominio alloc] initWithDescripcion:NSLocalizedString(@"perfinNegocioProfesion", @" ") andStatus:1],
                                 [[ItemsDominio alloc] initWithDescripcion:NSLocalizedString(@"descripcionCorta", @" ") andStatus:1],
                                 [[ItemsDominio alloc] initWithDescripcion:NSLocalizedString(@"contacto", @" ") andStatus:2],
                                 [[ItemsDominio alloc] initWithDescripcion:NSLocalizedString(@"mapa", @" ") andStatus:1],
@@ -94,9 +93,9 @@
     self.tablaEditar.layer.cornerRadius = 5;
 
     /* IRC boton de vista previa, se oculto para Plan Pro  */
-    self.navigationItem.rightBarButtonItem = nil;
+   // self.navigationItem.rightBarButtonItem = nil;
     
-   /*
+   
     UIImage *imagenBoton = [UIImage imageNamed:@"btnprevisualizar.png"];
     UIButton *botonPrevisualizar = [UIButton buttonWithType:UIButtonTypeCustom];
     [botonPrevisualizar setFrame:CGRectMake(0, 0, imagenBoton.size.width, imagenBoton.size.height)];
@@ -105,7 +104,7 @@
     
     UIBarButtonItem *botonDerecha = [[UIBarButtonItem alloc] initWithCustomView:botonPrevisualizar];
     self.navigationItem.rightBarButtonItem = botonDerecha;
-	*/
+	
 	int editados = 0;
 	for(int i=0;i<[self.datosUsuario.arregloEstatusEdicion count];i++){
 		if([[self.datosUsuario.arregloEstatusEdicion objectAtIndex:i] isEqual:@YES]){
@@ -317,38 +316,21 @@
 }
 
 -(IBAction)mostrarWeb:(id)sender {
-    VistaPreviaViewController *vistaPrevia = [[VistaPreviaViewController alloc] initWithNibName:@"VistaPreviaViewController" bundle:Nil];
-    [vistaPrevia setTipoVista:PreviewTypePrevia];
-    [self.navigationController pushViewController:vistaPrevia animated:YES];
-    
-    
-    // IRC // ESTO YA ESTA FUNCIONAL PARA VISTA PREVIA DE TEMPLATES
-    /*  self.datosUsuario	= [DatosUsuario sharedInstance];
+  
+      self.datosUsuario	= [DatosUsuario sharedInstance];
      if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion && self.datosUsuario.dominio && ![self.datosUsuario.dominio isEqualToString:@""] && ! (self.datosUsuario.dominio == (id)[NSNull null]) && ![CommonUtils validarEmail:self.datosUsuario.dominio] && ![self.datosUsuario.dominio isEqualToString:@"(null)"]){
-      
          NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-         // saving an NSString
-         [prefs setObject:[NSString stringWithFormat:@"http://info-movil.com/%@?vistaPrevia=true", self.datosUsuario.dominio] forKey:@"urlVistaPrevia"];
+         [prefs setObject:[NSString stringWithFormat:@"http://info-movil.net/%@?vistaPrevia=true", self.datosUsuario.dominio] forKey:@"urlVistaPrevia"];
          [prefs synchronize];
-         
          VistaPreviaWebViewController *vistaPrevia = [[VistaPreviaWebViewController alloc] initWithNibName:@"vistaPreviaWeb" bundle:Nil];
-         //[vistaPrevia setTipoVista:PreviewTypePrevia];
          [self.navigationController pushViewController:vistaPrevia animated:YES];
      }else if(self.datosUsuario.idDominio){
          NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-         // saving an NSString
-         [prefs setObject:[NSString stringWithFormat:@"http://info-movil.com/xxx?vistaPrevia=true&idDominio=%ld", (long)self.datosUsuario.idDominio] forKey:@"urlVistaPrevia"];
+         [prefs setObject:[NSString stringWithFormat:@"http://info-movil.net/xxx?vistaPrevia=true&idDominio=%ld", (long)self.datosUsuario.idDominio] forKey:@"urlVistaPrevia"];
          [prefs synchronize];
-         
          VistaPreviaWebViewController *vistaPrevia = [[VistaPreviaWebViewController alloc] initWithNibName:@"vistaPreviaWeb" bundle:Nil];
-         //[vistaPrevia setTipoVista:PreviewTypePrevia];
          [self.navigationController pushViewController:vistaPrevia animated:YES];
-     
      }
-    
-    */
-    
-    
 }
 
 

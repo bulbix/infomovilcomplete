@@ -13,6 +13,7 @@
 #define k_UPDATE_TITULO @"updateTextRecord"
 #define k_UPDATE_DESC_CORTA @"updateDesCorta"
 #define k_UPDATE_BACKGRUOUND @"updateColor"
+#define k_UPDATE_TEMPLATE @"updateTemplate"
 
 @interface WS_HandlerActualizarDominio : WS_Handler <WS_HandlerProtocol, NSXMLParserDelegate>
 

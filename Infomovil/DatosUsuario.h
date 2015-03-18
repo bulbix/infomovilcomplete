@@ -21,7 +21,7 @@
 
 @property (nonatomic, strong) UIColor *colorSeleccionado;
 @property (nonatomic, strong) NSString *pathFondo;
-@property BOOL eligioColor; //para determinar si en background uso color o imagen
+@property BOOL eligioTemplate; //para determinar si en background uso color o imagen
 
 @property (nonatomic, strong) NSMutableArray *arregloContacto;
 
@@ -90,6 +90,8 @@
 @property (nonatomic, strong) NSString * fechaInicialTel;
 @property (nonatomic, strong) NSString * fechaFinalTel;
 
+@property (nonatomic, strong) NSString * plantilla;
+
 @property (nonatomic, strong) OffertRecord *promocionActual;
 
 @property (nonatomic, strong) PagoModel *datosPago;
@@ -100,6 +102,9 @@
 
 @property (nonatomic, strong) NSString *redSocial;
 @property (nonatomic, strong) NSString *descripcionDominio;
+
+@property (nonatomic, strong) NSString *nombreTemplate;
+
 
 //@property NSString
 

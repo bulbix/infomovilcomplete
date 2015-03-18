@@ -352,9 +352,16 @@
         }else{
             
           
-            [[AppsFlyerTracker sharedTracker] trackEvent:@"Registro Usuario" withValue:@""];
-            [[Appboy sharedInstance] logCustomEvent:@"Registro Usuario"];
-            [self enviarEventoGAconCategoria:@"Registrar" yEtiqueta:@"Usuario"];
+           // [[AppsFlyerTracker sharedTracker] trackEvent:@"Registro Usuario" withValue:@""];
+           
+            // IRC APPBOY //
+            NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+            NSDictionary *launch =  [defaults objectForKey:@"launchingWithOptions"];
+            [Appboy startWithApiKey:llaveAppboy
+                      inApplication:[UIApplication sharedApplication]
+                  withLaunchOptions:launch];
+             [[Appboy sharedInstance] changeUser:self.datosUsuario.emailUsuario];
+           // [self enviarEventoGAconCategoria:@"Registrar" yEtiqueta:@"Usuario"];
             // IRC Dominio
             ((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio = @"Tramite";
             ((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion = YES;

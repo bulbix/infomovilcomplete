@@ -120,7 +120,7 @@
 "errorLogin" = "La dirección de e-mail o la contraseña no son correctas.";
 
 "actualizacionCorrecta" = "Actualización correcta";
-"errorActualizacion" = "Error en la actualización";
+"errorActualizacion" = "No se ha publicado el cambio, inténtalo nuevamente";
 
 //Nuevos mensajes
 
@@ -189,6 +189,7 @@
 "hola" = "¡Hola!";
 
 "eligeColor" = "Debes elegir el color de fondo";
+"eligeTemplate" = "Debes elegir un estilo";
 "editaPagina" = "Debes editar tu página";
 "yaNombro" = "Ya has nombrado tu página";
 
@@ -628,3 +629,5 @@
 "proximamentePlanPro" = "¡PRÓXIMAMENTE!";
 
 "vistaPreviaPlanPro" = "Vista previa";
+"elegirEstilo" = "Elegir estilo";
+"etiquetaEstilo" = "ESTILO";

@@ -61,7 +61,7 @@
     [self.tituloVista setHidden:NO];
     [self.tituloVista setText:NSLocalizedString(@"tituloFondo", @" ")];
     [self.tituloVista setTextColor:[UIColor whiteColor]];
-    if (self.datosUsuario.eligioColor) {
+    if (self.datosUsuario.eligioTemplate) {
         [self.imagenFondo setImage:[UIImage imageWithColor:self.datosUsuario.colorSeleccionado]];
     }
     else {
@@ -95,7 +95,7 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     self.modifico = YES;
-    self.datosUsuario.eligioColor = NO;
+    self.datosUsuario.eligioTemplate = NO;
     self.imagenSeleccionada = [info objectForKey:UIImagePickerControllerOriginalImage];
     [picker dismissViewControllerAnimated:YES completion:^{
         [self openEditor:Nil];

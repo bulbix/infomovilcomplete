@@ -19,7 +19,7 @@
                 <webView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" scalesPageToFit="YES" allowsInlineMediaPlayback="NO" mediaPlaybackRequiresUserAction="NO" mediaPlaybackAllowsAirPlay="NO" keyboardDisplayRequiresUserAction="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DlH-3s-VSE">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" address="YES"/>
+                    <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="q3U-bL-2T1"/>
                     </connections>

@@ -38,16 +38,14 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // APPBOY // IRC //
-    // PREPRODUCCION
-    // ce1afa14-800b-4b45-8e8b-3a7696c3ef26
-    // PRODUCCION
-    // 773948d3-24b7-422e-8a53-f3b1be2834d0
-  
-  /*
-    [Appboy startWithApiKey:@"773948d3-24b7-422e-8a53-f3b1be2834d0"
-              inApplication:application
-          withLaunchOptions:launchOptions];
+   
+    
+    // Lo guardo como default para utilizarlo en appboy
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:launchOptions forKey:@"launchingWithOptions"];
+    [defaults synchronize];
+   
+    
     
     //AppsFlyer
     [AppsFlyerTracker sharedTracker].appsFlyerDevKey = @"5KoF92vzAFbhSj9PRduNCn";
@@ -62,7 +60,7 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
     [[BITHockeyManager sharedHockeyManager] startManager];
     [[BITHockeyManager sharedHockeyManager].authenticator
      authenticateInstallation];
-    */
+    
    
     
     //-- Set Notification
@@ -125,7 +123,7 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
 {
    
 }
-
+/*  // NO UTILIZARLOS PORQUE SE EJECUTA EL APPBOY //
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
  
@@ -135,7 +133,7 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
 {
  
 }
-
+*/
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
 	[[AppsFlyerTracker sharedTracker] trackAppLaunch];
@@ -243,7 +241,7 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
     NSLog(@"content---%@ **************************************************************", token);
 #endif
     
-    [[Appboy sharedInstance] registerPushToken:[NSString stringWithFormat:@"%@", deviceToken]];
+    //[[Appboy sharedInstance] registerPushToken:[NSString stringWithFormat:@"%@", deviceToken]];
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
@@ -254,14 +252,7 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
     NSLog(@"%@",strError);
 #endif
 }
-/*
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-	
-	return [GPPURLHandler handleURL:url
-				  sourceApplication:sourceApplication
-						 annotation:annotation];
-}
-*/
+
 - (BOOL) itIsInTime {
     BOOL enTiempo = YES;
 #ifdef _CON_SESION
@@ -279,11 +270,12 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
 - (void) restartDate {
     self.fechaLogin = [NSDate date];
 }
-
+/*
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     [[Appboy sharedInstance] registerApplication:application
                     didReceiveRemoteNotification:userInfo];
 }
+ */
 - (void)fbDidlogout {
     FBSession* session = [FBSession activeSession];
     [session closeAndClearTokenInformation];
