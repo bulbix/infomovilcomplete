@@ -48,12 +48,18 @@
     
     //MBC
     if(IS_STANDARD_IPHONE_6){
-        
+        self.botonFondo.frame = CGRectMake(45, 28, 270, 53);
+        self.botonCrear.frame = CGRectMake(45, 123, 270, 53);
+        self.botonPublicar.frame = CGRectMake(45, 209, 270, 53);
+        self.botonEjemplo2.frame = CGRectMake(80, 250, 200, 50);
+        self.inicioRapidobtn.frame = CGRectMake(50, 24, 280, 35);
+        self.verTutorialbtn.frame = CGRectMake(50, 72, 137, 35);
+        self.botonEjemplo.frame = CGRectMake(193, 72, 137, 35);
     }
     else if(IS_STANDARD_IPHONE_6_PLUS){
-        self.botonFondo.frame = CGRectMake(20, 46, 340, 55);
-        self.botonCrear.frame = CGRectMake(20, 130, 340, 55);
-        self.botonPublicar.frame = CGRectMake(20, 214, 340, 55);
+        self.botonFondo.frame = CGRectMake(70, 46, 270, 53);
+        self.botonCrear.frame = CGRectMake(70, 130, 270, 53);
+        self.botonPublicar.frame = CGRectMake(70, 214, 270, 53);
         self.botonEjemplo2.frame = CGRectMake(100, 250, 200, 50);
         self.inicioRapidobtn.frame = CGRectMake(70, 24, 280, 35);
         self.verTutorialbtn.frame = CGRectMake(70, 72, 137, 35);

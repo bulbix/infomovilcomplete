@@ -96,7 +96,10 @@
             [self.vistaAlert addSubview:self.botonNo];
             if (tipo == 1) {
                 //MBC
-                if(IS_STANDARD_IPHONE_6_PLUS){
+                if(IS_STANDARD_IPHONE_6){
+                    [self.vistaAlert setFrame:CGRectMake(50, 150, 278, 182)];
+                }
+                else if(IS_STANDARD_IPHONE_6_PLUS){
                     [self.vistaAlert setFrame:CGRectMake(65, 150, 278, 182)];
                 }
                 else{
@@ -146,7 +149,10 @@
         
         case AlertViewTypeActivity:
             //MBC
-            if(IS_STANDARD_IPHONE_6_PLUS){
+            if(IS_STANDARD_IPHONE_6){
+                [self.vistaAlert setFrame:CGRectMake(50, 150, 278, 182)];
+            }
+            else if(IS_STANDARD_IPHONE_6_PLUS){
                 [self.vistaAlert setFrame:CGRectMake(80, 150, 278, 182)];
             }else{
                 [self.vistaAlert setFrame:CGRectMake(21, 150, 278, 182)];
@@ -160,7 +166,10 @@
             
         case AlertViewTypeInfo:
             //MBC
-            if(IS_STANDARD_IPHONE_6_PLUS){
+            if(IS_STANDARD_IPHONE_6){
+                [self.vistaAlert setFrame:CGRectMake(50, 150, 278, 200)];
+            }
+            else if(IS_STANDARD_IPHONE_6_PLUS){
                 [self.vistaAlert setFrame:CGRectMake(80, 150, 278, 200)];
             }
             else{
@@ -195,7 +204,10 @@
 			
             if (tipo == 1) {
                 //MBC
-                if(IS_STANDARD_IPHONE_6_PLUS){
+                if(IS_STANDARD_IPHONE_6){
+                    [self.vistaAlert setFrame:CGRectMake(50, 150, 278, 200)];
+                }
+                else if(IS_STANDARD_IPHONE_6_PLUS){
                     [self.vistaAlert setFrame:CGRectMake(80, 150, 278, 200)];
                 }
                 else{
@@ -203,7 +215,10 @@
                 }
                 self.labelDominio.hidden = YES;
                 //MBC
-                if(IS_STANDARD_IPHONE_6_PLUS){
+                if(IS_STANDARD_IPHONE_6){
+                    [self.botonAceptar setFrame:CGRectMake(0, 140, 278, 54)];
+                }
+                else if(IS_STANDARD_IPHONE_6_PLUS){
                     [self.botonAceptar setFrame:CGRectMake(0, 170, 278, 54)];
                 }
                 else{
@@ -264,7 +279,10 @@
             break;
         case AlertViewInfoMapa:
             //MBC
-            if(IS_STANDARD_IPHONE_6_PLUS){
+            if(IS_STANDARD_IPHONE_6){
+                [self.vistaAlert setFrame:CGRectMake(50, 150, 278, 200)];
+            }
+            else if(IS_STANDARD_IPHONE_6_PLUS){
                 [self.vistaAlert setFrame:CGRectMake(80, 150, 278, 200)];
             }
             else{

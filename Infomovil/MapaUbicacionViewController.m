@@ -39,7 +39,12 @@
     [super viewDidLoad];
     
     //MBC
-    if(IS_STANDARD_IPHONE_6_PLUS){
+    if(IS_STANDARD_IPHONE_6){
+        [self.btnBuscar setFrame:CGRectMake(73, 0, 78, 55)];
+        [self.btnUbicar setFrame:CGRectMake(151, 0, 78, 55)];
+        [self.btnEliminar setFrame:CGRectMake(229, 0, 78, 55)];
+    }
+    else if(IS_STANDARD_IPHONE_6_PLUS){
         [self.btnBuscar setFrame:CGRectMake(83, 0, 78, 55)];
         [self.btnUbicar setFrame:CGRectMake(161, 0, 78, 55)];
         [self.btnEliminar setFrame:CGRectMake(239, 0, 78, 55)];

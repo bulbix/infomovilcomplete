@@ -47,7 +47,16 @@
     [super viewDidLoad];
     
     //MBC
-    if(IS_STANDARD_IPHONE_6_PLUS){
+    if(IS_STANDARD_IPHONE_6){
+        [self.label1 setFrame:CGRectMake(40, 47, 280, 97)];
+        [self.label2 setFrame:CGRectMake(40, 97, 280, 101)];
+        [self.labelW setFrame:CGRectMake(41, 178, 52, 24)];
+        [self.nombreDominio setFrame:CGRectMake(93, 175, 200, 30)];
+        [self.labelTel setFrame:CGRectMake(291, 178, 28, 24)];
+        [self.labelDominio setFrame:CGRectMake(50, 223, 280, 24)];
+        [self.boton setFrame:CGRectMake(93, 266, 200, 35)];
+    }
+    else if(IS_STANDARD_IPHONE_6_PLUS){
         [self.label1 setFrame:CGRectMake(60, 47, 280, 97)];
         [self.label2 setFrame:CGRectMake(60, 97, 280, 101)];
         [self.labelW setFrame:CGRectMake(61, 178, 52, 24)];

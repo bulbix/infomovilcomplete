@@ -21,7 +21,10 @@
     [super viewDidLoad];
     
     //MBC
-    if(IS_STANDARD_IPHONE_6_PLUS){
+    if(IS_STANDARD_IPHONE_6){
+        [self.webView setFrame:CGRectMake(0, 0, 375, 667)];
+    }
+    else if(IS_STANDARD_IPHONE_6_PLUS){
         [self.webView setFrame:CGRectMake(0, 0, 540, 960)];
     }
     else{
