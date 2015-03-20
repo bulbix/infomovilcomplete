@@ -46,6 +46,13 @@
     [self.view addSubview:self.webView];
     [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
     
+    
+    if(IS_STANDARD_IPHONE_6_PLUS){
+        [self.webView setFrame:CGRectMake(0, 0, 415, 680)];
+    }else if(IS_STANDARD_IPHONE_6){
+        [self.webView setFrame:CGRectMake(0, 0, 375, 620)];
+    }
+    
 }
 
 -(IBAction)regresar:(id)sender {

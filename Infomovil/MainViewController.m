@@ -49,24 +49,45 @@
     loginView.delegate = self;
     loginView.readPermissions = @[@"public_profile", @"email"];
     
+    
+    
+    
    
     if(IS_STANDARD_IPHONE_6){
         loginView.frame = CGRectMake(20, 130, 335, 55);
         loginView.frame = CGRectMake(20, 130, 335, 55);
         self.raya1.frame = CGRectMake(20, 220, 155, 2);
-        self.o.frame = CGRectMake(178, 212, 155, 20);
+        self.o.frame = CGRectMake(178, 212, 40, 20);
         self.raya2.frame = CGRectMake(195, 220, 155, 2);
-    
+        
+        self.imgLogo.frame = CGRectMake(64, 58, 267, 49);
+        [self.scrollLogin addSubview:self.imgLogo];
+        [self.scrollLogin setContentSize:CGSizeMake(375, 580)];
     }
     //MBC
     else if(IS_STANDARD_IPHONE_6_PLUS){
-        loginView.frame = CGRectMake(20, 130, 335, 55);
-        self.raya1.frame = CGRectMake(20, 220, 180, 2);
-        self.o.frame = CGRectMake(205, 212, 155, 20);
-        self.raya2.frame = CGRectMake(225, 220, 180, 2);
+        loginView.frame = CGRectMake(20, 180, 375, 55);
+        self.raya1.frame = CGRectMake(20, 265, 175, 2);
+        self.o.frame = CGRectMake(199, 257, 40, 20);
+        self.raya2.frame = CGRectMake(215, 265, 175, 2);
+        
+        [self.scrollLogin setContentSize:CGSizeMake(540, 880)];
+        self.txtEmail.frame = CGRectMake(20,300, 280, 47);
+        self.txtPassword.frame = CGRectMake(20, 355, 280, 47);
+        self.boton.frame = CGRectMake(20, 460, 280, 50);
+        
+        self.label.frame = CGRectMake(135,411 ,165, 31);
+        self.btnOlvidePass.frame = CGRectMake(119, 411, 181, 31);
+        
+        self.recordarbtn.frame = CGRectMake(8, 411,124, 31);
+        self.recordarLogin1.frame = CGRectMake( 20, 411, 22, 22);
+        self.imgLogo.frame = CGRectMake(84, 58, 267, 49);
+        [self.scrollLogin addSubview:self.imgLogo];
+        [self.scrollLogin setContentSize:CGSizeMake(375, 580)];
     }
     else{
         loginView.frame = CGRectMake(20, 130, 280, 55);
+        [self.scrollLogin setContentSize:CGSizeMake(320, 420)];
     }
     
     for (id obj in loginView.subviews)
@@ -75,20 +96,18 @@
         if ([obj isKindOfClass:[UIButton class]])
         {
             UIButton * loginButton =  obj;
-            
+            UIImage *loginImage;
             if(IS_STANDARD_IPHONE_6){
-                loginButton.frame =CGRectMake(0,0, 1000, 55);
-                
+                loginButton.frame =CGRectMake(0,0, 335, 55);
+                loginImage = [UIImage imageNamed:@"btn_RegistroFacebook_6iPhone.png"];
+            }else if (IS_STANDARD_IPHONE_6_PLUS){
+                loginButton.frame =CGRectMake(0,0, 375, 55);
+                loginImage = [UIImage imageNamed:@"btn_RegistroFacebook_6iphonePlus.png"];
             }else{
                 loginButton.frame =CGRectMake(0,0, 280, 55);
-            }
-            UIImage *loginImage;
-            if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
-                loginImage = [UIImage imageNamed:@"btn_RegistroFacebook_copia.png"];
-                
-            }else{
                 loginImage = [UIImage imageNamed:@"btn_RegistroFacebook.png"];
             }
+            
             [loginButton setBackgroundImage:loginImage forState:UIControlStateNormal];
             [loginButton setBackgroundImage:nil forState:UIControlStateSelected];
             [loginButton setBackgroundImage:nil forState:UIControlStateHighlighted];
@@ -107,6 +126,9 @@
             if(IS_STANDARD_IPHONE_6){
                 loginLabel.frame =CGRectMake(15,6, 335, 45);
                 
+            }else if(IS_STANDARD_IPHONE_6_PLUS){
+                loginLabel.frame =CGRectMake(25,6, 375, 45);
+            
             }else{
                 loginLabel.frame =CGRectMake(15,6, 280, 45);
             }
@@ -114,14 +136,11 @@
         }
         
     }
-    if(IS_STANDARD_IPHONE_6){
-        [self.scrollLogin setContentSize:CGSizeMake(375, 420)];
-    }else{
-        [self.scrollLogin setContentSize:CGSizeMake(320, 420)];
-    }
+   
     [self.scrollLogin addSubview:loginView];
     
-   
+    self.keyboardControls = [[BSKeyboardControls alloc] initWithFields:@[self.txtEmail, self.txtPassword]];
+    [self.keyboardControls setDelegate:self];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(apareceElTeclado:)
@@ -133,11 +152,6 @@
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
     
-    
-    
-    
-    self.keyboardControls = [[BSKeyboardControls alloc] initWithFields:@[self.txtEmail, self.txtPassword]];
-    [self.keyboardControls setDelegate:self];
     self.txtEmail.layer.cornerRadius = 15.0f;
     self.txtPassword.layer.cornerRadius = 15.4f;
     
@@ -195,6 +209,7 @@
 	self.label.text = NSLocalizedString(@"mainLabel", nil);
 	[self.boton setTitle:NSLocalizedString(@"mainBoton", nil) forState:UIControlStateNormal]  ;
 	[self.vistaInferior setHidden:YES];
+ 
     
 }
 
@@ -383,8 +398,14 @@
 -(void) apareceElTeclado:(NSNotification*)aNotification {
     NSDictionary *infoNotificacion = [aNotification userInfo];
     CGSize tamanioTeclado = [[infoNotificacion objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    
-    UIEdgeInsets edgeInsets = UIEdgeInsetsMake(0, 0, tamanioTeclado.height, 0);
+    UIEdgeInsets edgeInsets;
+    if(IS_IPHONE_4){
+        edgeInsets = UIEdgeInsetsMake(0, 0, tamanioTeclado.height+125, 0);
+    }else if(IS_IPHONE_5){
+        edgeInsets = UIEdgeInsetsMake(0, 0, tamanioTeclado.height+40, 0);
+    }else{
+        edgeInsets = UIEdgeInsetsMake(0, 0, tamanioTeclado.height, 0);
+    }
     [[self scrollLogin] setContentInset:edgeInsets];
     [[self scrollLogin] setScrollIndicatorInsets:edgeInsets];
     [[self scrollLogin] scrollRectToVisible:textoEditado.frame animated:YES];

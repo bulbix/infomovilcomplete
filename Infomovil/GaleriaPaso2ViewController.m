@@ -111,6 +111,23 @@
     else {
         estaEditando = NO;
     }
+    
+    
+    if(IS_STANDARD_IPHONE_6_PLUS){
+        [self.vistaContenedorBoton setFrame:CGRectMake(70, 260, 280, 61)];
+        [self.vistaTomar setFrame:CGRectMake(0, 0, 280, 30)];
+        [self.vistaUsar setFrame:CGRectMake(0, 31, 280, 30)];
+        [self.btnEliminar setFrame:CGRectMake(310, 370, 29, 35)];
+        [self.labelTituloFoto setFrame:CGRectMake(70, 186 ,203, 21)];
+        [self.pieFoto setFrame:CGRectMake(70,215 ,300 ,30 )];
+    }else if(IS_STANDARD_IPHONE_6){
+        [self.vistaContenedorBoton setFrame:CGRectMake(40, 260, 280, 61)];
+        [self.vistaTomar setFrame:CGRectMake(0, 0, 280, 30)];
+        [self.vistaUsar setFrame:CGRectMake(0, 31, 280, 30)];
+        [self.btnEliminar setFrame:CGRectMake(270, 370, 29, 35)];
+        [self.labelTituloFoto setFrame:CGRectMake(40, 186 ,203, 21)];
+        [self.pieFoto setFrame:CGRectMake(40,215 ,300 ,30 )];
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated{

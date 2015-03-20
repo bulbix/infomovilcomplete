@@ -23,7 +23,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *o;
 @property (weak, nonatomic) IBOutlet UILabel *raya2;
 
+@property (weak, nonatomic) IBOutlet UIButton *btnOlvidePass;
+
 @property (weak, nonatomic) IBOutlet UIButton *recordarbtn;
+@property (weak, nonatomic) IBOutlet UIImageView *imgLogo;
 
 - (IBAction)iniciarSesion:(id)sender;
 - (IBAction)cambiarPassword:(UIButton *)sender;

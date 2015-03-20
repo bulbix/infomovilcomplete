@@ -8,6 +8,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController">
             <connections>
                 <outlet property="boton" destination="Juy-4m-fqk" id="1nv-5S-xn7"/>
+                <outlet property="btnOlvidePass" destination="SHM-Kn-1sb" id="ktS-tY-VuB"/>
+                <outlet property="imgLogo" destination="mLM-rE-S56" id="KIt-M2-nET"/>
                 <outlet property="label" destination="Yam-Dn-cMF" id="uuT-i3-GoM"/>
                 <outlet property="o" destination="8Hn-Y8-rMi" id="k4O-hH-blI"/>
                 <outlet property="raya1" destination="zeC-2d-wsB" id="sg9-gT-6a3"/>
@@ -56,18 +58,8 @@
                                 <outlet property="delegate" destination="-1" id="1LL-wd-5pY"/>
                             </connections>
                         </textField>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Contraseña" minimumFontSize="17" id="sI3-Z4-eOe">
-                            <rect key="frame" x="20" y="306" width="280" height="47"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                            <textInputTraits key="textInputTraits" returnKeyType="send" secureTextEntry="YES"/>
-                            <connections>
-                                <outlet property="delegate" destination="-1" id="Jcn-k0-5hZ"/>
-                            </connections>
-                        </textField>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¿Olvidaste tu contraseña?" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Yam-Dn-cMF">
-                            <rect key="frame" x="135" y="364" width="165" height="21"/>
+                            <rect key="frame" x="135" y="360" width="165" height="31"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -84,10 +76,6 @@
                                 <action selector="cambiarPassword:" destination="-1" eventType="touchUpInside" id="XP1-uQ-VZc"/>
                             </connections>
                         </button>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoRegistrado.png" id="T9d-Eq-dSB">
-                            <rect key="frame" x="27" y="61" width="267" height="49"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                        </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zeC-2d-wsB">
                             <rect key="frame" x="20" y="214" width="122" height="2"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
@@ -133,6 +121,20 @@
                                 <action selector="recordarLoginAct2:" destination="-1" eventType="touchUpInside" id="9Ap-yL-ELS"/>
                             </connections>
                         </button>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Contraseña" minimumFontSize="17" id="sI3-Z4-eOe">
+                            <rect key="frame" x="20" y="305" width="280" height="47"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="send" secureTextEntry="YES"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="Jcn-k0-5hZ"/>
+                            </connections>
+                        </textField>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoRegistrado.png" id="mLM-rE-S56">
+                            <rect key="frame" x="33" y="55" width="267" height="49"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                        </imageView>
                     </subviews>
                     <connections>
                         <outlet property="delegate" destination="-1" id="4wz-W4-x6z"/>

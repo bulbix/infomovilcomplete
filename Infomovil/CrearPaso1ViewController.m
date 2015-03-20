@@ -26,7 +26,7 @@
 #import "NombrarViewController.h"
 #import "AppsFlyerTracker.h"
 #import "AppDelegate.h"
-#import "VistaPreviaViewController.h"
+
 
 @interface CrearPaso1ViewController (){
 	AlertView * alertaVideo;

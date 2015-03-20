@@ -269,15 +269,21 @@
     UIImageView *imagenBarra = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 20)];
     [imagenBarra setImage:[UIImage imageNamed:@"sbarnuevo.png"]];
     [self.view addSubview:imagenBarra];
-    [self.vistaCircular setFrame:CGRectMake(27, 52, 267, 49)];
+    if(IS_STANDARD_IPHONE_6_PLUS){
+        [self.vistaCircular setFrame:CGRectMake(84, 58, 267, 49)];
+    }else if(IS_STANDARD_IPHONE_6){
+         [self.vistaCircular setFrame:CGRectMake(64, 58, 267, 49)];
+    }else{
+         [self.vistaCircular setFrame:CGRectMake(27, 58, 267, 49)];
+    }
     [self.vistaCircular setImage:[UIImage imageNamed:@"logoRegistrado.png"]];
+   
 }
 
 -(void) mostrarLogo6 {
     [self.navigationController.navigationBar setTintColor:[UIColor redColor]];
     
     [self.vistaCircular setFrame:CGRectMake(27, 52, 267, 49)];
-    //    [self.vistaCircular setImage:[UIImage imageNamed:@"logonuevo.png"]];
     [self.vistaCircular setImage:[UIImage imageNamed:@"logoRegistrado.png"]];
 }
 
@@ -291,9 +297,9 @@
     UIColor *colorSombra = [UIColor whiteColor];
     
     NSDictionary *atributos = @{
-                                UITextAttributeFont: fuente,
-                                UITextAttributeTextColor: colorTexto,
-                                UITextAttributeTextShadowColor: colorSombra,
+                                NSFontAttributeName: fuente,
+                                NSForegroundColorAttributeName: colorTexto,
+                                NSShadowAttributeName: colorSombra,
                                 };
     
     [self.navigationController.navigationBar setTitleTextAttributes:atributos];
@@ -311,9 +317,9 @@
     UIColor *colorSombra = [UIColor whiteColor];
     
     NSDictionary *atributos = @{
-                                UITextAttributeFont: fuente,
-                                UITextAttributeTextColor: colorTexto,
-                                UITextAttributeTextShadowColor: colorSombra,
+                                NSFontAttributeName: fuente,
+                                NSForegroundColorAttributeName: colorTexto,
+                                NSShadowAttributeName: colorSombra,
                                 };
     
     [self.navigationController.navigationBar setTitleTextAttributes:atributos];
@@ -344,8 +350,8 @@
     UIFont *fuente = [UIFont fontWithName:@"Avenir-Heavy" size:19];
     UIColor *colorTexto = [UIColor whiteColor];
     NSDictionary *atributos = @{
-                                UITextAttributeFont: fuente,
-                                UITextAttributeTextColor: colorTexto,
+                                NSFontAttributeName: fuente,
+                                NSForegroundColorAttributeName: colorTexto,
                                 };
     
     [self.navigationController.navigationBar setTitleTextAttributes:atributos];

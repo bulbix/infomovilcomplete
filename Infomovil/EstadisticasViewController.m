@@ -52,17 +52,21 @@
     if(IS_STANDARD_IPHONE_6_PLUS){
         [self.botonCambioEstadisticas setFrame:CGRectMake(20, 570, 280, 29)];
     }
-    else{
+    else if(IS_STANDARD_IPHONE_6){
+        
+    }else if(IS_IPHONE_5){
+        [self.botonCambioEstadisticas setFrame:CGRectMake(20, 375, 280, 29)];
+    }else{
         [self.botonCambioEstadisticas setFrame:CGRectMake(20, 320, 280, 29)];
     }
     
 
     NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
-                                [UIFont fontWithName:@"Avenir-Book" size:12], UITextAttributeFont, nil];
+                                [UIFont fontWithName:@"Avenir-Book" size:12], NSFontAttributeName, nil];
     [self.botonCambioEstadisticas setTitleTextAttributes:attributes forState:UIControlStateNormal];
     
     NSDictionary *highlightedAttributes = [NSDictionary
-                                           dictionaryWithObject:[UIColor whiteColor] forKey:UITextAttributeTextColor];
+                                           dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
     [self.botonCambioEstadisticas setTitleTextAttributes:highlightedAttributes forState:UIControlStateHighlighted];
     botonPulsado = 0;
     opcionConsulta = 2;

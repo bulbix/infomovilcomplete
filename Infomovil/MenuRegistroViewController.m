@@ -50,6 +50,8 @@
 {
     [super viewDidLoad];
     
+    [self mostrarLogo];
+    
     FBLoginView *loginView = [[FBLoginView alloc] init];
     loginView.delegate = self;
     loginView.readPermissions = @[@"public_profile", @"email"];
@@ -58,6 +60,15 @@
         self.raya1.frame = CGRectMake(20, 224, 155, 2);
         self.o.frame = CGRectMake(178, 216, 155, 20);
         self.raya2.frame = CGRectMake(195, 224, 155, 2);
+  
+    }else if(IS_STANDARD_IPHONE_6_PLUS){
+            loginView.frame = CGRectMake(20, 180, 375, 55);
+            self.raya1.frame = CGRectMake(20, 280, 175, 2);
+            self.o.frame = CGRectMake(199, 272, 40, 20);
+            self.raya2.frame = CGRectMake(215, 280, 175, 2);
+        
+            self.llamarCrearCuenta.frame = CGRectMake(21, 326, 278, 53);
+            self.msjRegistrarConFacebook.frame = CGRectMake(20, 426, 280, 80);
         
     }else{
         loginView.frame = CGRectMake(20, 130, 280, 55);
@@ -69,17 +80,15 @@
         if ([obj isKindOfClass:[UIButton class]])
         {
             UIButton * loginButton =  obj;
-            if(IS_STANDARD_IPHONE_6){
-                loginButton.frame =CGRectMake(0,0, 1000, 55);
-                
-            }else{
-                loginButton.frame =CGRectMake(0,0, 280, 55);
-            }
             UIImage *loginImage;
             if(IS_STANDARD_IPHONE_6){
-                loginImage = [UIImage imageNamed:@"btn_RegistroFacebook_copia.png"];
-                
+                loginButton.frame =CGRectMake(0,0, 335, 55);
+                loginImage = [UIImage imageNamed:@"btn_RegistroFacebook_6iPhone.png"];
+            }else if (IS_STANDARD_IPHONE_6_PLUS){
+                loginButton.frame =CGRectMake(0,0, 375, 55);
+                loginImage = [UIImage imageNamed:@"btn_RegistroFacebook_6iphonePlus.png"];
             }else{
+                loginButton.frame =CGRectMake(0,0, 280, 55);
                 loginImage = [UIImage imageNamed:@"btn_RegistroFacebook.png"];
             }
             [loginButton setBackgroundImage:loginImage forState:UIControlStateNormal];
@@ -99,6 +108,9 @@
             if(IS_STANDARD_IPHONE_6){
                 loginLabel.frame =CGRectMake(15,6, 335, 45);
                 
+            }else if(IS_STANDARD_IPHONE_6_PLUS){
+                loginLabel.frame =CGRectMake(25,6, 375, 45);
+                
             }else{
                 loginLabel.frame =CGRectMake(15,6, 280, 45);
             }
@@ -108,8 +120,7 @@
     }
     
     [self.view addSubview:loginView];
-    
-  
+   
     
   
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -166,7 +177,7 @@
     
     [self.vistaInferior setHidden:YES];
     
-    
+   // [self.view addSubview:self.imgLogo];
     
     
    
@@ -199,10 +210,6 @@
     [UIView animateWithDuration:0.4f animations:^{
         [self.labelInfo setFrame:CGRectMake(284, 600, 33, 21)];
     }];
-   
-    
-   
-    
     
     [self desapareceElTeclado];
 }

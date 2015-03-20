@@ -43,17 +43,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    if(self.navigationController.navigationBar.hidden == NO){
-        [self.navigationController.navigationBar setHidden:YES];
-    }
+  
     
     [self.vistaInferior setHidden:YES];
 	
 	if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
 		self.leyenda1.frame = CGRectMake(47, 510, 200, 21);
-		
-		
 		self.leyenda3.frame = CGRectMake(45, 532, 28, 21);
         if(IS_STANDARD_IPHONE_6){
             self.leyenda4.frame = CGRectMake(90, 533, 144, 21);
@@ -80,9 +75,7 @@
     if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
         [self mostrarLogo];
     }
-    else {
-        [self mostrarLogo6];
-    }
+    
     
 }
 
@@ -142,16 +135,35 @@
         self.conoceMasPlay.frame = CGRectMake(120, 375, 35, 35);
         self.botonPruebalos.frame = CGRectMake(35, 220, 305, 55);
         self.botonSesions.frame = CGRectMake(35, 290, 305, 55);
-        NSLog(@"el boton pruebalo es: %f", self.botonPruebalos.frame.origin.y);
         self.label.frame = CGRectMake(30, 118, 315, 97);
+        
+        if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
+            self.leyenda1.frame = CGRectMake(74, 510, 200, 21);
+            self.leyenda2.frame = CGRectMake(244, 511, 80, 21);
+            
+        }else{
+            self.leyenda1.frame = CGRectMake(50, 510, 200, 21);
+            self.leyenda2.frame = CGRectMake(220, 511, 80, 21);
+            
+        }
+        self.leyenda3.frame = CGRectMake(70, 532, 28, 21);
+        self.leyenda4.frame = CGRectMake(90, 533, 144, 21);
+        self.leyenda5.frame = CGRectMake(216,532, 83, 21);
         
     }
     //MBC
     else if(IS_STANDARD_IPHONE_6_PLUS){
         self.label.frame = CGRectMake(50, 118, 315, 97);
         self.conoceMas.frame = CGRectMake(190, 420, 143 , 30);
-        self.leyenda1.frame = CGRectMake(70, 510, 200, 21);
-        self.leyenda2.frame = CGRectMake(240, 511, 80, 21);
+       if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
+           self.leyenda1.frame = CGRectMake(94, 510, 200, 21);
+           self.leyenda2.frame = CGRectMake(264, 511, 80, 21);
+           
+       }else{
+           self.leyenda1.frame = CGRectMake(70, 510, 200, 21);
+           self.leyenda2.frame = CGRectMake(240, 511, 80, 21);
+       
+       }
         self.leyenda3.frame = CGRectMake(90, 532, 28, 21);
         self.leyenda4.frame = CGRectMake(110, 533, 144, 21);
         self.leyenda5.frame = CGRectMake(236,532, 83, 21);

@@ -39,13 +39,13 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
    
-    
+   
     // Lo guardo como default para utilizarlo en appboy
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:launchOptions forKey:@"launchingWithOptions"];
     [defaults synchronize];
    
-    
+   /*
     
     //AppsFlyer
     [AppsFlyerTracker sharedTracker].appsFlyerDevKey = @"5KoF92vzAFbhSj9PRduNCn";
@@ -60,7 +60,7 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
     [[BITHockeyManager sharedHockeyManager] startManager];
     [[BITHockeyManager sharedHockeyManager].authenticator
      authenticateInstallation];
-    
+    */
    
     
     //-- Set Notification

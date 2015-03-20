@@ -91,6 +91,11 @@
 	}else{
 		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"contacto", @" ") nombreImagen:@"NBverde.png"];
 	}
+    
+    if(IS_STANDARD_IPHONE_6){
+        self.txtTelefono.frame = CGRectMake(20, 120, 335, 30);
+    }
+    
 }
 
 -(void) acomodaVista {

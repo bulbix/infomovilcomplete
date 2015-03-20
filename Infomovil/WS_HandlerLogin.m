@@ -464,6 +464,17 @@
     else if ([elementName isEqualToString:@"statusVisible"]) {
         self.currentElementString = [[NSMutableString alloc] init];
     }
+    else if ([elementName isEqualToString:@"displayString"]) {
+       self.currentElementString = [[NSMutableString alloc] init];
+    }
+    else if ([elementName isEqualToString:@"typeImage"]) {
+       self.currentElementString = [[NSMutableString alloc] init];
+    }
+    else if ([elementName isEqualToString:@"descripcionImagen"]) {
+        self.galeria = [[GaleriaImagenes alloc] init];
+        self.currentElementString = [[NSMutableString alloc] init];
+        
+    }
 }
 
 
@@ -662,6 +673,7 @@
             }
         }
         else {
+           
             [self.arregloImagenes addObject:self.galeria];
             [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:8 withObject:@YES];
         }
@@ -700,6 +712,7 @@
                 [dataImagen writeToFile:filePath atomically:YES];
                 [self.galeria setRutaImagen:filePath];
                 guardarLogo = YES;
+                NSLog(@"LA IMAGEN ES LOGO Y ESTA EN IMAGENCLOBGALERIA");
             }
         }
         else {

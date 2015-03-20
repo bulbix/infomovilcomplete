@@ -28,14 +28,6 @@
 - (IBAction)verificarNombre:(UIButton *)sender;
 //- (IBAction)seleccionaCodigoPais:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *msjRegistrarConFacebook;
-
-
-
-
-
-
-
-
 @property (weak, nonatomic) IBOutlet UIButton *llamarCrearCuenta;
 - (IBAction)llamarCrearCuentaAct:(id)sender;
 

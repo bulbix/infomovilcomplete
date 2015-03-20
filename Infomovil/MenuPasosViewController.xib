@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
@@ -14,6 +14,9 @@
                 <outlet property="botonPublicar" destination="62k-ps-wSC" id="lvZ-ly-Snm"/>
                 <outlet property="dominio" destination="seu-Of-MKT" id="tb3-Gq-cx2"/>
                 <outlet property="inicioRapidobtn" destination="h28-rV-Yfl" id="T7A-Yi-pLg"/>
+                <outlet property="line1" destination="B5R-qe-Ovh" id="Bk2-eF-xSf"/>
+                <outlet property="line2" destination="xLU-3N-TTh" id="QHu-yx-ZJB"/>
+                <outlet property="line3" destination="f7I-mn-zdJ" id="b8I-nI-w88"/>
                 <outlet property="verTutorialbtn" destination="XkS-n1-KKW" id="Xyg-bv-kQv"/>
                 <outlet property="view" destination="1" id="3"/>
                 <outlet property="viewDominioNoPublicado" destination="FOQ-cL-Bu6" id="daQ-HA-aki"/>
@@ -37,6 +40,19 @@
                         <action selector="elegirPlantilla:" destination="-1" eventType="touchUpInside" id="lKe-Vw-IJs"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jgz-8d-to5">
+                    <rect key="frame" x="25" y="123" width="270" height="53"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <state key="normal">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="crearEditar:" destination="-1" eventType="touchUpInside" id="iO7-c0-TUx"/>
+                    </connections>
+                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="62k-ps-wSC">
                     <rect key="frame" x="25" y="209" width="270" height="53"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -52,19 +68,19 @@
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="linea.png" id="B5R-qe-Ovh">
                     <rect key="frame" x="20" y="105" width="280" height="3"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="linea.png" id="xLU-3N-TTh">
                     <rect key="frame" x="20" y="191" width="280" height="3"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="linea.png" id="f7I-mn-zdJ">
                     <rect key="frame" x="20" y="277" width="280" height="3"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="seu-Of-MKT">
                     <rect key="frame" x="0.0" y="4" width="320" height="34"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                     <state key="normal">
                         <color key="titleColor" red="0.18431372549019609" green="0.63921568627450975" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -74,26 +90,13 @@
                         <action selector="IrAlDominio:" destination="-1" eventType="touchUpInside" id="vdB-Ak-Mfg"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jgz-8d-to5">
-                    <rect key="frame" x="25" y="123" width="270" height="53"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <state key="normal">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="crearEditar:" destination="-1" eventType="touchUpInside" id="iO7-c0-TUx"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
         <view contentMode="scaleToFill" id="3QU-jK-pIY">
             <rect key="frame" x="0.0" y="0.0" width="320" height="53"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="xLT-3j-I3g">
                     <rect key="frame" x="60" y="9" width="200" height="35"/>
@@ -114,11 +117,11 @@
             <point key="canvasLocation" x="139" y="509.5"/>
         </view>
         <view contentMode="scaleToFill" id="FOQ-cL-Bu6">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <rect key="frame" x="0.0" y="4" width="320" height="86"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="h28-rV-Yfl">
-                    <rect key="frame" x="20" y="4" width="280" height="35"/>
+                    <rect key="frame" x="20" y="0.0" width="280" height="35"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.57647058823529407" green="0.34509803921568627" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
@@ -131,7 +134,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="XkS-n1-KKW">
-                    <rect key="frame" x="20" y="52" width="137" height="35"/>
+                    <rect key="frame" x="20" y="48" width="137" height="35"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.41568627450980389" green="0.24705882352941178" blue="0.56470588235294117" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
@@ -144,7 +147,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="8mg-1g-6ty">
-                    <rect key="frame" x="163" y="52" width="137" height="35"/>
+                    <rect key="frame" x="163" y="48" width="137" height="35"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.41568627450980389" green="0.24705882352941178" blue="0.56470588235294117" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
@@ -158,7 +161,7 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="139" y="632"/>
+            <point key="canvasLocation" x="139" y="634"/>
         </view>
     </objects>
     <resources>

@@ -27,6 +27,7 @@
 @property (strong, nonatomic) IBOutlet UIView *vistaPais;
 @property (weak, nonatomic) IBOutlet UILabel *labelNumeroMovil;
 
+
 @property (strong, nonatomic) IBOutlet UILabel *label1;
 @property (strong, nonatomic) IBOutlet UILabel *label2;
 //@property (strong, nonatomic) IBOutlet UILabel *label3;

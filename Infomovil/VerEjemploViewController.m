@@ -56,6 +56,18 @@
     
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    //MBC
+    if(IS_STANDARD_IPHONE_6){
+        [self.webView setFrame:CGRectMake(0, 0, 375, 667)];
+    }
+    else if(IS_STANDARD_IPHONE_6_PLUS){
+        [self.webView setFrame:CGRectMake(0, 0, 420, 680)];
+    }
+    
+    
+}
+
 -(IBAction)regresar:(id)sender {
     self.pagCargada = NO;
     [self.navigationController popViewControllerAnimated:YES];

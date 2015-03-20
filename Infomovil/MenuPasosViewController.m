@@ -56,6 +56,7 @@
         self.inicioRapidobtn.frame = CGRectMake(50, 24, 280, 35);
         self.verTutorialbtn.frame = CGRectMake(50, 72, 137, 35);
         self.botonEjemplo.frame = CGRectMake(193, 72, 137, 35);
+        self.dominio.frame = CGRectMake(0, 4, 375, 34);
     }
     else if(IS_STANDARD_IPHONE_6_PLUS){
         self.botonFondo.frame = CGRectMake(70, 46, 270, 53);
@@ -65,6 +66,10 @@
         self.inicioRapidobtn.frame = CGRectMake(70, 24, 280, 35);
         self.verTutorialbtn.frame = CGRectMake(70, 72, 137, 35);
         self.botonEjemplo.frame = CGRectMake(213, 72, 137, 35);
+        self.line1.frame = CGRectMake(70, 105, 280, 3);
+        self.line2.frame = CGRectMake(70, 191, 280, 3);
+        self.line3.frame = CGRectMake(70, 277, 280, 3);
+        self.dominio.frame = CGRectMake(0, 4, 420, 34);
     }
 	
     self.datosUsuario				= [DatosUsuario sharedInstance];
@@ -198,6 +203,11 @@
             
             if(IS_IPHONE5){
                 self.viewDominioPublicado.frame = CGRectMake(0, 320, 320, 90);
+            }else if (IS_STANDARD_IPHONE_6_PLUS){
+                self.viewDominioPublicado.frame = CGRectMake(0, 100, 320, 90);
+            }else if(IS_STANDARD_IPHONE_6){
+
+                
             }else{
                 self.viewDominioPublicado.frame = CGRectMake(0, 300, 320, 90);
             }
@@ -209,6 +219,11 @@
             self.dominio.hidden = YES;
             if(IS_IPHONE5){
                 self.viewDominioNoPublicado.frame = CGRectMake(0, 310, 320, 90);
+            }else if (IS_STANDARD_IPHONE_6_PLUS){
+                self.viewDominioNoPublicado.frame = CGRectMake(0, 320, 320, 90);
+            }else if(IS_STANDARD_IPHONE_6){
+                self.viewDominioNoPublicado.frame = CGRectMake(0, 320, 320, 90);
+                
             }else{
                 self.viewDominioNoPublicado.frame = CGRectMake(0, 280, 320, 90);
             }
@@ -281,11 +296,10 @@
 
 - (IBAction)crearEditar:(UIButton *)sender {
     self.datosUsuario = [DatosUsuario sharedInstance];
-    /*
-#ifdef _DEBUG
+
 	self.datosUsuario.eligioTemplate = YES;
-#endif
-     */
+
+    
     if (self.datosUsuario.eligioTemplate) {
         CrearPaso1ViewController *crear = [[CrearPaso1ViewController alloc] initWithNibName:@"CrearPaso1ViewController" bundle:nil];
         [self.navigationController pushViewController:crear animated:YES];

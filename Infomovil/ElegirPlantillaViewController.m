@@ -94,7 +94,17 @@ BOOL actualizo;
     for (int i=0; i<5; i++) {
        PlantillaViewController *pController = [[PlantillaViewController alloc] initWithNibName:@"Plantilla" bundle:[NSBundle mainBundle]];
         UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"template%i",i+1]];
-        pController.view.frame = CGRectMake(320*i, 0, 320, 480);
+        
+        if(IS_STANDARD_IPHONE_6){
+            pController.view.frame = CGRectMake(375*i, 0, 375, 480);
+        }else if(IS_STANDARD_IPHONE_6_PLUS){
+            pController.view.frame = CGRectMake(540*i, 0, 540, 480);
+        }else{
+            pController.view.frame = CGRectMake(320*i, 0, 320, 480);
+        }
+        
+        
+        
         [pController.imgTemplate setImage:image];
        
         if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
@@ -130,11 +140,36 @@ BOOL actualizo;
             pController.nombrePlantilla.frame = CGRectMake(77, 365, 84, 21);
             pController.btnVerEjemploPlantilla.frame = CGRectMake(201, 361, 97, 25);
             pController.descripcionPlantilla.frame = CGRectMake(20, 386, 280, 67);
+        }else if(IS_STANDARD_IPHONE_6){
+            pController.btnTemplateSeleccionado.frame = CGRectMake(40, 320, 36, 37);
+            pController.etiquetaEstatica.frame = CGRectMake(40, 365, 52, 21);
+            pController.nombrePlantilla.frame = CGRectMake(90, 365, 84, 21);
+            pController.btnVerEjemploPlantilla.frame = CGRectMake(231, 361, 97, 25);
+            pController.descripcionPlantilla.frame = CGRectMake(40, 386, 280, 67);
+            pController.imgTemplate.frame = CGRectMake(40, 0, 280, 315);
+            pController.imgBullets.frame = CGRectMake(100, 480, 176, 13);
+        }else if(IS_STANDARD_IPHONE_6_PLUS){
+            pController.btnTemplateSeleccionado.frame = CGRectMake(70, 320, 36, 37);
+            pController.etiquetaEstatica.frame = CGRectMake(70, 365, 52, 21);
+            pController.nombrePlantilla.frame = CGRectMake(127, 365, 84, 21);
+            pController.btnVerEjemploPlantilla.frame = CGRectMake(241, 361, 97, 25);
+            pController.descripcionPlantilla.frame = CGRectMake(70, 386, 280, 67);
+            pController.imgTemplate.frame = CGRectMake(70, 0, 300, 320);
+            pController.imgBullets.frame = CGRectMake(122, 480, 176, 13);
         }
+        
+        
         
         [self.scrollTemplate addSubview:pController.view];
     }
    
+    if(IS_STANDARD_IPHONE_6){
+        self.scrollTemplate.frame = CGRectMake(0, 0, 375, 667);
+    }else if(IS_STANDARD_IPHONE_6_PLUS){
+        self.scrollTemplate.frame = CGRectMake(0, 30, 540, 960);
+    }
+    
+    
      [self.scrollTemplate setContentSize:CGSizeMake(self.scrollTemplate.frame.size.width*5, self.scrollTemplate.frame.size.height)];
   //  [NSTimer scheduledTimerWithTimeInterval:6000 target:self selector:@selector(scrollingTimer) userInfo:nil repeats:YES];
 }

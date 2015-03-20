@@ -209,7 +209,7 @@
 }
 
 -(IBAction)mostrarWeb:(id)sender {
-    VistaPreviaWebViewController *vistaPrevia = [[VistaPreviaWebViewController alloc] initWithNibName:@"VistaPreviaViewController" bundle:Nil];
+    VistaPreviaWebViewController *vistaPrevia = [[VistaPreviaWebViewController alloc] initWithNibName:@"VistaPreviaWeb" bundle:Nil];
     [self.navigationController pushViewController:vistaPrevia animated:YES];
 }
 

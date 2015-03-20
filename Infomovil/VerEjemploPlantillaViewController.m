@@ -82,6 +82,12 @@
 
     self.vistaInferior.hidden=YES;
     
+    if(IS_STANDARD_IPHONE_6_PLUS){
+        [self.webView setFrame:CGRectMake(0, 0, 415, 760)];
+    }else if(IS_STANDARD_IPHONE_6){
+        [self.webView setFrame:CGRectMake(0, 0, 375, 620)];
+    }
+    
 }
 
 -(IBAction)regresar:(id)sender {

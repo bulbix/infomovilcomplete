@@ -51,13 +51,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
- /*
-	if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
-		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"registro", @" ") nombreImagen:@"barramorada.png"];
-	}else{
-		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"registro", @" ") nombreImagen:@"NBlila.png"];
-	}
-  */
+
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(apareceElTeclado:)
                                                  name:UIKeyboardWillShowNotification
@@ -74,7 +68,15 @@
 
     self.navigationItem.rightBarButtonItem = Nil;
     
-    [self.scrollView setContentSize:CGSizeMake(320, 380)];
+    if(IS_STANDARD_IPHONE_6_PLUS){
+         [self.scrollView setContentSize:CGSizeMake(375, 667)];
+    }else if (IS_STANDARD_IPHONE_6_PLUS){
+         [self.scrollView setContentSize:CGSizeMake(540, 960)];
+    }else{
+        [self.scrollView setContentSize:CGSizeMake(320, 380)];
+    }
+    
+   
     
     self.txtNombre.layer.cornerRadius = 10.0f;
     
@@ -109,7 +111,7 @@
 		 bubbleButton1 = [[CRBubble alloc] initWithAttachedView:_txtContrasena title:@"Contraseña" description:@"Debe tener de 8 a 15 caracteres\n(letras y números)\nNo puede contener la palabra infomovil\nNo puede ser igual al correo" arrowPosition:CRArrowPositionBottom andColor:[UIColor whiteColor]];
 	}
    
-    
+   
 	
     
     NSMutableArray *bubbleArray = [[NSMutableArray alloc] initWithObjects:bubbleButton1, /*bubbleButton2,*/ nil];
@@ -129,6 +131,7 @@
         [self.txtContrasena setEnabled:NO];
     }
 
+   
     
     self.txtContrasena.placeholder = NSLocalizedString(@"contrasenaRegistrar", nil);
     self.txtContrasenaConfirmar.placeholder = NSLocalizedString(@"confirmarContrasena", nil);
@@ -147,6 +150,22 @@
     [self.view addSubview:botonRegresar];
     
     [self.vistaInferior setHidden:YES];
+    
+    
+    if(IS_STANDARD_IPHONE_6_PLUS){
+        [self.scrollView setContentSize:CGSizeMake(375, 667)];
+        
+    }else if (IS_STANDARD_IPHONE_6_PLUS){
+      
+        self.label2.frame = CGRectMake(300, 300, 400, 57);
+        self.txtNombre.frame = CGRectMake(70, 208, 380, 45);
+        self.txtContrasena.frame = CGRectMake(70, 270, 380, 45);
+        self.txtContrasenaConfirmar.frame = CGRectMake(70, 315, 380, 45);
+        self.boton.frame =  CGRectMake(70, 400, 280, 55);
+        
+    }else{
+        [self.scrollView setContentSize:CGSizeMake(320, 380)];
+    }
     
 }
 

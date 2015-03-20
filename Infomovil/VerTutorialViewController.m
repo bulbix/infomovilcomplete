@@ -20,16 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //MBC
-    if(IS_STANDARD_IPHONE_6){
-        [self.webView setFrame:CGRectMake(0, 0, 375, 667)];
-    }
-    else if(IS_STANDARD_IPHONE_6_PLUS){
-        [self.webView setFrame:CGRectMake(0, 0, 540, 960)];
-    }
-    else{
-        [self.webView setFrame:CGRectMake(0, 0, 320, 568)];
-    }
+   
     
     self.pagCargada = NO;
     // Do any additional setup after loading the view.
@@ -57,6 +48,22 @@
     [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
     
 }
+
+-(void)viewWillAppear:(BOOL)animated{
+    //MBC
+    if(IS_STANDARD_IPHONE_6){
+        [self.webView setFrame:CGRectMake(0, 0, 375, 667)];
+    }
+    else if(IS_STANDARD_IPHONE_6_PLUS){
+        [self.webView setFrame:CGRectMake(0, 0, 420, 680)];
+    }
+    else{
+        [self.webView setFrame:CGRectMake(0, 0, 320, 568)];
+    }
+
+}
+
+
 
 -(IBAction)regresar:(id)sender {
     self.pagCargada = NO;

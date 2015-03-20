@@ -49,6 +49,8 @@ typedef enum {
 
 @property (weak, nonatomic) id<GaleriaPaso2Delegate>delegadoGaleria;
 @property (strong, nonatomic) NSString *strImagenPath;
+@property (weak, nonatomic) IBOutlet UIImageView *imgBullet;
+@property (weak, nonatomic) IBOutlet UIImageView *imgBullet2;
 
 
 - (IBAction)tomarFoto:(UIButton *)sender;
