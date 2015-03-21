@@ -50,10 +50,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-//    [self.vistaCircular setImage:[UIImage imageNamed:@"plecaverde.png"]];
-//    [self.vistaCircular setImage:[UIImage imageNamed:@"plecacreasitio.png"]];
-//    [self.tituloVista setText:NSLocalizedString(@"anadirInformacion", @" ")];
+
 	if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
 		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"anadirInformacion", @" ") nombreImagen:@"barraverde.png"];
 	}else{
@@ -80,9 +77,9 @@
 	btextArea = NO;
 	btextField = NO;
 	
-
-	//[self.scroll setContentSize:CGSizeMake(3200, 4000)];
 }
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -107,6 +104,17 @@
 	}else{
 		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"anadirInformacion", @" ") nombreImagen:@"NBverde.png"];
 	}
+    
+
+    if(IS_STANDARD_IPHONE_6_PLUS){
+        
+    }else if(IS_STANDARD_IPHONE_6){
+        self.txtTitulo.frame = CGRectMake(20, 49, 335, 30 );
+        self.txtInfo.frame = CGRectMake(20, 124, 335, 128);
+    
+    }else{
+    
+    }
 }
 
 #pragma mark
@@ -124,38 +132,13 @@
     }else{
 		btextArea = YES;
 	}
-//    [UIView animateWithDuration:0.4f animations:^{
-//        [self.labelInfo setFrame:CGRectMake(284, 600, 33, 21)];
-//    }];
+
     [self ocultaContadorTexto];
 	[self desapareceElTeclado];
 }
 
 -(BOOL) textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
-//    self.modifico = YES;
-//    NSInteger maxLength = 255;
-//    NSInteger textoLength = [textView.text length];
-//    if (textoLength < maxLength && textoLength+[text length]<=255) {
-//        if ([text isEqualToString:@"<"] || [text isEqualToString:@">"]) {
-//            return NO;
-//        }
-//        else {
-//            if ([text isEqualToString:@""]) {
-//                [self.labelInfo setText:[NSString stringWithFormat:@"%i/%li", textoLength-[text length], (long)maxLength]];
-//            }
-//            else {
-//                [self.labelInfo setText:[NSString stringWithFormat:@"%i/%li", textoLength+[text length], (long)maxLength]];
-//            }
-//            return YES;
-//        }
-//    }
-//    else {
-//        if ([text isEqualToString:@""]) {
-//            [self.labelInfo setText:[NSString stringWithFormat:@"%i/%li", textoLength-1, (long)maxLength]];
-//            return YES;
-//        }
-//        return NO;
-//    }
+
     return [self shouldChangeText:text withLimit:400 forFinalLenght:[textView.text length] - range.length + [text length]];
 }
 
@@ -258,143 +241,7 @@
     }
 }
 
--(void) accionSi {
-//	/*if(editando && self.modifico && (btextField || btextArea)){
-//		((KeywordDataModel *)[self.datosUsuario.arregloInformacionAdicional objectAtIndex:self.index]).keywordField = [self.txtTitulo text];
-//		((KeywordDataModel *)[self.datosUsuario.arregloInformacionAdicional objectAtIndex:self.index]).keywordValue = [self.txtInfo text];
-//		
-//		if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion) {
-//			if ([CommonUtils hayConexion]) {
-//				[self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
-//				[self performSelectorInBackground:@selector(actualizarInformacion) withObject:Nil];
-//			}
-//			else {
-//				AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
-//				[alert show];
-//				[self revertirGuardado];
-//			}
-//		}
-//		else {
-//			[self.navigationController popViewControllerAnimated:YES];
-//		}
-//	}else if(self.modifico && (btextField || btextArea)){
-//	
-//		self.datosUsuario = [DatosUsuario sharedInstance];
-//		informacion = [[KeywordDataModel alloc] init];
-//		[informacion setKeywordField:[self.txtTitulo text]];
-//		if(btextArea){
-//			[informacion setKeywordValue:[self.txtInfo text]];
-//		}else{
-//			[informacion setKeywordValue:@" "];
-//		}
-//		[self.datosUsuario.arregloInformacionAdicional addObject:informacion];
-//		if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion) {
-//			if ([CommonUtils hayConexion]) {
-//				[self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
-//				[self performSelectorInBackground:@selector(actualizarInformacion) withObject:Nil];
-//			}
-//			else {
-//				AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
-//				[alert show];
-//				[self revertirGuardado];
-//			}
-//		}
-//		else {
-//			[self.navigationController popViewControllerAnimated:YES];
-//		}
-//	}*/
-//	[self.view endEditing:YES];
-//    self.datosUsuario = [DatosUsuario sharedInstance];
-//	
-//	if([self.txtTitulo.text isEqualToString:@""] && ![self.txtInfo.text isEqualToString:@""]){
-//        //[self.navigationController popViewControllerAnimated:YES];
-//		if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-//			AlertView *alert = [AlertView initWithDelegate:nil message:@"Enter any title" andAlertViewType:AlertViewTypeInfo];
-//			[alert show];
-//		}
-//        else if(![CommonUtils validaNoCaracteres:self.txtInfo.text]) {
-//            AlertView *alert = [AlertView initWithDelegate:nil message:@"No caracteres especiales" andAlertViewType:AlertViewTypeInfo];
-//            [alert show];
-//        }
-//        else{
-//			AlertView *alert = [AlertView initWithDelegate:nil message:@"Ingresa algun título" andAlertViewType:AlertViewTypeInfo];
-//			[alert show];
-//		}
-//    }
-//    else if(![CommonUtils validaNoCaracteres:self.txtTitulo.text]) {
-//        AlertView *alert = [AlertView initWithDelegate:nil message:NSLocalizedString(@"noEspeciales", @"") andAlertViewType:AlertViewTypeInfo];
-//        [alert show];
-//    }
-//	else if(![self.txtTitulo.text isEqualToString:@""] && [self.txtInfo.text isEqualToString:@""]){
-//        //[self.navigationController popViewControllerAnimated:YES];
-//		if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-//			AlertView *alert = [AlertView initWithDelegate:nil message:@"Enter any information" andAlertViewType:AlertViewTypeInfo];
-//			[alert show];
-//		}else{
-//			AlertView *alert = [AlertView initWithDelegate:nil message:@"Ingresa alguna información" andAlertViewType:AlertViewTypeInfo];
-//			[alert show];
-//		}
-//    }
-//	else if(editando && self.modifico && (btextField || btextArea)){
-//		((KeywordDataModel *)[self.datosUsuario.arregloInformacionAdicional objectAtIndex:self.index]).keywordField = [self.txtTitulo text];
-//		((KeywordDataModel *)[self.datosUsuario.arregloInformacionAdicional objectAtIndex:self.index]).keywordValue = [self.txtInfo text];
-//		NSLog(@"Aqui");
-//		if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion) {
-//			NSLog(@"Aqui2");
-//			if ([CommonUtils hayConexion]) {
-//				[self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
-//				[self performSelectorInBackground:@selector(actualizarInformacion) withObject:Nil];
-//			}
-//			else {
-//				AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
-//				[alert show];
-//				[self revertirGuardado];
-//			}
-//		}
-//		else {
-//			[self.navigationController popViewControllerAnimated:YES];
-//		}
-//	}else if (self.modifico && (btextField || btextArea)) {
-//		NSLog(@"Aqui3");
-//        informacion = [[KeywordDataModel alloc] init];
-//        [informacion setKeywordField:[self.txtTitulo text]];
-//		if(btextArea){
-//			[informacion setKeywordValue:[self.txtInfo text]];
-//		}else{
-//			[informacion setKeywordValue:@" "];
-//		}
-//        [self.datosUsuario.arregloInformacionAdicional addObject:informacion];
-//        self.modifico = NO;
-//        if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion) {
-//            if ([CommonUtils hayConexion]) {
-//                [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
-//                [self performSelectorInBackground:@selector(actualizarInformacion) withObject:Nil];
-//            }
-//            else {
-//                AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
-//                [alert show];
-//				[self revertirGuardado];
-//            }
-//        }
-//        else {
-//            [self.navigationController popViewControllerAnimated:YES];
-//        }
-//    }
-//    else if([self.txtTitulo.text isEqualToString:@""] || [self.txtInfo.text isEqualToString:@""]){
-//        //[self.navigationController popViewControllerAnimated:YES];
-//		if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-//			AlertView *alert = [AlertView initWithDelegate:nil message:@"Enter any information" andAlertViewType:AlertViewTypeInfo];
-//			[alert show];
-//		}else{
-//			AlertView *alert = [AlertView initWithDelegate:nil message:@"Ingresa alguna información" andAlertViewType:AlertViewTypeInfo];
-//			[alert show];
-//		}
-//    }
-//	else{
-//		[self.navigationController popViewControllerAnimated:YES];
-//		
-//	}
-    if (estaBorrando) {
+-(void) accionSi {    if (estaBorrando) {
         self.datosUsuario = [DatosUsuario sharedInstance];
         arregloInformacionAux = [[NSMutableArray alloc] initWithCapacity:[self.datosUsuario.arregloInformacionAdicional count]];
         for (KeywordDataModel *keyData in self.datosUsuario.arregloInformacionAdicional) {
@@ -406,7 +253,6 @@
             [arregloInformacionAux addObject:keyAux];
         }
         idKeyword = [[arregloInformacionAux objectAtIndex:self.index] idKeyword];
-//        [arregloInformacionAux removeObjectAtIndex:self.index];
         if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion) {
             estaBorrando = YES;
             if ([CommonUtils hayConexion]) {
@@ -592,7 +438,6 @@
     self.datosUsuario = [DatosUsuario sharedInstance];
 	
 	if([self.txtTitulo.text isEqualToString:@""] && ![self.txtInfo.text isEqualToString:@""]){
-        //[self.navigationController popViewControllerAnimated:YES];
 		if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
 			AlertView *alert = [AlertView initWithDelegate:nil message:@"Enter any title" andAlertViewType:AlertViewTypeInfo];
 			[alert show];
@@ -602,12 +447,8 @@
 			[alert show];
 		}
     }
-//    else if(![CommonUtils validaNoCaracteres:self.txtTitulo.text]) {
-//        AlertView *alert = [AlertView initWithDelegate:nil message:NSLocalizedString(@"noEspeciales", @"") andAlertViewType:AlertViewTypeInfo];
-//        [alert show];
-//    }
+
 	else if(![self.txtTitulo.text isEqualToString:@""] && [self.txtInfo.text isEqualToString:@""]){
-        //[self.navigationController popViewControllerAnimated:YES];
 		if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
 			AlertView *alert = [AlertView initWithDelegate:nil message:@"Enter any information" andAlertViewType:AlertViewTypeInfo];
 			[alert show];
@@ -617,7 +458,6 @@
 		}
     }
 	else if(editando && self.modifico && (btextField || btextArea)){
-//        arregloInformacionAux =
         arregloInformacionAux = [[NSMutableArray alloc] initWithCapacity:[self.datosUsuario.arregloInformacionAdicional count]];
         for (KeywordDataModel *keyData in self.datosUsuario.arregloInformacionAdicional) {
             KeywordDataModel *keyAux = [[KeywordDataModel alloc] init];
@@ -681,7 +521,6 @@
         }
     }
     else if([self.txtTitulo.text isEqualToString:@""] || [self.txtInfo.text isEqualToString:@""]){
-        //[self.navigationController popViewControllerAnimated:YES];
 		if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
 			AlertView *alert = [AlertView initWithDelegate:nil message:@"Enter any information" andAlertViewType:AlertViewTypeInfo];
 			[alert show];

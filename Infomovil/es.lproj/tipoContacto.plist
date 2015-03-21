@@ -4,7 +4,7 @@
 <array>
 	<dict>
 		<key>ejemplo</key>
-		<string>Teléfono</string>
+		<string> Teléfono</string>
 		<key>mensaje</key>
 		<string>Número Telefónico</string>
 		<key>expresion</key>
@@ -20,7 +20,7 @@
 	</dict>
 	<dict>
 		<key>ejemplo</key>
-		<string>Teléfono</string>
+		<string> Teléfono</string>
 		<key>mensaje</key>
 		<string>Número Telefónico</string>
 		<key>expresion</key>
@@ -36,7 +36,7 @@
 	</dict>
 	<dict>
 		<key>ejemplo</key>
-		<string>Teléfono</string>
+		<string> Teléfono</string>
 		<key>mensaje</key>
 		<string>Número Telefónico</string>
 		<key>expresion</key>
@@ -68,7 +68,7 @@
 	</dict>
 	<dict>
 		<key>ejemplo</key>
-		<string>Teléfono</string>
+		<string> Teléfono</string>
 		<key>mensaje</key>
 		<string>Número Fax</string>
 		<key>expresion</key>
@@ -84,7 +84,7 @@
 	</dict>
 	<dict>
 		<key>ejemplo</key>
-		<string>www.facebook.com/tufanpage</string>
+		<string> www.facebook.com/tufanpage</string>
 		<key>mensaje</key>
 		<string>Liga a tu cuenta de facebook</string>
 		<key>expresion</key>
@@ -100,7 +100,7 @@
 	</dict>
 	<dict>
 		<key>ejemplo</key>
-		<string>www.twitter.com/tucuenta</string>
+		<string> www.twitter.com/tucuenta</string>
 		<key>mensaje</key>
 		<string>Liga a tu cuenta de twitter</string>
 		<key>expresion</key>
@@ -116,7 +116,7 @@
 	</dict>
 	<dict>
 		<key>ejemplo</key>
-		<string>plus.google.com/tucuenta</string>
+		<string> plus.google.com/tucuenta</string>
 		<key>mensaje</key>
 		<string>Liga a tu cuenta de google +</string>
 		<key>expresion</key>
@@ -132,7 +132,7 @@
 	</dict>
 	<dict>
 		<key>ejemplo</key>
-		<string>tucuenta</string>
+		<string> tucuenta</string>
 		<key>mensaje</key>
 		<string>Liga a tu cuenta de skype</string>
 		<key>expresion</key>
@@ -148,7 +148,7 @@
 	</dict>
 	<dict>
 		<key>ejemplo</key>
-		<string>www.linkedin.com/tuempresa</string>
+		<string> www.linkedin.com/tuempresa</string>
 		<key>mensaje</key>
 		<string>Liga a tu cuenta de LinkedIn</string>
 		<key>expresion</key>
@@ -164,7 +164,7 @@
 	</dict>
 	<dict>
 		<key>ejemplo</key>
-		<string>www.infomovil.com</string>
+		<string> www.infomovil.com</string>
 		<key>mensaje</key>
 		<string>Liga a tu sitio web</string>
 		<key>expresion</key>

@@ -49,14 +49,17 @@
     
     //MBC
     if(IS_STANDARD_IPHONE_6){
-        self.botonFondo.frame = CGRectMake(45, 28, 270, 53);
-        self.botonCrear.frame = CGRectMake(45, 123, 270, 53);
-        self.botonPublicar.frame = CGRectMake(45, 209, 270, 53);
-        self.botonEjemplo2.frame = CGRectMake(80, 250, 200, 50);
-        self.inicioRapidobtn.frame = CGRectMake(50, 24, 280, 35);
-        self.verTutorialbtn.frame = CGRectMake(50, 72, 137, 35);
-        self.botonEjemplo.frame = CGRectMake(193, 72, 137, 35);
-        self.dominio.frame = CGRectMake(0, 4, 375, 34);
+        self.botonFondo.frame = CGRectMake(45, 50, 270, 53);
+        self.botonCrear.frame = CGRectMake(45, 140, 270, 53);
+        self.botonPublicar.frame = CGRectMake(45, 230, 270, 53);
+        self.botonEjemplo2.frame = CGRectMake(80, 270, 200, 50);
+        self.inicioRapidobtn.frame = CGRectMake(50, 44, 280, 35);
+        self.verTutorialbtn.frame = CGRectMake(50, 100, 137, 35);
+        self.botonEjemplo.frame = CGRectMake(170, 85, 137, 35);
+        self.dominio.frame = CGRectMake(0, 8, 375, 34);
+        self.line1.frame = CGRectMake(45, 120, 280, 3);
+        self.line2.frame = CGRectMake(45, 210, 280, 3);
+        self.line3.frame = CGRectMake(45, 300, 280, 3);
     }
     else if(IS_STANDARD_IPHONE_6_PLUS){
         self.botonFondo.frame = CGRectMake(70, 46, 270, 53);
@@ -204,9 +207,9 @@
             if(IS_IPHONE5){
                 self.viewDominioPublicado.frame = CGRectMake(0, 320, 320, 90);
             }else if (IS_STANDARD_IPHONE_6_PLUS){
-                self.viewDominioPublicado.frame = CGRectMake(0, 100, 320, 90);
+                self.viewDominioPublicado.frame = CGRectMake(0, 100, 414, 90);
             }else if(IS_STANDARD_IPHONE_6){
-
+                self.viewDominioPublicado.frame = CGRectMake(0, 145, 335, 90);
                 
             }else{
                 self.viewDominioPublicado.frame = CGRectMake(0, 300, 320, 90);

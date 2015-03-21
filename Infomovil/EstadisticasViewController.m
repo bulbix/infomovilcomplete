@@ -53,7 +53,7 @@
         [self.botonCambioEstadisticas setFrame:CGRectMake(20, 570, 280, 29)];
     }
     else if(IS_STANDARD_IPHONE_6){
-        
+         [self.botonCambioEstadisticas setFrame:CGRectMake(20, 500, 280, 29)];
     }else if(IS_IPHONE_5){
         [self.botonCambioEstadisticas setFrame:CGRectMake(20, 375, 280, 29)];
     }else{

@@ -50,8 +50,14 @@
         [self.btnMail setFrame:CGRectMake(102, 298, 47, 47)];
         [self.btnSMS setFrame:CGRectMake(185, 298, 47, 47)];
         [self.btnWhat setFrame:CGRectMake(271, 298, 47, 47)];
-    }
-    else{
+    }else if(IS_STANDARD_IPHONE_6){
+            [self.btnFacebook setFrame:CGRectMake(80, 243, 47, 47)];
+            [self.btnGooglePlus setFrame:CGRectMake(160, 243, 47, 47)];
+            [self.btnTwitter setFrame:CGRectMake(250, 243, 47, 47)];
+            [self.btnMail setFrame:CGRectMake(80, 298, 47, 47)];
+            [self.btnSMS setFrame:CGRectMake(160, 298, 47, 47)];
+            [self.btnWhat setFrame:CGRectMake(250, 298, 47, 47)];
+    }else{
         [self.btnFacebook setFrame:CGRectMake(52, 243, 47, 47)];
         [self.btnGooglePlus setFrame:CGRectMake(135, 243, 47, 47)];
         [self.btnTwitter setFrame:CGRectMake(221, 243, 47, 47)];
@@ -111,7 +117,9 @@
         //MBC
         if(IS_STANDARD_IPHONE_6_PLUS){
             self.vistaContenidoCompartir.frame = CGRectMake(70, 80, 287, 130);
-        } else{
+        } else if(IS_STANDARD_IPHONE_6){
+            self.vistaContenidoCompartir.frame = CGRectMake(50, 80, 287, 130);
+        }else{
             self.vistaContenidoCompartir.frame = CGRectMake(17, 80, 287, 130);
         }
         

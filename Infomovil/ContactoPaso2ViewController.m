@@ -93,7 +93,7 @@
 	}
     
     if(IS_STANDARD_IPHONE_6){
-        self.txtTelefono.frame = CGRectMake(20, 120, 335, 30);
+        self.imagenSiguiente.frame = CGRectMake(310, 6, 11, 18);
     }
     
 }
@@ -115,7 +115,13 @@
                 [self.txtDescripcion setFrame:CGRectMake(self.txtDescripcion.frame.origin.x, 181, self.txtDescripcion.frame.size.width, self.txtDescripcion.frame.size.height)];
                 [self.scrollVista setContentSize:CGSizeMake(320, 280)];
                 if (self.opcionSeleccionada == 1 && [self.labelCodigo.text isEqualToString:@"+52"]){                     [self.labelInfoMexico setHidden:NO];
-					[self.txtTelefono setFrame:CGRectMake(70, 120, 230, 30)];
+                    if(IS_STANDARD_IPHONE_6){
+                        self.txtTelefono.frame = CGRectMake(70, 120, 335, 30);
+                    }else if(IS_STANDARD_IPHONE_6_PLUS){
+                        
+                    }else{
+                        [self.txtTelefono setFrame:CGRectMake(70, 120, 230, 30)];
+                    }
 					self.casillaMovil.hidden = NO;
 					self.casillaMovil.layer.cornerRadius = 5;
 					
@@ -124,7 +130,14 @@
 					
                 }
 				else{
-					[self.txtTelefono setFrame:CGRectMake(20, 120, 280, 30)];
+                    if(IS_STANDARD_IPHONE_6){
+                         self.txtTelefono.frame = CGRectMake(20, 120, 335, 30);
+                    }else if(IS_STANDARD_IPHONE_6_PLUS){
+                     
+                    }else{
+                        [self.txtTelefono setFrame:CGRectMake(20, 120, 280, 30)];
+                    }
+					
 					self.casillaMovil.hidden = YES;
 					[self.labelInfoMexico setHidden:YES];
 				}
@@ -133,7 +146,15 @@
             default:
 				seleccionoPais = NO;
                 [self.vistaPais setHidden:YES];
-                [self.txtTelefono setFrame:CGRectMake(20, 86, 280, 30)];
+                
+                if(IS_STANDARD_IPHONE_6){
+                    self.txtTelefono.frame = CGRectMake(20, 86, 335, 30);
+                }else if(IS_STANDARD_IPHONE_6_PLUS){
+                    
+                }else{
+                    [self.txtTelefono setFrame:CGRectMake(20, 86, 280, 30)];
+                }
+                
                 [self.txtTelefono setHidden:NO];
                 [self.btnSeleccionarPais setHidden:YES];
                 [self.txtTelefono setPlaceholder:@""];
@@ -184,13 +205,29 @@
 				
 				if (self.opcionSeleccionada == 1 && [codigoAnterior isEqualToString:@"+52"] && ![self.labelCodigo.text isEqualToString:@"+52"]) {
 					self.txtTelefono.text = [self.txtTelefono.text substringFromIndex:1];
-					[self.txtTelefono setFrame:CGRectMake(20, 120, 280, 30)];
+                    
+                    if(IS_STANDARD_IPHONE_6){
+                        self.txtTelefono.frame = CGRectMake(20, 120, 335, 30);
+                    }else if(IS_STANDARD_IPHONE_6_PLUS){
+                        
+                    }else{
+                        [self.txtTelefono setFrame:CGRectMake(20, 120, 280, 30)];
+                    }
+                    
+					
 					self.casillaMovil.hidden = YES;
 					[self.labelInfoMexico setHidden:YES];
 				}else if (self.opcionSeleccionada == 1 && [self.labelCodigo.text isEqualToString:@"+52"] && ![codigoAnterior isEqualToString:@"+52"] && self.opcionSeleccionada == 1) {
 					//                    [self.txtTelefono setText:@"1"];
                     [self.labelInfoMexico setHidden:NO];
-					[self.txtTelefono setFrame:CGRectMake(70, 120, 230, 30)];
+                    if(IS_STANDARD_IPHONE_6){
+                        self.txtTelefono.frame = CGRectMake(20, 120, 335, 30);
+                    }else if(IS_STANDARD_IPHONE_6_PLUS){
+                        
+                    }else{
+                        [self.txtTelefono setFrame:CGRectMake(70, 120, 230, 30)];
+                    }
+					
 					self.casillaMovil.hidden = NO;
 					self.casillaMovil.layer.cornerRadius = 5;
 					
@@ -205,7 +242,14 @@
 					if([codigoAnterior isEqualToString:@"+52"]){
 						self.txtTelefono.text = [self.txtTelefono.text substringFromIndex:1];
 					}
-					[self.txtTelefono setFrame:CGRectMake(20, 120, 280, 30)];
+                    if(IS_STANDARD_IPHONE_6){
+                        self.txtTelefono.frame = CGRectMake(20, 120, 335, 30);
+                    }else if(IS_STANDARD_IPHONE_6_PLUS){
+                        
+                    }else{
+                        [self.txtTelefono setFrame:CGRectMake(20, 120, 280, 30)];
+                    }
+					
 					self.casillaMovil.hidden = YES;
 					[self.labelInfoMexico setHidden:YES];
 					
@@ -215,7 +259,14 @@
                 
             default:
                 [self.vistaPais setHidden:YES];
-                [self.txtTelefono setFrame:CGRectMake(20, 86, 280, 30)];
+                if(IS_STANDARD_IPHONE_6){
+                    self.txtTelefono.frame = CGRectMake(20, 86, 335, 30);
+                }else if(IS_STANDARD_IPHONE_6_PLUS){
+                    
+                }else{
+                    [self.txtTelefono setFrame:CGRectMake(20, 86, 280, 30)];
+                }
+                
                 [self.txtTelefono setHidden:NO];
                 [self.btnSeleccionarPais setHidden:YES];
                 [self.txtTelefono setPlaceholder:@""];

@@ -4,7 +4,7 @@
 <array>
 	<dict>
 		<key>ejemplo</key>
-		<string>Phone</string>
+		<string> Phone</string>
 		<key>mensaje</key>
 		<string>Phone Number</string>
 		<key>expresion</key>
@@ -20,7 +20,7 @@
 	</dict>
 	<dict>
 		<key>ejemplo</key>
-		<string>Phone</string>
+		<string> Phone</string>
 		<key>mensaje</key>
 		<string>Phone Number</string>
 		<key>expresion</key>
@@ -36,7 +36,7 @@
 	</dict>
 	<dict>
 		<key>ejemplo</key>
-		<string>Phone</string>
+		<string> Phone</string>
 		<key>mensaje</key>
 		<string>Phone Number</string>
 		<key>expresion</key>
@@ -68,7 +68,7 @@
 	</dict>
 	<dict>
 		<key>ejemplo</key>
-		<string>Phone</string>
+		<string> Phone</string>
 		<key>mensaje</key>
 		<string>Fax Number</string>
 		<key>expresion</key>
@@ -84,7 +84,7 @@
 	</dict>
 	<dict>
 		<key>ejemplo</key>
-		<string>www.facebook.com/yourfanpage</string>
+		<string> www.facebook.com/yourfanpage</string>
 		<key>mensaje</key>
 		<string>Link to your Facebook account</string>
 		<key>expresion</key>
@@ -100,7 +100,7 @@
 	</dict>
 	<dict>
 		<key>ejemplo</key>
-		<string>www.twitter.com/youraccount</string>
+		<string> www.twitter.com/youraccount</string>
 		<key>mensaje</key>
 		<string>Link to your Twitter account</string>
 		<key>expresion</key>
@@ -116,7 +116,7 @@
 	</dict>
 	<dict>
 		<key>ejemplo</key>
-		<string>plus.google.com/youraccount</string>
+		<string> plus.google.com/youraccount</string>
 		<key>mensaje</key>
 		<string>Link to your Google+ account</string>
 		<key>expresion</key>
@@ -132,7 +132,7 @@
 	</dict>
 	<dict>
 		<key>ejemplo</key>
-		<string>youraccount</string>
+		<string> youraccount</string>
 		<key>mensaje</key>
 		<string>Link to your Skype account</string>
 		<key>expresion</key>
@@ -148,7 +148,7 @@
 	</dict>
 	<dict>
 		<key>ejemplo</key>
-		<string>www.linkedin.com/yourcompany</string>
+		<string> www.linkedin.com/yourcompany</string>
 		<key>mensaje</key>
 		<string>Link to your LinkedIn account</string>
 		<key>expresion</key>
@@ -164,7 +164,7 @@
 	</dict>
 	<dict>
 		<key>ejemplo</key>
-		<string>www.infomovil.com</string>
+		<string> www.infomovil.com</string>
 		<key>mensaje</key>
 		<string>Link to your webside</string>
 		<key>expresion</key>
