@@ -48,26 +48,54 @@
     [self.vistaInferior setHidden:YES];
 	
 	if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-		self.leyenda1.frame = CGRectMake(47, 510, 200, 21);
-		self.leyenda3.frame = CGRectMake(45, 532, 28, 21);
+		
         if(IS_STANDARD_IPHONE_6){
+            self.leyenda1.frame = CGRectMake(47, 510, 200, 21);
+            self.leyenda3.frame = CGRectMake(45, 532, 28, 21);
             self.leyenda4.frame = CGRectMake(90, 533, 144, 21);
             self.leyenda2.frame = CGRectMake(190, 511, 80, 21);
+            self.leyenda5.frame = CGRectMake(190,532, 83, 21);
+    /*    }else if(IS_IPAD){
+            NSAttributedString *leyendas = [[NSAttributedString alloc] initWithString:@"Plan Pro" attributes:@{NSFontAttributeName : [UIFont fontWithName:@"Avenir-Book" size:17], NSParagraphStyleAttributeName : NSParagraphStyle}];
+            self.leyenda1.frame = CGRectMake(200, 900, 160, 25);
+            self.leyenda2.frame = CGRectMake(360, 900, 80, 25);
+            self.leyenda3.frame = CGRectMake(200, 930, 28, 25);
+            self.leyenda4.frame = CGRectMake(228, 930, 144, 25);
+            self.leyenda5.frame = CGRectMake(376,930, 83, 25);
+            
+            self.leyenda1.attributedText = leyendas;
+      */
         }else{
+            self.leyenda1.frame = CGRectMake(47, 510, 200, 21);
+            self.leyenda3.frame = CGRectMake(45, 532, 28, 21);
             self.leyenda4.frame = CGRectMake(65, 533, 144, 21);
             self.leyenda2.frame = CGRectMake(217, 511, 80, 21);
+            self.leyenda5.frame = CGRectMake(190,532, 83, 21);
         }
-		self.leyenda5.frame = CGRectMake(190,532, 83, 21);
+		
 	}else{
-		self.leyenda1.frame = CGRectMake(6, 510, 152, 21);
-		self.leyenda2.frame = CGRectMake(160, 511, 152, 21);
-		self.leyenda3.frame = CGRectMake(37, 532, 28, 21);
+		
         if(IS_STANDARD_IPHONE_6){
+            self.leyenda1.frame = CGRectMake(6, 510, 152, 21);
+            self.leyenda2.frame = CGRectMake(160, 511, 152, 21);
+            self.leyenda3.frame = CGRectMake(37, 532, 28, 21);
             self.leyenda4.frame = CGRectMake(65, 533, 144, 21);
-        }else{
+            self.leyenda5.frame = CGRectMake(202,532, 83, 21);
+     /*   }else if(IS_IPAD){
+            self.leyenda1.frame = CGRectMake(200, 900, 160, 25);
+            self.leyenda2.frame = CGRectMake(360, 900, 80, 25);
+            self.leyenda3.frame = CGRectMake(200, 930, 28, 25);
+            self.leyenda4.frame = CGRectMake(228, 930, 144, 25);
+            self.leyenda5.frame = CGRectMake(376,930, 83, 25);
+      */
+      }else{
+            self.leyenda1.frame = CGRectMake(6, 510, 152, 21);
+            self.leyenda2.frame = CGRectMake(160, 511, 152, 21);
+            self.leyenda3.frame = CGRectMake(37, 532, 28, 21);
             self.leyenda4.frame = CGRectMake(65, 533, 144, 21);
+            self.leyenda5.frame = CGRectMake(202,532, 83, 21);
         }
-		self.leyenda5.frame = CGRectMake(202,532, 83, 21);
+		
 	
 		
 	}
