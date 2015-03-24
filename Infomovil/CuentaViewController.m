@@ -285,7 +285,7 @@ int opcionButton = 0 ;
             if([CommonUtils hayConexion]){
                 for(int i = 0 ; [_products count] > 0; i++){
                     SKProduct *product = _products[i];
-                    if([product.productIdentifier isEqualToString:@"com.infomovil.infomovil.prices_3_months"]){
+                    if([product.productIdentifier isEqualToString:@"com.infomovil.infomovil.3_months"]){
                         self.datosUsuario.datosPago.montoBruto = [NSString stringWithFormat:@"%i", product.price.integerValue ];
                         [[RageIAPHelper sharedInstance] buyProduct:product];
                         break;
@@ -318,7 +318,7 @@ int opcionButton = 0 ;
             if([CommonUtils hayConexion]){
                 for(int i = 0 ; [_products count] > 0; i++){
                     SKProduct *product = _products[i];
-                    if([product.productIdentifier isEqualToString:@"com.infomovil.infomovil.prices_6_months"]){
+                    if([product.productIdentifier isEqualToString:@"com.infomovil.infomovil.6_months"]){
                         self.datosUsuario.datosPago.montoBruto = [NSString stringWithFormat:@"%i", product.price.integerValue ];
                         [[RageIAPHelper sharedInstance] buyProduct:product];
                         break;
@@ -351,7 +351,7 @@ int opcionButton = 0 ;
             if([CommonUtils hayConexion]){
                 for(int i = 0 ; [_products count] > 0; i++){
                     SKProduct *product = _products[i];
-                    if([product.productIdentifier isEqualToString:@"com.infomovil.infomovil.prices_12_months"]){
+                    if([product.productIdentifier isEqualToString:@"com.infomovil.infomovil.12_months"]){
                         self.datosUsuario.datosPago.montoBruto = [NSString stringWithFormat:@"%i", product.price.integerValue ];
                         [[RageIAPHelper sharedInstance] buyProduct:product];
                         break;
@@ -402,7 +402,7 @@ if(noSeRepiteOprimirElBoton){
             if([CommonUtils hayConexion]){
                 for(int i = 0 ; [_products count] > 0; i++){
                     SKProduct *product = _products[i];
-                    if([product.productIdentifier isEqualToString:@"com.infomovil.infomovil.prices_3_months"]){
+                    if([product.productIdentifier isEqualToString:@"com.infomovil.infomovil.3_months"]){
                         NSLog(@"Comprando item 0: %@", product.productIdentifier);
                         self.datosUsuario.datosPago.plan =@"PLAN PRO 3 MESES";
                         self.datosUsuario.datosPago.comision = @"27";
@@ -452,7 +452,7 @@ if(noSeRepiteOprimirElBoton){
                 if([CommonUtils hayConexion]){
                     for(int i = 0 ; [_products count] > 0; i++){
                         SKProduct *product = _products[i];
-                        if([product.productIdentifier isEqualToString:@"com.infomovil.infomovil.prices_6_months"]){
+                        if([product.productIdentifier isEqualToString:@"com.infomovil.infomovil.6_months"]){
                             NSLog(@"Comprando item 0: %@", product.productIdentifier);
                             self.datosUsuario.datosPago.plan =@"PLAN PRO 6 MESES";
                             self.datosUsuario.datosPago.comision = @"17";
@@ -499,7 +499,7 @@ if(noSeRepiteOprimirElBoton){
             if([CommonUtils hayConexion]){
                 for(int i = 0 ; [_products count] > 0; i++){
                     SKProduct *product = _products[i];
-                    if([product.productIdentifier isEqualToString:@"com.infomovil.infomovil.prices_12_months"]){
+                    if([product.productIdentifier isEqualToString:@"com.infomovil.infomovil.12_months"]){
                         self.datosUsuario.datosPago.plan =@"PLAN PRO 12 MESES";
                         self.datosUsuario.datosPago.comision = @"23";
                         self.datosUsuario.datosPago.statusPago = @"INTENTO PAGO";

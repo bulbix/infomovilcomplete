@@ -89,7 +89,7 @@
 		[filteredArray addObject:[[_arregloPais objectAtIndex:i]objectForKey:@"countryName"]];
 	}
 	
-	[self.scroll setContentSize:CGSizeMake(320, 200)];
+	[self.scroll setContentSize:CGSizeMake(320, 250)];
 	
 	self.nPais = @"1";
 	

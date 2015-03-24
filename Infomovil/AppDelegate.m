@@ -45,7 +45,7 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
     [defaults setObject:launchOptions forKey:@"launchingWithOptions"];
     [defaults synchronize];
    
-   /*
+   
     
     //AppsFlyer
     [AppsFlyerTracker sharedTracker].appsFlyerDevKey = @"5KoF92vzAFbhSj9PRduNCn";
@@ -60,7 +60,7 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
     [[BITHockeyManager sharedHockeyManager] startManager];
     [[BITHockeyManager sharedHockeyManager].authenticator
      authenticateInstallation];
-    */
+    
    
     
     //-- Set Notification
@@ -241,7 +241,8 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
     NSLog(@"content---%@ **************************************************************", token);
 #endif
     
-    //[[Appboy sharedInstance] registerPushToken:[NSString stringWithFormat:@"%@", deviceToken]];
+    [[Appboy sharedInstance] registerPushToken:[NSString stringWithFormat:@"%@", deviceToken]];
+    
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
@@ -270,12 +271,12 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
 - (void) restartDate {
     self.fechaLogin = [NSDate date];
 }
-/*
+
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     [[Appboy sharedInstance] registerApplication:application
                     didReceiveRemoteNotification:userInfo];
 }
- */
+ 
 - (void)fbDidlogout {
     FBSession* session = [FBSession activeSession];
     [session closeAndClearTokenInformation];

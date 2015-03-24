@@ -59,12 +59,14 @@
             [prefsLogin setObject:password forKey:@"strRecordarPass"];
             [prefsLogin synchronize];
         }
-        
-        
-        
     }
-    NSString *stringXML;
+    NSDictionary *info = [[NSBundle mainBundle] infoDictionary];
+    NSString *version = [info objectForKey:@"CFBundleShortVersionString"];
+    if(version == nil || [version isEqualToString:@""]){
+        version = versionDefault;
+        }
   
+    NSString *stringXML;
         stringXML = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.webservice.infomovil.org/\">"
                      "<soapenv:Header/>"
                      "<soapenv:Body>"
@@ -77,6 +79,7 @@
                      "<suscrito>%@</suscrito>"
                      "<tipoPlan>%@</tipoPlan>"
                      "<medioPago>%@</medioPago>"
+                      "<versionSistema>%@</versionSistema>"
                      "</ws:getDomain>"
                      "</soapenv:Body>"
                      "</soapenv:Envelope>",
@@ -87,8 +90,8 @@
                      [StringUtils encriptar:@"IOS" conToken:passwordEncriptar],
                      [StringUtils encriptar:@"false" conToken:passwordEncriptar],
                      [StringUtils encriptar:@"" conToken:passwordEncriptar],
-                     [StringUtils encriptar:@"APP STORE" conToken:passwordEncriptar]];
-    
+                     [StringUtils encriptar:@"APP STORE" conToken:passwordEncriptar],
+                     [StringUtils encriptar:version conToken:passwordEncriptar]];
                         NSLog(@"El usuario es: %@  pass: %@  redsocial: %@", usuario, password, self.redSocial);
     stringXML = [NSString decodificaHtml:stringXML];
 #ifdef DEBUG
@@ -916,7 +919,6 @@
     
     else if ([elementName isEqualToString:@"template"]) {
         self.datosUsuario.nombreTemplate  = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
-       
         if(self.datosUsuario.nombreTemplate  == nil || [self.datosUsuario.nombreTemplate isEqualToString:@""] || [self.datosUsuario.nombreTemplate isEqualToString:@"(null)"])
         {
             self.datosUsuario.nombreTemplate = @"Estandar1";
