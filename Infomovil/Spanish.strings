@@ -296,7 +296,7 @@
 
 //MainViewController
 "mainLabelCorreo" = "Dirección de correo";
-"mainLabelPassword" = "Contraseña";//====================================>Repetido
+"mainLabelPassword" = " Contraseña";//====================================>Repetido
 "mainLabel" = "¿Olvidaste tu contraseña?";
 "mainBoton" = "Inicia sesión";
 

@@ -55,7 +55,6 @@
    
     if(IS_STANDARD_IPHONE_6){
         loginView.frame = CGRectMake(20, 130, 335, 55);
-        loginView.frame = CGRectMake(20, 130, 335, 55);
         self.raya1.frame = CGRectMake(20, 220, 155, 2);
         self.o.frame = CGRectMake(178, 212, 40, 20);
         self.raya2.frame = CGRectMake(195, 220, 155, 2);
@@ -83,9 +82,55 @@
         self.recordarLogin1.frame = CGRectMake( 20, 411, 22, 22);
         self.imgLogo.frame = CGRectMake(84, 58, 267, 49);
         [self.scrollLogin addSubview:self.imgLogo];
-        [self.scrollLogin setContentSize:CGSizeMake(375, 580)];
-    }
-    else{
+       
+    }else if(IS_IPAD){
+        loginView.frame = CGRectMake(196, 300, 375, 61);
+        
+        self.scrollLogin.frame = CGRectMake(0, 0, 768, 1024);
+        [self.scrollLogin setContentSize:CGSizeMake(768, 1024)];
+        
+        self.txtEmail.frame = CGRectMake(196,430, 375, 61);
+        [self.txtEmail setBackground:[UIImage imageNamed:@"input_semitrans@1x" ]];
+        [self.txtEmail setBackgroundColor:[UIColor clearColor]];
+        UIColor *color = [UIColor whiteColor];
+        self.txtEmail.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"mainLabelCorreo", nil) attributes:@{NSForegroundColorAttributeName: color}];
+        [self.txtEmail setFont: [UIFont fontWithName:@"Avenir-Book" size:18]];
+        UIImage *lineImg = [UIImage imageNamed:@"line@1x.png"];
+        UIImageView * myImageView = [[UIImageView alloc] initWithImage:lineImg];
+        CGRect myFrame = CGRectMake(146, 390, 475, 2);
+        [myImageView setFrame:myFrame];
+        [self.view addSubview:myImageView];
+        self.txtPassword.frame = CGRectMake(196, 500, 375, 61);
+        [self.txtPassword setBackgroundColor:[UIColor clearColor]];
+        [self.txtPassword setBackground:[UIImage imageNamed:@"input_semitrans@1x" ]];
+        self.txtPassword.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"contrasena", nil) attributes:@{NSForegroundColorAttributeName: color}];
+        [self.txtPassword setFont: [UIFont fontWithName:@"Avenir-Book" size:18]];
+        self.label.frame = CGRectMake(390,568 ,165, 31);
+        self.btnOlvidePass.frame = CGRectMake(370, 570, 165, 31);
+        
+        if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
+            self.recordarbtn.frame = CGRectMake(210, 570,124, 31);
+            [self.recordarbtn.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:14]];
+            self.recordarLogin1.frame = CGRectMake( 210, 574, 22, 22);
+        }else{
+            self.recordarbtn.frame = CGRectMake(210, 570, 87, 31);
+             [self.recordarbtn.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:14]];
+            self.recordarLogin1.frame = CGRectMake( 210, 574, 22, 22);
+        
+        }
+        
+        self.boton.frame = CGRectMake(202, 640, 362, 48);
+        [self.boton.titleLabel setFont: [UIFont fontWithName:@"Avenir-Book" size:18]];
+        [self.boton setBackgroundColor:[UIColor clearColor]];
+        self.boton.layer.borderWidth = 1.0f;
+        self.boton.layer.cornerRadius = 15.0f;
+        self.boton.layer.borderColor = [UIColor whiteColor].CGColor;
+        [self mostrarLogo];
+        [self.raya1 setHidden:YES];
+        [self.raya2 setHidden:YES];
+        [self.o setHidden:YES];
+        [self.imgLogo setHidden:YES];
+    }else{
         loginView.frame = CGRectMake(20, 130, 280, 55);
         [self.scrollLogin setContentSize:CGSizeMake(320, 420)];
     }
@@ -103,6 +148,10 @@
             }else if (IS_STANDARD_IPHONE_6_PLUS){
                 loginButton.frame =CGRectMake(0,0, 375, 55);
                 loginImage = [UIImage imageNamed:@"btn_RegistroFacebook_6iphonePlus.png"];
+            }else if(IS_IPAD){
+                loginButton.frame =CGRectMake(0, 0, 375, 61);
+                loginImage = [UIImage imageNamed:@"btn_RegistroFacebook_6iphonePlus.png"];
+            
             }else{
                 loginButton.frame =CGRectMake(0,0, 280, 55);
                 loginImage = [UIImage imageNamed:@"btn_RegistroFacebook.png"];
@@ -125,14 +174,19 @@
             
             if(IS_STANDARD_IPHONE_6){
                 loginLabel.frame =CGRectMake(15,6, 335, 45);
-                
+                [loginLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
             }else if(IS_STANDARD_IPHONE_6_PLUS){
                 loginLabel.frame =CGRectMake(25,6, 375, 45);
+                [loginLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
             
+            }else if(IS_IPAD){
+                loginLabel.frame =CGRectMake(10,6, 375, 45);
+                [loginLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:18]];
             }else{
                 loginLabel.frame =CGRectMake(15,6, 280, 45);
+                [loginLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
             }
-            [loginLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
+            
         }
         
     }

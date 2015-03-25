@@ -56,14 +56,14 @@
             self.leyenda2.frame = CGRectMake(190, 511, 80, 21);
             self.leyenda5.frame = CGRectMake(190,532, 83, 21);
         }else if(IS_IPAD){
-            [self.leyenda1 setFont: [UIFont systemFontOfSize:18]];
-            [self.leyenda2.titleLabel setFont: [UIFont systemFontOfSize:18]];
-            [self.leyenda3 setFont: [UIFont systemFontOfSize:18]];
-            [self.leyenda4.titleLabel setFont:[UIFont systemFontOfSize:18]];
-            [self.leyenda5 setFont: [UIFont systemFontOfSize:18]];
+            [self.leyenda1 setFont: [UIFont fontWithName:@"Avenir-Book" size:18]];
+            [self.leyenda2.titleLabel setFont: [UIFont fontWithName:@"Avenir-Book" size:18]];
+            [self.leyenda3 setFont: [UIFont fontWithName:@"Avenir-Book" size:18]];
+            [self.leyenda4.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:18]];
+            [self.leyenda5 setFont: [UIFont fontWithName:@"Avenir-Book" size:18]];
             
             self.leyenda1.frame = CGRectMake(240, 896, 250, 25);
-            self.leyenda2.frame = CGRectMake(475, 900, 80, 25);
+            self.leyenda2.frame = CGRectMake(475, 897, 80, 25);
             self.leyenda3.frame = CGRectMake(230, 930, 40, 25);
             self.leyenda4.frame = CGRectMake(255, 930, 200, 25);
             self.leyenda5.frame = CGRectMake(385,930, 150, 25);
@@ -85,17 +85,17 @@
             self.leyenda4.frame = CGRectMake(65, 533, 144, 21);
             self.leyenda5.frame = CGRectMake(202,532, 83, 21);
         }else if(IS_IPAD){
-            [self.leyenda1 setFont: [UIFont systemFontOfSize:18]];
-            [self.leyenda2.titleLabel setFont: [UIFont systemFontOfSize:18]];
-            [self.leyenda3 setFont: [UIFont systemFontOfSize:18]];
-            [self.leyenda4.titleLabel setFont:[UIFont systemFontOfSize:18]];
-            [self.leyenda5 setFont: [UIFont systemFontOfSize:18]];
+            [self.leyenda1 setFont: [UIFont fontWithName:@"Avenir-Book" size:18]];
+            [self.leyenda2.titleLabel setFont: [UIFont fontWithName:@"Avenir-Book" size:18]];
+            [self.leyenda3 setFont: [UIFont fontWithName:@"Avenir-Book" size:18]];
+            [self.leyenda4.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:18]];
+            [self.leyenda5 setFont: [UIFont fontWithName:@"Avenir-Book" size:18]];
             
-            self.leyenda1.frame = CGRectMake(235, 900, 250, 25);
-            self.leyenda2.frame = CGRectMake(475, 900, 80, 25);
-            self.leyenda3.frame = CGRectMake(235, 930, 40, 25);
-            self.leyenda4.frame = CGRectMake(255, 930, 200, 25);
-            self.leyenda5.frame = CGRectMake(385,930, 150, 25);
+            self.leyenda1.frame = CGRectMake(190, 897, 210, 25);
+            self.leyenda2.frame = CGRectMake(376, 898, 240, 25);
+            self.leyenda3.frame = CGRectMake(214, 931, 40, 25);
+            self.leyenda4.frame = CGRectMake(246, 932, 200, 25);
+            self.leyenda5.frame = CGRectMake(385,931, 150, 25);
       
       }else{
             self.leyenda1.frame = CGRectMake(6, 510, 152, 21);
@@ -165,7 +165,6 @@
         self.conoceMasPlay.frame = CGRectMake(83, 375, 35, 35);
         self.botonPruebalos.frame = CGRectMake(30, 220, 260, 55);
         self.botonSesions.frame = CGRectMake(32, 290, 256, 55);
-        NSLog(@"el boton pruebalo es: %f", self.botonPruebalos.frame.origin.y);
         self.label.frame = CGRectMake(20, 118, 280, 97);
     }else if(IS_STANDARD_IPHONE_6){
         self.conoceMas.frame = CGRectMake(170, 380, 143 , 30);
@@ -204,6 +203,25 @@
         self.leyenda3.frame = CGRectMake(90, 532, 28, 21);
         self.leyenda4.frame = CGRectMake(110, 533, 144, 21);
         self.leyenda5.frame = CGRectMake(236,532, 83, 21);
+    }else if(IS_IPAD){
+        self.label.frame = CGRectMake(100, 340, 568, 97);
+        [self.label setFont: [UIFont fontWithName:@"Avenir-Book" size:30]];
+        self.version.frame = CGRectMake(500, 180, 100, 50);
+        self.conoceMas.frame = CGRectMake(326, 770, 160 , 30);
+        [self.conoceMas.titleLabel setFont: [UIFont fontWithName:@"Avenir-Book" size:18]];
+        self.conoceMasPlay.frame = CGRectMake(286, 765, 35, 35);
+        self.botonPruebalos.frame = CGRectMake(198, 520, 372, 65);
+        [self.botonPruebalos.titleLabel setFont: [UIFont fontWithName:@"Avenir-Book" size:18]];
+        [self.botonPruebalos setBackgroundImage:[UIImage imageNamed:@"btn_pruebalo@1x.png" ] forState:UIControlStateNormal];
+        UIImage *lineImg = [UIImage imageNamed:@"line@1x.png"];
+        UIImageView * myImageView = [[UIImageView alloc] initWithImage:lineImg];
+        CGRect myFrame = CGRectMake(146, 600, 475, 2);
+        [myImageView setFrame:myFrame];
+        [self.view addSubview:myImageView];
+        
+        self.botonSesions.frame = CGRectMake(206, 620, 353, 51);
+        [self.botonSesions.titleLabel setFont: [UIFont fontWithName:@"Avenir-Book" size:18]];
+        
     }
    
     [self.vistaInferior setHidden:YES];

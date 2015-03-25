@@ -209,7 +209,7 @@
 "emailAsociado" = "Este e-mail ya fue asociado a otra cuenta";
 "requiereDueno" = "";//"¡Ya casi estás listo para publicar tu sitio web en línea!";
 "registrate" = "Ahora, crea una cuenta, selecciona un nombre y publícalo.";
-"contrasena" = "Contraseña";
+"contrasena" = " Contraseña";
 
 "yaNombraste" = "Ya nombraste y publicaste tu sitio web";
 "cambiarNombre" = "Si deseas cambiar el nombre, compra uno nuevo aquí";
@@ -406,7 +406,7 @@
 "salirMensaje" = "¿Estás seguro que deseas salir? Tendrás que re-ingresar con tu usuario y contraseña";
 
 //FormularioRegistroViewController
-"formularioLabel" = "Contraseña";
+"formularioLabel" = " Contraseña";
 "formularioLabel6" = "Confirmar contraseña";
 "formularioPassword" = "Los campos de contraseña no coinciden";
 

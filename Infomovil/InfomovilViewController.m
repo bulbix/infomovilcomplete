@@ -264,13 +264,16 @@
 }
 
 -(void) mostrarLogo {
-    UIImageView *imagenBarra = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 20)];
+   /* UIImageView *imagenBarra = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 20)];
     [imagenBarra setImage:[UIImage imageNamed:@"sbarnuevo.png"]];
     [self.view addSubview:imagenBarra];
+    */
     if(IS_STANDARD_IPHONE_6_PLUS){
         [self.vistaCircular setFrame:CGRectMake(84, 58, 267, 49)];
     }else if(IS_STANDARD_IPHONE_6){
          [self.vistaCircular setFrame:CGRectMake(64, 58, 267, 49)];
+    }else if(IS_IPAD){
+        [self.vistaCircular setFrame:CGRectMake(174, 110, 420, 80)];
     }else{
          [self.vistaCircular setFrame:CGRectMake(27, 58, 267, 49)];
     }

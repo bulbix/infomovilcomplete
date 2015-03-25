@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *raya1;
 @property (weak, nonatomic) IBOutlet UILabel *o;
 @property (weak, nonatomic) IBOutlet UILabel *raya2;
+@property (weak, nonatomic) IBOutlet UILabel *slogan;
 
 
 - (IBAction)verificarNombre:(UIButton *)sender;

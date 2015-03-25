@@ -12,6 +12,7 @@
                 <outlet property="o" destination="c8L-gR-eck" id="z1i-3L-tbC"/>
                 <outlet property="raya1" destination="bXz-T9-6XU" id="uup-Ku-5Kv"/>
                 <outlet property="raya2" destination="x53-xq-Nqn" id="992-0t-ogy"/>
+                <outlet property="slogan" destination="QHb-xd-R8j" id="W1t-H9-NLc"/>
                 <outlet property="view" destination="nTB-uP-eEq" id="La9-Py-ylp"/>
             </connections>
         </placeholder>
@@ -49,7 +50,7 @@
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="572-qj-csM">
                     <rect key="frame" x="21" y="276" width="278" height="53"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                     <state key="normal" title="Crear cuenta">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -61,9 +62,16 @@
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Si te registras con Facebook jamás publicaremos en tu muro sin tu permiso" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0GC-QK-cV5">
                     <rect key="frame" x="20" y="376" width="280" height="80"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QHb-xd-R8j">
+                    <rect key="frame" x="20" y="90" width="274" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="30"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>

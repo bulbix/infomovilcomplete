@@ -70,6 +70,26 @@
             self.llamarCrearCuenta.frame = CGRectMake(21, 326, 278, 53);
             self.msjRegistrarConFacebook.frame = CGRectMake(20, 426, 280, 80);
         
+    }else if(IS_IPAD){
+        loginView.frame = CGRectMake(196, 520, 375, 55);
+        UIImage *lineImg = [UIImage imageNamed:@"line@1x.png"];
+        UIImageView * myImageView = [[UIImageView alloc] initWithImage:lineImg];
+        CGRect myFrame = CGRectMake(146, 600, 475, 2);
+        [myImageView setFrame:myFrame];
+        [self.view addSubview:myImageView];
+        
+        self.llamarCrearCuenta.frame = CGRectMake(204, 626, 360, 50);
+        [self.llamarCrearCuenta.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:18]];
+        self.msjRegistrarConFacebook.frame = CGRectMake(184, 800, 400, 160);
+        [self.msjRegistrarConFacebook setFont:[UIFont fontWithName:@"Avenir-Book" size:18]];
+        [self.raya1 setHidden:YES];
+        [self.o setHidden:YES];
+        [self.raya2 setHidden:YES];
+        
+        self.slogan.frame = CGRectMake(100, 340, 568, 97);
+        self.slogan.text = NSLocalizedString(@"inicioLabel", nil);
+        [self.slogan setFont:[UIFont fontWithName:@"Avenir-Book" size:30]];
+        
     }else{
         loginView.frame = CGRectMake(20, 130, 280, 55);
     }
@@ -87,6 +107,10 @@
             }else if (IS_STANDARD_IPHONE_6_PLUS){
                 loginButton.frame =CGRectMake(0,0, 375, 55);
                 loginImage = [UIImage imageNamed:@"btn_RegistroFacebook_6iphonePlus.png"];
+            }else if(IS_IPAD){
+                loginButton.frame =CGRectMake(0,0, 375, 55);
+                loginImage = [UIImage imageNamed:@"btn_RegistroFacebook_6iphonePlus.png"];
+            
             }else{
                 loginButton.frame =CGRectMake(0,0, 280, 55);
                 loginImage = [UIImage imageNamed:@"btn_RegistroFacebook.png"];
@@ -107,14 +131,18 @@
             loginLabel.textAlignment = NSTextAlignmentCenter;
             if(IS_STANDARD_IPHONE_6){
                 loginLabel.frame =CGRectMake(15,6, 335, 45);
-                
+                [loginLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
             }else if(IS_STANDARD_IPHONE_6_PLUS){
                 loginLabel.frame =CGRectMake(25,6, 375, 45);
-                
+                [loginLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
+            }else if(IS_IPAD){
+                loginLabel.frame =CGRectMake(15,6, 375, 45);
+                [loginLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:18]];
             }else{
                 loginLabel.frame =CGRectMake(15,6, 280, 45);
+                [loginLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
             }
-            [loginLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
+            
         }
         
     }

@@ -72,6 +72,8 @@
          [self.scrollView setContentSize:CGSizeMake(375, 667)];
     }else if (IS_STANDARD_IPHONE_6_PLUS){
          [self.scrollView setContentSize:CGSizeMake(540, 960)];
+    }else if(IS_IPAD){
+        [self.scrollView setContentSize:CGSizeMake(768, 1024)];
     }else{
         [self.scrollView setContentSize:CGSizeMake(320, 380)];
     }
@@ -106,7 +108,7 @@
     productTourView = [[CRProductTour alloc] initWithFrame:self.view.frame];
 	CRBubble *bubbleButton1;
 	if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-		 bubbleButton1 = [[CRBubble alloc] initWithAttachedView:_txtContrasena title:@"Password" description:@"Must be 8 or more characters\n(letters and numbers)\nCan not contain the word infomovil" arrowPosition:CRArrowPositionBottom andColor:[UIColor whiteColor]];
+		 bubbleButton1 = [[CRBubble alloc] initWithAttachedView:_txtContrasena title:@" Password" description:@"Must be 8 or more characters\n(letters and numbers)\nCan not contain the word infomovil" arrowPosition:CRArrowPositionBottom andColor:[UIColor whiteColor]];
 	}else{
 		 bubbleButton1 = [[CRBubble alloc] initWithAttachedView:_txtContrasena title:@"Contraseña" description:@"Debe tener de 8 a 15 caracteres\n(letras y números)\nNo puede contener la palabra infomovil\nNo puede ser igual al correo" arrowPosition:CRArrowPositionBottom andColor:[UIColor whiteColor]];
 	}
@@ -163,6 +165,52 @@
         self.txtContrasenaConfirmar.frame = CGRectMake(70, 315, 380, 45);
         self.boton.frame =  CGRectMake(70, 400, 280, 55);
         
+    }else if(IS_IPAD){
+        self.label2.frame = CGRectMake(184, 300, 400, 57);
+        self.txtNombre.frame = CGRectMake(196,430, 375, 50);
+        [self.txtNombre setBackgroundColor:[UIColor colorWithRed:255.0f/255.0f
+                                                           green:255.0f/255.0f
+                                                            blue:255.0f/255.0f
+                                                           alpha:0.45f]];
+        self.txtNombre.layer.borderWidth = 1.0f;
+        self.txtNombre.layer.cornerRadius = 15.0f;
+        self.txtNombre.layer.borderColor = [UIColor whiteColor].CGColor;
+        UIColor *color = [UIColor whiteColor];
+        self.txtNombre.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"  info@infomovil.com" attributes:@{NSForegroundColorAttributeName: color}];
+        [self.txtNombre setFont: [UIFont fontWithName:@"Avenir-Book" size:18]];
+        
+        self.txtContrasena.frame = CGRectMake(196,500, 375, 52);
+        [self.txtContrasena setBackgroundColor:[UIColor colorWithRed:255.0f/255.0f
+                                                           green:255.0f/255.0f
+                                                            blue:255.0f/255.0f
+                                                           alpha:0.45f]];
+        self.txtContrasena.layer.borderWidth = 1.0f;
+        self.txtContrasena.layer.cornerRadius = 15.0f;
+        self.txtContrasena.layer.borderColor = [UIColor whiteColor].CGColor;
+        self.txtContrasena.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"contrasenaRegistrar", nil) attributes:@{NSForegroundColorAttributeName: color}];
+        [self.txtContrasena setFont: [UIFont fontWithName:@"Avenir-Book" size:18]];
+       
+        self.txtContrasenaConfirmar.frame = CGRectMake(196,570, 375, 52);
+        [self.txtContrasenaConfirmar setBackgroundColor:[UIColor colorWithRed:255.0f/255.0f
+                                                               green:255.0f/255.0f
+                                                                blue:255.0f/255.0f
+                                                               alpha:0.45f]];
+        self.txtContrasenaConfirmar.layer.borderWidth = 1.0f;
+        self.txtContrasenaConfirmar.layer.cornerRadius = 15.0f;
+        self.txtContrasenaConfirmar.layer.borderColor = [UIColor whiteColor].CGColor;
+        self.txtContrasenaConfirmar.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"confirmarContrasena", nil) attributes:@{NSForegroundColorAttributeName: color}];
+        [self.txtContrasenaConfirmar setFont: [UIFont fontWithName:@"Avenir-Book" size:18]];
+        
+        self.boton.frame =  CGRectMake(196, 650, 375, 55);
+        [self.boton.titleLabel setFont: [UIFont fontWithName:@"Avenir-Book" size:18]];
+        UIImage *lineImg = [UIImage imageNamed:@"line@1x.png"];
+        UIImageView * myImageView = [[UIImageView alloc] initWithImage:lineImg];
+        CGRect myFrame = CGRectMake(146, 380, 475, 2);
+        [myImageView setFrame:myFrame];
+        [self.view addSubview:myImageView];
+        [self mostrarLogo];
+        [self.labelInfo setHidden:YES];
+        [self.labelCodigo setHidden:YES];
     }else{
         [self.scrollView setContentSize:CGSizeMake(320, 380)];
     }

@@ -35,22 +35,9 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Juy-4m-fqk">
-                            <rect key="frame" x="20" y="410" width="280" height="50"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.23529411764705882" green="0.29019607843137252" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
-                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
-                            <state key="normal" title="Inicia sesión">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="iniciarSesion:" destination="-1" eventType="touchUpInside" id="6ig-jQ-1Q9"/>
-                            </connections>
-                        </button>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Dirección de correo" minimumFontSize="17" id="YYV-iB-sOb">
                             <rect key="frame" x="20" y="250" width="280" height="47"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                             <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="send"/>
@@ -60,14 +47,14 @@
                         </textField>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¿Olvidaste tu contraseña?" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Yam-Dn-cMF">
                             <rect key="frame" x="135" y="360" width="165" height="31"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="SHM-Kn-1sb">
                             <rect key="frame" x="119" y="364" width="181" height="21"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                             <state key="normal">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -123,7 +110,7 @@
                         </button>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Contraseña" minimumFontSize="17" id="sI3-Z4-eOe">
                             <rect key="frame" x="20" y="305" width="280" height="47"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                             <textInputTraits key="textInputTraits" returnKeyType="send" secureTextEntry="YES"/>
@@ -135,6 +122,19 @@
                             <rect key="frame" x="33" y="55" width="267" height="49"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                         </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Juy-4m-fqk">
+                            <rect key="frame" x="20" y="410" width="280" height="50"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.23529411764705882" green="0.29019607843137252" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                            <state key="normal" title="Inicia sesión">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="iniciarSesion:" destination="-1" eventType="touchUpInside" id="6ig-jQ-1Q9"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <connections>
                         <outlet property="delegate" destination="-1" id="4wz-W4-x6z"/>
