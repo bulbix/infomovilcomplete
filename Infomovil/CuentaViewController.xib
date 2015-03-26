@@ -16,6 +16,7 @@
                 <outlet property="imgBackgroundBotones" destination="P71-gT-vz2" id="QnS-9Y-dSL"/>
                 <outlet property="imgBeneficios" destination="ZgK-QH-lCK" id="8OY-je-Izv"/>
                 <outlet property="labelMisSitios" destination="mtM-MX-gZF" id="gkr-Rv-Xdf"/>
+                <outlet property="rayaLabel" destination="ZDX-Vl-jxv" id="5hB-6d-l88"/>
                 <outlet property="scrollContenido" destination="kQp-T6-2Np" id="W3C-0o-dgV"/>
                 <outlet property="selector" destination="spS-Fj-Wmc" id="Czm-dg-xsC"/>
                 <outlet property="subtituloPlanPro" destination="acJ-J0-2xv" id="rDR-Vh-YLb"/>

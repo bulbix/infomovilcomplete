@@ -48,6 +48,7 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *vistaDominio;
 @property (weak, nonatomic) IBOutlet UIView *viewCompraPlanPro;
 
+@property (weak, nonatomic) IBOutlet UILabel *rayaLabel;
 
 
 

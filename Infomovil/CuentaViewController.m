@@ -138,15 +138,31 @@ int opcionButton = 0 ;
         self.comprar1mes.frame = CGRectMake(45, 87, 109, 109);
         self.comprar6meses.frame = CGRectMake(150, 87, 109, 109);
         self.comprar12meses.frame = CGRectMake(255, 87, 109, 109);
+    }else if(IS_IPAD){
+        [self.vistaPlanPro setContentSize:CGSizeMake(768, 1024)];
+        self.vistaDominio.frame = CGRectMake(768, 0, 768, 1024);
+        [self.scrollContenido setContentSize:CGSizeMake(1536, 2048)];
+        self.imgBackgroundBotones.frame = CGRectMake(0, 68, 768, 170);
+        self.comprar1mes.frame = CGRectMake(221, 87, 109, 109);
+        self.comprar6meses.frame = CGRectMake(330, 87, 109, 109);
+        self.comprar12meses.frame = CGRectMake(439, 87, 109, 109);
+        self.tituloPlanPro.frame = CGRectMake(184, 10, 400,29 );
+        self.subtituloPlanPro.frame = CGRectMake(184, 35, 400,29 );
+        self.beneficiosPlanPro.frame = CGRectMake(184, 268, 400, 21);
+        self.rayaLabel.frame = CGRectMake(184, 285, 400, 1);
+        self.imgBeneficios.frame = CGRectMake(184, 285 ,400 , 200);
     }else{
         [self.vistaPlanPro setContentSize:CGSizeMake(320, 568)];
         [self.scrollContenido setContentSize:CGSizeMake(640, 568)];
     }
     
     
+    if(IS_IPAD){
+        [self.botonCuenta setFrame:CGRectMake(264, 10, 88, 80)];
+    }else{
+        [self.botonCuenta setFrame:CGRectMake(128, 14, 64, 54)];
     
-    [self.botonCuenta setFrame:CGRectMake(128, 14, 64, 54)];
-	
+    }
 	pro = [NSMutableArray arrayWithObjects:
 		   NSLocalizedString(@"numeroImagenes", @" "),
            NSLocalizedString(@"datosBasicos", @" "),
@@ -217,6 +233,9 @@ int opcionButton = 0 ;
                     [self.MensajePlanProComprado setFrame:CGRectMake(70, 60, 414, 150)];
                 }else if(IS_STANDARD_IPHONE_6){
                     [self.MensajePlanProComprado setFrame:CGRectMake(70, 60, 220, 150)];
+                }else if(IS_IPAD){
+                    [self.MensajePlanProComprado setFrame:CGRectMake(184, 120, 400, 150)];
+                
                 }
                 
                 self.MensajePlanProComprado.text = [NSString stringWithFormat:@"This site already has a Plan Pro\n\nStart date: %@ \nEnd date: %@",self.datosUsuario.fechaInicial, self.datosUsuario.fechaFinal];
@@ -544,9 +563,6 @@ if(noSeRepiteOprimirElBoton){
         if(sesion &&  ![((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] ){
 			arreglo = pro;
 			tipo = NO;
-            // IRC para plan Pro
-			//self.tituloPlanPro.text = NSLocalizedString(@"mensajeCuenta", @" ");
-            // IRC Temporal
             self.tituloPlanPro.text = NSLocalizedString(@"mensajeCuenta", @" ");
             
 			self.vistaPlanPro.hidden = NO;
@@ -554,8 +570,6 @@ if(noSeRepiteOprimirElBoton){
 		}else{
 			arreglo = pro;
 			tipo = NO;
-            // IRC para plan Pro
-			//self.tituloPlanPro.text = NSLocalizedString(@"mensajeCuenta", @" ");
             self.tituloPlanPro.text = NSLocalizedString(@"mensajeCuenta", @" ");
 			//BOOL sesion = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).existeSesion;
 		
@@ -596,9 +610,9 @@ if(noSeRepiteOprimirElBoton){
             //MBC
             else if(IS_STANDARD_IPHONE_6_PLUS){
                 dominio = [[UILabel alloc]initWithFrame:CGRectMake(0, 40, 414, 100)];
-            }
-            
-            else{
+            }else if(IS_IPAD){
+                dominio = [[UILabel alloc]initWithFrame:CGRectMake(184, 80, 400, 100)];
+            }else{
                 dominio = [[UILabel alloc]initWithFrame:CGRectMake(0, 40, 320, 100)];
             }
             
@@ -644,8 +658,10 @@ if(noSeRepiteOprimirElBoton){
             //MBC
             else if(IS_STANDARD_IPHONE_6_PLUS){
                 fechas = [[UILabel alloc]initWithFrame:CGRectMake(0, 120,414, 100)];
-            }
-            else{
+            }else if(IS_IPAD){
+                fechas = [[UILabel alloc]initWithFrame:CGRectMake(184, 180,400, 100)];
+            
+            }else{
                 fechas = [[UILabel alloc]initWithFrame:CGRectMake(0, 120,320, 100)];
             }
             fechas.text = [NSString stringWithFormat: @"Fecha de inicio: %@\n Fecha de término: %@", self.datosUsuario.fechaInicialTel, self.datosUsuario.fechaFinalTel ];
@@ -666,14 +682,12 @@ if(noSeRepiteOprimirElBoton){
             
             if(IS_STANDARD_IPHONE_6){
                 [self.scrollContenido scrollRectToVisible:CGRectMake(375, 0, self.scrollContenido.frame.size.width, self.scrollContenido.frame.size.height) animated:YES];
-            }
-            //MBC
-            else if(IS_STANDARD_IPHONE_6_PLUS){
+            }else if(IS_STANDARD_IPHONE_6_PLUS){
                 [self.scrollContenido scrollRectToVisible:CGRectMake(414, 0, self.scrollContenido.frame.size.width, self.scrollContenido.frame.size.height) animated:YES];
-            }
-            else{
+            }else if(IS_IPAD){
+                [self.scrollContenido scrollRectToVisible:CGRectMake(768, 0, self.scrollContenido.frame.size.width, self.scrollContenido.frame.size.height) animated:YES];
+            }else{
                 [self.scrollContenido scrollRectToVisible:CGRectMake(320, 0, self.scrollContenido.frame.size.width, self.scrollContenido.frame.size.height) animated:YES];
-            
             }
             
       }

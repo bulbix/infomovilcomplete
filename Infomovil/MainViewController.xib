@@ -35,16 +35,6 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                     <subviews>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Dirección de correo" minimumFontSize="17" id="YYV-iB-sOb">
-                            <rect key="frame" x="20" y="250" width="280" height="47"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                            <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="send"/>
-                            <connections>
-                                <outlet property="delegate" destination="-1" id="1LL-wd-5pY"/>
-                            </connections>
-                        </textField>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¿Olvidaste tu contraseña?" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Yam-Dn-cMF">
                             <rect key="frame" x="135" y="360" width="165" height="31"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
@@ -135,6 +125,16 @@
                                 <action selector="iniciarSesion:" destination="-1" eventType="touchUpInside" id="6ig-jQ-1Q9"/>
                             </connections>
                         </button>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Dirección de correo" minimumFontSize="17" id="YYV-iB-sOb">
+                            <rect key="frame" x="20" y="250" width="280" height="47"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="send"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="1LL-wd-5pY"/>
+                            </connections>
+                        </textField>
                     </subviews>
                     <connections>
                         <outlet property="delegate" destination="-1" id="4wz-W4-x6z"/>

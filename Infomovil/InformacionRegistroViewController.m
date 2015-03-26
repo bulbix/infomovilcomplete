@@ -263,7 +263,12 @@
 		[self.botonConfiguracion setBackgroundImage:[UIImage imageNamed:@"miconfiguracionon.png"] forState:UIControlStateNormal];
 	}
     
-    [self.botonConfiguracion setFrame:CGRectMake(240, 0, 80, 68)];
+    if(IS_IPAD){
+        [self.botonConfiguracion setFrame:CGRectMake(264, 10, 88, 80)];
+    }else{
+        [self.botonConfiguracion setFrame:CGRectMake(240, 0, 80, 68)];
+    }
+    
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillShow:)

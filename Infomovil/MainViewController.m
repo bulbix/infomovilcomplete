@@ -62,6 +62,12 @@
         self.imgLogo.frame = CGRectMake(64, 58, 267, 49);
         [self.scrollLogin addSubview:self.imgLogo];
         [self.scrollLogin setContentSize:CGSizeMake(375, 580)];
+        self.txtEmail.frame = CGRectMake(20,250, 335, 47);
+        self.txtPassword.frame = CGRectMake(20, 305, 335, 47);
+        self.boton.frame = CGRectMake(20, 410, 335, 50);
+        self.label.frame = CGRectMake(185,360 ,165, 31);
+        self.btnOlvidePass.frame = CGRectMake(190, 364, 170, 31);
+        
     }
     //MBC
     else if(IS_STANDARD_IPHONE_6_PLUS){
@@ -71,12 +77,12 @@
         self.raya2.frame = CGRectMake(215, 265, 175, 2);
         
         [self.scrollLogin setContentSize:CGSizeMake(540, 880)];
-        self.txtEmail.frame = CGRectMake(20,300, 280, 47);
-        self.txtPassword.frame = CGRectMake(20, 355, 280, 47);
-        self.boton.frame = CGRectMake(20, 460, 280, 50);
+        self.txtEmail.frame = CGRectMake(20,300, 375, 47);
+        self.txtPassword.frame = CGRectMake(20, 355, 375, 47);
+        self.boton.frame = CGRectMake(20, 460, 375, 50);
         
-        self.label.frame = CGRectMake(135,411 ,165, 31);
-        self.btnOlvidePass.frame = CGRectMake(119, 411, 181, 31);
+        self.label.frame = CGRectMake(220,411 ,165, 31);
+        self.btnOlvidePass.frame = CGRectMake(220, 411, 181, 31);
         
         self.recordarbtn.frame = CGRectMake(8, 411,124, 31);
         self.recordarLogin1.frame = CGRectMake( 20, 411, 22, 22);
@@ -252,8 +258,14 @@
     [self.navigationController.navigationBar setHidden:YES];
    
     UIButton *botonRegresar = [UIButton buttonWithType:UIButtonTypeCustom];
-    [botonRegresar setBackgroundImage:[UIImage imageNamed:@"backNuevo.png"] forState:UIControlStateNormal];
-    [botonRegresar setFrame:CGRectMake(10, 25, 36, 36)];
+    if(IS_IPAD){
+        [botonRegresar setBackgroundImage:[UIImage imageNamed:@"btn_back_iPad"] forState:UIControlStateNormal];
+        [botonRegresar setFrame:CGRectMake(25, 30, 65, 65)];
+    }else{
+        [botonRegresar setBackgroundImage:[UIImage imageNamed:@"backNuevo.png"] forState:UIControlStateNormal];
+        [botonRegresar setFrame:CGRectMake(10, 25, 36, 36)];
+    }
+    
     [botonRegresar addTarget:self action:@selector(regresarMenu:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:botonRegresar];
 	

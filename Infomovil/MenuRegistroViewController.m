@@ -60,6 +60,7 @@
         self.raya1.frame = CGRectMake(20, 224, 155, 2);
         self.o.frame = CGRectMake(178, 216, 155, 20);
         self.raya2.frame = CGRectMake(195, 224, 155, 2);
+        self.llamarCrearCuenta.frame = CGRectMake(20, 276, 331, 51);
   
     }else if(IS_STANDARD_IPHONE_6_PLUS){
             loginView.frame = CGRectMake(20, 180, 375, 55);
@@ -67,8 +68,8 @@
             self.o.frame = CGRectMake(199, 272, 40, 20);
             self.raya2.frame = CGRectMake(215, 280, 175, 2);
         
-            self.llamarCrearCuenta.frame = CGRectMake(21, 326, 278, 53);
-            self.msjRegistrarConFacebook.frame = CGRectMake(20, 426, 280, 80);
+            self.llamarCrearCuenta.frame = CGRectMake(21, 326, 365, 47);
+            self.msjRegistrarConFacebook.frame = CGRectMake(24, 426, 371, 80);
         
     }else if(IS_IPAD){
         loginView.frame = CGRectMake(196, 520, 375, 55);
@@ -195,8 +196,14 @@
     [self.navigationController.navigationBar setHidden:YES];
     
     UIButton *botonRegresar = [UIButton buttonWithType:UIButtonTypeCustom];
-    [botonRegresar setBackgroundImage:[UIImage imageNamed:@"backNuevo.png"] forState:UIControlStateNormal];
-    [botonRegresar setFrame:CGRectMake(10, 25, 36, 36)];
+    if(IS_IPAD){
+        [botonRegresar setBackgroundImage:[UIImage imageNamed:@"btn_back_iPad"] forState:UIControlStateNormal];
+        [botonRegresar setFrame:CGRectMake(25, 30, 65, 65)];
+    }else{
+        [botonRegresar setBackgroundImage:[UIImage imageNamed:@"backNuevo.png"] forState:UIControlStateNormal];
+        [botonRegresar setFrame:CGRectMake(10, 25, 36, 36)];
+    }
+    
     [botonRegresar addTarget:self action:@selector(regresarMenu:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:botonRegresar];
     
@@ -205,10 +212,6 @@
     
     [self.vistaInferior setHidden:YES];
     
-   // [self.view addSubview:self.imgLogo];
-    
-    
-   
 }
 // Boton de regresar //
 -(IBAction)regresarMenu:(id)sender {

@@ -21,7 +21,7 @@
 
 @implementation InfomovilViewController
 
-@synthesize tituloVista, vistaInferior;// vistaMenuMapa;
+@synthesize tituloVista, vistaInferior, lineaIpad;
 @synthesize vistaCircular;// esMapa;
 @synthesize keyboardControls;
 @synthesize modifico;
@@ -87,33 +87,48 @@
         vistaInferior = [[UIView alloc] initWithFrame:CGRectMake(27, 538, 400, 88)];//458
     }else if(IS_STANDARD_IPHONE_6_PLUS){
         vistaInferior = [[UIView alloc] initWithFrame:CGRectMake(35, 607, 400, 88)];//458
+    }else if(IS_IPAD){
+        vistaInferior = [[UIView alloc] initWithFrame:CGRectMake(174, 875, 668, 88)];//458
     }else {
         vistaInferior = [[UIView alloc] initWithFrame:CGRectMake(0, 352, 320, 68)];//370
     }
     
     
+    if(IS_IPAD){
+        self.botonEstadisticas = [[UIButton alloc] initWithFrame:CGRectMake(0, 25, 88, 61)];
+        self.botonNotificaciones = [[UIButton alloc] initWithFrame:CGRectMake(88, 25, 88, 61)];
+        self.botonCuenta = [[UIButton alloc] initWithFrame:CGRectMake(176, 25, 88, 61)];
+        self.botonConfiguracion = [[UIButton alloc] initWithFrame:CGRectMake(264, 25, 88, 61)];
+        self.botonFeeds = [[UIButton alloc] initWithFrame:CGRectMake(352, 25, 88, 61)];
+    }else{
+        self.botonEstadisticas = [[UIButton alloc] initWithFrame:CGRectMake(0, 25, 64, 41)];
+        self.botonNotificaciones = [[UIButton alloc] initWithFrame:CGRectMake(64, 25, 64, 41)];
+        self.botonCuenta = [[UIButton alloc] initWithFrame:CGRectMake(128, 25, 64, 41)];
+        self.botonConfiguracion = [[UIButton alloc] initWithFrame:CGRectMake(192, 25, 64, 41)];
+        self.botonFeeds = [[UIButton alloc] initWithFrame:CGRectMake(256, 25, 64, 41)];
+    }
     
-    self.botonEstadisticas = [[UIButton alloc] initWithFrame:CGRectMake(0, 25, 64, 41)];
+        
     [self.botonEstadisticas setBackgroundImage:[UIImage imageNamed:@"mireportes.png"] forState:UIControlStateNormal];
     [self.botonEstadisticas addTarget:self action:@selector(mostrarEstadisticas:) forControlEvents:UIControlEventTouchUpInside];
     [vistaInferior addSubview:self.botonEstadisticas];
     
-    self.botonNotificaciones = [[UIButton alloc] initWithFrame:CGRectMake(64, 25, 64, 41)];
+    
     [self.botonNotificaciones setBackgroundImage:[UIImage imageNamed:@"micompartir.png"] forState:UIControlStateNormal];
     [self.botonNotificaciones addTarget:self action:@selector(compartir:) forControlEvents:UIControlEventTouchUpInside];
     [vistaInferior addSubview:self.botonNotificaciones];
     
-    self.botonCuenta = [[UIButton alloc] initWithFrame:CGRectMake(128, 25, 64, 41)];
+    
     [self.botonCuenta setBackgroundImage:[UIImage imageNamed:@"micuenta.png"] forState:UIControlStateNormal];
     [self.botonCuenta addTarget:self action:@selector(comprarCuenta:) forControlEvents:UIControlEventTouchUpInside];
     [vistaInferior addSubview:self.botonCuenta];
     
-    self.botonConfiguracion = [[UIButton alloc] initWithFrame:CGRectMake(192, 25, 64, 41)];
+    
     [self.botonConfiguracion setBackgroundImage:[UIImage imageNamed:@"miconfiguracion.png"] forState:UIControlStateNormal];
     [self.botonConfiguracion addTarget:self action:@selector(configurar:) forControlEvents:UIControlEventTouchUpInside];
     [vistaInferior addSubview:self.botonConfiguracion];
     
-    self.botonFeeds = [[UIButton alloc] initWithFrame:CGRectMake(256, 25, 64, 41)];
+    
     [self.botonFeeds setBackgroundImage:[UIImage imageNamed:@"miFeed.png"] forState:UIControlStateNormal];
     [self.botonFeeds addTarget:self action:@selector(mostrarFeed:) forControlEvents:UIControlEventTouchUpInside];
     [vistaInferior addSubview:self.botonFeeds];
@@ -252,6 +267,20 @@
     
     feedNavigationContext.navigationItem.leftBarButtonItem = buttonBack;
     
+    
+    [feedNavigationContext.navigationItem setTitle:NSLocalizedString(@"noticiasFeed", Nil)];
+    UIFont *fuente = [UIFont fontWithName:@"Avenir-Heavy" size:19];
+    UIColor *colorTexto = [UIColor whiteColor];
+    NSDictionary *atributos = @{
+                                NSFontAttributeName: fuente,
+                                NSForegroundColorAttributeName: colorTexto,
+                                };
+    
+    [feedNavigationContext.navigationController.navigationBar setTitleTextAttributes:atributos];
+    
+    
+    
+    
     [self.navigationController pushViewController:feedNavigationContext animated:YES];
 }
 
@@ -346,7 +375,7 @@
                                                       forBarMetrics:UIBarMetricsDefault];
         self.navigationController.navigationBar.tintColor = [UIColor redColor];
     }
-    //    [self.navigationController.navigationItem setTitle:titulo];
+   
     [self.navigationItem setTitle:_strTituloVista];
     UIFont *fuente = [UIFont fontWithName:@"Avenir-Heavy" size:19];
     UIColor *colorTexto = [UIColor whiteColor];

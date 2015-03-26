@@ -55,7 +55,12 @@
                                                                 ofType:@"plist"]];
 	
 	[self.botonConfiguracion setBackgroundImage:[UIImage imageNamed:@"miconfiguracionon.png"] forState:UIControlStateNormal];
-    [self.botonConfiguracion setFrame:CGRectMake(240, 0, 80, 68)];
+    
+    if(IS_IPAD){
+        [self.botonConfiguracion setFrame:CGRectMake(264, 10, 88, 80)];
+    }else{
+        [self.botonConfiguracion setFrame:CGRectMake(240, 0, 80, 68)];
+    }
     self.navigationItem.rightBarButtonItem = Nil;
     
 //    self.tablaPais.layer.borderWidth = 0.5f;

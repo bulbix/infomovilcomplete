@@ -100,9 +100,10 @@
                     [self.vistaAlert setFrame:CGRectMake(50, 150, 278, 182)];
                 }
                 else if(IS_STANDARD_IPHONE_6_PLUS){
-                    [self.vistaAlert setFrame:CGRectMake(65, 150, 278, 182)];
-                }
-                else{
+                    [self.vistaAlert setFrame:CGRectMake(68, 150, 278, 182)];
+                }else if(IS_IPAD){
+                    [self.vistaAlert setFrame:CGRectMake(245, 400, 278, 182)];
+                }else{
                     [self.vistaAlert setFrame:CGRectMake(21, 150, 278, 182)];
                 }
                 
@@ -147,12 +148,12 @@
                 }
                 else if(IS_STANDARD_IPHONE_6_PLUS){
                     [self.vistaAlert setFrame:CGRectMake(65, 150, 278, 182)];
-                }
-                else{
+                }else if(IS_IPAD){
+                    [self.vistaAlert setFrame:CGRectMake(245, 400, 278, 182)];
+                
+                }else{
                     [self.vistaAlert setFrame:CGRectMake(21, 150, 278, 182)];
                 }
-                
-                [self.vistaAlert setFrame:CGRectMake(21, 150, 278, 182)];
                 [self.botonNo setFrame:CGRectMake(139, 128, 139, 54)];
                 [self.botonSi setFrame:CGRectMake(0, 128, 139, 54)];
             }
@@ -165,6 +166,8 @@
             }
             else if(IS_STANDARD_IPHONE_6_PLUS){
                 [self.vistaAlert setFrame:CGRectMake(80, 150, 278, 182)];
+            }else if(IS_IPAD){
+                [self.vistaAlert setFrame:CGRectMake(245, 400, 278, 182)];
             }else{
                 [self.vistaAlert setFrame:CGRectMake(21, 150, 278, 182)];
             }
@@ -182,8 +185,9 @@
             }
             else if(IS_STANDARD_IPHONE_6_PLUS){
                 [self.vistaAlert setFrame:CGRectMake(80, 150, 278, 200)];
-            }
-            else{
+            }else if(IS_IPAD){
+                [self.vistaAlert setFrame:CGRectMake(245, 400, 278, 182)];
+            }else{
                 [self.vistaAlert setFrame:CGRectMake(21, 150, 278, 200)];
             }
             
@@ -220,8 +224,9 @@
                 }
                 else if(IS_STANDARD_IPHONE_6_PLUS){
                     [self.vistaAlert setFrame:CGRectMake(80, 150, 278, 200)];
-                }
-                else{
+                }else if(IS_IPAD){
+                    [self.vistaAlert setFrame:CGRectMake(245, 400, 278, 182)];
+                }else{
                     [self.vistaAlert setFrame:CGRectMake(21, 150, 278, 182)];
                 }
                 self.labelDominio.hidden = YES;
@@ -231,8 +236,9 @@
                 }
                 else if(IS_STANDARD_IPHONE_6_PLUS){
                     [self.botonAceptar setFrame:CGRectMake(0, 170, 278, 54)];
-                }
-                else{
+                }else if(IS_IPAD){
+                    [self.vistaAlert setFrame:CGRectMake(245, 400, 278, 182)];
+                }else{
                     [self.botonAceptar setFrame:CGRectMake(0, 128, 278, 54)];
                 }
                 [self.labelTitulo setFont:[UIFont fontWithName:@"Avenir-Book" size:17]];
@@ -255,12 +261,11 @@
             [self.labelMensaje setTextAlignment:NSTextAlignmentCenter];
             [self.vistaAlert addSubview:self.labelMensaje];
             
-//            self.labelTitulo = [[UILabel alloc] initWithFrame:CGRectMake(10, 75, 263, 45)];
             [self.labelTitulo setFrame:CGRectMake(5, 33, 268, 120)];
             [self.labelTitulo setFont:[UIFont fontWithName:@"Avenir-Book" size:17]];
             [self.labelTitulo setNumberOfLines:6];
             [self.labelTitulo setTextAlignment:NSTextAlignmentCenter];
-//            [self.vistaAlert addSubview:self.labelTitulo];
+
             
             self.labelDominio = [[UILabel alloc] initWithFrame:CGRectMake(10, 100, 263, 21)];
             [self.labelDominio setFont:[UIFont fontWithName:@"Avenir-Book" size:17]];
@@ -292,8 +297,9 @@
             //MBC
             if(IS_STANDARD_IPHONE_6){
                 [self.vistaAlert setFrame:CGRectMake(50, 150, 278, 200)];
-            }
-            else if(IS_STANDARD_IPHONE_6_PLUS){
+            }else if(IS_IPAD){
+                [self.vistaAlert setFrame:CGRectMake(245, 400, 278, 182)];
+            }else if(IS_STANDARD_IPHONE_6_PLUS){
                 [self.vistaAlert setFrame:CGRectMake(80, 150, 278, 200)];
             }
             else{

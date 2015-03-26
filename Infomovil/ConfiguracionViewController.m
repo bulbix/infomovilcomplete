@@ -76,7 +76,11 @@
 		[self.botonConfiguracion setBackgroundImage:[UIImage imageNamed:@"miconfiguracionon.png"] forState:UIControlStateNormal];
 	}
     
-    [self.botonConfiguracion setFrame:CGRectMake(192, 14, 64, 54)];
+    if(IS_IPAD){
+        [self.botonConfiguracion setFrame:CGRectMake(264, 10, 88, 80)];
+    }else{
+        [self.botonConfiguracion setFrame:CGRectMake(192, 14, 64, 54)];
+    }
     self.navigationItem.rightBarButtonItem = Nil;
 	
 	self.datosUsuario = [DatosUsuario sharedInstance];

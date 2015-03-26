@@ -51,12 +51,20 @@
         [self.btnSMS setFrame:CGRectMake(185, 298, 47, 47)];
         [self.btnWhat setFrame:CGRectMake(271, 298, 47, 47)];
     }else if(IS_STANDARD_IPHONE_6){
-            [self.btnFacebook setFrame:CGRectMake(80, 243, 47, 47)];
-            [self.btnGooglePlus setFrame:CGRectMake(160, 243, 47, 47)];
-            [self.btnTwitter setFrame:CGRectMake(250, 243, 47, 47)];
-            [self.btnMail setFrame:CGRectMake(80, 298, 47, 47)];
-            [self.btnSMS setFrame:CGRectMake(160, 298, 47, 47)];
-            [self.btnWhat setFrame:CGRectMake(250, 298, 47, 47)];
+        [self.btnFacebook setFrame:CGRectMake(80, 243, 47, 47)];
+        [self.btnGooglePlus setFrame:CGRectMake(160, 243, 47, 47)];
+        [self.btnTwitter setFrame:CGRectMake(250, 243, 47, 47)];
+        [self.btnMail setFrame:CGRectMake(80, 298, 47, 47)];
+        [self.btnSMS setFrame:CGRectMake(160, 298, 47, 47)];
+        [self.btnWhat setFrame:CGRectMake(250, 298, 47, 47)];
+    }else if(IS_IPAD){
+        [self.btnFacebook setFrame:CGRectMake(234, 400, 60, 60)];
+        [self.btnGooglePlus setFrame:CGRectMake(354, 400, 60, 60)];
+        [self.btnTwitter setFrame:CGRectMake(474, 400, 60, 60)];
+        [self.btnMail setFrame:CGRectMake(234, 520, 60, 60)];
+        [self.btnSMS setFrame:CGRectMake(354, 520, 60 ,60)];
+        [self.btnWhat setFrame:CGRectMake(474, 520, 60, 60)];
+    
     }else{
         [self.btnFacebook setFrame:CGRectMake(52, 243, 47, 47)];
         [self.btnGooglePlus setFrame:CGRectMake(135, 243, 47, 47)];
@@ -88,7 +96,11 @@
 	}else{
 		[self.botonNotificaciones setBackgroundImage:[UIImage imageNamed:@"micompartiron.png"] forState:UIControlStateNormal];
 	}
-   [self.botonNotificaciones setFrame:CGRectMake(64, 14, 64, 54)];
+    if(IS_IPAD){
+        [self.botonNotificaciones setFrame:CGRectMake(88, 10, 88, 80)];
+    }else{
+        [self.botonNotificaciones setFrame:CGRectMake(64, 14, 64, 54)];
+    }
     self.navigationItem.rightBarButtonItem = Nil;
 	
 	
@@ -114,19 +126,36 @@
 	
 	if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
 		[self.botonNotificaciones setBackgroundImage:[UIImage imageNamed:@"shareEn.png"] forState:UIControlStateNormal];
-        //MBC
         if(IS_STANDARD_IPHONE_6_PLUS){
             self.vistaContenidoCompartir.frame = CGRectMake(70, 80, 287, 130);
         } else if(IS_STANDARD_IPHONE_6){
             self.vistaContenidoCompartir.frame = CGRectMake(50, 80, 287, 130);
+        }else if(IS_IPAD){
+            self.label1.frame = CGRectMake(184, 70, 400, 60);
+            self.vistaContenidoCompartir.frame = CGRectMake(184, 180, 400, 130);
         }else{
             self.vistaContenidoCompartir.frame = CGRectMake(17, 80, 287, 130);
         }
         
 	}else{
 		[self.botonNotificaciones setBackgroundImage:[UIImage imageNamed:@"micompartiron.png"] forState:UIControlStateNormal];
+        if(IS_STANDARD_IPHONE_6_PLUS){
+            self.vistaContenidoCompartir.frame = CGRectMake(70, 80, 287, 130);
+        } else if(IS_STANDARD_IPHONE_6){
+            self.vistaContenidoCompartir.frame = CGRectMake(50, 80, 287, 130);
+        }else if(IS_IPAD){
+            self.label1.frame = CGRectMake(184, 70, 400, 60);
+            self.vistaContenidoCompartir.frame = CGRectMake(184, 180, 400, 130);
+        }else{
+            self.vistaContenidoCompartir.frame = CGRectMake(17, 80, 287, 130);
+        }
 	}
-	[self.botonNotificaciones setFrame:CGRectMake(64, 14, 64, 54)];
+    
+    if(IS_IPAD){
+        [self.botonNotificaciones setFrame:CGRectMake(88, 10, 88, 80)];
+    }else{
+        [self.botonNotificaciones setFrame:CGRectMake(64, 14, 64, 54)];
+    }
     self.navigationItem.rightBarButtonItem = Nil;
 }
 

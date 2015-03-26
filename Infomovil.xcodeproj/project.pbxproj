@@ -671,6 +671,7 @@
 		BF891C771ABA75AB0082C107 /* tempOn.png in Resources */ = {isa = PBXBuildFile; fileRef = BF891C711ABA75AB0082C107 /* tempOn.png */; };
 		BF891C781ABA75AB0082C107 /* tempOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF891C721ABA75AB0082C107 /* tempOn@2x.png */; };
 		BF891C791ABA75AB0082C107 /* tempOn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF891C731ABA75AB0082C107 /* tempOn@3x.png */; };
+		BFA4EA5F1AC3278700D6DE96 /* btn_back_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = BFA4EA5E1AC3278700D6DE96 /* btn_back_iPad.png */; };
 		BFA7018A1A817A3B00F685C3 /* libAdIdAccess.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFA701861A817A3B00F685C3 /* libAdIdAccess.a */; };
 		BFA7018B1A817A3B00F685C3 /* libAppsFlyerLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFA701871A817A3B00F685C3 /* libAppsFlyerLib.a */; };
 		BFA7018C1A817A3B00F685C3 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFA701881A817A3B00F685C3 /* libGoogleAnalyticsServices.a */; };
@@ -1691,6 +1692,7 @@
 		BF891C711ABA75AB0082C107 /* tempOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tempOn.png; path = Infomovil/imagenesInfomovil/Templates/tempOn.png; sourceTree = SOURCE_ROOT; };
 		BF891C721ABA75AB0082C107 /* tempOn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tempOn@2x.png"; path = "Infomovil/imagenesInfomovil/Templates/tempOn@2x.png"; sourceTree = SOURCE_ROOT; };
 		BF891C731ABA75AB0082C107 /* tempOn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tempOn@3x.png"; path = "Infomovil/imagenesInfomovil/Templates/tempOn@3x.png"; sourceTree = SOURCE_ROOT; };
+		BFA4EA5E1AC3278700D6DE96 /* btn_back_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_back_iPad.png; sourceTree = "<group>"; };
 		BFA701861A817A3B00F685C3 /* libAdIdAccess.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAdIdAccess.a; sourceTree = "<group>"; };
 		BFA701871A817A3B00F685C3 /* libAppsFlyerLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAppsFlyerLib.a; sourceTree = "<group>"; };
 		BFA701881A817A3B00F685C3 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
@@ -3372,6 +3374,7 @@
 		BFD29D1F1AC2139D008EADB9 /* iPad */ = {
 			isa = PBXGroup;
 			children = (
+				BFA4EA5E1AC3278700D6DE96 /* btn_back_iPad.png */,
 				BFD29D201AC2139D008EADB9 /* bg_full@1x.png */,
 				BFD29D211AC2139D008EADB9 /* bg_full@2x.png */,
 				BFD29D221AC2139D008EADB9 /* bt_registra@2x.png */,
@@ -3868,6 +3871,7 @@
 				0F4A16A1187B002B005F5786 /* ListaTelefonosViewController.xib in Resources */,
 				0F6C72F1189B23F0000B2E51 /* globoizq.png in Resources */,
 				65065DE4190FEB8000189316 /* tips1@2x.png in Resources */,
+				BFA4EA5F1AC3278700D6DE96 /* btn_back_iPad.png in Resources */,
 				BFD292821AB36A140066AF30 /* template1.png in Resources */,
 				0F5CFA421896C30700D27B2E /* ContactosCell.xib in Resources */,
 				0F5244FA18FE038E001902E6 /* btnazulnuevo.png in Resources */,

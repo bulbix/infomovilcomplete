@@ -56,6 +56,8 @@
          [self.botonCambioEstadisticas setFrame:CGRectMake(20, 500, 280, 29)];
     }else if(IS_IPHONE_5){
         [self.botonCambioEstadisticas setFrame:CGRectMake(20, 375, 280, 29)];
+    }else if(IS_IPAD){
+        [self.botonCambioEstadisticas setFrame:CGRectMake(20, 850, 280, 29)];
     }else{
         [self.botonCambioEstadisticas setFrame:CGRectMake(20, 320, 280, 29)];
     }
@@ -104,22 +106,23 @@
 	[self.botonCambioEstadisticas setTitle:NSLocalizedString(@"estadisticasLabel4", nil) forSegmentAtIndex:3];
 	[self.botonCambioEstadisticas setTitle:NSLocalizedString(@"estadisticasLabel5", nil) forSegmentAtIndex:4];
     
-    ////
-	
-	//[[AppsFlyerTracker sharedTracker] trackEvent:@"Reportes" withValue:@""];
     [self enviarEventoGAconCategoria:@"Consultar" yEtiqueta:@"Reportes"];
     
 }
 
 -(void) viewWillAppear:(BOOL)animated {
 
-    [self.botonEstadisticas setFrame:CGRectMake(0, 14, 64, 54)];
-	if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-		[self.botonEstadisticas setBackgroundImage:[UIImage imageNamed:@"reportsEn.png"] forState:UIControlStateNormal];
-	}else{
-		[self.botonEstadisticas setBackgroundImage:[UIImage imageNamed:@"mireporteson.png"] forState:UIControlStateNormal];
-	}
-	
+    if(IS_IPAD){
+        [self.botonEstadisticas setFrame:CGRectMake(0, 10, 88, 80)];
+    }else{
+        [self.botonEstadisticas setFrame:CGRectMake(0, 14, 64, 54)];
+    }
+        if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
+            [self.botonEstadisticas setBackgroundImage:[UIImage imageNamed:@"reportsEn.png"] forState:UIControlStateNormal];
+        }else{
+            [self.botonEstadisticas setBackgroundImage:[UIImage imageNamed:@"mireporteson.png"] forState:UIControlStateNormal];
+        }
+    
 
 	if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
 		[self.botonTotales setTitle:@"Total Visits" forSegmentAtIndex:0];

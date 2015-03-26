@@ -203,6 +203,8 @@
         self.leyenda3.frame = CGRectMake(90, 532, 28, 21);
         self.leyenda4.frame = CGRectMake(110, 533, 144, 21);
         self.leyenda5.frame = CGRectMake(236,532, 83, 21);
+        self.botonPruebalos.frame = CGRectMake(50, 247, 315, 51);
+        self.botonSesions.frame = CGRectMake(50, 322, 315, 51);
     }else if(IS_IPAD){
         self.label.frame = CGRectMake(100, 340, 568, 97);
         [self.label setFont: [UIFont fontWithName:@"Avenir-Book" size:30]];

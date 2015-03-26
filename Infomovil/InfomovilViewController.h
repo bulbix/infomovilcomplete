@@ -14,6 +14,7 @@
 
 @property(nonatomic, strong) UILabel *tituloVista;
 @property(nonatomic, strong) UIView *vistaInferior;
+@property(nonatomic, strong) UIView *lineaIpad;
 @property(nonatomic, strong) UIImageView *vistaCircular;
 @property (nonatomic) BOOL modifico;
 

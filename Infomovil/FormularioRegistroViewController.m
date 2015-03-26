@@ -146,24 +146,36 @@
     self.labelCodigo.text = NSLocalizedString(@"codigoRedimir", nil);
 
     UIButton *botonRegresar = [UIButton buttonWithType:UIButtonTypeCustom];
-    [botonRegresar setBackgroundImage:[UIImage imageNamed:@"backNuevo.png"] forState:UIControlStateNormal];
-    [botonRegresar setFrame:CGRectMake(10, 25, 36, 36)];
+    if(IS_IPAD){
+        [botonRegresar setBackgroundImage:[UIImage imageNamed:@"btn_back_iPad"] forState:UIControlStateNormal];
+        [botonRegresar setFrame:CGRectMake(25, 30, 65, 65)];
+    }else{
+        [botonRegresar setBackgroundImage:[UIImage imageNamed:@"backNuevo.png"] forState:UIControlStateNormal];
+        [botonRegresar setFrame:CGRectMake(10, 25, 36, 36)];
+    }
+    
     [botonRegresar addTarget:self action:@selector(regresarMenu:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:botonRegresar];
     
     [self.vistaInferior setHidden:YES];
     
     
-    if(IS_STANDARD_IPHONE_6_PLUS){
+    if(IS_STANDARD_IPHONE_6){
+        self.label2.frame = CGRectMake(20, 70, 335, 57);
+        self.txtNombre.frame = CGRectMake(20,138, 335, 50);
+        self.txtContrasena.frame = CGRectMake(20, 197, 335, 45);
+        self.txtContrasenaConfirmar.frame = CGRectMake(20, 255, 335, 45);
+        self.boton.frame =  CGRectMake(20, 329, 335, 55);
         [self.scrollView setContentSize:CGSizeMake(375, 667)];
         
     }else if (IS_STANDARD_IPHONE_6_PLUS){
       
-        self.label2.frame = CGRectMake(300, 300, 400, 57);
-        self.txtNombre.frame = CGRectMake(70, 208, 380, 45);
-        self.txtContrasena.frame = CGRectMake(70, 270, 380, 45);
-        self.txtContrasenaConfirmar.frame = CGRectMake(70, 315, 380, 45);
-        self.boton.frame =  CGRectMake(70, 400, 280, 55);
+        self.label2.frame = CGRectMake(50, 100, 335, 57);
+        self.txtNombre.frame = CGRectMake(50, 200, 335, 45);
+        self.txtContrasena.frame = CGRectMake(50, 260, 335, 45);
+        self.txtContrasenaConfirmar.frame = CGRectMake(50, 320, 335, 45);
+        self.boton.frame =  CGRectMake(50, 400, 335, 55);
+        [self.scrollView setContentSize:CGSizeMake(414, 736)];
         
     }else if(IS_IPAD){
         self.label2.frame = CGRectMake(184, 300, 400, 57);
