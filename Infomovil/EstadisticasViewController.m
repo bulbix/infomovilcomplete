@@ -50,14 +50,17 @@
     
     //MBC
     if(IS_STANDARD_IPHONE_6_PLUS){
-        [self.botonCambioEstadisticas setFrame:CGRectMake(20, 570, 280, 29)];
+        [self.botonCambioEstadisticas setFrame:CGRectMake(20, 570, 374, 29)];
+        self.botonTotales.frame = CGRectMake(20, 15, 374, 29);
     }
     else if(IS_STANDARD_IPHONE_6){
-         [self.botonCambioEstadisticas setFrame:CGRectMake(20, 500, 280, 29)];
+         [self.botonCambioEstadisticas setFrame:CGRectMake(20, 500, 335, 29)];
+        self.botonTotales.frame = CGRectMake(20, 15, 335, 30);
     }else if(IS_IPHONE_5){
         [self.botonCambioEstadisticas setFrame:CGRectMake(20, 375, 280, 29)];
     }else if(IS_IPAD){
-        [self.botonCambioEstadisticas setFrame:CGRectMake(20, 850, 280, 29)];
+        [self.botonCambioEstadisticas setFrame:CGRectMake(40, 850, 668, 29)];
+        self.botonTotales.frame = CGRectMake(20, 35, 728, 30);
     }else{
         [self.botonCambioEstadisticas setFrame:CGRectMake(20, 320, 280, 29)];
     }

@@ -124,33 +124,60 @@ int opcionButton = 0 ;
     
     
     if(IS_STANDARD_IPHONE_6){
-        [self.vistaPlanPro setContentSize:CGSizeMake(375, 568)];
-        [self.scrollContenido setContentSize:CGSizeMake(750, 568)];
+        self.selector.frame = CGRectMake(20, 10, 335, 30);
+         self.scrollContenido.frame = CGRectMake(0, 50, 375, 667);
+        [self.scrollContenido setContentSize:CGSizeMake(750, 667)];
+        self.viewCompraPlanPro.frame = CGRectMake(0, 0, 375, 667);
+        [self.vistaPlanPro setContentSize:CGSizeMake(375, 667)];
+        self.vistaPlanPro.frame = CGRectMake(0, 0, 375, 667);
+        self.vistaDominio.frame = CGRectMake(375, 0, 375, 667);
         self.imgBackgroundBotones.frame = CGRectMake(0, 68, 375, 143);
         self.comprar1mes.frame = CGRectMake(30, 87, 109, 109);
         self.comprar6meses.frame = CGRectMake(135, 87, 109, 109);
         self.comprar12meses.frame = CGRectMake(240, 87, 109, 109);
+        
+        
+        
     }else if(IS_STANDARD_IPHONE_6_PLUS){
+        self.selector.frame = CGRectMake(20, 10, 374, 30);
+        self.scrollContenido.frame = CGRectMake(0, 50, 414, 736);
+        [self.scrollContenido setContentSize:CGSizeMake(828, 1472)];
+        self.viewCompraPlanPro.frame = CGRectMake(0, 0, 414, 736);
+        self.vistaPlanPro.frame = CGRectMake(0, 0, 414, 736);
         [self.vistaPlanPro setContentSize:CGSizeMake(414, 736)];
-        self.vistaDominio.frame = CGRectMake(415, 0, 414, 736);
-        [self.scrollContenido setContentSize:CGSizeMake(828, 736)];
-        self.imgBackgroundBotones.frame = CGRectMake(0, 68, 415, 143);
+        self.vistaDominio.frame = CGRectMake(414, 0, 414, 736);
+        self.imgBackgroundBotones.frame = CGRectMake(0, 68, 414, 143);
         self.comprar1mes.frame = CGRectMake(45, 87, 109, 109);
         self.comprar6meses.frame = CGRectMake(150, 87, 109, 109);
         self.comprar12meses.frame = CGRectMake(255, 87, 109, 109);
+        self.tituloPlanPro.frame = CGRectMake(45, 15, 324, 20 );
+        self.subtituloPlanPro.frame = CGRectMake(45, 35, 324,20 );
+        self.beneficiosPlanPro.frame = CGRectMake(45, 220, 324, 20);
+        self.rayaLabel.frame = CGRectMake(45, 240, 324, 1);
+        self.imgBeneficios.frame = CGRectMake(45, 265 ,324 , 161);
+        
     }else if(IS_IPAD){
+        self.selector.frame = CGRectMake(20, 35, 728, 30);
+        self.scrollContenido.frame = CGRectMake(0, 70, 768, 1024);
+        [self.scrollContenido setContentSize:CGSizeMake(1536, 2048)];
+        self.viewCompraPlanPro.frame = CGRectMake(0, 0, 768, 1024);
+        self.vistaPlanPro.frame = CGRectMake(0, 0, 768, 1024);
         [self.vistaPlanPro setContentSize:CGSizeMake(768, 1024)];
         self.vistaDominio.frame = CGRectMake(768, 0, 768, 1024);
         [self.scrollContenido setContentSize:CGSizeMake(1536, 2048)];
-        self.imgBackgroundBotones.frame = CGRectMake(0, 68, 768, 170);
-        self.comprar1mes.frame = CGRectMake(221, 87, 109, 109);
-        self.comprar6meses.frame = CGRectMake(330, 87, 109, 109);
-        self.comprar12meses.frame = CGRectMake(439, 87, 109, 109);
-        self.tituloPlanPro.frame = CGRectMake(184, 10, 400,29 );
-        self.subtituloPlanPro.frame = CGRectMake(184, 35, 400,29 );
-        self.beneficiosPlanPro.frame = CGRectMake(184, 268, 400, 21);
-        self.rayaLabel.frame = CGRectMake(184, 285, 400, 1);
-        self.imgBeneficios.frame = CGRectMake(184, 285 ,400 , 200);
+        self.tituloPlanPro.frame = CGRectMake(134, 60, 500, 35 );
+        [self.tituloPlanPro setFont:[UIFont fontWithName:@"Avenir-Book" size:22]];
+        self.subtituloPlanPro.frame = CGRectMake(134, 100, 500,29 );
+         [self.subtituloPlanPro setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
+        self.imgBackgroundBotones.frame = CGRectMake(0, 145, 768, 200);
+        self.comprar1mes.frame = CGRectMake(134, 175, 150, 150);
+        self.comprar6meses.frame = CGRectMake(310, 175, 150, 150);
+        self.comprar12meses.frame = CGRectMake(485, 175, 150, 150);
+        
+        self.beneficiosPlanPro.frame = CGRectMake(134, 360, 500, 30);
+        [self.beneficiosPlanPro setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
+        self.rayaLabel.frame = CGRectMake(134, 385, 500, 1);
+        self.imgBeneficios.frame = CGRectMake(134, 410 ,500 , 270);
     }else{
         [self.vistaPlanPro setContentSize:CGSizeMake(320, 568)];
         [self.scrollContenido setContentSize:CGSizeMake(640, 568)];
@@ -605,13 +632,11 @@ if(noSeRepiteOprimirElBoton){
             UIFont * customFont = [UIFont fontWithName:@"Avenir-Medium" size:16];
             UILabel *dominio;
             if(IS_STANDARD_IPHONE_6){
-                dominio = [[UILabel alloc]initWithFrame:CGRectMake(40, 40, 375, 100)];
-            }
-            //MBC
-            else if(IS_STANDARD_IPHONE_6_PLUS){
+                dominio = [[UILabel alloc]initWithFrame:CGRectMake(0, 40, 375, 100)];
+            }else if(IS_STANDARD_IPHONE_6_PLUS){
                 dominio = [[UILabel alloc]initWithFrame:CGRectMake(0, 40, 414, 100)];
             }else if(IS_IPAD){
-                dominio = [[UILabel alloc]initWithFrame:CGRectMake(184, 80, 400, 100)];
+                dominio = [[UILabel alloc]initWithFrame:CGRectMake(0, 80, 768, 100)];
             }else{
                 dominio = [[UILabel alloc]initWithFrame:CGRectMake(0, 40, 320, 100)];
             }
@@ -652,24 +677,28 @@ if(noSeRepiteOprimirElBoton){
             
             // IRC FECHA INICIO Y FIN
             UILabel *fechas;
+            fechas.font = customFont;
             if(IS_STANDARD_IPHONE_6){
-                fechas = [[UILabel alloc]initWithFrame:CGRectMake(40, 120,375, 100)];
-            }
-            //MBC
-            else if(IS_STANDARD_IPHONE_6_PLUS){
-                fechas = [[UILabel alloc]initWithFrame:CGRectMake(0, 120,414, 100)];
+                fechas = [[UILabel alloc]initWithFrame:CGRectMake(0, 120,375, 100)];
+                [fechas setFont: [UIFont fontWithName:@"Avenir-Book" size:16]];
+                [dominio setFont: [UIFont fontWithName:@"Avenir-Book" size:18]];
+            }else if(IS_STANDARD_IPHONE_6_PLUS){
+                fechas = [[UILabel alloc]initWithFrame:CGRectMake(0, 180,414, 100)];
+                [fechas setFont: [UIFont fontWithName:@"Avenir-Book" size:20]];
+                [dominio setFont: [UIFont fontWithName:@"Avenir-Book" size:20]];
             }else if(IS_IPAD){
-                fechas = [[UILabel alloc]initWithFrame:CGRectMake(184, 180,400, 100)];
-            
+                fechas = [[UILabel alloc]initWithFrame:CGRectMake(184, 180,400, 200)];
+                [fechas setFont: [UIFont fontWithName:@"Avenir-Book" size:24]];
+                 [dominio setFont: [UIFont fontWithName:@"Avenir-Book" size:24]];
             }else{
                 fechas = [[UILabel alloc]initWithFrame:CGRectMake(0, 120,320, 100)];
             }
+            
             fechas.text = [NSString stringWithFormat: @"Fecha de inicio: %@\n Fecha de término: %@", self.datosUsuario.fechaInicialTel, self.datosUsuario.fechaFinalTel ];
-            fechas.font = customFont;
+            
             fechas.numberOfLines = 5;
             fechas.baselineAdjustment = UIBaselineAdjustmentAlignBaselines;
             fechas.adjustsFontSizeToFitWidth = YES;
-           // fechas.minimumScaleFactor = 10.0f/12.0f;
             fechas.clipsToBounds = YES;
             fechas.backgroundColor = [UIColor clearColor];
             fechas.textColor = [UIColor colorWithRed:47.0f/255.0f

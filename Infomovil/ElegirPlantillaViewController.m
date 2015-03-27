@@ -98,7 +98,9 @@ BOOL actualizo;
         if(IS_STANDARD_IPHONE_6){
             pController.view.frame = CGRectMake(375*i, 0, 375, 480);
         }else if(IS_STANDARD_IPHONE_6_PLUS){
-            pController.view.frame = CGRectMake(540*i, 0, 540, 480);
+            pController.view.frame = CGRectMake(414*i, 0, 414, 480);
+        }else if(IS_IPAD){
+            pController.view.frame = CGRectMake(768*i, 0, 768, 480);
         }else{
             pController.view.frame = CGRectMake(320*i, 0, 320, 480);
         }
@@ -123,9 +125,17 @@ BOOL actualizo;
         pController.etiquetaEstatica.text = NSLocalizedString(@"etiquetaEstilo", nil);
         
         if([[nombreWebServiceTemplate objectAtIndex:i] isEqualToString:self.datosUsuario.nombreTemplate]){
-            [pController.btnTemplateSeleccionado setImage:[UIImage imageNamed:@"tempOn.png"] forState:UIControlStateNormal];
+            if(IS_IPAD){
+            [pController.btnTemplateSeleccionado setImage:[UIImage imageNamed:@"tempOn-"] forState:UIControlStateNormal];
+            }else{
+                [pController.btnTemplateSeleccionado setImage:[UIImage imageNamed:@"tempOn.png"] forState:UIControlStateNormal];
+            }
         }else{
+            if(IS_IPAD){
+            [pController.btnTemplateSeleccionado setImage:[UIImage imageNamed:@"tempOff-"] forState:UIControlStateNormal];
+            }else{
             [pController.btnTemplateSeleccionado setImage:[UIImage imageNamed:@"tempOff.png"] forState:UIControlStateNormal];
+            }
         }
         
         pController.btnVerEjemploPlantilla.tag = i;
@@ -156,6 +166,18 @@ BOOL actualizo;
             pController.descripcionPlantilla.frame = CGRectMake(70, 386, 280, 67);
             pController.imgTemplate.frame = CGRectMake(70, 0, 300, 320);
             pController.imgBullets.frame = CGRectMake(122, 480, 176, 13);
+        }else if(IS_IPAD){
+            pController.btnTemplateSeleccionado.frame = CGRectMake(134, 590, 60, 60);
+            pController.etiquetaEstatica.frame = CGRectMake(134, 650, 70, 40);
+            [pController.etiquetaEstatica setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
+            pController.nombrePlantilla.frame = CGRectMake(200, 650, 120, 40);
+            [pController.nombrePlantilla setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
+            pController.btnVerEjemploPlantilla.frame = CGRectMake(484, 645, 150, 40);
+            pController.descripcionPlantilla.frame = CGRectMake(134, 690, 500, 67);
+            [pController.descripcionPlantilla setFont:[UIFont fontWithName:@"Avenir-Book" size:18]];
+            pController.imgTemplate.frame = CGRectMake(134, 50, 500, 540);
+            pController.imgBullets.frame = CGRectMake(296, 800, 176, 13);
+        
         }
         
         
@@ -166,7 +188,9 @@ BOOL actualizo;
     if(IS_STANDARD_IPHONE_6){
         self.scrollTemplate.frame = CGRectMake(0, 0, 375, 667);
     }else if(IS_STANDARD_IPHONE_6_PLUS){
-        self.scrollTemplate.frame = CGRectMake(0, 30, 540, 960);
+        self.scrollTemplate.frame = CGRectMake(0, 30, 414, 736);
+    }else if(IS_IPAD){
+        self.scrollTemplate.frame = CGRectMake(0, 30, 768, 1024 );
     }
     
     

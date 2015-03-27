@@ -389,8 +389,8 @@
             [alert show];
         }else{
             
-          
-           // [[AppsFlyerTracker sharedTracker] trackEvent:@"Registro Usuario" withValue:@""];
+            [[AppsFlyerTracker sharedTracker] setCustomerUserID:self.datosUsuario.emailUsuario];
+            [[AppsFlyerTracker sharedTracker] trackEvent:@"Registro Usuario" withValue:@""];
            
             // IRC APPBOY //
             NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];

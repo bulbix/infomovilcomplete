@@ -55,7 +55,7 @@
         self.botonEjemplo2.frame = CGRectMake(80, 270, 200, 50);
         self.inicioRapidobtn.frame = CGRectMake(50, 44, 280, 35);
         self.verTutorialbtn.frame = CGRectMake(50, 100, 137, 35);
-        self.botonEjemplo.frame = CGRectMake(170, 85, 137, 35);
+        self.botonEjemplo.frame = CGRectMake(190, 100, 137, 35);
         self.dominio.frame = CGRectMake(0, 8, 375, 34);
         self.line1.frame = CGRectMake(45, 120, 280, 3);
         self.line2.frame = CGRectMake(45, 210, 280, 3);
@@ -73,6 +73,20 @@
         self.line2.frame = CGRectMake(70, 191, 280, 3);
         self.line3.frame = CGRectMake(70, 277, 280, 3);
         self.dominio.frame = CGRectMake(0, 4, 420, 34);
+    }else if(IS_IPAD){
+        self.botonFondo.frame = CGRectMake(184, 150, 400, 75);
+        self.botonCrear.frame = CGRectMake(184, 270, 400, 75);
+        self.botonPublicar.frame = CGRectMake(184, 390, 400, 75);
+        self.botonEjemplo2.frame = CGRectMake(209, 320, 350, 40);
+        self.inicioRapidobtn.frame = CGRectMake(209, 24, 350, 40);
+        self.verTutorialbtn.frame = CGRectMake(209, 72, 170, 40);
+        self.botonEjemplo.frame = CGRectMake(384, 72, 170, 40);
+        self.line1.frame = CGRectMake(184, 250, 400, 2);
+        self.line2.frame = CGRectMake(184, 370, 400, 2);
+        self.line3.frame = CGRectMake(184, 490, 400, 2);
+        self.dominio.frame = CGRectMake(0, 40, 768, 40);
+        [self.dominio.titleLabel setFont: [UIFont fontWithName:@"Avenir-Book" size:22]];
+    
     }
 	
     self.datosUsuario				= [DatosUsuario sharedInstance];
@@ -210,7 +224,8 @@
                 self.viewDominioPublicado.frame = CGRectMake(0, 100, 414, 90);
             }else if(IS_STANDARD_IPHONE_6){
                 self.viewDominioPublicado.frame = CGRectMake(0, 145, 335, 90);
-                
+            }else if(IS_IPAD){
+                self.viewDominioPublicado.frame = CGRectMake(0, 320, 400, 400);
             }else{
                 self.viewDominioPublicado.frame = CGRectMake(0, 300, 320, 90);
             }
@@ -223,10 +238,11 @@
             if(IS_IPHONE5){
                 self.viewDominioNoPublicado.frame = CGRectMake(0, 310, 320, 90);
             }else if (IS_STANDARD_IPHONE_6_PLUS){
-                self.viewDominioNoPublicado.frame = CGRectMake(0, 320, 320, 90);
+                self.viewDominioNoPublicado.frame = CGRectMake(0, 320, 320, 120);
             }else if(IS_STANDARD_IPHONE_6){
-                self.viewDominioNoPublicado.frame = CGRectMake(0, 320, 320, 90);
-                
+                self.viewDominioNoPublicado.frame = CGRectMake(0, 320, 320, 140);
+            }else if(IS_IPAD){
+                self.viewDominioNoPublicado.frame = CGRectMake(0, 500, 400, 400);
             }else{
                 self.viewDominioNoPublicado.frame = CGRectMake(0, 280, 320, 90);
             }

@@ -718,6 +718,8 @@
 		BFCB96E91AA611B600DDD753 /* HockeySDK.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = BFCB96E41AA611B600DDD753 /* HockeySDK.xcconfig */; };
 		BFCB96EA1AA611B600DDD753 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BFCB96E51AA611B600DDD753 /* HockeySDKResources.bundle */; };
 		BFCB96EB1AA611B600DDD753 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = BFCB96E61AA611B600DDD753 /* LICENSE */; };
+		BFCC5BEA1AC4C8C9009B38F1 /* tempOff-.png in Resources */ = {isa = PBXBuildFile; fileRef = BFCC5BE91AC4C8C9009B38F1 /* tempOff-.png */; };
+		BFCC5BEC1AC4CFE9009B38F1 /* tempOn-.png in Resources */ = {isa = PBXBuildFile; fileRef = BFCC5BEB1AC4CFE9009B38F1 /* tempOn-.png */; };
 		BFD0AB951A9E44E800D5FF63 /* VerEjemplo.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFD0AB941A9E44E800D5FF63 /* VerEjemplo.xib */; };
 		BFD0AB981A9E44FF00D5FF63 /* VerEjemploViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD0AB971A9E44FF00D5FF63 /* VerEjemploViewController.m */; };
 		BFD0AB9B1A9E4DE500D5FF63 /* VistaPreviaWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD0AB9A1A9E4DE500D5FF63 /* VistaPreviaWebViewController.m */; };
@@ -1784,6 +1786,8 @@
 		BFCB96E41AA611B600DDD753 /* HockeySDK.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = HockeySDK.xcconfig; sourceTree = "<group>"; };
 		BFCB96E51AA611B600DDD753 /* HockeySDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HockeySDKResources.bundle; sourceTree = "<group>"; };
 		BFCB96E61AA611B600DDD753 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		BFCC5BE91AC4C8C9009B38F1 /* tempOff-.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tempOff-.png"; path = "Infomovil/imagenesInfomovil/Templates/tempOff-.png"; sourceTree = SOURCE_ROOT; };
+		BFCC5BEB1AC4CFE9009B38F1 /* tempOn-.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tempOn-.png"; path = "Infomovil/imagenesInfomovil/Templates/tempOn-.png"; sourceTree = SOURCE_ROOT; };
 		BFD0AB941A9E44E800D5FF63 /* VerEjemplo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VerEjemplo.xib; sourceTree = "<group>"; };
 		BFD0AB961A9E44FF00D5FF63 /* VerEjemploViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerEjemploViewController.h; sourceTree = "<group>"; };
 		BFD0AB971A9E44FF00D5FF63 /* VerEjemploViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerEjemploViewController.m; sourceTree = "<group>"; };
@@ -3336,6 +3340,8 @@
 		BFD292661AB36A140066AF30 /* templates */ = {
 			isa = PBXGroup;
 			children = (
+				BFCC5BEB1AC4CFE9009B38F1 /* tempOn-.png */,
+				BFCC5BE91AC4C8C9009B38F1 /* tempOff-.png */,
 				BF891C6E1ABA75AB0082C107 /* tempOff.png */,
 				BF891C6F1ABA75AB0082C107 /* tempOff@2x.png */,
 				BF891C701ABA75AB0082C107 /* tempOff@3x.png */,
@@ -3770,6 +3776,7 @@
 				0F578E3518BC0A0900888C87 /* barra.png in Resources */,
 				BF15BD5F1AA54DD2009A6398 /* 6mInac-es@3x.png in Resources */,
 				BFD0AB9D1A9E4F9900D5FF63 /* vistaPreviaWeb.xib in Resources */,
+				BFCC5BEC1AC4CFE9009B38F1 /* tempOn-.png in Resources */,
 				0F9F52CC189890C6000F9FA5 /* miborrar.png in Resources */,
 				0F65559419CBAA5D00C90B80 /* logoyoutube.png in Resources */,
 				0FC6C6BF18DD0EE0009E69A2 /* topbar@2x.png in Resources */,
@@ -4031,6 +4038,7 @@
 				BFD29D561AC2139D008EADB9 /* btn_play@1x.png in Resources */,
 				65581B1819350C8000B5D4ED /* btnnamepublishEn@2x.png in Resources */,
 				0FA8D2D6188756F9008F17A8 /* ContactoPaso2ViewController.xib in Resources */,
+				BFCC5BEA1AC4C8C9009B38F1 /* tempOff-.png in Resources */,
 				BFD2928C1AB36A140066AF30 /* template4@2x.png in Resources */,
 				0F6CBD17190801C90077B065 /* NBrosa.png in Resources */,
 				0F9F52D1189890C6000F9FA5 /* miconfiguracionon.png in Resources */,

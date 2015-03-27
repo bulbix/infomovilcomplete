@@ -84,9 +84,9 @@
     if (IS_IPHONE_5) {
         vistaInferior = [[UIView alloc] initWithFrame:CGRectMake(0, 440, 320, 68)];//458
     }else if(IS_STANDARD_IPHONE_6){
-        vistaInferior = [[UIView alloc] initWithFrame:CGRectMake(27, 538, 400, 88)];//458
+        vistaInferior = [[UIView alloc] initWithFrame:CGRectMake(25, 538, 320, 88)];//458
     }else if(IS_STANDARD_IPHONE_6_PLUS){
-        vistaInferior = [[UIView alloc] initWithFrame:CGRectMake(35, 607, 400, 88)];//458
+        vistaInferior = [[UIView alloc] initWithFrame:CGRectMake(47, 607, 320, 88)];//458
     }else if(IS_IPAD){
         vistaInferior = [[UIView alloc] initWithFrame:CGRectMake(174, 875, 668, 88)];//458
     }else {
