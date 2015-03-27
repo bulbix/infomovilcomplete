@@ -44,8 +44,23 @@
 @property (nonatomic, retain) UIAlertView *dialogoFacebook;
 @property (nonatomic, retain) UIAlertView *dialogoTwitter;
 
-- (IBAction)cambiarPagina:(UIPageControl *)sender;
+@property (weak, nonatomic) IBOutlet UIButton *btnFace;
+@property (weak, nonatomic) IBOutlet UIButton *btnTwit;
+@property (weak, nonatomic) IBOutlet UIButton *btnEmail;
+@property (weak, nonatomic) IBOutlet UIButton *btnSms;
+@property (weak, nonatomic) IBOutlet UIButton *btnWhats;
+@property (weak, nonatomic) IBOutlet UIButton *btnGoogle;
 
+@property (weak, nonatomic) IBOutlet UILabel *b1;
+@property (weak, nonatomic) IBOutlet UILabel *b2;
+@property (weak, nonatomic) IBOutlet UILabel *b3;
+@property (weak, nonatomic) IBOutlet UILabel *b4;
+@property (weak, nonatomic) IBOutlet UILabel *b5;
+@property (weak, nonatomic) IBOutlet UILabel *b6;
+
+
+
+- (IBAction)cambiarPagina:(UIPageControl *)sender;
 - (IBAction)compartirFacebook:(UIButton *)sender;
 - (IBAction)compartirTwitter:(UIButton *)sender;
 - (IBAction)compartirEmail:(UIButton *)sender;

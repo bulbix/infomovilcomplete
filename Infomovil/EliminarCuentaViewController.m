@@ -60,11 +60,32 @@
 	self.labelEspecifica.text = NSLocalizedString(@"eliminarLabel3", nil);
 	self.label2.text = NSLocalizedString(@"eliminarLabel4", nil);
     
+    if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
+        [self.botonConfiguracion setBackgroundImage:[UIImage imageNamed:@"settingsEn.png"] forState:UIControlStateNormal];
+    }else{
+        [self.botonConfiguracion setBackgroundImage:[UIImage imageNamed:@"miconfiguracionon.png"] forState:UIControlStateNormal];
+    }
     
-    [self.botonConfiguracion setBackgroundImage:[UIImage imageNamed:@"settingsEn.png"] forState:UIControlStateNormal];
-    [self.botonConfiguracion setFrame:CGRectMake(192, 14, 64, 54)];
+    if(IS_IPAD){
+        [self.botonConfiguracion setFrame:CGRectMake(264, 10, 88, 80)];
+        self.label.font = [UIFont fontWithName:@"Avenir-Book" size:20];
+    }else{
+        [self.botonConfiguracion setFrame:CGRectMake(192, 14, 64, 54)];
+        self.label.font = [UIFont fontWithName:@"Avenir-Book" size:17];
+    }
     
     [self.olvidasteContrasena setTitle:NSLocalizedString(@"olvidasteContrasenaElimininarCuenta", nil) forState:UIControlStateNormal]  ;
+}
+
+
+-(void)viewWillAppear:(BOOL)animated{
+    if(IS_IPAD){
+        self.vistaCombo.frame = CGRectMake(84, 50, 600, 30);
+        self.btnEligeOpcion.frame = CGRectMake(84, 56, 600, 30);
+      //  NSLog(@"LO9S VALORES DEL CAMPO BTNELIGEOPCION SON: %f   - %f   -  %f  -   %f", self.btnEligeOpcion.frame.origin.x, self.btnEligeOpcion.frame.origin.y, self.btnEligeOpcion.frame.size.height, self.btnEligeOpcion.frame.size.width);
+        [self.tablaOption setFrame:CGRectMake(84, 56, 600, 20)];
+        self.imgSelecciona.frame = CGRectMake(550, 10, 18, 11);
+    }
 }
 
 
@@ -111,14 +132,28 @@
 - (IBAction)mostrarOption:(UIButton *)sender {
     if (selectOculto) {
         [UIView animateWithDuration:0.5f animations:^{
-            [self.tablaOption setFrame:CGRectMake(20, 79, 280, 220)];
+            
+            if(IS_IPAD){
+                [self.tablaOption setFrame:CGRectMake(84, 80, 600, 220)];
+            }else{
+                [self.tablaOption setFrame:CGRectMake(20, 79, 280, 220)];
+            }
+            
+            
         } completion:^(BOOL finished) {
             selectOculto = NO;
         }];
     }
     else {
         [UIView animateWithDuration:0.5f animations:^{
-            [self.tablaOption setFrame:CGRectMake(20, 56, 280, 30)];
+            if(IS_IPAD){
+                [self.tablaOption setFrame:CGRectMake(84, 56, 600, 20)];
+            }else{
+                [self.tablaOption setFrame:CGRectMake(20, 56, 280, 30)];
+            }
+            
+            
+            
         } completion:^(BOOL finished) {
             selectOculto = YES;
         }];

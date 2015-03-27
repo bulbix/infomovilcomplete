@@ -21,6 +21,13 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollEliminarCuenta;
 @property (strong, nonatomic) IBOutlet UILabel *label;
 
+
+
+
+@property (weak, nonatomic) IBOutlet UIImageView *imgSelecciona;
+@property (weak, nonatomic) IBOutlet UIButton *btnEligeOpcion;
+
+
 @property (strong, nonatomic) IBOutlet UILabel *label2;
 // Si se logueo con facebook y quiere eliminar su cuenta //
 @property (weak, nonatomic) IBOutlet UIButton *olvidasteContrasena;

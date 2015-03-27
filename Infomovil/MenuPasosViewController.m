@@ -62,24 +62,27 @@
         self.line3.frame = CGRectMake(45, 300, 280, 3);
     }
     else if(IS_STANDARD_IPHONE_6_PLUS){
-        self.botonFondo.frame = CGRectMake(70, 46, 270, 53);
-        self.botonCrear.frame = CGRectMake(70, 130, 270, 53);
-        self.botonPublicar.frame = CGRectMake(70, 214, 270, 53);
-        self.botonEjemplo2.frame = CGRectMake(100, 250, 200, 50);
-        self.inicioRapidobtn.frame = CGRectMake(70, 24, 280, 35);
-        self.verTutorialbtn.frame = CGRectMake(70, 72, 137, 35);
-        self.botonEjemplo.frame = CGRectMake(213, 72, 137, 35);
-        self.line1.frame = CGRectMake(70, 105, 280, 3);
-        self.line2.frame = CGRectMake(70, 191, 280, 3);
-        self.line3.frame = CGRectMake(70, 277, 280, 3);
+        self.botonFondo.frame = CGRectMake(67, 46, 280, 53);
+        self.botonCrear.frame = CGRectMake(67, 130, 280, 53);
+        self.botonPublicar.frame = CGRectMake(67, 214, 280, 53);
+        self.botonEjemplo2.frame = CGRectMake(67, 250, 280, 50);
+        self.inicioRapidobtn.frame = CGRectMake(67, 24, 280, 35);
+        self.verTutorialbtn.frame = CGRectMake(67, 72, 138, 35);
+        self.botonEjemplo.frame = CGRectMake(209, 72, 138, 35);
+        self.line1.frame = CGRectMake(67, 105, 280, 3);
+        self.line2.frame = CGRectMake(67, 191, 280, 3);
+        self.line3.frame = CGRectMake(67, 277, 280, 3);
         self.dominio.frame = CGRectMake(0, 4, 420, 34);
     }else if(IS_IPAD){
         self.botonFondo.frame = CGRectMake(184, 150, 400, 75);
         self.botonCrear.frame = CGRectMake(184, 270, 400, 75);
         self.botonPublicar.frame = CGRectMake(184, 390, 400, 75);
         self.botonEjemplo2.frame = CGRectMake(209, 320, 350, 40);
-        self.inicioRapidobtn.frame = CGRectMake(209, 24, 350, 40);
+        [self.botonEjemplo2.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
+        self.inicioRapidobtn.frame = CGRectMake(209, 12, 350, 40);
+        [self.inicioRapidobtn.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
         self.verTutorialbtn.frame = CGRectMake(209, 72, 170, 40);
+        [self.verTutorialbtn.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
         self.botonEjemplo.frame = CGRectMake(384, 72, 170, 40);
         self.line1.frame = CGRectMake(184, 250, 400, 2);
         self.line2.frame = CGRectMake(184, 370, 400, 2);
@@ -242,7 +245,7 @@
             }else if(IS_STANDARD_IPHONE_6){
                 self.viewDominioNoPublicado.frame = CGRectMake(0, 320, 320, 140);
             }else if(IS_IPAD){
-                self.viewDominioNoPublicado.frame = CGRectMake(0, 500, 400, 400);
+                self.viewDominioNoPublicado.frame = CGRectMake(0, 570, 768, 350);
             }else{
                 self.viewDominioNoPublicado.frame = CGRectMake(0, 280, 320, 90);
             }

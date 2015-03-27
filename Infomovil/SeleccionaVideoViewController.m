@@ -35,22 +35,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    //    [self.vistaCircular setImage:[UIImage imageNamed:@"plecaverde.png"]];
-    //    [self.vistaCircular setImage:[UIImage imageNamed:@"plecacreasitio.png"]];
-    //    [self.tituloVista setText:NSLocalizedString(@"buscarVideo", @" ")];
 	if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
 		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"buscarVideo", @" ") nombreImagen:@"barraverde.png"];
 	}else{
 		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"buscarVideo", @" ") nombreImagen:@"NBverde.png"];
 	}
-    //    self.txtBuscar.layer.cornerRadius = 5.0f;
-    //    self.arregloVideos = [[NSMutableArray alloc] init];
     [self.videoCollection registerNib:[UINib nibWithNibName:@"VideoCell" bundle:Nil] forCellWithReuseIdentifier:@"videoCell"];
     self.videoCollection.layer.cornerRadius = 5.0f;
     self.navigationItem.rightBarButtonItem = Nil;
-    //    [self.labelBuscarVideo setText:NSLocalizedString(@"buscaVideo", nil)];
-    //    [self.txtBuscar setPlaceholder:NSLocalizedString(@"video", nil)];
+  
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -75,12 +68,6 @@
 }
 
 -(void) buscarVideo {
-    //    NSString *palabraBusqueda = [[self.txtBuscar text] stringByReplacingOccurrencesOfString:@" " withString:@"+"];
-    //    NSString *rutaBusqueda = [NSString stringWithFormat:@"http://gdata.youtube.com/feeds/api/videos?q=%@&max-results=20&alt=json", palabraBusqueda];
-    //
-    //    [self performSelectorInBackground:@selector(realizaConsultaconURL:) withObject:rutaBusqueda];
-    
-    
     
 }
 -(void) mostrarAlerta {

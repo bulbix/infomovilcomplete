@@ -54,7 +54,7 @@
                                           NSLog(@"Entrando a sesion activa");
                                       }];
     }
-     FBSession* session = [FBSession activeSession];
+    
     
     [super viewDidLoad];
     if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
@@ -63,13 +63,72 @@
         [self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"tituloTips", @" ") nombreImagen:@"NBrosa.png"];
     }
     self.navigationItem.rightBarButtonItem = Nil;
-    [self.scrollVistaTips setContentSize:CGSizeMake(960, 312)];
+    
     
     self.vistaTip1.layer.cornerRadius = 5.0f;
     self.vistaTip2.layer.cornerRadius = 5.0f;
     self.vistaTip3.layer.cornerRadius = 5.0f;
-    self.myPageControl.frame = CGRectMake(112, 300, 97, 37);
-
+    
+    if(IS_STANDARD_IPHONE_6_PLUS){
+        self.view.frame = CGRectMake(0, 0, 414, 736);
+        self.scrollVistaTips.frame = CGRectMake(0, 50, 414, 300);
+        [self.scrollVistaTips setContentSize:CGSizeMake(1242, 300)];
+        self.vistaTip1.frame = CGRectMake( 57, 0, 300,300 );
+        self.vistaTip2.frame = CGRectMake( 471, 0, 300,300 );
+        self.vistaTip3.frame = CGRectMake( 885, 0, 300,300 );
+        self.myPageControl.frame = CGRectMake(157, 410, 100, 37);
+        
+        [self.btnFace setFrame:CGRectMake(29, 150, 47, 47)];
+        [self.btnGoogle setFrame:CGRectMake(126, 150, 47, 47)];
+        [self.btnTwit setFrame:CGRectMake(223, 150, 47, 47)];
+        [self.btnEmail setFrame:CGRectMake(29, 230, 47, 47)];
+        [self.btnSms setFrame:CGRectMake(126, 230, 47, 47)];
+        [self.btnWhats setFrame:CGRectMake(223, 230, 47, 47)];
+        
+    }else if(IS_IPAD){
+        self.view.frame = CGRectMake(0, 0, 768, 1024);
+        self.scrollVistaTips.frame = CGRectMake(0, 100, 768, 600);
+        [self.scrollVistaTips setContentSize:CGSizeMake(2304, 600)];
+        self.vistaTip1.frame = CGRectMake( 84, 0, 600,600 );
+        self.vistaTip2.frame = CGRectMake( 852, 0, 600,600 );
+        self.vistaTip3.frame = CGRectMake( 1620, 0, 600,600 );
+        self.myPageControl.frame = CGRectMake(334, 750, 100, 37);
+        
+        [self.btnFace setFrame:CGRectMake(150, 280, 60, 60)];
+        [self.btnGoogle setFrame:CGRectMake(270, 280, 60, 60)];
+        [self.btnTwit setFrame:CGRectMake(390, 280, 60, 60)];
+        [self.btnEmail setFrame:CGRectMake(150, 400, 60, 60)];
+        [self.btnSms setFrame:CGRectMake(270, 400, 60 ,60)];
+        [self.btnWhats setFrame:CGRectMake(390, 400, 60, 60)];
+        
+        self.seccionUnoTItulo.frame = CGRectMake(40, 10, 520, 60);
+        [self.seccionUnoTItulo setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
+        self.seccionUnoLabel1.frame = CGRectMake(40, 80, 520, 60);
+        self.seccionUnoLabel2.frame = CGRectMake(40, 150, 520, 60);
+        self.seccionUnoLabel3.frame =CGRectMake(40, 220, 520, 60);
+        self.seccionUnoLabel4.frame = CGRectMake(40, 290, 520, 60);
+        self.b1.frame = CGRectMake(20, 180, 10, 10);
+        self.b2.frame = CGRectMake(20, 250, 10, 10);
+        self.b3.frame = CGRectMake(20, 320, 10, 10);
+       
+        self.seccionTresTitulo.frame = CGRectMake(40, 10, 520, 60);
+        [self.seccionTresTitulo setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
+        self.seccionTresLabel1.frame = CGRectMake(40, 80, 520, 60);
+        self.seccionTresLabel2.frame = CGRectMake(40, 150, 520, 60);
+        self.seccionTresLabel3.frame = CGRectMake(40, 220, 520, 60);
+       
+        self.b4.frame = CGRectMake(20, 100, 10, 10);
+        self.b5.frame = CGRectMake(20, 180, 10, 10);
+        self.b6.frame = CGRectMake(20, 250, 10, 10);
+        
+        self.seccionCuatroTitulo.frame = CGRectMake(40, 10, 520, 60);
+        [self.seccionCuatroTitulo setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
+        self.seccionCuatroLabel1.frame = CGRectMake(40, 80, 520, 60);
+        
+    }else{
+        [self.scrollVistaTips setContentSize:CGSizeMake(960, 312)];
+        self.myPageControl.frame = CGRectMake(112, 300, 97, 37);
+    }
 
 }
 
@@ -103,6 +162,10 @@
 		self.seccionTresLabel2.frame = CGRectMake(37, 115, 243, 47);
 		self.vineta32.frame = CGRectMake(17, 115, 12, 24);
 	}
+    
+    if(IS_IPAD){
+    
+    }
 	
 }
 

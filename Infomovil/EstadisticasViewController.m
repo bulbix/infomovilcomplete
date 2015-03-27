@@ -136,9 +136,12 @@
 		[self.botonTotales setTitle:@"Visitantes Únicos" forSegmentAtIndex:1];
     }
 	errorToken = NO;
-//	[[AppsFlyerTracker sharedTracker] trackEvent:@"Consultar Reportes" withValue:@""];
     [self enviarEventoGAconCategoria:@"Consultar" yEtiqueta:@"Reportes"];
 		
+    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion && self.datosUsuario.dominio && ![self.datosUsuario.dominio isEqualToString:@""] && ! (self.datosUsuario.dominio == (id)[NSNull null]) && ![CommonUtils validarEmail:self.datosUsuario.dominio] && ![self.datosUsuario.dominio isEqualToString:@"(null)"] ){
+        [self.vistaInferior setHidden:NO];
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning

@@ -80,7 +80,6 @@
                                                                 pathForResource:@"CallingCodes"
                                                                 ofType:@"plist"]];
 	
-//	[self fillDataSourceArray];
 	array = [[NSMutableArray alloc] init];
 	filteredArray = [[NSMutableArray alloc] init];
 	
@@ -88,9 +87,11 @@
 		[array addObject:[[_arregloPais objectAtIndex:i]objectForKey:@"countryName"]];
 		[filteredArray addObject:[[_arregloPais objectAtIndex:i]objectForKey:@"countryName"]];
 	}
-	
-	[self.scroll setContentSize:CGSizeMake(320, 250)];
-	
+    if(IS_IPAD){
+        [self.scroll setContentSize:CGSizeMake(768, 1024)];
+    }else{
+        [self.scroll setContentSize:CGSizeMake(320, 250)];
+    }
 	self.nPais = @"1";
 	
 	self.labelNombre.text = NSLocalizedString(@"publicarNombre", nil);
@@ -352,7 +353,7 @@
 -(void) apareceTeclado {
     CGSize tamanioTeclado = TAMANIO_TECLADO;// CGSizeMake(320, 235);
     UIEdgeInsets edgeInsets;
-    edgeInsets = UIEdgeInsetsMake(0, 0, tamanioTeclado.height+15, 0);
+    edgeInsets = UIEdgeInsetsMake(0, 0, tamanioTeclado.height+10, 0);
 
     
     [self.scroll setContentInset:edgeInsets];
@@ -360,15 +361,17 @@
     
 	[[self scroll] scrollRectToVisible:((UITextField *)txtSeleccionado).frame animated:YES];
 
-
+    if(IS_IPAD || IS_STANDARD_IPHONE_6_PLUS){
+	// Aquí se pueden hacer cosas para estas versiones
 	
-	UITextField * aux = ((UITextField *)txtSeleccionado);
-	if(aux.frame.origin.y == 96){
-		[[self scroll] scrollRectToVisible:CGRectMake(self.scroll.frame.origin.x, self.scroll.frame.origin.y-2*aux.frame.origin.y, self.scroll.frame.size.width, self.scroll.frame.size.height) animated:YES];
-	}else{
-		[[self scroll] scrollRectToVisible:CGRectMake(self.scroll.frame.origin.x, self.scroll.frame.origin.y-1/aux.frame.origin.y, self.scroll.frame.size.width, self.scroll.frame.size.height) animated:YES];
-	}
-
+    }else{
+        UITextField * aux = ((UITextField *)txtSeleccionado);
+        if(aux.frame.origin.y == 80){
+            [[self scroll] scrollRectToVisible:CGRectMake(self.scroll.frame.origin.x, self.scroll.frame.origin.y-2*aux.frame.origin.y, self.scroll.frame.size.width, self.scroll.frame.size.height) animated:YES];
+        }else{
+            [[self scroll] scrollRectToVisible:CGRectMake(self.scroll.frame.origin.x, self.scroll.frame.origin.y-1/aux.frame.origin.y, self.scroll.frame.size.width, self.scroll.frame.size.height) animated:YES];
+        }
+    }
     
 }
 

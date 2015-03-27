@@ -7,6 +7,18 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TipsViewController">
             <connections>
+                <outlet property="b1" destination="00x-xJ-eCi" id="R7R-PJ-jt7"/>
+                <outlet property="b2" destination="LKR-zC-vT3" id="hmI-nP-gmH"/>
+                <outlet property="b3" destination="7tu-db-vwy" id="t4c-ha-LBf"/>
+                <outlet property="b4" destination="bRv-gt-FT6" id="0CG-Fb-LJk"/>
+                <outlet property="b5" destination="Aqz-1F-slP" id="2pb-PR-q0n"/>
+                <outlet property="b6" destination="90h-gf-q7f" id="uF2-1l-yS5"/>
+                <outlet property="btnEmail" destination="kZr-Xt-Bd2" id="ARn-xv-gHL"/>
+                <outlet property="btnFace" destination="Aqo-ja-WBf" id="tFG-be-i9P"/>
+                <outlet property="btnGoogle" destination="Ku6-EJ-BoH" id="Vo0-JP-7wd"/>
+                <outlet property="btnSms" destination="JPv-37-sVS" id="JYh-Ex-wfd"/>
+                <outlet property="btnTwit" destination="Ew9-Lx-DJj" id="sq1-Vm-ePp"/>
+                <outlet property="btnWhats" destination="sDy-ro-z3H" id="aA3-j5-eUW"/>
                 <outlet property="myPageControl" destination="IXV-M9-8uS" id="k3c-Y2-7wo"/>
                 <outlet property="scrollVistaTips" destination="eoi-Ao-f1E" id="f50-cr-JRs"/>
                 <outlet property="seccionCuatroLabel1" destination="PR9-Ld-lwG" id="eU2-JB-y9w"/>
@@ -50,6 +62,13 @@
                             <rect key="frame" x="20" y="15" width="280" height="296"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                             <subviews>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¡Cuida los detalles y prueba tu sitio web!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Pbq-rf-IkJ">
+                                    <rect key="frame" x="0.0" y="5" width="280" height="47"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                    <color key="textColor" red="0.1843137255" green="0.63921568630000003" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dLH-P2-DnD">
                                     <rect key="frame" x="11" y="55" width="259" height="96"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -59,22 +78,8 @@
                                     <color key="textColor" red="0.23529411759999999" green="0.2901960784" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¡Cuida los detalles y prueba tu sitio web!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Pbq-rf-IkJ">
-                                    <rect key="frame" x="0.0" y="5" width="280" height="47"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                                    <color key="textColor" red="0.1843137255" green="0.63921568630000003" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="abre el sitio en un explorador" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AjN-Zv-B2G">
                                     <rect key="frame" x="31" y="160" width="239" height="33"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                                    <color key="textColor" red="0.23529411759999999" green="0.2901960784" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="revisa bien todos los textos" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="t1r-j2-2ZX">
-                                    <rect key="frame" x="31" y="257" width="239" height="32"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                     <color key="textColor" red="0.23529411759999999" green="0.2901960784" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -87,6 +92,13 @@
                                     <color key="textColor" red="0.23529411759999999" green="0.2901960784" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                     <size key="shadowOffset" width="0.0" height="0.0"/>
+                                </label>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="revisa bien todos los textos" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="t1r-j2-2ZX">
+                                    <rect key="frame" x="31" y="257" width="239" height="32"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                    <color key="textColor" red="0.23529411759999999" green="0.2901960784" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="•" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="00x-xJ-eCi">
                                     <rect key="frame" x="11" y="163" width="12" height="24"/>

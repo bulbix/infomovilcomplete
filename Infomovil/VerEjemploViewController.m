@@ -8,7 +8,7 @@
 
 #import "VerEjemploViewController.h"
  #import "CommonUtils.h"
-
+#import "InfomovilViewController.h"
 @interface VerEjemploViewController ()
 @property (nonatomic, strong) AlertView *alertaContacto;
 @property (nonatomic,assign) BOOL pagCargada;
@@ -17,23 +17,27 @@
 @implementation VerEjemploViewController
 
 - (void)viewDidLoad {
+   
     [super viewDidLoad];
+    
+    self.pagCargada = NO;
+    self.webView.delegate = self;
     
     //MBC
     if(IS_STANDARD_IPHONE_6){
+         [self.view setFrame:CGRectMake(0, 0, 375, 667)];
         [self.webView setFrame:CGRectMake(0, 0, 375, 667)];
     }
     else if(IS_STANDARD_IPHONE_6_PLUS){
-        [self.webView setFrame:CGRectMake(0, 0, 540, 960)];
-    }
-    else{
+         [self.view setFrame:CGRectMake(0, 0, 414, 736)];
+        [self.webView setFrame:CGRectMake(0, 0, 414, 736)];
+    }else if(IS_IPAD){
+        [self.view setFrame:CGRectMake(0, 0, 768, 1024)];
+        [self.webView setFrame:CGRectMake(0, 0, 768, 1024)];
+    }else{
         [self.webView setFrame:CGRectMake(0, 0, 320, 568)];
     }
     
-    self.pagCargada = NO;
-    // Do any additional setup after loading the view.
-    
-    self.webView.delegate = self;
     self.navigationItem.rightBarButtonItem = Nil;
     if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
         [self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"verEjemploInicio", @" ") nombreImagen:@"barramorada.png"];
@@ -54,16 +58,12 @@
     [self.view addSubview:self.webView];
     [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
     
+    [self.vistaInferior setHidden:YES];
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    //MBC
-    if(IS_STANDARD_IPHONE_6){
-        [self.webView setFrame:CGRectMake(0, 0, 375, 667)];
-    }
-    else if(IS_STANDARD_IPHONE_6_PLUS){
-        [self.webView setFrame:CGRectMake(0, 0, 420, 680)];
-    }
+  
     
     
 }

@@ -688,7 +688,7 @@ if(noSeRepiteOprimirElBoton){
                 [dominio setFont: [UIFont fontWithName:@"Avenir-Book" size:20]];
             }else if(IS_IPAD){
                 fechas = [[UILabel alloc]initWithFrame:CGRectMake(184, 180,400, 200)];
-                [fechas setFont: [UIFont fontWithName:@"Avenir-Book" size:24]];
+                [fechas setFont: [UIFont fontWithName:@"Avenir-Book" size:20]];
                  [dominio setFont: [UIFont fontWithName:@"Avenir-Book" size:24]];
             }else{
                 fechas = [[UILabel alloc]initWithFrame:CGRectMake(0, 120,320, 100)];

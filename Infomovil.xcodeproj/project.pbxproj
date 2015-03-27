@@ -723,7 +723,7 @@
 		BFD0AB951A9E44E800D5FF63 /* VerEjemplo.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFD0AB941A9E44E800D5FF63 /* VerEjemplo.xib */; };
 		BFD0AB981A9E44FF00D5FF63 /* VerEjemploViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD0AB971A9E44FF00D5FF63 /* VerEjemploViewController.m */; };
 		BFD0AB9B1A9E4DE500D5FF63 /* VistaPreviaWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD0AB9A1A9E4DE500D5FF63 /* VistaPreviaWebViewController.m */; };
-		BFD0AB9D1A9E4F9900D5FF63 /* vistaPreviaWeb.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFD0AB9C1A9E4F9900D5FF63 /* vistaPreviaWeb.xib */; };
+		BFD0AB9D1A9E4F9900D5FF63 /* VistaPreviaWeb.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFD0AB9C1A9E4F9900D5FF63 /* VistaPreviaWeb.xib */; };
 		BFD292821AB36A140066AF30 /* template1.png in Resources */ = {isa = PBXBuildFile; fileRef = BFD2926A1AB36A140066AF30 /* template1.png */; };
 		BFD292831AB36A140066AF30 /* template1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFD2926B1AB36A140066AF30 /* template1@2x.png */; };
 		BFD292841AB36A140066AF30 /* template1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFD2926C1AB36A140066AF30 /* template1@3x.png */; };
@@ -1793,7 +1793,7 @@
 		BFD0AB971A9E44FF00D5FF63 /* VerEjemploViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerEjemploViewController.m; sourceTree = "<group>"; };
 		BFD0AB991A9E4DE500D5FF63 /* VistaPreviaWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VistaPreviaWebViewController.h; sourceTree = "<group>"; };
 		BFD0AB9A1A9E4DE500D5FF63 /* VistaPreviaWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VistaPreviaWebViewController.m; sourceTree = "<group>"; };
-		BFD0AB9C1A9E4F9900D5FF63 /* vistaPreviaWeb.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = vistaPreviaWeb.xib; sourceTree = "<group>"; };
+		BFD0AB9C1A9E4F9900D5FF63 /* VistaPreviaWeb.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VistaPreviaWeb.xib; sourceTree = "<group>"; };
 		BFD2926A1AB36A140066AF30 /* template1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = template1.png; sourceTree = "<group>"; };
 		BFD2926B1AB36A140066AF30 /* template1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "template1@2x.png"; sourceTree = "<group>"; };
 		BFD2926C1AB36A140066AF30 /* template1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "template1@3x.png"; sourceTree = "<group>"; };
@@ -2678,7 +2678,7 @@
 				BF648FB01A950F0300AFDEAD /* VerTutorialViewController.xib */,
 				BFD0AB991A9E4DE500D5FF63 /* VistaPreviaWebViewController.h */,
 				BFD0AB9A1A9E4DE500D5FF63 /* VistaPreviaWebViewController.m */,
-				BFD0AB9C1A9E4F9900D5FF63 /* vistaPreviaWeb.xib */,
+				BFD0AB9C1A9E4F9900D5FF63 /* VistaPreviaWeb.xib */,
 			);
 			name = CrearEditar;
 			sourceTree = "<group>";
@@ -3775,7 +3775,7 @@
 				BF63A18E1AB3C24A0077A5C2 /* slider1.png in Resources */,
 				0F578E3518BC0A0900888C87 /* barra.png in Resources */,
 				BF15BD5F1AA54DD2009A6398 /* 6mInac-es@3x.png in Resources */,
-				BFD0AB9D1A9E4F9900D5FF63 /* vistaPreviaWeb.xib in Resources */,
+				BFD0AB9D1A9E4F9900D5FF63 /* VistaPreviaWeb.xib in Resources */,
 				BFCC5BEC1AC4CFE9009B38F1 /* tempOn-.png in Resources */,
 				0F9F52CC189890C6000F9FA5 /* miborrar.png in Resources */,
 				0F65559419CBAA5D00C90B80 /* logoyoutube.png in Resources */,

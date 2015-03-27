@@ -76,17 +76,20 @@
 		[self.botonConfiguracion setBackgroundImage:[UIImage imageNamed:@"miconfiguracionon.png"] forState:UIControlStateNormal];
 	}
     
-    if(IS_IPAD){
-        [self.botonConfiguracion setFrame:CGRectMake(264, 10, 88, 80)];
-    }else{
-        [self.botonConfiguracion setFrame:CGRectMake(192, 14, 64, 54)];
-    }
+   
     self.navigationItem.rightBarButtonItem = Nil;
 	
 	self.datosUsuario = [DatosUsuario sharedInstance];
 	self.label.text = self.datosUsuario.emailUsuario;
 	self.label.textColor = colorFuenteVerde;
-	self.label.font = [UIFont fontWithName:@"Avenir-Book" size:17];
+	
+    if(IS_IPAD){
+        [self.botonConfiguracion setFrame:CGRectMake(264, 10, 88, 80)];
+        self.label.font = [UIFont fontWithName:@"Avenir-Book" size:20];
+    }else{
+        [self.botonConfiguracion setFrame:CGRectMake(192, 14, 64, 54)];
+        self.label.font = [UIFont fontWithName:@"Avenir-Book" size:17];
+    }
 }
 
 
