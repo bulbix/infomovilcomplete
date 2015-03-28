@@ -85,6 +85,9 @@
 	borrar = NO;
 }
 
+
+
+
 -(void) viewDidUnload {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
 }
@@ -102,6 +105,15 @@
 		[self acomodarBarraNavegacionConTitulo:tituloPaso nombreImagen:@"NBverde.png"];
 	}
     [self configuraVista];
+    
+    if(IS_IPAD){
+        self.labelInstruccion.frame = CGRectMake(84, 6, 600, 83);
+        self.textEmpresa.frame = CGRectMake(84,65 , 600, 30);
+        self.txtDescripcion.frame = CGRectMake(84, 83, 600, 109);
+        self.botonEliminar.frame = CGRectMake(655,258 , 29, 35);
+    }
+    
+    
 }
 
 -(void) viewWillDisappear:(BOOL)animated {

@@ -96,11 +96,11 @@ BOOL actualizo;
         UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"template%i",i+1]];
         
         if(IS_STANDARD_IPHONE_6){
-            pController.view.frame = CGRectMake(375*i, 0, 375, 480);
+            pController.view.frame = CGRectMake(375*i, 0, 375, 667);
         }else if(IS_STANDARD_IPHONE_6_PLUS){
-            pController.view.frame = CGRectMake(414*i, 0, 414, 480);
+            pController.view.frame = CGRectMake(414*i, 0, 414, 736);
         }else if(IS_IPAD){
-            pController.view.frame = CGRectMake(768*i, 0, 768, 480);
+            pController.view.frame = CGRectMake(768*i, 0, 768, 1024);
         }else{
             pController.view.frame = CGRectMake(320*i, 0, 320, 480);
         }
@@ -138,11 +138,7 @@ BOOL actualizo;
             }
         }
         
-        pController.btnVerEjemploPlantilla.tag = i;
-        [pController.btnVerEjemploPlantilla addTarget:self
-                                               action:@selector(irVerEjemplo:)
-         forControlEvents:UIControlEventTouchUpInside];
-        pController.btnTemplateSeleccionado.tag =  i;
+        
         //[pController.btnTemplateSeleccionado addTarget:self action:@selector(estiloSeccionado:) forControlEvents:UIControlEventTouchUpInside];
         if(IS_IPHONE_5){
             pController.btnTemplateSeleccionado.frame = CGRectMake(20, 320, 36, 37);
@@ -170,7 +166,12 @@ BOOL actualizo;
             pController.btnTemplateSeleccionado.frame = CGRectMake(134, 590, 60, 60);
             pController.etiquetaEstatica.frame = CGRectMake(134, 650, 70, 40);
             [pController.etiquetaEstatica setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
-            pController.nombrePlantilla.frame = CGRectMake(200, 650, 120, 40);
+            if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
+                pController.nombrePlantilla.frame = CGRectMake(200, 650, 120, 40);
+            }else{
+                pController.nombrePlantilla.frame = CGRectMake(210, 650, 120, 40);
+            }
+            
             [pController.nombrePlantilla setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
             pController.btnVerEjemploPlantilla.frame = CGRectMake(484, 645, 150, 40);
             pController.descripcionPlantilla.frame = CGRectMake(134, 690, 500, 67);
@@ -180,7 +181,11 @@ BOOL actualizo;
         
         }
         
-        
+        pController.btnVerEjemploPlantilla.tag = i;
+        [pController.btnVerEjemploPlantilla addTarget:self
+                                               action:@selector(irVerEjemplo:)
+                                     forControlEvents:UIControlEventTouchUpInside];
+        pController.btnTemplateSeleccionado.tag =  i;
         
         [self.scrollTemplate addSubview:pController.view];
     }
@@ -199,7 +204,7 @@ BOOL actualizo;
 }
 
 -(void)irVerEjemplo:(UIButton*)sender{
-      //  NSLog(@"El tag del boton es: %i",sender.tag );
+        NSLog(@"El tag del boton es: %i",sender.tag );
     
     switch (sender.tag) {
         case 0:{

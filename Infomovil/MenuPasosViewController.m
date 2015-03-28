@@ -52,7 +52,7 @@
         self.botonFondo.frame = CGRectMake(45, 50, 270, 53);
         self.botonCrear.frame = CGRectMake(45, 140, 270, 53);
         self.botonPublicar.frame = CGRectMake(45, 230, 270, 53);
-        self.botonEjemplo2.frame = CGRectMake(80, 270, 200, 50);
+        self.botonEjemplo2.frame = CGRectMake(80, 10, 200, 50);
         self.inicioRapidobtn.frame = CGRectMake(50, 44, 280, 35);
         self.verTutorialbtn.frame = CGRectMake(50, 100, 137, 35);
         self.botonEjemplo.frame = CGRectMake(190, 100, 137, 35);
@@ -65,7 +65,7 @@
         self.botonFondo.frame = CGRectMake(67, 46, 280, 53);
         self.botonCrear.frame = CGRectMake(67, 130, 280, 53);
         self.botonPublicar.frame = CGRectMake(67, 214, 280, 53);
-        self.botonEjemplo2.frame = CGRectMake(67, 250, 280, 50);
+        self.botonEjemplo2.frame = CGRectMake(67, 10, 280, 50);
         self.inicioRapidobtn.frame = CGRectMake(67, 24, 280, 35);
         self.verTutorialbtn.frame = CGRectMake(67, 72, 138, 35);
         self.botonEjemplo.frame = CGRectMake(209, 72, 138, 35);
@@ -224,9 +224,9 @@
             if(IS_IPHONE5){
                 self.viewDominioPublicado.frame = CGRectMake(0, 320, 320, 90);
             }else if (IS_STANDARD_IPHONE_6_PLUS){
-                self.viewDominioPublicado.frame = CGRectMake(0, 100, 414, 90);
+                self.viewDominioPublicado.frame = CGRectMake(0, 320, 414, 90);
             }else if(IS_STANDARD_IPHONE_6){
-                self.viewDominioPublicado.frame = CGRectMake(0, 145, 335, 90);
+                self.viewDominioPublicado.frame = CGRectMake(0, 320, 375, 90);
             }else if(IS_IPAD){
                 self.viewDominioPublicado.frame = CGRectMake(0, 320, 400, 400);
             }else{
@@ -316,7 +316,7 @@
 
 
 
-- (IBAction)crearEditar:(UIButton *)sender {
+- (IBAction)crearEditar:(UIButton *)sender { NSLog(@"ENTRO A CREAR EDITAR");
     self.datosUsuario = [DatosUsuario sharedInstance];
 
 	self.datosUsuario.eligioTemplate = YES;

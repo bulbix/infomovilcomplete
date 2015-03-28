@@ -68,6 +68,21 @@
     [self.vistaInferior setHidden:YES];
 }
 
+
+-(void)viewWillAppear:(BOOL)animated{
+    if(IS_IPAD){
+        self.label.frame = CGRectMake(84, 40, 600, 20);
+        self.txtEmail.frame = CGRectMake(84, 80, 600, 30);
+    }
+
+}
+
+
+
+
+
+
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

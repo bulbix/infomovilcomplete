@@ -48,6 +48,11 @@
         [self.btnBuscar setFrame:CGRectMake(83, 0, 78, 55)];
         [self.btnUbicar setFrame:CGRectMake(161, 0, 78, 55)];
         [self.btnEliminar setFrame:CGRectMake(239, 0, 78, 55)];
+    }else if(IS_IPAD){
+        [self.btnBuscar setFrame:CGRectMake(267, 0, 78, 55)];
+        [self.btnUbicar setFrame:CGRectMake(345, 0, 78, 55)];
+        [self.btnEliminar setFrame:CGRectMake(423, 0, 78, 55)];
+    
     }
   
 	if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
