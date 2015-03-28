@@ -39,9 +39,12 @@
     }
     else if(IS_STANDARD_IPHONE_6_PLUS){
         [self.cajaBusqueda setFrame:CGRectMake(70, 83, 280, 30)];
-    }
-    else{
+    }else if(IS_IPAD){
+        [self.labelBuscaDireccion setFrame: CGRectMake(84, 20, 600, 30 )];
+        [self.cajaBusqueda setFrame:CGRectMake(84, 60, 600, 30)];
+    }else{
         [self.cajaBusqueda setFrame:CGRectMake(20, 83, 280, 30)];
+        
     }
     
 	if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
