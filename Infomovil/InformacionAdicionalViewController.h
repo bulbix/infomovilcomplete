@@ -13,6 +13,8 @@
 @property (nonatomic, strong) NSMutableArray *arregloInformacion;
 @property (weak, nonatomic) IBOutlet UIView *vistaInformacion;
 @property (weak, nonatomic) IBOutlet UITableView *tablaInformacion;
+@property (weak, nonatomic) IBOutlet UILabel *imgBull1;
+@property (weak, nonatomic) IBOutlet UILabel *imgBull2;
 
 @property (strong, nonatomic) IBOutlet UILabel *label;
 @property (weak, nonatomic) IBOutlet UILabel *labelTexto1;

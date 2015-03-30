@@ -82,8 +82,18 @@
 	}
     
     self.vistaInformacion.layer.cornerRadius = 5.0f;
-    
     self.tablaInformacion.layer.cornerRadius = 5.0f;
+    
+    if(IS_IPAD){
+        [self.vistaInformacion setFrame:CGRectMake(84, 50, 600, 450)];
+        [self.labelTexto1 setFrame:CGRectMake(40, 80, 500, 60)];
+        [self.label setFrame:CGRectMake(40, 150, 500, 60)];
+        [self.imgBull1 setFrame:CGRectMake(20, 90, 10, 10)];
+        [self.imgBull2 setFrame:CGRectMake(20, 160, 10, 10)];
+       
+    }
+    
+    
 }
 
 -(void) viewWillAppear:(BOOL)animated {

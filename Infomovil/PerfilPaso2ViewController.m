@@ -125,6 +125,21 @@
 //	respaldo = [self.datosUsuario.arregloDatosPerfil copy];
 	respaldo = [[NSMutableArray alloc] initWithArray:self.datosUsuario.arregloDatosPerfil copyItems:YES];
 //	respaldoHorarios = [[NSMutableArray alloc] initWithArray:self.datosUsuario.arregloHorario copyItems:YES];
+    
+    if(IS_IPAD){
+        [self.txtDescripcion setFrame:CGRectMake(134, 70, 500, 200)];
+        [self.btnEliminar setFrame:CGRectMake(550, 300, 29, 35)];
+        [self.btnEliminar2 setFrame:CGRectMake(650, 450, 29, 35)];
+        [self.labelInfo setFrame:CGRectMake(550, 300, 33, 21)];
+        [self.fixed setWidth:600.0f];
+        [self.labelTituloHorarios setFrame:CGRectMake(0, 20, 768, 30)];
+        [self.vistaPicker setFrame:CGRectMake(0, 1024, 768, 1024)];
+        [self.vistaHorarios setFrame:CGRectMake(0, 0, 768, 1024)];
+    }else{
+        [self.vistaPicker setFrame:CGRectMake(0, 568, 320, 206)];
+        [self.vistaHorarios setFrame:CGRectMake(0, 0, 320, 568)];
+    
+    }
 }
 
 
@@ -166,7 +181,7 @@
             estaEditando = YES;
 			
 			[self.btnEliminar2 setEnabled:YES];
-			//self.btnEliminar2.frame = CGRectMake(268, 500, 29, 35);
+
         } else {
             for (int i = 0; i < arrayDias.count; i++)
             {
@@ -184,7 +199,6 @@
         [self.pickerHorarios reloadAllComponents];
     }
     else {
-//        NSMutableArray *arregloPerfil = self.datosUsuario.arregloDatosPerfil;
         KeywordDataModel *dataModel = [self.datosUsuario.arregloDatosPerfil objectAtIndex:index];
         [self.txtDescripcion setText:dataModel.keywordValue];
         if (dataModel.keywordValue.length > 0) {
@@ -201,6 +215,10 @@
 	}else{
 		[self acomodarBarraNavegacionConTitulo:tituloPerfil nombreImagen:@"NBverde.png"];
 	}
+    
+    
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -278,9 +296,14 @@
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     CGRect framePicker;
     if (IS_IPHONE_5) {
-        framePicker = CGRectMake(0, 248, 320, 206);
-    }
-    else {
+        framePicker = CGRectMake(0, 288, 320, 280);
+    }else if(IS_IPAD){
+        framePicker = CGRectMake(0, 724, 768, 300);
+    }else if(IS_STANDARD_IPHONE_6){
+        framePicker = CGRectMake(0, 462, 375, 206);
+    }else if(IS_STANDARD_IPHONE_6_PLUS){
+        framePicker = CGRectMake(0, 818, 768, 206);
+    }else {
         framePicker = CGRectMake(0, 210, 320, 206);
     }
     modificoPickerC1 = modificoPickerC2 = NO;
@@ -302,7 +325,6 @@
         }];
     }
     [self.vistaHorarios setContentSize:CGSizeMake(320, 500)];
-    //    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     indexSeleccionado = indexPath;
     [self apareceDatePicker:indexPath];
 }
@@ -323,7 +345,17 @@
         [horarioSeleccionado setCierre:[arrayHorarios objectAtIndex:anterior2]];
     }
     [UIView animateWithDuration:0.5f animations:^{
-        [self.vistaPicker setFrame:CGRectMake(0, 562, 320, 206)];
+        if(IS_STANDARD_IPHONE_6_PLUS){
+            [self.vistaPicker setFrame:CGRectMake(0, 736, 414, 206)];
+        }else if(IS_STANDARD_IPHONE_6){
+            [self.vistaPicker setFrame:CGRectMake(0, 667, 375, 206)];
+        }else if(IS_IPAD){
+            [self.vistaPicker setFrame:CGRectMake(0, 1024, 768, 300)];
+        }else if(IS_IPHONE_5){
+            [self.vistaPicker setFrame:CGRectMake(0, 582, 320, 206)];
+        }else{
+            [self.vistaPicker setFrame:CGRectMake(0, 562, 320, 206)];
+        }
     } completion:^(BOOL finished) {
         if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion) {
             [UIView animateWithDuration:0.2f animations:^{
@@ -343,7 +375,7 @@
 	}
     [self desapareceDatePicker];
     [self.tablaHorarios reloadData];
-    //    [self.vistaHorarios setContentSize:CGSizeMake(320, 300)];
+  
 }
 
 - (IBAction)eliminarPerfil:(UIButton *)sender {

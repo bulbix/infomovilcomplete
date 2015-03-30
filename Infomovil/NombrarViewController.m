@@ -48,6 +48,7 @@
     
     //MBC
     if(IS_STANDARD_IPHONE_6){
+        [self.scroll setFrame:CGRectMake(0, 0, 375, 667)];
         [self.label1 setFrame:CGRectMake(40, 47, 280, 97)];
         [self.label2 setFrame:CGRectMake(40, 97, 280, 101)];
         [self.labelW setFrame:CGRectMake(41, 178, 52, 24)];
@@ -57,6 +58,7 @@
         [self.boton setFrame:CGRectMake(93, 266, 200, 35)];
     }
     else if(IS_STANDARD_IPHONE_6_PLUS){
+        [self.scroll setFrame:CGRectMake(0, 0, 414, 736)];
         [self.label1 setFrame:CGRectMake(60, 47, 280, 97)];
         [self.label2 setFrame:CGRectMake(60, 97, 280, 101)];
         [self.labelW setFrame:CGRectMake(61, 178, 52, 24)];
@@ -64,8 +66,24 @@
         [self.labelTel setFrame:CGRectMake(311, 178, 28, 24)];
         [self.labelDominio setFrame:CGRectMake(70, 223, 280, 24)];
         [self.boton setFrame:CGRectMake(113, 266, 200, 35)];
-    }
-    else{
+    }else if(IS_IPAD){
+        [self.scroll setFrame:CGRectMake(0, 0, 768, 1024)];
+        [self.label1 setFrame:CGRectMake(84, 500, 600, 50)];
+        [self.label1 setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
+        [self.label2 setFrame:CGRectMake(84, 97, 600, 50)];
+        [self.label2 setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
+        [self.labelW setFrame:CGRectMake(0, 205, 209, 24)];
+        [self.labelW setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
+        [self.nombreDominio setFrame:CGRectMake(209, 200, 350, 35)];
+        [self.nombreDominio setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
+        [self.labelTel setFrame:CGRectMake(559, 205, 209, 24)];
+        [self.labelTel setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
+        [self.labelDominio setFrame:CGRectMake(0, 270, 768, 24)];
+        [self.labelDominio setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
+        [self.boton setFrame:CGRectMake(284, 350, 200, 35)];
+        [self.boton.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
+    
+    }else{
         [self.label1 setFrame:CGRectMake(20, 47, 280, 47)];
         [self.label2 setFrame:CGRectMake(20, 97, 280, 61)];
         [self.labelW setFrame:CGRectMake(11, 178, 52, 24)];
@@ -450,16 +468,18 @@
 {
 	NSLog(@"Height: %f",[[ UIScreen mainScreen ] bounds ].size.height);
 	CGRect rect;
-	if([[ UIScreen mainScreen ] bounds ].size.height == 568.0){
-		rect = CGRectMake(self.view.frame.origin.x,self.view.frame.origin.y-30,self.view.frame.size.width,self.view.frame.size.height);
-	}else{
-		rect = CGRectMake(self.view.frame.origin.x,self.view.frame.origin.y-120,self.view.frame.size.width,self.view.frame.size.height);
-	}
+	
 	
 	[UIView beginAnimations:nil context:NULL];
 	[UIView setAnimationDuration:0.3];
+    if(IS_IPHONE_5){
+        rect = CGRectMake(self.view.frame.origin.x,self.view.frame.origin.y-30,self.view.frame.size.width,self.view.frame.size.height);
+        self.view.frame = rect;
+    }else if(IS_IPHONE_4){
+        rect = CGRectMake(self.view.frame.origin.x,self.view.frame.origin.y-120,self.view.frame.size.width,self.view.frame.size.height);
+        self.view.frame = rect;
+    }
 	
-	self.view.frame = rect;
 	
 	[UIView commitAnimations];
 }
@@ -467,16 +487,18 @@
 - (void)keyboardWillHide:(NSNotification *)notification
 {
 	CGRect rect;
-    if([[ UIScreen mainScreen ] bounds ].size.height == 568.0){
-		rect = CGRectMake(self.view.frame.origin.x,self.view.frame.origin.y+30,self.view.frame.size.width,self.view.frame.size.height);
-	}else{
-		rect = CGRectMake(self.view.frame.origin.x,self.view.frame.origin.y+120,self.view.frame.size.width,self.view.frame.size.height);
-	}
+    
 	
 	[UIView beginAnimations:nil context:NULL];
 	[UIView setAnimationDuration:0.3];
+    if(IS_IPHONE_5){
+        rect = CGRectMake(self.view.frame.origin.x,self.view.frame.origin.y+30,self.view.frame.size.width,self.view.frame.size.height);
+        self.view.frame = rect;
+    }else if(IS_IPHONE_4){
+        rect = CGRectMake(self.view.frame.origin.x,self.view.frame.origin.y+120,self.view.frame.size.width,self.view.frame.size.height);
+        self.view.frame = rect;
+    }
 	
-	self.view.frame = rect;
 	
 	[UIView commitAnimations];
 }
