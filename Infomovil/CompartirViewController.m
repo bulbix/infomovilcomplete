@@ -116,7 +116,7 @@
 	
     [self.labelNombreDominio setText:[NSString stringWithFormat:@"www.%@.tel", self.datosUsuario.dominio]];
 	
-	self.label1.text = NSLocalizedString(@"compartirLabel1", nil);
+	self.label1.text = NSLocalizedString(@"compartirEtiqueta1", nil);
 	self.label2.text = NSLocalizedString(@"compartirLabel2", nil);
 	if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
 		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"compartir", @" ") nombreImagen:@"barramorada.png"];
@@ -131,10 +131,12 @@
         } else if(IS_STANDARD_IPHONE_6){
             self.vistaContenidoCompartir.frame = CGRectMake(50, 80, 287, 130);
         }else if(IS_IPAD){
-            self.label1.frame = CGRectMake(184, 70, 400, 60);
-            self.vistaContenidoCompartir.frame = CGRectMake(184, 180, 400, 130);
+            self.label1.frame = CGRectMake(134, 70, 500, 80);
+            [self.label1 setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
+            [self.labelNombreDominio setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
+            self.vistaContenidoCompartir.frame = CGRectMake(134, 180, 500, 160);
         }else{
-            self.vistaContenidoCompartir.frame = CGRectMake(17, 80, 287, 130);
+            self.vistaContenidoCompartir.frame = CGRectMake(17, 70, 287, 130);
         }
         
 	}else{

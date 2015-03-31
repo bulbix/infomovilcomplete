@@ -114,6 +114,10 @@
     }
     
     
+    self.botonSesions.layer.borderWidth = 1.0f;
+    self.botonSesions.layer.cornerRadius = 15.0f;
+    self.botonSesions.layer.borderColor = [UIColor whiteColor].CGColor;
+    
 }
 
 

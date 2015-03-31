@@ -140,6 +140,11 @@
         [self.vistaInferior setHidden:YES];
     }
     
+    if(IS_IPAD){
+        [self.tablaEditar setFrame:CGRectMake(20, 20, 728, 830)];
+    
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning

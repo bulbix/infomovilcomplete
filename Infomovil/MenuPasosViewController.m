@@ -229,6 +229,8 @@
                 self.viewDominioPublicado.frame = CGRectMake(0, 320, 375, 90);
             }else if(IS_IPAD){
                 self.viewDominioPublicado.frame = CGRectMake(0, 320, 400, 400);
+                self.dominio.frame =CGRectMake(0, 70, 768, 40);
+                [self.dominio.titleLabel setFont:[UIFont fontWithName:@"Avenir-medium" size:21]];
             }else{
                 self.viewDominioPublicado.frame = CGRectMake(0, 300, 320, 90);
             }
@@ -246,6 +248,8 @@
                 self.viewDominioNoPublicado.frame = CGRectMake(0, 320, 320, 140);
             }else if(IS_IPAD){
                 self.viewDominioNoPublicado.frame = CGRectMake(0, 570, 768, 350);
+                self.dominio.frame =CGRectMake(0, 60, 768, 40);
+                [self.dominio.titleLabel setFont:[UIFont fontWithName:@"Avenir-medium" size:21]];
             }else{
                 self.viewDominioNoPublicado.frame = CGRectMake(0, 280, 320, 90);
             }
