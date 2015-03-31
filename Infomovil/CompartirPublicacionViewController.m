@@ -81,6 +81,16 @@
 	self.vistaInferior.hidden=YES;
 	self.vistaInferior.hidden=YES;
 	self.vistaInferior.hidden=YES;
+    
+    if(IS_IPAD){
+        self.label1.frame = CGRectMake(84, 50, 600, 40);
+        self.labelDominio.frame = CGRectMake(84, 100, 600, 40);
+        self.labelPublicaTiempo.frame = CGRectMake(84, 150, 600, 80);
+        self.label2.frame = CGRectMake(84, 240, 600, 40);
+        self.label3.frame = CGRectMake(84, 290, 600, 160);
+    
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning

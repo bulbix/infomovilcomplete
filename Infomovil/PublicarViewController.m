@@ -101,6 +101,39 @@
     NSArray *fields = @[self.txtNombre, self.txtDir1, self.txtDir2];
     self.keyboardControls = [[BSKeyboardControls alloc] initWithFields:fields];
     [self.keyboardControls setDelegate:self];
+    
+    
+    if(IS_STANDARD_IPHONE_6){
+    
+    }else if(IS_STANDARD_IPHONE_6_PLUS){
+    
+    }else if(IS_IPAD){
+        [self.label1 setFrame:CGRectMake(84, 40, 600, 60)];
+        [self.label1 setFont:[UIFont fontWithName:@"Avenir-medium" size:20]];
+        [self.labelNombre setFrame:CGRectMake(84, 120, 600, 35)];
+        [self.labelNombre setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
+        [self.txtNombre setFrame:CGRectMake(84, 150, 600, 40)];
+        [self.txtNombre setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
+        [self.labelDir1 setFrame:CGRectMake(84, 210, 600, 35)];
+        [self.labelDir1 setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
+        [self.txtDir1 setFrame:CGRectMake(84, 240, 600, 40)];
+        [self.txtDir1 setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
+        [self.labelDir2 setFrame:CGRectMake(84, 300, 600, 35)];
+        [self.labelDir2 setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
+        [self.txtDir2 setFrame:CGRectMake(84, 330, 600, 40)];
+        [self.txtDir2 setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
+        [self.labelPais setFrame:CGRectMake(84, 390, 400, 35)];
+        [self.labelPais setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
+        [self.vistaCombo setFrame:CGRectMake(84, 420, 600, 40)];
+        [self.imgBull setFrame:CGRectMake(550, 420, 20, 20)];
+        [self.boton setFrame:CGRectMake(274, 500, 220, 40)];
+        [self.boton.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
+        
+        
+    }
+    
+    
+    
 	
 }
 

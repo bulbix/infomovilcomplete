@@ -68,19 +68,19 @@
         [self.boton setFrame:CGRectMake(113, 266, 200, 35)];
     }else if(IS_IPAD){
         [self.scroll setFrame:CGRectMake(0, 0, 768, 1024)];
-        [self.label1 setFrame:CGRectMake(84, 500, 600, 50)];
-        [self.label1 setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
-        [self.label2 setFrame:CGRectMake(84, 97, 600, 50)];
-        [self.label2 setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
-        [self.labelW setFrame:CGRectMake(0, 205, 209, 24)];
-        [self.labelW setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
-        [self.nombreDominio setFrame:CGRectMake(209, 200, 350, 35)];
+        //[self.label1 setFrame:CGRectMake(84, 500, 600, 50)];
+        //[self.label1 setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
+        [self.label2 setFrame:CGRectMake(84, 80, 600, 50)];
+        [self.label2 setFont:[UIFont fontWithName:@"Avenir-medium" size:21]];
+        [self.labelW setFrame:CGRectMake(0, 187, 209, 24)];
+        [self.labelW setFont:[UIFont fontWithName:@"Avenir-Book" size:21]];
+        [self.nombreDominio setFrame:CGRectMake(209, 180, 350, 40)];
         [self.nombreDominio setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
-        [self.labelTel setFrame:CGRectMake(559, 205, 209, 24)];
-        [self.labelTel setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
+        [self.labelTel setFrame:CGRectMake(559, 187, 209, 24)];
+        [self.labelTel setFont:[UIFont fontWithName:@"Avenir-Book" size:21]];
         [self.labelDominio setFrame:CGRectMake(0, 270, 768, 24)];
         [self.labelDominio setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
-        [self.boton setFrame:CGRectMake(284, 350, 200, 35)];
+        [self.boton setFrame:CGRectMake(284, 350, 200, 40)];
         [self.boton.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
     
     }else{

@@ -72,7 +72,13 @@
 -(void)viewWillAppear:(BOOL)animated{
     if(IS_IPAD){
         self.label.frame = CGRectMake(84, 40, 600, 20);
-        self.txtEmail.frame = CGRectMake(84, 80, 600, 30);
+        self.txtEmail.frame = CGRectMake(84, 80, 600, 40);
+    }else if(IS_STANDARD_IPHONE_6){
+        self.label.frame = CGRectMake(0, 40, 375, 80);
+        self.txtEmail.frame = CGRectMake(47, 80, 280, 80);
+    }else if(IS_STANDARD_IPHONE_6_PLUS){
+        self.label.frame = CGRectMake(0, 40, 414, 80);
+        self.txtEmail.frame = CGRectMake(47, 120, 320, 40);
     }
 
 }

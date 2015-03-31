@@ -86,7 +86,7 @@
         self.botonEjemplo.frame = CGRectMake(384, 72, 170, 40);
         self.line1.frame = CGRectMake(184, 250, 400, 2);
         self.line2.frame = CGRectMake(184, 370, 400, 2);
-        self.line3.frame = CGRectMake(184, 490, 400, 2);
+        self.line3.frame = CGRectMake(184, 485, 400, 2);
         self.dominio.frame = CGRectMake(0, 40, 768, 40);
         [self.dominio.titleLabel setFont: [UIFont fontWithName:@"Avenir-Book" size:22]];
     

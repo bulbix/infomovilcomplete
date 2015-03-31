@@ -30,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelInformacionAdicional;
 @property (weak, nonatomic) IBOutlet UIButton *btnBorrar;
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *fixed;
 
 - (IBAction)mostrarFecha:(id)sender;
 - (IBAction)seleccionarFecha:(UIBarButtonItem *)sender;
