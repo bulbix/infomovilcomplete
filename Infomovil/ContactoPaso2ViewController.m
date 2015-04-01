@@ -94,6 +94,12 @@
     
     if(IS_STANDARD_IPHONE_6){
         self.imagenSiguiente.frame = CGRectMake(310, 6, 11, 18);
+    }else if(IS_IPAD){
+        self.btnSeleccionarPais.frame = CGRectMake(84, 86, 600, 30);
+        self.imagenSiguiente.frame = CGRectMake(310, 6, 11, 18);
+        self.scrollVista.frame = CGRectMake(134, 20, 500, 850);
+        self.vistaPais.frame = CGRectMake(20, 86, 500, 30);
+        self.txtDescripcion.frame = CGRectMake(20, 180, 500, 100);
     }
     
 }
@@ -119,6 +125,8 @@
                         self.txtTelefono.frame = CGRectMake(70, 120, 335, 30);
                     }else if(IS_STANDARD_IPHONE_6_PLUS){
                         
+                    }else if(IS_IPAD){
+                        self.txtTelefono.frame = CGRectMake(20, 120, 600, 30);
                     }else{
                         [self.txtTelefono setFrame:CGRectMake(70, 120, 230, 30)];
                     }
@@ -134,6 +142,8 @@
                          self.txtTelefono.frame = CGRectMake(20, 120, 335, 30);
                     }else if(IS_STANDARD_IPHONE_6_PLUS){
                      
+                    }else if(IS_IPAD){
+                         self.txtTelefono.frame = CGRectMake(20, 120, 600, 30);
                     }else{
                         [self.txtTelefono setFrame:CGRectMake(20, 120, 280, 30)];
                     }
@@ -151,6 +161,9 @@
                     self.txtTelefono.frame = CGRectMake(20, 86, 335, 30);
                 }else if(IS_STANDARD_IPHONE_6_PLUS){
                     
+                }else if(IS_IPAD){
+                    self.txtTelefono.frame = CGRectMake(20, 86, 600, 30);
+                
                 }else{
                     [self.txtTelefono setFrame:CGRectMake(20, 86, 280, 30)];
                 }
@@ -210,6 +223,8 @@
                         self.txtTelefono.frame = CGRectMake(20, 120, 335, 30);
                     }else if(IS_STANDARD_IPHONE_6_PLUS){
                         
+                    }else if(IS_IPAD){
+                        self.txtTelefono.frame = CGRectMake(20, 120, 600, 30);
                     }else{
                         [self.txtTelefono setFrame:CGRectMake(20, 120, 280, 30)];
                     }
@@ -224,6 +239,9 @@
                         self.txtTelefono.frame = CGRectMake(20, 120, 335, 30);
                     }else if(IS_STANDARD_IPHONE_6_PLUS){
                         
+                    }else if(IS_IPAD){
+                        self.txtTelefono.frame = CGRectMake(20, 120, 600, 30);
+                    
                     }else{
                         [self.txtTelefono setFrame:CGRectMake(70, 120, 230, 30)];
                     }
@@ -246,6 +264,9 @@
                         self.txtTelefono.frame = CGRectMake(20, 120, 335, 30);
                     }else if(IS_STANDARD_IPHONE_6_PLUS){
                         
+                    }else if(IS_IPAD){
+                        self.txtTelefono.frame = CGRectMake(20, 120, 600, 30);
+                    
                     }else{
                         [self.txtTelefono setFrame:CGRectMake(20, 120, 280, 30)];
                     }
@@ -263,6 +284,8 @@
                     self.txtTelefono.frame = CGRectMake(20, 86, 335, 30);
                 }else if(IS_STANDARD_IPHONE_6_PLUS){
                     
+                }else if(IS_IPAD){
+                    self.txtTelefono.frame = CGRectMake(20, 86, 600, 30);
                 }else{
                     [self.txtTelefono setFrame:CGRectMake(20, 86, 280, 30)];
                 }
