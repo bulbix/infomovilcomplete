@@ -96,10 +96,11 @@
         self.imagenSiguiente.frame = CGRectMake(310, 6, 11, 18);
     }else if(IS_IPAD){
         self.btnSeleccionarPais.frame = CGRectMake(84, 86, 600, 30);
-        self.imagenSiguiente.frame = CGRectMake(310, 6, 11, 18);
+        self.imagenSiguiente.frame = CGRectMake(450, 6, 11, 18);
         self.scrollVista.frame = CGRectMake(134, 20, 500, 850);
         self.vistaPais.frame = CGRectMake(20, 86, 500, 30);
         self.txtDescripcion.frame = CGRectMake(20, 180, 500, 100);
+        [self.btnEliminar setFrame:CGRectMake(450, 325, 29, 35)];
     }
     
 }

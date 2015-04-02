@@ -65,6 +65,10 @@
     
     self.vistaInfo.layer.cornerRadius = 5.0f;
     
+    
+    
+    
+    
 }
 
 -(void) viewWillAppear:(BOOL)animated {
@@ -100,22 +104,48 @@
         UIBarButtonItem *botonAceptar = [[UIBarButtonItem alloc] initWithCustomView:btAceptar];
         self.navigationItem.rightBarButtonItem = botonAceptar;
 		
-		if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-			[self.labelNumeroImagenes setText:[NSString stringWithFormat:NSLocalizedString(@"5Imagenes", Nil),maxNumeroImagenes]];
-			self.labelNumeroImagenes.frame = CGRectMake(34, 35, 256, 100);
-			self.labelImagenesMensaje.frame = CGRectMake(34, 90, 256, 47);
-			self.labelImagenesMensaje2.frame = CGRectMake(34, 156, 256, 47);
-			self.vineta3.frame = CGRectMake(10, 39, 14, 21);
-			self.vineta1.frame = CGRectMake(10, 92, 14, 21);
-			self.vineta2.frame = CGRectMake(10, 155, 14, 21);
-		}else{
-			[self.labelNumeroImagenes setText:NSLocalizedString(@"5Imagenes", Nil)];
-			self.vineta1.frame = CGRectMake(10, 120, 14, 21);
-			self.vineta2.frame = CGRectMake(10, 177, 14, 21);
-		}
+		
         
     }
 	[self mostrarBotones];
+    
+    
+    
+    
+    
+    if(IS_IPAD){
+        [self.vistaInfo setFrame:CGRectMake(84, 40, 600, 500)];
+        [self.labelNumeroImagenes setFrame: CGRectMake(40, 60, 550, 60)];
+        [self.labelImagenesMensaje setFrame:CGRectMake(40, 150, 550, 30)];
+        [self.labelImagenesMensaje2 setFrame:CGRectMake(40, 210,550, 30)];
+        
+        [self.vineta3 setFrame:CGRectMake(20,75, 14, 21)];
+        [self.vineta1 setFrame:CGRectMake(20,150, 14, 21)];
+        [self.vineta2 setFrame:CGRectMake(20,210, 14, 21)];
+        
+        if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
+            [self.labelNumeroImagenes setText:[NSString stringWithFormat:NSLocalizedString(@"5Imagenes", Nil),maxNumeroImagenes]];
+        }else{
+            [self.labelNumeroImagenes setText:NSLocalizedString(@"5Imagenes", Nil)];
+        }
+    }else {
+        if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
+            [self.labelNumeroImagenes setText:[NSString stringWithFormat:NSLocalizedString(@"5Imagenes", Nil),maxNumeroImagenes]];
+            self.labelNumeroImagenes.frame = CGRectMake(34, 35, 256, 100);
+            self.labelImagenesMensaje.frame = CGRectMake(34, 90, 256, 47);
+            self.labelImagenesMensaje2.frame = CGRectMake(34, 156, 256, 47);
+            self.vineta3.frame = CGRectMake(10, 39, 14, 21);
+            self.vineta1.frame = CGRectMake(10, 92, 14, 21);
+            self.vineta2.frame = CGRectMake(10, 155, 14, 21);
+        }else{
+            [self.labelNumeroImagenes setText:NSLocalizedString(@"5Imagenes", Nil)];
+            self.vineta1.frame = CGRectMake(10, 120, 14, 21);
+            self.vineta2.frame = CGRectMake(10, 177, 14, 21);
+        }
+    
+    }
+    
+    
 }
 
 -(void) mostrarBotones {

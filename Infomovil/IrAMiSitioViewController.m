@@ -18,6 +18,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    //MBC
+    if(IS_STANDARD_IPHONE_6){
+        [self.view setFrame:CGRectMake(0, 0, 375, 667)];
+        [self.webView setFrame:CGRectMake(0, 0, 375, 667)];
+    }
+    else if(IS_STANDARD_IPHONE_6_PLUS){
+        [self.view setFrame:CGRectMake(0, 0, 414, 736)];
+        [self.webView setFrame:CGRectMake(0, 0, 414, 736)];
+    }else if(IS_IPAD){
+        [self.view setFrame:CGRectMake(0, 0, 768, 1024)];
+        [self.webView setFrame:CGRectMake(0, 0, 768, 1024)];
+    }else{
+        [self.webView setFrame:CGRectMake(0, 0, 320, 568)];
+    }
+
+    
+    
     self.pagCargada = NO;
     // Do any additional setup after loading the view.
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];

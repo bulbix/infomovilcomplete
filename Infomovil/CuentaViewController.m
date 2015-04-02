@@ -178,18 +178,14 @@ int opcionButton = 0 ;
         [self.beneficiosPlanPro setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
         self.rayaLabel.frame = CGRectMake(134, 385, 500, 1);
         self.imgBeneficios.frame = CGRectMake(134, 410 ,500 , 270);
+        [self.botonCuenta setFrame:CGRectMake(176, 10, 88, 80)];
+        [self.viewPlanProComprado setFrame:CGRectMake(0, 120, 768, 250)];;
     }else{
         [self.vistaPlanPro setContentSize:CGSizeMake(320, 568)];
         [self.scrollContenido setContentSize:CGSizeMake(640, 568)];
-    }
-    
-    
-    if(IS_IPAD){
-        [self.botonCuenta setFrame:CGRectMake(264, 10, 88, 80)];
-    }else{
         [self.botonCuenta setFrame:CGRectMake(128, 14, 64, 54)];
-    
     }
+  
 	pro = [NSMutableArray arrayWithObjects:
 		   NSLocalizedString(@"numeroImagenes", @" "),
            NSLocalizedString(@"datosBasicos", @" "),
@@ -254,17 +250,17 @@ int opcionButton = 0 ;
         
         if(sesion &&  [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && ![self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]){
 	
+            //MBC
+            if(IS_STANDARD_IPHONE_6_PLUS){
+                [self.MensajePlanProComprado setFrame:CGRectMake(70, 60, 414, 150)];
+            }else if(IS_STANDARD_IPHONE_6){
+                [self.MensajePlanProComprado setFrame:CGRectMake(70, 60, 220, 150)];
+            }else if(IS_IPAD){
+                [self.MensajePlanProComprado setFrame:CGRectMake(184, 120, 400, 400)];
+                [self.MensajePlanProComprado setFont:[UIFont fontWithName:@"Avenir-Book" size:22]];
+                
+            }
             if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-                //MBC
-                if(IS_STANDARD_IPHONE_6_PLUS){
-                    [self.MensajePlanProComprado setFrame:CGRectMake(70, 60, 414, 150)];
-                }else if(IS_STANDARD_IPHONE_6){
-                    [self.MensajePlanProComprado setFrame:CGRectMake(70, 60, 220, 150)];
-                }else if(IS_IPAD){
-                    [self.MensajePlanProComprado setFrame:CGRectMake(184, 120, 400, 150)];
-                
-                }
-                
                 self.MensajePlanProComprado.text = [NSString stringWithFormat:@"This site already has a Plan Pro\n\nStart date: %@ \nEnd date: %@",self.datosUsuario.fechaInicial, self.datosUsuario.fechaFinal];
             }else{
                 self.MensajePlanProComprado.text = [NSString stringWithFormat:@"Este sitio ya cuenta con PLAN PRO disfruta sus beneficios.\n\nFecha de inicio: %@\nFecha de término: %@",self.datosUsuario.fechaInicial, self.datosUsuario.fechaFinal];
@@ -746,6 +742,16 @@ if(noSeRepiteOprimirElBoton){
     NSLog(@"Ocultar actividad de espera!");
     if (self.alerta)
     {
+        //MBC
+        if(IS_STANDARD_IPHONE_6_PLUS){
+            [self.MensajePlanProComprado setFrame:CGRectMake(70, 60, 414, 150)];
+        }else if(IS_STANDARD_IPHONE_6){
+            [self.MensajePlanProComprado setFrame:CGRectMake(70, 60, 220, 150)];
+        }else if(IS_IPAD){
+            [self.MensajePlanProComprado setFrame:CGRectMake(184, 120, 400, 400)];
+            [self.MensajePlanProComprado setFont:[UIFont fontWithName:@"Avenir-Book" size:22]];
+            
+        }
         if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
             self.MensajePlanProComprado.text = [NSString stringWithFormat:@"This site already has a Plan Pro\n\nStart date: %@ \nEnd date: %@",self.datosUsuario.fechaInicial, self.datosUsuario.fechaFinal];
         }else{

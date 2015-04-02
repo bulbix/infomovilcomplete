@@ -82,6 +82,17 @@
     self.labelEmail.text = NSLocalizedString(@"mensajeContactoMail", Nil);
     [self.labelAgregaDatos setText:NSLocalizedString(@"agregaDatos", Nil)];
     [self.labelBotonesGrandes setText:NSLocalizedString(@"datosBotonesGrandes", Nil)];
+    
+    
+    if(IS_IPAD){
+        [self.vistaInfo setFrame:CGRectMake(84, 40, 600, 600)];
+        [self.labelAgregaDatos setFrame:CGRectMake(0, 10, 600, 30)];
+        [self.labelAgregaDatos setTextAlignment:NSTextAlignmentCenter];
+        [self.labelAgregaDatos setFont:[UIFont fontWithName:@"Avenir-medium" size:18]];
+    }
+    
+    
+    
 }
 
 -(void) viewWillAppear:(BOOL)animated {

@@ -53,7 +53,7 @@
                 </tableView>
                 <view contentMode="scaleToFill" id="4jp-fj-8Sr">
                     <rect key="frame" x="20" y="21" width="280" height="333"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="llamanos.png" id="HVc-lN-WRV">
                             <rect key="frame" x="9" y="45" width="45" height="45"/>

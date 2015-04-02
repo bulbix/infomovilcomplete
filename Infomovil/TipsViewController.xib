@@ -33,7 +33,6 @@
                 <outlet property="seccionUnoLabel4" destination="t1r-j2-2ZX" id="ReG-VF-Rqo"/>
                 <outlet property="seccionUnoTItulo" destination="Pbq-rf-IkJ" id="FrY-0Z-WpH"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
-                <outlet property="vineta32" destination="Aqz-1F-slP" id="j0A-b1-OtD"/>
                 <outlet property="vistaTip1" destination="Gud-nK-aAY" id="rk0-WM-dtS"/>
                 <outlet property="vistaTip2" destination="aQq-wz-Ymt" id="pRe-hH-yz5"/>
                 <outlet property="vistaTip3" destination="2GY-Rf-u0z" id="CaH-Vf-ftg"/>

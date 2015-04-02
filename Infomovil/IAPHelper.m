@@ -102,6 +102,9 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
     _productsRequest = nil;
     _completionHandler(NO, nil);
     _completionHandler = nil;
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"FailedTransactionNotification"
+     object:self];
 }
 
 #pragma mark SKPaymentTransactionOBserver
