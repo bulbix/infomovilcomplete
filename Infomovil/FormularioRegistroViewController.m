@@ -68,7 +68,7 @@
 
     self.navigationItem.rightBarButtonItem = Nil;
     
-    if(IS_STANDARD_IPHONE_6_PLUS){
+    if(IS_STANDARD_IPHONE_6){
          [self.scrollView setContentSize:CGSizeMake(375, 667)];
     }else if (IS_STANDARD_IPHONE_6_PLUS){
          [self.scrollView setContentSize:CGSizeMake(540, 960)];

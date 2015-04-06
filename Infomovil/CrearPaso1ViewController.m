@@ -147,9 +147,9 @@
     }else if(IS_IPHONE_4){
          [self.tablaEditar setFrame:CGRectMake(20, 15, 280, 350)];
     }else if(IS_STANDARD_IPHONE_6){
-    
+        [self.tablaEditar setFrame:CGRectMake(20, 15, 335, 540)];
     }else if(IS_STANDARD_IPHONE_6_PLUS){
-    
+         [self.tablaEditar setFrame:CGRectMake(20, 15, 374, 600)];
     }
     
 }

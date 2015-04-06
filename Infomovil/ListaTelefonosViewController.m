@@ -89,6 +89,12 @@
         [self.labelAgregaDatos setFrame:CGRectMake(0, 10, 600, 30)];
         [self.labelAgregaDatos setTextAlignment:NSTextAlignmentCenter];
         [self.labelAgregaDatos setFont:[UIFont fontWithName:@"Avenir-medium" size:18]];
+    }else if(IS_STANDARD_IPHONE_6_PLUS){
+        [self.vistaInfo setFrame:CGRectMake(50, 40, 314, 400)];
+    
+    }else if(IS_STANDARD_IPHONE_6){
+        [self.vistaInfo setFrame:CGRectMake(20, 40, 335, 400)];
+    
     }
     
     
@@ -266,6 +272,10 @@
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ContactosCell" owner:self options:Nil];
         cell = [nib objectAtIndex:0];
     }
+    if(IS_STANDARD_IPHONE_6){
+        cell.vistaContenedora.frame = CGRectMake(0, 0, 335, 63);
+    }
+    
     cell.vistaContenedora.layer.cornerRadius = 5.0f;
     Contacto *contacto = [arregloContactos objectAtIndex:indexPath.row];
     cell.delegate = self;

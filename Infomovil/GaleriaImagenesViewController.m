@@ -109,11 +109,24 @@
     }
 	[self mostrarBotones];
     
+    if(IS_STANDARD_IPHONE_6_PLUS){
+        [self.vistaInfo setFrame:CGRectMake(50, 40, 314, 350)];
+        if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
+            [self.labelNumeroImagenes setText:[NSString stringWithFormat:NSLocalizedString(@"5Imagenes", Nil),maxNumeroImagenes]];
+            self.labelNumeroImagenes.frame = CGRectMake(34, 35, 256, 100);
+            self.labelImagenesMensaje.frame = CGRectMake(34, 90, 256, 47);
+            self.labelImagenesMensaje2.frame = CGRectMake(34, 156, 256, 47);
+            self.vineta3.frame = CGRectMake(10, 39, 14, 21);
+            self.vineta1.frame = CGRectMake(10, 92, 14, 21);
+            self.vineta2.frame = CGRectMake(10, 155, 14, 21);
+        }else{
+            [self.labelNumeroImagenes setText:NSLocalizedString(@"5Imagenes", Nil)];
+            self.vineta1.frame = CGRectMake(10, 120, 14, 21);
+            self.vineta2.frame = CGRectMake(10, 177, 14, 21);
+        }
     
     
-    
-    
-    if(IS_IPAD){
+    }else if(IS_IPAD){
         [self.vistaInfo setFrame:CGRectMake(84, 40, 600, 500)];
         [self.labelNumeroImagenes setFrame: CGRectMake(40, 60, 550, 60)];
         [self.labelImagenesMensaje setFrame:CGRectMake(40, 150, 550, 30)];
@@ -128,6 +141,9 @@
         }else{
             [self.labelNumeroImagenes setText:NSLocalizedString(@"5Imagenes", Nil)];
         }
+    }else if(IS_STANDARD_IPHONE_6){
+        [self.vistaInfo setFrame:CGRectMake(20, 40, 335, 350)];
+    
     }else {
         if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
             [self.labelNumeroImagenes setText:[NSString stringWithFormat:NSLocalizedString(@"5Imagenes", Nil),maxNumeroImagenes]];

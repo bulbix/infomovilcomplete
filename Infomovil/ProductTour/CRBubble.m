@@ -45,7 +45,6 @@
         
         titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(actualXPosition, actualYPosition, actualWidth, actualHeight)];
         [titleLabel setTextColor:colorFuenteVerde];
-    //    [titleLabel setAlpha:0.6];
         [titleLabel setFont:[UIFont fontWithName:fontName size:CR_TITLE_FONT_SIZE]];
         [titleLabel setText:title];
         [titleLabel setBackgroundColor:[UIColor clearColor]];
