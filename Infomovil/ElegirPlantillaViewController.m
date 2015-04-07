@@ -93,7 +93,7 @@ BOOL actualizo;
     
     for (int i=0; i<5; i++) {
        PlantillaViewController *pController = [[PlantillaViewController alloc] initWithNibName:@"Plantilla" bundle:[NSBundle mainBundle]];
-        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"template%i",i+1]];
+        UIImage *image;
         
         if(IS_STANDARD_IPHONE_6){
             pController.view.frame = CGRectMake(375*i, 0, 375, 667);
@@ -101,7 +101,9 @@ BOOL actualizo;
             pController.view.frame = CGRectMake(414*i, 0, 414, 736);
         }else if(IS_IPAD){
             pController.view.frame = CGRectMake(768*i, 0, 768, 1024);
+            image = [UIImage imageNamed:[NSString stringWithFormat:@"template%i@3x",i+1]];
         }else{
+            image = [UIImage imageNamed:[NSString stringWithFormat:@"template%i",i+1]];
             pController.view.frame = CGRectMake(320*i, 0, 320, 480);
         }
         

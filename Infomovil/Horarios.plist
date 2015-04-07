@@ -3,6 +3,33 @@
 <plist version="1.0">
 <array>
 	<string>00:00</string>
+	<string>00:15</string>
+	<string>00:30</string>
+	<string>00:45</string>
+	<string>01:00</string>
+	<string>01:15</string>
+	<string>01:30</string>
+	<string>01:45</string>
+	<string>02:00</string>
+	<string>02:15</string>
+	<string>02:30</string>
+	<string>02:45</string>
+	<string>03:00</string>
+	<string>03:15</string>
+	<string>03:30</string>
+	<string>03:45</string>
+	<string>04:00</string>
+	<string>04:15</string>
+	<string>04:30</string>
+	<string>04:45</string>
+	<string>05:00</string>
+	<string>05:15</string>
+	<string>05:30</string>
+	<string>05:45</string>
+	<string>06:00</string>
+	<string>06:15</string>
+	<string>06:30</string>
+	<string>06:45</string>
 	<string>07:00</string>
 	<string>07:15</string>
 	<string>07:30</string>

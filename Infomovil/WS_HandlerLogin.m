@@ -60,12 +60,13 @@
             [prefsLogin synchronize];
         }
     }
-    NSDictionary *info = [[NSBundle mainBundle] infoDictionary];
+   /* NSDictionary *info = [[NSBundle mainBundle] infoDictionary];
     NSString *version = [info objectForKey:@"CFBundleShortVersionString"];
     if(version == nil || [version isEqualToString:@""]){
         version = versionDefault;
         }
-  
+    */
+    NSString *version = versionDefault;
     NSString *stringXML;
         stringXML = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.webservice.infomovil.org/\">"
                      "<soapenv:Header/>"

@@ -156,6 +156,7 @@
         [self.labelTituloHorarios setFrame:CGRectMake(0, 20, 768, 30)];
         [self.vistaPicker setFrame:CGRectMake(0, 1024, 768, 1024)];
         [self.vistaHorarios setFrame:CGRectMake(0, 0, 768, 1024)];
+        [self.tablaHorarios setFrame:CGRectMake(134, 60, 500, 350)];
     }else{
         [self.vistaPicker setFrame:CGRectMake(0, 568, 320, 206)];
         [self.vistaHorarios setFrame:CGRectMake(0, 0, 320, 568)];

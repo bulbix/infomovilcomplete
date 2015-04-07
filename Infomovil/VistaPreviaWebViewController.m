@@ -41,7 +41,6 @@
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString *htmlStringToLoad = [prefs stringForKey:@"urlVistaPrevia"];
     
-    // NSString *htmlStringToLoad = @"http://www.youtube.com/watch?v=XyHTERaAlXg&feature=youtu.be";
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:htmlStringToLoad]]];
     [self.view addSubview:self.webView];
     [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];

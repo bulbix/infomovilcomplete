@@ -177,8 +177,15 @@
         
     }else if(self.arrowPosition==CRArrowPositionTop||self.arrowPosition==CRArrowPositionBottom)
     {
-        x+=self.attachedView.frame.size.width/2-[self size].width/2;
-        y+=(self.arrowPosition==CRArrowPositionTop)? CR_ARROW_SPACE+self.attachedView.frame.size.height : -(CR_ARROW_SPACE*2+[self size].height);
+       
+        if(IS_IPAD){
+            x = 400.0f;
+            y = 400.0f;
+        }else{
+            x+=self.attachedView.frame.size.width/2-[self size].width/2;
+            y+=(self.arrowPosition==CRArrowPositionTop)? CR_ARROW_SPACE+self.attachedView.frame.size.height : -(CR_ARROW_SPACE*2+[self size].height);
+        }
+        
     }
     
     return CGRectMake(x, y, [self size].width+CR_ARROW_SIZE, [self size].height+CR_ARROW_SIZE);
