@@ -71,7 +71,13 @@
         }
         
         if(SHOW_ZONE){
-            UIView *myview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.attachedView.frame.size.width, self.attachedView.frame.size.height)];
+            UIView *myview ;
+            if(IS_IPAD){
+                myview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 375,52)];
+            }else {
+                myview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.attachedView.frame.size.width, self.attachedView.frame.size.height)];
+            }
+            
             [myview setBackgroundColor:self.color];
             [myview setAlpha:0.3];
             [myview setUserInteractionEnabled:NO];

@@ -89,6 +89,10 @@
 	}
     if(IS_IPAD){
         [self.scroll setContentSize:CGSizeMake(768, 1024)];
+    }else if (IS_STANDARD_IPHONE_6){
+        [self.scroll setContentSize:CGSizeMake(375, 667)];
+    }else if(IS_STANDARD_IPHONE_6_PLUS){
+        [self.scroll setContentSize:CGSizeMake(414, 736)];
     }else{
         [self.scroll setContentSize:CGSizeMake(320, 250)];
     }
@@ -104,9 +108,29 @@
     
     
     if(IS_STANDARD_IPHONE_6){
-    
+        [self.label1 setFrame:CGRectMake(40, 40, 295, 60)];
+        [self.labelNombre setFrame:CGRectMake(40, 120, 295, 30)];
+        [self.txtNombre setFrame:CGRectMake(40, 150, 295, 30)];
+        [self.labelDir1 setFrame:CGRectMake(40, 180, 295, 30)];
+        [self.txtDir1 setFrame:CGRectMake(40, 210, 295, 30)];
+        [self.labelDir2 setFrame:CGRectMake(40, 240, 295, 30)];
+        [self.txtDir2 setFrame:CGRectMake(40, 270, 295, 30)];
+        [self.labelPais setFrame:CGRectMake(40, 300, 295, 30)];
+        [self.vistaCombo setFrame:CGRectMake(40, 330, 295, 30)];
+        [self.imgBull setFrame:CGRectMake(250, 330, 20, 20)];
+        [self.boton setFrame:CGRectMake(97, 400, 220, 35)];
     }else if(IS_STANDARD_IPHONE_6_PLUS){
-    
+        [self.label1 setFrame:CGRectMake(40, 40, 295, 60)];
+        [self.labelNombre setFrame:CGRectMake(40, 120, 295, 30)];
+        [self.txtNombre setFrame:CGRectMake(40, 150, 295, 30)];
+        [self.labelDir1 setFrame:CGRectMake(40, 180, 295, 30)];
+        [self.txtDir1 setFrame:CGRectMake(40, 210, 295, 30)];
+        [self.labelDir2 setFrame:CGRectMake(40, 240, 295, 30)];
+        [self.txtDir2 setFrame:CGRectMake(40, 270, 295, 30)];
+        [self.labelPais setFrame:CGRectMake(40, 300, 295, 30)];
+        [self.vistaCombo setFrame:CGRectMake(40, 330, 295, 30)];
+        [self.imgBull setFrame:CGRectMake(250, 330, 20, 20)];
+        [self.boton setFrame:CGRectMake(97, 500, 220, 35)];
     }else if(IS_IPAD){
         [self.label1 setFrame:CGRectMake(84, 40, 600, 60)];
         [self.label1 setFont:[UIFont fontWithName:@"Avenir-medium" size:20]];
@@ -242,21 +266,18 @@
            
             self.datosUsuario.nombroSitio = YES;
             creoDominio = YES;
-            
-            
-            
-          
+           
             
             alert = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"felicidades", @" ") message:NSLocalizedString(@"nombradoExitoso", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
             [alert show];
     
             NSInteger lessVC;
             if (self.datosUsuario.vistaOrigen == 12) {
-                NSLog(@"IRC Me envio a la pantalla -4 en publicarViewController");
+               
                 lessVC = 4;
             }
             else {
-                NSLog(@"IRC Me envio a la pantalla -3 publicarViewController");
+               
                 lessVC = 3;
             }
 			[self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex: self.navigationController.viewControllers.count-lessVC] animated:YES];
@@ -293,7 +314,6 @@
     self.datosUsuario = [DatosUsuario sharedInstance];
 	if(operacionWS == 1){
         if ([resultado isEqualToString:@"No existe"]) {
-            NSLog(@"Entro a el dominio No existe IRC publicarViewController");
             existeDominio = YES;
 			[self performSelectorInBackground:@selector(crearDominio2) withObject:Nil];
         }
@@ -386,25 +406,26 @@
 -(void) apareceTeclado {
     CGSize tamanioTeclado = TAMANIO_TECLADO;// CGSizeMake(320, 235);
     UIEdgeInsets edgeInsets;
-    edgeInsets = UIEdgeInsetsMake(0, 0, tamanioTeclado.height+10, 0);
-
+    if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS || IS_IPAD){
+        edgeInsets = UIEdgeInsetsMake(0, 0, tamanioTeclado.height-150, 0);
+    }else if(IS_IPHONE_5){
+        edgeInsets = UIEdgeInsetsMake(0, 0, tamanioTeclado.height-35, 0);
+    }else{
+        edgeInsets = UIEdgeInsetsMake(0, 0, tamanioTeclado.height+8, 0);
+    
+    }
     
     [self.scroll setContentInset:edgeInsets];
     [self.scroll setScrollIndicatorInsets:edgeInsets];
-    
 	[[self scroll] scrollRectToVisible:((UITextField *)txtSeleccionado).frame animated:YES];
 
-    if(IS_IPAD || IS_STANDARD_IPHONE_6_PLUS){
-	// Aquí se pueden hacer cosas para estas versiones
-	
-    }else{
+   
         UITextField * aux = ((UITextField *)txtSeleccionado);
-        if(aux.frame.origin.y == 80){
-            [[self scroll] scrollRectToVisible:CGRectMake(self.scroll.frame.origin.x, self.scroll.frame.origin.y-2*aux.frame.origin.y, self.scroll.frame.size.width, self.scroll.frame.size.height) animated:YES];
-        }else{
-            [[self scroll] scrollRectToVisible:CGRectMake(self.scroll.frame.origin.x, self.scroll.frame.origin.y-1/aux.frame.origin.y, self.scroll.frame.size.width, self.scroll.frame.size.height) animated:YES];
-        }
-    }
+    
+            [[self scroll] scrollRectToVisible:CGRectMake(self.scroll.frame.origin.x, self.scroll.frame.origin.y/aux.frame.origin.y, self.scroll.frame.size.width, self.scroll.frame.size.height) animated:YES];
+    
+      
+    
     
 }
 

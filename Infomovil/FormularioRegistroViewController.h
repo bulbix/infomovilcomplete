@@ -19,7 +19,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *txtNombre;
 @property (weak, nonatomic) IBOutlet UITextField *txtNumero;
 @property (weak, nonatomic) IBOutlet UITextField *txtContrasena;
-
+@property (weak, nonatomic) IBOutlet UITextField *txtContra;
 @property (strong, nonatomic) IBOutlet UITextField *labelPais;
 @property (strong, nonatomic) IBOutlet UITextField *labelCodigoPais;
 @property (strong, nonatomic) IBOutlet UIButton *botnSeleccionaPais;
@@ -27,6 +27,7 @@
 @property (strong, nonatomic) IBOutlet UIView *vistaPais;
 @property (weak, nonatomic) IBOutlet UILabel *labelNumeroMovil;
 
+@property (weak, nonatomic) IBOutlet UITextField *txtPass;
 
 @property (strong, nonatomic) IBOutlet UILabel *label1;
 @property (strong, nonatomic) IBOutlet UILabel *label2;
