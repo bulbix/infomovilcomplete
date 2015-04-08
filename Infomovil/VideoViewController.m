@@ -55,6 +55,41 @@
     [self.labelCategoriaVideo setText:NSLocalizedString(@"categoriaVideo", Nil)];
     [self.labelUrlVideo setText:NSLocalizedString(@"labelURLVideo", Nil)];
     self.buscarBtn.layer.cornerRadius = 12.0f;
+    
+    if(IS_IPAD){
+        [self.vistaSeleccionaVideo setFrame:CGRectMake(0, 20, 768, 500 )];
+        [self.labelBuscaYoutube setFrame:CGRectMake(84, 20, 600, 30)];
+        [self.labelBuscaYoutube setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
+        [self.logoYoutube setFrame:CGRectMake(284, 80, 200,81 )];
+        [self.labelUrlVideo setFrame:CGRectMake(84, 180, 600, 80)];
+        [self.labelUrlVideo setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
+        [self.txtUrlVideo setFrame:CGRectMake(234, 260, 300, 35)];
+        [self.buscarBtn setFrame:CGRectMake(234, 330, 300, 40)];
+        [self.buscarBtn.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
+        [self.vistaVisualizaVideo setFrame:CGRectMake(0, 20, 768, 600)];
+        [self.btnEliminar setFrame:CGRectMake( 520, 380, 29, 38)];
+        [self.imagenVistaPrevia setFrame:CGRectMake(184, 40, 400, 300)];
+        [self.vistaDatosVideo setFrame:CGRectMake(84, 60, 600, 300)];
+        [self.btnPlayer setFrame:CGRectMake(184, 40, 400, 300)];
+    }else if(IS_STANDARD_IPHONE_6_PLUS){
+        [self.vistaSeleccionaVideo setFrame:CGRectMake(0, 20, 414, 500 )];
+        [self.labelBuscaYoutube setFrame:CGRectMake(0, 20, 414, 30)];
+        [self.logoYoutube setFrame:CGRectMake(100, 80, 200,81 )];
+        [self.labelUrlVideo setFrame:CGRectMake(20, 180, 374, 80)];
+        [self.txtUrlVideo setFrame:CGRectMake(50, 260, 300, 35)];
+        [self.buscarBtn setFrame:CGRectMake(50, 330, 300, 40)];
+        [self.vistaVisualizaVideo setFrame:CGRectMake(0, 20, 414, 600)];
+        [self.btnEliminar setFrame:CGRectMake( 300, 380, 29, 38)];
+        [self.imagenVistaPrevia setFrame:CGRectMake(30, 40, 350, 300)];
+        [self.vistaDatosVideo setFrame:CGRectMake(0, 60, 414, 300)];
+        [self.btnPlayer setFrame:CGRectMake(0, 40, 414, 300)];
+        
+    }else if(IS_STANDARD_IPHONE_6){
+        
+        
+        
+    }
+    
 }
 
 -(void) viewWillAppear:(BOOL)animated {

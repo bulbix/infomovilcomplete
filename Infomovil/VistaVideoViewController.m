@@ -83,6 +83,26 @@
 //		idVideoSel = videoID;
 //	}
 //	else {
+    
+    if(IS_IPAD){
+        htmlString = @"<html><head>\
+        <meta name = \"viewport\" content = \"initial-scale = 1.0, user-scalable = no, width = 768\"/></head>\
+        <body style=\"background:#000;margin-top:0px;margin-left:0px\">\
+        <iframe id=\"ytplayer\" type=\"text/html\" width=\"768\" height=\"700\"\
+        src=\"%@?autoplay=0\"\
+        frameborder=\"0\"/>\
+        </body></html>";
+    
+    }else if(IS_STANDARD_IPHONE_6_PLUS){
+        htmlString = @"<html><head>\
+        <meta name = \"viewport\" content = \"initial-scale = 1.0, user-scalable = no, width = 414\"/></head>\
+        <body style=\"background:#000;margin-top:0px;margin-left:0px\">\
+        <iframe id=\"ytplayer\" type=\"text/html\" width=\"414\" height=\"400\"\
+        src=\"%@?autoplay=0\"\
+        frameborder=\"0\"/>\
+        </body></html>";
+    
+    }else{
 		htmlString = @"<html><head>\
 		<meta name = \"viewport\" content = \"initial-scale = 1.0, user-scalable = no, width = 320\"/></head>\
 		<body style=\"background:#000;margin-top:0px;margin-left:0px\">\
@@ -90,7 +110,7 @@
 		src=\"%@?autoplay=0\"\
 		frameborder=\"0\"/>\
 		</body></html>";
-		
+    }
 		htmlString = [NSString stringWithFormat:htmlString, self.videoSeleccionado.linkSolo];
 //	}
     

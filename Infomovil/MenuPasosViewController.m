@@ -84,6 +84,7 @@
         self.verTutorialbtn.frame = CGRectMake(209, 72, 170, 40);
         [self.verTutorialbtn.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
         self.botonEjemplo.frame = CGRectMake(384, 72, 170, 40);
+        [self.botonEjemplo.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
         self.line1.frame = CGRectMake(184, 250, 400, 2);
         self.line2.frame = CGRectMake(184, 370, 400, 2);
         self.line3.frame = CGRectMake(184, 485, 400, 2);

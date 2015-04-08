@@ -20,4 +20,31 @@
 
 - (IBAction)reproducirVideo:(UIButton *)sender;
 
+
+@property (weak, nonatomic) IBOutlet UIScrollView *scroll;
+
+@property (weak, nonatomic) IBOutlet UIView *viewImg;
+
+@property (weak, nonatomic) IBOutlet UIView *viewDatos;
+
+@property (weak, nonatomic) IBOutlet UILabel *datosVideo;
+
+@property (weak, nonatomic) IBOutlet UILabel *titulo;
+
+@property (weak, nonatomic) IBOutlet UILabel *descripcion;
+
+@property (weak, nonatomic) IBOutlet UIButton *btnVideo;
+
+
+
+
+
+
+
+
+
+
+
+
+
 @end

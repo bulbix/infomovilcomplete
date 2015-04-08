@@ -82,6 +82,7 @@
         [self.labelDominio setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
         [self.boton setFrame:CGRectMake(284, 350, 200, 40)];
         [self.boton.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
+        
     
     }else{
         [self.label1 setFrame:CGRectMake(20, 47, 280, 47)];
@@ -141,7 +142,8 @@
 	[self.boton setTitle:NSLocalizedString(@"nombrarBoton", nil) forState:UIControlStateNormal] ;
 	
 	saliendo = NO;
-    
+   
+    self.nombreDominio.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"misitioURL", nil) attributes:@{NSForegroundColorAttributeName: [UIColor grayColor]}];
     
     
 #if DEBUG
