@@ -66,19 +66,19 @@ typedef enum {
 //#define rutaWS @"http://172.17.3.192:8080"
 //#define rutaWS @"http://172.17.3.181:9090"
 /* productivo */
-//#define dominioTipo @"tel"
-//#define rutaWS @"http://info-movil.net"
+#define dominioTipo @"tel"
+#define rutaWS @"http://info-movil.net"
 /* test */
-#define dominioTipo @"recurso"
-#define rutaWS @"http://info-movil.com"
+//#define dominioTipo @"recurso"
+//#define rutaWS @"http://info-movil.com"
 
 // APPBOY // IRC //
 // PRE-PRODUCCION
 //#define llaveAppboy @"ce1afa14-800b-4b45-8e8b-3a7696c3ef26"
 // PRODUCCION
-//#define llaveAppboy @"90ff8582-5bf7-450b-ace5-d2191d0b9fe6"
+#define llaveAppboy @"90ff8582-5bf7-450b-ace5-d2191d0b9fe6"
 // ios_app_qa
-#define llaveAppboy @"418813e5-5c95-4710-8ce1-d23d55fb4d5d"
+//#define llaveAppboy @"418813e5-5c95-4710-8ce1-d23d55fb4d5d"
 
 #define versionDefault @"3.0.0"
 
