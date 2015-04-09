@@ -30,22 +30,38 @@
     switch (index) {
         case 0:
             htmlStringToLoad = @"http://info-movil.net/divertido?vistaPrevia=true";
+#if DEBUG
+      htmlStringToLoad = @"http://info-movil.com:8080/divertido?vistaPrevia=true";
+#endif
             [self.navigationItem setTitle:@"Divertido"];
             break;
         case 1:
             htmlStringToLoad = @"http://info-movil.net/clasico?vistaPrevia=true";
+#if DEBUG
+            htmlStringToLoad = @"http://info-movil.com:8080/clasico?vistaPrevia=true";
+#endif
             [self.navigationItem setTitle:@"Clásico"];
             break;
         case 2:
             htmlStringToLoad = @"http://info-movil.net/creativo?vistaPrevia=true";
+#if DEBUG
+            htmlStringToLoad = @"http://info-movil.com:8080/creativo?vistaPrevia=true";
+#endif
             [self.navigationItem setTitle:@"Creativo"];
             break;
         case 3:
             htmlStringToLoad = @"http://info-movil.net/moderno?vistaPrevia=true";
+#if DEBUG
+            htmlStringToLoad = @"http://info-movil.com:8080/moderno?vistaPrevia=true";
+#endif
             [self.navigationItem setTitle:@"Moderno"];
             break;
         case 4:
             htmlStringToLoad = @"http://info-movil.net/estandar1?vistaPrevia=true";
+#if DEBUG
+            htmlStringToLoad = @"http://info-movil.com:8080/estandar1?vistaPrevia=true";
+#endif
+            
             [self.navigationItem setTitle:@"Estandar"];
             break;
         default:
