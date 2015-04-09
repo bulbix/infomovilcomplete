@@ -7,6 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InformacionAdicionalViewController">
             <connections>
+                <outlet property="imgBull1" destination="lp9-HD-a1T" id="Aug-dd-cXx"/>
+                <outlet property="imgBull2" destination="Ae3-T6-4wo" id="Uvy-yM-g8Z"/>
                 <outlet property="label" destination="Dok-dh-fx0" id="Qdc-8E-AVJ"/>
                 <outlet property="labelTexto1" destination="rsO-aZ-IPN" id="b3f-u3-pim"/>
                 <outlet property="tablaInformacion" destination="sru-KM-QCy" id="6wx-vw-ZjI"/>
@@ -21,7 +23,7 @@
             <subviews>
                 <view contentMode="scaleToFill" id="hyZ-nl-idS">
                     <rect key="frame" x="10" y="47" width="300" height="180"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                     <subviews>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Agrega información adicional acerca de ti o tu negocio" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rsO-aZ-IPN">
                             <rect key="frame" x="30" y="20" width="260" height="56"/>
@@ -56,7 +58,7 @@
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="sru-KM-QCy">
                     <rect key="frame" x="20" y="69" width="280" height="133"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                     <color key="separatorColor" red="0.92941176469999998" green="0.8980392157" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                     <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <connections>

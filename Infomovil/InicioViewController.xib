@@ -133,7 +133,7 @@
                     <rect key="frame" x="32" y="322" width="256" height="55"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
-                    <state key="normal" backgroundImage="btniPhone.png">
+                    <state key="normal">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -161,7 +161,6 @@
     </objects>
     <resources>
         <image name="btnfreesiteEn.png" width="265" height="58"/>
-        <image name="btniPhone.png" width="265" height="59"/>
         <image name="iPhone.png" width="322" height="568"/>
         <image name="play.png" width="35" height="35"/>
     </resources>

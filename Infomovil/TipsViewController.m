@@ -117,7 +117,7 @@
         self.seccionTresLabel2.frame = CGRectMake(40, 150, 520, 60);
         self.seccionTresLabel3.frame = CGRectMake(40, 220, 520, 60);
        
-        self.b4.frame = CGRectMake(20, 100, 10, 10);
+        self.b4.frame = CGRectMake(20, 110, 10, 10);
         self.b5.frame = CGRectMake(20, 180, 10, 10);
         self.b6.frame = CGRectMake(20, 250, 10, 10);
         
@@ -159,8 +159,8 @@
 	self.seccionCuatroLabel1.text = NSLocalizedString(@"tipsLabel41", nil);
 	
 	if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-		self.seccionTresLabel2.frame = CGRectMake(37, 115, 243, 47);
-		self.vineta32.frame = CGRectMake(17, 115, 12, 24);
+		//self.seccionTresLabel2.frame = CGRectMake(37, 115, 243, 47);
+		//self.vineta32.frame = CGRectMake(17, 115, 12, 24);
 	}
     
     if(IS_IPAD){

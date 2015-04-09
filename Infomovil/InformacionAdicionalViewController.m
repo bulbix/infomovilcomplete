@@ -82,8 +82,30 @@
 	}
     
     self.vistaInformacion.layer.cornerRadius = 5.0f;
-    
     self.tablaInformacion.layer.cornerRadius = 5.0f;
+    
+    if(IS_IPAD){
+        [self.vistaInformacion setFrame:CGRectMake(84, 30, 600, 450)];
+        [self.labelTexto1 setFrame:CGRectMake(40, 80, 500, 60)];
+        [self.label setFrame:CGRectMake(40, 150, 500, 60)];
+        [self.imgBull1 setFrame:CGRectMake(20, 105, 10, 10)];
+        [self.imgBull2 setFrame:CGRectMake(20, 160, 10, 10)];
+    }else if(IS_STANDARD_IPHONE_6){
+        [self.vistaInformacion setFrame:CGRectMake(20, 50, 335, 300)];
+        [self.labelTexto1 setFrame:CGRectMake(40, 80, 300, 60)];
+        [self.label setFrame:CGRectMake(40, 150, 300, 60)];
+        [self.imgBull1 setFrame:CGRectMake(20, 95, 10, 10)];
+        [self.imgBull2 setFrame:CGRectMake(20, 160, 10, 10)];
+    }else if(IS_STANDARD_IPHONE_6_PLUS){
+        [self.vistaInformacion setFrame:CGRectMake(50, 50, 314, 450)];
+        [self.labelTexto1 setFrame:CGRectMake(50, 80, 314, 60)];
+        [self.label setFrame:CGRectMake(50, 150, 314, 60)];
+        [self.imgBull1 setFrame:CGRectMake(20, 95, 10, 10)];
+        [self.imgBull2 setFrame:CGRectMake(20, 160, 10, 10)];
+    
+    }
+    
+    
 }
 
 -(void) viewWillAppear:(BOOL)animated {

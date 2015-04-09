@@ -42,7 +42,7 @@
     
     return alerta;
 }
-+(id)initWithDelegate:(id<AlertViewDelegate>)delegate titulo:(NSString *)titulo message:(NSString *)mensaje dominio:(NSString *)dominio andAlertViewType:(AlertViewType)type {
++(id)initWithDelegate:(id<AlertViewDelegate>)delegate titulo:(NSString *)titulo message:(NSString *)mensaje dominio:(NSString *)dominio andAlertViewType:(AlertViewType)type { NSLog(@"ENTRO AQUÍ");
     CGRect frameAlert = [[UIScreen mainScreen] bounds];
     
     AlertView *alerta = [[AlertView alloc] initWithFrame:frameAlert andAlertViewType:type andTypeInit:2];

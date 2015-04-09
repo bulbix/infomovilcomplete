@@ -7,6 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VideoViewController">
             <connections>
+                <outlet property="btnEliminar" destination="N81-vY-Hhi" id="7by-po-K7x"/>
+                <outlet property="btnPlayer" destination="rch-RB-2MX" id="OxV-A7-mad"/>
                 <outlet property="buscarBtn" destination="bYC-zR-FOq" id="Q3E-5A-CuX"/>
                 <outlet property="imagenVistaPrevia" destination="Jgh-rf-4yI" id="3am-9m-PXx"/>
                 <outlet property="labelAutor" destination="0KF-hd-u5K" id="4oU-Qv-WWx"/>
@@ -18,6 +20,7 @@
                 <outlet property="labelTitulo" destination="C4q-ds-Ke2" id="Oq4-fq-OzF"/>
                 <outlet property="labelTituloVideo" destination="aWy-su-O5A" id="HQV-ni-iRw"/>
                 <outlet property="labelUrlVideo" destination="ZGE-tg-zSR" id="7Fe-SR-Oax"/>
+                <outlet property="logoYoutube" destination="3Hm-ef-nqW" id="f7G-9v-Gb8"/>
                 <outlet property="scrollVideo" destination="4CI-A7-Va3" id="5Vu-UU-Sz8"/>
                 <outlet property="txtUrlVideo" destination="eW6-KF-2HC" id="RrK-eO-psi"/>
                 <outlet property="view" destination="1" id="3"/>

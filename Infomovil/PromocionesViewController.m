@@ -111,8 +111,10 @@
     CGSize size = _scrollPromocion.frame.size;
     size.height = btnBorrar.frame.origin.y + btnBorrar.frame.size.height + 30;
     [self.scrollPromocion setContentSize:size];
-//    [self.scrollPromocion setContentSize:CGSizeMake(size.width, 800)]; //590
-    
+    if(IS_IPAD){
+    [self.btnBorrar setFrame:CGRectMake(btnBorrar.frame.origin.x+400, btnBorrar.frame.origin.y, btnBorrar.frame.size.width, btnBorrar.frame.size.height)];
+        self.fixed.width = self.fixed.width + 400.0f;
+    }
     [self llenaCampos];
 }
 

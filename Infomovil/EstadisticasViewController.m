@@ -60,7 +60,7 @@
         [self.botonCambioEstadisticas setFrame:CGRectMake(20, 375, 280, 29)];
     }else if(IS_IPAD){
         [self.botonCambioEstadisticas setFrame:CGRectMake(40, 850, 668, 29)];
-        self.botonTotales.frame = CGRectMake(20, 35, 728, 30);
+        self.botonTotales.frame = CGRectMake(20, 20, 728, 30);
     }else{
         [self.botonCambioEstadisticas setFrame:CGRectMake(20, 320, 280, 29)];
     }
@@ -138,9 +138,7 @@
 	errorToken = NO;
     [self enviarEventoGAconCategoria:@"Consultar" yEtiqueta:@"Reportes"];
 		
-    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion && self.datosUsuario.dominio && ![self.datosUsuario.dominio isEqualToString:@""] && ! (self.datosUsuario.dominio == (id)[NSNull null]) && ![CommonUtils validarEmail:self.datosUsuario.dominio] && ![self.datosUsuario.dominio isEqualToString:@"(null)"] ){
-        [self.vistaInferior setHidden:NO];
-    }
+  [self.vistaInferior setHidden:NO];
     
 }
 

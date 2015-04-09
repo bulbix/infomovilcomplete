@@ -33,7 +33,7 @@
     NSString *imagenBarra = ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) ? @"barramorada.png" : @"NBlila.png";
     [self acomodarBarraNavegacionConTitulo:@"Feedback" nombreImagen:imagenBarra];
     [self.vistaCircular setHidden:YES];
-    [self.vistaInferior setHidden:YES];
+    [self.vistaInferior setHidden:NO];
     [self.labelPregunta setText:NSLocalizedString(@"txtReportar", Nil)];
     [self.labelMensaje setText:NSLocalizedString(@"txtMensaje", Nil)];
     self.txtMensaje.layer.cornerRadius = 5.0f;

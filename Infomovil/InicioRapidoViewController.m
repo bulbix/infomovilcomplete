@@ -60,7 +60,7 @@
 	}else{
 		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"labelInicioRapido", Nil) nombreImagen:@"NBverde.png"];
 	}
-    [self.vistaInferior setHidden:YES];
+    [self.vistaInferior setHidden:NO];
     self.arregloDatos = [[NSArray alloc] initWithObjects:NSLocalizedString(@"nombreEmpresa", Nil),
                          NSLocalizedString(@"descripcionCorta", @" "),
                          NSLocalizedString(@"contacto", @" "),

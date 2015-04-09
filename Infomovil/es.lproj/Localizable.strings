@@ -237,7 +237,7 @@
 "5ImagenesPro" = "Actualiza tus 10 imágenes y destaca de la competencia.";
 "galeriaVertical" = "Estas imágenes se mostrarán en una galería vertical";
 "redimensionaImagen" = "Las imágenes serán redimensionadas para adaptarse";
-"noGuardoImagen" = "La imagen no se guardo";
+"noGuardoImagen" = "La imagen no se guardó";
 
 "defineHorario" = "Para cada día, define el inicio y fin del horario";
 
@@ -342,6 +342,7 @@
 
 //CompartirViewController
 "compartirLabel1" = "Comparte tu sitio web con tus contactos y amigos para sacarle más provecho.";
+"compartirEtiqueta1" = "Comparte tu sitio web con tus contactos y amigos para sacarle más provecho.";
 "compartirLabel2" = "Ya estoy en línea con Infomovil. Visita mi sitio web:";
 
 //CuentaViewController
@@ -520,7 +521,7 @@
 "msgGuardarPromocion" = "Actualizando Promoción";
 "msgNombrarSitio" = "Nombrando Sitio";
 "msgBuscandoUsuario" = "Verificando Usuario";
-"msgPublicando" = "Publicando";
+"msgPublicando" = "Registrando sitio";
 "msgValidandoUsuario" = "Validando Credenciales";
 
 "txtLlenarNombre" = "Por favor llena tu nombre";
@@ -632,3 +633,5 @@
 "elegirEstilo" = "Elegir estilo";
 "etiquetaEstilo" = "ESTILO";
 "noticiasFeed" = "Noticias";
+
+"misitioURL"="misitio";

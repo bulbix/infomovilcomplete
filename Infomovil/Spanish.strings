@@ -235,7 +235,7 @@
 "5Imagenes" = "Plan Báscio: Puedes agregar hasta 2 imágenes.\nPlan Pro: puedes agregar hasta 12 imágenes.";
 "galeriaVertical" = "Estas imágenes se mostraran en una galeria vertical";
 "redimensionaImagen" = "Las imágenes serán redimensionadas para adaptarse";
-"noGuardoImagen" = "La imagen no se guardo";
+"noGuardoImagen" = "La imagen no se guardó";
 
 "defineHorario" = "Para cada día, define el inicio y fin del horario";
 

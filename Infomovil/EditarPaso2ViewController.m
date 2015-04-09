@@ -41,7 +41,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
+    
     
 	if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
 		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"direccion", @" ") nombreImagen:@"barraverde.png"];
@@ -103,6 +104,50 @@
 		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"direccion", @" ") nombreImagen:@"NBverde.png"];
 	}
 	[super viewWillAppear:YES];
+    
+    
+    if(IS_IPAD){
+        [self apareceTeclado:_scrollDireccion withView:textoEditado];
+        
+        [self.labelDireccion1 setFrame:CGRectMake(84, 15, 600, 35 )];
+        [self.txtCalle setFrame:CGRectMake(84, 50, 600, 35)];
+        
+        [self.labelDireccion2 setFrame:CGRectMake(84, 95, 600, 35 )];
+        [self.txtColonia setFrame:CGRectMake(84, 130, 600, 35)];
+    
+        [self.labelDireccion3 setFrame:CGRectMake(84, 175, 600, 35 )];
+        [self.txtPoblacion setFrame:CGRectMake(84, 210, 600, 35)];
+    
+        [self.labelCiudad setFrame:CGRectMake(84, 255, 600, 35 )];
+        [self.txtCiudad setFrame:CGRectMake(84, 290, 600, 35)];
+        
+        [self.labelEstado setFrame:CGRectMake(84, 335, 600, 35 )];
+        [self.txtEstado setFrame:CGRectMake(84, 370, 600, 35)];
+        
+        [self.labelPais setFrame:CGRectMake(84, 415, 600, 35 )];
+        [self.txtPais setFrame:CGRectMake(84, 450, 600, 35)];
+        
+        [self.labelCodigoPostal setFrame:CGRectMake(84, 495, 600, 35 )];
+        [self.txtCodigoPostal setFrame:CGRectMake(84, 530, 600, 35)];
+        
+        
+        [self.labelDireccion1 setFont:[UIFont fontWithName:@"Avenir-Book" size:18]];
+        [self.txtCalle setFont:[UIFont fontWithName:@"Avenir-Book" size:18]];
+        [self.labelDireccion2 setFont:[UIFont fontWithName:@"Avenir-Book" size:18]];
+        [self.txtColonia setFont:[UIFont fontWithName:@"Avenir-Book" size:18]];
+        [self.labelDireccion3 setFont:[UIFont fontWithName:@"Avenir-Book" size:18]];
+        [self.txtPoblacion setFont:[UIFont fontWithName:@"Avenir-Book" size:18]];
+        [self.labelCiudad setFont:[UIFont fontWithName:@"Avenir-Book" size:18]];
+        [self.txtCiudad setFont:[UIFont fontWithName:@"Avenir-Book" size:18]];
+        [self.labelEstado setFont:[UIFont fontWithName:@"Avenir-Book" size:18]];
+        [self.txtEstado setFont:[UIFont fontWithName:@"Avenir-Book" size:18]];
+        [self.labelPais setFont:[UIFont fontWithName:@"Avenir-Book" size:18]];
+        [self.txtPais setFont:[UIFont fontWithName:@"Avenir-Book" size:18]];
+        [self.labelCodigoPostal setFont:[UIFont fontWithName:@"Avenir-Book" size:18]];
+        [self.txtCodigoPostal setFont:[UIFont fontWithName:@"Avenir-Book" size:18]];
+    }
+    
+    
 }
 
 -(void) llenaCamposTexto {

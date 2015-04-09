@@ -38,19 +38,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    [self.vistaCircular setImage:[UIImage imageNamed:@"plecamorada.png"]];
-//    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).ultimoView == Nil) {
-//        NSArray *arrayControllers = [self.navigationController viewControllers];
-//        ((AppDelegate *)[[UIApplication sharedApplication] delegate]).ultimoView = [arrayControllers objectAtIndex:arrayControllers.count-2];
-//        NSLog(@"la clase es %@", [arrayControllers objectAtIndex:arrayControllers.count-2]);
-//    }
-    
+
     self.guardarVista = YES;
-	
-	//NSArray *arregloSecc1 = @[NSLocalizedString(@"infoRegistro", Nil), NSLocalizedString(@"cambiaPass", Nil), NSLocalizedString(@"eliminaCuenta", Nil), NSLocalizedString(@"salirCuenta", Nil)];
+
     NSArray *arregloSecc1 = @[NSLocalizedString(@"cambiaPass", Nil), NSLocalizedString(@"eliminaCuenta", Nil), NSLocalizedString(@"salirCuenta", Nil)];
     NSArray *arregloSecc2 = @[NSLocalizedString(@"soportaEmail", Nil), [NSString stringWithFormat:NSLocalizedString(@"version", Nil),[[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleShortVersionString"]]];
-//	NSLog(@"VERSION %@",[[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleShortVersionString"]);
+
     self.arregloConfiguracion = @[arregloSecc1, arregloSecc2];
     
     UIImage *image = [UIImage imageNamed:@"btnregresar.png"];
@@ -90,8 +83,13 @@
         [self.botonConfiguracion setFrame:CGRectMake(192, 14, 64, 54)];
         self.label.font = [UIFont fontWithName:@"Avenir-Book" size:17];
     }
+    
+   
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+[self.vistaInferior setHidden:NO];
+}
 
 
 - (void)didReceiveMemoryWarning
@@ -161,10 +159,7 @@
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 0) {
-//        if (indexPath.row == 0) {
-//            InformacionRegistroViewController *informacionRegistro = [[InformacionRegistroViewController alloc] initWithNibName:@"InformacionRegistroViewController" bundle:Nil];
-//            [self.navigationController pushViewController:informacionRegistro animated:YES];
-//        }
+
         if (indexPath.row == 0) {
 			AlertView * alerta = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeContrasenia", @" ") andAlertViewType:AlertViewTypeInfo3];
 			[alerta show];
@@ -227,9 +222,7 @@
         [handlerDominio setWSHandlerDelegate:self];
         [handlerDominio cerrarSession:self.datosUsuario.emailUsuario];
     });
-//    [StringUtils deleteResourcesWithExtension:@"jpg"];
-//    [StringUtils deleteFile];
-//    [self.datosUsuario eliminarDatos];
+
 
     ((AppDelegate*)	[[UIApplication sharedApplication] delegate]).statusDominio = @"Gratuito";
     ((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion = NO;
@@ -267,7 +260,7 @@
         [self.alertaContacto hide];
     }
     if (actualizoCorrecto) {
-		//AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"actualizacionCorrecta", Nil) andAlertViewType:AlertViewTypeInfo];
+		
 		AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"cambiarAlerta", Nil) andAlertViewType:AlertViewTypeInfo];
 		[alert show];
     }
@@ -282,9 +275,7 @@
 -(void) resultadoConsultaDominio:(NSString *)resultado {
     
 }
-//-(void) errorToken {
-//    
-//}
+
 
 -(void) errorConsultaWS {
     [self performSelectorOnMainThread:@selector(errorContacto) withObject:Nil waitUntilDone:YES];

@@ -45,7 +45,7 @@
     [super viewDidLoad];
   
     
-    [self.vistaInferior setHidden:YES];
+   // [self.vistaInferior setHidden:YES];
 	
 	if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
 		
@@ -113,6 +113,10 @@
         [self mostrarLogo];
     }
     
+    
+    self.botonSesions.layer.borderWidth = 1.0f;
+    self.botonSesions.layer.cornerRadius = 15.0f;
+    self.botonSesions.layer.borderColor = [UIColor whiteColor].CGColor;
     
 }
 
@@ -226,7 +230,7 @@
         
     }
    
-    [self.vistaInferior setHidden:YES];
+  //  [self.vistaInferior setHidden:YES];
     
 
 }

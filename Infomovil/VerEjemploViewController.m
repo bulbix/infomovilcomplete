@@ -53,7 +53,9 @@
     self.navigationItem.leftBarButtonItem = buttonBack;
     
     NSString *htmlStringToLoad = @"http://info-movil.net/divertido?vistaPrevia=true";
-    // PARA CUANDO SE APUREN ESTOS CHAVOS LA URL SERA! // http://info-movil.com/templates/Divertido/index.html //
+#if DEBUG
+    htmlStringToLoad = @"http://info-movil.com:8080/divertido?vistaPrevia=true";
+#endif
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:htmlStringToLoad]]];
     [self.view addSubview:self.webView];
     [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];

@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="btnBorrar" destination="nNe-iC-vip" id="XFO-1S-QAp"/>
                 <outlet property="fechaPicker" destination="3X3-wc-tGU" id="vSB-y5-Kj7"/>
+                <outlet property="fixed" destination="0pU-wo-bO1" id="Wbz-Sn-oaw"/>
                 <outlet property="labelDescripcionPromocion" destination="gpR-oI-pTS" id="ZU2-n7-gyd"/>
                 <outlet property="labelInfo" destination="qEy-5J-UiC" id="XB7-PB-dZq"/>
                 <outlet property="labelInformacionAdicional" destination="rQB-Ig-tiQ" id="0Te-Cj-Ihe"/>

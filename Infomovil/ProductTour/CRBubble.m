@@ -45,7 +45,6 @@
         
         titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(actualXPosition, actualYPosition, actualWidth, actualHeight)];
         [titleLabel setTextColor:colorFuenteVerde];
-    //    [titleLabel setAlpha:0.6];
         [titleLabel setFont:[UIFont fontWithName:fontName size:CR_TITLE_FONT_SIZE]];
         [titleLabel setText:title];
         [titleLabel setBackgroundColor:[UIColor clearColor]];
@@ -72,7 +71,13 @@
         }
         
         if(SHOW_ZONE){
-            UIView *myview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.attachedView.frame.size.width, self.attachedView.frame.size.height)];
+            UIView *myview ;
+            if(IS_IPAD){
+                myview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 375,52)];
+            }else {
+                myview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.attachedView.frame.size.width, self.attachedView.frame.size.height)];
+            }
+            
             [myview setBackgroundColor:self.color];
             [myview setAlpha:0.3];
             [myview setUserInteractionEnabled:NO];
@@ -172,8 +177,15 @@
         
     }else if(self.arrowPosition==CRArrowPositionTop||self.arrowPosition==CRArrowPositionBottom)
     {
-        x+=self.attachedView.frame.size.width/2-[self size].width/2;
-        y+=(self.arrowPosition==CRArrowPositionTop)? CR_ARROW_SPACE+self.attachedView.frame.size.height : -(CR_ARROW_SPACE*2+[self size].height);
+       
+        if(IS_IPAD){
+            x = 400.0f;
+            y = 400.0f;
+        }else{
+            x+=self.attachedView.frame.size.width/2-[self size].width/2;
+            y+=(self.arrowPosition==CRArrowPositionTop)? CR_ARROW_SPACE+self.attachedView.frame.size.height : -(CR_ARROW_SPACE*2+[self size].height);
+        }
+        
     }
     
     return CGRectMake(x, y, [self size].width+CR_ARROW_SIZE, [self size].height+CR_ARROW_SIZE);

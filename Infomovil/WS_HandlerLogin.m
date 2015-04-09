@@ -60,12 +60,13 @@
             [prefsLogin synchronize];
         }
     }
-    NSDictionary *info = [[NSBundle mainBundle] infoDictionary];
+   /* NSDictionary *info = [[NSBundle mainBundle] infoDictionary];
     NSString *version = [info objectForKey:@"CFBundleShortVersionString"];
     if(version == nil || [version isEqualToString:@""]){
         version = versionDefault;
         }
-  
+    */
+    NSString *version = versionDefault;
     NSString *stringXML;
         stringXML = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.webservice.infomovil.org/\">"
                      "<soapenv:Header/>"
@@ -109,7 +110,12 @@
         self.arregloContactos = [[NSMutableArray alloc] init];
         self.arregloImagenes = [[NSMutableArray alloc] init];
         self.arregloDireccion = [[NSMutableArray alloc] init];
+        self.datosUsuario.imgGaleriaArray = [[NSMutableArray alloc] init];
+        self.datosUsuario.logoImg = [[NSString alloc] init];
         hayPerfil = NO;
+        
+    
+        
         self.arregloPerfil = [[NSMutableArray alloc] initWithArray:@[[[KeywordDataModel alloc] init], [[KeywordDataModel alloc] init], [[KeywordDataModel alloc] init], [[KeywordDataModel alloc] init], [[KeywordDataModel alloc] init], [[KeywordDataModel alloc] init], [[KeywordDataModel alloc] init]]];
         self.arregloAdicional = [[NSMutableArray alloc] init];
         self.diccionarioInformacion = [[NSDictionary alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"CatalogoInformacion" ofType:@"plist"]];
@@ -132,19 +138,11 @@
                 self.datosUsuario.idDominio = [auxIdDom integerValue];
                 self.idDominio = [auxIdDom integerValue];
                 
-                /*
-                if (self.colorAux.length > 0 && self.colorAux != Nil) {
-                    auxIdDom = [StringUtils desEncriptar:self.colorAux conToken:self.datosUsuario.token];
-                    if (auxIdDom.length > 6) {
-                        self.datosUsuario.colorSeleccionado = [StringUtils colorFromHexString:auxIdDom];
-                        self.datosUsuario.eligioC = YES;
-                    }
-                }
-                 */
+            
                 if (self.descipcionAux.length > 0 && self.descipcionAux != Nil) {
                     self.descipcionAux = [StringUtils desEncriptar:self.descipcionAux conToken:self.datosUsuario.token];
                     if ((self.descipcionAux.length > 0 && ![self.descipcionAux isEqualToString:@"Título"]) && ![self.descipcionAux isEqualToString:@"(null)"]) {
-                        NSLog(@"A VER QUE VALOR ME DA AQUÍ %@   ", self.descipcionAux);
+                        
                         self.datosUsuario.descripcion = self.descipcionAux;
                         [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:3 withObject:@YES];
                     }
@@ -166,9 +164,13 @@
                 
                 
                 [self acomodaContactos];
-            NSLog(@"SEGUNDO");
+            
+            
                 self.datosUsuario.arregloContacto = self.arregloContactos;
                 for (NSInteger i = 0; i < [self.arregloImagenes count]; i++) {
+                    
+                 
+                    
                     GaleriaImagenes *galImagenes = [self.arregloImagenes objectAtIndex:i];
                     if (galImagenes.pieFoto != Nil && galImagenes.pieFoto.length > 0) {
                         galImagenes.pieFoto = [StringUtils desEncriptar:galImagenes.pieFoto conToken:self.datosUsuario.token];
@@ -180,6 +182,7 @@
                     [self.arregloImagenes replaceObjectAtIndex:i withObject:galImagenes];
                 }
                 self.datosUsuario.arregloGaleriaImagenes = self.arregloImagenes;
+            
                 if ([self.arregloDireccion count] > 0 && [[StringUtils desEncriptar:[[self.arregloDireccion objectAtIndex:0] idAuxKeyword] conToken:self.datosUsuario.token] integerValue]!= 0) {
                     BOOL hayDatos = NO;
                     for (NSInteger i = 0; i < [self.arregloDireccion count]; i++) {
@@ -331,6 +334,7 @@
     else if ([elementName isEqualToString:@"listImagenVO"]) {
         self.galeria = [[GaleriaImagenes alloc] init];
     }
+    
     else if ([elementName isEqualToString:@"listKeywordVO"]) {
         self.currentElementString = [[NSMutableString alloc] init];
         self.keywordData = [[KeywordDataModel alloc] init];
@@ -472,12 +476,10 @@
     }
     else if ([elementName isEqualToString:@"typeImage"]) {
        self.currentElementString = [[NSMutableString alloc] init];
-    }
-    else if ([elementName isEqualToString:@"descripcionImagen"]) {
-        self.galeria = [[GaleriaImagenes alloc] init];
+    }else if ([elementName isEqualToString:@"url"]) {
         self.currentElementString = [[NSMutableString alloc] init];
-        
     }
+   
 }
 
 
@@ -548,22 +550,7 @@
         [self.contactoActual setValorVisible:self.currentElementString];
         self.currentElementString = [[NSMutableString alloc] init];
     }
-   /* else if ([elementName isEqualToString:@"colour"]) {
-        if (self.currentElementString.length > 6) {
-            if (requiereEncriptar) {
-                self.colorAux = self.currentElementString;
-            }
-            else {
-                self.datosUsuario.colorSeleccionado = [StringUtils colorFromHexString:self.currentElementString];
-            }
-            //self.datosUsuario.eligioColor = YES;
-        }
-        else {
-            self.datosUsuario.colorSeleccionado = [UIColor whiteColor];
-        }
-        self.currentElementString = [[NSMutableString alloc] init];
-    }
-    */
+  
     else if ([elementName isEqualToString:@"cssTemplate"]) {
         self.currentElementString = [[NSMutableString alloc] init];
     }
@@ -668,20 +655,9 @@
 
         self.datosUsuario.promocionActual = self.promocionElegida;
     }
-    else if ([elementName isEqualToString:@"listImagenVO"]) {
-        if (esLogo) {
-            if (guardarLogo) {
-                self.datosUsuario.imagenLogo = self.galeria;
-                [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:1 withObject:@YES];
-            }
-        }
-        else {
-           
-            [self.arregloImagenes addObject:self.galeria];
-            [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:8 withObject:@YES];
-        }
-    }
-    else if ([elementName isEqualToString:@"typeImage"]) {
+   
+ 
+    else if ([elementName isEqualToString:@"typeImage"]) { NSLog(@"ESTE SE EJECUTA PRIMERO");
         if (requiereEncriptar) {
             NSString *typeImageAux = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
             if ([typeImageAux isEqualToString:@"LOGO"]) {
@@ -702,43 +678,64 @@
         
         self.currentElementString = [[NSMutableString alloc] init];
     }
+    else if ([elementName isEqualToString:@"url"]) { NSLog(@"ESTE SE EJECUTA TERCERO");
+        if (esLogo) {
+            
+            self.datosUsuario.logoImg = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
+            [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:1 withObject:@YES];
+            
+        }
+        else {
+            NSString *aux= [StringUtils desEncriptar:self.currentElementString conToken:self.token];
+            [self.datosUsuario.imgGaleriaArray addObject:aux];
+            [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:8 withObject:@YES];
+            
+        }
+        
+        
+    }
+   
     else if ([elementName isEqualToString:@"descripcionImagen"]) {
         [self.galeria setPieFoto:self.currentElementString];
         self.currentElementString = [[NSMutableString alloc] init];
     }
-    else if ([elementName isEqualToString:@"imagenClobGaleria"]) {
-        NSData *dataImagen = [Base64 decode:[self.currentElementString stringByReplacingOccurrencesOfString:@"\n" withString:@""]];
-        if (esLogo) {
-            if (self.currentElementString.length > 0) {
-                [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:1 withObject:@YES];
-                NSString *filePath = [[StringUtils pathForDocumentsDirectory] stringByAppendingPathComponent:@"imagenLogo.jpg"];
-                [dataImagen writeToFile:filePath atomically:YES];
-                [self.galeria setRutaImagen:filePath];
-                guardarLogo = YES;
-                NSLog(@"LA IMAGEN ES LOGO Y ESTA EN IMAGENCLOBGALERIA");
-            }
-        }
-        else {
-            NSString *nombreImagen = [StringUtils randomStringWithLength:15];
-            NSString *filePath = [[StringUtils pathForDocumentsDirectory] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.jpg", nombreImagen]];
-            [dataImagen writeToFile:filePath atomically:YES];
-            [self.galeria setRutaImagen:filePath];
-        }
-        self.currentElementString = [[NSMutableString alloc] init];
-        
-    }
-    else if ([elementName isEqualToString:@"idImagen"]) {
+    
+    else if ([elementName isEqualToString:@"idImagen"]) { NSLog(@"ESTE SE EJECUTA SEGUNDO");
         if (requiereEncriptar) {
             [self.galeria setIdImagen:[[StringUtils desEncriptar:self.currentElementString conToken:self.token] integerValue]];
             [self.galeria setImagenIdAux:self.currentElementString];
+          
         }
         else {
             [self.galeria setIdImagen:[self.currentElementString integerValue]];
             [self.galeria setImagenIdAux:self.currentElementString];
         }
-        
+       
         self.currentElementString = [[NSMutableString alloc] init];
     }
+    /*
+     else if ([elementName isEqualToString:@"imagenClobGaleria"]) {
+     NSData *dataImagen = [Base64 decode:[self.currentElementString stringByReplacingOccurrencesOfString:@"\n" withString:@""]];
+     if (esLogo) {
+     if (self.currentElementString.length > 0) {
+     [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:1 withObject:@YES];
+     NSString *filePath = [[StringUtils pathForDocumentsDirectory] stringByAppendingPathComponent:@"imagenLogo.jpg"];
+     [dataImagen writeToFile:filePath atomically:YES];
+     [self.galeria setRutaImagen:filePath];
+     guardarLogo = YES;
+     NSLog(@"LA IMAGEN ES LOGO Y ESTA EN IMAGENCLOBGALERIA");
+     }
+     }
+     else {
+     NSString *nombreImagen = [StringUtils randomStringWithLength:15];
+     NSString *filePath = [[StringUtils pathForDocumentsDirectory] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.jpg", nombreImagen]];
+     [dataImagen writeToFile:filePath atomically:YES];
+     [self.galeria setRutaImagen:filePath];
+     }
+     self.currentElementString = [[NSMutableString alloc] init];
+     
+     }
+     */
     else if ([elementName isEqualToString:@"listLatitud"]) {
         
         if (self.latitude != 0.0 || self.longitude != 0.0) {

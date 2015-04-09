@@ -107,11 +107,22 @@
     
 
     if(IS_STANDARD_IPHONE_6_PLUS){
-        
+        [self.labelAgregarTitulo setFrame:CGRectMake(50, 20, 314, 21)];
+        [self.labelInformacionAdicional setFrame:CGRectMake(50, 95, 314, 21)];
+        self.txtTitulo.frame = CGRectMake(50, 49, 314, 30 );
+        self.txtInfo.frame = CGRectMake(50, 124, 314, 128);
+        [self.btnEliminar setFrame:CGRectMake(334, 281, 29, 35)];
+        [self.scroll setFrame:CGRectMake(0, 0, 414, 736)];
     }else if(IS_STANDARD_IPHONE_6){
         self.txtTitulo.frame = CGRectMake(20, 49, 335, 30 );
         self.txtInfo.frame = CGRectMake(20, 124, 335, 128);
-    
+    }else if(IS_IPAD){
+        [self.labelAgregarTitulo setFrame:CGRectMake(84, 20, 600, 21)];
+        [self.labelInformacionAdicional setFrame:CGRectMake(84, 95, 600, 21)];
+        self.txtTitulo.frame = CGRectMake(84, 49, 600, 30 );
+        self.txtInfo.frame = CGRectMake(84, 124, 600, 128);
+        [self.btnEliminar setFrame:CGRectMake(650, 281, 29, 35)];
+        [self.scroll setFrame:CGRectMake(0, 0, 768, 1024)];
     }else{
     
     }
@@ -121,7 +132,7 @@
 #pragma mark UITextViewDelegate
 
 -(void)textViewDidBeginEditing:(UITextView *)textView {
-
+    NSLog(@"SI ENTRO AL CONTADOR DE NO SE KE");
     [self muestraContadorTexto:[textView.text length] conLimite:400 paraVista:textView];
 	[self apareceElTeclado];
 }
@@ -171,9 +182,9 @@
 
 -(void) apareceElTeclado {
 	
-	if(!IS_IPHONE_5){
+	if(IS_IPHONE_4){
 		self.scroll.frame = CGRectMake(0, -80, 320, 328);
-	}
+    }
     
     CGSize tamanioTeclado = CGSizeMake(320, 260);
     
@@ -185,7 +196,7 @@
 }
 -(void) desapareceElTeclado {
 	
-	if(!IS_IPHONE_5){
+	if(IS_IPHONE_4){
 		self.scroll.frame = CGRectMake(0, 0, 320, 328);
 	}
 	

@@ -93,15 +93,19 @@ BOOL actualizo;
     
     for (int i=0; i<5; i++) {
        PlantillaViewController *pController = [[PlantillaViewController alloc] initWithNibName:@"Plantilla" bundle:[NSBundle mainBundle]];
-        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"template%i",i+1]];
+        UIImage *image;
         
         if(IS_STANDARD_IPHONE_6){
+            image = [UIImage imageNamed:[NSString stringWithFormat:@"template%i",i+1]];
             pController.view.frame = CGRectMake(375*i, 0, 375, 667);
         }else if(IS_STANDARD_IPHONE_6_PLUS){
+            image = [UIImage imageNamed:[NSString stringWithFormat:@"template%i",i+1]];
             pController.view.frame = CGRectMake(414*i, 0, 414, 736);
         }else if(IS_IPAD){
             pController.view.frame = CGRectMake(768*i, 0, 768, 1024);
+            image = [UIImage imageNamed:[NSString stringWithFormat:@"template%i@3x",i+1]];
         }else{
+            image = [UIImage imageNamed:[NSString stringWithFormat:@"template%i",i+1]];
             pController.view.frame = CGRectMake(320*i, 0, 320, 480);
         }
         
@@ -152,7 +156,7 @@ BOOL actualizo;
             pController.nombrePlantilla.frame = CGRectMake(90, 365, 84, 21);
             pController.btnVerEjemploPlantilla.frame = CGRectMake(231, 361, 97, 25);
             pController.descripcionPlantilla.frame = CGRectMake(40, 386, 280, 67);
-            pController.imgTemplate.frame = CGRectMake(40, 0, 280, 315);
+            pController.imgTemplate.frame = CGRectMake(25, 0, 315, 315);
             pController.imgBullets.frame = CGRectMake(100, 480, 176, 13);
         }else if(IS_STANDARD_IPHONE_6_PLUS){
             pController.btnTemplateSeleccionado.frame = CGRectMake(70, 320, 36, 37);
@@ -160,7 +164,7 @@ BOOL actualizo;
             pController.nombrePlantilla.frame = CGRectMake(127, 365, 84, 21);
             pController.btnVerEjemploPlantilla.frame = CGRectMake(241, 361, 97, 25);
             pController.descripcionPlantilla.frame = CGRectMake(70, 386, 280, 67);
-            pController.imgTemplate.frame = CGRectMake(70, 0, 300, 320);
+            pController.imgTemplate.frame = CGRectMake(60, 0, 320, 320);
             pController.imgBullets.frame = CGRectMake(122, 480, 176, 13);
         }else if(IS_IPAD){
             pController.btnTemplateSeleccionado.frame = CGRectMake(134, 590, 60, 60);
@@ -176,7 +180,7 @@ BOOL actualizo;
             pController.btnVerEjemploPlantilla.frame = CGRectMake(484, 645, 150, 40);
             pController.descripcionPlantilla.frame = CGRectMake(134, 690, 500, 67);
             [pController.descripcionPlantilla setFont:[UIFont fontWithName:@"Avenir-Book" size:18]];
-            pController.imgTemplate.frame = CGRectMake(134, 50, 500, 540);
+            pController.imgTemplate.frame = CGRectMake(100, 50, 580, 540);
             pController.imgBullets.frame = CGRectMake(296, 800, 176, 13);
         
         }

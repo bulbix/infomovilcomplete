@@ -61,6 +61,7 @@
         self.o.frame = CGRectMake(178, 216, 155, 20);
         self.raya2.frame = CGRectMake(195, 224, 155, 2);
         self.llamarCrearCuenta.frame = CGRectMake(20, 276, 331, 51);
+        self.msjRegistrarConFacebook.frame = CGRectMake(20, 400, 335, 100);
   
     }else if(IS_STANDARD_IPHONE_6_PLUS){
             loginView.frame = CGRectMake(20, 180, 375, 55);
@@ -210,7 +211,7 @@
    
     [self.boton setTitle:NSLocalizedString(@"mainBoton", nil) forState:UIControlStateNormal]  ;
     
-    [self.vistaInferior setHidden:YES];
+  //  [self.vistaInferior setHidden:YES];
     
 }
 // Boton de regresar //

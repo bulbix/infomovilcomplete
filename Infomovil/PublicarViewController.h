@@ -36,6 +36,7 @@ typedef enum {
 @property (strong, nonatomic) IBOutlet UITextField *txtDir1;
 @property (strong, nonatomic) IBOutlet UITextField *txtDir2;
 
+@property (weak, nonatomic) IBOutlet UIImageView *imgBull;
 
 @property (strong, nonatomic) IBOutlet UIView *vistaCombo;
 @property (strong, nonatomic) IBOutlet UIButton *botonCombo;

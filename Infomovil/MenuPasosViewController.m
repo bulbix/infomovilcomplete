@@ -43,8 +43,8 @@
     return self;
 }
 
-- (void)viewDidLoad{ NSLog(@"ViewDidload MenuPasosViewController");
-	NSLog(@"statusDominio : %@", ((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio );
+- (void)viewDidLoad{
+	
     [super viewDidLoad];
     
     //MBC
@@ -84,9 +84,10 @@
         self.verTutorialbtn.frame = CGRectMake(209, 72, 170, 40);
         [self.verTutorialbtn.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
         self.botonEjemplo.frame = CGRectMake(384, 72, 170, 40);
+        [self.botonEjemplo.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
         self.line1.frame = CGRectMake(184, 250, 400, 2);
         self.line2.frame = CGRectMake(184, 370, 400, 2);
-        self.line3.frame = CGRectMake(184, 490, 400, 2);
+        self.line3.frame = CGRectMake(184, 485, 400, 2);
         self.dominio.frame = CGRectMake(0, 40, 768, 40);
         [self.dominio.titleLabel setFont: [UIFont fontWithName:@"Avenir-Book" size:22]];
     
@@ -159,10 +160,10 @@
        
         if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion && self.datosUsuario.dominio && ![self.datosUsuario.dominio isEqualToString:@""] && ! (self.datosUsuario.dominio == (id)[NSNull null]) && ![CommonUtils validarEmail:self.datosUsuario.dominio] && ![self.datosUsuario.dominio isEqualToString:@"(null)"] ){
             [self.botonPublicar setBackgroundImage:[UIImage imageNamed:@"tips.png"] forState:UIControlStateNormal];
-            [self.vistaInferior setHidden:NO];
+           
         }else{
             [self.botonPublicar setBackgroundImage:[UIImage imageNamed:@"btnnamepublishEn.png"] forState:UIControlStateNormal];
-            [self.vistaInferior setHidden:YES];
+            
         }
         
     }else{
@@ -170,18 +171,20 @@
         [self.botonCrear setBackgroundImage:[UIImage imageNamed:@"creareditar.png"] forState:UIControlStateNormal];
         if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion && self.datosUsuario.dominio && ![self.datosUsuario.dominio isEqualToString:@""] && ! (self.datosUsuario.dominio == (id)[NSNull null]) && ![CommonUtils validarEmail:self.datosUsuario.dominio] && ![self.datosUsuario.dominio isEqualToString:@"(null)"]){
             [self.botonPublicar setBackgroundImage:[UIImage imageNamed:@"tips.png"] forState:UIControlStateNormal];
-            [self.vistaInferior setHidden:NO];
+         
         }else{
             [self.botonPublicar setBackgroundImage:[UIImage imageNamed:@"nombrarpublicar.png"] forState:UIControlStateNormal];
-            [self.vistaInferior setHidden:YES];
+        
         }
     }
+    
+    [self.vistaInferior setHidden:NO];
 }
 
 
 
 
--(void) viewWillAppear:(BOOL)animated { NSLog(@"Entro a viewwillAppear de MenuPasosViewController");
+-(void) viewWillAppear:(BOOL)animated {
 	self.datosUsuario = [DatosUsuario sharedInstance];
     [super viewWillAppear:animated];
     [self.tituloVista setHidden:NO];
@@ -229,6 +232,8 @@
                 self.viewDominioPublicado.frame = CGRectMake(0, 320, 375, 90);
             }else if(IS_IPAD){
                 self.viewDominioPublicado.frame = CGRectMake(0, 320, 400, 400);
+                self.dominio.frame =CGRectMake(0, 70, 768, 40);
+                [self.dominio.titleLabel setFont:[UIFont fontWithName:@"Avenir-medium" size:21]];
             }else{
                 self.viewDominioPublicado.frame = CGRectMake(0, 300, 320, 90);
             }
@@ -246,6 +251,8 @@
                 self.viewDominioNoPublicado.frame = CGRectMake(0, 320, 320, 140);
             }else if(IS_IPAD){
                 self.viewDominioNoPublicado.frame = CGRectMake(0, 570, 768, 350);
+                self.dominio.frame =CGRectMake(0, 60, 768, 40);
+                [self.dominio.titleLabel setFont:[UIFont fontWithName:@"Avenir-medium" size:21]];
             }else{
                 self.viewDominioNoPublicado.frame = CGRectMake(0, 280, 320, 90);
             }
@@ -264,10 +271,10 @@
         [self.botonCrear setBackgroundImage:[UIImage imageNamed:@"btncreateeditEn.png"] forState:UIControlStateNormal];
         if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion && self.datosUsuario.dominio && ![self.datosUsuario.dominio isEqualToString:@""] && ! (self.datosUsuario.dominio == (id)[NSNull null]) && ![CommonUtils validarEmail:self.datosUsuario.dominio] && ![CommonUtils validarEmail:self.datosUsuario.dominio] && ![self.datosUsuario.dominio isEqualToString:@"(null)"]){
             [self.botonPublicar setBackgroundImage:[UIImage imageNamed:@"tips.png"] forState:UIControlStateNormal];
-            [self.vistaInferior setHidden:NO];
+            
         }else{
             [self.botonPublicar setBackgroundImage:[UIImage imageNamed:@"btnnamepublishEn.png"] forState:UIControlStateNormal];
-            [self.vistaInferior setHidden:YES];
+            
         }
         
     }else{
@@ -275,13 +282,13 @@
         [self.botonCrear setBackgroundImage:[UIImage imageNamed:@"creareditar.png"] forState:UIControlStateNormal];
         if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion && self.datosUsuario.dominio && ![self.datosUsuario.dominio isEqualToString:@""] && ! (self.datosUsuario.dominio == (id)[NSNull null]) && ![CommonUtils validarEmail:self.datosUsuario.dominio] && ![self.datosUsuario.dominio isEqualToString:@"(null)"]){
             [self.botonPublicar setBackgroundImage:[UIImage imageNamed:@"tips.png"] forState:UIControlStateNormal];
-            [self.vistaInferior setHidden:NO];
+            
         }else{
             [self.botonPublicar setBackgroundImage:[UIImage imageNamed:@"nombrarpublicar.png"] forState:UIControlStateNormal];
-            [self.vistaInferior setHidden:YES];
+           
         }
     }
-   
+   [self.vistaInferior setHidden:NO];
 	
 }
 
@@ -411,7 +418,7 @@
 -(void) pantallaAcomodaPublicar {
     self.navigationItem.leftBarButtonItem = Nil;
     [self.navigationItem setHidesBackButton:YES animated:YES];
-    [self.vistaInferior setHidden:NO];
+   
 }
 
 - (IBAction)IrAlDominio:(id)sender {
@@ -429,11 +436,7 @@
 
 - (IBAction)irInicioRapido:(id)sender {
     self.datosUsuario = [DatosUsuario sharedInstance];
-    /*
-#ifdef _DEBUG
-    self.datosUsuario.eligioTemplate = YES;
-#endif
-     */
+  
     if (self.datosUsuario.eligioTemplate) {
         InicioRapidoViewController *inicioRapido = [[InicioRapidoViewController alloc] initWithNibName:@"InicioRapidoViewController" bundle:Nil];
         [self.navigationController pushViewController:inicioRapido animated:YES];

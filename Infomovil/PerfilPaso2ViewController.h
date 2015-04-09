@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnEliminar;
 @property (weak, nonatomic) IBOutlet UILabel *labelTituloHorarios;
 @property (weak, nonatomic) IBOutlet UILabel *labelInformacion;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *fixed;
 
 @property (strong, nonatomic) IBOutlet UIButton *btnEliminar2;
 

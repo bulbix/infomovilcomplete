@@ -78,7 +78,7 @@
 @property (nonatomic, strong) NSMutableArray * itemsDominio;
 @property (nonatomic, strong) NSMutableArray *itemsTipoDominio;
 @property (nonatomic, strong) NSMutableArray *dominiosUsuario;
-
+@property (nonatomic, strong) NSMutableArray *imgGaleriaArray;
 @property (nonatomic, strong) NSDate* fechaConsulta;
 
 @property (nonatomic, strong) NSMutableArray *arregloVisitas;
@@ -105,6 +105,7 @@
 
 @property (nonatomic, strong) NSString *nombreTemplate;
 
+@property (nonatomic, strong) NSString *logoImg;
 
 //@property NSString
 

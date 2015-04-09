@@ -25,9 +25,9 @@
             <subviews>
                 <view contentMode="scaleToFill" id="lwX-wd-uLl">
                     <rect key="frame" x="10" y="39" width="300" height="239"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                     <subviews>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plan Básico: Puedes agregar hasta 2 imágenes.Plan Pro: puedes agregar hasta 5 imágenes." lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SKp-7X-ONQ">
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plan Básico: Puedes agregar hasta 2 imágenes. Plan Pro: puedes agregar hasta 5 imágenes." lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SKp-7X-ONQ">
                             <rect key="frame" x="34" y="13" width="256" height="100"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>

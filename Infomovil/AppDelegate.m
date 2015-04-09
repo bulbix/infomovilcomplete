@@ -46,7 +46,7 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
     [defaults synchronize];
    
    
-    /*
+    
     //AppsFlyer
     [AppsFlyerTracker sharedTracker].appsFlyerDevKey = @"5KoF92vzAFbhSj9PRduNCn";
     [AppsFlyerTracker sharedTracker].appleAppID = @"898313250";
@@ -61,7 +61,7 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
     [[BITHockeyManager sharedHockeyManager].authenticator
      authenticateInstallation];
     
-   */
+   
     
     //-- Set Notification
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.000000) {
@@ -116,6 +116,8 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
     self.datosUsuario = [DatosUsuario sharedInstance];
     [self.datosUsuario eliminarDatos];
   
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+    
     return YES;
 }
 
@@ -148,6 +150,8 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
     // Se limpian los datos al salir de la aplicación //
     self.datosUsuario = [DatosUsuario sharedInstance];
     [self.datosUsuario eliminarDatos];
+    
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
 }
 
 -(void) realizaConsultaItems {
