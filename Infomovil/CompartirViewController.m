@@ -114,7 +114,11 @@
 
 -(void) viewWillAppear:(BOOL)animated {
 	
+    if(self.datosUsuario.dominio && [self.datosUsuario.dominio length] >0 && ![self.datosUsuario.dominio isEqualToString:@"(null)"]){
     [self.labelNombreDominio setText:[NSString stringWithFormat:@"www.%@.tel", self.datosUsuario.dominio]];
+    }else{
+        [self.labelNombreDominio setText:@""];
+    }
 	
 	self.label1.text = NSLocalizedString(@"compartirEtiqueta1", nil);
 	self.label2.text = NSLocalizedString(@"compartirLabel2", nil);
@@ -136,7 +140,7 @@
             [self.labelNombreDominio setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
             self.vistaContenidoCompartir.frame = CGRectMake(134, 180, 500, 160);
         }else{
-            self.vistaContenidoCompartir.frame = CGRectMake(17, 70, 287, 130);
+            self.vistaContenidoCompartir.frame = CGRectMake(17, 105, 287, 130);
         }
         
 	}else{
@@ -149,7 +153,7 @@
             self.label1.frame = CGRectMake(184, 70, 400, 60);
             self.vistaContenidoCompartir.frame = CGRectMake(184, 180, 400, 130);
         }else{
-            self.vistaContenidoCompartir.frame = CGRectMake(17, 80, 287, 130);
+            self.vistaContenidoCompartir.frame = CGRectMake(17, 105, 287, 130);
         }
 	}
     
@@ -159,6 +163,8 @@
         [self.botonNotificaciones setFrame:CGRectMake(64, 14, 64, 54)];
     }
     self.navigationItem.rightBarButtonItem = Nil;
+    
+    [self.vistaInferior setHidden:NO];
 }
 
 - (void)didReceiveMemoryWarning
@@ -197,12 +203,7 @@
         [self presentViewController:controller animated:YES completion:nil];
     }
     else {
-//		if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-//			[[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat: @"http://www.facebook.com/sharer.php?u=www.%@.tel&t=I%%20just%%20created%%20a%%20mobile%%20website%%20with%%20infomovil.com.%%0ACheck%%20it%%20out%%20and%%20help%%20us%%20grow%%0Awww.%@.tel" ,self.datosUsuario.dominio,self.datosUsuario.dominio]]];
-//			
-//		}else{
-//			[[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat: @"http://www.facebook.com/sharer.php?u=www.%@.tel&t=Acabo%%20de%%20crear%%20un%%20sitio%%20web%%20movil%%20con%%20infomovil.com.%%0AVisitalo%%20y%%20ayudanos%%20a%%20crecer%%0Awww.%@.tel" ,self.datosUsuario.dominio,self.datosUsuario.dominio]]];
-//		}
+
         
         NSString *strSharer = [NSString stringWithFormat:@"http://www.facebook.com/sharer.php?u=http://www.%@.tel" ,self.datosUsuario.dominio];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:strSharer]];

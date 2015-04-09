@@ -84,25 +84,14 @@
         [self.vistaDatosVideo setFrame:CGRectMake(0, 60, 414, 300)];
         [self.btnPlayer setFrame:CGRectMake(0, 40, 414, 300)];
         
-    }else if(IS_STANDARD_IPHONE_6){
-        
-        
-        
     }
-    
+     [self.vistaInferior setHidden:NO];
 }
 
 -(void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.datosUsuario = [DatosUsuario sharedInstance];
-    
-    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion && self.datosUsuario.dominio && ![self.datosUsuario.dominio isEqualToString:@""] && ! (self.datosUsuario.dominio == (id)[NSNull null]) && ![CommonUtils validarEmail:self.datosUsuario.dominio] && ![self.datosUsuario.dominio isEqualToString:@"(null)"] ){
-        [self.vistaInferior setHidden:NO];
-    }else{
-        [self.vistaInferior setHidden:YES];
-    }
-    
-    
+ 
     if (self.datosUsuario.videoSeleccionado == Nil && self.datosUsuario.urlVideo == Nil) {
         [self.vistaSeleccionaVideo setHidden:NO];
         [self.vistaVisualizaVideo setHidden:YES];

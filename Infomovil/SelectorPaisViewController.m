@@ -86,7 +86,7 @@
 	}else{
 		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"pais", @" ") nombreImagen:@"NBverde"];
 	}
-    [self.vistaInferior setHidden:YES];
+   // [self.vistaInferior setHidden:YES];
 }
 
 - (void)didReceiveMemoryWarning

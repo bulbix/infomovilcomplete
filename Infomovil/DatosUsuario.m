@@ -150,7 +150,7 @@
     
     self.descripcionDominio = Nil;
     self.plantilla = Nil;
-	 
+    self.imgGaleriaArray = Nil;
 }
 
 @end

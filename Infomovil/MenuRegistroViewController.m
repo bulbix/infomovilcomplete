@@ -211,7 +211,7 @@
    
     [self.boton setTitle:NSLocalizedString(@"mainBoton", nil) forState:UIControlStateNormal]  ;
     
-    [self.vistaInferior setHidden:YES];
+  //  [self.vistaInferior setHidden:YES];
     
 }
 // Boton de regresar //

@@ -138,9 +138,7 @@
 	errorToken = NO;
     [self enviarEventoGAconCategoria:@"Consultar" yEtiqueta:@"Reportes"];
 		
-    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion && self.datosUsuario.dominio && ![self.datosUsuario.dominio isEqualToString:@""] && ! (self.datosUsuario.dominio == (id)[NSNull null]) && ![CommonUtils validarEmail:self.datosUsuario.dominio] && ![self.datosUsuario.dominio isEqualToString:@"(null)"] ){
-        [self.vistaInferior setHidden:NO];
-    }
+  [self.vistaInferior setHidden:NO];
     
 }
 

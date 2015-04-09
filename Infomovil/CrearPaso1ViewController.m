@@ -91,11 +91,7 @@
     }
     
     self.tablaEditar.layer.cornerRadius = 5;
-
-    /* IRC boton de vista previa, se oculto para Plan Pro  */
-   // self.navigationItem.rightBarButtonItem = nil;
     
-   
     UIImage *imagenBoton = [UIImage imageNamed:@"btnprevisualizar.png"];
     UIButton *botonPrevisualizar = [UIButton buttonWithType:UIButtonTypeCustom];
     [botonPrevisualizar setFrame:CGRectMake(0, 0, imagenBoton.size.width, imagenBoton.size.height)];
@@ -113,7 +109,7 @@
 	}
 	
 
-	
+	[self.vistaInferior setHidden:NO];
     
 }
 
@@ -133,13 +129,6 @@
         arregloCampos = self.datosUsuario.itemsDominio;
 		    }
     
-    
-    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion && self.datosUsuario.dominio && ![self.datosUsuario.dominio isEqualToString:@""] && ! (self.datosUsuario.dominio == (id)[NSNull null]) && ![CommonUtils validarEmail:self.datosUsuario.dominio] && ![self.datosUsuario.dominio isEqualToString:@"(null)"] ){
-        [self.vistaInferior setHidden:NO];
-    }else{
-        [self.vistaInferior setHidden:YES];
-    }
-    
     if(IS_IPAD){
         [self.tablaEditar setFrame:CGRectMake(20, 20, 728, 830)];
     }else if(IS_IPHONE_5){
@@ -151,7 +140,7 @@
     }else if(IS_STANDARD_IPHONE_6_PLUS){
          [self.tablaEditar setFrame:CGRectMake(20, 15, 374, 600)];
     }
-    
+    [self.vistaInferior setHidden:NO];
 }
 
 - (void)didReceiveMemoryWarning

@@ -45,7 +45,7 @@
     [super viewDidLoad];
   
     
-    [self.vistaInferior setHidden:YES];
+   // [self.vistaInferior setHidden:YES];
 	
 	if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
 		
@@ -230,7 +230,7 @@
         
     }
    
-    [self.vistaInferior setHidden:YES];
+  //  [self.vistaInferior setHidden:YES];
     
 
 }

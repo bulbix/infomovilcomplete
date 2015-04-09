@@ -214,7 +214,7 @@ int opcionButton = 0 ;
 	if(sesion &&  [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] ){
         [self.vistaInferior setHidden:NO];
 	}else{
-        [self.vistaInferior setHidden:YES];
+       // [self.vistaInferior setHidden:YES];
 		
 	}
 	
@@ -272,7 +272,7 @@ int opcionButton = 0 ;
         }else{
             self.viewCompraPlanPro.hidden = NO;
             self.viewPlanProComprado.hidden = YES;
-            [self.vistaInferior setHidden:YES];
+           // [self.vistaInferior setHidden:YES];
         }
 	
         self.datosUsuario = [DatosUsuario sharedInstance];
