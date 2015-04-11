@@ -431,11 +431,13 @@
 
 -(void)image:(UIImage *)image finishedSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
 {
+#if DEBUG
     if (error) {
         NSLog(@"No se guardo la imagen, inténtalo nuevamente");
     } else {
         NSLog(@"La imagen se guardo correctamento");
     }
+#endif
 }
 
 - (IBAction)borrar:(UIButton *)sender {

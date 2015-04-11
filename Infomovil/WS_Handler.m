@@ -378,20 +378,13 @@
 
 	if( error )
 	{
+#if DEBUG
         NSLog(@"El codigo de error en WS_Handler es: %ld", (long)error.code);
+#endif
         if(error.code == -1005) {
             AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
             [alert show];
-        }/*else if(error.code == -1003) {
-            AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"ocurrioError", nil) dominio:Nil andAlertViewType:AlertViewTypeInfo];
-            [alert show];
         }
-          */
-		NSLog(@"Error en getXmlRespuesta: %@", [error localizedDescription]);
-		NSLog(@"%@", [error localizedFailureReason]);
-		NSLog(@"%@", [error localizedRecoverySuggestion]);
-		
-		//return [[error localizedDescription] dataUsingEncoding:NSUTF8StringEncoding];
         return [[error localizedDescription] dataUsingEncoding:NSUTF8StringEncoding];
 	}
 	
@@ -470,10 +463,6 @@
 	
 	if( error )
 	{
-		NSLog(@"Error: %@", [error localizedDescription]);
-		NSLog(@"%@", [error localizedFailureReason]);
-		NSLog(@"%@", [error localizedRecoverySuggestion]);
-		
 		return [error localizedDescription];
 	}
 	
@@ -631,12 +620,13 @@
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)dataResp
 {
 	NSString *str = [[NSString alloc] initWithData:dataResp encoding:NSUTF8StringEncoding];
-	NSLog(@"%@",str);
 	[str release];
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+#if DEBUG
     NSLog(@"Ocurrio el timeout");
+#endif
 }
 
 @end

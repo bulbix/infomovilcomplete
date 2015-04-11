@@ -214,8 +214,6 @@
         WS_HandlerDominio *dominioHandler = [[WS_HandlerDominio alloc] init];
         [dominioHandler setWSHandlerDelegate:self];
         
-        NSLog(@"Los valores que envio desde crearDominio en PublicarViewController: crearUsuario: %@ /n nombreDominio: %@ /n password: %@ /n nombre: %@ /n direccion %@ /n direccion %@ /n pais %@ /n codigo %@ /n idDominio: %i " ,self.datosUsuario.emailUsuario,dominioTipo, self.datosUsuario.passwordUsuario, self.txtNombre.text, self.txtDir1.text,self.txtDir2.text, self.nPais, self.datosUsuario.codigoRedimir, self.datosUsuario.idDominio);
-        
         [dominioHandler crearUsuario:self.datosUsuario.emailUsuario conNombre:self.datosUsuario.dominio password:self.datosUsuario.passwordUsuario status:@"1" nombre:self.txtNombre.text direccion1:self.txtDir1.text direccion2:self.txtDir2.text pais:self.nPais codigoPromocion:self.datosUsuario.codigoRedimir==nil?@" ":self.datosUsuario.codigoRedimir tipoDominio:dominioTipo idDominio:[NSString stringWithFormat:@"%i", self.datosUsuario.idDominio]];
 
         
@@ -310,7 +308,6 @@
 }
 
 -(void) resultadoConsultaDominio:(NSString *)resultado {
-	NSLog(@"El resultado de checaDominio en PublicarViewController es: %@", resultado);
     self.datosUsuario = [DatosUsuario sharedInstance];
 	if(operacionWS == 1){
         if ([resultado isEqualToString:@"No existe"]) {
@@ -474,7 +471,6 @@
         operacionWS = 1;
         WS_HandlerDominio *dominioHandler = [[WS_HandlerDominio alloc] init];
         [dominioHandler setWSHandlerDelegate:self];
-        NSLog(@"El dominio que se checara si esta disponible en PublicarViewController es: %@", datos.dominio);
         [dominioHandler consultaDominio:datos.dominio];
     }
     else {

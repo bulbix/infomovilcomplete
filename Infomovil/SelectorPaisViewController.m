@@ -102,7 +102,6 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSLog(@"el valor es %i", [filteredArray count]);
     return [filteredArray count];
 }
 
@@ -116,7 +115,6 @@
 		[array removeAllObjects];
 		[filteredArray removeAllObjects];
 		for(int i=0; i<[arregloPais count] ; i++) {
-          //  NSLog(@"el indice es %i", i);
 			[array addObject: [[arregloPais objectAtIndex:i]objectForKey:@"countryName"]];
 			[filteredArray addObject:[[arregloPais objectAtIndex:i]objectForKey:@"countryName"]];
 		}
@@ -129,7 +127,7 @@
 			break;
 		}
 	}
-    //NSLog(@"El indice es %i", indice);
+  
 
 	if ( _publicarController == nil )
 	{
@@ -175,14 +173,13 @@
 		if([[filteredArray objectAtIndex:indexPath.row] isEqualToString:@"Mexico"]){
 			self.publicarController.nPais = @"1";
 		}else{
-			NSLog(@"%@",[[arregloPais objectAtIndex:indice] objectForKey:@"detailLabel"]);
 			NSString * aux = [[arregloPais objectAtIndex:indice] objectForKey:@"detailLabel"];
 			self.publicarController.nPais = [aux stringByReplacingOccurrencesOfString:@"+" withString:@""];
 		}
 
 	}
     else {
-//		NSLog(@"Aqui falla %@ , %@ , %@",[dictAux objectForKey:@"countryName"],[dictAux objectForKey:@"detailLabel"],self.seleccionaDelegate);
+
 		if (tableView != self.searchDisplayController.searchResultsTableView){
 			[array removeAllObjects];
 			[filteredArray removeAllObjects];
@@ -200,7 +197,7 @@
 			}
 		}
         [self.seleccionaDelegate guardaPais:[filteredArray objectAtIndex:indexPath.row] yCodigo:[[arregloPais objectAtIndex:indice] objectForKey:@"detailLabel" ]];
-		NSLog(@"Aqui falla2");
+	
     }
     
     [self.navigationController popViewControllerAnimated:YES];
@@ -228,7 +225,7 @@
 		if([aS isEqualToString:@"Mexico"]){
 			return [bS compare:aS];
 		}
-		//NSLog(@"Compare: %d",[aS compare:bS]);
+		
 			
         return [aS compare:bS];
     }];

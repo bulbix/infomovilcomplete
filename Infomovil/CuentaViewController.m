@@ -340,7 +340,7 @@ int opcionButton = 0 ;
     }
     @catch (NSException *exception) {
         [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
-        NSLog(@"La NSException en comprarProducto1mes es: %@", exception.reason);
+       
     }
     
 }
@@ -373,7 +373,7 @@ int opcionButton = 0 ;
     }
     @catch (NSException *exception) {
         [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
-        NSLog(@"La NSException en comprarProducto6meses es: %@", exception.reason);
+       
     }
     
 }
@@ -406,7 +406,7 @@ int opcionButton = 0 ;
     }
     @catch (NSException *exception) {
         [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
-        NSLog(@"La NSException en comprarProducto12meses es: %@", exception.reason);
+      
     }
     
 }
@@ -445,7 +445,9 @@ if(noSeRepiteOprimirElBoton){
                 for(int i = 0 ; [_products count] > 0; i++){
                     SKProduct *product = _products[i];
                     if([product.productIdentifier isEqualToString:@"com.infomovil.infomovil.3_months"]){
+#if DEBUG
                         NSLog(@"Comprando item 0: %@", product.productIdentifier);
+#endif
                         self.datosUsuario.datosPago.plan =@"PLAN PRO 3 MESES";
                         self.datosUsuario.datosPago.comision = @"27";
                         self.datosUsuario.datosPago.statusPago = @"INTENTO PAGO";
@@ -468,7 +470,9 @@ if(noSeRepiteOprimirElBoton){
     }
     @catch (NSException *exception) {
         [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
+#if DEBUG
         NSLog(@"La NSException en comprar1mesBtn es: %@", exception.reason);
+#endif
     }
 }
 }
@@ -495,7 +499,9 @@ if(noSeRepiteOprimirElBoton){
                     for(int i = 0 ; [_products count] > 0; i++){
                         SKProduct *product = _products[i];
                         if([product.productIdentifier isEqualToString:@"com.infomovil.infomovil.6_months"]){
+#if DEBUG
                             NSLog(@"Comprando item 0: %@", product.productIdentifier);
+#endif
                             self.datosUsuario.datosPago.plan =@"PLAN PRO 6 MESES";
                             self.datosUsuario.datosPago.comision = @"17";
                             self.datosUsuario.datosPago.statusPago = @"INTENTO PAGO";
@@ -518,7 +524,7 @@ if(noSeRepiteOprimirElBoton){
         }
         @catch (NSException *exception) {
             [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
-            NSLog(@"La NSException en comprar6mesesBtn es: %@", exception.reason);
+           
         }
     }
 }
@@ -562,7 +568,7 @@ if(noSeRepiteOprimirElBoton){
         }
     }
     @catch (NSException *exception) {
-        NSLog(@"La NSException en comprar12mesesBtn es: %@", exception.reason);
+      
         [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
     }
 }
@@ -733,13 +739,13 @@ if(noSeRepiteOprimirElBoton){
 
 
 -(void) mostrarActivity {
-    NSLog(@"Mostrar actividad de espera!");
+   
     self.alerta = [AlertView initWithDelegate:self message:NSLocalizedString(@"cargando", Nil) andAlertViewType:AlertViewTypeActivity];
     [self.alerta show];
 }
 -(void) ocultarActivity {
     noSeRepiteOprimirElBoton = YES;
-    NSLog(@"Ocultar actividad de espera!");
+    
     if (self.alerta)
     {
         //MBC
@@ -768,8 +774,7 @@ if(noSeRepiteOprimirElBoton){
 }
 
 -(void)accionAceptar2{
-    NSLog(@"*************************************************a ver si se activa en algun momento!!1");
-    NSLog(@"****************************************************************************************");
+    
 }
 
 - (void) receiveTestNotification:(NSNotification *) notification
@@ -778,9 +783,9 @@ if(noSeRepiteOprimirElBoton){
     if ([[notification name] isEqualToString:@"FailedTransactionNotification"]){
         self.datosUsuario.datosPago.statusPago = @"INTENTO PAGO";
         self.datosUsuario.descripcionDominio = @"";
-        NSLog (@" IRC --------------------------- Fallo la transaccion!");
+      
         ((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio = @"Tramite";
-        NSLog(@"CONFIRMANDO QUE EL STATUSDOMINIO CAMBIO :  %@", ((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio);
+      
     }
     else if ([[notification name] isEqualToString:@"CompleteTransactionNotification"]){
        
@@ -811,9 +816,9 @@ if(noSeRepiteOprimirElBoton){
         self.datosUsuario.datosPago.statusPago = @"PAGADO";
         self.datosUsuario.descripcionDominio = @"";
         [self compra];
-        NSLog (@" IRC --------------------------- Se completo la transaccion !");
+        
         ((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio = @"Pago";
-        NSLog(@"CONFIRMANDO QUE EL STATUSDOMINIO CAMBIO :  %@", ((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio);
+      
     }
     
     

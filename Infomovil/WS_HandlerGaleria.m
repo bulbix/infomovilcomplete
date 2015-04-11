@@ -46,7 +46,7 @@
         [stringXML appendFormat:@"<token>%@</token></ws:updateImage></soapenv:Body></soapenv:Envelope>", [StringUtils encriptar:datos.emailUsuario conToken:passwordEncriptar]];
     }
     
-   // NSLog(@"El string es %@", stringXML);
+    NSLog(@"El string es %@", stringXML);
     self.strSoapAction = @"WSInfomovilDomain";
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
     NSLog(@"La Respuesta es %s", [dataResult bytes]);
@@ -156,12 +156,14 @@
                         NSFileManager *fileManager = [NSFileManager defaultManager];
                         NSError *error;
                         BOOL success = [fileManager removeItemAtPath:self.imagenInsertarAux.rutaImagen error:&error];
+#if DEBUG
                         if (success) {
                             NSLog(@"Archivo eliminado");
                         }
                         else {
                             NSLog(@"No se puedo eliminar %@", [error localizedDescription]);
                         }
+#endif
                         switch (self.tipoGaleria) {
                             case PhotoGaleryTypeLogo:
                                 datos.imagenLogo = [[GaleriaImagenes alloc] init];
@@ -225,7 +227,7 @@
          "</soapenv:Body>"
          "</soapenv:Envelope>" ];
     }
-   // NSLog(@"El string es %@", stringXML);
+    NSLog(@"El string es %@", stringXML);
     self.strSoapAction = @"WSInfomovilDomain";
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
     if (dataResult != nil) {

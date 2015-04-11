@@ -16,15 +16,15 @@
     NSDictionary *diccionario;
     if (appDelegate.existeSesion) {
         diccionario = [[NSDictionary alloc] initWithObjects:@[@"nombre", @"Otro"] forKeys:@[@"typ-nombre", @"typ-otro"]];
-        NSString *strSoap = [self creaSoapData:diccionario ordenado:NO strAtribute:Nil];
-        NSLog(@"el soap es: %@", strSoap);
+      //  NSString *strSoap = [self creaSoapData:diccionario ordenado:NO strAtribute:Nil];
+       
     }
     else {
         DatosUsuario *datosUsuario = [DatosUsuario sharedInstance];
         NSArray *arregloDatos = @[datosUsuario.emailUsuario, @"primary-user", @"default-primary", datosUsuario.passwordUsuario, datosUsuario.emailUsuario];
         NSArray *arregloLlaves = @[@"typ:userName", @"typ:type", @"typ:permissions", @"typ:password", @"typ:emailAddress"];
         diccionario = [[NSDictionary alloc] initWithObjects:arregloDatos forKeys:arregloLlaves];
-        NSLog(@"algo %@",diccionario);
+        
     }
 }
 

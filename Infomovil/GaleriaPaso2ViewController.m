@@ -147,7 +147,6 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-	NSLog(@"id imagen: %i",self.imagenActual.idImagen);
 	if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {//NSLocalizedString(@"anadirImagen", @" ")
 		[self acomodarBarraNavegacionConTitulo:self.tituloPaso nombreImagen:@"barraverde.png"];
 	}else{
@@ -220,15 +219,12 @@
     NSURLResponse *urlResponse = nil;
     NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&requestError];
     if (response == nil) {
-        NSLog(@"EL SERVER NO ME DIO LA IMAGEN");
         if (requestError != nil) {
             NSLog(@"Error Code: %ld", (long)requestError.code);
             NSLog(@"Description: %@", [requestError localizedDescription]);
         }
     }
     else {
-        NSLog(@"SI DESCARGO LA IMAGEN");
-       // NSData *pngData = [NSData dataWithContentsOfFile:self.imagenActual.rutaImagen];
         UIImage *image = [UIImage imageWithData:response];
         [self.vistaPreviaImagen setImage:image];
     }
@@ -303,7 +299,6 @@
 }
 
 -(void) textFieldDidEndEditing:(UITextField *)textField{
-	//NSLog(@"index: %@",self.index);
 	if(self.operacion == GaleriaImagenesEditar){
 		[[self.arregloImagenes objectAtIndex:self.index] setPieFoto: textField.text];
 		cambioPie = YES;
@@ -316,8 +311,6 @@
     controller.image = imagenTemp;
     
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:controller];
-    
-    NSLog(@"Aqui se deberia de mostar");
     [self presentViewController:navigationController animated:YES completion:NULL];
 }
 
@@ -341,7 +334,6 @@
 -(void) apareceElTeclado:(NSNotification*)aNotification {
     NSDictionary *infoNotificacion = [aNotification userInfo];
     CGSize tamanioTeclado = [[infoNotificacion objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    NSLog(@"El tamaño del teclado es %f, %f", tamanioTeclado.width, tamanioTeclado.height);
     UIEdgeInsets edgeInsets = UIEdgeInsetsMake(0, 0, tamanioTeclado.height, 0);
     [self.scrollFoto setContentInset:edgeInsets];
     [self.scrollFoto setScrollIndicatorInsets:edgeInsets];
@@ -465,30 +457,24 @@
         
         while([pngData length] > 100000) {
             @autoreleasepool {
-                NSLog(@"Entrando a redimension de imagen *************************");
                 CGSize newSize = CGSizeMake(imagenTomada.size.width*0.85, imagenTomada.size.height*0.85);
-                NSLog(@"La nuevas dimensiones son %f, %f", newSize.width, newSize.height);
                 imagenTomada = [ImageUtils resizeImage:imagenTomada newSize:newSize];
-                NSLog(@"Verificando el nuevo tamaño %f, %f", imagenTomada.size.width, imagenTomada.size.height);
                 pngData = UIImageJPEGRepresentation(imagenTomada, 1.0); //UIImagePNGRepresentation(imagenTomada);
             }
         }
     
     if ( _delegadoGaleria != nil )
         [_delegadoGaleria imagenSeleccionada:[UIImage imageWithData:pngData]];
-        
-        NSLog(@"el tamaño es %lu", (unsigned long)[pngData length]);
-        //        }
+    
         NSString *path = [[StringUtils pathForDocumentsDirectory] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.jpg", nombreImagen]];
         [pngData writeToFile:path atomically:YES];
     
-        // IDM
+ 
         if ( _delegadoGaleria != nil )
             [_delegadoGaleria rutaImagenGuardada:path];
     
     
         self.imagenActual = [[GaleriaImagenes alloc] initWithPath:path andFooter:[pieFoto text]];
-        NSLog(@"El tamño de las imagenes tomadas es: %f y alto %f",imagenTomada.size.width, imagenTomada.size.height);
         [self.imagenActual setAncho:imagenTomada.size.width];
         [self.imagenActual setAlto:imagenTomada.size.height];
     if (self.galeryType == PhotoGaleryTypeOffer) {
@@ -602,7 +588,7 @@
     
 }
 
--(void) modificarImagen { NSLog(@"MANDO A LLAMAR MODIFICARIMAGEN");
+-(void) modificarImagen {
     if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).itIsInTime) {
         [((AppDelegate *)[[UIApplication sharedApplication] delegate]) restartDate];
         WS_HandlerGaleria *galeria = [[WS_HandlerGaleria alloc] init];
@@ -612,9 +598,7 @@
         [galeria setTipoGaleria:self.galeryType];
         [galeria setGaleriaDelegate:self];
         if (estaBorrando) {
-            NSLog(@"ESTA BORRANDO Y MANDO A LLAMAR A ELIMINAR IMAGEN y el id_uimagen es. %i", idImagen);
             [galeria eliminarImagen:idImagen];
-            
         }
         else {
                 if (cambioPie) {
@@ -706,11 +690,9 @@
  contextInfo:(void *)contextInfo
 {
     if (error) {
-        NSLog(@"No se guardo la imagen, inténtalo nuevamente");
         [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
-    } else {
-        NSLog(@"La imagen se guardo correctamento");
     }
+
 }
 
 -(void) validaEditados {
@@ -722,7 +704,6 @@
             [self enviarEventoGAconCategoria:@"Edito" yEtiqueta:@"Logo"];
         }
         else {
-            NSLog(@"No LLEGO AQUI");
             [self enviarEventoGAconCategoria:@"Borro" yEtiqueta:@"Logo"];
             [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:1 withObject:@NO];
         }

@@ -298,7 +298,7 @@
                 [arregloTitulos addObject:visitaActual.fecha];
             }
             numeroVisitantes = numeroVisitantes + visitaActual.visitas;
-            NSLog(@"El numero de visitas es %i", numeroVisitantes);
+          
             
         }
         chartLine = [[PNLineChart alloc] initWithFrame:CGRectMake(0, 0, self.vistaEstadisticas.frame.size.width, self.vistaEstadisticas.frame.size.height)];

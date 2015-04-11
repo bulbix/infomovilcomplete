@@ -13,6 +13,8 @@
 #import "MenuPasosViewController.h"
 #import "GTLPlusConstants.h"
 #import "AppsFlyerTracker.h"
+#import "NombrarViewController.h"
+
 @class GPPSignInButton;
 
 
@@ -40,9 +42,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    
-    //MBC
     if(IS_STANDARD_IPHONE_6_PLUS){
         [self.btnFacebook setFrame:CGRectMake(102, 243, 47, 47)];
         [self.btnGooglePlus setFrame:CGRectMake(185, 243, 47, 47)];
@@ -102,14 +101,7 @@
         [self.botonNotificaciones setFrame:CGRectMake(64, 14, 64, 54)];
     }
     self.navigationItem.rightBarButtonItem = Nil;
-	
-	
 	[super viewDidLoad];
-	
-	
-	
-	
-	
 }
 
 -(void) viewWillAppear:(BOOL)animated {
@@ -165,6 +157,12 @@
     self.navigationItem.rightBarButtonItem = Nil;
     
     [self.vistaInferior setHidden:NO];
+    
+    DatosUsuario *datosUsuario = [DatosUsuario sharedInstance];
+    if(datosUsuario.dominio == nil || [datosUsuario.dominio isEqualToString:@""] || (datosUsuario.dominio == (id)[NSNull null]) || [CommonUtils validarEmail:datosUsuario.dominio] || [datosUsuario.dominio isEqualToString:@"(null)"]){
+        AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"msjCompartirPublicar", Nil) andAlertViewType:AlertViewTypeQuestion];
+        [alert show];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -187,12 +185,13 @@
 
         SLComposeViewController *controller = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
         controller.completionHandler = ^(SLComposeViewControllerResult result){
+#if DEBUG
             if (result == SLComposeViewControllerResultCancelled) {
                 NSLog(@"FB sharing cancelled");
             } else {
                 NSLog(@"FB sharing successful");
             }
-			
+#endif
             [self dismissViewControllerAnimated:YES completion:Nil];
         };
 		if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
@@ -207,9 +206,9 @@
         
         NSString *strSharer = [NSString stringWithFormat:@"http://www.facebook.com/sharer.php?u=http://www.%@.tel" ,self.datosUsuario.dominio];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:strSharer]];
-        NSLog(@"%@",strSharer);
+       
     }
-	//[[AppsFlyerTracker sharedTracker] trackEvent:@"Compartir Facebook" withValue:@""];
+	
     [self enviarEventoGAconCategoria:@"Compartir" yEtiqueta:@"Facebook"];
 }
 
@@ -220,11 +219,13 @@
 		[self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
         SLComposeViewController *controller = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
         controller.completionHandler = ^(SLComposeViewControllerResult result){
+#if DEBUG
             if (result == SLComposeViewControllerResultCancelled) {
                 NSLog(@"FB sharing cancelled");
             } else {
                 NSLog(@"FB sharing successful");
             }
+#endif
             [self dismissViewControllerAnimated:YES completion:Nil];
         };
 		if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
@@ -372,11 +373,11 @@
 - (void)finishedSharing:(BOOL)shared {
 
 }
-
+/*
 - (void)finishedWithAuth: (GTMOAuth2Authentication *)auth
                    error: (NSError *) error
 {
-//	NSLog(@"Received error %@ and auth object %@",error, auth);
+
 	if (error) {
 		// Haz algún error de control aquí.
 	} else {
@@ -384,7 +385,15 @@
 	}
 
 }
+*/
+-(void)accionSi{
+    NombrarViewController *comparte = [[NombrarViewController alloc] initWithNibName:@"NombrarViewController" bundle:Nil];
+    [self.navigationController pushViewController:comparte animated:YES];
+}
+-(void)accionNo{
+    MenuPasosViewController *comparte = [[MenuPasosViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
+    [self.navigationController pushViewController:comparte animated:YES];
 
-
+}
 
 @end

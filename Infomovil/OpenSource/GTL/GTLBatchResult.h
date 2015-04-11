@@ -25,32 +25,6 @@
   NSMutableDictionary *failures_;
 }
 
-// Dictionaries of results for all queries in the batch
-//
-// Dictionary keys are requestID strings; objects are results or
-// GTLErrorObjects.
-//
-// For successes with no returned object (such as from delete operations),
-// the object for the dictionary entry is NSNull.
-//
-//
-// The original query for each result is available from the service ticket,
-// for example
-//
-// NSDictionary *successes = batchResults.successes;
-// for (NSString *requestID in successes) {
-//   GTLObject *obj = [successes objectForKey:requestID];
-//   GTLQuery *query = [ticket queryForRequestID:requestID];
-//   NSLog(@"Query %@ returned object %@", query, obj);
-// }
-//
-// NSDictionary *failures = batchResults.failures;
-// for (NSString *requestID in failures) {
-//   GTLErrorObject *errorObj = [failures objectForKey:requestID];
-//   GTLQuery *query = [ticket queryForRequestID:requestID];
-//   NSLog(@"Query %@ failed with error %@", query, errorObj);
-// }
-//
 
 @property (retain) NSMutableDictionary *successes;
 @property (retain) NSMutableDictionary *failures;

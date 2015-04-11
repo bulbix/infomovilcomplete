@@ -67,18 +67,7 @@
                      [StringUtils encriptar:pago.tipoCompra conToken:self.datosUsuario.token],
                      [StringUtils encriptar:pago.montoBruto conToken:self.datosUsuario.token]];
     self.strSoapAction = @"WSInfomovilDomain";
-    NSLog(@"La peticion de WS_CompraDominio es: %@", stringXML);
-    NSLog(@"El valor 1: %@", self.datosUsuario.emailUsuario);
-    NSLog(@"El valor 2 es: %@", self.datosUsuario.dominio);
-    NSLog(@"El valor 3 es: %@", pago.plan);
-    NSLog(@"El valor 4 es: %@", pago.medioPago);
-    NSLog(@"El valor 5 es: %@", pago.titulo);
-    NSLog(@"El valor 6 es: %@", pago.comision);
-    NSLog(@"El valor 7 es: %i", pago.pagoId);
-    NSLog(@"El valor 8 es: %@", pago.statusPago);
-    NSLog(@"El valor 9 es: %@", pago.codigoCobro);
-    NSLog(@"El valor de 10 es: %@", pago.tipoCompra);
-    NSLog(@"El valor de 11 es: %@", pago.montoBruto);
+
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
     NSLog(@"WS_CompraDominio La respuesta es %s", [dataResult bytes]);
     if (dataResult != nil) {
@@ -89,12 +78,9 @@
 				if(requiereEncriptar){
 					((AppDelegate*)	[[UIApplication sharedApplication] delegate]).statusDominio = [StringUtils desEncriptar:((AppDelegate*)[[UIApplication sharedApplication]delegate]).statusDominio conToken: self.datosUsuario.token ];
 				}
-				//self.datosUsuario.itemsDominio = [StringUtils ordenarItemsCompraDominio:self.datosUsuario.itemsDominio];
-            //NSLog(@"La cantidad de items en WS_CompraDomini al realizar la compra es : %i", [self.datosUsuario.itemsDominio count]);
-           // [self.datosUsuario.itemsDominio = [self ordenarItemsCompraDom];
-           // [self ordenarItemsCompraDom];
+				
             self.datosUsuario.datosPago.pagoId = [[StringUtils desEncriptar:self.resultado conToken:self.datosUsuario.token] integerValue];
-            NSLog(@"El valor que me envio el server es: %i", self.datosUsuario.datosPago.pagoId);
+           
             if(self.datosUsuario.datosPago.pagoId > 0){
 				[self.compraDominioDelegate resultadoCompraDominio:YES];
             }else{
@@ -160,23 +146,12 @@
     
     if([elementName isEqualToString:@"token"]){
         self.token = [StringUtils desEncriptar:self.currentElementString conToken:passwordEncriptar];
-        NSLog(@"Token : %@",self.token);
-        
     }
     
     else if([elementName isEqualToString:@"resultado"]){
         self.resultado = self.currentElementString;
-       NSLog(@"Valor de Pago id:  %@",self.resultado);
-        
-    /* }else if([elementName isEqualToString:@"ns2:compraDominioResponse"]){
-        self.datosUsuario = [DatosUsuario sharedInstance];
-        self.datosUsuario.itemsDominio = items;
-        
-        for(ItemsDominio * item in self.datosUsuario.itemsDominio)
-            NSLog(@"items: %@ , descripcion: %@ , status: %i", item, item.descripcionItem, item.estatus);
-        */
+ 
     }else if([elementName isEqualToString:@"statusDominio"]){
-        NSLog(@"El estatusDominio es: %@ esto es en WS_COMPRADOMINIO", ((AppDelegate*)	[[UIApplication sharedApplication] delegate]).statusDominio);
         ((AppDelegate*)	[[UIApplication sharedApplication] delegate]).statusDominio = self.currentElementString;
         
     }else if ([elementName isEqualToString:@"fechaFin"]){
@@ -185,7 +160,6 @@
         }else{
             self.datosUsuario.fechaFinal = self.currentElementString;
         }
-        NSLog(@"La fecha Finn en WS_CompraDominio es: %@", self.datosUsuario.fechaFinal);
     }
     else if ([elementName isEqualToString:@"fechaIni"]){
         if(requiereEncriptar){
@@ -193,7 +167,6 @@
         }else{
             self.datosUsuario.fechaInicial = self.currentElementString;
         }
-        NSLog(@"La fecha inin en WS_CompraDominio es: %@", self.datosUsuario.fechaInicial);
     }
     else if ([elementName isEqualToString:@"fTelNamesIni"]){
         NSString *strAux;
@@ -205,7 +178,6 @@
         if(strAux != nil && ![strAux isEqualToString:@"(null)"]){
             self.datosUsuario.fechaInicialTel =strAux;
         }
-        //[NSDateFormatter changeDateFormatOfString:strAux from:@"yyyy-MM-dd" to:@"dd-MM-yyy"];
     }
     else if ([elementName isEqualToString:@"fTelNamesFin"]){
         NSString *strAux;
@@ -217,46 +189,8 @@
         if(strAux != nil && ![strAux isEqualToString:@"(null)"]){
             self.datosUsuario.fechaFinalTel =strAux;
         }
-        //[NSDateFormatter changeDateFormatOfString:strAux from:@"yyyy-MM-dd" to:@"dd-MM-yyy"];
-    }
-    /*
-    else if([elementName isEqualToString:@"status"]){
-        status = [self.currentElementString integerValue];
-        NSLog(@"El status es: %i",status);
-        
-    }
     
-	if ([elementName isEqualToString:@"listStatusDomainVO"]) {
-	//if([elementName isEqualToString:@"StatusDomainVO"]){
-        ItemsDominio * item = [[ItemsDominio alloc] init];
-		[item setDescripcionItem:descripcion];
-		[item setEstatus:status];
-		
-		[items addObject:item];
     }
-    else if ([elementName isEqualToString:@"descripcionItem"]) {
-		descripcion = self.currentElementString;
-		NSLog(@"%@",descripcion);
-    }
-	else if([elementName isEqualToString:@"status"]){
-		status = [self.currentElementString integerValue];
-		NSLog(@"%i",status);
-
-	}
-	
-	
-    else if ([elementName isEqualToString:@"respuesta"]) {
-        self.resultado = self.currentElementString;
-    }
-	else if ([elementName isEqualToString:@"token"]) {
-        self.token = [StringUtils desEncriptar:self.currentElementString conToken:passwordEncriptar];
-    }
-    else if ([elementName isEqualToString:@"referencia"]) {
-//        //guardar la referencia
-    }
-    
-  */
-    
 }
 
 -(void) ordenarItemsCompraDom{
@@ -290,8 +224,6 @@
         }
     }
     datosUsuario.itemsDominio = arregloItemsAux;
-    NSLog(@"Termino");
-
 }
 
 @end

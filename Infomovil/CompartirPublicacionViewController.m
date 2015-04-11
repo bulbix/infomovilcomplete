@@ -32,6 +32,8 @@
 
 - (void)viewDidLoad
 {
+  
+    
     [super viewDidLoad];
 	if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
 		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"felicidades", @" ") nombreImagen:@"roja.png"];
@@ -100,6 +102,8 @@
         
     }
     
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -112,12 +116,13 @@
     if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
         SLComposeViewController *controller = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
         controller.completionHandler = ^(SLComposeViewControllerResult result){
+#if DEBUG
             if (result == SLComposeViewControllerResultCancelled) {
                 NSLog(@"FB sharing cancelled");
             } else {
                 NSLog(@"FB sharing successful");
             }
-			
+#endif
             [self dismissViewControllerAnimated:YES completion:Nil];
         };
 		if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
@@ -133,7 +138,7 @@
 
         NSString *strSharer = [NSString stringWithFormat:@"http://www.facebook.com/sharer.php?u=http://www.%@.tel" ,self.datosUsuario.dominio];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:strSharer]];
-        NSLog(@"%@",strSharer);
+        
     }
 //	[[AppsFlyerTracker sharedTracker] trackEvent:@"Compartir Facebook" withValue:@""];
     [self enviarEventoGAconCategoria:@"Compartir" yEtiqueta:@"Facebook"];
@@ -143,11 +148,13 @@
     if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]) {
         SLComposeViewController *controller = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
         controller.completionHandler = ^(SLComposeViewControllerResult result){
+#if DEBUG
             if (result == SLComposeViewControllerResultCancelled) {
                 NSLog(@"FB sharing cancelled");
             } else {
                 NSLog(@"FB sharing successful");
             }
+#endif
             [self dismissViewControllerAnimated:YES completion:Nil];
         };
 		if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
@@ -237,7 +244,6 @@
 		whatsappURL = [NSURL URLWithString:[NSString stringWithFormat:@"whatsapp://send?text=Acabo%%20de%%20crear%%20un%%20sitio%%20web%%20con%%20infomovil.com.%%0AVisitalo%%20y%%20ayudanos%%20a%%20crecer%%0Awww.%@.tel", self.datosUsuario.dominio]];
 	}
 	
-//	NSLog(@"La url whatsapp es %@, dominio:%@", whatsappURL,self.datosUsuario.dominio);
     if ([[UIApplication sharedApplication] canOpenURL: whatsappURL]) {
         [[UIApplication sharedApplication] openURL: whatsappURL];
     }
@@ -319,5 +325,7 @@
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+
 
 @end

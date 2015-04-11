@@ -325,7 +325,7 @@ finishedRefreshWithFetcher:(GTMHTTPFetcher *)fetcher
                       object:self
                     userInfo:nil];
   }
-  // NSLog(@"keys set ----------------------------\n%@", dict);
+
 }
 
 - (void)setKeysForResponseString:(NSString *)str {

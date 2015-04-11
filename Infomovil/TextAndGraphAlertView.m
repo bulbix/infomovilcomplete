@@ -54,12 +54,8 @@
 
 - (void)hide
 {
-    //[UIView animateWithDuration:0.3f animations:^{
     [self setAlpha:0];
-    //} completion:^(BOOL finished) {
-	//	NSLog(@"Super vista %@",self.superview);
     [self removeFromSuperview];
-    //}];
 }
 
 -(IBAction)presionarAceptar:(id)sender

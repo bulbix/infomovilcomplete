@@ -20,8 +20,6 @@
 -(void) publicarDominio {
     DatosUsuario *datos = [DatosUsuario sharedInstance];
     NSMutableString *stringXML;
-	
-	NSLog(@"TituloEmpresa:%@",datos.nombreEmpresa);
     if (requiereEncriptar) {
         stringXML = [[NSMutableString alloc] initWithString:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.webservice.infomovil.org/\">"
                      "<soapenv:Header/>"
@@ -300,7 +298,6 @@
     
     
     self.strSoapAction = @"wsInfomovildomain";
-    NSLog(@"la peticion es %@", stringXML);
     NSData *dataResult = [self getXmlRespuesta:[NSString codificaHtml:stringXML] conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
     if (dataResult != nil) {
         NSLog(@"La respuesta es %s", [dataResult bytes]);

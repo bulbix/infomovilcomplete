@@ -54,18 +54,18 @@
         self.redSocial = @"";
         
         NSUserDefaults *prefsLogin = [NSUserDefaults standardUserDefaults];
-        if( [prefsLogin integerForKey:@"intRecordar"] == 1){ NSLog(@"Realice el login con 1 !!");
+        if( [prefsLogin integerForKey:@"intRecordar"] == 1){
+            // 1.- si quiere recordar usuario
+            // 0.- No quiere recordar usuario
             [prefsLogin setObject:usuario forKey:@"strRecordarUser"];
             [prefsLogin setObject:password forKey:@"strRecordarPass"];
             [prefsLogin synchronize];
         }
     }
-   /* NSDictionary *info = [[NSBundle mainBundle] infoDictionary];
-    NSString *version = [info objectForKey:@"CFBundleShortVersionString"];
-    if(version == nil || [version isEqualToString:@""]){
-        version = versionDefault;
-        }
-    */
+   
+    
+    
+    
     NSString *version = versionDefault;
     NSString *stringXML;
         stringXML = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.webservice.infomovil.org/\">"
@@ -93,15 +93,13 @@
                      [StringUtils encriptar:@"" conToken:passwordEncriptar],
                      [StringUtils encriptar:@"APP STORE" conToken:passwordEncriptar],
                      [StringUtils encriptar:version conToken:passwordEncriptar]];
-                        NSLog(@"El usuario es: %@  pass: %@  redsocial: %@", usuario, password, self.redSocial);
-    stringXML = [NSString decodificaHtml:stringXML];
+    
 #ifdef DEBUG
     NSLog(@"El string es %@", stringXML);
 #endif
     
     self.strSoapAction = @"WSInfomovilDomain";
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
-   NSLog(@"IRC : La respuesta es del login es: %s", [dataResult bytes]);
     self.contactoActual = [[Contacto alloc] init];
     if (dataResult != nil) {
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
@@ -497,7 +495,6 @@
     }
 	else if ([elementName isEqualToString:@"statusDominio"]){
         NSString *valor = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
-        NSLog(@"EL VALOR QUE ME ENVIO COMO ESTATUSDOMINIO ES: %@", valor);
         if ([valor isEqualToString:@"Mes PRO"] || [valor isEqualToString:@"Anual PRO"]) {
             ((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio = @"Pago";
         }
@@ -508,7 +505,6 @@
 	}
     else if ([elementName isEqualToString:@"listRecordNaptrVo"]) {
         [self.arregloContactos addObject:self.contactoActual];
-        NSLog(@"LOS VALORES DE DESCRIPCIÒN SON: %@ ** con tooken %@ ** y la descripcion es: %@  mas --- %@  mas --- %ld", [StringUtils desEncriptar:self.contactoActual.descripcion conToken:self.token], self.token, self.contactoActual.descripcion, self.contactoActual.noContacto,(long)self.contactoActual.idContacto);
         self.currentElementString = [[NSMutableString alloc] init];
     }
     else if ([elementName isEqualToString:@"claveContacto"]) {
@@ -567,7 +563,6 @@
         self.currentElementString = [[NSMutableString alloc] init];
     }
     else if ([elementName isEqualToString:@"video"]) {
-        NSLog(@"El video es %@ *****************", self.currentElementString);
         if (self.currentElementString.length > 1) {
             self.datosUsuario.urlVideo = self.currentElementString;
             [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:6 withObject:@YES];
@@ -657,7 +652,7 @@
     }
    
  
-    else if ([elementName isEqualToString:@"typeImage"]) { NSLog(@"ESTE SE EJECUTA PRIMERO");
+    else if ([elementName isEqualToString:@"typeImage"]) {
         if (requiereEncriptar) {
             NSString *typeImageAux = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
             if ([typeImageAux isEqualToString:@"LOGO"]) {
@@ -678,7 +673,7 @@
         
         self.currentElementString = [[NSMutableString alloc] init];
     }
-    else if ([elementName isEqualToString:@"url"]) { NSLog(@"ESTE SE EJECUTA TERCERO");
+    else if ([elementName isEqualToString:@"url"]) {
         if (esLogo) {
             
             self.datosUsuario.logoImg = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
@@ -700,7 +695,7 @@
         self.currentElementString = [[NSMutableString alloc] init];
     }
     
-    else if ([elementName isEqualToString:@"idImagen"]) { NSLog(@"ESTE SE EJECUTA SEGUNDO");
+    else if ([elementName isEqualToString:@"idImagen"]) {
         if (requiereEncriptar) {
             [self.galeria setIdImagen:[[StringUtils desEncriptar:self.currentElementString conToken:self.token] integerValue]];
             [self.galeria setImagenIdAux:self.currentElementString];
@@ -713,33 +708,10 @@
        
         self.currentElementString = [[NSMutableString alloc] init];
     }
-    /*
-     else if ([elementName isEqualToString:@"imagenClobGaleria"]) {
-     NSData *dataImagen = [Base64 decode:[self.currentElementString stringByReplacingOccurrencesOfString:@"\n" withString:@""]];
-     if (esLogo) {
-     if (self.currentElementString.length > 0) {
-     [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:1 withObject:@YES];
-     NSString *filePath = [[StringUtils pathForDocumentsDirectory] stringByAppendingPathComponent:@"imagenLogo.jpg"];
-     [dataImagen writeToFile:filePath atomically:YES];
-     [self.galeria setRutaImagen:filePath];
-     guardarLogo = YES;
-     NSLog(@"LA IMAGEN ES LOGO Y ESTA EN IMAGENCLOBGALERIA");
-     }
-     }
-     else {
-     NSString *nombreImagen = [StringUtils randomStringWithLength:15];
-     NSString *filePath = [[StringUtils pathForDocumentsDirectory] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.jpg", nombreImagen]];
-     [dataImagen writeToFile:filePath atomically:YES];
-     [self.galeria setRutaImagen:filePath];
-     }
-     self.currentElementString = [[NSMutableString alloc] init];
-     
-     }
-     */
+   
     else if ([elementName isEqualToString:@"listLatitud"]) {
         
         if (self.latitude != 0.0 || self.longitude != 0.0) {
-            NSLog(@"La latitud es %f y la longitud es %f", self.latitude, self.longitude);
             CLLocation *location = [[CLLocation alloc] initWithLatitude:self.latitude longitude:self.longitude];
             self.datosUsuario.localizacion = location;
             [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:5 withObject:@YES];
@@ -776,7 +748,6 @@
         self.currentElementString = [[NSMutableString alloc] init];
     }//keywordData
     else if ([elementName isEqualToString:@"listKeywordVO"]) {
-        //NSLog(@"La llave es %@", self.keywordData.keywordField);
         NSInteger inter;
         if (requiereEncriptar) {
             inter = [self buscarEnArreglo:self.diccionarioInformacion conLlave:[StringUtils desEncriptar:self.keywordData.keywordField conToken:self.token]];
@@ -794,7 +765,6 @@
             [self.arregloPerfil replaceObjectAtIndex:indexInsertar withObject:self.keywordData];
         }
         else {
-            NSLog(@"Esta mal la comprobacion");
             [self.arregloAdicional addObject:self.keywordData];
         }
         self.currentElementString = [[NSMutableString alloc] init];
@@ -814,7 +784,6 @@
     }
     else if ([elementName isEqualToString:@"token"]) {
         self.token = [StringUtils desEncriptar:self.currentElementString conToken:passwordEncriptar];
-		NSLog(@"recibo token login: %@",self.token);
     }
     else if ([elementName isEqualToString:@"calleNum"]) {
         if (requiereEncriptar) {
@@ -921,8 +890,6 @@
             self.datosUsuario.nombreTemplate = @"Estandar1";
         }
         self.datosUsuario.eligioTemplate = YES;
-        NSLog(@"EL NOMBRE DEL TEMPLATE ES: %@", self.datosUsuario.nombreTemplate);
-        
     }
     
     else if ([elementName isEqualToString:@"descripcionItem"]) { 
@@ -983,7 +950,6 @@
 	}
     else if ([elementName isEqualToString:@"descripcionDominio"]) {
         self.datosUsuario.descripcionDominio =  [StringUtils desEncriptar:self.currentElementString conToken:self.token];
-        NSLog(@"LA DESCRIPCION DOMINIO ES: %@",self.datosUsuario.descripcionDominio );
     }
     else if ([elementName isEqualToString:@"codeCamp"]) {
         self.datosUsuario.codigoRedimir = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
@@ -1007,11 +973,9 @@
     }
     else if ([elementName isEqualToString:@"domainCtrlName"]) {
         [dominioUsuario setDomainName:[StringUtils desEncriptar:self.currentElementString conToken:self.token]];
-        NSLog(@"EL DOMINIO QUE ME ENVIA EL SERVER ES: %@ EN WS_HANDLERLOGIN", dominioUsuario.domainName);
     }
     else if ([elementName isEqualToString:@"domainType"]) {
         NSString *typeAux = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
-        NSLog(@"El tipo de Dominio es : %@", typeAux);
         if ([typeAux isEqualToString:@"recurso"]) {
             esRecurso = YES;
         }

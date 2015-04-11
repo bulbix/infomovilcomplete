@@ -102,7 +102,7 @@
 		<key>ejemplo</key>
 		<string> www.twitter.com/tucuenta</string>
 		<key>mensaje</key>
-		<string>Liga a tu cuenta de twitter</string>
+		<string>Enlaza tu cuenta de Twitter</string>
 		<key>expresion</key>
 		<string>!^.*$!http://</string>
 		<key>subcategoria</key>

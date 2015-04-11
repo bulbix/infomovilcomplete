@@ -62,10 +62,10 @@
     
     if (existeItems) {
         arregloCampos = self.datosUsuario.itemsDominio;
-        NSLog(@"ITEMSDOMINIO si existio y uso ese arreglo");
+      
     }
     else {
-        NSLog(@"Selecciono el arreglo auxiliar donde no tiene perfinNegocioProfesion");
+      
         NSArray *arregloAux = @[[[ItemsDominio alloc] initWithDescripcion:NSLocalizedString(@"nombreEmpresa", @" ") andStatus:1],
                                 [[ItemsDominio alloc] initWithDescripcion:NSLocalizedString(@"logo", @" ") andStatus:1],
                                 [[ItemsDominio alloc] initWithDescripcion:NSLocalizedString(@"descripcionCorta", @" ") andStatus:1],
@@ -83,7 +83,7 @@
     }
     
     if ([self.datosUsuario.arregloEstatusEdicion count] == 0) {
-        NSLog(@"El datosUsuario.arregloEstatusEdicion es igual a 0");
+     
         NSArray *arregloAux = @[@NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO];
         NSMutableArray *arregloEstatus = [[NSMutableArray alloc] init];
         [arregloEstatus addObjectsFromArray:arregloAux];
@@ -152,9 +152,7 @@
 #pragma mark - UITableView Datasource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSLog(@"El dominio es: %@", self.datosUsuario.dominio);
     if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion && (self.datosUsuario.dominio == (id)[NSNull null])  && [CommonUtils perfilEditado]) {
-        NSLog(@"AQUI ENTRARA SOLO SI NO HA PUBLICADO");
         return [arregloCampos count] + 1;
     }
     return [arregloCampos count];
@@ -205,7 +203,6 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"EL INDEXPATH ES: %i",indexPath.row );
 	if (existeItems && indexPath.row < 12) {
         arregloCampos = self.datosUsuario.itemsDominio;
     }
@@ -250,7 +247,6 @@
         
         
         if (existeItems) {
-            NSLog(@"El statusDominio en CrearPaso1ViewController es: %@ y %@", ((AppDelegate *)[[UIApplication sharedApplication] delegate]).statusDominio , self.datosUsuario.descripcionDominio);
             
             if ( [((AppDelegate *)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && ![self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]) {
                 VideoViewController *video = [[VideoViewController alloc] initWithNibName:@"VideoViewController" bundle:nil];

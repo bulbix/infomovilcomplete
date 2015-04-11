@@ -108,6 +108,8 @@
         self.vistaPais.frame = CGRectMake(20, 86, 500, 30);
         self.txtDescripcion.frame = CGRectMake(20, 180, 500, 100);
         [self.btnEliminar setFrame:CGRectMake(450, 325, 29, 35)];
+    }else{
+        self.scrollVista.frame = CGRectMake(0, 0, 320, 400);
     }
     
 }
@@ -126,24 +128,30 @@
                 [self.txtTelefono setKeyboardType:UIKeyboardTypePhonePad];
                 [self.btnSeleccionarPais setHidden:NO];
                 [self.labelDescripcion setFrame:CGRectMake(self.labelDescripcion.frame.origin.x, 158, self.labelDescripcion.frame.size.width, self.labelDescripcion.frame.size.height)];
-                [self.scrollVista setContentSize:CGSizeMake(320, 280)];
+               
                 if (self.opcionSeleccionada == 1 && [self.labelCodigo.text isEqualToString:@"+52"]){                     [self.labelInfoMexico setHidden:NO];
                     if(IS_STANDARD_IPHONE_6){
+                         [self.scrollVista setContentSize:CGSizeMake(375, 600)];
                         self.txtDescripcion.frame = CGRectMake(20, 190, 335, 100);
                         self.txtTelefono.frame = CGRectMake(70, 120, 335, 30);
                     }else if(IS_STANDARD_IPHONE_6_PLUS){
+                         [self.scrollVista setContentSize:CGSizeMake(414, 700)];
                         self.txtTelefono.frame = CGRectMake(70, 120, 280, 30);
+                        [self.txtDescripcion setFrame:CGRectMake(self.txtDescripcion.frame.origin.x, 180, self.txtDescripcion.frame.size.width, self.txtDescripcion.frame.size.height)];
                     }else if(IS_IPAD){
+                         [self.scrollVista setContentSize:CGSizeMake(768, 800)];
                         self.txtTelefono.frame = CGRectMake(20, 120, 600, 30);
+                        [self.txtDescripcion setFrame:CGRectMake(self.txtDescripcion.frame.origin.x, 181, self.txtDescripcion.frame.size.width, self.txtDescripcion.frame.size.height)];
                     }else{
+                         [self.scrollVista setContentSize:CGSizeMake(320, 400)];
                         [self.txtDescripcion setFrame:CGRectMake(self.txtDescripcion.frame.origin.x, 181, self.txtDescripcion.frame.size.width, self.txtDescripcion.frame.size.height)];
                         [self.txtTelefono setFrame:CGRectMake(70, 120, 230, 30)];
                     }
 					self.casillaMovil.hidden = NO;
 					self.casillaMovil.layer.cornerRadius = 5;
 					
-					[self.labelDescripcion setFrame:CGRectMake(self.labelDescripcion.frame.origin.x, 188, self.labelDescripcion.frame.size.width, self.labelDescripcion.frame.size.height)];
-					[self.txtDescripcion setFrame:CGRectMake(self.txtDescripcion.frame.origin.x, 211, self.txtDescripcion.frame.size.width, self.txtDescripcion.frame.size.height)];
+					[self.labelDescripcion setFrame:CGRectMake(self.labelDescripcion.frame.origin.x, 195, self.labelDescripcion.frame.size.width, self.labelDescripcion.frame.size.height)];
+					
 					
                 }
 				else{
@@ -152,41 +160,99 @@
                          self.txtTelefono.frame = CGRectMake(20, 120, 335, 30);
                     }else if(IS_STANDARD_IPHONE_6_PLUS){
                         self.txtTelefono.frame = CGRectMake(20, 120, 280, 30);
+                        [self.txtDescripcion setFrame:CGRectMake(self.txtDescripcion.frame.origin.x, 180, self.txtDescripcion.frame.size.width, self.txtDescripcion.frame.size.height)];
                     }else if(IS_IPAD){
                          self.txtTelefono.frame = CGRectMake(20, 120, 600, 30);
+                        self.txtDescripcion.frame = CGRectMake(20, 190, 280, 100);
                     }else{
                         [self.txtTelefono setFrame:CGRectMake(20, 120, 280, 30)];
+                        self.txtDescripcion.frame = CGRectMake(20, 190, 280, 100);
                     }
-					
+					 
 					self.casillaMovil.hidden = YES;
 					[self.labelInfoMexico setHidden:YES];
 				}
                 break;
+            case 6:
+            {
+                seleccionoPais = NO;
+                [self.vistaPais setHidden:YES];
+                UIFont * customFont = [UIFont fontWithName:@"Avenir-Book" size:14];
+                NSString * text = NSLocalizedString(@"publicarTwitter", Nil);
+                UILabel *fromLabel = [[UILabel alloc] init];
+                fromLabel.text = text;
+                fromLabel.font = customFont;
+                fromLabel.numberOfLines = 1;
+                fromLabel.baselineAdjustment = UIBaselineAdjustmentAlignBaselines;
+                fromLabel.adjustsFontSizeToFitWidth = YES;
+                fromLabel.minimumScaleFactor = 10.0f/12.0f;
+                fromLabel.clipsToBounds = YES;
+                fromLabel.backgroundColor = [UIColor clearColor];
+                fromLabel.textColor = [UIColor colorWithRed:165/255.0f green:165/255.0f blue:165/255.0f alpha:1];
+                fromLabel.textAlignment = NSTextAlignmentLeft;
+                if(IS_STANDARD_IPHONE_6){
+                    fromLabel.frame = CGRectMake(23, 120, 335,30);
+                    self.txtDescripcion.frame = CGRectMake(20, 160, 335, 100);
+                    self.txtTelefono.frame = CGRectMake(20, 86, 335, 30);
+                    [self.labelDescripcion setFrame:CGRectMake(self.labelDescripcion.frame.origin.x, 158, self.labelDescripcion.frame.size.width, self.labelDescripcion.frame.size.height)];
+                }else if(IS_STANDARD_IPHONE_6_PLUS){
+                    fromLabel.frame = CGRectMake(23, 120,280,30);
+                    self.txtTelefono.frame = CGRectMake(20, 86, 280, 30);
+                    [self.txtDescripcion setFrame:CGRectMake(self.txtDescripcion.frame.origin.x, 180, self.txtDescripcion.frame.size.width, self.txtDescripcion.frame.size.height)];
+                    [self.labelDescripcion setFrame:CGRectMake(self.labelDescripcion.frame.origin.x, 158, self.labelDescripcion.frame.size.width, self.labelDescripcion.frame.size.height)];
+                }else if(IS_IPAD){
+                    fromLabel.frame = CGRectMake(23,120,600,30);
+                    self.txtTelefono.frame = CGRectMake(20, 86, 600, 30);
+                    [self.txtDescripcion setFrame:CGRectMake(self.txtDescripcion.frame.origin.x, 185, self.txtDescripcion.frame.size.width, self.txtDescripcion.frame.size.height)];
+                    [self.labelDescripcion setFrame:CGRectMake(self.labelDescripcion.frame.origin.x, 158, self.labelDescripcion.frame.size.width, self.labelDescripcion.frame.size.height)];
+                }else{
+                    fromLabel.frame = CGRectMake(23,120,280,30);
+                    [self.txtTelefono setFrame:CGRectMake(20, 86, 280, 30)];
+                    [self.txtDescripcion setFrame:CGRectMake(self.txtDescripcion.frame.origin.x, 185, self.txtDescripcion.frame.size.width, self.txtDescripcion.frame.size.height)];
+                    [self.labelDescripcion setFrame:CGRectMake(self.labelDescripcion.frame.origin.x, 158, self.labelDescripcion.frame.size.width, self.labelDescripcion.frame.size.height)];
+                }
+                [self.scrollVista addSubview:fromLabel];
+                [self.txtTelefono setHidden:NO];
+                [self.btnSeleccionarPais setHidden:YES];
+                [self.txtTelefono setPlaceholder:@""];
+                [self.txtTelefono setKeyboardType:UIKeyboardTypeURL];
                 
+        }break;
+        
             default:
 				seleccionoPais = NO;
                 [self.vistaPais setHidden:YES];
                 
                 if(IS_STANDARD_IPHONE_6){
+                    [self.scrollVista setContentSize:CGSizeMake(375,600)];
                     self.txtDescripcion.frame = CGRectMake(20, 160, 335, 100);
                     self.txtTelefono.frame = CGRectMake(20, 86, 335, 30);
+                    [self.labelDescripcion setFrame:CGRectMake(self.labelDescripcion.frame.origin.x, 160, self.labelDescripcion.frame.size.width, self.labelDescripcion.frame.size.height)];
                 }else if(IS_STANDARD_IPHONE_6_PLUS){
+                    [self.scrollVista setContentSize:CGSizeMake(414,700)];
                     self.txtTelefono.frame = CGRectMake(20, 86, 280, 30);
+                    [self.txtDescripcion setFrame:CGRectMake(self.txtDescripcion.frame.origin.x, 180, self.txtDescripcion.frame.size.width, self.txtDescripcion.frame.size.height)];
+                    [self.labelDescripcion setFrame:CGRectMake(self.labelDescripcion.frame.origin.x, 158, self.labelDescripcion.frame.size.width, self.labelDescripcion.frame.size.height)];
                 }else if(IS_IPAD){
+                    [self.scrollVista setContentSize:CGSizeMake(768,800)];
                     self.txtTelefono.frame = CGRectMake(20, 86, 600, 30);
+                    [self.txtDescripcion setFrame:CGRectMake(self.txtDescripcion.frame.origin.x, 185, self.txtDescripcion.frame.size.width, self.txtDescripcion.frame.size.height)];
+                    [self.labelDescripcion setFrame:CGRectMake(self.labelDescripcion.frame.origin.x, 160, self.labelDescripcion.frame.size.width, self.labelDescripcion.frame.size.height)];
                 
                 }else{
+                    [self.scrollVista setContentSize:CGSizeMake(320,400)];
                     [self.txtTelefono setFrame:CGRectMake(20, 86, 280, 30)];
-                    [self.txtDescripcion setFrame:CGRectMake(self.txtDescripcion.frame.origin.x, 153, self.txtDescripcion.frame.size.width, self.txtDescripcion.frame.size.height)];
+                    [self.txtDescripcion setFrame:CGRectMake(self.txtDescripcion.frame.origin.x, 185, self.txtDescripcion.frame.size.width, self.txtDescripcion.frame.size.height)];
+                    [self.labelDescripcion setFrame:CGRectMake(self.labelDescripcion.frame.origin.x, 160, self.labelDescripcion.frame.size.width, self.labelDescripcion.frame.size.height)];
                 }
                 
                 [self.txtTelefono setHidden:NO];
                 [self.btnSeleccionarPais setHidden:YES];
                 [self.txtTelefono setPlaceholder:@""];
                 [self.txtTelefono setKeyboardType:UIKeyboardTypeURL];
-                [self.labelDescripcion setFrame:CGRectMake(self.labelDescripcion.frame.origin.x, 124, self.labelDescripcion.frame.size.width, self.labelDescripcion.frame.size.height)];
                 
-                [self.scrollVista setContentSize:CGSizeMake(320, 250)];
+                
+                
                 break;
         }
         
@@ -217,7 +283,7 @@
                 [self.txtTelefono setKeyboardType:UIKeyboardTypePhonePad];
                 [self.labelDescripcion setFrame:CGRectMake(self.labelDescripcion.frame.origin.x, 158, self.labelDescripcion.frame.size.width, self.labelDescripcion.frame.size.height)];
               
-                [self.scrollVista setContentSize:CGSizeMake(320, 280)];
+                
                 [self.txtDescripcion setText:[self.contactoSeleccionado descripcion]];
                 if ([self.labelPais.text isEqualToString:@"País"] || [self.labelPais.text isEqualToString:@"Country"]) {
                     [self.labelPais setText:[self.contactoSeleccionado pais]];
@@ -232,13 +298,19 @@
 					self.txtTelefono.text = [self.txtTelefono.text substringFromIndex:1];
                     
                     if(IS_STANDARD_IPHONE_6){
+                        [self.scrollVista setContentSize:CGSizeMake(375,600)];
                         self.txtDescripcion.frame = CGRectMake(20, 190, 335, 100);
                         self.txtTelefono.frame = CGRectMake(20, 120, 335, 30);
                     }else if(IS_STANDARD_IPHONE_6_PLUS){
+                        [self.scrollVista setContentSize:CGSizeMake(414,700)];
                         self.txtTelefono.frame = CGRectMake(20, 120, 280, 30);
+                        [self.txtDescripcion setFrame:CGRectMake(self.txtDescripcion.frame.origin.x, 180, self.txtDescripcion.frame.size.width, self.txtDescripcion.frame.size.height)];
                     }else if(IS_IPAD){
+                        [self.scrollVista setContentSize:CGSizeMake(768, 800)];
                         self.txtTelefono.frame = CGRectMake(20, 120, 600, 30);
+                        [self.txtDescripcion setFrame:CGRectMake(self.txtDescripcion.frame.origin.x, 185, self.txtDescripcion.frame.size.width, self.txtDescripcion.frame.size.height)];
                     }else{
+                        [self.scrollVista setContentSize:CGSizeMake(320,400)];
                         [self.txtTelefono setFrame:CGRectMake(20, 120, 280, 30)];
                         [self.txtDescripcion setFrame:CGRectMake(self.txtDescripcion.frame.origin.x, 181, self.txtDescripcion.frame.size.width, self.txtDescripcion.frame.size.height)];
                     }
@@ -254,8 +326,10 @@
                         self.txtTelefono.frame = CGRectMake(20, 120, 335, 30);
                     }else if(IS_STANDARD_IPHONE_6_PLUS){
                         self.txtTelefono.frame = CGRectMake(20, 120, 280, 30);
+                        [self.txtDescripcion setFrame:CGRectMake(self.txtDescripcion.frame.origin.x, 180, self.txtDescripcion.frame.size.width, self.txtDescripcion.frame.size.height)];
                     }else if(IS_IPAD){
                         self.txtTelefono.frame = CGRectMake(20, 120, 600, 30);
+                        [self.txtDescripcion setFrame:CGRectMake(self.txtDescripcion.frame.origin.x, 185, self.txtDescripcion.frame.size.width, self.txtDescripcion.frame.size.height)];
                     
                     }else{
                         [self.txtTelefono setFrame:CGRectMake(70, 120, 230, 30)];
@@ -280,8 +354,10 @@
                         self.txtTelefono.frame = CGRectMake(20, 120, 335, 30);
                     }else if(IS_STANDARD_IPHONE_6_PLUS){
                         self.txtTelefono.frame = CGRectMake(20, 120, 280, 30);
+                        [self.txtDescripcion setFrame:CGRectMake(self.txtDescripcion.frame.origin.x, 180, self.txtDescripcion.frame.size.width, self.txtDescripcion.frame.size.height)];
                     }else if(IS_IPAD){
                         self.txtTelefono.frame = CGRectMake(20, 120, 600, 30);
+                        [self.txtDescripcion setFrame:CGRectMake(self.txtDescripcion.frame.origin.x, 185, self.txtDescripcion.frame.size.width, self.txtDescripcion.frame.size.height)];
                     
                     }else{
                         [self.txtTelefono setFrame:CGRectMake(20, 120, 280, 30)];
@@ -298,24 +374,31 @@
             default:
                 [self.vistaPais setHidden:YES];
                 if(IS_STANDARD_IPHONE_6){
+                    [self.scrollVista setContentSize:CGSizeMake(375,600)];
                     self.txtDescripcion.frame = CGRectMake(20, 160, 335, 100);
                     self.txtTelefono.frame = CGRectMake(20, 86, 335, 30);
+                    [self.labelDescripcion setFrame:CGRectMake(self.labelDescripcion.frame.origin.x, 124, self.labelDescripcion.frame.size.width, self.labelDescripcion.frame.size.height)];
                 }else if(IS_STANDARD_IPHONE_6_PLUS){
+                    [self.scrollVista setContentSize:CGSizeMake(414,700)];
                     self.txtTelefono.frame = CGRectMake(20, 86, 280, 30);
+                    [self.txtDescripcion setFrame:CGRectMake(self.txtDescripcion.frame.origin.x, 180, self.txtDescripcion.frame.size.width, self.txtDescripcion.frame.size.height)];
+                    [self.labelDescripcion setFrame:CGRectMake(self.labelDescripcion.frame.origin.x, 158, self.labelDescripcion.frame.size.width, self.labelDescripcion.frame.size.height)];
                 }else if(IS_IPAD){
+                    [self.scrollVista setContentSize:CGSizeMake(768,800)];
                     self.txtTelefono.frame = CGRectMake(20, 86, 600, 30);
+                    [self.txtDescripcion setFrame:CGRectMake(self.txtDescripcion.frame.origin.x, 185, self.txtDescripcion.frame.size.width, self.txtDescripcion.frame.size.height)];
+                    [self.labelDescripcion setFrame:CGRectMake(self.labelDescripcion.frame.origin.x, 124, self.labelDescripcion.frame.size.width, self.labelDescripcion.frame.size.height)];
                 }else{
+                    [self.scrollVista setContentSize:CGSizeMake(320, 400)];
                     [self.txtTelefono setFrame:CGRectMake(20, 86, 280, 30)];
                     [self.txtDescripcion setFrame:CGRectMake(self.txtDescripcion.frame.origin.x, 153, self.txtDescripcion.frame.size.width, self.txtDescripcion.frame.size.height)];
+                    [self.labelDescripcion setFrame:CGRectMake(self.labelDescripcion.frame.origin.x, 124, self.labelDescripcion.frame.size.width, self.labelDescripcion.frame.size.height)];
                 }
                 
                 [self.txtTelefono setHidden:NO];
                 [self.btnSeleccionarPais setHidden:YES];
                 [self.txtTelefono setPlaceholder:@""];
                 [self.txtTelefono setKeyboardType:UIKeyboardTypeURL];
-                [self.labelDescripcion setFrame:CGRectMake(self.labelDescripcion.frame.origin.x, 124, self.labelDescripcion.frame.size.width, self.labelDescripcion.frame.size.height)];
-                
-                [self.scrollVista setContentSize:CGSizeMake(320, 250)];
                 [self.txtTelefono setText:[self.contactoSeleccionado noContacto]];
                 [self.txtDescripcion setText:[self.contactoSeleccionado descripcion]];
                 [self.btnEliminar setFrame:CGRectMake(271, 250, 29, 35)];
@@ -353,6 +436,7 @@
     [self ocultaContadorTexto];
     [self desapareceElTeclado];
 }
+
 
 -(void) textFieldDidBeginEditing:(UITextField *)textField {
     textoPulsado = textField;
@@ -417,23 +501,27 @@
 }
 
 -(void) apareceTeclado {
-    CGSize tamanioTeclado = CGSizeMake(320, 216);
-    UIEdgeInsets edgeInsets = UIEdgeInsetsMake(0, 0, tamanioTeclado.height, 0);
-    [self.scrollVista setContentInset:edgeInsets];
-    [self.scrollVista setScrollIndicatorInsets:edgeInsets];
-    if ([textoPulsado isKindOfClass:[UITextView class]]) {
-        [[self scrollVista] scrollRectToVisible:((UITextView *)textoPulsado).frame animated:YES];
-    }
-    else {
-        [[self scrollVista] scrollRectToVisible:((UITextField *)textoPulsado).frame animated:YES];
+    if(IS_IPHONE_5 || IS_IPHONE_4) {
+        if(self.opcionSeleccionada == 6 || self.opcionSeleccionada == 3 || self.opcionSeleccionada == 5 || self.opcionSeleccionada == 7 || self.opcionSeleccionada == 8 || self.opcionSeleccionada == 9 ){
+            CGPoint pt;
+            pt.x = 0;
+            pt.y = 82;
+             [self.scrollVista setContentOffset:pt animated:YES];
+        }else{
+            CGPoint pt;
+            pt.x = 0;
+            pt.y = 100;
+            [self.scrollVista setContentOffset:pt animated:YES];
+        }
     }
 }
 -(void) desapareceElTeclado {
     [UIView beginAnimations:nil context:Nil];
     [UIView setAnimationDuration:0.3];
-    UIEdgeInsets edgeInsets = UIEdgeInsetsZero;
-    [[self scrollVista] setContentInset:edgeInsets];
-    [[self scrollVista] setScrollIndicatorInsets:edgeInsets];
+    CGPoint pt;
+    pt.x = 0;
+    pt.y = 0;
+    [self.scrollVista setContentOffset:pt animated:YES];
     [UIView commitAnimations];
 }
 

@@ -25,9 +25,7 @@
         const char *guion = [nombreDominio UTF8String];
         //confirmar que los ultimos caracteres sean distintos de "-"
         if (guion[0] != '-' && guion[[nombreDominio length]-1] != '-') {
-            //NSLog(@"primer %c final %c",guion[0],guion[[nombreDominio length]-1]);
-            //verificar que no termine .tel, .com, .mx, etc
-            //NSString *dominioRegex = @".*(\\.[tT][eE][lL])$";
+         
             NSString *dominioRegex = @"^[_a-z0-9-]+([a-z0-9])$";
             NSPredicate *dominioTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", dominioRegex];
             valido = [dominioTest evaluateWithObject:nombreDominio];
@@ -167,10 +165,7 @@
 	
 	//Eliminamos el https:// de la url dada por el usuario(sólo en caso de que la url posea esta suncadena)
 	NSString *strGoogleValida = [[[[strGooglePlus stringByReplacingOccurrencesOfString:@"https://" withString:@""] stringByReplacingOccurrencesOfString:@"HTTPS://" withString:@""] stringByReplacingOccurrencesOfString:@"www." withString:@""] stringByReplacingOccurrencesOfString:@"WWW." withString:@""];
-	
-//	NSLog(@"googlePlus: %@",strGoogleValida);
-	
-	//Expresion regular para validar la url de google+
+
 	NSString *googleRegex = @"(plus|PLUS)\\.(google|GOOGLE)\\.(com|COM)\\/[a-zA-Z0-9\\*\\?\\+\\[\\(\\)\\{\\}\\^\\$\\|\\.\\/\\ ]{1,}";
 	NSPredicate * googleTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",googleRegex];
 	
@@ -339,11 +334,7 @@
     
     BOOL fueEditado = NO;
     DatosUsuario *datosUsuario = [DatosUsuario sharedInstance];
-    
-  
-  //  NSLog(@"La cantidad de items en arreglo de arregloEstatusEdicion es : %i", [datosUsuario.arregloEstatusEdicion count]);
-    
-    
+
     if ([datosUsuario.arregloEstatusEdicion count] > 0) {
         for (int i = 0; i < [datosUsuario.arregloEstatusEdicion count]; i++) {
             if ([[datosUsuario.arregloEstatusEdicion objectAtIndex:i]  isEqual: @YES]) {

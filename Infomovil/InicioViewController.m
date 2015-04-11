@@ -428,7 +428,6 @@
             [NSThread sleepForTimeInterval:1];
             [self.alerta hide];
         }
-		NSLog(@"Items Actualizados");
 		self.datosUsuario = [DatosUsuario sharedInstance];
 		if (self.datosUsuario.existeLogin) {
 			[StringUtils deleteResourcesWithExtension:@"jpg"];
@@ -444,7 +443,6 @@
             [NSThread sleepForTimeInterval:1];
             [self.alerta hide];
         }
-		NSLog(@"Items no actualizados");
 		AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
 		[alert show];
 	}

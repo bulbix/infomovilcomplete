@@ -137,8 +137,6 @@
 
 -(IBAction)agregarInformacion:(id)sender {
     self.datosUsuario = [DatosUsuario sharedInstance];
-    NSLog(@"El numero maximo de información es: %i", maxNumInformacion);
- 
     if(!((AppDelegate*)[[UIApplication sharedApplication] delegate]).existeSesion){
         AlertView *alert = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionCaduco", Nil) andAlertViewType:AlertViewTypeInfo];
         [alert show];
@@ -161,7 +159,6 @@
         
     
     }else if(self.datosUsuario.arregloInformacionAdicional.count == 1){
-        NSLog(@"no mames : %i y maximo %i", self.datosUsuario.arregloInformacionAdicional.count, maxNumInformacion);
         alertaIndormacion = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeInformacionAdicionalPrueba", @" ") andAlertViewType:AlertViewTypeQuestion];
         [alertaIndormacion show];
     }else if(self.datosUsuario.arregloInformacionAdicional.count >= 2 && [self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]){

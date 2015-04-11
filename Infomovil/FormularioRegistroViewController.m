@@ -473,7 +473,7 @@
 }
 
 -(void) resultadoConsultaDominio:(NSString *)resultado {
-    NSLog(@"resultadoConsultaDominio: La operacion es: %d y el existeUsuario %hhd", operacionWS,existeUsuario);
+  
 	if(operacionWS == 1){
 		if ([resultado isEqualToString:@"No existe"]) {
 			existeUsuario = YES;
@@ -492,7 +492,7 @@
 }
 
 -(void) resultadoLogin:(NSInteger) idDominioLogin {
-     NSLog(@"resultadoLogin: La operacion es: %d y el existeUsuario %hhd", operacionWS,existeUsuario);
+  
     if (idDominioLogin > 0) {
         loginExitoso = YES;
         idDominio = idDominioLogin;
@@ -647,7 +647,7 @@
 #pragma mark - Selector País Delegate
 
 -(void) guardaPais:(NSString *)pais yCodigo:(NSString *)codigoPais {
-	NSLog(@"GuardaPais");
+
 	if([codigoPais isEqualToString:@"+52"]){
 		[self.txtNumero setFrame:CGRectMake(70, self.labelNumeroMovil.frame.origin.y+29, 230, 30)];
 

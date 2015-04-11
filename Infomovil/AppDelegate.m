@@ -46,7 +46,7 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
     [defaults synchronize];
    
    
-    
+   /*
     //AppsFlyer
     [AppsFlyerTracker sharedTracker].appsFlyerDevKey = @"5KoF92vzAFbhSj9PRduNCn";
     [AppsFlyerTracker sharedTracker].appleAppID = @"898313250";
@@ -60,7 +60,7 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
     [[BITHockeyManager sharedHockeyManager] startManager];
     [[BITHockeyManager sharedHockeyManager].authenticator
      authenticateInstallation];
-    
+    */
    
     
     //-- Set Notification
@@ -97,8 +97,6 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
         [FBSession openActiveSessionWithReadPermissions:@[@"public_profile"]
                                            allowLoginUI:NO
                                       completionHandler:^(FBSession *session, FBSessionState state, NSError *error) {
-                                          
-                                          NSLog(@"Entrando a sesion activa");
                                       }];
     }
 	

@@ -92,7 +92,6 @@
     }
     else {
         self.location = self.datosUsuario.localizacion;
-        NSLog(@"la direccion es %f", self.location.course);
         if (CLLocationCoordinate2DIsValid(self.location.coordinate)) {
             hayAnotacion = YES;
             MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.location.coordinate, 200, 200);
@@ -131,7 +130,6 @@
         self.location = [[CLLocation alloc] initWithLatitude:loc.latitude longitude:loc.longitude];
         self.modifico = YES;
         if (CLLocationCoordinate2DIsValid(self.location.coordinate)) {
-            NSLog(@"Es valido la coordenada %@*********************************", self.location);
             hayAnotacion = YES;
             MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.location.coordinate, 200, 200);
             [self.mapView setRegion:region];
@@ -150,7 +148,6 @@
 			self.location = [[CLLocation alloc] initWithLatitude:loc.latitude longitude:loc.longitude];
 			self.modifico = YES;
 			if (CLLocationCoordinate2DIsValid(self.location.coordinate)) {
-				NSLog(@"Es valido la coordenada %@*********************************", self.location);
 				hayAnotacion = YES;
 				MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.location.coordinate, 200, 200);
 				[self.mapView setRegion:region];
@@ -169,7 +166,6 @@
 	self.location = [[CLLocation alloc] initWithLatitude:loc.latitude longitude:loc.longitude];
 	self.modifico = YES;
 	if (CLLocationCoordinate2DIsValid(self.location.coordinate)) {
-		NSLog(@"Es valido la coordenada %@*********************************", self.location);
 		hayAnotacion = YES;
 		MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.location.coordinate, 200, 200);
 		[self.mapView setRegion:region];
@@ -197,7 +193,6 @@
         if (CLLocationCoordinate2DIsValid(location.coordinate)) {
             self.modifico = YES;
             hayAnotacion = YES;
-            NSLog(@"Es correcta la localizacion %@ **************************", location);
             MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(location.coordinate, 200, 200);
             [self.mapView setRegion:region];
             [self.mapView addAnnotation:self];

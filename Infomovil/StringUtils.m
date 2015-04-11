@@ -51,9 +51,11 @@
     if (error == Nil) {
         exito = YES;
     }
+#if DEBUG
     else {
         NSLog(@"El error es %@", [error localizedDescription]);
     }
+#endif
     return exito;
 }
 
@@ -119,7 +121,6 @@
 }
 
 + (NSMutableArray *)ordenarItems:(NSMutableArray *)items {
-    NSLog(@"Se mando a llamar ordenarItems en StringUtils ");
     NSArray *arregloTitulos = @[NSLocalizedStringFromTable(@"nombreEmpresa", @"Spanish",@" "), NSLocalizedStringFromTable(@"logo",@"Spanish", @" "),
         NSLocalizedStringFromTable(@"descripcionCorta", @"Spanish",@" "),
         NSLocalizedStringFromTable(@"contacto", @"Spanish",@" "),
@@ -145,7 +146,6 @@
      NSMutableArray *arregloItemsAux = [[NSMutableArray alloc] init];
     if (items != nil) {
     NSMutableArray *arregloItems = items;
-        NSLog(@"la cantidad de campos en arregloItems es: %i y arregloTitulos tiene : %i", [arregloItems count] , [arregloTitulos count]);
         
     for (int i = 0; i < [arregloTitulos count]; i++) {
         NSString *stringAux = [StringUtils eliminarAcentos:[arregloTitulos objectAtIndex:i]];

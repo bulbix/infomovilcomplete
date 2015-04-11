@@ -526,3 +526,6 @@
 "noticiasFeed" = "News";
 
 "misitioURL"="mysite";
+"publicarTwitter" = "Your latest Tweets are posted on your site.";
+"msjCompartirPublicar" = "In order to share your website you must publish it first. Would you like to publish it now?";
+"msjDominioPublicar"="Publish your website";

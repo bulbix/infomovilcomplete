@@ -357,8 +357,6 @@
     }
     else {
     if (loginExitoso) {
-        NSLog(@"SE LOGUEO POR MAIL");
-        // IRC APPBOY //
         NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
         NSDictionary *launch =  [defaults objectForKey:@"launchingWithOptions"];
         [Appboy startWithApiKey:llaveAppboy
@@ -560,12 +558,10 @@
 -(void)cambiarStatusRecordar{
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     if([prefs integerForKey:@"intRecordar"] == 1){
-        NSLog(@"NO recordar!!");
         [prefs setInteger:0 forKey:@"intRecordar"];
         [prefs synchronize];
         [self.recordarLogin1 setBackgroundImage:[UIImage imageNamed:@"recordarOff.png"] forState:UIControlStateNormal];
     }else{
-        NSLog(@"SI recordar!!");
         [prefs setInteger:1 forKey:@"intRecordar"];
         [prefs synchronize];
         [self.recordarLogin1 setBackgroundImage:[UIImage imageNamed:@"recordarOn.png"] forState:UIControlStateNormal];

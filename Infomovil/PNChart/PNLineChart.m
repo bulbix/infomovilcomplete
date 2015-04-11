@@ -87,7 +87,6 @@
         {
             labelText = xLabels[index];
             PNChartLabel * label = [[PNChartLabel alloc] initWithFrame:CGRectMake(2*_chartMargin +  (index * _xLabelWidth) - (_xLabelWidth / 2), (_chartMargin + _chartCavanHeight)-5, _xLabelWidth, 21)];
-            NSLog(@"El frame es %f, %f, %f, %f", label.frame.origin.x, label.frame.origin.y, label.frame.size.width, label.frame.size.height);
             [label setTextAlignment:NSTextAlignmentCenter];
             label.text = labelText;
             [self addSubview:label];
@@ -147,7 +146,6 @@
                     if (p.x + 3.0 > touchPoint.x && p.x - 3.0 < touchPoint.x && p.y + 3.0 > touchPoint.y && p.y - 3.0 < touchPoint.y ) {
                         //Call the delegate and pass the point and index of the point
                         [self hideBuble];
-                        NSLog(@"EL OTRO VALOR ES %f", self.frame.origin.y);
                         if (touchPoint.y-30 > self.frame.origin.y) {
                             self.bubleInfo = [[SABuble alloc] initWithFrame:CGRectMake(touchPoint.x-25, touchPoint.y-30, 50, 30) withTitle:[self.arregloValores objectAtIndex:[linePointsArray indexOfObject:val]] andPosition:SABublePositionBottom];
                         }

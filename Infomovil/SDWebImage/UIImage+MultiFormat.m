@@ -58,9 +58,12 @@
                 result = [self sd_exifOrientationToiOSOrientation:exifOrientation];
             } // else - if it's not set it remains at up
             CFRelease((CFTypeRef) properties);
-        } else {
-            //NSLog(@"NO PROPERTIES, FAIL");
         }
+#if DEBUG
+        else {
+            NSLog(@"NO PROPERTIES, FAIL");
+        }
+#endif
         CFRelease(imageSource);
     }
     return result;

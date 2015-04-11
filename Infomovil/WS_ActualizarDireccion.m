@@ -51,10 +51,10 @@
         [stringXML appendFormat:@"<domainId>%i</domainId></ws:updateKeyWordData></soapenv:Body></soapenv:Envelope>", datos.idDominio];
     }
     
-    NSLog(@"El string es %@", stringXML);
+    //NSLog(@"El string es %@", stringXML);
     self.strSoapAction = @"WSInfomovilDomain";
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
-    NSLog(@"WS_ActualizarDireccion: La Respuesta es %s", [dataResult bytes]);
+    //NSLog(@"WS_ActualizarDireccion: La Respuesta es %s", [dataResult bytes]);
     if (dataResult != nil) {
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
         [parser setDelegate:self];
@@ -120,10 +120,10 @@
         [stringXML appendFormat:@"<idDomain>%i</idDomain></ws:insertKeywordDataAddress></soapenv:Body></soapenv:Envelope>", datos.idDominio];
     }
     
-    NSLog(@"El string es %@", stringXML);
+   // NSLog(@"El string es %@", stringXML);
     self.strSoapAction = @"WSInfomovilDomain";
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
-    NSLog(@"WS_ActualizarDireccion La Respuesta es %s", [dataResult bytes]);
+   // NSLog(@"WS_ActualizarDireccion La Respuesta es %s", [dataResult bytes]);
     if (dataResult != nil) {
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
         [parser setDelegate:self];
@@ -193,10 +193,10 @@
         
         [stringXML appendString:@"</ws:updateKeyWordData></soapenv:Body></soapenv:Envelope>"];
     }
-    NSLog(@"El string es %@", stringXML);
+   // NSLog(@"El string es %@", stringXML);
     self.strSoapAction = @"WSInfomovilDomain";
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
-    NSLog(@"WS_ActualizarDireccion La Respuesta es %s", [dataResult bytes]);
+    //NSLog(@"WS_ActualizarDireccion La Respuesta es %s", [dataResult bytes]);
     
     if (dataResult != nil) {
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
@@ -265,10 +265,10 @@
         [stringXML appendFormat:@"<domainId>%i</domainId></ws:updateKeyWordData></soapenv:Body></soapenv:Envelope>", datos.idDominio];
     }
     
-    NSLog(@"El string es %@", stringXML);
+    //NSLog(@"El string es %@", stringXML);
     self.strSoapAction = @"WSInfomovilDomain";
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
-    NSLog(@" WS_ActualizarDireccionLa Respuesta es %s", [dataResult bytes]);
+    //NSLog(@" WS_ActualizarDireccionLa Respuesta es %s", [dataResult bytes]);
     if (dataResult != nil) {
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
         [parser setDelegate:self];
@@ -351,10 +351,10 @@
 		
     }
     
-    NSLog(@"El string es %@", stringXML);
+    //NSLog(@"El string es %@", stringXML);
     self.strSoapAction = @"WSInfomovilDomain";
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
-    NSLog(@"WS_ActualizarDireccion La Respuesta es %s", [dataResult bytes]);
+    //NSLog(@"WS_ActualizarDireccion La Respuesta es %s", [dataResult bytes]);
     if (dataResult != nil) {
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
         [parser setDelegate:self];
@@ -430,10 +430,10 @@
                      "</soapenv:Envelope>", dataModel.keywordField, dataModel.keywordValue, datos.idDominio];
     }
     
-    NSLog(@"El string es %@", stringXML);
+   // NSLog(@"El string es %@", stringXML);
     self.strSoapAction = @"WSInfomovilDomain";
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
-    NSLog(@"WS_ActualizarDireccion La Respuesta es %s", [dataResult bytes]);
+    //NSLog(@"WS_ActualizarDireccion La Respuesta es %s", [dataResult bytes]);
     if (dataResult != nil) {
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
         [parser setDelegate:self];
@@ -514,10 +514,10 @@
                      "</soapenv:Envelope>", dataPerfil.keywordField, dataPerfil.keywordValue, datos.idDominio];
     }
     
-    NSLog(@"El string es %@", stringXML);
+    //NSLog(@"El string es %@", stringXML);
     self.strSoapAction = @"WSInfomovilDomain";
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
-    NSLog(@"WS_ActualizarDireccion La Respuesta es %s", [dataResult bytes]);
+    //NSLog(@"WS_ActualizarDireccion La Respuesta es %s", [dataResult bytes]);
     if (dataResult != nil) {
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
         [parser setDelegate:self];
@@ -526,9 +526,7 @@
             if (requiereEncriptar) {
                 datos.token = self.token;
 
-                NSString *x = [StringUtils desEncriptar:self.idDominio conToken:self.token];
-                NSLog(@"El x es %@", x);
-                
+                //NSString *x = [StringUtils desEncriptar:self.idDominio conToken:self.token];
                 NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
                 if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                     [self.direccionDelegate errorToken];
@@ -594,7 +592,7 @@
     self.strSoapAction = @"WSInfomovilDomain";
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
     if (dataResult != nil) {
-        NSLog(@"WS_ActualizarDireccion La Respuesta es %s", [dataResult bytes]);
+       // NSLog(@"WS_ActualizarDireccion La Respuesta es %s", [dataResult bytes]);
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
         [parser setDelegate:self];
         if ([parser parse]) {

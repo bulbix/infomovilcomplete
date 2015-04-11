@@ -194,18 +194,19 @@
 }
 
 -(IBAction)compartir:(id)sender {
-    CompartirViewController *comparte = [[CompartirViewController alloc] initWithNibName:@"CompartirViewController" bundle:Nil];
-    [self.navigationController pushViewController:comparte animated:YES];
+        CompartirViewController *comparte = [[CompartirViewController alloc] initWithNibName:@"CompartirViewController" bundle:Nil];
+        [self.navigationController pushViewController:comparte animated:YES];
 }
 
 -(IBAction)comprarCuenta:(id)sender {
-    CuentaViewController *cuenta = [[CuentaViewController alloc] initWithNibName:@"CuentaViewController" bundle:Nil];
-    [self.navigationController pushViewController:cuenta animated:YES];
+    
+        CuentaViewController *cuenta = [[CuentaViewController alloc] initWithNibName:@"CuentaViewController" bundle:Nil];
+        [self.navigationController pushViewController:cuenta animated:YES];
 }
 
 -(IBAction)configurar:(id)sender {
-    ConfiguracionViewController *configuracion = [[ConfiguracionViewController alloc] initWithNibName:@"ConfiguracionViewController" bundle:Nil];
-    [self.navigationController pushViewController:configuracion animated:YES];
+        ConfiguracionViewController *configuracion = [[ConfiguracionViewController alloc] initWithNibName:@"ConfiguracionViewController" bundle:Nil];
+        [self.navigationController pushViewController:configuracion animated:YES];
 }
 
 -(void) acomodaSesion {
@@ -393,7 +394,6 @@
     [scrollView setContentInset:edgeInsets];
     [scrollView setScrollIndicatorInsets:edgeInsets];
     [scrollView scrollRectToVisible:vistaReferencia.frame animated:YES];
-    NSLog(@"el frame del textview es %f, %f, %f, %f", vistaReferencia.frame.origin.x, vistaReferencia.frame.origin.y, vistaReferencia.frame.size.width, vistaReferencia.frame.size.height);
 }
 
 -(void) apareceTeclado: (UIScrollView *) scrollView withRefFrame:(CGRect) refFrame
@@ -450,7 +450,6 @@
     NSString *accionGA = (self.datosUsuario.emailUsuario == nil || self.datosUsuario.emailUsuario.length<2)?@"Presiono pruebalo" : self.datosUsuario.emailUsuario;
     [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:categoria action:accionGA label:etiqueta value:nil] build]];
 }
-
 
 
 

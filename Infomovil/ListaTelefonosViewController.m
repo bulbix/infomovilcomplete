@@ -85,16 +85,21 @@
     
     
     if(IS_IPAD){
+        [self.tablaContactos setFrame:CGRectMake(84, 84, 600, 800)];
         [self.vistaInfo setFrame:CGRectMake(84, 40, 600, 600)];
         [self.labelAgregaDatos setFrame:CGRectMake(0, 10, 600, 30)];
         [self.labelAgregaDatos setTextAlignment:NSTextAlignmentCenter];
         [self.labelAgregaDatos setFont:[UIFont fontWithName:@"Avenir-medium" size:18]];
     }else if(IS_STANDARD_IPHONE_6_PLUS){
+        [self.tablaContactos setFrame:CGRectMake(30,84,354,650)];
         [self.vistaInfo setFrame:CGRectMake(50, 40, 314, 400)];
     
     }else if(IS_STANDARD_IPHONE_6){
+        [self.tablaContactos setFrame:CGRectMake(20, 84, 335, 550)];
         [self.vistaInfo setFrame:CGRectMake(20, 40, 335, 400)];
     
+    }else{
+        [self.tablaContactos setFrame:CGRectMake(20, 84, 280, 414)];
     }
     
     
@@ -183,7 +188,6 @@
 }
 
 -(IBAction)agregarContacto:(id)sender {
-    NSLog(@"El numero maximo de contactos es: %i", maxNumContactos);
   
     if (!((AppDelegate*)[[UIApplication sharedApplication] delegate]).existeSesion){
              AlertView *alert = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionCaduco", Nil) andAlertViewType:AlertViewTypeInfo];
@@ -206,7 +210,6 @@
          [alertaContactos show];
      
      }else if([self.datosUsuario.arregloContacto count] >= 10){
-         NSLog(@"Si entro pero no mostro la alarma!");
          alertaContactos = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeContactosPro", nil) andAlertViewType:AlertViewTypeInfo];
          [alertaContactos show];
      
@@ -272,10 +275,9 @@
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ContactosCell" owner:self options:Nil];
         cell = [nib objectAtIndex:0];
     }
-    if(IS_STANDARD_IPHONE_6){
-        cell.vistaContenedora.frame = CGRectMake(0, 0, 335, 63);
-    }
-    
+   
+    cell.vistaContenedora.frame = CGRectMake(0, 0, self.tablaContactos.frame.size.width, 63);
+  
     cell.vistaContenedora.layer.cornerRadius = 5.0f;
     Contacto *contacto = [arregloContactos objectAtIndex:indexPath.row];
     cell.delegate = self;
@@ -352,8 +354,6 @@
 
 -(void)cell:(ContactosCell *)cell changeSwitchValue:(UISwitch *)aSwitch
 {
-    NSLog(@"Cuantas veces entras aki!!!!");
-    
     if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion)
     {
         esReacomodo = YES;

@@ -308,8 +308,7 @@
 		strConv = [strConv stringByReplacingOccurrencesOfString:@"ñ" withString:@"n"];
 		
 		free(output);
-		
-		//NSLog(@"Prueba desencripta %@ -> %@",string,strConv);
+
 		return strConv;
 	}
 	return nil;

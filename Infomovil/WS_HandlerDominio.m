@@ -141,9 +141,6 @@
                      [StringUtils encriptar:codProm conToken:datos.token != nil ? datos.token: passwordEncriptar],//codProm
                      [StringUtils encriptar:domainType conToken:datos.token != nil ? datos.token: passwordEncriptar],
                      [StringUtils encriptar:idDominio conToken:datos.token != nil ? datos.token: passwordEncriptar]];
-		
-		NSLog(@"token:: %@",datos.token != nil ? datos.token : passwordEncriptar);
-		NSLog(@"token: %@",datos.token);
     
     self.strSoapAction = @"wsInfomovildomain";
     NSLog(@"la peticion es %@", stringXML);
@@ -204,8 +201,7 @@
                         else {
                             appDelegate.statusDominio = statusDominio;
                         }
-                        NSLog(@"LA CREACIÓN DEL DOMINIO FUE UN EXITO!!!");
-                        NSLog(@"token::: %@",datos.token);
+                      
                         NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
                         [prefs setObject:user forKey:@"dominioPublicado"];
                         [prefs synchronize];
@@ -226,7 +222,6 @@
                         datos.idDominio = respuestaInt;
                         datos.dominio = user;
                         ((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio = @"Pendiente";
-                        NSLog(@"token::: %@",datos.token);
                         [self.wSHandlerDelegate resultadoConsultaDominio:@"Error Publicar"];
                     }
                     else if (respuestaInt == -4) {
@@ -299,14 +294,10 @@
                  [StringUtils encriptar:@" " conToken:datos.token != nil ? datos.token : passwordEncriptar],//dir2
                  [StringUtils encriptar:@" " conToken:datos.token != nil ? datos.token : passwordEncriptar],//npais
                  [StringUtils encriptar:codProm conToken:datos.token != nil ? datos.token: passwordEncriptar]];//codProm
-    
-    NSLog(@"token:: %@",datos.token != nil ? datos.token : passwordEncriptar);
-    NSLog(@"token: %@",datos.token);
+ 
     
     self.strSoapAction = @"wsInfomovildomain";
-    NSLog(@"la peticion es %@", stringXML);
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
-    NSLog(@"La respuesta es en ws_handlerdominio redimirCodigo %s", [dataResult bytes]);
     if (dataResult != nil) {
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
         self.arregloItems = [[NSMutableArray alloc] init];
@@ -345,7 +336,7 @@
                                                                                                   conToken:datos.token]
                                                                             from:@"yyyy-MM-dd"
                                                                               to:@"dd-MM-yyy"];
-                    NSLog(@"token::: %@",datos.token);
+                    
                     if ([statusDominio hasSuffix:@"PRO"]) {
                         AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
                         NSArray *arrayAux = [statusDominio componentsSeparatedByString:@" "];
@@ -372,7 +363,6 @@
                                                                                  to:@"dd-MM-yyy"];
                     datos.idDominio = respuestaInt;
                     ((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio = @"Pendiente";
-                    NSLog(@"token::: %@",datos.token);
                     [self.wSHandlerDelegate resultadoConsultaDominio:@"Error Publicar"];
                 }
                 else if (respuestaInt == -4) {
@@ -525,8 +515,7 @@
 					 "</ws:cancelarCuenta>"
 					 "</soapenv:Body>"
 					 "</soapenv:Envelope>", [StringUtils encriptar:datos.dominio conToken:datos.token], [StringUtils encriptar:datos.emailUsuario conToken:datos.token], [StringUtils encriptar:motivo conToken:datos.token],[StringUtils encriptar:datos.passwordUsuario conToken:datos.token],[StringUtils encriptar:datos.emailUsuario conToken:passwordEncriptar]];
-		
-		NSLog(@"dominio:%@, usuario:%@, descripcion:%@, password:%@, token:%@",datos.dominio,datos.emailUsuario,motivo,datos.passwordUsuario,datos.token);
+	
     }
     else {
         stringXML = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.webservice.infomovil.org/\">"
@@ -663,9 +652,7 @@
                                                                                from:@"yyyy-MM-dd"
                                                                                  to:@"dd-MM-yyy"];
                     
-                    NSLog(@"La fecha inicial es: %@ y la final es %@", datos.fechaInicialTel, datos.fechaFinalTel);
                     ((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio = stringResult;
-                    NSLog(@"token::: %@",datos.token);
                     [self.wSHandlerDelegate resultadoConsultaDominio:@"Exito"];
                 }
 				
@@ -683,7 +670,9 @@
 #pragma mark - NSXMLParserDelegate
 
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
+#if DEBUG
     NSLog(@"Veamos que pone de error %@ y el code es: %i", parseError.userInfo, parseError.code);
+#endif
 }
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
@@ -742,7 +731,6 @@
     }
     else if ([elementName isEqualToString:@"token"]) {
         self.token = [StringUtils desEncriptar:self.currentElementString conToken:passwordEncriptar];
-		NSLog(@"recibo token: %@",self.token);
     }
 	else if ([elementName isEqualToString:@"fTelNamesIni"]){
 		self.telIni= self.currentElementString;
@@ -788,8 +776,9 @@
     }
     
     else if ([elementName isEqualToString:@"domainType"]) {
-        
-        NSLog(@"SI ES QUE TIENE DOMAINTYPE %@" ,[StringUtils desEncriptar:self.currentElementString conToken:self.token]);
+#if DEBUG
+        NSLog(@"WS_ HANDLERDOMINIO DOMAINTYPE %@" ,[StringUtils desEncriptar:self.currentElementString conToken:self.token]);
+#endif
     }
 }
 

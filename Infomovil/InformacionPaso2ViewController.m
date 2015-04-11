@@ -132,7 +132,6 @@
 #pragma mark UITextViewDelegate
 
 -(void)textViewDidBeginEditing:(UITextView *)textView {
-    NSLog(@"SI ENTRO AL CONTADOR DE NO SE KE");
     [self muestraContadorTexto:[textView.text length] conLimite:400 paraVista:textView];
 	[self apareceElTeclado];
 }
@@ -480,9 +479,7 @@
         }
 		((KeywordDataModel *)[arregloInformacionAux objectAtIndex:self.index]).keywordField = [self.txtTitulo text];
 		((KeywordDataModel *)[arregloInformacionAux objectAtIndex:self.index]).keywordValue = [self.txtInfo text];
-		NSLog(@"Aqui");
 		if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion) {
-			NSLog(@"Aqui2");
 			if ([CommonUtils hayConexion]) {
 				[self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
 				[self performSelectorInBackground:@selector(actualizarInformacion) withObject:Nil];
@@ -497,7 +494,6 @@
 			[self.navigationController popViewControllerAnimated:YES];
 		}
 	}else if (self.modifico && (btextField || btextArea)) {
-		NSLog(@"Aqui3");
         informacion = [[KeywordDataModel alloc] init];
         [informacion setKeywordField:[self.txtTitulo text]];
 		if(btextArea){

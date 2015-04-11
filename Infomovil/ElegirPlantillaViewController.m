@@ -34,7 +34,7 @@ BOOL actualizo;
     {
         self.datosUsuario.nombreTemplate = @"Estandar1";
     }
-    NSLog(@"La plantilla seleccionada es: %@", self.datosUsuario.nombreTemplate);
+   
     [self setupScrollView];
     UIPageControl *pgCtr = [[UIPageControl alloc] initWithFrame:CGRectMake(0, 450, 320, 20)];
     [pgCtr setTag:5];
@@ -208,7 +208,7 @@ BOOL actualizo;
 }
 
 -(void)irVerEjemplo:(UIButton*)sender{
-        NSLog(@"El tag del boton es: %i",sender.tag );
+       
     
     switch (sender.tag) {
         case 0:{

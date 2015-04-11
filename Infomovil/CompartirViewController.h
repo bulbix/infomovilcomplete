@@ -9,7 +9,7 @@
 #import "InfomovilViewController.h"
 #import <GooglePlus/GooglePlus.h>
 
-@interface CompartirViewController : InfomovilViewController<GPPSignInDelegate>
+@interface CompartirViewController : InfomovilViewController<GPPSignInDelegate,AlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *labelNombreDominio;
 @property (weak, nonatomic) IBOutlet UIView *vistaContenidoCompartir;
 

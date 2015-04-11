@@ -82,7 +82,6 @@
     if(IS_IPAD){
         self.vistaCombo.frame = CGRectMake(84, 50, 600, 30);
         self.btnEligeOpcion.frame = CGRectMake(84, 56, 600, 30);
-      //  NSLog(@"LO9S VALORES DEL CAMPO BTNELIGEOPCION SON: %f   - %f   -  %f  -   %f", self.btnEligeOpcion.frame.origin.x, self.btnEligeOpcion.frame.origin.y, self.btnEligeOpcion.frame.size.height, self.btnEligeOpcion.frame.size.width);
         [self.tablaOption setFrame:CGRectMake(84, 56, 600, 20)];
         self.imgSelecciona.frame = CGRectMake(550, 10, 18, 11);
     }
@@ -300,7 +299,7 @@
         else {
             motivo = [self.opcionesCancelacion objectAtIndex:valorSeleccionado];
         }
-//        NSLog(@"Motivo: %@",motivo);
+
         [handlerDominio cancelarCuenta:motivo];
     }
     else {

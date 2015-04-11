@@ -61,7 +61,6 @@
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-    NSLog(@"Termino de cargar");
     self.pagCargada = YES;
     [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
 }

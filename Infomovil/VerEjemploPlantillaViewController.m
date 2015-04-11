@@ -114,15 +114,12 @@
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-    NSLog(@"Termino de cargar");
     self.pagCargada = YES;
     [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
 }
 
 
 -(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
-    
-    NSLog(@"El error es: %@ con codigo : %ld", error.userInfo, (long)error.code);
     if(!self.pagCargada){
         [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
         AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];

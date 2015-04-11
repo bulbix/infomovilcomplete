@@ -44,13 +44,20 @@
     arregloTipoContacto = [[NSArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"tipoContacto" ofType:@"plist"]];
     
     self.tablaContacto.layer.cornerRadius = 5;
+    if(IS_IPAD){
+        self.tablaContacto.frame = CGRectMake(84, 33, 600, 800);
+    }else if(IS_STANDARD_IPHONE_6){
+        self.tablaContacto.frame = CGRectMake(20, 33, 335, 515);
+    }else if(IS_STANDARD_IPHONE_6_PLUS){
+        self.tablaContacto.frame = CGRectMake(30, 33, 354, 550);
+    }else if(IS_IPHONE_5){
+        self.tablaContacto.frame = CGRectMake(20, 33, 280, 420);
+    }else{
+        self.tablaContacto.frame = CGRectMake(20, 33, 280, 330);
+    }
 	
-	if(!IS_IPHONE_5 && ((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion ){
-		self.tablaContacto.frame = CGRectMake(20, 33, 280, 480);
-	}
-	else if(IS_IPHONE_5 && ((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion ){
-		self.tablaContacto.frame = CGRectMake(20, 33, 280, 480);
-	}
+	
+	
     
 }
 -(void) viewWillAppear:(BOOL)animated {

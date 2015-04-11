@@ -96,7 +96,6 @@
 {
     self.modifico = YES;
     colorChip.backgroundColor=newColor;
-//    NSLog(@"los colores son %@" newColor.red);
 }
 
 -(IBAction)guardarInformacion:(id)sender {

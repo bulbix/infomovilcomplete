@@ -1822,9 +1822,7 @@ void GTMAssertSelectorNilOrImplementedWithArgs(id obj, SEL sel, ...) {
   if (obj && sel) {
     // Check that the selector is implemented
     if (![obj respondsToSelector:sel]) {
-      NSLog(@"\"%@\" selector \"%@\" is unimplemented or misnamed",
-                             NSStringFromClass([obj class]),
-                             NSStringFromSelector(sel));
+     
       NSCAssert(0, @"callback selector unimplemented or misnamed");
     } else {
       const char *expectedArgType;
@@ -1838,9 +1836,7 @@ void GTMAssertSelectorNilOrImplementedWithArgs(id obj, SEL sel, ...) {
           const char *foundArgType = [sig getArgumentTypeAtIndex:argCount];
 
           if(0 != strncmp(foundArgType, expectedArgType, strlen(expectedArgType))) {
-            NSLog(@"\"%@\" selector \"%@\" argument %d should be type %s",
-                  NSStringFromClass([obj class]),
-                  NSStringFromSelector(sel), (argCount - 2), expectedArgType);
+           
             NSCAssert(0, @"callback selector argument type mistake");
           }
         }
@@ -1849,9 +1845,6 @@ void GTMAssertSelectorNilOrImplementedWithArgs(id obj, SEL sel, ...) {
 
       // Check that the proper number of arguments are present in the selector
       if (argCount != [sig numberOfArguments]) {
-        NSLog( @"\"%@\" selector \"%@\" should have %d arguments",
-                       NSStringFromClass([obj class]),
-                       NSStringFromSelector(sel), (argCount - 2));
         NSCAssert(0, @"callback selector arguments incorrect");
       }
     }

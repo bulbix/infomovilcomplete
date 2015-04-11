@@ -209,8 +209,27 @@
 }
 
 -(IBAction)mostrarWeb:(id)sender {
-    VistaPreviaWebViewController *vistaPrevia = [[VistaPreviaWebViewController alloc] initWithNibName:@"VistaPreviaWeb" bundle:Nil];
-    [self.navigationController pushViewController:vistaPrevia animated:YES];
+    self.datosUsuario	= [DatosUsuario sharedInstance];
+    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion && self.datosUsuario.dominio && ![self.datosUsuario.dominio isEqualToString:@""] && ! (self.datosUsuario.dominio == (id)[NSNull null]) && ![CommonUtils validarEmail:self.datosUsuario.dominio] && ![self.datosUsuario.dominio isEqualToString:@"(null)"]){
+        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+        [prefs setObject:[NSString stringWithFormat:@"http://info-movil.net/%@?vistaPrevia=true", self.datosUsuario.dominio] forKey:@"urlVistaPrevia"];
+#if DEBUG
+        [prefs setObject:[NSString stringWithFormat:@"http://info-movil.com:8080/%@?vistaPrevia=true", self.datosUsuario.dominio] forKey:@"urlVistaPrevia"];
+#endif
+        
+        [prefs synchronize];
+        VistaPreviaWebViewController *vistaPrevia = [[VistaPreviaWebViewController alloc] initWithNibName:@"VistaPreviaWeb" bundle:Nil];
+        [self.navigationController pushViewController:vistaPrevia animated:YES];
+    }else if(self.datosUsuario.idDominio){
+        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+        [prefs setObject:[NSString stringWithFormat:@"http://info-movil.net/xxx?vistaPrevia=true&idDominio=%ld", (long)self.datosUsuario.idDominio] forKey:@"urlVistaPrevia"];
+#if DEBUG
+        [prefs setObject:[NSString stringWithFormat:@"http://info-movil.com:8080/xxx?vistaPrevia=true&idDominio=%ld", (long)self.datosUsuario.idDominio] forKey:@"urlVistaPrevia"];
+#endif
+        [prefs synchronize];
+        VistaPreviaWebViewController *vistaPrevia = [[VistaPreviaWebViewController alloc] initWithNibName:@"VistaPreviaWeb" bundle:Nil];
+        [self.navigationController pushViewController:vistaPrevia animated:YES];
+    }
 }
 
 @end

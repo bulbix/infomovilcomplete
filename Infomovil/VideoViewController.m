@@ -109,12 +109,10 @@
             
         }
         else {
-            NSLog(@"el string del video es %@", self.datosUsuario.urlVideo);
-            
             NSArray *arregloUrl = [self.datosUsuario.urlVideo componentsSeparatedByString:@"/"];
             NSString *idVideo = [arregloUrl lastObject];
             
-            NSLog(@"El id es %@", idVideo); //http://i.ytimg.com/vi/rT_OmTMwvZI/3.jpg
+          
             [self.imagenVistaPrevia setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://i.ytimg.com/vi/%@/0.jpg", idVideo]]]]];
             
             if (self.datosUsuario.videoSeleccionado == Nil) {
@@ -199,7 +197,6 @@
         if ([arrayVideo count] >= 2) {
             arrayVideo = [[arrayVideo objectAtIndex:1] componentsSeparatedByString:@"&"];
             self.idVideo = [arrayVideo objectAtIndex:0];
-            //            NSLog(@"el id del video es %@", idVideo);
         }
         self.tipoBusqueda = 2;
     }

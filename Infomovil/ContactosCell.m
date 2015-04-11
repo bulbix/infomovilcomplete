@@ -64,14 +64,14 @@
         [prefs setInteger:1 forKey:@"ActualizandoEstatus1SolaVez"];
         [prefs synchronize];
     }else{
-          NSLog(@"El valor de default para swithc es: %i", self.switchActivo.on);
+       
         if(self.switchActivo.on){
             [self.switchActivo setOn:NO animated:YES];
         }else{
             [self.switchActivo setOn:NO animated:YES];
             
         }
-        NSLog(@"El valor 2 de default para swithc es: %i", self.switchActivo.on);
+    
     }
 }
 

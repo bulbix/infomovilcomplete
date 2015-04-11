@@ -733,8 +733,7 @@
 #pragma mark - Teclado
 
 -(void)textViewDidBeginEditing:(UITextView *)textView {
-//	NSLog(@"Editar");
-//	textViewEditado = textView;
+
     [self muestraContadorTexto:[textView.text length] conLimite:255 paraVista:textView];
 	[self apareceTeclado:self.vistaPerfil withView:textView];
 }

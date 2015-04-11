@@ -85,9 +85,7 @@
     self.guardarVista = YES;
 	
 	self.datosUsuario = [DatosUsuario sharedInstance];
-	NSLog(@"servicio: %@",self.datosUsuario.servicioCliente);
 	if(!(self.datosUsuario.servicioCliente == nil) && !([self.datosUsuario.servicioCliente isEqualToString:@""])){
-		NSLog(@"no vacia");
 		infoEmpresa = [NSMutableArray arrayWithObjects:
 					   self.datosUsuario.nombreOrganizacion == nil ? @"" : self.datosUsuario.nombreOrganizacion,
 					   self.datosUsuario.servicioCliente == nil ? @"" : self.datosUsuario.servicioCliente,
@@ -168,11 +166,7 @@
 					   NSLocalizedString(@"paisCheck", @" "),nil];
 	
 	[self.vistaCircular setImage:[UIImage imageNamed:@"plecamorada.png"]];
-//    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).ultimoView == Nil) {
-//        NSArray *arrayControllers = [self.navigationController viewControllers];
-//        ((AppDelegate *)[[UIApplication sharedApplication] delegate]).ultimoView = [arrayControllers objectAtIndex:arrayControllers.count-2];
-//        NSLog(@"la clase es %@", [arrayControllers objectAtIndex:arrayControllers.count-2]);
-//    }
+
     arregloEmpresa = @[NSLocalizedString(@"nombreOrganizacion", @" "),
 					   NSLocalizedString(@"servicioCliente", @" "),
 					   NSLocalizedString(@"numeroMovil", @" "),
@@ -205,8 +199,6 @@
 	bCp = YES;
 	bPais = YES;
 	
-	NSLog(@"nombre: %@", self.datosUsuario.nombreOrganizacion);
-	
 	if(self.datosUsuario.nombreOrganizacion == nil && [self.datosUsuario.nombreOrganizacion isEqualToString:@""]){
 		self.datosUsuario.tipoRegistro = YES;
 		tipo = YES;
@@ -225,7 +217,6 @@
 		self.tabla.frame = frame;
 		[self.botonEmpresa setBackgroundImage:[UIImage imageNamed:@"checkInactivo.png"] forState:UIControlStateNormal];
 		[self.botonIndividual setBackgroundImage:[UIImage imageNamed:@"checkActivo.png"] forState:UIControlStateNormal];
-		NSLog(@"individual");
 	}else{
 		self.arregloConfiguracion = @[arregloEmpresa];
 		[self.botonEmpresa setBackgroundImage:[UIImage imageNamed:@"checkActivo.png"] forState:UIControlStateNormal];
@@ -317,10 +308,7 @@
 }
 
 -(IBAction)regresar:(id)sender {
-	NSLog(@"Regresar");
-    /*UIViewController *controllerAux = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).ultimoView;
-    [self.navigationController popToViewController:controllerAux animated:YES];
-    ((AppDelegate *)[[UIApplication sharedApplication] delegate]).ultimoView = Nil;*/
+
 	[[self view] endEditing:YES];
 	AlertView *alertView;
     if (self.modifico && [CommonUtils hayConexion]) {
@@ -359,17 +347,7 @@
 	bEdo = [CommonUtils validaEstado:edo];
 	bCp = [CommonUtils validaCP:cP];
 	bPais = [CommonUtils validaPais:Pais];
-	
-//	NSLog(bNombre ? @"nombre YES" : @"nombre NO");
-//	NSLog(bServicios ? @"servicios YES" : @"servicios NO");
-//	NSLog(bNumero ? @"numero YES" : @"numero NO");
-//	NSLog(bMail ? @"mail YES" : @"mail NO");
-//	NSLog(bCalle ? @"calle YES" : @"calle NO");
-//	NSLog(bPob ? @"poblacion YES" : @"poblacion NO");
-//	NSLog(bCd ? @"cd YES" : @"cd NO");
-//	NSLog(bEdo ? @"edo YES" : @"edo NO");
-//	NSLog(bCp ? @"cp YES" : @"cp NO");
-//	NSLog(bPais ? @"pais YES" : @"pais NO");
+
 	
 	if(!tipo && bNombre && bServicios && bNumero && bMail && bCalle && bPob && bCd && bEdo && bCp && bPais){
 		
@@ -423,7 +401,6 @@
 		}
 		
 	}else{
-		NSLog(@"Alertaaa");
 		AlertView * alertView;
 		alertView = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"datosInvalidos", @" ") message:NSLocalizedString(@"mensajeVerifica", @" ") dominio:nil andAlertViewType:AlertViewTypeInfo];
 		
@@ -431,32 +408,6 @@
 		
 		[self.tabla reloadData];
 	}
-	
-/*	if(self.datosUsuario.tipoRegistro){
-		self.datosUsuario.nombreOrganizacion = @"";
-		self.datosUsuario.servicioCliente = servicio;
-		self.datosUsuario.numeroMovil = numero;
-		self.datosUsuario.email = mail;
-		self.datosUsuario.calleNumero = calleNum;
-		self.datosUsuario.poblacion = pob;
-		self.datosUsuario.ciudad = cd;
-		self.datosUsuario.estado = edo;
-		self.datosUsuario.cp = cP;
-		self.datosUsuario.pais = Pais;
-		self.datosUsuario.codigoPais = codPais;
-	}else{
-		self.datosUsuario.nombreOrganizacion = nombre;
-		self.datosUsuario.servicioCliente = servicio;
-		self.datosUsuario.numeroMovil = numero;
-		self.datosUsuario.email = mail;
-		self.datosUsuario.calleNumero = calleNum;
-		self.datosUsuario.poblacion = pob;
-		self.datosUsuario.ciudad = cd;
-		self.datosUsuario.estado = edo;
-		self.datosUsuario.cp = cP;
-		self.datosUsuario.pais = Pais;
-		self.datosUsuario.codigoPais = codPais;
-	}*/
 	
 }
 
@@ -495,7 +446,6 @@
 	}else{
 		info = infoEmpresa;
 		check = checaEmpresa;
-		//NSLog(@"empresa: %@", [info objectAtIndex:0]);
 	}
 	
 	
@@ -682,8 +632,6 @@
 	self.datosUsuario.tipoRegistro = tipo;
 	[self.tabla reloadData];
 	CGRect frame =  CGRectMake(20, 109, 280, 238-30);//[self.tabla frame];
-	NSLog(@"Size: %f,%f",frame.size.width,frame.size.height);
-	//frame.size.height-=30;
 	self.tabla.frame = frame;
 	
 	self.modifico = YES;
@@ -692,7 +640,6 @@
 #pragma mark - Selector País Delegate
 
 -(void) guardaPais:(NSString *)pais yCodigo:(NSString *)codigoPais{
-	NSLog(@"GuardaPais");
 	paisText = pais;
 	Pais = pais;
 	codPais = codigoPais;
@@ -773,7 +720,6 @@
 		}
 		
 	}else{
-		NSLog(@"Alertaaa");
 		AlertView * alertView;
 		alertView = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"datosInvalidos", @" ") message:NSLocalizedString(@"mensajeVerifica", @" ") dominio:nil andAlertViewType:AlertViewTypeInfo];
 		
@@ -866,9 +812,7 @@
 		nombre = textField.text;
 		self.modifico = YES;
 		
-		NSLog(@"index0: %@",[infoEmpresa objectAtIndex:0]);
 		[infoEmpresa replaceObjectAtIndex:0 withObject:nombre];
-		NSLog(@"edito %@", [infoEmpresa objectAtIndex:0]);
 		textField.textColor = colorFuenteAzul;
 		bNombre = YES;
 	}

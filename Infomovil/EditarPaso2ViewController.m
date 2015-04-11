@@ -486,7 +486,7 @@
 	}else{
 		self.datosUsuario.direccion = respaldo;
 	}
-//	NSLog(@"Direccion: %@",self.datosUsuario.direccion);
+
 }
 
 

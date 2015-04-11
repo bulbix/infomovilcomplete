@@ -42,7 +42,7 @@
     
     return alerta;
 }
-+(id)initWithDelegate:(id<AlertViewDelegate>)delegate titulo:(NSString *)titulo message:(NSString *)mensaje dominio:(NSString *)dominio andAlertViewType:(AlertViewType)type { NSLog(@"ENTRO AQUÍ");
++(id)initWithDelegate:(id<AlertViewDelegate>)delegate titulo:(NSString *)titulo message:(NSString *)mensaje dominio:(NSString *)dominio andAlertViewType:(AlertViewType)type {
     CGRect frameAlert = [[UIScreen mainScreen] bounds];
     
     AlertView *alerta = [[AlertView alloc] initWithFrame:frameAlert andAlertViewType:type andTypeInit:2];
@@ -378,12 +378,8 @@
 }
 
 -(void) hide {
-    //[UIView animateWithDuration:0.3f animations:^{
         [self setAlpha:0];
-    //} completion:^(BOOL finished) {
-	//	NSLog(@"Super vista %@",self.superview);
         [self removeFromSuperview];
-    //}];
 }
 
 -(IBAction)presionarSi:(id)sender {

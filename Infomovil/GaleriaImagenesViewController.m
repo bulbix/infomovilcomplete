@@ -85,14 +85,12 @@
         [self.tablaGaleria setHidden:NO];
         [self.vistaInfo setHidden:YES];
         [self.tablaGaleria reloadData];
-        //NSLog(@"La cuenta es mayor a 0");
         [self mostrarBotones];
         [arrayAux replaceObjectAtIndex:8 withObject:@YES];
     }
     else {
         [self.tablaGaleria setHidden:YES];
         [self.vistaInfo setHidden:NO];
-      //  NSLog(@"La cuenta es 0");
         [arrayAux replaceObjectAtIndex:8 withObject:@NO];
         
         self.navigationItem.rightBarButtonItems = Nil;
@@ -207,9 +205,7 @@
 }
 
 -(IBAction)agregarImagen:(id)sender {
-    NSLog(@"EL NUMERO MAXIMO DE IMAGENES PARA AGREGAR ES : %i y el arreglo contiene: %i", maxNumeroImagenes , [self.arregloImagenes count]);
- 
-    
+
     if(!((AppDelegate*)[[UIApplication sharedApplication] delegate]).existeSesion){
         AlertView *alert = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionCaduco", Nil) andAlertViewType:AlertViewTypeInfo];
         [alert show];
@@ -287,10 +283,6 @@
         cell.sombrearCelda.hidden = YES;
     }
     
-    NSLog(@"El peso de la imagen es %lu, el id es:%i", (unsigned long)[pngData length],imagen.idImagen);
-    if ([tableView isHidden]) {
-        NSLog(@"la tabla no se ve");
-    }
     
     return cell;
 }
@@ -298,7 +290,6 @@
 #pragma mark - UITableViewDelegate
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"EL INDEXPATH DE LA TABLA DE IMAGENES ES %i", indexPath.row);
     if(indexPath.row <= 1 ){
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         GaleriaPaso2ViewController *galeria = [[GaleriaPaso2ViewController alloc] initWithNibName:@"GaleriaPaso2ViewController" bundle:nil];

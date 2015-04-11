@@ -47,21 +47,13 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  /*  // Return the number of rows in the section.
-    NSLog(@"El numero de filas es: %i",[self.arregloDominios count]);
-    if([self.arregloDominios count] == 0 )
-        return 1;
-    else
-    return [self.arregloDominios count];
-   */
+
     return 1;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"Ahora si entro");
     self.datosUsuario = [DatosUsuario sharedInstance];
-    NSLog(@"MenuPasosViewController - Dominio en TablaDominioViewController: %@ ",self.datosUsuario.dominio);
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellInfoDominio"];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cellInfoDominio"];
@@ -74,7 +66,6 @@
 
     for(int i= 0; i< [self.arregloDominios count]; i++){
         DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:i];
-        NSLog(@"l [usuarioDom.domainType isEqualToString es: %@", usuarioDom.domainType);
 #if DEBUG
         if(![self.datosUsuario.dominio isEqualToString:@"(null)"] && ![self.datosUsuario.dominio isEqualToString:@""] && ![self.datosUsuario.dominio isEqual:[NSNull null]] && !(self.datosUsuario.dominio == nil) && [usuarioDom.domainType isEqualToString:@"recurso"]){
             [cell.textLabel setText:[NSString stringWithFormat:@"info-movil.com/%@", self.datosUsuario.dominio]];
@@ -94,37 +85,7 @@
 
     return cell;
 }
-/*
- -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
- [tableView deselectRowAtIndexPath:indexPath animated:YES];
- DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:indexPath.row];
- if (indexPath.row == 0 && [usuarioDom.domainType isEqualToString:@"recurso"]) {
- NSMutableParagraphStyle *paragraphStyle = NSMutableParagraphStyle.new;
- paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
- paragraphStyle.alignment = NSTextAlignmentCenter;
- 
- NSAttributedString *title = [[NSAttributedString alloc] initWithString:@"Plan Pro" attributes:@{NSFontAttributeName : [UIFont fontWithName:@"Avenir-Book" size:17], NSParagraphStyleAttributeName : paragraphStyle}];
- NSAttributedString *lineOne = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"www.infomovil.com/%@", usuarioDom.domainName] attributes:@{NSFontAttributeName : [UIFont fontWithName:@"Avenir-Book" size:17], NSParagraphStyleAttributeName : paragraphStyle}];
- 
- NSAttributedString *buttonTitle = [[NSAttributedString alloc] initWithString:@"Actualizar" attributes:@{NSFontAttributeName : [UIFont fontWithName:@"Avenir-Book" size:17], NSForegroundColorAttributeName : [UIColor whiteColor], NSParagraphStyleAttributeName : paragraphStyle}];
- 
- CNPPopupButtonItem *buttonItem = [CNPPopupButtonItem defaultButtonItemWithTitle:buttonTitle backgroundColor:[UIColor colorWithRed:0.46 green:0.8 blue:1.0 alpha:1.0]];
- buttonItem.tag = 10;
- buttonItem.selectionHandler = ^(CNPPopupButtonItem *item){
- NSLog(@"Block for button: %@", item.buttonTitle.string);
- };
- 
- self.popupController = [[CNPPopupController alloc] initWithTitle:title contents:@[lineOne] buttonItems:@[buttonItem]];
- self.popupController.theme = [CNPPopupTheme defaultTheme];
- self.popupController.theme.popupStyle = CNPPopupStyleCentered;
- self.popupController.delegate = self;
- self.popupController.theme.presentationStyle = CNPPopupPresentationStyleSlideInFromBottom;
- [self.popupController presentPopupControllerAnimated:YES];
- }
- else {
- }
- }
- */
+
 - (void)popupController:(CNPPopupController *)controller didDismissWithButtonTag:(NSInteger)tag {
     
 }

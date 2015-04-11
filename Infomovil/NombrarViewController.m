@@ -160,7 +160,7 @@
 }
 
 - (IBAction)verificarDominio:(UIButton *)sender {
-    NSLog(@"-%s --", __PRETTY_FUNCTION__);
+  
     [[self view] endEditing:YES];
     if ([self validarDominio]) {
         if ([CommonUtils hayConexion]) {
@@ -287,7 +287,6 @@
             self.datosUsuario = [DatosUsuario sharedInstance];
             self.modifico = YES;
 			self.datosUsuario.dominio = self.nombreDominio.text;
-			NSLog(@"El Dominio en NombrarViewController es: %@",self.datosUsuario.dominio);
             PublicarViewController *publicar = [[PublicarViewController alloc] initWithNibName:@"PublicarViewController" bundle:Nil];
             [self.navigationController pushViewController:publicar animated:YES];
 			
@@ -332,7 +331,6 @@
         operacionWS = 1;
         WS_HandlerDominio *dominioHandler = [[WS_HandlerDominio alloc] init];
         [dominioHandler setWSHandlerDelegate:self];
-        NSLog(@"NombrarViewController: el textoDominio es: %@", textoDominio);
         [dominioHandler consultaDominio:textoDominio];
     }
     else {
@@ -468,10 +466,7 @@
 
 - (void)keyboardWillShow:(NSNotification *)notification
 {
-	NSLog(@"Height: %f",[[ UIScreen mainScreen ] bounds ].size.height);
 	CGRect rect;
-	
-	
 	[UIView beginAnimations:nil context:NULL];
 	[UIView setAnimationDuration:0.3];
     if(IS_IPHONE_5){

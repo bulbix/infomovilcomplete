@@ -102,7 +102,6 @@
     
     NSURL *url = [NSURL URLWithString:urlString];
     NSData *urlData = [NSData dataWithContentsOfURL:url];
-    //    NSLog(@"El data es %s", (const char*)[urlData bytes]);
     [self iniciarParseo:urlData];
 }
 
@@ -145,7 +144,6 @@
     VideoModel *video = [self.arregloVideos objectAtIndex:indexPath.row];
     VideoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     [cell.labelTitulo setText:video.titulo];
-    NSLog(@"ruta imagen es %@", [[video.thumbnail objectAtIndex:3] objectForKey:@"url"]);
     [cell.imagenPreview setImage:video.imagenPrevia];
     return cell;
 }

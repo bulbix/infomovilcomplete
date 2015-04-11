@@ -196,8 +196,6 @@
 	}
     
         self.datosUsuario = [DatosUsuario sharedInstance];
-    
-            NSLog(@"MenuPasosViewController - Dominio: %@ ",self.datosUsuario.dominio);
         
         if(self.datosUsuario.dominio && ![self.datosUsuario.dominio isEqualToString:@""] && ! (self.datosUsuario.dominio == (id)[NSNull null]) && ![CommonUtils validarEmail:self.datosUsuario.dominio] && ![self.datosUsuario.dominio isEqualToString:@"(null)"]){
             self.dominio.hidden	= NO;
@@ -323,7 +321,7 @@
 
 
 
-- (IBAction)crearEditar:(UIButton *)sender { NSLog(@"ENTRO A CREAR EDITAR");
+- (IBAction)crearEditar:(UIButton *)sender {
     self.datosUsuario = [DatosUsuario sharedInstance];
 
 	self.datosUsuario.eligioTemplate = YES;
@@ -359,7 +357,6 @@
 
 - (IBAction)publicar:(UIButton *)sender {
     self.datosUsuario = [DatosUsuario sharedInstance];
-    NSLog(@" EL VALOR DE STATUS DOMINIO ES: %@", ((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio);
     if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion && self.datosUsuario.dominio && ![self.datosUsuario.dominio isEqualToString:@""] && ! (self.datosUsuario.dominio == (id)[NSNull null]) && ![CommonUtils validarEmail:self.datosUsuario.dominio] && ![self.datosUsuario.dominio isEqualToString:@"(null)"]) {
         
         TipsViewController *tipsController = [[TipsViewController alloc] initWithNibName:@"TipsViewController" bundle:Nil];
@@ -393,7 +390,7 @@
 }
 
 
--(IBAction)regresar:(id)sender { NSLog(@"Alerta de Cerrar sesión!");
+-(IBAction)regresar:(id)sender {
 	[[AlertView initWithDelegate:self message:NSLocalizedString(@"salirMensaje", nil)
 				andAlertViewType:AlertViewTypeQuestion] show];
 }
@@ -422,7 +419,6 @@
 }
 
 - (IBAction)IrAlDominio:(id)sender {
-    NSLog(@"LA URL A CARGAR es: %@", self.dominio.titleLabel.text);
     if([self.dominio.titleLabel.text length] > 0){
         NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
         [prefs setObject:[NSString stringWithFormat:@"http://%@", self.dominio.titleLabel.text] forKey:@"urlMisitio"];

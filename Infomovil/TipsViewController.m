@@ -50,8 +50,9 @@
         [FBSession openActiveSessionWithReadPermissions:@[@"public_profile"]
                                            allowLoginUI:NO
                                       completionHandler:^(FBSession *session, FBSessionState state, NSError *error) {
-                                          
+#if DEBUG
                                           NSLog(@"Entrando a sesion activa");
+#endif
                                       }];
     }
     
@@ -224,8 +225,9 @@
              [self checkErrorMessage:error];
          } else {
              if (result == FBWebDialogResultDialogNotCompleted) {
-               //  [self showAlertCancel];
+#if DEBUG
                  NSLog(@"El usuario cancelo el post de face");
+#endif
              } else {
                  // Handle the publish feed callback
                  NSDictionary *urlParams = [self parseURLParams:[resultURL query]];
@@ -427,7 +429,6 @@
 		whatsappURL = [NSURL URLWithString:[NSString stringWithFormat:@"whatsapp://send?text=Acabo%%20de%%20crear%%20un%%20sitio%%20web%%20con%%20infomovil.com.%%0AVisitalo%%20y%%20ayudanos%%20a%%20crecer%%0Awww.%@.tel", self.datosUsuario.dominio]];
 	}
 	
-	NSLog(@"La url whatsapp es %@, dominio:%@", whatsappURL,self.datosUsuario.dominio);
     if ([[UIApplication sharedApplication] canOpenURL: whatsappURL]) {
         [[UIApplication sharedApplication] openURL: whatsappURL];
     }
