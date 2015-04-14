@@ -18,6 +18,9 @@
 #import "RageIAPHelper.h"
 #import <StoreKit/StoreKit.h>
 #import "CommonUtils.h"
+#import "NombrarViewController.h"
+
+
 @interface CuentaViewController () <CNPPopupControllerDelegate> {
     NSInteger noVisitas;
     NSInteger tipoVista;
@@ -240,7 +243,15 @@ int opcionButton = 0 ;
 
 
 -(void) viewWillAppear:(BOOL)animated {
-    self.datosUsuario = [DatosUsuario sharedInstance];
+    DatosUsuario *datosUsuario = [DatosUsuario sharedInstance];
+    if(self.selector.selectedSegmentIndex == 1){
+    if(datosUsuario.dominio == nil || [datosUsuario.dominio isEqualToString:@""] || (datosUsuario.dominio == (id)[NSNull null]) || [CommonUtils validarEmail:datosUsuario.dominio] || [datosUsuario.dominio isEqualToString:@"(null)"]){
+        AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"msjDominioPublicar", Nil) andAlertViewType:AlertViewTypeQuestion];
+        [alert show];
+        
+    }
+    }
+    
     noSeRepiteOprimirElBoton = YES;
     if (tipoVista != 1) {
 	BOOL sesion = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).existeSesion;
@@ -604,28 +615,17 @@ if(noSeRepiteOprimirElBoton){
 		
 		}
         [self.scrollContenido scrollRectToVisible:CGRectMake(0, 0, self.scrollContenido.frame.size.width, self.scrollContenido.frame.size.height) animated:YES];
-
+/////////////////////////////////// DOMINIOS  /////////////////////////////////
 	}else if(self.selector.selectedSegmentIndex == 1){
-        /////////////////////////////////  COMPRAR DOMINIO   //////////////////////////////
-		/*self.tituloPlanPro.text = @"";
-        if ([((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pendiente"]) {
-            [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
+        DatosUsuario *datosUsuario = [DatosUsuario sharedInstance];
+        if(datosUsuario.dominio == nil || [datosUsuario.dominio isEqualToString:@""] || (datosUsuario.dominio == (id)[NSNull null]) || [CommonUtils validarEmail:datosUsuario.dominio] || [datosUsuario.dominio isEqualToString:@"(null)"]){
+            AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"msjDominioPublicar", Nil) andAlertViewType:AlertViewTypeQuestion];
+            [alert show];
+            
         }
-         */
         
         BOOL sesion = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).existeSesion;
         if(sesion ){
-            
-                // IRC ESTAS LINEAS SE COMENTAN PARA OCULTAR LA TABLA DE DOMINIOS //
-            /*
-             if (tablaDominio == nil) {
-                tablaDominio = [[TablaDominioViewController alloc] init];
-             }
-             [tablaSitios setDelegate:tablaDominio];
-             [tablaSitios setDataSource:tablaDominio];
-             tablaDominio.view = tablaDominio.tableView;
-             [self.scrollContenido scrollRectToVisible:CGRectMake(320, 0, self.scrollContenido.frame.size.width, self.scrollContenido.frame.size.height) animated:YES];
-             */
             
             // ESTAS LINEAS SE CREARON MIENTRAS NO EXISTE SUBDOMINIOS
 
@@ -642,10 +642,7 @@ if(noSeRepiteOprimirElBoton){
             }else{
                 dominio = [[UILabel alloc]initWithFrame:CGRectMake(0, 40, 320, 100)];
             }
-            
-            
-            
-            
+      
             if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
                 
             
@@ -825,7 +822,17 @@ if(noSeRepiteOprimirElBoton){
      [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
 }
 
+-(void)accionSi{
+    NombrarViewController *comparte = [[NombrarViewController alloc] initWithNibName:@"NombrarViewController" bundle:Nil];
+    [self.navigationController pushViewController:comparte animated:YES];
 
+}
+
+-(void)accionNo{
+    self.selector.selectedSegmentIndex = 0;
+    [self tipoCuenta:self];
+    
+}
 
 
 @end

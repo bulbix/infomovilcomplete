@@ -41,7 +41,7 @@
 
     self.guardarVista = YES;
 
-    NSArray *arregloSecc1 = @[NSLocalizedString(@"cambiaPass", Nil), NSLocalizedString(@"eliminaCuenta", Nil), NSLocalizedString(@"salirCuenta", Nil)];
+    NSArray *arregloSecc1 = @[NSLocalizedString(@"cambiaPass", Nil), /*NSLocalizedString(@"eliminaCuenta", Nil),*/ NSLocalizedString(@"salirCuenta", Nil)];
     NSArray *arregloSecc2 = @[NSLocalizedString(@"soportaEmail", Nil), [NSString stringWithFormat:NSLocalizedString(@"version", Nil),[[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleShortVersionString"]]];
 
     self.arregloConfiguracion = @[arregloSecc1, arregloSecc2];
@@ -166,11 +166,12 @@
 			
             
         }
-        else if(indexPath.row == 1) {
+      /*  else if(indexPath.row == 1) {
             EliminarCuentaViewController *eliminarCuenta = [[EliminarCuentaViewController alloc] initWithNibName:@"EliminarCuentaViewController" bundle:Nil];
             [self.navigationController pushViewController:eliminarCuenta animated:YES];
         }
-        else if (indexPath.row == 2) {
+       */
+        else if (indexPath.row == 1) {
             
             [[AlertView initWithDelegate:self message:NSLocalizedString(@"salirMensaje", nil)
 						andAlertViewType:AlertViewTypeQuestion] show];

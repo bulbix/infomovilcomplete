@@ -71,7 +71,7 @@
         stringXML = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.webservice.infomovil.org/\">"
                      "<soapenv:Header/>"
                      "<soapenv:Body>"
-                     "<ws:getDomain>"
+                     "<ws:getDomainLogin>"
                      "<email>%@</email>"
                      "<password>%@</password>"
                      "<redSocial>%@</redSocial>"
@@ -81,7 +81,7 @@
                      "<tipoPlan>%@</tipoPlan>"
                      "<medioPago>%@</medioPago>"
                       "<versionSistema>%@</versionSistema>"
-                     "</ws:getDomain>"
+                     "</ws:getDomainLogin>"
                      "</soapenv:Body>"
                      "</soapenv:Envelope>",
                      [StringUtils encriptar:usuario conToken:passwordEncriptar],
