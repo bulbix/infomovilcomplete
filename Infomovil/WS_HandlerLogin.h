@@ -28,6 +28,9 @@
 @property (nonatomic, strong) NSString *redSocial;
 
 
+
+
+
 -(void) obtieneLogin:(NSString *)usuario conPassword:(NSString *)password;
 
 @end

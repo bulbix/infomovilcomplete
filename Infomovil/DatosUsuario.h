@@ -107,6 +107,12 @@
 
 @property (nonatomic, strong) NSString *logoImg;
 
+// Propiedades para el guardado de sesiones sin login //
+@property (nonatomic, strong) NSString *auxStrSesionUser;
+@property (nonatomic, strong) NSString *auxStrSesionPass;
+@property (nonatomic) NSInteger auxSesionFacebook;
+
+
 //@property NSString
 
 + (id)sharedInstance;

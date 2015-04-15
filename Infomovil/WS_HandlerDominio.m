@@ -614,6 +614,13 @@
             [datosUsuario eliminarDatos];
         }
     }
+    // Se cierra la sesion //
+    NSUserDefaults *prefSesion = [NSUserDefaults standardUserDefaults];
+    [prefSesion setObject:nil forKey:@"strSesionUser"];
+    [prefSesion setObject:nil forKey:@"strSesionPass"];
+    [prefSesion setInteger:0 forKey:@"intSesionFacebook"];
+    [prefSesion setInteger:0 forKey:@"intSesionActiva"];
+    [prefSesion synchronize];
 }
 
 -(void) consultaEstatusDominio {

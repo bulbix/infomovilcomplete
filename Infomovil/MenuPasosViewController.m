@@ -410,6 +410,7 @@
     ((AppDelegate*)	[[UIApplication sharedApplication] delegate]).statusDominio = @"Gratuito";
     ((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion = NO;
     [self.navigationController popToRootViewControllerAnimated:YES];
+   
 }
 
 -(void) pantallaAcomodaPublicar {

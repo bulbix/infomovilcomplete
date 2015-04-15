@@ -321,10 +321,24 @@
 -(void) resultadoLogin:(NSInteger) idDominio {
     if (idDominio > 0) {
         loginExitoso = YES;
+        
+        self.datosUsuario = [DatosUsuario sharedInstance];
+        NSLog(@"Los valores de datos email es: %@ pass %@ y el red social %ld ", self.datosUsuario.auxStrSesionUser,self.datosUsuario.auxStrSesionPass, (long)self.datosUsuario.auxSesionFacebook);
+        // Se guarda la sesion //
+        NSUserDefaults *prefSesion = [NSUserDefaults standardUserDefaults];
+        [prefSesion setObject:self.datosUsuario.auxStrSesionUser forKey:@"strSesionUser"];
+        [prefSesion setObject:self.datosUsuario.auxStrSesionPass forKey:@"strSesionPass"];
+        [prefSesion setInteger:(long)self.datosUsuario.auxSesionFacebook forKey:@"intSesionFacebook"];
+        [prefSesion setInteger:1 forKey:@"intSesionActiva"];
+        [prefSesion synchronize];
+  
     }
     else {
         respuestaError = idDominio;
         loginExitoso = NO;
+         NSUserDefaults *prefSesion = [NSUserDefaults standardUserDefaults];
+        [prefSesion setInteger:1 forKey:@"intSesionActiva"];
+        [prefSesion synchronize];
     }
     [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
 }

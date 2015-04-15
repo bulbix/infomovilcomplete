@@ -16,7 +16,7 @@
 
 
 
-@interface CuentaViewController : InfomovilViewController <AlertViewDelegate, WS_HandlerProtocol, CuentaViewProtocol, SKProductsRequestDelegate, UIScrollViewDelegate, UITextFieldDelegate>{//SKPaymentTransactionObserver>{
+@interface CuentaViewController : InfomovilViewController <AlertViewDelegate, WS_HandlerProtocol, CuentaViewProtocol, SKProductsRequestDelegate, UIScrollViewDelegate, UITextFieldDelegate>{
     NSArray *validProducts;
     TablaDominioViewController *tablaDominio;
    

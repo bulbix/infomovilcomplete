@@ -50,9 +50,14 @@
 @implementation WS_HandlerLogin
 
 -(void) obtieneLogin:(NSString *)usuario conPassword:(NSString *)password {
+   self.datosUsuario = [DatosUsuario sharedInstance];
     if (self.redSocial == nil) {
         self.redSocial = @"";
-        
+        // 1 = Inicio sesion con facebook
+        self.datosUsuario.auxSesionFacebook = 1;
+        self.datosUsuario.auxStrSesionUser = usuario;
+        self.datosUsuario.auxStrSesionPass = password;
+       
         NSUserDefaults *prefsLogin = [NSUserDefaults standardUserDefaults];
         if( [prefsLogin integerForKey:@"intRecordar"] == 1){
             // 1.- si quiere recordar usuario
@@ -61,8 +66,14 @@
             [prefsLogin setObject:password forKey:@"strRecordarPass"];
             [prefsLogin synchronize];
         }
+    }else{
+        // 2 = Inicio de sesion con Email
+        self.datosUsuario.auxSesionFacebook = 2;
+        self.datosUsuario.auxStrSesionUser = usuario;
+        self.datosUsuario.auxStrSesionPass = @"";
+    
     }
-   
+    
     
     
     

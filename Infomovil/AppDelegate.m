@@ -19,6 +19,7 @@
 #import "RageIAPHelper.h"
 #import <FacebookSDK/FacebookSDK.h>
 #import "iVersion.h"
+#import "SesionIniciadaViewController.h"
 #import <HockeySDK/HockeySDK.h>
 
 
@@ -78,8 +79,19 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
 	[GPPSignIn sharedInstance].clientID = kClientId;
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
-    InicioViewController *inicioController = [[InicioViewController alloc] initWithNibName:@"InicioViewController" bundle:nil];
+    
+    SesionIniciadaViewController *inicioController = [[SesionIniciadaViewController alloc] initWithNibName:@"SesionIniciadaViewController" bundle:nil];
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:inicioController];
+    /*
+    NSUserDefaults *prefSesion = [NSUserDefaults standardUserDefaults];
+    if([prefSesion integerForKey:@"intSesionActiva"] == 1){
+        SesionIniciadaViewController *inicioController = [[SesionIniciadaViewController alloc] initWithNibName:@"SesionIniciadaViewController" bundle:nil];
+        self.navigationController = [[UINavigationController alloc] initWithRootViewController:inicioController];
+    }else{
+        InicioViewController *inicioController = [[InicioViewController alloc] initWithNibName:@"InicioViewController" bundle:nil];
+        self.navigationController = [[UINavigationController alloc] initWithRootViewController:inicioController];
+    }
+    */
     self.window.rootViewController = self.navigationController;
     [self.window makeKeyAndVisible];
     self.ultimoView = Nil;
@@ -92,8 +104,6 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
     [[GAI sharedInstance] trackerWithTrackingId:@"UA-53077061-2"];
 	
     if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {
-        
-        // If there's one, just open the session silently, without showing the user the login UI
         [FBSession openActiveSessionWithReadPermissions:@[@"public_profile"]
                                            allowLoginUI:NO
                                       completionHandler:^(FBSession *session, FBSessionState state, NSError *error) {

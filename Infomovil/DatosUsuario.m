@@ -151,6 +151,10 @@
     self.descripcionDominio = Nil;
     self.plantilla = Nil;
     self.imgGaleriaArray = Nil;
+    self.auxStrSesionUser = Nil;
+    self.auxStrSesionPass = Nil;
+    
+    
 }
 
 @end

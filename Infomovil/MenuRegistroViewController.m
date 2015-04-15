@@ -448,6 +448,17 @@
         idDominio = idDominioLogin;
         existeUsuario = YES;
         self.datosUsuario.redSocial = @"Facebook";
+        
+        self.datosUsuario = [DatosUsuario sharedInstance];
+        NSLog(@"Los valores de datos email es: %@ pass %@ y el red social %ld ", self.datosUsuario.auxStrSesionUser,self.datosUsuario.auxStrSesionPass, (long)self.datosUsuario.auxSesionFacebook);
+        // Se guarda la sesion //
+        NSUserDefaults *prefSesion = [NSUserDefaults standardUserDefaults];
+        [prefSesion setObject:self.datosUsuario.auxStrSesionUser forKey:@"strSesionUser"];
+        [prefSesion setObject:self.datosUsuario.auxStrSesionPass forKey:@"strSesionPass"];
+        [prefSesion setInteger:(long)self.datosUsuario.auxSesionFacebook forKey:@"intSesionFacebook"];
+        [prefSesion setInteger:1 forKey:@"intSesionActiva"];
+        [prefSesion synchronize];
+        
     }
     else {
         respuestaError = idDominioLogin;

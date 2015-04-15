@@ -800,6 +800,8 @@
 		BFED496C1AAFBB4C009E33A9 /* btn_RegistroFacebook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFED49681AAFBB4C009E33A9 /* btn_RegistroFacebook@2x.png */; };
 		BFED496D1AAFBB4C009E33A9 /* btn_RegistroFacebook@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFED49691AAFBB4C009E33A9 /* btn_RegistroFacebook@3x.png */; };
 		BFED496E1AAFBB4C009E33A9 /* btn_RegistroFacebook_copia.png in Resources */ = {isa = PBXBuildFile; fileRef = BFED496A1AAFBB4C009E33A9 /* btn_RegistroFacebook_copia.png */; };
+		BFF628AF1ADD94CC00173F5F /* SesionIniciadaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF628AD1ADD94CC00173F5F /* SesionIniciadaViewController.m */; };
+		BFF628B01ADD94CC00173F5F /* SesionIniciadaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFF628AE1ADD94CC00173F5F /* SesionIniciadaViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1870,6 +1872,9 @@
 		BFED49681AAFBB4C009E33A9 /* btn_RegistroFacebook@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_RegistroFacebook@2x.png"; sourceTree = "<group>"; };
 		BFED49691AAFBB4C009E33A9 /* btn_RegistroFacebook@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_RegistroFacebook@3x.png"; sourceTree = "<group>"; };
 		BFED496A1AAFBB4C009E33A9 /* btn_RegistroFacebook_copia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_RegistroFacebook_copia.png; sourceTree = "<group>"; };
+		BFF628AC1ADD94CC00173F5F /* SesionIniciadaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SesionIniciadaViewController.h; sourceTree = "<group>"; };
+		BFF628AD1ADD94CC00173F5F /* SesionIniciadaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SesionIniciadaViewController.m; sourceTree = "<group>"; };
+		BFF628AE1ADD94CC00173F5F /* SesionIniciadaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SesionIniciadaViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2738,6 +2743,9 @@
 				BF6378691AA7718900AD052A /* IrAMiSitioViewController.h */,
 				BF63786A1AA7718900AD052A /* IrAMiSitioViewController.m */,
 				BF6378671AA7716C00AD052A /* IrAMisitio.xib */,
+				BFF628AC1ADD94CC00173F5F /* SesionIniciadaViewController.h */,
+				BFF628AD1ADD94CC00173F5F /* SesionIniciadaViewController.m */,
+				BFF628AE1ADD94CC00173F5F /* SesionIniciadaViewController.xib */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -3953,6 +3961,7 @@
 				0F9F52C2189890C6000F9FA5 /* cpinterest.png in Resources */,
 				BFA858901AA018AE00A9CB6F /* Default-568h@2x-iphone.png in Resources */,
 				0F5244F218FE037D001902E6 /* sbarnuevo@2x.png in Resources */,
+				BFF628B01ADD94CC00173F5F /* SesionIniciadaViewController.xib in Resources */,
 				0F9F535618989413000F9FA5 /* usuario@2x.png in Resources */,
 				0F68945C18E53E3800025050 /* btniniciarsesion@2x.png in Resources */,
 				BF15BD671AA54DD2009A6398 /* bgPro@2x.png in Resources */,
@@ -4133,6 +4142,7 @@
 				0F59473A1891F6700045EA85 /* PECropView.m in Sources */,
 				6501151E191D4707004D90EA /* GTLQueryPlus.m in Sources */,
 				0F079C0D187228A5007AFCC2 /* UIColor+GetHSB.m in Sources */,
+				BFF628AF1ADD94CC00173F5F /* SesionIniciadaViewController.m in Sources */,
 				65011528191D4707004D90EA /* GTMHTTPFetchHistory.m in Sources */,
 				0F9F526B189838EE000F9FA5 /* ETActivityIndicatorView.m in Sources */,
 				68C200CD19F965610062B2D3 /* TablaDominioViewController.m in Sources */,

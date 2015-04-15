@@ -44,8 +44,6 @@
 {
     [super viewDidLoad];
   
-    
-   // [self.vistaInferior setHidden:YES];
 	
 	if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
 		
@@ -235,17 +233,6 @@
 
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
--(void) realizaConsultaItems {
-    WS_ItemsDominio *itemsDominio = [[WS_ItemsDominio alloc] init];
-    [itemsDominio actualizarItemsDominio];
-}
-
 - (IBAction)probarInfomovil:(UIButton *)sender {
     self.datosUsuario = [DatosUsuario sharedInstance];
     [self enviarEventoGAconCategoria:@"Pruebalo" yEtiqueta:@"pruebalo"];
@@ -301,162 +288,6 @@
     [self.navigationController presentViewController:navController animated:YES completion:Nil];
 }
 
--(void) mostrarActivity {
-    self.alerta = [AlertView initWithDelegate:self message:NSLocalizedString(@"cargando", Nil) andAlertViewType:AlertViewTypeActivity];
-    [self.alerta show];
-}
--(void) ocultarActivity {
-    self.datosUsuario = [DatosUsuario sharedInstance];
-    if (buscandoSesion) {
-       /*if (existeUnaSesion) {
-        if (self.alerta)
-            {
-                [NSThread sleepForTimeInterval:1];
-                [self.alerta hide];
-            }
-            self.alerta = [AlertView initWithDelegate:self message:NSLocalizedString(@"txtMsjSessionActiva", Nil) andAlertViewType:AlertViewTypeInfo3];
-            [self.alerta show];
-        }
-        else {
-            buscandoSesion = NO;
-            [self performSelectorInBackground:@selector(consultaLogin) withObject:Nil];
-        }
-        */
-        buscandoSesion = NO;
-        [self performSelectorInBackground:@selector(consultaLogin) withObject:Nil];
-
-        
-    }
-    else {
-    if (loginExitoso) {
-        self.datosUsuario.existeLogin = YES;
-        ((AppDelegate*)[[UIApplication sharedApplication] delegate]).existeSesion = YES;
-        MenuPasosViewController *menuPasos = [[MenuPasosViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:nil];
-        [self.navigationController pushViewController:menuPasos animated:YES];
-    }
-    else {
-        
-        self.datosUsuario.existeLogin = NO;
-        [StringUtils deleteResourcesWithExtension:@"jpg"];
-        [StringUtils deleteFile];
-        [self.datosUsuario eliminarDatos];
-        NSString *strMensaje;
-        switch (respuestaError) {
-            case -4:
-                strMensaje = NSLocalizedString(@"txtCuentaCancelada", Nil);
-                break;
-            case -3:
-                strMensaje = NSLocalizedString(@"errorLogin", Nil);
-                break;
-            case -2:
-                strMensaje = NSLocalizedString(@"errorLogin", Nil);
-                break;
-            case 0:
-                strMensaje = NSLocalizedString(@"errorLogin", Nil);
-                break;
-            default:
-                strMensaje = NSLocalizedString(@"ocurrioError", Nil);
-                break;
-        }
-        self.datosUsuario.existeLogin = NO;
-        AlertView *alertaError = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"error", Nil) message:strMensaje dominio:Nil andAlertViewType:AlertViewTypeInfo];
-        [alertaError show];
-    }
-        if (self.alerta)
-        {
-            [NSThread sleepForTimeInterval:1];
-            [self.alerta hide];
-        }
-    }
-}
-
--(void) consultaLogin {
-    self.datosUsuario = [DatosUsuario sharedInstance];
-    if (buscandoSesion) {
-        WS_HandlerDominio *handlerDominio = [[WS_HandlerDominio alloc] init];
-        [handlerDominio setWSHandlerDelegate:self];
-        [handlerDominio consultaSession:self.datosUsuario.emailUsuario ];
-    }
-    else {
-    [StringUtils deleteResourcesWithExtension:@"jpg"];
-    [StringUtils deleteFile];
-    
-    WS_HandlerLogin *login = [[WS_HandlerLogin alloc] init];
-    [login setLoginDelegate:self];
-    [login obtieneLogin:self.datosUsuario.emailUsuario conPassword:self.datosUsuario.passwordUsuario];
-    }
-}
-
-
--(void) resultadoConsultaDominio:(NSString *)resultado {
-    if ([resultado isEqualToString:@"Exito"]) {
-        existeUnaSesion = YES;
-    }
-    else {
-        existeUnaSesion = NO;
-    }
-    [self performSelectorInBackground:@selector(ocultarActivity) withObject:Nil];
-}
-
--(void) resultadoLogin:(NSInteger) idDominio {
-    if (idDominio > 0) {
-        loginExitoso = YES;
-    }
-    else {
-        respuestaError = idDominio;
-        loginExitoso = NO;
-    }
-    [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
-}
-
--(void) errorConsultaWS {
-    [self performSelectorOnMainThread:@selector(errorLogin) withObject:Nil waitUntilDone:YES];
-}
--(void) errorLogin {
-    if (self.alerta)
-    {
-        [NSThread sleepForTimeInterval:1];
-        [self.alerta hide];
-    }
-    [[AlertView initWithDelegate:Nil message:NSLocalizedString(@"ocurrioError", Nil) andAlertViewType:AlertViewTypeInfo] show];
-}
-
--(void) itemsActualizados:(BOOL)estado{
-	if(estado){
-        if (self.alerta)
-        {
-            [NSThread sleepForTimeInterval:1];
-            [self.alerta hide];
-        }
-		self.datosUsuario = [DatosUsuario sharedInstance];
-		if (self.datosUsuario.existeLogin) {
-			[StringUtils deleteResourcesWithExtension:@"jpg"];
-			[StringUtils deleteFile];
-			[self.datosUsuario eliminarDatos];
-		}
-		((AppDelegate*)[[UIApplication sharedApplication] delegate]).existeSesion = NO;
-		MenuPasosViewController *menuPasos = [[MenuPasosViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:nil];
-		[self.navigationController pushViewController:menuPasos animated:YES];
-	}else{
-		if (self.alerta)
-        {
-            [NSThread sleepForTimeInterval:1];
-            [self.alerta hide];
-        }
-		AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
-		[alert show];
-	}
-}
-
-#pragma mark AlertViewDelegate
--(void) accionAceptar2 {
-    buscandoSesion = NO;
-    [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
-    [self performSelectorInBackground:@selector(consultaLogin) withObject:Nil];
-}
--(void) accionCancelar {
-}
-
 - (IBAction)conoceMasAct:(id)sender {
     [self videoConoceMas];
 }
@@ -468,8 +299,11 @@
 -(void)videoConoceMas{
     VerTutorialViewController *verTutorial = [[VerTutorialViewController alloc] initWithNibName:@"VerTutorialViewController" bundle:nil];
     [self.navigationController pushViewController:verTutorial animated:YES];
-
+    
 }
+
+
+
 
 
 @end
