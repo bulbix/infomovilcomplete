@@ -24,6 +24,7 @@
 #import "AppDelegate.h"
 #import "AppboyKit.h"
 #import "ElegirPlantillaViewController.h"
+#import "InicioViewController.h"
 
 
 #define IS_IPHONE5 (([[UIScreen mainScreen] bounds].size.height-568)?NO:YES)
@@ -47,7 +48,7 @@
 	
     [super viewDidLoad];
     
-    //MBC
+   
     if(IS_STANDARD_IPHONE_6){
         self.botonFondo.frame = CGRectMake(45, 50, 270, 53);
         self.botonCrear.frame = CGRectMake(45, 140, 270, 53);
@@ -95,20 +96,24 @@
 	
     self.datosUsuario				= [DatosUsuario sharedInstance];
     self.datosUsuario.editoPagina	= NO;
-    [self.navigationItem hidesBackButton];
-    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion)
-	{
-        self.navigationItem.backBarButtonItem	= Nil;
-        self.navigationItem.leftBarButtonItem	= Nil;
-        self.navigationItem.hidesBackButton		= YES;
-    }
     
-    self.navigationItem.rightBarButtonItem = Nil;
+        [self.navigationItem setHidesBackButton:YES animated:NO];
+        self.navigationItem.backBarButtonItem	= nil;
+        self.navigationItem.rightBarButtonItem = Nil;
+        self.navigationItem.hidesBackButton		= YES;
+        self.navigationItem.leftBarButtonItem	= nil;
+        UIBarButtonItem *newBackButton =
+        [[UIBarButtonItem alloc] initWithTitle:@""
+                                     style:UIBarButtonItemStyleBordered
+                                    target:nil
+                                    action:nil];
+        [[self navigationItem] setBackBarButtonItem:newBackButton];
+
+    
+    
 	
 	((AppDelegate *)[[UIApplication sharedApplication] delegate]).ultimoView = self;
 	
-	
-	self.navigationItem.hidesBackButton = YES;
     UIImage *image = [UIImage imageNamed:@"btnregresar.png"];
     
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -179,12 +184,16 @@
     }
     
     [self.vistaInferior setHidden:NO];
+    
+    
+  
 }
 
 
 
 
 -(void) viewWillAppear:(BOOL)animated {
+    
 	self.datosUsuario = [DatosUsuario sharedInstance];
     [super viewWillAppear:animated];
     [self.tituloVista setHidden:NO];
@@ -304,14 +313,7 @@
     
     
 }
-// IRC se deshabilito para Templates
-/*
-- (IBAction)elegirFondo:(UIButton *)sender {
 
-    ColorPickerViewController *colorPicker = [[ColorPickerViewController alloc] initWithNibName:@"ColorPickerViewController" bundle:Nil];
-    [self.navigationController pushViewController:colorPicker animated:YES];
-}
-*/
 
 - (IBAction)elegirPlantilla:(UIButton *)sender {
     ElegirPlantillaViewController *elegirPlantillaBtn = [[ElegirPlantillaViewController alloc] initWithNibName:@"ElegirPlantillaViewController" bundle:Nil];
@@ -409,15 +411,14 @@
 
     ((AppDelegate*)	[[UIApplication sharedApplication] delegate]).statusDominio = @"Gratuito";
     ((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion = NO;
-    [self.navigationController popToRootViewControllerAnimated:YES];
+   // [self.navigationController popToRootViewControllerAnimated:YES];
+    
+    InicioViewController *Inicio = [[InicioViewController alloc] initWithNibName:@"InicioViewController" bundle:Nil];
+    [self.navigationController pushViewController:Inicio animated:YES];
    
 }
 
--(void) pantallaAcomodaPublicar {
-    self.navigationItem.leftBarButtonItem = Nil;
-    [self.navigationItem setHidesBackButton:YES animated:YES];
-   
-}
+
 
 - (IBAction)IrAlDominio:(id)sender {
     if([self.dominio.titleLabel.text length] > 0){

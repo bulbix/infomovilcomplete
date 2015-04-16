@@ -76,7 +76,7 @@
         self.o.frame = CGRectMake(199, 257, 40, 20);
         self.raya2.frame = CGRectMake(215, 265, 175, 2);
         
-        [self.scrollLogin setContentSize:CGSizeMake(540, 880)];
+        [self.scrollLogin setContentSize:CGSizeMake(414, 500)];
         self.txtEmail.frame = CGRectMake(20,300, 375, 47);
         self.txtPassword.frame = CGRectMake(20, 355, 375, 47);
         self.boton.frame = CGRectMake(20, 460, 375, 50);
@@ -502,10 +502,13 @@
 -(void) desapareceElTeclado:(NSNotification *)aNotificacion {
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.3];
-    UIEdgeInsets edgeInsets = UIEdgeInsetsZero;
-    [[self scrollLogin] setContentInset:edgeInsets];
-    [[self scrollLogin] setScrollIndicatorInsets:edgeInsets];
+    CGPoint pt;
+    pt.x = 0;
+    pt.y = 0;
+    [self.scrollLogin setContentOffset:pt animated:YES];
     [UIView commitAnimations];
+    
+   
 }
 
 #pragma mark Keyboard Controls Delegate

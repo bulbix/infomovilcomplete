@@ -9,7 +9,7 @@
 #import "InfomovilViewController.h"
 #import "WS_HandlerProtocol.h"
 #import "WS_HandlerLogin.h"
-@interface MenuPasosViewController : InfomovilViewController <AlertViewDelegate, WS_HandlerProtocol,UIWebViewDelegate>
+@interface MenuPasosViewController : InfomovilViewController <AlertViewDelegate, WS_HandlerProtocol,UIWebViewDelegate ,UINavigationControllerDelegate, UINavigationBarDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *botonFondo;
 @property (weak, nonatomic) IBOutlet UIButton *botonCrear;

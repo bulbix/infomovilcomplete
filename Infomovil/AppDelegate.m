@@ -19,7 +19,7 @@
 #import "RageIAPHelper.h"
 #import <FacebookSDK/FacebookSDK.h>
 #import "iVersion.h"
-#import "SesionIniciadaViewController.h"
+#import "SesionActivaViewController.h"
 #import <HockeySDK/HockeySDK.h>
 
 
@@ -80,18 +80,17 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     
-    SesionIniciadaViewController *inicioController = [[SesionIniciadaViewController alloc] initWithNibName:@"SesionIniciadaViewController" bundle:nil];
-    self.navigationController = [[UINavigationController alloc] initWithRootViewController:inicioController];
-    /*
+   
+    
     NSUserDefaults *prefSesion = [NSUserDefaults standardUserDefaults];
     if([prefSesion integerForKey:@"intSesionActiva"] == 1){
-        SesionIniciadaViewController *inicioController = [[SesionIniciadaViewController alloc] initWithNibName:@"SesionIniciadaViewController" bundle:nil];
+        SesionActivaViewController *inicioController = [[SesionActivaViewController alloc] initWithNibName:@"SesionActiva" bundle:nil];
         self.navigationController = [[UINavigationController alloc] initWithRootViewController:inicioController];
     }else{
         InicioViewController *inicioController = [[InicioViewController alloc] initWithNibName:@"InicioViewController" bundle:nil];
         self.navigationController = [[UINavigationController alloc] initWithRootViewController:inicioController];
     }
-    */
+    
     self.window.rootViewController = self.navigationController;
     [self.window makeKeyAndVisible];
     self.ultimoView = Nil;
