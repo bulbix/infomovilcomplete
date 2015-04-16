@@ -77,28 +77,23 @@
 }
 
 -(void)resultadoLogin:(NSInteger)idDominio{
+#if DEBUG
     NSLog(@"Regreso resultadoLogin con Dominio %i", idDominio);
+#endif
     if (idDominio > 0) {
         ((AppDelegate*) [[UIApplication sharedApplication] delegate]).logueado =YES;
         MenuPasosViewController *menuPasos = [[MenuPasosViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:nil];
         [self.navigationController pushViewController:menuPasos animated:YES];
-        
-    }
-    else {
-
+    }else {
         AlertView *alerta = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
         [alerta show];
         [self mostrarBotones];
     }
-   
    [self performSelectorOnMainThread:@selector(ocultarActividad) withObject:nil waitUntilDone:NO];
-   
 }
 
 -(void) errorConsultaWS { NSLog(@"Regreso error en la consulta!!");
-   
     [self performSelectorOnMainThread:@selector(ocultarActividad) withObject:nil waitUntilDone:NO];
-   
     if([self ExisteAlertaAbierta])
     {
         AlertView *alerta = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];

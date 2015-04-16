@@ -73,10 +73,6 @@
         self.datosUsuario.auxStrSesionPass = @"";
     
     }
-    
-    
-    
-    
     NSString *version = versionDefault;
     NSString *stringXML;
         stringXML = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.webservice.infomovil.org/\">"
@@ -115,6 +111,7 @@
     if (dataResult != nil) {
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
         [parser setDelegate:self];
+        NSLog(@"WS_HandlerLogin: La Respuesta es %s", [dataResult bytes]);
         self.datosUsuario = [DatosUsuario sharedInstance];
         self.arregloContactos = [[NSMutableArray alloc] init];
         self.arregloImagenes = [[NSMutableArray alloc] init];
@@ -122,9 +119,6 @@
         self.datosUsuario.imgGaleriaArray = [[NSMutableArray alloc] init];
         self.datosUsuario.logoImg = [[NSString alloc] init];
         hayPerfil = NO;
-        
-    
-        
         self.arregloPerfil = [[NSMutableArray alloc] initWithArray:@[[[KeywordDataModel alloc] init], [[KeywordDataModel alloc] init], [[KeywordDataModel alloc] init], [[KeywordDataModel alloc] init], [[KeywordDataModel alloc] init], [[KeywordDataModel alloc] init], [[KeywordDataModel alloc] init]]];
         self.arregloAdicional = [[NSMutableArray alloc] init];
         self.diccionarioInformacion = [[NSDictionary alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"CatalogoInformacion" ofType:@"plist"]];
