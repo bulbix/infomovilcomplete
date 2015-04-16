@@ -383,10 +383,7 @@
 }
 
 -(IBAction)presionarSi:(id)sender {
-//    if ([self.delegado respondsToSelector:@selector(accionSi)]) {
-//        [self.delegado accionSi];
-//		
-//    }
+
 	[self performSelectorInBackground:@selector(ejecutaSelector) withObject:NULL];
 	[self hide];
     

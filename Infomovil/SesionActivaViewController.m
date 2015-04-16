@@ -20,9 +20,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.alerta = [AlertView initWithDelegate:self message:Nil andAlertViewType:AlertViewTypeActivity];
-    [self.alerta show];
     
+    [self.btnReintentarConexion setEnabled:YES];
     NSString *passLogin = nil;
     NSString *emailLogin = nil;
     NSUserDefaults *prefSesion = [NSUserDefaults standardUserDefaults];
@@ -36,6 +35,7 @@
     passLogin = [prefSesion stringForKey:@"strSesionPass"];
     emailLogin = [prefSesion stringForKey:@"strSesionUser"];
     [login obtieneLogin:emailLogin conPassword:passLogin];
+    [self performSelectorOnMainThread:@selector(mostrarActividad) withObject:nil waitUntilDone:YES];
     [self mostrarLogo];
     [self.vistaInferior setHidden:YES];
     [self.navigationController.navigationBar setHidden:YES];
@@ -88,24 +88,29 @@
 
         AlertView *alerta = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
         [alerta show];
-        [self.btnReintentarConexion setHidden:NO];
-        [self.imgLine setHidden:NO];
-        [self.btnSesionOtraCuenta setHidden:NO];
+        [self mostrarBotones];
     }
    
-    [self.alerta hide];
+   [self performSelectorOnMainThread:@selector(ocultarActividad) withObject:nil waitUntilDone:NO];
+   
 }
 
 -(void) errorConsultaWS { NSLog(@"Regreso error en la consulta!!");
-    AlertView *alertaConexion = [AlertView initWithDelegate:nil message:NSLocalizedString(@"noConexion", Nil) andAlertViewType:AlertViewTypeInfo];
-    [alertaConexion show];
-    
-    [self.alerta hide];
+   
+    [self performSelectorOnMainThread:@selector(ocultarActividad) withObject:nil waitUntilDone:NO];
+   
+    if([self ExisteAlertaAbierta])
+    {
+        AlertView *alerta = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+        [alerta show];
+    }
+    [self mostrarBotones];
 }
 
 
 - (IBAction)ReintentarConexion:(id)sender {
     if ([CommonUtils hayConexion]) {
+        [self.btnReintentarConexion setEnabled:NO];
         NSString *passLogin = nil;
         NSString *emailLogin = nil;
         NSUserDefaults *prefSesion = [NSUserDefaults standardUserDefaults];
@@ -115,11 +120,10 @@
         if ( [prefSesion integerForKey:@"intSesionFacebook"] == 1){
             [login setRedSocial:@"Facebook"];
         }
-    
         passLogin = [prefSesion stringForKey:@"strSesionPass"];
         emailLogin = [prefSesion stringForKey:@"strSesionUser"];
-    
         [login obtieneLogin:emailLogin conPassword:passLogin];
+        [self performSelectorOnMainThread:@selector(mostrarActividad) withObject:nil waitUntilDone:YES];
     }else{
         AlertView *alerta = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
         [alerta show];
@@ -127,12 +131,30 @@
     
 }
 
+
+-(void)mostrarActividad{
+    self.alerta = [AlertView initWithDelegate:self message:@"Actualizando datos" andAlertViewType:AlertViewTypeActivity];
+    [self.alerta show];
+}
+
+-(void)ocultarActividad{
+    
+    [self.alerta hide];
+}
+
+
 - (IBAction)IniciarSesionConOtraCuenta:(id)sender {
     InicioViewController *Inicio = [[InicioViewController alloc] initWithNibName:@"InicioViewController" bundle:Nil];
     [self.navigationController pushViewController:Inicio animated:YES];
     
 }
 
+-(void)mostrarBotones{
+    [self.btnReintentarConexion setEnabled:YES];
+    [self.btnReintentarConexion setHidden:NO];
+    [self.imgLine setHidden:NO];
+    [self.btnSesionOtraCuenta setHidden:NO];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -142,6 +164,18 @@
     self.navigationItem.leftBarButtonItem = Nil;
     [self.navigationItem setHidesBackButton:YES animated:YES];
     
+}
+
+- (BOOL) ExisteAlertaAbierta {
+    for (UIWindow* window in [UIApplication sharedApplication].windows) {
+        for (UIView* view in window.subviews) {
+            BOOL alert = [view isKindOfClass:[UIAlertView class]];
+            BOOL action = [view isKindOfClass:[UIActionSheet class]];
+            if (alert || action)
+                return YES;
+        }
+    }
+    return NO;
 }
 
 
