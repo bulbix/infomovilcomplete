@@ -8,6 +8,7 @@
 
 #import "VistaVideoViewController.h"
 #import "WS_HandlerVideo.h"
+#import "InicioViewController.h"
 
 @interface VistaVideoViewController () {
     NSString *idVideoSel;
@@ -151,15 +152,10 @@
     self.datosUsuario.urlVideo = self.videoSeleccionado.linkSolo;//[NSString stringWithFormat:@"//www.youtube.com/embed/%@", idVideoSel];
     [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:6 withObject:@YES];
     self.modifico = NO;
-    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion) {
+    
         [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
         [self performSelectorInBackground:@selector(agregarVideo) withObject:Nil];
-    }
-    else {
-        NSArray *vcs = [self.navigationController viewControllers];
-        [self.navigationController popToViewController:[vcs objectAtIndex:vcs.count-3] animated:YES];
-		[self revertirGuardado];
-    }
+    
 }
 
 -(void) accionNo {
@@ -174,15 +170,10 @@
     self.datosUsuario.urlVideo = self.videoSeleccionado.linkSolo; //[NSString stringWithFormat:@"//www.youtube.com/embed/%@", idVideoSel];
     [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:6 withObject:@YES];
     self.modifico = NO;
-    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion) {
+   
         [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
         [self performSelectorInBackground:@selector(agregarVideo) withObject:Nil];
-    }
-    else {
-        NSArray *vcs = [self.navigationController viewControllers];
-        [self.navigationController popToViewController:[vcs objectAtIndex:vcs.count-3] animated:YES];
-		[self revertirGuardado];
-    }
+    
 }
 
 -(void) accionAceptar {
@@ -213,23 +204,11 @@
 }
 
 -(void) agregarVideo {
-    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).itIsInTime) {
-        [((AppDelegate *)[[UIApplication sharedApplication] delegate]) restartDate];
+  
         WS_HandlerVideo *handlerVideo = [[WS_HandlerVideo alloc] init];
         [handlerVideo setVideoDelegate:self];
         [handlerVideo insertarVideo];
-    }
-    else {
-        if (self.alertVideo)
-        {
-            [NSThread sleepForTimeInterval:1];
-            [self.alertVideo hide];
-        }
-        self.alertVideo = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionCaduco", Nil) andAlertViewType:AlertViewTypeInfo];
-        [self.alertVideo show];
-        [StringUtils terminarSession];
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    }
+   
 }
 
 -(void) resultadoConsultaDominio:(NSString *)resultado {
@@ -249,25 +228,14 @@
         [NSThread sleepForTimeInterval:1];
         [self.alertVideo hide];
     }
-    self.alertVideo = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
-    [self.alertVideo show];
+    AlertView *alertAct = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
+    [alertAct show];
     [StringUtils terminarSession];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    
+    InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
+    [self.navigationController pushViewController:inicio animated:YES];
 }
--(void) sessionTimeout
-{
-    if (self.alertVideo)
-    {
-        [NSThread sleepForTimeInterval:1];
-        [self.alertVideo hide];
-    }
-    self.alertVideo = [AlertView initWithDelegate:Nil
-                                             message:NSLocalizedString(@"sessionCaduco", Nil)
-                                    andAlertViewType:AlertViewTypeInfo];
-    [self.alertVideo show];
-    [StringUtils terminarSession];
-    [self.navigationController popToRootViewControllerAnimated:YES];
-}
+
 -(void) errorConsultaWS {
     [self performSelectorOnMainThread:@selector(errorActualizar) withObject:Nil waitUntilDone:YES];
 }

@@ -74,6 +74,8 @@
     UIBarButtonItem *item = [[UIBarButtonItem alloc] init];
     item.title = @"";
     self.navigationItem.backBarButtonItem = item;
+    
+    [self.vistaInferior setHidden:YES];
 }
 
 -(void)resultadoLogin:(NSInteger)idDominio{
@@ -114,6 +116,8 @@
         [login setLoginDelegate:self];
         if ( [prefSesion integerForKey:@"intSesionFacebook"] == 1){
             [login setRedSocial:@"Facebook"];
+        }else{
+            [login setRedSocial:@""];
         }
         passLogin = [prefSesion stringForKey:@"strSesionPass"];
         emailLogin = [prefSesion stringForKey:@"strSesionUser"];

@@ -111,8 +111,7 @@
                     NSString *stringResult = ([ids count] > 0) ? @"Exito" : [StringUtils desEncriptar:self.resultado conToken:datos.token];
                     if(stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]){
                         [self.contactosDelegate errorToken];
-                    } else if ([stringResult isEqualToString:@"SessionTO"])
-                        [self.contactosDelegate sessionTimeout];
+                    }
                     else{
                         [self.contactosDelegate resultadoConsultaDominio:[StringUtils desEncriptar:self.resultado conToken:datos.token]];
                     }
@@ -214,8 +213,7 @@
                 NSString *stringResult = ([ids count] > 0) ? @"Exito" : [StringUtils desEncriptar:self.resultado conToken:datos.token];
                 if ( stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                     [self.contactosDelegate errorToken];
-                } else if ([stringResult isEqualToString:@"SessionTO"])
-                    [self.contactosDelegate sessionTimeout];
+                }
                 else {
                     [self.contactosDelegate resultadoConsultaDominio:stringResult];
                 }
@@ -302,8 +300,7 @@
                 NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
                 if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0 || [stringResult isEqualToString:@"Error de token"]) {
                     [self.contactosDelegate errorToken];
-                } else if ([stringResult isEqualToString:@"SessionTO"])
-                    [self.contactosDelegate sessionTimeout];
+                }
                 else {
                     contacto.idContacto = [stringResult intValue];
                     datos.arregloContacto = self.arregloContactos;
@@ -433,12 +430,10 @@
                         [self.contactosDelegate resultadoConsultaDominio:@"Exito"];
                     }else{
                         NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
-                        if (stringResult == nil)
+                        if (stringResult == nil){
                             stringResult = [StringUtils desEncriptar:self.resultado conToken:self.token];
+                        }
                         
-                        if ([stringResult isEqualToString:@"SessionTO"])
-                            [self.contactosDelegate sessionTimeout];
-                        else
                             [self.contactosDelegate resultadoConsultaDominio:stringResult];
                     }
                 }
@@ -502,12 +497,8 @@
                 }
                 else {
                     usuarioDatos.arregloContacto = self.arregloContactos;
-                    
                     NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
-                    if ([stringResult isEqualToString:@"SessionTO"])
-                        [self.contactosDelegate sessionTimeout];
-                    else
-                        [self.contactosDelegate resultadoConsultaDominio:stringResult];
+                    [self.contactosDelegate resultadoConsultaDominio:stringResult];
                 }
 				
             }

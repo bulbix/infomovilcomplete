@@ -8,6 +8,8 @@
 
 #import "ColorPickerViewController.h"
 #import "WS_HandlerActualizarDominio.h"
+#import "InicioViewController.h"
+
 
 @interface ColorPickerViewController () {
 //    BOOL modifico;
@@ -100,7 +102,6 @@
 
 -(IBAction)guardarInformacion:(id)sender {
     colorAux = colorChip.backgroundColor;
-    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion) {
         if ([CommonUtils hayConexion]) {
 			self.datosUsuario.colorSeleccionado = colorChip.backgroundColor;
             [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
@@ -110,13 +111,7 @@
             AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
             [alert show];
         }
-    }
-    else {
-        self.datosUsuario.colorSeleccionado = colorChip.backgroundColor;
-        //self.datosUsuario.eligioColor = YES;
-        self.modifico = NO;
-        [self.navigationController popViewControllerAnimated:YES];
-    }
+   
     
 }
 
@@ -173,23 +168,11 @@
 }
 
 -(void) actualizar {
-    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).itIsInTime) {
-        [((AppDelegate *)[[UIApplication sharedApplication] delegate]) restartDate];
+  
         WS_HandlerActualizarDominio *actualizarDominio = [[WS_HandlerActualizarDominio alloc] init];
         [actualizarDominio setActualizarDominioDelegate:self];
         [actualizarDominio actualizarDominio:k_UPDATE_BACKGRUOUND];
-    }
-    else {
-        if ( self.alertActivity )
-        {
-            [NSThread sleepForTimeInterval:1];
-            [self.alertActivity hide];
-        }
-        self.alertActivity = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionCaduco", Nil) andAlertViewType:AlertViewTypeInfo];
-        [self.alertActivity show];
-        [StringUtils terminarSession];
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    }
+   
     
 }
 
@@ -223,25 +206,12 @@
         [NSThread sleepForTimeInterval:1];
         [self.alertActivity hide];
     }
-    self.alertActivity = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
-    [self.alertActivity show];
+    AlertView *alertAct = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
+    [alertAct show];
     [StringUtils terminarSession];
-    [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
+    [self.navigationController pushViewController:inicio animated:YES];
     
 }
--(void) sessionTimeout
-{
-    if ( self.alertActivity )
-    {
-        [NSThread sleepForTimeInterval:1];
-        [self.alertActivity hide];
-    }
-    self.alertActivity = [AlertView initWithDelegate:Nil
-                                             message:NSLocalizedString(@"sessionCaduco", Nil)
-                                    andAlertViewType:AlertViewTypeInfo];
-    [self.alertActivity show];
-    [StringUtils terminarSession];
-    [self.navigationController popToRootViewControllerAnimated:YES];
-}
+
 @end

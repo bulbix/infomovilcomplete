@@ -9,6 +9,7 @@
 #import "EliminarCuentaViewController.h"
 #import "WS_HandlerDominio.h"
 #import "CambiarPasswordViewController.h"
+#import "InicioViewController.h"
 
 @interface EliminarCuentaViewController () {
     BOOL selectOculto;
@@ -270,7 +271,8 @@
     }
     if (exito) {
      
-        [self.navigationController popToRootViewControllerAnimated:YES];
+        InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
+        [self.navigationController pushViewController:inicio animated:YES];
 		self.alertEliminar = [AlertView initWithDelegate:self message:NSLocalizedString(@"cuentaEliminada", nil) andAlertViewType:AlertViewTypeInfo];
 		[self.alertEliminar show];
 		
@@ -279,8 +281,7 @@
 		[StringUtils deleteFile];
 		[self.datosUsuario eliminarDatos];
 		((AppDelegate*)	[[UIApplication sharedApplication] delegate]).statusDominio = @"Gratuito";
-		((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion = NO;
-		[self.navigationController popToRootViewControllerAnimated:YES];
+	
     }
     else {
         [[AlertView initWithDelegate:Nil message:NSLocalizedString(@"errorEliminar", Nil) andAlertViewType:AlertViewTypeInfo] show];
@@ -288,8 +289,7 @@
 }
 
 -(void) eliminarCuenta {
-    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).itIsInTime) {
-        [((AppDelegate *)[[UIApplication sharedApplication] delegate]) restartDate];
+   
         WS_HandlerDominio *handlerDominio = [[WS_HandlerDominio alloc] init];
         [handlerDominio setWSHandlerDelegate:self];
         NSString *motivo;
@@ -301,18 +301,7 @@
         }
 
         [handlerDominio cancelarCuenta:motivo];
-    }
-    else {
-        if ( self.alertEliminar )
-        {
-            [NSThread sleepForTimeInterval:1];
-            [self.alertEliminar hide];
-        }
-        self.alertEliminar = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionCaduco", Nil) andAlertViewType:AlertViewTypeInfo];
-        [self.alertEliminar show];
-        [StringUtils terminarSession];
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    }
+   
 }
 
 -(void) resultadoConsultaDominio:(NSString *)resultado {
@@ -340,26 +329,15 @@
         [NSThread sleepForTimeInterval:1];
         [self.alertEliminar hide];
     }
-    self.alertEliminar = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
-    [self.alertEliminar show];
+    AlertView *alertAct = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
+    [alertAct show];
     [StringUtils terminarSession];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    
+    InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
+    [self.navigationController pushViewController:inicio animated:YES];
 }
 
--(void) sessionTimeout
-{
-    if ( self.alertEliminar )
-    {
-        [NSThread sleepForTimeInterval:1];
-        [self.alertEliminar hide];
-    }
-    self.alertEliminar = [AlertView initWithDelegate:Nil
-                                             message:NSLocalizedString(@"sessionCaduco", Nil)
-                                    andAlertViewType:AlertViewTypeInfo];
-    [self.alertEliminar show];
-    [StringUtils terminarSession];
-    [self.navigationController popToRootViewControllerAnimated:YES];
-}
+
 
 @end
 

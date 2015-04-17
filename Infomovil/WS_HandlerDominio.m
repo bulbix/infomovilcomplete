@@ -50,8 +50,7 @@
                 NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:passwordEncriptar];
                 if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                     [self.wSHandlerDelegate errorToken];
-                } else if ([stringResult isEqualToString:@"SessionTO"])
-                    [self.wSHandlerDelegate sessionTimeout];
+                } 
                 else {
                     NSLog(@"El resultado regresado es: %@", stringResult);
                     [self.wSHandlerDelegate resultadoConsultaDominio:stringResult];
@@ -73,7 +72,7 @@
 }
 
 -(void) consultaDominio:(NSString *)dominio conTipo:(NSString *)tipo {
-    DatosUsuario *datos = [DatosUsuario sharedInstance];
+   
     NSString *stringXML = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.webservice.infomovil.org/\">"
                            "<soapenv:Header/>"
                            "<soapenv:Body>"
@@ -157,8 +156,7 @@
                 NSString * stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
                 if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                     [self.wSHandlerDelegate errorToken];
-                } else if ([stringResult isEqualToString:@"SessionTO"])
-                    [self.wSHandlerDelegate sessionTimeout];
+                }
                 else {
                     NSInteger respuestaInt = [stringResult integerValue];
                     if (respuestaInt > 0) {
@@ -308,8 +306,7 @@
             NSString * stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
             if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                 [self.wSHandlerDelegate errorToken];
-            } else if ([stringResult isEqualToString:@"SessionTO"])
-                [self.wSHandlerDelegate sessionTimeout];
+            }
             else {
                 NSInteger respuestaInt = [stringResult integerValue];
                 if (respuestaInt > 0) {
@@ -418,8 +415,7 @@
                 NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
                 if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                     [self.wSHandlerDelegate errorToken];
-                } else if ([stringResult isEqualToString:@"SessionTO"])
-                    [self.wSHandlerDelegate sessionTimeout];
+                }
                 else {
                     [self.wSHandlerDelegate resultadoConsultaDominio:stringResult];
                 }
@@ -478,8 +474,7 @@
                 NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
                 if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                     [self.wSHandlerDelegate errorToken];
-                } else if ([stringResult isEqualToString:@"SessionTO"])
-                    [self.wSHandlerDelegate sessionTimeout];
+                }
                 else {
                     [self.wSHandlerDelegate resultadoConsultaDominio:stringResult];
                 }
@@ -543,8 +538,7 @@
                 NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
                 if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                     [self.wSHandlerDelegate errorToken];
-                } else if ([stringResult isEqualToString:@"SessionTO"])
-                    [self.wSHandlerDelegate sessionTimeout];
+                }
                 else {
                     [self.wSHandlerDelegate resultadoConsultaDominio:stringResult];
                 }
@@ -647,8 +641,7 @@
                 NSString * stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
                 if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                     [self.wSHandlerDelegate errorToken];
-                } else if ([stringResult isEqualToString:@"SessionTO"])
-                    [self.wSHandlerDelegate sessionTimeout];
+                }
                 else {
                     datos.fechaInicialTel = [NSDateFormatter changeDateFormatOfString:[StringUtils desEncriptar:self.fechaInicio
                                                                                                        conToken:datos.token]

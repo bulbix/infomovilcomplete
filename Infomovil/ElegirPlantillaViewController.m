@@ -10,6 +10,8 @@
 #import "PlantillaViewController.h"
 #import "VerEjemploPlantillaViewController.h"
 #import "WS_HandlerActualizarDominio.h"
+#import "MenuPasosViewController.h"
+#import "InicioViewController.h"
 
 @interface ElegirPlantillaViewController (){
 BOOL actualizo;
@@ -208,8 +210,6 @@ BOOL actualizo;
 }
 
 -(void)irVerEjemplo:(UIButton*)sender{
-       
-    
     switch (sender.tag) {
         case 0:{
                 VerEjemploPlantillaViewController *verEjemplo = [[VerEjemploPlantillaViewController alloc]  initWithNibName:@"VerEjemploPlantillaViewController" bundle:Nil];
@@ -270,6 +270,7 @@ BOOL actualizo;
 
 
 -(void)guardarTemplate:(id)sender {
+    NSLog(@"La plantilla es: %i", self.plantillaAPublicar);
     self.datosUsuario = [DatosUsuario sharedInstance];
     switch (self.plantillaAPublicar) {
         case 0:{
@@ -297,7 +298,7 @@ BOOL actualizo;
     }
    
         
-    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion) {
+   
         if ([CommonUtils hayConexion]) {
        
             [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
@@ -307,12 +308,7 @@ BOOL actualizo;
             AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
             [alert show];
         }
-    }
-    else {
-  
-        self.modifico = NO;
-        [self.navigationController popViewControllerAnimated:YES];
-    }
+   
     
 }
 
@@ -331,7 +327,9 @@ BOOL actualizo;
     if (actualizo) {
         self.alertActivity = [AlertView initWithDelegate:self message:NSLocalizedString(@"actualizacionCorrecta", Nil) andAlertViewType:AlertViewTypeInfo];
         [self.alertActivity show];
-        [self.navigationController popViewControllerAnimated:YES];
+
+        MenuPasosViewController *menuPasos = [[MenuPasosViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:nil];
+        [self.navigationController pushViewController:menuPasos animated:YES];
     }
 }
 
@@ -340,6 +338,7 @@ BOOL actualizo;
 
 
 -(void) resultadoConsultaDominio:(NSString *)resultado {
+    NSLog(@"EL RESULTADO EN resultadoConsultaDominio %@", resultado);
     self.datosUsuario = [DatosUsuario sharedInstance];
     if ([resultado isEqualToString:@"Exito"]) {
         actualizo = YES;
@@ -347,15 +346,16 @@ BOOL actualizo;
     }
     else {
         actualizo = NO;
+        NSLog(@"NO ACTUALIZO");
     }
     [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
 }
 
--(void) errorConsultaWS {
+-(void) errorConsultaWS { NSLog(@"ENTRO A ERROR CONSULTAWS");
     [self performSelectorOnMainThread:@selector(errorActualizar) withObject:Nil waitUntilDone:YES];
 }
 
--(void) errorActualizar {
+-(void) errorActualizar { NSLog(@"ENTRO A ERROR ACTUALIZAR");
     if ( self.alertActivity )
     {
         [NSThread sleepForTimeInterval:1];
@@ -365,54 +365,27 @@ BOOL actualizo;
     [[AlertView initWithDelegate:Nil message:NSLocalizedString(@"errorActualizacion", Nil) andAlertViewType:AlertViewTypeInfo] show];
     [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
 }
--(void) errorToken {
+-(void) errorToken { 
     if ( self.alertActivity )
     {
         [NSThread sleepForTimeInterval:1];
         [self.alertActivity hide];
     }
-    self.alertActivity = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
-    [self.alertActivity show];
+    AlertView *alertAct = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
+    [alertAct show];
     [StringUtils terminarSession];
-    [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
+    [self.navigationController pushViewController:inicio animated:YES];
     
 }
--(void) sessionTimeout
-{
-    if ( self.alertActivity )
-    {
-        [NSThread sleepForTimeInterval:1];
-        [self.alertActivity hide];
-    }
-    self.alertActivity = [AlertView initWithDelegate:Nil
-                                             message:NSLocalizedString(@"sessionCaduco", Nil)
-                                    andAlertViewType:AlertViewTypeInfo];
-    [self.alertActivity show];
-    [StringUtils terminarSession];
-    [self.navigationController popToRootViewControllerAnimated:YES];
-}
+
 
 
 -(void) actualizar {
-    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).itIsInTime) {
-        [((AppDelegate *)[[UIApplication sharedApplication] delegate]) restartDate];
         WS_HandlerActualizarDominio *actualizarDominio = [[WS_HandlerActualizarDominio alloc] init];
         [actualizarDominio setActualizarDominioDelegate:self];
         [actualizarDominio actualizarDominio:k_UPDATE_TEMPLATE ];
-    }
-    else {
-        if ( self.alertActivity )
-        {
-            [NSThread sleepForTimeInterval:1];
-            [self.alertActivity hide];
-        }
-        self.alertActivity = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionCaduco", Nil) andAlertViewType:AlertViewTypeInfo];
-        [self.alertActivity show];
-        [StringUtils terminarSession];
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    }
-    
+   
 }
 
 

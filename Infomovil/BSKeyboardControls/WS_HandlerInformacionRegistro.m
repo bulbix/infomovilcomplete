@@ -98,8 +98,7 @@
                 NSString *stringResult = [StringUtils desEncriptar:self.currentElementString conToken:datos.token];
                 if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                     [self.informacionRegistroDelegate errorToken];
-                }else if ([stringResult isEqualToString:@"SessionTO"])
-                    [self.informacionRegistroDelegate sessionTimeout];
+                }
                 else {
                     [self.informacionRegistroDelegate resultadoInformacionRegistro:stringResult];
                 }

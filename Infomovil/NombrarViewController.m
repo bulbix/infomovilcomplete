@@ -12,6 +12,7 @@
 #import "CompartirPublicacionViewController.h"
 #import "MenuPasosViewController.h"
 #import "WS_HandlerPublicar.h"
+#import "InicioViewController.h"
 
 @interface NombrarViewController () {
 //    BOOL modifico;
@@ -216,8 +217,9 @@
 		[StringUtils deleteFile];
 		[self.datosUsuario eliminarDatos];
 		((AppDelegate*)	[[UIApplication sharedApplication] delegate]).statusDominio = @"Gratuito";
-		((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion = NO;
-		[self.navigationController popToRootViewControllerAnimated:YES];
+		
+        InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
+        [self.navigationController pushViewController:inicio animated:YES];
 	}
     else if (existeDominio) {
         if ([CommonUtils hayConexion]) {
@@ -314,7 +316,7 @@
 			[self.navigationController popViewControllerAnimated:YES];
 			
 			((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio = @"Gratuito";
-			((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion = YES;
+			
 			CompartirPublicacionViewController *compartir = [[CompartirPublicacionViewController alloc] initWithNibName:@"CompartirPublicacionViewController" bundle:nil];
 			
 			UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:compartir];
@@ -326,47 +328,23 @@
 }
 
 -(void) checaDominio {
-    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).itIsInTime) {
-        [((AppDelegate *)[[UIApplication sharedApplication] delegate]) restartDate];
+   
         operacionWS = 1;
         WS_HandlerDominio *dominioHandler = [[WS_HandlerDominio alloc] init];
         [dominioHandler setWSHandlerDelegate:self];
         [dominioHandler consultaDominio:textoDominio];
-    }
-    else {
-        if (alertActivity)
-        {
-            [NSThread sleepForTimeInterval:1];
-            [alertActivity hide];
-        }
-        self.alertActivity = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionCaduco", Nil) andAlertViewType:AlertViewTypeInfo];
-        [self.alertActivity show];
-        [StringUtils terminarSession];
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    }
+   
     
 }
 
 -(void) crearDominio {
-    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).itIsInTime) {
-        [((AppDelegate *)[[UIApplication sharedApplication] delegate]) restartDate];
+    
         operacionWS = 2;
         self.datosUsuario = [DatosUsuario sharedInstance];
         WS_HandlerDominio *dominioHandler = [[WS_HandlerDominio alloc] init];
         [dominioHandler setWSHandlerDelegate:self];
         [dominioHandler crearUsuario:self.datosUsuario.emailUsuario conNombre:self.nombreDominio.text password:self.datosUsuario.passwordUsuario status:@"1" nombre:nil direccion1:nil direccion2:nil pais:nil codigoPromocion:@"" tipoDominio:dominioTipo idDominio:[NSString stringWithFormat:@"%i", self.datosUsuario.idDominio]];
-    }
-    else {
-        if (alertActivity)
-        {
-            [NSThread sleepForTimeInterval:1];
-            [alertActivity hide];
-        }
-        self.alertActivity = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionCaduco", Nil) andAlertViewType:AlertViewTypeInfo];
-        [self.alertActivity show];
-        [StringUtils terminarSession];
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    }
+   
 
 }
 
@@ -407,26 +385,15 @@
         [NSThread sleepForTimeInterval:1];
         [alertActivity hide];
     }
-    self.alertActivity = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
-    [self.alertActivity show];
+    AlertView *alertAct = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
+    [alertAct show];
     [StringUtils terminarSession];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    
+    InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
+    [self.navigationController pushViewController:inicio animated:YES];
 }
 
--(void) sessionTimeout
-{
-    if (alertActivity)
-    {
-        [NSThread sleepForTimeInterval:1];
-        [alertActivity hide];
-    }
-    self.alertActivity = [AlertView initWithDelegate:Nil
-                                             message:NSLocalizedString(@"sessionCaduco", Nil)
-                                    andAlertViewType:AlertViewTypeInfo];
-    [self.alertActivity show];
-    [StringUtils terminarSession];
-    [self.navigationController popToRootViewControllerAnimated:YES];
-}
+
 
 -(void) errorConsultaWS {
     [self performSelectorOnMainThread:@selector(errorDominio) withObject:Nil waitUntilDone:YES];

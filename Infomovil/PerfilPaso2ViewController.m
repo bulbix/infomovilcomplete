@@ -13,6 +13,7 @@
 #import "KeywordDataModel.h"
 #import "WS_ActualizarDireccion.h"
 #import "UIViewDefs.h"
+#import "InicioViewController.h"
 
 @interface PerfilPaso2ViewController () {
     ListaHorarios *horarioSeleccionado;
@@ -332,7 +333,7 @@
 	[self.pickerHorarios selectRow:anterior1 inComponent:0 animated:YES];
 	[self.pickerHorarios selectRow:anterior2 inComponent:1 animated:YES];
     horarioSeleccionado = [self.arrayDataContent objectAtIndex:indexPath.row];
-    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion) {
+   
         [UIView animateWithDuration:0.2f animations:^{
             [self.vistaInferior setAlpha:0];
         } completion:^(BOOL finished) {
@@ -340,12 +341,7 @@
                 [self.vistaPicker setFrame:framePicker];
             }];
         }];
-    }
-    else {
-        [UIView animateWithDuration:0.5f animations:^{
-            [self.vistaPicker setFrame:framePicker];
-        }];
-    }
+   
     [self.vistaHorarios setContentSize:CGSizeMake(320, 500)];
     indexSeleccionado = indexPath;
     [self apareceDatePicker:indexPath];
@@ -379,11 +375,11 @@
             [self.vistaPicker setFrame:CGRectMake(0, 562, 320, 206)];
         }
     } completion:^(BOOL finished) {
-        if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion) {
+       
             [UIView animateWithDuration:0.2f animations:^{
                 [self.vistaInferior setAlpha:1];
             }];
-        }
+        
     }];
     [self.pickerHorarios selectRow:0 inComponent:0 animated:NO];
     [self.pickerHorarios selectRow:0 inComponent:1 animated:NO];
@@ -470,7 +466,7 @@
         idPerfil = [[self.datosUsuario.arregloDatosPerfil objectAtIndex:index] idKeyword];
         [self copiarArreglo];
         [self.datosUsuario.arregloEstatusPerfil replaceObjectAtIndex:index withObject:@NO];
-        if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion) {
+       
             if ([CommonUtils hayConexion]) {
                 estaEliminando = YES;
                 estaEditando = NO;
@@ -481,7 +477,7 @@
                 AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
                 [alert show];
             }
-        }
+        
     } else if (estaEditando){
         NSMutableArray *aux = [[NSMutableArray alloc] init];
         
@@ -646,8 +642,7 @@
 }
 
 -(void) actualizarPerfil {
-    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).itIsInTime) {
-        [((AppDelegate *)[[UIApplication sharedApplication] delegate]) restartDate];
+    
         WS_ActualizarDireccion *actualizarDireccion = [[WS_ActualizarDireccion alloc] init];
         [actualizarDireccion setDireccionDelegate:self];
         [actualizarDireccion setArregloPerfil:arregloPerfilAux];
@@ -662,18 +657,7 @@
         else {
             [actualizarDireccion insertarPerfil:index];
         }
-    }
-    else {
-        if (self.alertPerfil)
-        {
-            [NSThread sleepForTimeInterval:1];
-            [self.alertPerfil hide];
-        }
-        self.alertPerfil = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionCaduco", Nil) andAlertViewType:AlertViewTypeInfo];
-        [self.alertPerfil show];
-        [StringUtils terminarSession];
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    }
+   
     
 }
 
@@ -709,26 +693,15 @@
         [NSThread sleepForTimeInterval:1];
         [self.alertPerfil hide];
     }
-    self.alertPerfil = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
-    [self.alertPerfil show];
+    AlertView *alertAct = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
+    [alertAct show];
     [StringUtils terminarSession];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    
+    InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
+    [self.navigationController pushViewController:inicio animated:YES];
 }
 
--(void) sessionTimeout
-{
-    if (self.alertPerfil)
-    {
-        [NSThread sleepForTimeInterval:1];
-        [self.alertPerfil hide];
-    }
-    self.alertPerfil = [AlertView initWithDelegate:Nil
-                                             message:NSLocalizedString(@"sessionCaduco", Nil)
-                                    andAlertViewType:AlertViewTypeInfo];
-    [self.alertPerfil show];
-    [StringUtils terminarSession];
-    [self.navigationController popToRootViewControllerAnimated:YES];
-}
+
 
 #pragma mark - Teclado
 
@@ -796,11 +769,7 @@
         KeywordDataModel *keyData = [arregloPerfilAux objectAtIndex:index];
         keyData.keywordField = [arregloKeys objectAtIndex:index];
         keyData.keywordValue = [self.txtDescripcion text];
-        
-//        arregloAux = self.datosUsuario.arregloEstatusEdicion;
     }
-//    modifico = NO;
-    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion) {
         if ([CommonUtils hayConexion]) {
             [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
             [self performSelectorInBackground:@selector(actualizarPerfil) withObject:Nil];
@@ -808,13 +777,7 @@
         else {
             AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
             [alert show];
-//            [self revertirGuardado];
         }
-    }
-    else {
-        [self validaEditados];
-        [self.navigationController popViewControllerAnimated:YES];
-    }
 }
 
 -(void) validaEditados {

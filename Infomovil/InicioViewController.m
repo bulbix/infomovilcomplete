@@ -121,7 +121,7 @@
 
 -(void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
+    [self.vistaInferior setHidden:YES];
     
    
     [self.conoceMas setTitle:NSLocalizedString(@"conoceMasInicio", nil) forState:UIControlStateNormal] ;
@@ -155,7 +155,7 @@
 	
 	((AppDelegate *)[[UIApplication sharedApplication] delegate]).logueado = NO;
 	 ((AppDelegate*)	[[UIApplication sharedApplication] delegate]).statusDominio = @"Gratuito";
-    ((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion = NO;
+   
     ((AppDelegate *)[[UIApplication sharedApplication] delegate]).logueado = NO;
     
     if(self.navigationController.navigationBar.hidden == NO){
@@ -228,7 +228,7 @@
         
     }
    
-  //  [self.vistaInferior setHidden:YES];
+    [self.vistaInferior setHidden:YES];
     
 
 }
@@ -259,7 +259,7 @@
 		self.datosUsuario.itemsDominio = items;
 	}
 	
-    ((AppDelegate*)[[UIApplication sharedApplication] delegate]).existeSesion = NO;
+   
     MenuRegistroViewController *registro = [[MenuRegistroViewController alloc] initWithNibName:@"MenuRegistroViewController" bundle:nil];
     [self.navigationController pushViewController:registro animated:YES];
     

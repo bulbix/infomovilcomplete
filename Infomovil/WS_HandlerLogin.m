@@ -54,7 +54,7 @@
     if (self.redSocial == nil) {
         self.redSocial = @"";
         // 1 = Inicio sesion con facebook
-        self.datosUsuario.auxSesionFacebook = 1;
+        self.datosUsuario.auxSesionFacebook = 2;
         self.datosUsuario.auxStrSesionUser = usuario;
         self.datosUsuario.auxStrSesionPass = password;
        
@@ -68,7 +68,7 @@
         }
     }else{
         // 2 = Inicio de sesion con Email
-        self.datosUsuario.auxSesionFacebook = 2;
+        self.datosUsuario.auxSesionFacebook = 1;
         self.datosUsuario.auxStrSesionUser = usuario;
         self.datosUsuario.auxStrSesionPass = @"";
     
@@ -109,6 +109,10 @@
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
     self.contactoActual = [[Contacto alloc] init];
     if (dataResult != nil) {
+        self.datosUsuario.email = usuario;
+        self.datosUsuario.emailUsuario = usuario;
+        self.datosUsuario.token = self.token;
+        
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
         [parser setDelegate:self];
         NSLog(@"WS_HandlerLogin: La Respuesta es %s", [dataResult bytes]);
@@ -144,6 +148,8 @@
             
                 if (self.descipcionAux.length > 0 && self.descipcionAux != Nil) {
                     self.descipcionAux = [StringUtils desEncriptar:self.descipcionAux conToken:self.datosUsuario.token];
+                    NSLog(@"EL TITULO ES: %@", self.descipcionAux);
+                    NSLog(@"DESENCRIPTA CON EL TOKEN: %@", self.datosUsuario.token);
                     if ((self.descipcionAux.length > 0 && ![self.descipcionAux isEqualToString:@"Título"]) && ![self.descipcionAux isEqualToString:@"(null)"]) {
                         
                         self.datosUsuario.descripcion = self.descipcionAux;
@@ -154,9 +160,12 @@
                     self.datosUsuario.dominio = [StringUtils desEncriptar:self.datosUsuario.dominio conToken:self.datosUsuario.token];
                 }
                 if (self.nombreEmpresaAux.length > 0 && self.nombreEmpresaAux != Nil) {
+                    NSLog(@"DESENCRIPTA CON EL TOKEN: %@", self.datosUsuario.token);
                     self.nombreEmpresaAux = [StringUtils desEncriptar:self.nombreEmpresaAux conToken:self.datosUsuario.token];
+                    NSLog(@"EL NOMBRE DEL TITULO ES: %@", self.nombreEmpresaAux);
                     if (![self.nombreEmpresaAux isEqualToString:@"Título"] && ![self.nombreEmpresaAux isEqualToString:@"(null)"]) {
                         self.datosUsuario.nombreEmpresa = self.nombreEmpresaAux;
+                        
                         [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:0 withObject:@YES];
                     }
                 }
@@ -789,6 +798,7 @@
     }
     else if ([elementName isEqualToString:@"token"]) {
         self.token = [StringUtils desEncriptar:self.currentElementString conToken:passwordEncriptar];
+        NSLog(@"EL TOKEN DE GETLOGIN ES: %@", self.token);
     }
     else if ([elementName isEqualToString:@"calleNum"]) {
         if (requiereEncriptar) {
@@ -816,6 +826,7 @@
             self.datosUsuario.email = self.currentElementString;
         }
         self.currentElementString = [[NSMutableString alloc] init];
+       
     }
     else if ([elementName isEqualToString:@"cp"]) {
         if (requiereEncriptar) {

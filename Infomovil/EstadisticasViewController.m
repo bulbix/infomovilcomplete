@@ -18,7 +18,7 @@
 #import "PNChartDelegate.h"
 #import "MenuPasosViewController.h"
 #import "AppsFlyerTracker.h"
-
+#import "InicioViewController.h"
 
 
 @interface EstadisticasViewController () <PNChartDelegate> {
@@ -155,26 +155,13 @@
 }
 
 -(void) consultaVisitas {
-    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).itIsInTime)
-    {
+   
         self.datosUsuario = [DatosUsuario sharedInstance];
         WS_HandlerVisitas *handlerVisitas = [[WS_HandlerVisitas alloc] init];
         [handlerVisitas setWSHandlerDelegate:self];
         [handlerVisitas consultaVisitasDominio:self.datosUsuario.dominio conOpcionConsulta:opcionConsulta];
 
-    }
-    else {
-        if (self.alertActivity)
-        {
-            [NSThread sleepForTimeInterval:1];
-            [self.alertActivity hide];
-        }
-        self.alertActivity = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionCaduco", Nil) andAlertViewType:AlertViewTypeInfo];
-        [self.alertActivity show];
-        [StringUtils terminarSession];
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    }
-    
+       
 }
 
 - (IBAction)cambiarEstadisticas:(UISegmentedControl *)sender {
@@ -263,7 +250,8 @@
 -(void) accionAceptar {
     if (errorToken) {
         [StringUtils terminarSession];
-        [self.navigationController popToRootViewControllerAnimated:YES];
+        InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
+        [self.navigationController pushViewController:inicio animated:YES];
     }
 }
 
@@ -457,27 +445,14 @@
         [NSThread sleepForTimeInterval:1];
         [self.alertActivity hide];
     }
-    errorToken = YES;
-    self.alertActivity = [AlertView initWithDelegate:nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
-    [self.alertActivity show];
-
+    AlertView *alertAct = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
+    [alertAct show];
     [StringUtils terminarSession];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    
+    InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
+    [self.navigationController pushViewController:inicio animated:YES];
 }
 
--(void) sessionTimeout
-{
-    if (self.alertActivity)
-    {
-        [NSThread sleepForTimeInterval:1];
-        [self.alertActivity hide];
-    }
-    self.alertActivity = [AlertView initWithDelegate:Nil
-                                             message:NSLocalizedString(@"sessionCaduco", Nil)
-                                    andAlertViewType:AlertViewTypeInfo];
-    [self.alertActivity show];
-    [StringUtils terminarSession];
-    [self.navigationController popToRootViewControllerAnimated:YES];
-}
+
 
 @end

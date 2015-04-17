@@ -14,6 +14,7 @@
 {
     DatosUsuario *datos = [DatosUsuario sharedInstance];
     NSString *stringXML;
+    NSLog(@"EL TOKEN CON EL QUE ENCRIPTA ES: %@", datos.token);
     if (requiereEncriptar) {
         stringXML = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.webservice.infomovil.org/\">"
                      "<soapenv:Header/>"
@@ -21,7 +22,6 @@
                      "<ws:%@>"
                      "<DomainVO>"
                      "<template>%@</template>"
-                     "<colour>%@</colour>"
                      "<displayString>%@</displayString>"
                      "<domainName>%@</domainName>"
                      "<textRecord>%@</textRecord>"
@@ -32,12 +32,11 @@
                      "</soapenv:Body>"
                      "</soapenv:Envelope>",metodo,
                      [StringUtils encriptar:datos.nombreTemplate conToken:datos.token],
-                     [StringUtils encriptar:@"" conToken:datos.token],
                      [StringUtils encriptar:self.descripcion conToken:datos.token],
                      [StringUtils encriptar:datos.dominio conToken:datos.token],
                      [StringUtils encriptar:self.nombre conToken:datos.token],
                      [StringUtils encriptar:[NSString stringWithFormat:@"%i", datos.idDominio] conToken:datos.token],
-                     [StringUtils encriptar:datos.emailUsuario conToken:passwordEncriptar],
+                     [StringUtils encriptar:datos.email conToken:passwordEncriptar],
                      metodo];
     }
 
@@ -52,17 +51,17 @@
         if ([parser parse]) {
             if (requiereEncriptar) {
                 datos = [DatosUsuario sharedInstance];
-                datos.token = self.token;
                 if ( [metodo isEqualToString:k_UPDATE_TITULO] )
                     datos.nombreEmpresa = self.nombre;
                 else if ( [metodo isEqualToString:k_UPDATE_DESC_CORTA] )
                     datos.descripcion = self.descripcion;
-                
+                NSLog(@"EL TOKEN CON EL QUE TRATA DE DESENCRIPTAR ES: %@", datos.token);
                 NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
                 if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0) {
                     [self.actualizarDominioDelegate errorToken];
-                } else if ([stringResult isEqualToString:@"SessionTO"])
-                    [self.actualizarDominioDelegate sessionTimeout];
+                    
+                }
+                
                 else {
                     [self.actualizarDominioDelegate resultadoConsultaDominio:stringResult];
                 }
@@ -111,9 +110,11 @@
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
     if ([elementName isEqualToString:@"resultado"]) {
         self.resultado = self.currentElementString;
+        NSLog(@"EL RESULTADO ES EN HANDLERACTUALIZARDOMINIO: %@", self.resultado);
     }
     else if ([elementName isEqualToString:@"token"]) {
         self.token = [StringUtils desEncriptar:self.currentElementString conToken:passwordEncriptar];
+    
     }
 }
 

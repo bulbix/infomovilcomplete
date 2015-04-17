@@ -54,8 +54,7 @@
                 NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
                 if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                     [self.cambiarPasswordDelegate errorToken];
-                } else if ([stringResult isEqualToString:@"SessionTO"])
-                    [self.cambiarPasswordDelegate sessionTimeout];
+                }
                 else {
                     [self.cambiarPasswordDelegate resultadoPassword:stringResult];
                 }
@@ -76,9 +75,6 @@
 -(void) actualizaPasswordConEmail:(NSString *) email {
     DatosUsuario *datos = nil;//[DatosUsuario sharedInstance];
 	NSString *stringXML;
-//    if (!((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion) {
-//        datos.emailUsuario = email;
-//    }
     stringXML = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.webservice.infomovil.org/\">"
                  "<soapenv:Header/>"
                  "<soapenv:Body>"
@@ -105,8 +101,7 @@
             NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
             if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                 [self.cambiarPasswordDelegate errorToken];
-            } else if ([stringResult isEqualToString:@"SessionTO"])
-                [self.cambiarPasswordDelegate sessionTimeout];
+            } 
             else {
                 [self.cambiarPasswordDelegate resultadoPassword:stringResult];
             }

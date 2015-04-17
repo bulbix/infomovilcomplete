@@ -476,7 +476,7 @@
 "sessionCaduco" = "Tu sesión caducó. Por favor, ingresa tus datos otra vez.";
 
 
-"sessionUsada" = "Por razones de seguridad es necesario volver a ingresar sesión";
+"sessionUsada" = "Tu sesión está siendo utilizada en otro dispositivo";
 "codigoRedimir" = "Campaña canal";
 "tituloCampania" = "Campaña";
 "txtSinCampania" = "Sin campaña dejar en blanco";

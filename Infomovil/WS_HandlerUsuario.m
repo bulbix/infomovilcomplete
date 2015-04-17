@@ -46,8 +46,7 @@
                 NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
                 if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                     [self.wsHandlerDelegate errorToken];
-                }else if ([stringResult isEqualToString:@"SessionTO"])
-                    [self.wsHandlerDelegate sessionTimeout];
+                }
                 else {
                     self.resultado = stringResult;
                     [self.wsHandlerDelegate resultadoConsultaDominio:self.resultado];

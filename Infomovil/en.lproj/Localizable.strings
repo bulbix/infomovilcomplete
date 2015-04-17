@@ -362,7 +362,7 @@
 "registrarMensaje" =  "Please create an account with your e-mail and password.";
 
 "sessionCaduco" = "Your session has expired. Please log-in again";
-"sessionUsada" = "For security reasons you need to log in again.";
+"sessionUsada" = "Your session is being used by another device.";
 "codigoRedimir" = "Channel campaing";
 "tituloCampania" = "Campaign";
 "txtSinCampania" = "Blanc if no campaing";

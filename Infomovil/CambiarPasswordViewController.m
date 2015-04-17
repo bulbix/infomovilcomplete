@@ -9,6 +9,7 @@
 #import "CambiarPasswordViewController.h"
 #import "CommonUtils.h"
 #import "WS_HandlerCambiarPassword.h"
+#import "InicioViewController.h"
 
 @interface CambiarPasswordViewController (){
 	
@@ -48,10 +49,7 @@
 	}else{
 		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"cambioPassword", @" ") nombreImagen:@"NBlila.png"];
 	}
-    if (!((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion) {
-        self.navigationItem.leftBarButtonItem = Nil;
-    }
-    
+  
     UIImage *image = [UIImage imageNamed:@"btncancelar.png"];
 	
 	self.guardarVista = YES;
@@ -136,9 +134,7 @@
         AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"errorActualizacion", Nil) andAlertViewType:AlertViewTypeInfo];
         [alert show];
     }
-    if (!((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion) {
-        [self.navigationController dismissViewControllerAnimated:YES completion:Nil];
-    }
+ 
 }
 -(void) actualizarPassword {
 
@@ -168,12 +164,16 @@
 
 - (void)errorToken
 {
-    [self errorContacto];
-}
-
--(void) sessionTimeout
-{
-    [self errorContacto];
+    if ( self.alertaContacto )
+    {
+        [NSThread sleepForTimeInterval:1];
+        [self.alertaContacto hide];
+    }
+    AlertView *alertAct = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
+    [alertAct show];
+    [StringUtils terminarSession];
+    InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
+    [self.navigationController pushViewController:inicio animated:YES];
 }
 
 -(void) errorContacto {

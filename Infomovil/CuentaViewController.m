@@ -209,12 +209,12 @@ int opcionButton = 0 ;
 	uno = NO;
 	
 	
-	BOOL sesion = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).existeSesion;
+	
 
 #ifdef _DEBUG
 	NSLog(@"En CuentaViewController statusDominio del appdelegate 2 es: %@",((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio);
 #endif
-	if(sesion &&  [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] ){
+	if([((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] ){
         [self.vistaInferior setHidden:NO];
 	}else{
        // [self.vistaInferior setHidden:YES];
@@ -254,12 +254,12 @@ int opcionButton = 0 ;
     
     noSeRepiteOprimirElBoton = YES;
     if (tipoVista != 1) {
-	BOOL sesion = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).existeSesion;
+	
 #ifdef _DEBUG
 	NSLog(@"En CuentaViewController statusDominio del appdelegate 1 es: %@",((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio);
 #endif
         
-        if(sesion &&  [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && ![self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]){
+        if([((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && ![self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]){
 	
             //MBC
             if(IS_STANDARD_IPHONE_6_PLUS){
@@ -599,8 +599,8 @@ if(noSeRepiteOprimirElBoton){
 	/////////////////////////////////// COMPRAR PLAN PRO //////////////////////////////////
 	self.datosUsuario = [DatosUsuario sharedInstance];
     if(self.selector.selectedSegmentIndex == 0){
-		BOOL sesion = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).existeSesion;
-        if(sesion &&  ![((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] ){
+	
+        if(  ![((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] ){
 			arreglo = pro;
 			tipo = NO;
             self.tituloPlanPro.text = NSLocalizedString(@"mensajeCuenta", @" ");
@@ -611,7 +611,7 @@ if(noSeRepiteOprimirElBoton){
 			arreglo = pro;
 			tipo = NO;
             self.tituloPlanPro.text = NSLocalizedString(@"mensajeCuenta", @" ");
-			//BOOL sesion = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).existeSesion;
+			
 		
 		}
         [self.scrollContenido scrollRectToVisible:CGRectMake(0, 0, self.scrollContenido.frame.size.width, self.scrollContenido.frame.size.height) animated:YES];
@@ -624,12 +624,6 @@ if(noSeRepiteOprimirElBoton){
             
         }
         
-        BOOL sesion = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).existeSesion;
-        if(sesion ){
-            
-            // ESTAS LINEAS SE CREARON MIENTRAS NO EXISTE SUBDOMINIOS
-
-            // IRC DOMINIO
             self.datosUsuario = [DatosUsuario sharedInstance];
             UIFont * customFont = [UIFont fontWithName:@"Avenir-Medium" size:16];
             UILabel *dominio;
@@ -718,7 +712,7 @@ if(noSeRepiteOprimirElBoton){
                 [self.scrollContenido scrollRectToVisible:CGRectMake(320, 0, self.scrollContenido.frame.size.width, self.scrollContenido.frame.size.height) animated:YES];
             }
             
-      }
+      
       
     }
 	

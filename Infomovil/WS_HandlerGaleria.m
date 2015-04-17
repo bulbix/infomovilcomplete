@@ -82,9 +82,7 @@
                         if (stringResult == nil)
                             stringResult = [StringUtils desEncriptar:self.resultado conToken:self.token];
                         
-                        if ([stringResult isEqualToString:@"SessionTO"])
-                            [self.galeriaDelegate sessionTimeout];
-                        else
+                        
                             [self.galeriaDelegate resultadoConsultaDominio:stringResult];
                     }
                 }
@@ -149,8 +147,7 @@
                 NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
                 if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                     [self.galeriaDelegate errorToken];
-                }else if ([stringResult isEqualToString:@"SessionTO"])
-                    [self.galeriaDelegate sessionTimeout];
+                }
                 else {
                     if ([[StringUtils desEncriptar:self.resultado conToken:datos.token] isEqualToString:@"Exito"]) {
                         NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -241,8 +238,7 @@
                 NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
                 if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                     [self.galeriaDelegate errorToken];
-                }else if ([stringResult isEqualToString:@"SessionTO"])
-                    [self.galeriaDelegate sessionTimeout];
+                }
                 else {
                     NSInteger idAux = [stringResult integerValue];
                     if (idAux > 0) {

@@ -11,6 +11,7 @@
 #import "InformacionAdicional.h"
 #import "KeywordDataModel.h"
 #import "WS_ActualizarDireccion.h"
+#import "InicioViewController.h"
 
 @interface InformacionPaso2ViewController () {
 //    BOOL self.modifico;
@@ -263,7 +264,7 @@
             [arregloInformacionAux addObject:keyAux];
         }
         idKeyword = [[arregloInformacionAux objectAtIndex:self.index] idKeyword];
-        if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion) {
+    
             estaBorrando = YES;
             if ([CommonUtils hayConexion]) {
                 [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
@@ -273,7 +274,7 @@
                 AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
                 [alert show];
             }
-        }
+    
     }
     else {
         [self guardaDatos];
@@ -339,8 +340,7 @@
 }
 
 -(void) actualizarInformacion {
-    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).itIsInTime) {
-        [((AppDelegate *)[[UIApplication sharedApplication] delegate]) restartDate];
+  
         WS_ActualizarDireccion *actualizarDireccion = [[WS_ActualizarDireccion alloc] init];
         [actualizarDireccion setArregloPerfil:arregloInformacionAux];
         [actualizarDireccion setIndexSeleccionado:self.index];
@@ -357,18 +357,7 @@
                 [actualizarDireccion actualizarInformacion];
             }
         }
-    }
-    else {
-        if (self.alertInformacion)
-        {
-            [NSThread sleepForTimeInterval:1];
-            [self.alertInformacion hide];
-        }
-        self.alertInformacion = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionCaduco", Nil) andAlertViewType:AlertViewTypeInfo];
-        [self.alertInformacion show];
-        [StringUtils terminarSession];
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    }
+  
 }
 
 -(void) resultadoConsultaDominio:(NSString *)resultado {
@@ -397,25 +386,14 @@
         [NSThread sleepForTimeInterval:1];
         [self.alertInformacion hide];
     }
-    self.alertInformacion = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
-    [self.alertInformacion show];
+    AlertView *alertAct = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
+    [alertAct show];
     [StringUtils terminarSession];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    
+    InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
+    [self.navigationController pushViewController:inicio animated:YES];
 }
--(void) sessionTimeout
-{
-    if (self.alertInformacion)
-    {
-        [NSThread sleepForTimeInterval:1];
-        [self.alertInformacion hide];
-    }
-    self.alertInformacion = [AlertView initWithDelegate:Nil
-                                             message:NSLocalizedString(@"sessionCaduco", Nil)
-                                    andAlertViewType:AlertViewTypeInfo];
-    [self.alertInformacion show];
-    [StringUtils terminarSession];
-    [self.navigationController popToRootViewControllerAnimated:YES];
-}
+
 
 -(void) errorConsultaWS {
     [self performSelectorOnMainThread:@selector(errorActualizar) withObject:Nil waitUntilDone:YES];
@@ -479,7 +457,7 @@
         }
 		((KeywordDataModel *)[arregloInformacionAux objectAtIndex:self.index]).keywordField = [self.txtTitulo text];
 		((KeywordDataModel *)[arregloInformacionAux objectAtIndex:self.index]).keywordValue = [self.txtInfo text];
-		if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion) {
+		
 			if ([CommonUtils hayConexion]) {
 				[self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
 				[self performSelectorInBackground:@selector(actualizarInformacion) withObject:Nil];
@@ -489,10 +467,7 @@
 				[alert show];
 				[self revertirGuardado];
 			}
-		}
-		else {
-			[self.navigationController popViewControllerAnimated:YES];
-		}
+		
 	}else if (self.modifico && (btextField || btextArea)) {
         informacion = [[KeywordDataModel alloc] init];
         [informacion setKeywordField:[self.txtTitulo text]];
@@ -513,7 +488,7 @@
         }
         [arregloInformacionAux addObject:informacion];
         self.modifico = NO;
-        if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion) {
+       
             if ([CommonUtils hayConexion]) {
                 [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
                 [self performSelectorInBackground:@selector(actualizarInformacion) withObject:Nil];
@@ -522,10 +497,7 @@
                 AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
                 [alert show];
             }
-        }
-        else {
-            [self.navigationController popViewControllerAnimated:YES];
-        }
+      
     }
     else if([self.txtTitulo.text isEqualToString:@""] || [self.txtInfo.text isEqualToString:@""]){
 		if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){

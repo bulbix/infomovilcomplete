@@ -137,23 +137,17 @@
 
 -(IBAction)agregarInformacion:(id)sender {
     self.datosUsuario = [DatosUsuario sharedInstance];
-    if(!((AppDelegate*)[[UIApplication sharedApplication] delegate]).existeSesion){
-        AlertView *alert = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionCaduco", Nil) andAlertViewType:AlertViewTypeInfo];
-        [alert show];
-        [StringUtils terminarSession];
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    
-    }else if (self.datosUsuario.arregloInformacionAdicional.count < 1) {
+    if (self.datosUsuario.arregloInformacionAdicional.count < 1) {
         InformacionPaso2ViewController *info = [[InformacionPaso2ViewController alloc] initWithNibName:@"InformacionPaso2ViewController" bundle:Nil];
         [info setOperacionInformacion: InfoAdicionalOperacionAgregar];
         [self.navigationController pushViewController:info animated:YES];
     
-    }else if(self.datosUsuario.arregloInformacionAdicional.count == 1 && ((AppDelegate*)[[UIApplication sharedApplication] delegate]).existeSesion && [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && ![self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]){
+    }else if(self.datosUsuario.arregloInformacionAdicional.count == 1 && [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && ![self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]){
         InformacionPaso2ViewController *info = [[InformacionPaso2ViewController alloc] initWithNibName:@"InformacionPaso2ViewController" bundle:Nil];
         [info setOperacionInformacion: InfoAdicionalOperacionAgregar];
         [self.navigationController pushViewController:info animated:YES];
         
-    }else if(self.datosUsuario.arregloInformacionAdicional.count == 1 && ((AppDelegate*)[[UIApplication sharedApplication] delegate]).existeSesion && [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && [self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]){
+    }else if(self.datosUsuario.arregloInformacionAdicional.count == 1  && [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && [self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]){
         alertaIndormacion = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeInformacionAdicionalPrueba", @" ") andAlertViewType:AlertViewTypeQuestion];
         [alertaIndormacion show];
         

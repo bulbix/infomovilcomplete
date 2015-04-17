@@ -8,6 +8,7 @@
 
 #import "MapaUbicacionViewController.h"
 #import "WS_HandlerActualizarMapa.h"
+#import "InicioViewController.h"
 
 @interface MapaUbicacionViewController () <CLLocationManagerDelegate>{
     BOOL borrar;
@@ -206,7 +207,7 @@
         auxLocation = self.location;
         self.datosUsuario = [DatosUsuario sharedInstance];
         self.modifico = NO;
-        if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion) {
+      
             if ([CommonUtils hayConexion]) {
                 [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
                 [self performSelectorInBackground:@selector(actualizarMapa) withObject:Nil];
@@ -215,10 +216,7 @@
                 AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
                 [alert show];
             }
-        }
-        else {
-           [self.navigationController popViewControllerAnimated:YES];
-        }
+        
     }
 	else if(self.location == nil){
 
@@ -281,7 +279,7 @@
         [self.mapView removeAnnotation:self];
         hayAnotacion = NO;
         [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:5 withObject:@NO];
-        if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion) {
+       
             if ([CommonUtils hayConexion]) {
                 [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
                 [self performSelectorInBackground:@selector(actualizarMapa) withObject:Nil];
@@ -291,10 +289,8 @@
                 AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
                 [alert show];
             }
-        }
-        else {
-            borrar = NO;
-        }
+        
+       
     }
     else {
         [self guardarInformacion:Nil];
@@ -329,8 +325,7 @@
 }
 
 -(void) actualizarMapa {
-    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).itIsInTime) {
-        [((AppDelegate *)[[UIApplication sharedApplication] delegate]) restartDate];
+   
         if (borrar) {
             WS_HandlerActualizarMapa *actualizaMapa = [[WS_HandlerActualizarMapa alloc] init];
             [actualizaMapa setMapaDelegate:self];
@@ -342,18 +337,7 @@
             [actualizaMapa setLocation:auxLocation];
             [actualizaMapa actualizarMapa];
         }
-    }
-    else {
-        if (self.alertaMapa)
-        {
-            [NSThread sleepForTimeInterval:1];
-            [self.alertaMapa hide];
-        }
-        self.alertaMapa = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionCaduco", Nil) andAlertViewType:AlertViewTypeInfo];
-        [self.alertaMapa show];
-        [StringUtils terminarSession];
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    }
+    
     
 }
 
@@ -384,25 +368,14 @@
         [NSThread sleepForTimeInterval:1];
         [self.alertaMapa hide];
     }
-    self.alertaMapa = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
-    [self.alertaMapa show];
+    AlertView *alertAct = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
+    [alertAct show];
     [StringUtils terminarSession];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    
+    InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
+    [self.navigationController pushViewController:inicio animated:YES];
 }
--(void) sessionTimeout
-{
-    if (self.alertaMapa)
-    {
-        [NSThread sleepForTimeInterval:1];
-        [self.alertaMapa hide];
-    }
-    self.alertaMapa = [AlertView initWithDelegate:Nil
-                                             message:NSLocalizedString(@"sessionCaduco", Nil)
-                                    andAlertViewType:AlertViewTypeInfo];
-    [self.alertaMapa show];
-    [StringUtils terminarSession];
-    [self.navigationController popToRootViewControllerAnimated:YES];
-}
+
 
 -(void) revertirGuardado {
     

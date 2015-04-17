@@ -921,24 +921,12 @@
     }
 }
 -(void) actualizarDatos {
-    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).itIsInTime) {
-        [((AppDelegate *)[[UIApplication sharedApplication] delegate]) restartDate];
+ 
         WS_HandlerInformacionRegistro *handlerinfo = [[WS_HandlerInformacionRegistro alloc] init];
         [handlerinfo setInformacionRegistroDelegate:self];
 	
         [handlerinfo actualizaInformacionRegistro];
-    }
-    else {
-        if ( self.alertaContacto )
-        {
-            [NSThread sleepForTimeInterval:1];
-            [self.alertaContacto hide];
-        }
-        self.alertaContacto = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionCaduco", Nil) andAlertViewType:AlertViewTypeInfo];
-        [self.alertaContacto show];
-        [StringUtils terminarSession];
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    }
+   
 }
 
 -(void) resultadoInformacionRegistro:(NSString *)resultado {

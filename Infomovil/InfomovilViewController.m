@@ -135,7 +135,7 @@
     
     
     
-    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion && (![((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Tramite"] && ![((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Tramite PRO"])) {
+    if ( (![((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Tramite"] && ![((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Tramite PRO"])) {
         [self.vistaInferior setHidden:NO];
     }
     else {
@@ -156,7 +156,7 @@
     }
     
     
-    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion && (![((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Tramite"] && ![((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Tramite PRO"])) {
+    if ((![((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Tramite"] && ![((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Tramite PRO"])) {
         [self.vistaInferior setHidden:NO];
     }
     else {
@@ -173,7 +173,7 @@
 }
 
 -(IBAction)mostrarEstadisticas:(id)sender {
-    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).itIsInTime) {
+ 
         if ([CommonUtils hayConexion]) {
             EstadisticasViewController *estadisticas = [[EstadisticasViewController alloc] initWithNibName:@"EstadisticasViewController" bundle:Nil];
             [self.navigationController pushViewController:estadisticas animated:YES];
@@ -182,13 +182,7 @@
             AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
             [alert show];
         }
-    }
-    else {
-        AlertView *alertActivity = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionCaduco", Nil) andAlertViewType:AlertViewTypeInfo];
-        [alertActivity show];
-        [StringUtils terminarSession];
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    }
+ 
     
     
 }

@@ -12,6 +12,7 @@
 #import "WS_HandlerGaleria.h"
 #import "OffertRecord.h"
 #import "NSStringUtiles.h"
+#import "InicioViewController.h"
 
 
 @interface GaleriaPaso2ViewController () {
@@ -373,7 +374,7 @@
                 [galeriaAux setAncho:[galeria ancho]];
                 [self.arregloImagenes addObject:galeriaAux];
             }
-			if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion) {
+			
                 if ([CommonUtils hayConexion]) {
 					estaBorrando = NO;
                     [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
@@ -384,7 +385,7 @@
                     [alert show];
                     [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
                 }
-            }
+            
 		}else{
             [self validaEditados];
 			[self.navigationController popViewControllerAnimated:YES];
@@ -520,7 +521,7 @@
                 [self.pieFoto setText:@" "];
                 [self.vistaPreviaImagen setImage:[UIImage imageNamed:@"previsualizador.png"]];
                 self.modifico = NO;
-                if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion) {
+            
                     if ([CommonUtils hayConexion]) {
                         [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
                         [self performSelectorInBackground:@selector(modificarImagen) withObject:Nil];
@@ -529,10 +530,7 @@
                         AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
                         [alert show];
                     }
-                }
-                else {
-                    [self.navigationController popViewControllerAnimated:YES];
-                }
+               
         }
     }
     }
@@ -589,8 +587,7 @@
 }
 
 -(void) modificarImagen {
-    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).itIsInTime) {
-        [((AppDelegate *)[[UIApplication sharedApplication] delegate]) restartDate];
+  
         WS_HandlerGaleria *galeria = [[WS_HandlerGaleria alloc] init];
         [galeria setArregloGaleria:self.arregloImagenes];
         [galeria setImagenInsertarAux:self.imagenActual];
@@ -609,18 +606,7 @@
                 }
             
         }
-    }
-    else {
-        if (self.alertGaleria)
-        {
-            [NSThread sleepForTimeInterval:1];
-            [self.alertGaleria hide];
-        }
-        self.alertGaleria = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionCaduco", Nil) andAlertViewType:AlertViewTypeInfo];
-        [self.alertGaleria show];
-        [StringUtils terminarSession];
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    }
+  
 }
 
 -(void) resultadoConsultaDominio:(NSString *)resultado {
@@ -644,27 +630,14 @@
         [NSThread sleepForTimeInterval:1];
         [self.alertGaleria hide];
     }
-    self.alertGaleria = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionCaduco", Nil) andAlertViewType:AlertViewTypeInfo];
-    [self.alertGaleria show];
+    AlertView *alertAct = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
+    [alertAct show];
     [StringUtils terminarSession];
-    [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    
+    InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
+    [self.navigationController pushViewController:inicio animated:YES];
 }
--(void) sessionTimeout
-{
-    if (self.alertGaleria)
-    {
-        [NSThread sleepForTimeInterval:1];
-        [self.alertGaleria hide];
-    }
-    self.alertGaleria = [AlertView initWithDelegate:Nil
-                                             message:NSLocalizedString(@"sessionCaduco", Nil)
-                                    andAlertViewType:AlertViewTypeInfo];
-    [self.alertGaleria show];
-    [StringUtils terminarSession];
-    [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
-    [self.navigationController popToRootViewControllerAnimated:YES];
-}
+
 -(void) errorConsultaWS {
     [self performSelectorOnMainThread:@selector(errorActualizar) withObject:Nil waitUntilDone:YES];
 }
@@ -735,7 +708,7 @@
         }
     }
     self.modifico = NO;
-    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion) {
+    
         if ([CommonUtils hayConexion]) {
             estaBorrando = NO;
             [self performSelectorInBackground:@selector(modificarImagen) withObject:Nil];
@@ -745,7 +718,7 @@
             [alert show];
             [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
         }
-    }
+    
 }
 
 @end

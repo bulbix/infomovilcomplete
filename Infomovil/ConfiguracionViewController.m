@@ -226,28 +226,16 @@
 
 
     ((AppDelegate*)	[[UIApplication sharedApplication] delegate]).statusDominio = @"Gratuito";
-    ((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion = NO;
+
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 -(void) actualizarPassword {
-    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).itIsInTime) {
-        [((AppDelegate *)[[UIApplication sharedApplication] delegate]) restartDate];
+   
         WS_HandlerCambiarPassword *handlerPass = [[WS_HandlerCambiarPassword alloc] init];
         [handlerPass setCambiarPasswordDelegate:self];
 	
         [handlerPass actualizaPassword];
-        }
-    else {
-        if ( self.alertaContacto )
-        {
-            [NSThread sleepForTimeInterval:1];
-            [self.alertaContacto hide];
-        }
-        self.alertaContacto = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionCaduco", Nil) andAlertViewType:AlertViewTypeInfo];
-        [self.alertaContacto show];
-        [StringUtils terminarSession];
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    }
+     
 }
 
 -(void) mostrarActivity {
@@ -269,9 +257,7 @@
         AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"errorActualizacion", Nil) andAlertViewType:AlertViewTypeInfo];
         [alert show];
     }
-    if (!((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion) {
-        [self.navigationController dismissViewControllerAnimated:YES completion:Nil];
-    }
+
 }
 -(void) resultadoConsultaDominio:(NSString *)resultado {
     

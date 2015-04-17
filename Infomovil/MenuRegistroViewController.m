@@ -15,6 +15,8 @@
 #import "WS_HandlerLogin.h"
 #import <FacebookSDK/FacebookSDK.h>
 #import "MenuRegistroViewController.h"
+#import "InicioViewController.h"
+
 @interface MenuRegistroViewController () <FBLoginViewDelegate> {
     UITextField *textoSeleccionado;
     BOOL exito, loginFacebook, loginExitoso;
@@ -184,7 +186,7 @@
     self.llamarCrearCuenta.layer.cornerRadius = 15.0f;
     self.llamarCrearCuenta.layer.borderColor = [UIColor whiteColor].CGColor;
    
-    
+    [self.vistaInferior setHidden:YES];
 }
 
 -(void) viewWillAppear:(BOOL)animated {
@@ -211,7 +213,7 @@
    
     [self.boton setTitle:NSLocalizedString(@"mainBoton", nil) forState:UIControlStateNormal]  ;
     
-  //  [self.vistaInferior setHidden:YES];
+    [self.vistaInferior setHidden:YES];
     
 }
 // Boton de regresar //
@@ -403,7 +405,7 @@
            // [self enviarEventoGAconCategoria:@"Registrar" yEtiqueta:@"Usuario"];
             // IRC Dominio
             ((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio = @"Tramite";
-            ((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion = YES;
+            
             MenuPasosViewController *menuPasos = [[MenuPasosViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:nil];
             [self.navigationController pushViewController:menuPasos animated:YES];
         }
@@ -473,26 +475,15 @@
         [NSThread sleepForTimeInterval:1];
         [self.alerta hide];
     }
-    self.alerta = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"ocurrioError", Nil) andAlertViewType:AlertViewTypeInfo];
-    [self.alerta show];
+    AlertView *alertAct = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
+    [alertAct show];
     [StringUtils terminarSession];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    
+    InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
+    [self.navigationController pushViewController:inicio animated:YES];
 }
 
--(void) sessionTimeout
-{
-    if (self.alerta)
-    {
-        [NSThread sleepForTimeInterval:1];
-        [self.alerta hide];
-    }
-    self.alerta = [AlertView initWithDelegate:Nil
-                                      message:NSLocalizedString(@"sessionCaduco", Nil)
-                             andAlertViewType:AlertViewTypeInfo];
-    [self.alerta show];
-    [StringUtils terminarSession];
-    [self.navigationController popToRootViewControllerAnimated:YES];
-}
+
 
 -(void) errorConsultaWS {
     [self performSelectorOnMainThread:@selector(errorConsultaUsuario) withObject:Nil waitUntilDone:YES];

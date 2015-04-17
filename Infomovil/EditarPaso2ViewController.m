@@ -9,6 +9,7 @@
 #import "EditarPaso2ViewController.h"
 #import "KeywordDataModel.h"
 #import "WS_ActualizarDireccion.h"
+#import "InicioViewController.h"
 
 @interface EditarPaso2ViewController () {
     UITextField *textoEditado;
@@ -323,7 +324,7 @@
         //self.datosUsuario = [DatosUsuario sharedInstance];
         arregloDireccionAux = diccionarioDireccion;
 //        self.modifico = NO;
-        if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion) {
+       
             for (int i = 0; i < [arregloDireccion count]; i++) {
                 [[arregloDireccionAux objectAtIndex:i] setIdKeyword:[[arregloDireccion objectAtIndex:i] idKeyword]];
             }
@@ -340,10 +341,7 @@
                 [alert show];
                 [self revertirGuardado];
             }
-        }
-        else {
-            [self.navigationController popViewControllerAnimated:YES];
-        }
+        
 	}else{
 		[self.navigationController popViewControllerAnimated:YES];
 	}
@@ -401,8 +399,7 @@
 }
 
 -(void) actualizarDireccion {
-    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).itIsInTime) {
-        [((AppDelegate *)[[UIApplication sharedApplication] delegate]) restartDate];
+   
         WS_ActualizarDireccion *actualizarDireccion = [[WS_ActualizarDireccion alloc] init];
         [actualizarDireccion setDireccionDelegate:self];
         [actualizarDireccion setArregloDireccion:arregloDireccionAux];
@@ -412,19 +409,7 @@
         else {
             [actualizarDireccion insertarDireccion];
         }
-    }
-    else {
-        if ( self.alertaDireccion )
-        {
-            [NSThread sleepForTimeInterval:1];
-            [self.alertaDireccion hide];
-        }
-        self.alertaDireccion = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionCaduco", Nil) andAlertViewType:AlertViewTypeInfo];
-        [self.alertaDireccion show];
-        [StringUtils terminarSession];
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    }
-}
+   }
 
 - (void)actualizaEstatus
 {
@@ -514,25 +499,13 @@
         [NSThread sleepForTimeInterval:1];
         [self.alertaDireccion hide];
     }
-    self.alertaDireccion = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
-    [self.alertaDireccion show];
+    AlertView *alertAct = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
+    [alertAct show];
     [StringUtils terminarSession];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
+    [self.navigationController pushViewController:inicio animated:YES];
 }
 
--(void) sessionTimeout
-{
-    if ( self.alertaDireccion )
-    {
-        [NSThread sleepForTimeInterval:1];
-        [self.alertaDireccion hide];
-    }
-    self.alertaDireccion = [AlertView initWithDelegate:Nil
-                                             message:NSLocalizedString(@"sessionCaduco", Nil)
-                                    andAlertViewType:AlertViewTypeInfo];
-    [self.alertaDireccion show];
-    [StringUtils terminarSession];
-    [self.navigationController popToRootViewControllerAnimated:YES];
-}
+
 
 @end

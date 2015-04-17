@@ -152,7 +152,7 @@
 #pragma mark - UITableView Datasource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion && (self.datosUsuario.dominio == (id)[NSNull null])  && [CommonUtils perfilEditado]) {
+    if ( (self.datosUsuario.dominio == (id)[NSNull null])  && [CommonUtils perfilEditado]) {
         return [arregloCampos count] + 1;
     }
     return [arregloCampos count];
@@ -165,7 +165,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cellInfo"];
     }
 
-    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion && self.datosUsuario.dominio && ![self.datosUsuario.dominio isEqualToString:@""] && ! (self.datosUsuario.dominio == (id)[NSNull null]) && ![CommonUtils validarEmail:self.datosUsuario.dominio]  && [CommonUtils perfilEditado] && indexPath.row == [arregloCampos count]) {
+    if ( self.datosUsuario.dominio && ![self.datosUsuario.dominio isEqualToString:@""] && ! (self.datosUsuario.dominio == (id)[NSNull null]) && ![CommonUtils validarEmail:self.datosUsuario.dominio]  && [CommonUtils perfilEditado] && indexPath.row == [arregloCampos count]) {
         [cell.imageView setImage:[UIImage imageNamed:@"noeditado.png"]];
         [cell.textLabel setTextColor:colorFuenteVerde];
         [cell.textLabel setText:NSLocalizedString(@"txtPublicar", Nil)];
@@ -315,7 +315,7 @@
 -(IBAction)mostrarWeb:(id)sender {
   
       self.datosUsuario	= [DatosUsuario sharedInstance];
-     if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion && self.datosUsuario.dominio && ![self.datosUsuario.dominio isEqualToString:@""] && ! (self.datosUsuario.dominio == (id)[NSNull null]) && ![CommonUtils validarEmail:self.datosUsuario.dominio] && ![self.datosUsuario.dominio isEqualToString:@"(null)"]){
+     if ( self.datosUsuario.dominio && ![self.datosUsuario.dominio isEqualToString:@""] && ! (self.datosUsuario.dominio == (id)[NSNull null]) && ![CommonUtils validarEmail:self.datosUsuario.dominio] && ![self.datosUsuario.dominio isEqualToString:@"(null)"]){
          NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
          [prefs setObject:[NSString stringWithFormat:@"http://info-movil.net/%@?vistaPrevia=true", self.datosUsuario.dominio] forKey:@"urlVistaPrevia"];
 #if DEBUG

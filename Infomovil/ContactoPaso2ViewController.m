@@ -11,6 +11,7 @@
 #import "WS_HandlerContactos.h"
 #import "StringUtils.h"
 #import "AppsFlyerTracker.h"
+#import "InicioViewController.h"
 
 @interface ContactoPaso2ViewController () {
     id textoPulsado;
@@ -541,7 +542,7 @@
 		 [self.labelCodigo setText:@" "];
 		 [self.txtTelefono setText:@""];
 		 [self.txtDescripcion setText:@""];
-		 if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion) {
+		
 			 self.contactosOperacion = ContactosOperacionEliminar;
 			 if ([CommonUtils hayConexion]) {
 				 [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
@@ -551,10 +552,7 @@
 				 AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
 				 [alert show];
 			 }
-		 }
-		 else {
-			 [self.navigationController popViewControllerAnimated:YES];
-		 }
+		 
 	}
 }
 
@@ -628,7 +626,7 @@
 					[arregloContactosAux addObject:contacto];
                     self.modifico = NO;
                     
-                    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion) {
+                    
                         if ([CommonUtils hayConexion]) {
                             [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
                             [self performSelectorInBackground:@selector(actualizarContactos) withObject:Nil];
@@ -638,11 +636,7 @@
                             AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
                             [alert show];
                         }
-                    }
-                    else {
-                        NSArray *arregloVistas = [self.navigationController viewControllers];
-                        [self.navigationController popToViewController:[arregloVistas objectAtIndex:arregloVistas.count-3] animated:YES];
-                    }
+                    
                 }
                 else
 				{
@@ -664,7 +658,7 @@
 						
 						//arregloContactosAux = [[NSMutableArray alloc] initWithArray:[datos arregloContacto]]
 						[arregloContactosAux replaceObjectAtIndex:self.indexContacto withObject:contacto];
-						if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion) {
+					
 							if ([CommonUtils hayConexion]) {
 								[self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
 								[self performSelectorInBackground:@selector(actualizarContactos) withObject:Nil];
@@ -674,10 +668,7 @@
 								AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
 								[alert show];
 							}
-						}
-						else {
-							[self.navigationController popViewControllerAnimated:YES];
-						}
+						
 					}
                 }
             }
@@ -724,7 +715,7 @@
 					}
 						self.modifico = NO;
 						
-						if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion) {
+						
 							if ([CommonUtils hayConexion]) {
 								[self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
 								[self performSelectorInBackground:@selector(actualizarContactos) withObject:Nil];
@@ -734,11 +725,7 @@
 								AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
 								[alert show];
 							}
-						}
-						else {
-							NSArray *arregloVistas = [self.navigationController viewControllers];
-							[self.navigationController popToViewController:[arregloVistas objectAtIndex:arregloVistas.count-3] animated:YES];
-						}
+						
 					
 
 				}
@@ -897,8 +884,7 @@
     }
 }
 -(void) actualizarContactos {
-    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).itIsInTime) {
-        [((AppDelegate *)[[UIApplication sharedApplication] delegate]) restartDate];
+   
         WS_HandlerContactos *handlerContactos = [[WS_HandlerContactos alloc] init];
         [handlerContactos setContactosDelegate:self];
         
@@ -912,18 +898,7 @@
         else {
            [handlerContactos actualizaContacto:self.indexContacto contactosOperacion:ContactosOperacionAgregar];
         }
-    }
-    else {
-        if ( self.alertaContacto )
-        {
-            [NSThread sleepForTimeInterval:1];
-            [self.alertaContacto hide];
-        }
-        self.alertaContacto = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionCaduco", Nil) andAlertViewType:AlertViewTypeInfo];
-        [self.alertaContacto show];
-        [StringUtils terminarSession];
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    }
+  
 }
 
 -(void) resultadoConsultaDominio:(NSString *)resultado {
@@ -972,25 +947,13 @@
         [NSThread sleepForTimeInterval:1];
         [self.alertaContacto hide];
     }
-    self.alertaContacto = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
-    [self.alertaContacto show];
+    AlertView *alertAct = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
+    [alertAct show];
     [StringUtils terminarSession];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
+    [self.navigationController pushViewController:inicio animated:YES];
 }
 
--(void) sessionTimeout
-{   
-    if ( self.alertaContacto )
-    {
-        [NSThread sleepForTimeInterval:1];
-        [self.alertaContacto hide];
-    }
-    self.alertaContacto = [AlertView initWithDelegate:Nil
-                                             message:NSLocalizedString(@"sessionCaduco", Nil)
-                                    andAlertViewType:AlertViewTypeInfo];
-    [self.alertaContacto show];
-    [StringUtils terminarSession];
-    [self.navigationController popToRootViewControllerAnimated:YES];
-}
+
 
 @end

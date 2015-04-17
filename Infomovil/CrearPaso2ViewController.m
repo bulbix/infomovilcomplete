@@ -16,6 +16,8 @@
 #import "UIViewDefs.h"
 #import "AppsFlyerTracker.h"
 #import "AppDelegate.h"
+#import "InicioViewController.h"
+
 
 @interface CrearPaso2ViewController () {
     id textoPulsado;
@@ -138,14 +140,12 @@
 			[self.vistaEmpresa setHidden:NO];
 			[self.labelInstruccion setText:NSLocalizedString(@"agregaNombreEmpresa", nil)];
 			[textEmpresa setHidden:NO];
-			//[vistaLogo setHidden:YES];
 			[txtDescripcion setHidden:YES];
 			break;
 		case  3:
 			[self.vistaEmpresa setHidden:NO];
 			[self.labelInstruccion setText:NSLocalizedString(@"agregaDescripcion", @" ")];
 			[textEmpresa setHidden:YES];
-			//[vistaLogo setHidden:YES];
 			[txtDescripcion setHidden:NO];
 			break;
 	}
@@ -271,7 +271,7 @@
 		nombre		= self.datosUsuario.nombreEmpresa;
     }
 
-    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion && (self.modifico || borrar) ) {
+    if ((self.modifico || borrar) ) {
         if ([CommonUtils hayConexion]) {
 			if(!procesando){
 				[self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
@@ -341,9 +341,8 @@
     
 }
 
--(void) actualizar {
-    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).itIsInTime) {
-        [((AppDelegate *)[[UIApplication sharedApplication] delegate]) restartDate];
+-(void) actualizar { NSLog(@"Actualiza EL NOMBRE DE LA COMPAÑIA!!");
+  
         WS_HandlerActualizarDominio *actualizarDominio = [[WS_HandlerActualizarDominio alloc] init];
         [actualizarDominio setActualizarDominioDelegate:self];
         [actualizarDominio setNombre:nombre];
@@ -359,18 +358,7 @@
             default:
                 break;
         }
-    }
-    else {
-        if ( self.alertActivity )
-        {
-            [NSThread sleepForTimeInterval:1];
-            [self.alertActivity hide];
-        }
-        self.alertActivity = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionCaduco", Nil) andAlertViewType:AlertViewTypeInfo];
-        [self.alertActivity show];
-        [StringUtils terminarSession];
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    }
+   
 }
 
 -(void) resultadoConsultaDominio:(NSString *)resultado {
@@ -455,22 +443,13 @@
         [NSThread sleepForTimeInterval:1];
         [self.alertActivity hide];
     }
-    self.alertActivity = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
-    [self.alertActivity show];
+    AlertView *alertAct = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
+    [alertAct show];
     [StringUtils terminarSession];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
+    [self.navigationController pushViewController:inicio animated:YES];
 }
 
--(void) sessionTimeout {
-    if ( self.alertActivity )
-    {
-        [NSThread sleepForTimeInterval:1];
-        [self.alertActivity hide];
-    }
-    self.alertActivity = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionCaduco", Nil) andAlertViewType:AlertViewTypeInfo];
-    [self.alertActivity show];
-    [StringUtils terminarSession];
-    [self.navigationController popToRootViewControllerAnimated:YES];
-}
+
 
 @end

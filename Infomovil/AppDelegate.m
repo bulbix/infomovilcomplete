@@ -89,9 +89,9 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
     }else{
         InicioViewController *inicioController = [[InicioViewController alloc] initWithNibName:@"InicioViewController" bundle:nil];
         self.navigationController = [[UINavigationController alloc] initWithRootViewController:inicioController];
+       
     }
-    
-    self.window.rootViewController = self.navigationController;
+     self.window.rootViewController = self.navigationController;
     [self.window makeKeyAndVisible];
     self.ultimoView = Nil;
 	
@@ -265,19 +265,7 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
 #endif
 }
 
-- (BOOL) itIsInTime {
-    BOOL enTiempo = YES;
-#ifdef _CON_SESION
-    NSDate *newDate = [NSDate date];
-    int duracion = kSessionTime * 60;
-    NSDate *fechaLoginPlus = [self.fechaLogin dateByAddingTimeInterval:duracion];
-    
-    if ([fechaLoginPlus compare:newDate] == NSOrderedAscending) {
-        enTiempo = NO;
-    }
-#endif
-    return enTiempo;
-}
+
 
 - (void) restartDate {
     self.fechaLogin = [NSDate date];

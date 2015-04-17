@@ -40,8 +40,7 @@
             NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
             if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                 [self.promocionDelegate errorToken];
-            }else if ([stringResult isEqualToString:@"SessionTO"])
-                [self.promocionDelegate sessionTimeout];
+            }
             else {
                 if ([stringResult isEqual:@"Exito"]) {
                     datos.promocionActual = [[OffertRecord alloc] init];
@@ -115,8 +114,7 @@
             NSString *stringResult = [StringUtils desEncriptar:_resultado conToken:self.token];
             if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                 [self.promocionDelegate errorToken];
-            }else if ([stringResult isEqualToString:@"SessionTO"])
-                [self.promocionDelegate sessionTimeout];
+            }
             else {
                 NSInteger idAux = [stringResult integerValue];
                 if (idAux > 0) {

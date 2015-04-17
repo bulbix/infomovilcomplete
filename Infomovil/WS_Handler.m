@@ -380,6 +380,7 @@
 	{
 #if DEBUG
         NSLog(@"El codigo de error en WS_Handler es: %ld y su descripcion es: %@", (long)error.code, error.localizedDescription);
+        // Time out es -1001
 #endif
         if(error.code == -1005) {
             AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];

@@ -16,7 +16,7 @@
 
 @property (nonatomic, strong) DatosUsuario *datosUsuario;
 
-@property (nonatomic) BOOL existeSesion;
+
 @property (nonatomic) DomainType tipoDominio;
 @property (nonatomic,strong) NSString * statusDominio;
 @property (nonatomic) BOOL logueado;
@@ -30,7 +30,7 @@
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
-- (BOOL) itIsInTime;
+
 - (void) restartDate;
 - (void)fbDidlogout;
 @end

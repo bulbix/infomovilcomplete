@@ -65,8 +65,7 @@
                 NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
                 if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                     [self.direccionDelegate errorToken];
-                }else if ([stringResult isEqualToString:@"SessionTO"])
-                    [self.direccionDelegate sessionTimeout];
+                }
                 else {
                     datos.direccion = self.arregloDireccion;
                     [self.direccionDelegate resultadoConsultaDominio:stringResult];
@@ -135,9 +134,7 @@
 
                 if (self.token == nil) {
                     [self.direccionDelegate errorToken];
-                } if ([self.resultado isEqualToString:@"SessionTO"])
-                    [self.direccionDelegate sessionTimeout];
-                else {
+                }
                     if (self.diccionarioId!= nil && [self.diccionarioId count] == 7 ) {
                         datos.direccion = self.diccionarioId;
                         [self.direccionDelegate resultadoInsertarDireccion:@"Exito"];
@@ -145,8 +142,6 @@
                     }else{
                         [self.direccionDelegate resultadoInsertarDireccion:@"No Exito"];
                     }
-                }
-				
             }
             else {
                 [self.direccionDelegate resultadoInsertarDireccion:@"Exito"];
@@ -208,8 +203,7 @@
                 NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
                 if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                     [self.direccionDelegate errorToken];
-                } else if ([stringResult isEqualToString:@"SessionTO"])
-                    [self.direccionDelegate sessionTimeout];
+                }
                 else {
                     if ([stringResult isEqualToString:@"Exito"]) {
                         [datos setArregloInformacionAdicional:self.arregloPerfil];
@@ -283,8 +277,7 @@
                 
                 if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                     [self.direccionDelegate errorToken];
-                } else if ([stringResult isEqualToString:@"SessionTO"])
-                    [self.direccionDelegate sessionTimeout];
+                }
                 else {
                     [self.direccionDelegate resultadoConsultaDominio:stringResult];
                 }
@@ -365,8 +358,7 @@
                 NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
                 if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                     [self.direccionDelegate errorToken];
-                } else if ([stringResult isEqualToString:@"SessionTO"])
-                    [self.direccionDelegate sessionTimeout];
+                }
                 else {
                     if ([stringResult isEqualToString:@"Exito"]) {
                         [self.arregloPerfil replaceObjectAtIndex:self.indexSeleccionado withObject:keywordModel];
@@ -444,8 +436,7 @@
                 NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
                 if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                     [self.direccionDelegate errorToken];
-                } else if ([stringResult isEqualToString:@"SessionTO"])
-                    [self.direccionDelegate sessionTimeout];
+                }
                 else {
                     NSInteger idAux = [stringResult integerValue];
                     NSString* posAux = [StringUtils desEncriptar:self.posActualizar conToken:datos.token] ;
@@ -530,8 +521,7 @@
                 NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
                 if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                     [self.direccionDelegate errorToken];
-                } else if ([stringResult isEqualToString:@"SessionTO"])
-                    [self.direccionDelegate sessionTimeout];
+                }
                 else {
                     NSInteger idRespuesta = [[StringUtils desEncriptar:self.resultado conToken:datos.token] integerValue];
                     
@@ -602,8 +592,7 @@
                 NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
                 if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                     [self.direccionDelegate errorToken];
-                } else if ([stringResult isEqualToString:@"SessionTO"])
-                    [self.direccionDelegate sessionTimeout];
+                } 
                 else {
                     if ([stringResult isEqualToString:@"Exito"]) {
                         if (self.tipoInfo == 2) {
@@ -682,7 +671,13 @@
         [self.diccionarioId addObject:self.keyModel];
     }
     else if ([elementName isEqualToString:@"token"]) {
+        
         self.token = [StringUtils desEncriptar:self.currentElementString conToken:passwordEncriptar];
+        NSLog(@"EL TOKEN RECIBIDO ES: %@",self.currentElementString );
+        NSLog(@"********************************************************");
+        
+        
+        
     }else if ([elementName isEqualToString:@"idDomain"]){
         self.idDominio = self.currentElementString;//[StringUtils desEncriptar:self.currentElementString conToken:self.token];
     }

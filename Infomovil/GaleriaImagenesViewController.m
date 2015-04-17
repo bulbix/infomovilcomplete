@@ -15,6 +15,7 @@
 #import "CuentaViewController.h"
 #import "AppsFlyerTracker.h"
 #import "AppDelegate.h"
+#import "InicioViewController.h"
 
 @interface GaleriaImagenesViewController () {
     BOOL exito;
@@ -206,13 +207,9 @@
 
 -(IBAction)agregarImagen:(id)sender {
 
-    if(!((AppDelegate*)[[UIApplication sharedApplication] delegate]).existeSesion){
-        AlertView *alert = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionCaduco", Nil) andAlertViewType:AlertViewTypeInfo];
-        [alert show];
-        [StringUtils terminarSession];
-        [self.navigationController popToRootViewControllerAnimated:YES];
     
-    }else if ([self.arregloImagenes count] < 2) {
+    
+    if ([self.arregloImagenes count] < 2) {
         GaleriaPaso2ViewController *galeria = [[GaleriaPaso2ViewController alloc] initWithNibName:@"GaleriaPaso2ViewController" bundle:nil];
         [galeria setOperacion:GaleriaImagenesAgregar];
         [galeria setGaleryType:PhotoGaleryTypeImage];
@@ -344,7 +341,7 @@
             [galeriaAux setAncho:[galeria ancho]];
             [self.arregloImagenes addObject:galeriaAux];
         }
-        if (movio && ((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion) {
+        if (movio ) {
             if ([CommonUtils hayConexion]) {
                 [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
                 [self performSelectorInBackground:@selector(actualizarGaleria) withObject:Nil];
@@ -390,26 +387,12 @@
 }
 
 -(void) actualizarGaleria {
-    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).itIsInTime) {
-        [((AppDelegate *)[[UIApplication sharedApplication] delegate]) restartDate];
+  
         WS_HandlerGaleria *handlerGaleria = [[WS_HandlerGaleria alloc] init];
         [handlerGaleria setArregloGaleria:self.arregloImagenes];
         [handlerGaleria setGaleriaDelegate:self];
         [handlerGaleria actualizarGaleria];
-    }
-    else {
-        if (self.alertaGaleria)
-        {
-            [NSThread sleepForTimeInterval:1];
-            [self.alertaGaleria hide];
-        }
-        self.alertaGaleria = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionCaduco", Nil) andAlertViewType:AlertViewTypeInfo];
-        [self.alertaGaleria show];
-        [StringUtils terminarSession];
-        [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    }
-}
+   }
 
 -(void) resultadoConsultaDominio:(NSString *)resultado {
     if ([resultado isEqualToString:@"Exito"]) {
@@ -428,27 +411,14 @@
         [NSThread sleepForTimeInterval:1];
         [self.alertaGaleria hide];
     }
-    self.alertaGaleria = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
-    [self.alertaGaleria show];
+    AlertView *alertAct = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
+    [alertAct show];
     [StringUtils terminarSession];
-    [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    
+    InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
+    [self.navigationController pushViewController:inicio animated:YES];
 }
--(void) sessionTimeout
-{
-    if (self.alertaGaleria)
-    {
-        [NSThread sleepForTimeInterval:1];
-        [self.alertaGaleria hide];
-    }
-    self.alertaGaleria = [AlertView initWithDelegate:Nil
-                                             message:NSLocalizedString(@"sessionCaduco", Nil)
-                                    andAlertViewType:AlertViewTypeInfo];
-    [self.alertaGaleria show];
-    [StringUtils terminarSession];
-    [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
-    [self.navigationController popToRootViewControllerAnimated:YES];
-}
+
 
 -(void) errorConsultaWS {
     [self performSelectorOnMainThread:@selector(errorActualizar) withObject:Nil waitUntilDone:YES];

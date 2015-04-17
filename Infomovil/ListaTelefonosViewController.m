@@ -19,6 +19,7 @@
 #import "TextAndGraphAlertView.h"
 #import "AppsFlyerTracker.h"
 #import "AppDelegate.h"
+#import "InicioViewController.h"
 
 @interface ListaTelefonosViewController () <ContactosCellDelegate> {
     BOOL actualizoContactos;
@@ -189,12 +190,7 @@
 
 -(IBAction)agregarContacto:(id)sender {
   
-    if (!((AppDelegate*)[[UIApplication sharedApplication] delegate]).existeSesion){
-             AlertView *alert = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionCaduco", Nil) andAlertViewType:AlertViewTypeInfo];
-             [alert show];
-             [StringUtils terminarSession];
-             [self.navigationController popToRootViewControllerAnimated:YES];
-    }else if([self.datosUsuario.arregloContacto count] < 2) {
+    if([self.datosUsuario.arregloContacto count] < 2) {
             TipoContactoViewController *tipoContacto = [[TipoContactoViewController alloc] initWithNibName:@"TipoContactoViewController" bundle:Nil];
             [self.navigationController pushViewController:tipoContacto animated:YES];
     }else if([self.datosUsuario.arregloContacto count] >= 2 && [self.datosUsuario.arregloContacto count] < 10 && [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && ![self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]){
@@ -235,7 +231,7 @@
     if (self.editing) {
         [self.tablaContactos setEditing:NO animated:YES];
         [self setEditing:NO animated:YES];
-        if (self.modifico && ((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion) {
+        if (self.modifico){
             esReacomodo = YES;
             if ([CommonUtils hayConexion]) {
                 [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
@@ -354,8 +350,7 @@
 
 -(void)cell:(ContactosCell *)cell changeSwitchValue:(UISwitch *)aSwitch
 {
-    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion)
-    {
+    
         esReacomodo = YES;
         
         self.contactoCelda = cell.contacto;
@@ -379,7 +374,7 @@
             AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
             [alert show];
         }
-    }
+    
  
 }
 
@@ -412,8 +407,7 @@
 }
 
 -(void) actualizarContactos {
-    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).itIsInTime) {
-        [((AppDelegate *)[[UIApplication sharedApplication] delegate]) restartDate];
+   
         WS_HandlerContactos *contactos = [[WS_HandlerContactos alloc] init];
         [contactos setContactosDelegate:self];
         if (esReacomodo) {
@@ -422,18 +416,7 @@
         else {
             [contactos actualizaConContacto:self.contactoCelda];
         }
-    }
-    else {
-        if (self.alertaLista)
-        {
-            [NSThread sleepForTimeInterval:1];
-            [self.alertaLista hide];
-        }
-        self.alertaLista = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionCaduco", Nil) andAlertViewType:AlertViewTypeInfo];
-        [self.alertaLista show];
-        [StringUtils terminarSession];
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    }
+    
 }
 
 -(void) resultadoConsultaDominio:(NSString *)resultado {
@@ -454,28 +437,17 @@
         [NSThread sleepForTimeInterval:1];
         [self.alertaLista hide];
     }
-    self.alertaLista = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
-    [self.alertaLista show];
+    AlertView *alertAct = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
+    [alertAct show];
     [StringUtils terminarSession];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    
+    InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
+    [self.navigationController pushViewController:inicio animated:YES];
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     [prefs setInteger:0 forKey:@"ActualizandoEstatus1SolaVez"];
     [prefs synchronize];
 }
--(void) sessionTimeout
-{
-    if (self.alertaLista)
-    {
-        [NSThread sleepForTimeInterval:1];
-        [self.alertaLista hide];
-    }
-    self.alertaLista = [AlertView initWithDelegate:Nil
-                                             message:NSLocalizedString(@"sessionCaduco", Nil)
-                                    andAlertViewType:AlertViewTypeInfo];
-    [self.alertaLista show];
-    [StringUtils terminarSession];
-    [self.navigationController popToRootViewControllerAnimated:YES];
-}
+
 
 -(void) errorConsultaWS {
     [self performSelectorOnMainThread:@selector(errorContacto) withObject:Nil waitUntilDone:YES];

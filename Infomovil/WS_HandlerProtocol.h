@@ -20,6 +20,6 @@
 -(void) itemsActualizados:(BOOL)estado;
 -(void) resultadoCompraDominio:(BOOL)estado;
 -(void) errorToken;
--(void) sessionTimeout;
+
 -(void) resultadoVideo:(NSMutableArray*)arregloVideos;
 @end

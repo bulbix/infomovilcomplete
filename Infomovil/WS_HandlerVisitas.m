@@ -43,14 +43,13 @@
         if ([parser parse]) {
             if (self.token == nil) {
                 [self.wSHandlerDelegate errorToken];
-            } if ([self.resultado isEqualToString:@"SessionTO"])
-                [self.wSHandlerDelegate sessionTimeout];
-            else {
+            }
+            
                 DatosUsuario *datos = [DatosUsuario sharedInstance];
                 datos.token = self.token;
                 datos.arregloVisitas = self.arregloVisitas;
                 [self.wSHandlerDelegate resultadoConsultaDominio:@"Exito"];
-            }
+            
         }
         else {
             [self.wSHandlerDelegate errorConsultaWS];
@@ -86,14 +85,13 @@
         if ([parser parse]) {
             if (self.token == nil) {
                 [self.wSHandlerDelegate errorToken];
-            } if ([self.resultado isEqualToString:@"SessionTO"])
-                [self.wSHandlerDelegate sessionTimeout];
-            else {
+            }
+            
                 DatosUsuario *datos = [DatosUsuario sharedInstance];
                 datos.token = self.token;
                 datos.arregloVisitantes = self.arregloVisitas;
                 [self.wSHandlerDelegate resultadoConsultaDominio:@"Exito"];
-            }
+            
             
         }
         else {
@@ -131,14 +129,12 @@
         if ([parser parse]) {
             if (self.token == nil) {
                 [self.wSHandlerDelegate errorToken];
-            } if ([self.resultado isEqualToString:@"SessionTO"])
-                [self.wSHandlerDelegate sessionTimeout];
-            else {
+            }
                 DatosUsuario *datos = [DatosUsuario sharedInstance];
                 datos.token = self.token;
                 datos.arregloVisitantes = self.arregloVisitas;
                 [self.wSHandlerDelegate resultadoConsultaDominio:@"Exito"];
-            }
+            
             
         }
         else {

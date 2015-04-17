@@ -12,6 +12,7 @@
 #import "VistaVideoViewController.h"
 #import "WS_HandlerVideo.h"
 #import "JsonParserVideo.h"
+#import "InicioViewController.h"
 
 @interface VideoViewController () {
     //    BOOL modifico;
@@ -162,7 +163,7 @@
     self.datosUsuario.videoSeleccionado = Nil;
     self.datosUsuario.urlVideo = Nil;
     [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:6 withObject:@NO];
-    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion) {
+   
         if ([CommonUtils hayConexion]) {
             [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
             [self performSelectorInBackground:@selector(actualizarVideo) withObject:Nil];
@@ -171,7 +172,7 @@
             AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
             [alert show];
         }
-    }
+    
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -274,23 +275,11 @@
 }
 
 -(void) actualizarVideo {
-    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).itIsInTime) {
-        [((AppDelegate *)[[UIApplication sharedApplication] delegate]) restartDate];
+   
         WS_HandlerVideo *handlerVideo = [[WS_HandlerVideo alloc] init];
         [handlerVideo setVideoDelegate:self];
         [handlerVideo eliminarVideo];
-    }
-    else {
-        if (self.alertaVideo)
-        {
-            [NSThread sleepForTimeInterval:1];
-            [self.alertaVideo hide];
-        }
-        self.alertaVideo = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionCaduco", Nil) andAlertViewType:AlertViewTypeInfo];
-        [self.alertaVideo show];
-        [StringUtils terminarSession];
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    }
+   
 }
 
 -(void) resultadoConsultaDominio:(NSString *)resultado {
@@ -311,25 +300,14 @@
         [NSThread sleepForTimeInterval:1];
         [self.alertaVideo hide];
     }
-    self.alertaVideo = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
-    [self.alertaVideo show];
+    AlertView *alertAct = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
+    [alertAct show];
     [StringUtils terminarSession];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    
+    InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
+    [self.navigationController pushViewController:inicio animated:YES];
 }
--(void) sessionTimeout
-{
-    if (self.alertaVideo)
-    {
-        [NSThread sleepForTimeInterval:1];
-        [self.alertaVideo hide];
-    }
-    self.alertaVideo = [AlertView initWithDelegate:Nil
-                                             message:NSLocalizedString(@"sessionCaduco", Nil)
-                                    andAlertViewType:AlertViewTypeInfo];
-    [self.alertaVideo show];
-    [StringUtils terminarSession];
-    [self.navigationController popToRootViewControllerAnimated:YES];
-}
+
 -(void) errorConsultaWS {
     [self performSelectorOnMainThread:@selector(errorActualizar) withObject:Nil waitUntilDone:YES];
 }

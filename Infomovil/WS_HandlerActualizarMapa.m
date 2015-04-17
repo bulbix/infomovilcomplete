@@ -61,8 +61,7 @@
                 NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:datosUsuario.token];
                 if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                     [self.mapaDelegate errorToken];
-                } else if ([stringResult isEqualToString:@"SessionTO"])
-                    [self.mapaDelegate sessionTimeout];
+                }
                 else {
                     datosUsuario.localizacion = self.location;
                     [self.mapaDelegate resultadoConsultaDominio:stringResult];
@@ -122,8 +121,7 @@
                 NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:datosUsuario.token];
                 if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                     [self.mapaDelegate errorToken];
-                } else if ([stringResult isEqualToString:@"SessionTO"])
-                    [self.mapaDelegate sessionTimeout];
+                }
                 else {
                     datosUsuario.localizacion = nil;
                     [self.mapaDelegate resultadoConsultaDominio:stringResult];

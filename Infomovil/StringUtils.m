@@ -53,7 +53,7 @@
     }
 #if DEBUG
     else {
-        NSLog(@"El error es %@", [error localizedDescription]);
+        NSLog(@"El error es en stringUtils : %@", [error localizedDescription]);
     }
 #endif
     return exito;
@@ -62,7 +62,7 @@
 + (NSString *)encriptar:(NSString *)texto conToken:(NSString *)token {
  
 #ifdef _DEBUG
-	NSLog(@"Texto: %@, token: %@",texto,token);
+	NSLog(@"Texto en stringUtils: %@, token: %@",texto,token);
 #endif
     NSData *valueData = [texto dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
 	NSData *keyData = [token dataUsingEncoding:NSUTF8StringEncoding];
@@ -168,10 +168,10 @@
 + (void) terminarSession {
     DatosUsuario *datosUsuario = [DatosUsuario sharedInstance];
     [StringUtils deleteResourcesWithExtension:@"jpg"];
-    [StringUtils deleteFile];
+   // [StringUtils deleteFile];
     [datosUsuario eliminarDatos];
     ((AppDelegate *)[[UIApplication sharedApplication] delegate]).statusDominio = @"Gratuito";
-    ((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion = NO;
+   
 }
 
 + (NSString *) randomStringWithLength: (int) len {

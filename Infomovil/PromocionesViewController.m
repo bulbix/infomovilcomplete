@@ -16,6 +16,7 @@
 #import "UIViewDefs.h"
 #import "GaleriaPaso2ViewController.h"
 #import "NSStringUtiles.h"
+#import "InicioViewController.h"
 
 #define VIGENCIA_FORMAT @"dd - MMMM - YYYY"
 
@@ -143,8 +144,7 @@
 								 [[Datos alloc] initWithTitle:NSLocalizedString(@"enviaEmail", @" ") withSpanishTitle:NSLocalizedStringFromTable(@"enviaEmail", @"Spanish",@" ") andStatus:NO],
 								 [[Datos alloc] initWithTitle:NSLocalizedString(@"visitanos", @" ") withSpanishTitle:NSLocalizedStringFromTable(@"visitanos", @"Spanish",@" ") andStatus:NO]];
         
-        if ( ((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion )
-		{
+       
             if ([[_promocionActual pathImageOffer] length] > 0)
 			{
                 Datos *datosAux = [arregloSec1 objectAtIndex:1];
@@ -162,7 +162,7 @@
                 if ([[datosAux tituloMostrar] isEqualToString:opcionAux2])
                     [datosAux setEstatus:YES];
             }
-        }
+        
         
         [promoTemp addObject:arregloSec1];
         [promoTemp addObject:arregloSec2];
@@ -574,9 +574,6 @@
         [_promocionActual setRedeemAux:txtRedencionAux];
     }
 	
-	
-    if ( ((AppDelegate *)[[UIApplication sharedApplication] delegate]).existeSesion )
-	{
         if ( [CommonUtils hayConexion] )
 		{
 			[self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:NO];
@@ -589,7 +586,7 @@
 										  andAlertViewType:AlertViewTypeInfo];
             [alert show];
         }
-	}
+	
 }
 
 -(IBAction)fechaseleccionda:(UIDatePicker *)sender
@@ -648,8 +645,7 @@
 
 -(void) actualizarPromocion
 {
-    if (((AppDelegate *)[[UIApplication sharedApplication] delegate]).itIsInTime) {
-        [((AppDelegate *)[[UIApplication sharedApplication] delegate]) restartDate];
+    
         WS_HandlerPromocion *handlerPromocion = [[WS_HandlerPromocion alloc] init];
         [handlerPromocion setOferta:_promocionActual];
         [handlerPromocion setPromocionDelegate:self];
@@ -659,18 +655,7 @@
         else {
             [handlerPromocion actualizaPromocion];
         }
-    }
-    else {
-        if (_alertPromocion)
-        {
-            [NSThread sleepForTimeInterval:1];
-            [_alertPromocion hide];
-        }
-        self.alertPromocion = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionCaduco", Nil) andAlertViewType:AlertViewTypeInfo];
-        [self.alertPromocion show];
-        [StringUtils terminarSession];
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    }
+   
 }
 
 -(void) resultadoConsultaDominio:(NSString *)resultado {
@@ -691,25 +676,14 @@
         [NSThread sleepForTimeInterval:1];
         [_alertPromocion hide];
     }
-    self.alertPromocion = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
-    [self.alertPromocion show];
+    AlertView *alertAct = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
+    [alertAct show];
     [StringUtils terminarSession];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    
+    InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
+    [self.navigationController pushViewController:inicio animated:YES];
 }
--(void) sessionTimeout
-{
-    if (_alertPromocion)
-    {
-        [NSThread sleepForTimeInterval:1];
-        [_alertPromocion hide];
-    }
-    self.alertPromocion = [AlertView initWithDelegate:Nil
-                                             message:NSLocalizedString(@"sessionCaduco", Nil)
-                                    andAlertViewType:AlertViewTypeInfo];
-    [_alertPromocion show];
-    [StringUtils terminarSession];
-    [self.navigationController popToRootViewControllerAnimated:YES];
-}
+
 
 -(void) errorConsultaWS {
     [self performSelectorOnMainThread:@selector(errorActualizar) withObject:Nil waitUntilDone:YES];

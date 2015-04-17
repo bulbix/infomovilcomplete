@@ -384,7 +384,7 @@
         }
         
         [self.datosUsuario setPasswordUsuario:self.txtPassword.text];
-        ((AppDelegate*)[[UIApplication sharedApplication] delegate]).existeSesion = YES;
+       
         
         [[AppsFlyerTracker sharedTracker] setCustomerUserID:self.txtEmail.text];
        
