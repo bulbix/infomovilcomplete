@@ -223,6 +223,7 @@
     }
     else {
         KeywordDataModel *dataModel = [self.datosUsuario.arregloDatosPerfil objectAtIndex:index];
+        NSLog(@"datamodel para eliminar!! : %i", dataModel.idKeyword);
         [self.txtDescripcion setText:dataModel.keywordValue];
         if (dataModel.keywordValue.length > 0) {
             estaEditando = YES;
@@ -459,9 +460,12 @@
 }
 
 -(void) accionSi {
+    
+    NSLog(@"MANDO A LLAMAR ELIMINAR DE NEGOCIO PROFESION");
 	[self.view endEditing:YES];
     if (estaEliminando && index != 2 )
     {
+        NSLog(@"EL INDEX A ELIMINAR ES: %i",index);
         self.datosUsuario = [DatosUsuario sharedInstance];
         idPerfil = [[self.datosUsuario.arregloDatosPerfil objectAtIndex:index] idKeyword];
         [self copiarArreglo];
@@ -564,11 +568,11 @@
         if (estaEliminando) {
             switch (index) {
                 case 0:
-              //      [[AppsFlyerTracker sharedTracker] trackEvent:@"Borro (Perfil)Productos|Servicios" withValue:@""];
+            
                     [self enviarEventoGAconCategoria:@"Borro" yEtiqueta:@"(Perfil)Productos|Servicios"];
                     break;
                 case 1:
-               //     [[AppsFlyerTracker sharedTracker] trackEvent:@"Borro (Perfil)Areas de servicio" withValue:@""];
+              
                     [self enviarEventoGAconCategoria:@"Borro" yEtiqueta:@"(Perfil)Areas de servicio"];
                     break;
                 case 2:
@@ -652,6 +656,7 @@
             [actualizarDireccion actualizarElementoPerfil:dataModel];
         }
         else if (estaEliminando) {
+            NSLog(@"ESTA ELIMINANDO WE con el idPerfil: %i", idPerfil);
             [actualizarDireccion eliminarKeywordConId:idPerfil];
         }
         else {
@@ -734,21 +739,7 @@
                 i++;
             }
         }
-//        if(i != 0){
-//            comprobacion = YES;
-//        }else if(i == 0){
-//            comprobacion = NO;
-//            
-//        }
-//        
-//        if(comprobacion){
-//            [arregloAux replaceObjectAtIndex:index withObject:@YES];
-//        }else{
-//            [arregloAux replaceObjectAtIndex:index withObject:@NO];
-//        }
-//        self.datosUsuario.arregloEstatusPerfil = arregloAux;
-        
-//        self.datosUsuario.arregloHorario = self.arrayDataContent;
+
         NSMutableString *stringHorarios = [[NSMutableString alloc] initWithString:@"|"];
         for (ListaHorarios *horario in self.arrayDataContent) {
             [stringHorarios appendFormat:@"%@|%@ - %@|", horario.dia, horario.inicio, horario.cierre];
@@ -782,7 +773,7 @@
 
 -(void) validaEditados {
     self.datosUsuario = [DatosUsuario sharedInstance];
-    [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:9 withObject:@NO];
+    //[self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:9 withObject:@NO];
     int i = 0, k = 0;
     for (KeywordDataModel *keyAux in self.datosUsuario.arregloDatosPerfil) {
         if (i == 2) {

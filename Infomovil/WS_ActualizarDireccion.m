@@ -565,7 +565,7 @@
                      "</soapenv:Envelope>",
                      [StringUtils encriptar:[NSString stringWithFormat:@"%i", datos.idDominio] conToken:datos.token],
                      [StringUtils encriptar:[NSString stringWithFormat:@"%i", idKeyword] conToken:datos.token],
-                     [StringUtils encriptar:datos.emailUsuario conToken:passwordEncriptar]];
+                     [StringUtils encriptar:datos.email conToken:passwordEncriptar]];
     }
     else {
         stringXML = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.webservice.infomovil.org/\">"

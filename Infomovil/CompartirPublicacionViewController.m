@@ -44,7 +44,7 @@
     [self.labelDominio setText:[NSString stringWithFormat:@"www.%@.tel", self.datosUsuario.dominio]];
     
 #if DEBUG
-    [self.labelDominio setText:[NSString stringWithFormat:@"www.info-movil.com/%@", self.datosUsuario.dominio]];
+    [self.labelDominio setText:[NSString stringWithFormat:@"info-movil.com:8080/%@", self.datosUsuario.dominio]];
 #endif
     
     

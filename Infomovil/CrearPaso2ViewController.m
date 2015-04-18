@@ -251,7 +251,7 @@
 	labelInfo.hidden = YES;
 }
 
--(IBAction)guardarInformacion:(id)sender {
+-(IBAction)guardarInformacion:(id)sender { NSLog(@"ENTRO A GUARDAR INFORMACIÓN!!");
 	BOOL procesando = NO;
     [[self view] endEditing:YES];
     self.datosUsuario = [DatosUsuario sharedInstance];

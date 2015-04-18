@@ -641,14 +641,14 @@ if(noSeRepiteOprimirElBoton){
                 
             
 #if DEBUG
-                dominio.text = [NSString stringWithFormat:@"My website\n\nwww.info-movil.com/%@",self.datosUsuario.dominio] ;
+                dominio.text = [NSString stringWithFormat:@"My website\n\nhttp://info-movil.com:8080/%@",self.datosUsuario.dominio] ;
 #else
                 dominio.text = [NSString stringWithFormat:@"My website\n\n www.%@.tel",self.datosUsuario.dominio] ;
 #endif
             }else{
                 
 #if DEBUG
-                dominio.text = [NSString stringWithFormat:@"Mi sitio web\n\nwww.info-movil.com/%@",self.datosUsuario.dominio] ;
+                dominio.text = [NSString stringWithFormat:@"Mi sitio web\n\nhttp://info-movil.com:8080/%@",self.datosUsuario.dominio] ;
 #else
                 dominio.text = [NSString stringWithFormat:@"Mi sitio web\n\n www.%@.tel",self.datosUsuario.dominio] ;
 #endif

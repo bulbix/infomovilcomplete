@@ -68,7 +68,7 @@
         DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:i];
 #if DEBUG
         if(![self.datosUsuario.dominio isEqualToString:@"(null)"] && ![self.datosUsuario.dominio isEqualToString:@""] && ![self.datosUsuario.dominio isEqual:[NSNull null]] && !(self.datosUsuario.dominio == nil) && [usuarioDom.domainType isEqualToString:@"recurso"]){
-            [cell.textLabel setText:[NSString stringWithFormat:@"info-movil.com/%@", self.datosUsuario.dominio]];
+            [cell.textLabel setText:[NSString stringWithFormat:@"http://info-movil.com:8080/%@", self.datosUsuario.dominio]];
         }
 #else
         if(![self.datosUsuario.dominio isEqualToString:@"(null)"] && ![self.datosUsuario.dominio isEqualToString:@""] && ![self.datosUsuario.dominio isEqual:[NSNull null]] && !(self.datosUsuario.dominio == nil) && [usuarioDom.domainType isEqualToString:@"tel"]){

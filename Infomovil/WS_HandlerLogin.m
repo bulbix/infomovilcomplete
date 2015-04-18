@@ -148,8 +148,6 @@
             
                 if (self.descipcionAux.length > 0 && self.descipcionAux != Nil) {
                     self.descipcionAux = [StringUtils desEncriptar:self.descipcionAux conToken:self.datosUsuario.token];
-                    NSLog(@"EL TITULO ES: %@", self.descipcionAux);
-                    NSLog(@"DESENCRIPTA CON EL TOKEN: %@", self.datosUsuario.token);
                     if ((self.descipcionAux.length > 0 && ![self.descipcionAux isEqualToString:@"Título"]) && ![self.descipcionAux isEqualToString:@"(null)"]) {
                         
                         self.datosUsuario.descripcion = self.descipcionAux;
@@ -160,10 +158,8 @@
                     self.datosUsuario.dominio = [StringUtils desEncriptar:self.datosUsuario.dominio conToken:self.datosUsuario.token];
                 }
                 if (self.nombreEmpresaAux.length > 0 && self.nombreEmpresaAux != Nil) {
-                    NSLog(@"DESENCRIPTA CON EL TOKEN: %@", self.datosUsuario.token);
-                    self.nombreEmpresaAux = [StringUtils desEncriptar:self.nombreEmpresaAux conToken:self.datosUsuario.token];
-                    NSLog(@"EL NOMBRE DEL TITULO ES: %@", self.nombreEmpresaAux);
-                    if (![self.nombreEmpresaAux isEqualToString:@"Título"] && ![self.nombreEmpresaAux isEqualToString:@"(null)"]) {
+                    self.nombreEmpresaAux = [StringUtils desEncriptar:self.nombreEmpresaAux conToken:self.token];
+                    if (![self.nombreEmpresaAux isEqualToString:@"Título"] && ![self.nombreEmpresaAux isEqualToString:@"(null)"] && self.nombreEmpresaAux != nil && ![self.nombreEmpresaAux isEqualToString:@""]) {
                         self.datosUsuario.nombreEmpresa = self.nombreEmpresaAux;
                         
                         [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:0 withObject:@YES];
@@ -173,16 +169,9 @@
                     self.datosUsuario.urlVideo = [StringUtils desEncriptar:self.datosUsuario.urlVideo conToken:self.datosUsuario.token];
                     [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:6 withObject:@YES];
                 }
-                
-                
                 [self acomodaContactos];
-            
-            
                 self.datosUsuario.arregloContacto = self.arregloContactos;
                 for (NSInteger i = 0; i < [self.arregloImagenes count]; i++) {
-                    
-                 
-                    
                     GaleriaImagenes *galImagenes = [self.arregloImagenes objectAtIndex:i];
                     if (galImagenes.pieFoto != Nil && galImagenes.pieFoto.length > 0) {
                         galImagenes.pieFoto = [StringUtils desEncriptar:galImagenes.pieFoto conToken:self.datosUsuario.token];
@@ -194,13 +183,14 @@
                     [self.arregloImagenes replaceObjectAtIndex:i withObject:galImagenes];
                 }
                 self.datosUsuario.arregloGaleriaImagenes = self.arregloImagenes;
-            
-                if ([self.arregloDireccion count] > 0 && [[StringUtils desEncriptar:[[self.arregloDireccion objectAtIndex:0] idAuxKeyword] conToken:self.datosUsuario.token] integerValue]!= 0) {
+            // ARREGLO DE DIRECCIONES //
+           
+            if ([self.arregloDireccion count] > 0 /*&& [[StringUtils desEncriptar:[[self.arregloDireccion objectAtIndex:0] idAuxKeyword] conToken:self.datosUsuario.token] integerValue]!= 0*/) {
                     BOOL hayDatos = NO;
                     for (NSInteger i = 0; i < [self.arregloDireccion count]; i++) {
                         KeywordDataModel *keyAux = [self.arregloDireccion objectAtIndex:i];
                         if (keyAux.idAuxKeyword != Nil && keyAux.idAuxKeyword.length > 0) {
-                            NSString *idAux = [StringUtils desEncriptar:keyAux.idAuxKeyword conToken:self.datosUsuario.token];
+                            NSString *idAux = keyAux.idAuxKeyword;
                             [keyAux setIdKeyword:[idAux integerValue]];
                         }
                         if (keyAux.keywordField != Nil && keyAux.keywordField.length > 0) {
@@ -215,6 +205,7 @@
                                 hayDatos = YES;
                             }
                         }
+                        
                         [self.arregloDireccion replaceObjectAtIndex:i withObject:keyAux];
                     }
                     self.datosUsuario.direccion = self.arregloDireccion;
@@ -227,7 +218,7 @@
                     for (NSInteger i = 0; i < [self.arregloPerfil count]; i++) {
                         KeywordDataModel *keyAux = [self.arregloPerfil objectAtIndex:i];
                         if (keyAux.idAuxKeyword != Nil && keyAux.idAuxKeyword.length > 0) {
-                            NSString *idAux = [StringUtils desEncriptar:keyAux.idAuxKeyword conToken:self.datosUsuario.token];
+                            NSString *idAux = keyAux.idAuxKeyword;
                             [keyAux setIdKeyword:[idAux integerValue]];
                         }
                         if (keyAux.keywordField != Nil && keyAux.keywordField.length > 0) {
@@ -253,8 +244,7 @@
 							x++;
 						}
 					}
-					
-					if(x == 7){
+                    if(x == 8){
 						self.datosUsuario.arregloDatosPerfil = self.arregloPerfil;
 						[self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:9 withObject:@NO];
 					}else{
@@ -346,7 +336,6 @@
     else if ([elementName isEqualToString:@"listImagenVO"]) {
         self.galeria = [[GaleriaImagenes alloc] init];
     }
-    
     else if ([elementName isEqualToString:@"listKeywordVO"]) {
         self.currentElementString = [[NSMutableString alloc] init];
         self.keywordData = [[KeywordDataModel alloc] init];
@@ -361,9 +350,6 @@
         self.currentElementString = [[NSMutableString alloc] init];
     }
     else if ([elementName isEqualToString:@"keywordValue"]) {
-        self.currentElementString = [[NSMutableString alloc] init];
-    }
-    else if ([elementName isEqualToString:@"keywordPos"]) {
         self.currentElementString = [[NSMutableString alloc] init];
     }
     else if ([elementName isEqualToString:@"visible"]) {
@@ -505,11 +491,10 @@
             self.idDominioAux = self.currentElementString;
             self.currentElementString = [[NSMutableString alloc] init];
         }
-        
     }
 	else if ([elementName isEqualToString:@"statusDominio"]){
         NSString *valor = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
-        if ([valor isEqualToString:@"Mes PRO"] || [valor isEqualToString:@"Anual PRO"]) {
+        if ([valor isEqualToString:@"Mes PRO"] || [valor isEqualToString:@"Anual PRO"] || [valor isEqualToString:@"Tramite PRO"] ) {
             ((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio = @"Pago";
         }
         else {
@@ -664,16 +649,16 @@
 
         self.datosUsuario.promocionActual = self.promocionElegida;
     }
-   
- 
     else if ([elementName isEqualToString:@"typeImage"]) {
         if (requiereEncriptar) {
             NSString *typeImageAux = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
             if ([typeImageAux isEqualToString:@"LOGO"]) {
                 esLogo = YES;
+                [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:1 withObject:@YES];
             }
             else {
                 esLogo = NO;
+                [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:8 withObject:@YES];
             }
         }
         else {
@@ -713,16 +698,13 @@
         if (requiereEncriptar) {
             [self.galeria setIdImagen:[[StringUtils desEncriptar:self.currentElementString conToken:self.token] integerValue]];
             [self.galeria setImagenIdAux:self.currentElementString];
-          
         }
         else {
             [self.galeria setIdImagen:[self.currentElementString integerValue]];
             [self.galeria setImagenIdAux:self.currentElementString];
         }
-       
         self.currentElementString = [[NSMutableString alloc] init];
     }
-   
     else if ([elementName isEqualToString:@"listLatitud"]) {
         
         if (self.latitude != 0.0 || self.longitude != 0.0) {
@@ -769,12 +751,11 @@
         else {
             inter = [self buscarEnArreglo:self.diccionarioInformacion conLlave:self.keywordData.keywordField];
         }
-        
         if (inter == 1) {
             [self.arregloDireccion addObject:self.keywordData];
+         
         }
         else if (inter == 2) {
-
             hayPerfil = YES;
             [self.arregloPerfil replaceObjectAtIndex:indexInsertar withObject:self.keywordData];
         }
@@ -784,8 +765,8 @@
         self.currentElementString = [[NSMutableString alloc] init];
     }
     else if ([elementName isEqualToString:@"idKeyword"]) {
-        self.keywordData.idAuxKeyword = self.currentElementString;
-        self.keywordData.idKeyword = [self.currentElementString integerValue];
+        self.keywordData.idAuxKeyword = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
+        self.keywordData.idKeyword = [[StringUtils desEncriptar:self.currentElementString conToken:self.token]integerValue];
     }
     else if ([elementName isEqualToString:@"keywordField"]) {
         self.keywordData.keywordField = self.currentElementString;
@@ -798,7 +779,6 @@
     }
     else if ([elementName isEqualToString:@"token"]) {
         self.token = [StringUtils desEncriptar:self.currentElementString conToken:passwordEncriptar];
-        NSLog(@"EL TOKEN DE GETLOGIN ES: %@", self.token);
     }
     else if ([elementName isEqualToString:@"calleNum"]) {
         if (requiereEncriptar) {
@@ -1143,7 +1123,6 @@
 
 -(void) validaEditados {
     self.datosUsuario = [DatosUsuario sharedInstance];
-    [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:9 withObject:@NO];
     NSArray *arrayEstatus = @[@NO, @NO, @NO, @NO, @NO, @NO, @NO];
     self.datosUsuario.arregloEstatusPerfil = [[NSMutableArray alloc] init];
     [self.datosUsuario.arregloEstatusPerfil addObjectsFromArray:arrayEstatus];

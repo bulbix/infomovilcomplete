@@ -212,22 +212,16 @@
             [self.viewDominioPublicado setHidden:NO];
            
             for(int i= 0; [self.datosUsuario.dominiosUsuario count] > i ; i++){
-             //   DominiosUsuario *dominioUsuario = [self.datosUsuario.dominiosUsuario objectAtIndex:i];
-             //   if([dominioUsuario.domainType isEqualToString:@"tel"]){
             [self.dominio setTitle:[NSString stringWithFormat:@"www.%@.tel", self.datosUsuario.dominio] forState:UIControlStateNormal];
 #if DEBUG
-                [self.dominio setTitle:[NSString stringWithFormat:@"www.info-movil.com/%@", self.datosUsuario.dominio] forState:UIControlStateNormal];
+                [self.dominio setTitle:[NSString stringWithFormat:@"info-movil.com:8080/%@", self.datosUsuario.dominio] forState:UIControlStateNormal];
 #endif
-             /*  }else{
-                    self.dominio.text	= [NSString stringWithFormat:@"www.info-movil.com/%@", self.datosUsuario.dominio];
-                }
-              */
             }
             
             if([self.dominio.titleLabel.text isEqualToString:@""] || self.dominio.titleLabel.text == nil || (self.datosUsuario.dominio == (id)[NSNull null]) || ![CommonUtils validarEmail:self.datosUsuario.dominio] || ![self.datosUsuario.dominio isEqualToString:@"(null)"] ){
                 [self.dominio setTitle:[NSString stringWithFormat:@"www.%@.tel", self.datosUsuario.dominio] forState:UIControlStateNormal];
 #if DEBUG
-                [self.dominio setTitle:[NSString stringWithFormat:@"www.info-movil.com/%@", self.datosUsuario.dominio] forState:UIControlStateNormal];
+                [self.dominio setTitle:[NSString stringWithFormat:@"info-movil.com:8080/%@", self.datosUsuario.dominio] forState:UIControlStateNormal];
 #endif
             }
             

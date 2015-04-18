@@ -14,6 +14,8 @@
 #import "WS_HandlerCambiarPassword.h"
 #import "WS_HandlerDominio.h"
 #import "FeedbackViewController.h"
+#import "InicioViewController.h"
+
 @interface ConfiguracionViewController () <WS_HandlerProtocol> {
 	
 	BOOL actualizoCorrecto;
@@ -218,16 +220,21 @@
 
 -(void) accionSi {
     self.datosUsuario = [DatosUsuario sharedInstance];
+    NSString *correo = self.datosUsuario.emailUsuario;
+    if ([self.datosUsuario.redSocial isEqualToString:@"Facebook"]) {
+        [((AppDelegate*)[[UIApplication sharedApplication] delegate]) fbDidlogout];
+    }
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         WS_HandlerDominio *handlerDominio = [[WS_HandlerDominio alloc] init];
         [handlerDominio setWSHandlerDelegate:self];
-        [handlerDominio cerrarSession:self.datosUsuario.emailUsuario];
+        [handlerDominio cerrarSession:correo];
     });
-
-
+    
     ((AppDelegate*)	[[UIApplication sharedApplication] delegate]).statusDominio = @"Gratuito";
-
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    
+    
+    InicioViewController *Inicio = [[InicioViewController alloc] initWithNibName:@"InicioViewController" bundle:Nil];
+    [self.navigationController pushViewController:Inicio animated:YES];
 }
 -(void) actualizarPassword {
    
@@ -279,7 +286,12 @@
         [NSThread sleepForTimeInterval:1];
         [self.alertaContacto hide];
     }
-    [[AlertView initWithDelegate:Nil message:NSLocalizedString(@"ocurrioError", Nil) andAlertViewType:AlertViewTypeInfo] show];
+    AlertView *alertAct = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
+    [alertAct show];
+    [StringUtils terminarSession];
+    
+    InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
+    [self.navigationController pushViewController:inicio animated:YES];
 }
 -(void) resultadoPassword:(NSString *)resultado {
     if ([resultado isEqualToString:@"Exito"]) {
