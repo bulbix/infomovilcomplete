@@ -24,6 +24,8 @@
 @property (nonatomic, assign) NSInteger indiceSeleccionado;
 @property (nonatomic, assign) PhotoGaleryType tipoGaleria;
 
+@property (nonatomic, strong) DatosUsuario *datosUsuario;
+
 -(void) actualizarGaleria;
 -(void) eliminarImagen:(NSInteger)idImagen;
 -(void) insertarImagen:(GaleriaImagenes *) imagenInsertar;

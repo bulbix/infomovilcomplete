@@ -52,6 +52,10 @@ typedef enum {
 @property (weak, nonatomic) IBOutlet UIImageView *imgBullet;
 @property (weak, nonatomic) IBOutlet UIImageView *imgBullet2;
 
+//IRC Estas variables las utilice para imagenes //
+@property (nonatomic, strong) NSString *idImagen;
+@property (nonatomic, strong) NSString *urlImagen;
+
 
 - (IBAction)tomarFoto:(UIButton *)sender;
 - (IBAction)usarFoto:(UIButton *)sender;

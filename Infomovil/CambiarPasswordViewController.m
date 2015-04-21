@@ -172,7 +172,7 @@
     AlertView *alertAct = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
     [alertAct show];
     [StringUtils terminarSession];
-    InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
+    InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"InicioViewController" bundle:Nil];
     [self.navigationController pushViewController:inicio animated:YES];
 }
 

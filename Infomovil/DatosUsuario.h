@@ -32,7 +32,15 @@
 
 @property (nonatomic, strong) NSString *rutaImagenPromocion;
 
-@property (nonatomic, strong) NSMutableArray *arregloGaleriaImagenes;
+@property (nonatomic, strong) NSMutableArray *arregloGaleriaImagenes; // este no lo usare
+
+// ESTOS SON LOS ARREGLOS PARA MANEJAR LAS IMAGENES //
+@property (nonatomic, strong) NSMutableArray *arregloUrlImagenes;
+@property (nonatomic, strong) NSMutableArray *arregloIdImagen;
+@property (nonatomic, strong) NSMutableArray *arregloDescripcionImagen;
+@property (nonatomic, strong) NSMutableArray *arregloTipoImagen;
+
+
 
 @property (nonatomic, strong) NSMutableArray *arregloEstatusPerfil;
 @property (nonatomic, strong) NSMutableArray *arregloDatosPerfil;

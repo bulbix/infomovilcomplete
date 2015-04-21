@@ -92,7 +92,7 @@
 -(void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.datosUsuario = [DatosUsuario sharedInstance];
- 
+    NSLog(@"EL VALOR DE VIDEO SELECCIONADO ES: %@ Y EL VALODE  URLVIDEO ES: %@", self.datosUsuario.videoSeleccionado, self.datosUsuario.urlVideo);
     if (self.datosUsuario.videoSeleccionado == Nil && self.datosUsuario.urlVideo == Nil) {
         [self.vistaSeleccionaVideo setHidden:NO];
         [self.vistaVisualizaVideo setHidden:YES];
@@ -304,7 +304,7 @@
     [alertAct show];
     [StringUtils terminarSession];
     
-    InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
+    InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"InicioViewController" bundle:Nil];
     [self.navigationController pushViewController:inicio animated:YES];
 }
 

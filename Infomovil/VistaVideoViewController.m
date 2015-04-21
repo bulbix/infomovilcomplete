@@ -103,6 +103,15 @@
         frameborder=\"0\"/>\
         </body></html>";
     
+    }else if(IS_STANDARD_IPHONE_6){
+        htmlString = @"<html><head>\
+        <meta name = \"viewport\" content = \"initial-scale = 1.0, user-scalable = no, width = 414\"/></head>\
+        <body style=\"background:#000;margin-top:0px;margin-left:0px\">\
+        <iframe id=\"ytplayer\" type=\"text/html\" width=\"375\" height=\"270\"\
+        src=\"%@?autoplay=0\"\
+        frameborder=\"0\"/>\
+        </body></html>";
+    
     }else{
 		htmlString = @"<html><head>\
 		<meta name = \"viewport\" content = \"initial-scale = 1.0, user-scalable = no, width = 320\"/></head>\
@@ -232,7 +241,7 @@
     [alertAct show];
     [StringUtils terminarSession];
     
-    InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
+    InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"InicioViewController" bundle:Nil];
     [self.navigationController pushViewController:inicio animated:YES];
 }
 

@@ -702,7 +702,7 @@
     [alertAct show];
     [StringUtils terminarSession];
     
-    InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
+    InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"InicioViewController" bundle:Nil];
     [self.navigationController pushViewController:inicio animated:YES];
 }
 
@@ -773,7 +773,7 @@
 
 -(void) validaEditados {
     self.datosUsuario = [DatosUsuario sharedInstance];
-    //[self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:9 withObject:@NO];
+    [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:9 withObject:@NO];
     int i = 0, k = 0;
     for (KeywordDataModel *keyAux in self.datosUsuario.arregloDatosPerfil) {
         if (i == 2) {

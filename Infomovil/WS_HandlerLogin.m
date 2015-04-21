@@ -112,16 +112,23 @@
         self.datosUsuario.email = usuario;
         self.datosUsuario.emailUsuario = usuario;
         self.datosUsuario.token = self.token;
-        
-        NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
-        [parser setDelegate:self];
-        NSLog(@"WS_HandlerLogin: La Respuesta es %s", [dataResult bytes]);
         self.datosUsuario = [DatosUsuario sharedInstance];
         self.arregloContactos = [[NSMutableArray alloc] init];
         self.arregloImagenes = [[NSMutableArray alloc] init];
         self.arregloDireccion = [[NSMutableArray alloc] init];
         self.datosUsuario.imgGaleriaArray = [[NSMutableArray alloc] init];
         self.datosUsuario.logoImg = [[NSString alloc] init];
+        
+        self.datosUsuario.arregloUrlImagenes = [[NSMutableArray alloc] init];
+        self.datosUsuario.arregloIdImagen = [[NSMutableArray alloc] init];
+        self.datosUsuario.arregloDescripcionImagen = [[NSMutableArray alloc] init];
+        self.datosUsuario.arregloTipoImagen = [[NSMutableArray alloc] init];
+        
+        
+        NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
+        [parser setDelegate:self];
+        NSLog(@"WS_HandlerLogin: La Respuesta es %s", [dataResult bytes]);
+        
         hayPerfil = NO;
         self.arregloPerfil = [[NSMutableArray alloc] initWithArray:@[[[KeywordDataModel alloc] init], [[KeywordDataModel alloc] init], [[KeywordDataModel alloc] init], [[KeywordDataModel alloc] init], [[KeywordDataModel alloc] init], [[KeywordDataModel alloc] init], [[KeywordDataModel alloc] init]]];
         self.arregloAdicional = [[NSMutableArray alloc] init];
@@ -165,12 +172,20 @@
                         [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:0 withObject:@YES];
                     }
                 }
-                if (self.datosUsuario.urlVideo.length > 0 && self.datosUsuario.urlVideo != Nil) {
-                    self.datosUsuario.urlVideo = [StringUtils desEncriptar:self.datosUsuario.urlVideo conToken:self.datosUsuario.token];
+            if (self.datosUsuario.urlVideo.length > 0 && self.datosUsuario.urlVideo != Nil) {
+                NSString *auxVideo = [StringUtils desEncriptar:self.datosUsuario.urlVideo conToken:self.token];
+                
+                if(auxVideo.length > 0 && auxVideo != Nil && ![auxVideo isEqualToString:@""]){
+                    NSLog(@" self.datosUsuario.urlVideo es %@",  self.datosUsuario.urlVideo);
+                    self.datosUsuario.urlVideo = auxVideo;
                     [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:6 withObject:@YES];
+                }else{
+                    self.datosUsuario.urlVideo = nil;
                 }
+            }
                 [self acomodaContactos];
                 self.datosUsuario.arregloContacto = self.arregloContactos;
+                NSLog(@"LA CANTIDAD DE ARREGLO IMAGENES ES : %i ", [self.arregloImagenes count]);
                 for (NSInteger i = 0; i < [self.arregloImagenes count]; i++) {
                     GaleriaImagenes *galImagenes = [self.arregloImagenes objectAtIndex:i];
                     if (galImagenes.pieFoto != Nil && galImagenes.pieFoto.length > 0) {
@@ -178,6 +193,7 @@
                     }
                     if (galImagenes.imagenIdAux != Nil && galImagenes.imagenIdAux.length > 0) {
                         NSString *auxString = [StringUtils desEncriptar:galImagenes.imagenIdAux conToken:self.datosUsuario.token];
+                        NSLog(@"EL ID DE LA IMAGEN ES: %@", auxString);
                         [galImagenes setIdImagen:[auxString integerValue]];
                     }
                     [self.arregloImagenes replaceObjectAtIndex:i withObject:galImagenes];
@@ -244,6 +260,7 @@
 							x++;
 						}
 					}
+                    /*
                     if(x == 8){
 						self.datosUsuario.arregloDatosPerfil = self.arregloPerfil;
 						[self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:9 withObject:@NO];
@@ -253,6 +270,9 @@
 		
                         [self validaEditados];
 					}
+                    */
+                    self.datosUsuario.arregloDatosPerfil = self.arregloPerfil;
+                    [self validaEditados];
                 }
                 if (self.promocionElegida != Nil) {
                     [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:7 withObject:@YES];
@@ -471,10 +491,14 @@
     }
     else if ([elementName isEqualToString:@"displayString"]) {
        self.currentElementString = [[NSMutableString alloc] init];
-    }
+    } // TODOS ESTOS VALORES SON PARA LA SECCION DE IMAGENES //
     else if ([elementName isEqualToString:@"typeImage"]) {
        self.currentElementString = [[NSMutableString alloc] init];
     }else if ([elementName isEqualToString:@"url"]) {
+        self.currentElementString = [[NSMutableString alloc] init];
+    }else if ([elementName isEqualToString:@"descripcionImagen"]) {
+        self.currentElementString = [[NSMutableString alloc] init];
+    }else if ([elementName isEqualToString:@"idImagen"]) {
         self.currentElementString = [[NSMutableString alloc] init];
     }
    
@@ -564,7 +588,6 @@
     else if ([elementName isEqualToString:@"video"]) {
         if (self.currentElementString.length > 1) {
             self.datosUsuario.urlVideo = self.currentElementString;
-            [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:6 withObject:@YES];
         }
         self.currentElementString = [[NSMutableString alloc] init];
     }
@@ -649,8 +672,18 @@
 
         self.datosUsuario.promocionActual = self.promocionElegida;
     }
+   /* 
+    else if ([elementName isEqualToString:@"listImagenVO"]) { NSLog(@"ENTRO A listImagenVO");
+        if (esLogo) {
+         }
+        else {
+            [self.arregloImagenes addObject:self.galeria];
+            [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:8 withObject:@YES];
+        }
+    }
+    */
+    
     else if ([elementName isEqualToString:@"typeImage"]) {
-        if (requiereEncriptar) {
             NSString *typeImageAux = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
             if ([typeImageAux isEqualToString:@"LOGO"]) {
                 esLogo = YES;
@@ -660,51 +693,27 @@
                 esLogo = NO;
                 [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:8 withObject:@YES];
             }
-        }
-        else {
-            if ([self.currentElementString isEqualToString:@"LOGO"]) {
-                esLogo = YES;
-            }
-            else {
-                esLogo = NO;
-            }
-        }
-        
-        self.currentElementString = [[NSMutableString alloc] init];
+            [self.datosUsuario.arregloTipoImagen addObject:typeImageAux];
+            self.currentElementString = [[NSMutableString alloc] init];
     }
     else if ([elementName isEqualToString:@"url"]) {
-        if (esLogo) {
-            
-            self.datosUsuario.logoImg = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
-            [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:1 withObject:@YES];
-            
-        }
-        else {
-            NSString *aux= [StringUtils desEncriptar:self.currentElementString conToken:self.token];
-            [self.datosUsuario.imgGaleriaArray addObject:aux];
-            [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:8 withObject:@YES];
-            
-        }
-        
-        
+        [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:1 withObject:@YES];
+        NSLog(@"EL VALOR DE URL ES : %@", [StringUtils desEncriptar:self.currentElementString conToken:self.token]);
+        [self.datosUsuario.arregloUrlImagenes addObject:[StringUtils desEncriptar:self.currentElementString conToken:self.token]];
     }
-   
     else if ([elementName isEqualToString:@"descripcionImagen"]) {
-        [self.galeria setPieFoto:self.currentElementString];
+      //  [self.galeria setPieFoto:self.currentElementString];
+        NSLog(@"EL VALOR DE descripcionImagen ES : %@", [StringUtils desEncriptar:self.currentElementString conToken:self.token]);
+        [self.datosUsuario.arregloDescripcionImagen addObject:[StringUtils desEncriptar:self.currentElementString conToken:self.token]];
+        self.currentElementString = [[NSMutableString alloc] init];
+    }
+    else if ([elementName isEqualToString:@"idImagen"]) {
+        NSLog(@"EL VALOR DE idImagen ES : %@", [StringUtils desEncriptar:self.currentElementString conToken:self.token]);
+        [self.datosUsuario.arregloIdImagen addObject:[StringUtils desEncriptar:self.currentElementString conToken:self.token]];
         self.currentElementString = [[NSMutableString alloc] init];
     }
     
-    else if ([elementName isEqualToString:@"idImagen"]) {
-        if (requiereEncriptar) {
-            [self.galeria setIdImagen:[[StringUtils desEncriptar:self.currentElementString conToken:self.token] integerValue]];
-            [self.galeria setImagenIdAux:self.currentElementString];
-        }
-        else {
-            [self.galeria setIdImagen:[self.currentElementString integerValue]];
-            [self.galeria setImagenIdAux:self.currentElementString];
-        }
-        self.currentElementString = [[NSMutableString alloc] init];
-    }
+    
     else if ([elementName isEqualToString:@"listLatitud"]) {
         
         if (self.latitude != 0.0 || self.longitude != 0.0) {
@@ -1150,6 +1159,8 @@
             
         }
         else if (i == 6) {
+            NSLog(@"EL VALOR DE keyAux.keywordValue ES: %@", keyAux.keywordValue);
+            
             if (keyAux.keywordValue != nil && keyAux.keywordValue.length > 0) {
                 [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:2 withObject:@YES];
             }
