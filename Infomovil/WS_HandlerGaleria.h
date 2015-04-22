@@ -17,6 +17,7 @@
 @property (nonatomic, strong) id<WS_HandlerProtocol> galeriaDelegate;
 @property (nonatomic, strong) NSString *currentElementString;
 @property (nonatomic, strong) NSString *resultado;
+@property (nonatomic, strong) NSString *urlResultado;
 @property (nonatomic, strong) NSString *token;
 
 @property (nonatomic, strong) NSMutableArray *arregloGaleria;

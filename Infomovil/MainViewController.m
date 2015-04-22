@@ -501,12 +501,15 @@
 -(void) desapareceElTeclado:(NSNotification *)aNotificacion {
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.3];
-    CGPoint pt;
-    pt.x = 0;
-    pt.y = 0;
-    [self.scrollLogin setContentOffset:pt animated:YES];
+   // CGPoint pt;
+   // pt.x = 0;
+   // pt.y = 0;
+    //[self.scrollLogin setContentOffset:pt animated:YES];
+     [[self scrollLogin] setContentInset:UIEdgeInsetsMake(0, 0,0, 0)];
     [UIView commitAnimations];
     
+   
+   
    
 }
 

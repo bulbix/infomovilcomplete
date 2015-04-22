@@ -25,6 +25,8 @@
 
 @implementation WS_HandlerDominio
 
+@synthesize datos;
+
 -(void) consultaDominio:(NSString *) dominio {
     NSString *stringXML = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.webservice.infomovil.org/\">"
                                "<soapenv:Header/>"
@@ -50,6 +52,7 @@
                 NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:passwordEncriptar];
                 if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                     [self.wSHandlerDelegate errorToken];
+                    NSLog(@"HUBO UN ERROR DE TOKEN EN CONSULTADOMINIO !");
                 } 
                 else {
                     NSLog(@"El resultado regresado es: %@", stringResult);
@@ -88,7 +91,7 @@
 
 
 -(void) crearUsuario:(NSString *)email conNombre:(NSString *)user password:(NSString *)pass status:(NSString *)s nombre:(NSString *)nom direccion1:(NSString *)dir1 direccion2:(NSString *)dir2 pais:(NSString *) nPais codigoPromocion:(NSString *)codProm tipoDominio:(NSString *)domainType idDominio:(NSString *)idDominio {
-    DatosUsuario *datos = [DatosUsuario sharedInstance];
+    self.datos = [DatosUsuario sharedInstance];
     NSString *stringXML;
 		
 		stringXML = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.webservice.infomovil.org/\">"
@@ -121,25 +124,25 @@
 					 "</soapenv:Body>"
 					 "</soapenv:Envelope>", //[StringUtils encriptar:dominio conToken:passwordEncriptar],
                      [StringUtils encriptar:email conToken:passwordEncriptar],
-					 [StringUtils encriptar:@"0" conToken:datos.token != nil ? datos.token : passwordEncriptar],//phone
-                     [StringUtils encriptar:pass conToken:datos.token != nil ? datos.token : passwordEncriptar],//password
-                     [StringUtils encriptar:user conToken:datos.token != nil ? datos.token : passwordEncriptar],//domainName
-                     [StringUtils encriptar:s conToken:datos.token != nil ? datos.token : passwordEncriptar],//status
-					 [StringUtils encriptar:@"IOS" conToken:datos.token != nil ? datos.token : passwordEncriptar],//sistema
-					 [StringUtils encriptar:@"0" conToken:datos.token != nil ? datos.token : passwordEncriptar],//tipoDispositivo
-					 [StringUtils encriptar:@"0" conToken:datos.token != nil ? datos.token : passwordEncriptar],//notificacion
-					 [StringUtils encriptar:@"5" conToken:datos.token != nil ? datos.token : passwordEncriptar],//tipoAction
-					 [StringUtils encriptar:@"1" conToken:datos.token != nil ? datos.token : passwordEncriptar],//Pais
-					 [StringUtils encriptar:@"0" conToken:datos.token != nil ? datos.token : passwordEncriptar],//Canal
-					 [StringUtils encriptar:@"1" conToken:datos.token != nil ? datos.token : passwordEncriptar],//Sucursal
-					 [StringUtils encriptar:@"0" conToken:datos.token != nil ? datos.token : passwordEncriptar],//Folio
-					 [StringUtils encriptar:nom conToken:datos.token != nil ? datos.token : passwordEncriptar],//nombre
-					 [StringUtils encriptar:dir1 conToken:datos.token != nil ? datos.token : passwordEncriptar],//dir1
-					 [StringUtils encriptar:dir2 conToken:datos.token != nil ? datos.token : passwordEncriptar],//dir2
-					 [StringUtils encriptar:nPais conToken:datos.token != nil ? datos.token : passwordEncriptar],//npais
-                     [StringUtils encriptar:codProm conToken:datos.token != nil ? datos.token: passwordEncriptar],//codProm
-                     [StringUtils encriptar:domainType conToken:datos.token != nil ? datos.token: passwordEncriptar],
-                     [StringUtils encriptar:idDominio conToken:datos.token != nil ? datos.token: passwordEncriptar]];
+					 [StringUtils encriptar:@"0" conToken:self.datos.token != nil ? self.datos.token : passwordEncriptar],//phone
+                     [StringUtils encriptar:pass conToken:self.datos.token != nil ? self.datos.token : passwordEncriptar],//password
+                     [StringUtils encriptar:user conToken:self.datos.token != nil ? self.datos.token : passwordEncriptar],//domainName
+                     [StringUtils encriptar:s conToken:self.datos.token != nil ? self.datos.token : passwordEncriptar],//status
+					 [StringUtils encriptar:@"IOS" conToken:self.datos.token != nil ? self.datos.token : passwordEncriptar],//sistema
+					 [StringUtils encriptar:@"0" conToken:self.datos.token != nil ? self.datos.token : passwordEncriptar],//tipoDispositivo
+					 [StringUtils encriptar:@"0" conToken:self.datos.token != nil ? self.datos.token : passwordEncriptar],//notificacion
+					 [StringUtils encriptar:@"5" conToken:self.datos.token != nil ? self.datos.token : passwordEncriptar],//tipoAction
+					 [StringUtils encriptar:@"1" conToken:self.datos.token != nil ? self.datos.token : passwordEncriptar],//Pais
+					 [StringUtils encriptar:@"0" conToken:self.datos.token != nil ? self.datos.token : passwordEncriptar],//Canal
+					 [StringUtils encriptar:@"1" conToken:self.datos.token != nil ? self.datos.token : passwordEncriptar],//Sucursal
+					 [StringUtils encriptar:@"0" conToken:self.datos.token != nil ? self.datos.token : passwordEncriptar],//Folio
+					 [StringUtils encriptar:nom conToken:self.datos.token != nil ? self.datos.token : passwordEncriptar],//nombre
+					 [StringUtils encriptar:dir1 conToken:self.datos.token != nil ? self.datos.token : passwordEncriptar],//dir1
+					 [StringUtils encriptar:dir2 conToken:self.datos.token != nil ? self.datos.token : passwordEncriptar],//dir2
+					 [StringUtils encriptar:nPais conToken:self.datos.token != nil ? self.datos.token : passwordEncriptar],//npais
+                     [StringUtils encriptar:codProm conToken:self.datos.token != nil ? self.datos.token: passwordEncriptar],//codProm
+                     [StringUtils encriptar:domainType conToken:self.datos.token != nil ? self.datos.token: passwordEncriptar],
+                     [StringUtils encriptar:idDominio conToken:self.datos.token != nil ? self.datos.token: passwordEncriptar]];
     
     self.strSoapAction = @"wsInfomovildomain";
     NSLog(@"la peticion es %@", stringXML);
@@ -151,39 +154,45 @@
         self.arregloItems = [[NSMutableArray alloc] init];
         if ([parser parse]) {
             if (requiereEncriptar) {
-                datos.token = self.token;
-                datos.codigoRedimir = codigoPromocional;
-                NSString * stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
+               self.datos = [DatosUsuario sharedInstance];
+               
+                //self.datos.codigoRedimir = codigoPromocional;
+                
+                NSLog(@"LOS VALORES QUE ME CAUSAN RUIDO SON %@ Y EL OTRO ES: %@", self.datos.token,[StringUtils desEncriptar:self.resultado conToken:self.datos.token] );
+                
+                NSString * stringResult = [StringUtils desEncriptar:self.resultado conToken:self.datos.token];
                 if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
+                    NSLog(@"HUBO UN ERROR DE TOKEN AL CREAR AL USUARIO crearUsuario !");
                     [self.wSHandlerDelegate errorToken];
+                    
                 }
                 else {
                     NSInteger respuestaInt = [stringResult integerValue];
                     if (respuestaInt > 0) {
-                        datos.emailUsuario = email;
-                        datos.passwordUsuario = pass;
-                        datos.itemsDominio = [StringUtils ordenarItems:self.arregloItems];
-                        datos.idDominio = [stringResult intValue];
-                        datos.codigoError = codigoError.length > 0 ? codigoError.intValue : 0;
-                        datos.fechaInicialTel = [NSDateFormatter changeDateFormatOfString:[StringUtils desEncriptar:self.telIni
-                                                                                                           conToken:datos.token]
+                        self.datos.emailUsuario = email;
+                        self.datos.passwordUsuario = pass;
+                        self.datos.itemsDominio = [StringUtils ordenarItems:self.arregloItems];
+                        self.datos.idDominio = [stringResult intValue];
+                        self.datos.codigoError = codigoError.length > 0 ? codigoError.intValue : 0;
+                        self.datos.fechaInicialTel = [NSDateFormatter changeDateFormatOfString:[StringUtils desEncriptar:self.telIni
+                                                                                                           conToken:self.datos.token]
                                                                                      from:@"yyyy-MM-dd"
                                                                                        to:@"dd-MM-yyy"];
-                        datos.fechaFinalTel = [NSDateFormatter changeDateFormatOfString:[StringUtils desEncriptar:self.telFin
-                                                                                                         conToken:datos.token]
+                        self.datos.fechaFinalTel = [NSDateFormatter changeDateFormatOfString:[StringUtils desEncriptar:self.telFin
+                                                                                                         conToken:self.datos.token]
                                                                                    from:@"yyyy-MM-dd"
                                                                                      to:@"dd-MM-yyy"];
 
-                        datos.fechaInicial = [NSDateFormatter changeDateFormatOfString:[StringUtils desEncriptar:self.fechaInicio conToken:datos.token]
+                        self.datos.fechaInicial = [NSDateFormatter changeDateFormatOfString:[StringUtils desEncriptar:self.fechaInicio conToken:self.datos.token]
                                                                                   from:@"yyyy-MM-dd"
                                                                                     to:@"dd-MM-yyy"];
 
-                        datos.fechaFinal = [NSDateFormatter changeDateFormatOfString:[StringUtils desEncriptar:self.fechaFinal
-                                                                                                      conToken:datos.token]
+                        self.datos.fechaFinal = [NSDateFormatter changeDateFormatOfString:[StringUtils desEncriptar:self.fechaFinal
+                                                                                                      conToken:self.datos.token]
                                                                                 from:@"yyyy-MM-dd"
                                                                                   to:@"dd-MM-yyy"];
-                        datos.idDominio = respuestaInt;
-                        datos.dominio = user;
+                        self.datos.idDominio = respuestaInt;
+                        self.datos.dominio = user;
                         AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
                         if ([statusDominio hasSuffix:@"PRO"]) {
                             NSArray *arrayAux = [statusDominio componentsSeparatedByString:@" "];
@@ -206,19 +215,19 @@
                         [self.wSHandlerDelegate resultadoConsultaDominio:@"Exito"];
                     }
                     else if (respuestaInt == -3 || respuestaInt == -5) {
-                        datos.emailUsuario = email;
-                        datos.passwordUsuario = pass;
-                        datos.idDominio = [stringResult intValue];
-                        datos.fechaInicialTel = [NSDateFormatter changeDateFormatOfString:[StringUtils desEncriptar:self.telIni
-                                                                                                           conToken:datos.token]
+                        self.datos.emailUsuario = email;
+                        self.datos.passwordUsuario = pass;
+                        self.datos.idDominio = [stringResult intValue];
+                        self.datos.fechaInicialTel = [NSDateFormatter changeDateFormatOfString:[StringUtils desEncriptar:self.telIni
+                                                                                                           conToken:self.datos.token]
                                                                                      from:@"yyyy-MM-dd"
                                                                                        to:@"dd-MM-yyy"];
-                        datos.fechaFinalTel = [NSDateFormatter changeDateFormatOfString:[StringUtils desEncriptar:self.telFin
-                                                                                                         conToken:datos.token]
+                        self.datos.fechaFinalTel = [NSDateFormatter changeDateFormatOfString:[StringUtils desEncriptar:self.telFin
+                                                                                                         conToken:self.datos.token]
                                                                                    from:@"yyyy-MM-dd"
                                                                                      to:@"dd-MM-yyy"];
-                        datos.idDominio = respuestaInt;
-                        datos.dominio = user;
+                        self.datos.idDominio = respuestaInt;
+                        self.datos.dominio = user;
                         ((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio = @"Pendiente";
                         [self.wSHandlerDelegate resultadoConsultaDominio:@"Error Publicar"];
                     }
@@ -243,140 +252,8 @@
     }
 }
 
--(void) redimirCodigo:(NSString *)codProm {
-    DatosUsuario *datos = [DatosUsuario sharedInstance];
-    NSString *stringXML;
-    
-    stringXML = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.webservice.infomovil.org/\">"
-                 "<soapenv:Header/>"
-                 "<soapenv:Body>"
-                 "<ws:insertUserCam>"
-                 "<UserDomainVO>"
-                 "<email>%@</email>"
-                 "<phone>%@</phone>"
-                 "<password>%@</password>"
-                 "<domainName>%@</domainName>"
-                 "<status>%@</status>"
-                 "<sistema>%@</sistema>"
-                 "<typoDispositivo>%@</typoDispositivo>"
-                 "<notificacion>%@</notificacion>"
-                 "<tipoAction>%@</tipoAction>"
-                 "<pais>%@</pais>"
-                 "<canal>%@</canal>"
-                 "<sucursal>%@</sucursal>"
-                 "<folio>%@</folio>"
-                 "<nombre>%@</nombre>"
-                 "<direccion1>%@</direccion1>"
-                 "<direccion2>%@</direccion2>"
-                 "<nPais>%@</nPais>"
-                 "<codigoCamp>%@</codigoCamp>"
-                 "</UserDomainVO>"
-                 "</ws:insertUserCam>"
-                 "</soapenv:Body>"
-                 "</soapenv:Envelope>", //[StringUtils encriptar:dominio conToken:passwordEncriptar],
-                 [StringUtils encriptar:datos.emailUsuario conToken:passwordEncriptar],
-                 [StringUtils encriptar:@"0" conToken:datos.token != nil ? datos.token : passwordEncriptar],//phone
-                 [StringUtils encriptar:datos.passwordUsuario conToken:datos.token != nil ? datos.token : passwordEncriptar],//password
-                 [StringUtils encriptar:datos.dominio conToken:datos.token != nil ? datos.token : passwordEncriptar],//domainName
-                 [StringUtils encriptar:@" " conToken:datos.token != nil ? datos.token : passwordEncriptar],//status
-                 [StringUtils encriptar:@" " conToken:datos.token != nil ? datos.token : passwordEncriptar],//sistema
-                 [StringUtils encriptar:@" " conToken:datos.token != nil ? datos.token : passwordEncriptar],//tipoDispositivo
-                 [StringUtils encriptar:@" " conToken:datos.token != nil ? datos.token : passwordEncriptar],//notificacion
-                 [StringUtils encriptar:@" " conToken:datos.token != nil ? datos.token : passwordEncriptar],//tipoAction
-                 [StringUtils encriptar:@" " conToken:datos.token != nil ? datos.token : passwordEncriptar],//Pais
-                 [StringUtils encriptar:@" " conToken:datos.token != nil ? datos.token : passwordEncriptar],//Canal
-                 [StringUtils encriptar:@" " conToken:datos.token != nil ? datos.token : passwordEncriptar],//Sucursal
-                 [StringUtils encriptar:@" " conToken:datos.token != nil ? datos.token : passwordEncriptar],//Folio
-                 [StringUtils encriptar:@" " conToken:datos.token != nil ? datos.token : passwordEncriptar],//nombre
-                 [StringUtils encriptar:@" " conToken:datos.token != nil ? datos.token : passwordEncriptar],//dir1
-                 [StringUtils encriptar:@" " conToken:datos.token != nil ? datos.token : passwordEncriptar],//dir2
-                 [StringUtils encriptar:@" " conToken:datos.token != nil ? datos.token : passwordEncriptar],//npais
-                 [StringUtils encriptar:codProm conToken:datos.token != nil ? datos.token: passwordEncriptar]];//codProm
- 
-    
-    self.strSoapAction = @"wsInfomovildomain";
-    NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
-    if (dataResult != nil) {
-        NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
-        self.arregloItems = [[NSMutableArray alloc] init];
-        [parser setDelegate:self];
-        if ([parser parse]) {
-            datos.token = self.token;
-            datos.codigoRedimir = codigoPromocional;
-            NSString * stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
-            if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
-                [self.wSHandlerDelegate errorToken];
-            }
-            else {
-                NSInteger respuestaInt = [stringResult integerValue];
-                if (respuestaInt > 0) {
-                    datos.codigoRedimir = codigoPromocional;
-                    datos.itemsDominio = [StringUtils ordenarItems:self.arregloItems];
-                    datos.idDominio = [stringResult intValue];
-                    datos.codigoError = codigoError.length > 0 ? codigoError.intValue : 0;
-
-                    datos.fechaInicialTel = [NSDateFormatter changeDateFormatOfString:[StringUtils desEncriptar:self.telIni
-                                                                                                       conToken:datos.token]
-                                                                                 from:@"yyyy-MM-dd"
-                                                                                   to:@"dd-MM-yyy"];
-
-                    datos.fechaFinalTel = [NSDateFormatter changeDateFormatOfString:[StringUtils desEncriptar:self.telFin
-                                                                                                     conToken:datos.token]
-                                                                               from:@"yyyy-MM-dd"
-                                                                                 to:@"dd-MM-yyy"];
-
-                    datos.fechaInicial = [NSDateFormatter changeDateFormatOfString:[StringUtils desEncriptar:self.fechaInicio conToken:datos.token]
-                                                                              from:@"yyyy-MM-dd"
-                                                                                to:@"dd-MM-yyy"];
-
-                    datos.fechaFinal = [NSDateFormatter changeDateFormatOfString:[StringUtils desEncriptar:self.fechaFinal
-                                                                                                  conToken:datos.token]
-                                                                            from:@"yyyy-MM-dd"
-                                                                              to:@"dd-MM-yyy"];
-                    
-                    if ([statusDominio hasSuffix:@"PRO"]) {
-                        AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-                        NSArray *arrayAux = [statusDominio componentsSeparatedByString:@" "];
-                        if ([arrayAux count] ==2) {
-                            if ([[arrayAux objectAtIndex:0] isEqualToString:@"Tramite"]) {
-                                appDelegate.statusDominio = statusDominio;
-                            }
-                            else {
-                                appDelegate.statusDominio = @"Pago";
-                            }
-                        }
-                    }
-                    [self.wSHandlerDelegate resultadoConsultaDominio:@"Exito"];
-                }
-                else if (respuestaInt == -3 || respuestaInt == -5) {
-                    datos.idDominio = [stringResult intValue];
-                    datos.fechaInicialTel = [NSDateFormatter changeDateFormatOfString:[StringUtils desEncriptar:self.telIni
-                                                                                                       conToken:datos.token]
-                                                                                 from:@"yyyy-MM-dd"
-                                                                                   to:@"dd-MM-yyy"];
-                    datos.fechaFinalTel = [NSDateFormatter changeDateFormatOfString:[StringUtils desEncriptar:self.telFin
-                                                                                                     conToken:datos.token]
-                                                                               from:@"yyyy-MM-dd"
-                                                                                 to:@"dd-MM-yyy"];
-                    datos.idDominio = respuestaInt;
-                    ((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio = @"Pendiente";
-                    [self.wSHandlerDelegate resultadoConsultaDominio:@"Error Publicar"];
-                }
-                else if (respuestaInt == -4) {
-                    [self.wSHandlerDelegate resultadoConsultaDominio:@"Usuario Existe"];
-                }
-                else {
-                    datos.codigoRedimir = codigoPromocional;
-                    datos.codigoError = codigoError.length > 0 ? codigoError.intValue : 0;
-                    [self.wSHandlerDelegate resultadoConsultaDominio:@"No Exito"];
-                }
-            }
-        }
-    }
-}
-
 -(void) consultaVisitasDominio {
-    DatosUsuario *datos = [DatosUsuario sharedInstance];
+    self.datos = [DatosUsuario sharedInstance];
     NSString *stringXML;
     if (requiereEncriptar) {
         stringXML = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.webservice.infomovil.org/\">"
@@ -387,8 +264,8 @@
                                "<token>%@</token>"
                                "</ws:getNumVisitas>"
                                "</soapenv:Body>"
-                               "</soapenv:Envelope>", [StringUtils encriptar:[NSString stringWithFormat:@"%i", datos.idDominio] conToken:datos.token],
-                               [StringUtils encriptar:datos.emailUsuario conToken:passwordEncriptar]];
+                               "</soapenv:Envelope>", [StringUtils encriptar:[NSString stringWithFormat:@"%i", self.datos.idDominio] conToken:self.datos.token],
+                               [StringUtils encriptar:self.datos.emailUsuario conToken:passwordEncriptar]];
     }
     else {
         stringXML = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.webservice.infomovil.org/\">"
@@ -398,7 +275,7 @@
                      "<Domain>%@</Domain>"
                      "</ws:getNumVisitas>"
                      "</soapenv:Body>"
-                     "</soapenv:Envelope>", datos.dominio];
+                     "</soapenv:Envelope>", self.datos.dominio];
     }
     
     self.strSoapAction = @"wsInfomovildomain";
@@ -410,9 +287,9 @@
         [parser setDelegate:self];
         if ([parser parse]) {
             if (requiereEncriptar) {
-                DatosUsuario *datos = [DatosUsuario sharedInstance];
-                datos.token = self.token;
-                NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
+                self.datos = [DatosUsuario sharedInstance];
+               
+                NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:self.datos.token];
                 if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                     [self.wSHandlerDelegate errorToken];
                 }
@@ -435,7 +312,7 @@
     }
 }
 -(void) consultaExpiracionDominio {
-    DatosUsuario *datos = [DatosUsuario sharedInstance];
+    self.datos = [DatosUsuario sharedInstance];
     NSString *stringXML;
     if (requiereEncriptar) {
         stringXML = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.webservice.infomovil.org/\">"
@@ -446,8 +323,8 @@
                                "<token>%@</token>"
                                "</ws:getFechaExpiracion>"
                                "</soapenv:Body>"
-                               "</soapenv:Envelope>", [StringUtils encriptar:[NSString stringWithFormat:@"%i", datos.idDominio] conToken:datos.token],
-                               [StringUtils encriptar:datos.emailUsuario conToken:passwordEncriptar]];
+                               "</soapenv:Envelope>", [StringUtils encriptar:[NSString stringWithFormat:@"%i", self.datos.idDominio] conToken:self.datos.token],
+                               [StringUtils encriptar:self.datos.emailUsuario conToken:passwordEncriptar]];
     }
     else {
         stringXML = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.webservice.infomovil.org/\">"
@@ -457,7 +334,7 @@
                      "<Domain>%@</Domain>"
                      "</ws:getFechaExpiracion>"
                      "</soapenv:Body>"
-                     "</soapenv:Envelope>", datos.dominio];
+                     "</soapenv:Envelope>", self.datos.dominio];
     }
     
     self.strSoapAction = @"wsInfomovildomain";
@@ -469,9 +346,9 @@
         [parser setDelegate:self];
         if ([parser parse]) {
             if (requiereEncriptar) {
-                datos = [DatosUsuario sharedInstance];
-                datos.token = self.token;
-                NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
+                self.datos = [DatosUsuario sharedInstance];
+               
+                NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:self.datos.token];
                 if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                     [self.wSHandlerDelegate errorToken];
                 }
@@ -494,7 +371,7 @@
 }
 
 -(void) cancelarCuenta:(NSString *)motivo {
-    DatosUsuario *datos = [DatosUsuario sharedInstance];
+    self.datos = [DatosUsuario sharedInstance];
     NSString *stringXML;
     if (requiereEncriptar) {
       
@@ -509,7 +386,7 @@
 					 "<token>%@</token>"
 					 "</ws:cancelarCuenta>"
 					 "</soapenv:Body>"
-					 "</soapenv:Envelope>", [StringUtils encriptar:datos.dominio conToken:datos.token], [StringUtils encriptar:datos.emailUsuario conToken:datos.token], [StringUtils encriptar:motivo conToken:datos.token],[StringUtils encriptar:datos.passwordUsuario conToken:datos.token],[StringUtils encriptar:datos.emailUsuario conToken:passwordEncriptar]];
+					 "</soapenv:Envelope>", [StringUtils encriptar:self.datos.dominio conToken:self.datos.token], [StringUtils encriptar:self.datos.emailUsuario conToken:self.datos.token], [StringUtils encriptar:motivo conToken:self.datos.token],[StringUtils encriptar:self.datos.passwordUsuario conToken:self.datos.token],[StringUtils encriptar:self.datos.emailUsuario conToken:passwordEncriptar]];
 	
     }
     else {
@@ -521,7 +398,7 @@
                      "<descripcion>%@</descripcion>"
                      "</ws:cancelarCuenta>"
                      "</soapenv:Body>"
-                     "</soapenv:Envelope>", datos.emailUsuario, motivo];
+                     "</soapenv:Envelope>", self.datos.emailUsuario, motivo];
     }
     
     self.strSoapAction = @"wsInfomovildomain";
@@ -533,9 +410,9 @@
         [parser setDelegate:self];
         if ([parser parse]) {
             if (requiereEncriptar) {
-                datos = [DatosUsuario sharedInstance];
-                datos.token = self.token;
-                NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
+                self.datos = [DatosUsuario sharedInstance];
+                
+                NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:self.datos.token];
                 if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                     [self.wSHandlerDelegate errorToken];
                 }
@@ -585,7 +462,7 @@
     }
 }
 -(void) cerrarSession:(NSString *) usuario {
-    DatosUsuario *datosUsuario = [DatosUsuario sharedInstance];
+    self.datos = [DatosUsuario sharedInstance];
     NSString *stringXML = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.webservice.infomovil.org/\">"
                            "<soapenv:Header/>"
                            "<soapenv:Body>"
@@ -595,7 +472,7 @@
                            "</ws:cerrarSession>"
                            "</soapenv:Body>"
                            "</soapenv:Envelope>", [StringUtils encriptar:usuario conToken:passwordEncriptar],
-                           [StringUtils encriptar:datosUsuario.token conToken:passwordEncriptar]];
+                           [StringUtils encriptar:self.datos.token conToken:passwordEncriptar]];
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
     NSLog(@"La respuesta es en ws_handlerdominio cerrar sesion %s", [dataResult bytes]);
     if (dataResult != nil) {
@@ -605,7 +482,7 @@
 
             [StringUtils deleteResourcesWithExtension:@"jpg"];
             [StringUtils deleteFile];
-            [datosUsuario eliminarDatos];
+            [self.datos eliminarDatos];
         }
     }
     // Se cierra la sesion //
@@ -618,7 +495,7 @@
 }
 
 -(void) consultaEstatusDominio {
-    DatosUsuario *datosUsuario = [DatosUsuario sharedInstance];
+    self.datos = [DatosUsuario sharedInstance];
     NSString *stringXML = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.webservice.infomovil.org/\">"
                            "<soapenv:Header/>"
                            "<soapenv:Body>"
@@ -628,27 +505,27 @@
                            "</ws:statusDominio>"
                            "</soapenv:Body>"
                            "</soapenv:Envelope>",
-                           [StringUtils encriptar:[NSString stringWithFormat:@"%i", datosUsuario.idDominio] conToken:datosUsuario.token],
-                           [StringUtils encriptar:datosUsuario.emailUsuario conToken:passwordEncriptar]];
+                           [StringUtils encriptar:[NSString stringWithFormat:@"%i", self.datos.idDominio] conToken:self.datos.token],
+                           [StringUtils encriptar:self.datos.emailUsuario conToken:passwordEncriptar]];
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
     NSLog(@"La respuesta es en ws_handlerdominio consultaEstatusDominio %s", [dataResult bytes]);
     if (dataResult != nil) {
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
         [parser setDelegate:self];
         if ([parser parse]) {
-                DatosUsuario *datos = [DatosUsuario sharedInstance];
-                datos.token = self.token;
-                NSString * stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
+                self.datos = [DatosUsuario sharedInstance];
+            
+                NSString * stringResult = [StringUtils desEncriptar:self.resultado conToken:self.datos.token];
                 if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                     [self.wSHandlerDelegate errorToken];
                 }
                 else {
-                    datos.fechaInicialTel = [NSDateFormatter changeDateFormatOfString:[StringUtils desEncriptar:self.fechaInicio
-                                                                                                       conToken:datos.token]
+                    self.datos.fechaInicialTel = [NSDateFormatter changeDateFormatOfString:[StringUtils desEncriptar:self.fechaInicio
+                                                                                                       conToken:self.datos.token]
                                                                                  from:@"yyyy-MM-dd"
                                                                                    to:@"dd-MM-yyy"];
-                    datos.fechaFinalTel = [NSDateFormatter changeDateFormatOfString:[StringUtils desEncriptar:self.fechaFinal
-                                                                                                     conToken:datos.token]
+                    self.datos.fechaFinalTel = [NSDateFormatter changeDateFormatOfString:[StringUtils desEncriptar:self.fechaFinal
+                                                                                                     conToken:self.datos.token]
                                                                                from:@"yyyy-MM-dd"
                                                                                  to:@"dd-MM-yyy"];
                     
@@ -725,6 +602,8 @@
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
     if ([elementName isEqualToString:@"getExistDomainReturn"]) {
         self.resultado = self.currentElementString;
+        NSLog(@"EL RESULTADO ES GETEXISTDOMAINRETURN: %@", [StringUtils desEncriptar:self.resultado conToken:self.datos.token]);
+        NSLog(@"EL RESULTADO ES GETEXISTDOMAINRETURN CON OTRO TOKEN: %@", [StringUtils desEncriptar:self.resultado conToken:self.token]);
     }
     else if ([elementName isEqualToString:@"resultado"]) {
         self.resultado = self.currentElementString;

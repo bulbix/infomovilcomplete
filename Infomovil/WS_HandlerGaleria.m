@@ -195,12 +195,13 @@
     }
 }
 
--(void) insertarImagen:(GaleriaImagenes *) imagenInsertar { NSLog(@"INSERTAR UNA NUEVA IMAGEN EN EL LOGO");
+-(void) insertarImagen:(GaleriaImagenes *) imagenInsertar {
     DatosUsuario *datos = [DatosUsuario sharedInstance];
     NSMutableString *stringXML;
     NSString *tipoInsertar = @"LOGO";
     if (self.tipoGaleria == PhotoGaleryTypeImage) {
         tipoInsertar = @"IMAGEN";
+        NSLog(@"INSERTO UNA IMAGEN DE LA GALERIA");
     }
     if (requiereEncriptar) {
 //        NSString *strAux = [Base64 encode:[NSData dataWithContentsOfFile:imagenInsertar.rutaImagen]];
@@ -236,30 +237,32 @@
         if ([parser parse]) {
             if (requiereEncriptar) {
                 datos = [DatosUsuario sharedInstance];
-                datos.token = self.token;
+                //datos.token = self.token;
                 NSString *stringResult = self.resultado;
-                NSLog(@"EL STRINGRESULT ES: %@ y el token es: %@", stringResult, datos.token);
-                if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
+                    if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                     [self.galeriaDelegate errorToken];
+                    NSLog(@"FUE ERROR DE TOKEN");
                 }
                 else {
                     NSInteger idAux = [stringResult integerValue];
                     if (idAux > 0) {
                         if (self.tipoGaleria == PhotoGaleryTypeImage) {
-                            [imagenInsertar setIdImagen:idAux];
-                            [self.arregloGaleria addObject:imagenInsertar];
+                            NSLog(@"ENTRO A LA OPCION DE GALERIA DE LOS USUARIOS");
+                            //[imagenInsertar setIdImagen:idAux];
+                            //[self.arregloGaleria addObject:imagenInsertar];
                             [datos setArregloGaleriaImagenes:self.arregloGaleria];
                         }
                         else {
-                            [self.imagenInsertarAux setIdImagen:idAux];
-                            [datos setImagenLogo:self.imagenInsertarAux];
+                            NSLog(@"ENTRO A LA OPCION LOGO");
+                            [self.datosUsuario.arregloUrlImagenes addObject:self.urlResultado];
+                            [self.datosUsuario.arregloTipoImagen addObject:@"LOGO"];
+                            [self.datosUsuario.arregloDescripcionImagen addObject:@""];
                         }
                         [self.galeriaDelegate resultadoConsultaDominio:@"Exito"];
                     }
                     else {
                         [self.galeriaDelegate resultadoConsultaDominio:@"No Exito"];
                     }
-                    
                 }
                 }
                 
@@ -306,19 +309,10 @@
             NSLog(@"EL ID DE IMAGEN ES: %@", self.resultado);
             [self.datosUsuario.arregloIdImagen addObject:self.resultado];
         }
-    }else if ([elementName isEqualToString:@"token"]) {
-        self.token = [StringUtils desEncriptar:self.currentElementString conToken:passwordEncriptar];
         
     }else if([elementName isEqualToString:@"urlImagen"]){
-        NSString *urlImagen = [StringUtils desEncriptar:self.currentElementString conToken:self.datosUsuario.token];
-        if(![self.resultado isEqualToString:@"Exito"] && ![self.resultado isEqualToString:@"No Exito"] && ![self.resultado isEqualToString:@"Error de token"]){
-           [self.datosUsuario.arregloUrlImagenes addObject:urlImagen];
-        }
-        
-    }else if([elementName isEqualToString:@"idImagen"]){
-        NSString *idImagen = [StringUtils desEncriptar:self.currentElementString conToken:self.datosUsuario.token];
-        // [self.datosUsuario.arregloUrlImagenes addObject:self.resultado];
-        NSLog(@"ENTRO A GUARDAR LA URL EN EL ARREGLO URL ID IMAGEN: %@", idImagen);
+        self.urlResultado = [StringUtils desEncriptar:self.currentElementString conToken:self.datosUsuario.token];
+        NSLog(@"EL resultado de la urlResultado es: %@", self.urlResultado);
     }
 }
 

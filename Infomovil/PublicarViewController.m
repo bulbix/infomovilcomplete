@@ -111,7 +111,7 @@
     
     
     if(IS_STANDARD_IPHONE_6){
-        [self.label1 setFrame:CGRectMake(40, 40, 295, 60)];
+        [self.label1 setFrame:CGRectMake(40, 35, 295, 65)];
         [self.labelNombre setFrame:CGRectMake(40, 120, 295, 30)];
         [self.txtNombre setFrame:CGRectMake(40, 150, 295, 30)];
         [self.labelDir1 setFrame:CGRectMake(40, 180, 295, 30)];
@@ -295,19 +295,21 @@
 }
 
 -(void) resultadoConsultaDominio:(NSString *)resultado {
+     NSLog(@"REGRESO POR RESULTADOCONSULTADOMINIO");
     self.datosUsuario = [DatosUsuario sharedInstance];
 	if(operacionWS == 1){
+        NSLog(@"LA OPERACION ES 1 PARA DOMINIO CREO");
         if ([resultado isEqualToString:@"No existe"]) {
             existeDominio = YES;
 			[self performSelectorInBackground:@selector(crearDominio2) withObject:Nil];
         }
         else {
             existeDominio = NO;
-			[self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
+			//[self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
         }
 	}
 	else if(operacionWS2 == 2){
-		
+		NSLog(@"LA OPERACION ES 2 PARA PUBLICAR CREO");
         if ([resultado isEqualToString:@"Exito"]) {
             statusRespuesta = RespuestaStatusExito;
         }
@@ -330,16 +332,21 @@
         [NSThread sleepForTimeInterval:1];
         [self.alertView hide];
     }
-    AlertView *alertAct = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
+   /* AlertView *alertAct = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
     [alertAct show];
     [StringUtils terminarSession];
     
     InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"InicioViewController" bundle:Nil];
     [self.navigationController pushViewController:inicio animated:YES];
+    */
+    AlertView *alertAct = [AlertView initWithDelegate:Nil message:@"No se ha podido registrar tu sitio web por favor intentalo nuevamente." andAlertViewType:AlertViewTypeInfo];
+    [alertAct show];
+    
 }
 
 -(void) errorConsultaWS {
-    [self performSelectorOnMainThread:@selector(errorPublicar) withObject:Nil waitUntilDone:YES];
+     NSLog(@"REGRESO POR ERROR CONSULTAWS");
+    //[self performSelectorOnMainThread:@selector(errorPublicar) withObject:Nil waitUntilDone:YES];
 }
 
 -(void) errorPublicar {
@@ -428,12 +435,18 @@
 	BOOL resultado = [self validarCampos];
 	
 	[[self view] endEditing:YES];
-    if(resultado && [CommonUtils hayConexion]){
-		[self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
-		[self performSelectorInBackground:@selector(checaDominio) withObject:Nil];
+    if(resultado){
+        if( [CommonUtils hayConexion]){
+            [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
+            [self performSelectorInBackground:@selector(checaDominio) withObject:Nil];
+        }else{
+            AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+            [alert show];
+        
+        }
     
 	}else{
-        AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+        AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message: mensajeError dominio:Nil andAlertViewType:AlertViewTypeInfo];
         [alert show];
 	}
 }

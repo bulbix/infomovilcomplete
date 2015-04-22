@@ -57,7 +57,7 @@
 }
 
 - (void)viewDidLoad
-{
+{    NSLog(@"ENTRO AL VIEWDIDLOAD");
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 	if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
@@ -162,6 +162,7 @@
                     tipoAux = arrAux;
                     self.idImagen = [self.datosUsuario.arregloIdImagen objectAtIndex:i];
                     self.urlImagen = [self.datosUsuario.arregloUrlImagenes objectAtIndex:i];
+                    NSLog(@"LOS VALORES [GUARDADOS SON: %@ Y %@", self.idImagen, self.urlImagen);
                     existeFoto = YES;
                 }
                 
@@ -197,6 +198,7 @@
 }
 
 -(void) cargarVista {
+    NSLog(@"ENTRO A CARGAR VISTA");
     self.datosUsuario = [DatosUsuario sharedInstance];
     
     switch (self.galeryType) {
@@ -213,7 +215,7 @@
         default:
             break;
     }
-    
+    NSLog(@"TRATO DE CARGAR LA IMAGEN %@", self.urlImagen);
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.urlImagen]
                                              cachePolicy:NSURLRequestUseProtocolCachePolicy
                                          timeoutInterval:25.0];
@@ -227,6 +229,7 @@
             [self.vistaPreviaImagen setImage:[UIImage imageNamed:@"previsualizador.png"]];
         }
     }else {
+        NSLog(@"ENTRO A TRATAR DE CARGAR LA IMAGEN ");
         UIImage *image = [UIImage imageWithData:response];
         [self.vistaPreviaImagen setImage:image];
     }
@@ -536,7 +539,7 @@
 
 -(void) accionAceptar {
     if (estaBorrando) {
-        NSLog(@"SI ESTA BORRANDO ENTRO EN ACCIONACEPTAR");
+        NSLog(@"accionAceptar BORRADO");
        self.urlImagen = nil;
         [self validaEditados];
         estaBorrando = NO;
@@ -544,13 +547,14 @@
         self.operacion = GaleriaImagenesAgregar;
         [self.btnEliminar setEnabled:NO];
         [self eliminarLogoDelArreglo];
-        //[self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:1 withObject:@NO];
+        [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:1 withObject:@NO];
 
     }
     else {
         if (exitoModificar) {
+             NSLog(@"accionAceptar GUARDO IMAGEN");
             [self validaEditados];
-           // [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:1 withObject:@YES];
+            [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:1 withObject:@YES];
             [self.navigationController popViewControllerAnimated:YES];
             
         }
@@ -615,7 +619,7 @@
 }
 
 -(void) resultadoConsultaDominio:(NSString *)resultado {
-    NSLog(@"EL RESULTADO ES: %@", resultado);
+    NSLog(@"EL RESULTADO de resultadoConsultaDominio es: %@", resultado);
 	self.datosUsuario = [DatosUsuario sharedInstance];
     if ([resultado isEqualToString:@"Exito"] || [resultado integerValue] > 0) {
         exitoModificar = YES;
