@@ -32,6 +32,7 @@
 
 @implementation NombrarViewController
 
+@synthesize datos;
 @synthesize alertActivity, textoDominio;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -51,7 +52,7 @@
     if(IS_STANDARD_IPHONE_6){
         [self.scroll setFrame:CGRectMake(0, 0, 375, 667)];
         [self.label1 setFrame:CGRectMake(40, 47, 280, 97)];
-        [self.label2 setFrame:CGRectMake(40, 97, 280, 101)];
+        [self.label2 setFrame:CGRectMake(40, 70, 280, 101)];
         [self.labelW setFrame:CGRectMake(41, 178, 52, 24)];
         [self.nombreDominio setFrame:CGRectMake(93, 175, 200, 30)];
         [self.labelTel setFrame:CGRectMake(291, 178, 28, 24)];
@@ -61,7 +62,7 @@
     else if(IS_STANDARD_IPHONE_6_PLUS){
         [self.scroll setFrame:CGRectMake(0, 0, 414, 736)];
         [self.label1 setFrame:CGRectMake(60, 47, 280, 97)];
-        [self.label2 setFrame:CGRectMake(60, 97, 280, 101)];
+        [self.label2 setFrame:CGRectMake(60, 60, 280, 101)];
         [self.labelW setFrame:CGRectMake(61, 178, 52, 24)];
         [self.nombreDominio setFrame:CGRectMake(113, 175, 200, 30)];
         [self.labelTel setFrame:CGRectMake(311, 178, 28, 24)];
@@ -69,8 +70,6 @@
         [self.boton setFrame:CGRectMake(113, 266, 200, 35)];
     }else if(IS_IPAD){
         [self.scroll setFrame:CGRectMake(0, 0, 768, 1024)];
-        //[self.label1 setFrame:CGRectMake(84, 500, 600, 50)];
-        //[self.label1 setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
         [self.label2 setFrame:CGRectMake(84, 80, 600, 50)];
         [self.label2 setFont:[UIFont fontWithName:@"Avenir-medium" size:21]];
         [self.labelW setFrame:CGRectMake(0, 187, 209, 24)];
@@ -87,12 +86,12 @@
     
     }else{
         [self.label1 setFrame:CGRectMake(20, 47, 280, 47)];
-        [self.label2 setFrame:CGRectMake(20, 97, 280, 61)];
-        [self.labelW setFrame:CGRectMake(11, 178, 52, 24)];
-        [self.nombreDominio setFrame:CGRectMake(63, 175, 200, 30)];
-        [self.labelTel setFrame:CGRectMake(261, 178, 28, 24)];
-        [self.labelDominio setFrame:CGRectMake(20, 223, 280, 24)];
-        [self.boton setFrame:CGRectMake(63, 266, 200, 35)];
+        [self.label2 setFrame:CGRectMake(20, 40, 280, 61)];
+        [self.labelW setFrame:CGRectMake(11, 108, 52, 24)];
+        [self.nombreDominio setFrame:CGRectMake(63, 105, 200, 30)];
+        [self.labelTel setFrame:CGRectMake(261, 108, 28, 24)];
+        [self.labelDominio setFrame:CGRectMake(20, 158, 280, 24)];
+        [self.boton setFrame:CGRectMake(60, 220, 200, 35)];
     }
     
     if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
@@ -130,12 +129,35 @@
 -(void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.datosUsuario = [DatosUsuario sharedInstance];
-    //[self.nombreDominio setText:self.datosUsuario.dominio];
+
     if (self.datosUsuario.publicoSitio) {
         [self.nombreDominio setEnabled:NO];
     }
     else {
         [self.nombreDominio setEnabled:YES];
+    }
+    
+    if([self.datosUsuario.tipoDeUsuario isEqualToString:@"canal"]){
+        [self.labelTel setHidden:NO];
+    }else if([self.datosUsuario.tipoDeUsuario isEqualToString:@"normal"] || [self.datosUsuario.tipoDeUsuario isEqualToString:@"normaltel"] ){
+        self.labelW.text = @"www.infomovil.com/";
+        [self.labelTel setHidden:YES];
+        if(IS_IPAD){
+            [self.labelW setFrame:CGRectMake(124, 178, 200, 24)];
+            [self.nombreDominio setFrame:CGRectMake(324, 175, 320, 30)];
+        }else if(IS_STANDARD_IPHONE_6){
+             [self.labelW setFrame:CGRectMake(10, 178, 170, 24)];
+             [self.nombreDominio setFrame:CGRectMake(180, 175, 180, 30)];
+        }else if(IS_STANDARD_IPHONE_6_PLUS){
+            [self.labelW setFrame:CGRectMake(10, 178, 170, 24)];
+            [self.nombreDominio setFrame:CGRectMake(180, 175, 215, 30)];
+        }else{
+            [self.labelW setFont:[UIFont fontWithName:@"Avenir-Book" size:15]];
+            [self.nombreDominio setFont:[UIFont fontWithName:@"Avenir-Book" size:15]];
+            [self.labelW setFrame:CGRectMake(5, 108, 150, 24)];
+            [self.nombreDominio setFrame:CGRectMake(155, 105, 140, 30)];
+        }
+        
     }
 	
 	self.label1.text = NSLocalizedString(@"nombrarLabel1", nil);
@@ -145,6 +167,14 @@
 	saliendo = NO;
    
     self.nombreDominio.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"misitioURL", nil) attributes:@{NSForegroundColorAttributeName: [UIColor grayColor]}];
+    
+    if([self.datosUsuario.tipoDeUsuario isEqualToString:@"canal"]){
+        [self.labelDominio setText:NSLocalizedString(@"etiquetaDominioTel", nil)];
+    }else if([self.datosUsuario.tipoDeUsuario isEqualToString:@"normal"] || [self.datosUsuario.tipoDeUsuario isEqualToString:@"normaltel"]){
+        [self.labelDominio setText:NSLocalizedString(@"etiquetaRecursoNormal", nil)];
+    
+    }
+    
     
     
 #if DEBUG
@@ -338,12 +368,19 @@
 }
 
 -(void) crearDominio {
-    
+    self.datos = [DatosUsuario sharedInstance];
+    NSString *dominioAux;
+    if([self.datos.tipoDeUsuario isEqualToString:@"canal"]){
+        dominioAux = @"tel";
+    }else if([self.datos.tipoDeUsuario isEqualToString:@"normal"] || [self.datosUsuario.tipoDeUsuario isEqualToString:@"normaltel"]){
+        dominioAux = @"recurso";
+        
+    }
         operacionWS = 2;
         self.datosUsuario = [DatosUsuario sharedInstance];
         WS_HandlerDominio *dominioHandler = [[WS_HandlerDominio alloc] init];
         [dominioHandler setWSHandlerDelegate:self];
-        [dominioHandler crearUsuario:self.datosUsuario.emailUsuario conNombre:self.nombreDominio.text password:self.datosUsuario.passwordUsuario status:@"1" nombre:nil direccion1:nil direccion2:nil pais:nil codigoPromocion:@"" tipoDominio:dominioTipo idDominio:[NSString stringWithFormat:@"%i", self.datosUsuario.idDominio]];
+        [dominioHandler crearUsuario:self.datosUsuario.emailUsuario conNombre:self.nombreDominio.text password:self.datosUsuario.passwordUsuario status:@"1" nombre:nil direccion1:nil direccion2:nil pais:nil codigoPromocion:@"" tipoDominio:dominioAux idDominio:[NSString stringWithFormat:@"%i", self.datosUsuario.idDominio]];
    
 
 }

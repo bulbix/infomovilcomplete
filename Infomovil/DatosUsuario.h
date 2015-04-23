@@ -119,9 +119,10 @@
 @property (nonatomic, strong) NSString *auxStrSesionUser;
 @property (nonatomic, strong) NSString *auxStrSesionPass;
 @property (nonatomic) NSInteger auxSesionFacebook;
-
-
-//@property NSString
+// ESTAS PROPIEDADES LAS USO PARA PUBLICAR //
+@property (nonatomic, strong) NSString *tipoDeUsuario;
+@property (nonatomic, strong) NSString *canal;
+@property (nonatomic, strong) NSString *campania;
 
 + (id)sharedInstance;
 

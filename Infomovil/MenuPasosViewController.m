@@ -92,6 +92,10 @@
         self.dominio.frame = CGRectMake(0, 40, 768, 40);
         [self.dominio.titleLabel setFont: [UIFont fontWithName:@"Avenir-Book" size:22]];
     
+    }else{
+        self.line1.frame = CGRectMake(20, 105, 280, 1);
+        self.line2.frame = CGRectMake(20, 191, 280, 1);
+        self.line3.frame = CGRectMake(20, 273, 280, 1);
     }
 	
     self.datosUsuario				= [DatosUsuario sharedInstance];

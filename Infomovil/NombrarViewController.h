@@ -22,6 +22,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *label2;
 @property (strong, nonatomic) IBOutlet UIButton *boton;
 
+@property (nonatomic, strong) DatosUsuario *datos;
 
 - (IBAction)verificarDominio:(UIButton *)sender;
 @end

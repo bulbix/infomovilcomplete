@@ -57,7 +57,7 @@
 }
 
 - (void)viewDidLoad
-{    NSLog(@"ENTRO AL VIEWDIDLOAD");
+{    NSLog(@"ENTRO AL VIEWDIDLOAD DE GALERIAPASO2VIEWCONTROLLER");
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 	if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
@@ -144,7 +144,7 @@
 	[super viewWillAppear:animated];
 }
 
--(void) acomodarVista {
+-(void) acomodarVista { NSLog(@"ENTRO EN ACOMODAR VISTA!");
     self.datosUsuario = [DatosUsuario sharedInstance];
     switch (self.galeryType) {
         case PhotoGaleryTypeLogo:
@@ -358,6 +358,7 @@
     self.datosUsuario = [DatosUsuario sharedInstance];
     if (self.operacion == GaleriaImagenesAgregar) {
         if (self.modifico && seleccionoImagen) {
+            NSLog(@"MODIFICO Y SELECCIONO IMAGEN ");
             [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
             [self performSelectorInBackground:@selector(salvaImagen) withObject:nil];
         }else{
@@ -458,13 +459,13 @@
     NSLog(@"ENTRO A SALVAR IMAGEN!!");
         NSString *nombreImagen = [StringUtils randomStringWithLength:15];
         UIImage *imagenTomada = [self.vistaPreviaImagen image];
-        NSData *pngData = UIImageJPEGRepresentation(imagenTomada, 1.0); //UIImagePNGRepresentation(imagenTomada);
+        NSData *pngData = UIImageJPEGRepresentation(imagenTomada, 0.5); //UIImagePNGRepresentation(imagenTomada);
         
         while([pngData length] > 100000) {
             @autoreleasepool {
                 CGSize newSize = CGSizeMake(imagenTomada.size.width*0.85, imagenTomada.size.height*0.85);
                 imagenTomada = [ImageUtils resizeImage:imagenTomada newSize:newSize];
-                pngData = UIImageJPEGRepresentation(imagenTomada, 1.0); //UIImagePNGRepresentation(imagenTomada);
+                pngData = UIImageJPEGRepresentation(imagenTomada, 0.5); //UIImagePNGRepresentation(imagenTomada);
             }
         }
     
@@ -693,7 +694,6 @@
     else if (self.galeryType == PhotoGaleryTypeImage) {
         NSLog(@"ENTRO A EDIGTAR EL LOGO DE BLA BLA BLA");
         if (self.datosUsuario.logoImg != nil && [self.datosUsuario.logoImg length] > 0) {
-           //IRC [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:1 withObject:@YES];
             [self enviarEventoGAconCategoria:@"Edito" yEtiqueta:@"Imagen"];
         }
         else {

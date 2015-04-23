@@ -154,6 +154,9 @@
 "tienesCuenta"="Already have an account?";
 "aceptaCondiciones"="By continuing, you accept the Terms and Privacy Conditions of Infomovil";
 "disponible"="www.%@.tel is available\nRegister it to publish your website.";
+"disponibleTel"="www.%@.tel is available\nRegister it to publish your website.";
+"disponibleRecurso"="www.infomovil.com/%@ is available\nRegister it to publish your website.";
+
 "confirmalo"="";//"Publish your site and get on line!";
 
 "enLinea"="Your mobile site is now online!";
@@ -529,3 +532,5 @@
 "publicarTwitter" = "Your latest Tweets are posted on your site.";
 "msjCompartirPublicar" = "In order to share your website you must publish it first. Would you like to publish it now?";
 "msjDominioPublicar"="Publish your website";
+"etiquetaDominioTel" ="www.mysite.tel";
+"etiquetaRecursoNormal" ="www.infomovil.com/mysite";

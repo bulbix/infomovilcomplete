@@ -28,6 +28,15 @@
 @synthesize datos;
 
 -(void) consultaDominio:(NSString *) dominio {
+    self.datos = [DatosUsuario sharedInstance];
+    NSString *dominioAux;
+    if([self.datos.tipoDeUsuario isEqualToString:@"canal"]){
+        dominioAux = @"tel";
+    }else if([self.datos.tipoDeUsuario isEqualToString:@"normal"] || [self.datos.tipoDeUsuario isEqualToString:@"normaltel"]){
+        dominioAux = @"recurso";
+    
+    }
+    
     NSString *stringXML = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.webservice.infomovil.org/\">"
                                "<soapenv:Header/>"
                                "<soapenv:Body>"
@@ -36,7 +45,7 @@
                                "<domainType>%@</domainType>"
                                "</ws:getExistDomain>"
                                "</soapenv:Body>"
-                               "</soapenv:Envelope>", [StringUtils encriptar:dominio conToken:passwordEncriptar], [StringUtils encriptar:dominioTipo conToken:passwordEncriptar]];
+                               "</soapenv:Envelope>", [StringUtils encriptar:dominio conToken:passwordEncriptar], [StringUtils encriptar:dominioAux conToken:passwordEncriptar]];
     
     NSLog(@"el string es %@", stringXML);
     self.strSoapAction = @"WSInfomovilDomain";

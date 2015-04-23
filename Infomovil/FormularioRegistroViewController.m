@@ -418,6 +418,7 @@
 }
 
 -(void) crearDominio {
+   
         [((AppDelegate *)[[UIApplication sharedApplication] delegate]) restartDate];
         operacionWS = 2;
         WS_HandlerDominio *dominioHandler = [[WS_HandlerDominio alloc] init];

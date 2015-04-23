@@ -39,12 +39,15 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad{
+    
+    
+    
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     self.datosUsuario = [DatosUsuario sharedInstance];
     maxNumeroImagenes = [[self.datosUsuario.itemsDominio objectAtIndex:self.indiceItem] estatus];
+    
+    NSLog(@"ENTRO A VIEWDIDLOAD DE GALERIAIMAGENESVIEWCONTROLLER Y EL NUMERO MAXIMO DE IMAGENES ES: %i", [[self.datosUsuario.itemsDominio objectAtIndex:self.indiceItem] estatus]);
 
     UIImage *imagenAgregar = [UIImage imageNamed:@"btnagregar.png"];
     UIButton *botonAgregar = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -65,10 +68,6 @@
     [self.labelImagenesMensaje2 setText:NSLocalizedString(@"redimensionaImagen", Nil)];
     
     self.vistaInfo.layer.cornerRadius = 5.0f;
-    
-    
-    
-    
     
 }
 

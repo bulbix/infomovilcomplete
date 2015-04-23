@@ -414,9 +414,6 @@
     else if ([elementName isEqualToString:@"listInfoUsuarioVO"]) {
         self.currentElementString = [[NSMutableString alloc] init];
     }
-    else if ([elementName isEqualToString:@"canal"]) {
-        self.currentElementString = [[NSMutableString alloc] init];
-    }
     else if ([elementName isEqualToString:@"listStatusDomainVO"]) {
         itemDominio = [[ItemsDominio alloc] init];
         self.currentElementString = [[NSMutableString alloc] init];
@@ -500,8 +497,14 @@
         self.currentElementString = [[NSMutableString alloc] init];
     }else if ([elementName isEqualToString:@"idImagen"]) {
         self.currentElementString = [[NSMutableString alloc] init];
+    }else if ([elementName isEqualToString:@"tipoUsuario"]) {
+        self.currentElementString = [[NSMutableString alloc] init];
+    }else if ([elementName isEqualToString:@"campania"]) {
+        self.currentElementString = [[NSMutableString alloc] init];
+    }else if ([elementName isEqualToString:@"canal"]) {
+        self.currentElementString = [[NSMutableString alloc] init];
     }
-   
+
 }
 
 
@@ -880,9 +883,6 @@
 		}
 		self.currentElementString = [[NSMutableString alloc] init];
 	}
-	else if ([elementName isEqualToString:@"canal"]) {
-		self.currentElementString = [[NSMutableString alloc] init];
-	}
     else if ([elementName isEqualToString:@"listStatusDomainVO"]) {
         [self.arregloItems addObject:itemDominio];
       
@@ -1007,6 +1007,23 @@
         NSString *strAux = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
         [dominioUsuario setStatusVisible:[strAux integerValue]];
     }
+    
+    else if ([elementName isEqualToString:@"tipoUsuario"]) {
+        
+        NSString *strAux = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
+        self.datosUsuario.tipoDeUsuario = strAux;
+        
+        NSLog(@"EL TIPO DE USUARIO ES: %@", strAux);
+    }else if ([elementName isEqualToString:@"campania"]) {
+        NSString *strAux = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
+        self.datosUsuario.campania = strAux;
+        NSLog(@"LA CAMPANIA ES: %@", strAux);
+    }else if ([elementName isEqualToString:@"canal"]) {
+        NSString *strAux = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
+        self.datosUsuario.canal = strAux;
+        NSLog(@"EL CANAL ES: %@", strAux);
+    }
+    
     
 }
 

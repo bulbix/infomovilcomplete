@@ -53,6 +53,8 @@
 
 @implementation PublicarViewController
 
+@synthesize datos;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -158,9 +160,6 @@
         
         
     }
-    
-    
-    
 	
 }
 
@@ -168,7 +167,16 @@
     [super viewWillAppear:animated];
     self.datosUsuario = [DatosUsuario sharedInstance];
 	
-	self.label1.text = [NSString stringWithFormat:NSLocalizedString(@"disponible", nil),[self.datosUsuario dominio]];
+    if([self.datosUsuario.tipoDeUsuario isEqualToString:@"canal"]){
+        self.label1.text = [NSString stringWithFormat:NSLocalizedString(@"disponibleTel", nil),[self.datosUsuario dominio]];
+      
+        
+        
+        
+    }else if([self.datosUsuario.tipoDeUsuario isEqualToString:@"normal"] || [self.datosUsuario.tipoDeUsuario isEqualToString:@"normaltel"]){
+        self.label1.text = [NSString stringWithFormat:NSLocalizedString(@"disponibleRecurso", nil),[self.datosUsuario dominio]];
+    }
+
 	self.label2.text = NSLocalizedString(@"confirmalo", nil);
 	[self.boton setTitle:NSLocalizedString(@"PublicarBoton", nil) forState:UIControlStateNormal];
 	
@@ -209,14 +217,20 @@
 
 
 -(void) crearDominio {
-    
-        operacionWS2 = 2;
+    self.datos = [DatosUsuario sharedInstance];
+    NSString *dominioAux;
+    if([self.datos.tipoDeUsuario isEqualToString:@"canal"]){
+        dominioAux = @"tel";
+    }else if([self.datos.tipoDeUsuario isEqualToString:@"normal"] || [self.datos.tipoDeUsuario isEqualToString:@"normaltel"]){
+        dominioAux = @"recurso";
         
+    }
+        operacionWS2 = 2;
         self.datosUsuario = [DatosUsuario sharedInstance];
         WS_HandlerDominio *dominioHandler = [[WS_HandlerDominio alloc] init];
         [dominioHandler setWSHandlerDelegate:self];
         
-        [dominioHandler crearUsuario:self.datosUsuario.emailUsuario conNombre:self.datosUsuario.dominio password:self.datosUsuario.passwordUsuario status:@"1" nombre:self.txtNombre.text direccion1:self.txtDir1.text direccion2:self.txtDir2.text pais:self.nPais codigoPromocion:self.datosUsuario.codigoRedimir==nil?@" ":self.datosUsuario.codigoRedimir tipoDominio:dominioTipo idDominio:[NSString stringWithFormat:@"%i", self.datosUsuario.idDominio]];
+        [dominioHandler crearUsuario:self.datosUsuario.emailUsuario conNombre:self.datosUsuario.dominio password:self.datosUsuario.passwordUsuario status:@"1" nombre:self.txtNombre.text direccion1:self.txtDir1.text direccion2:self.txtDir2.text pais:self.nPais codigoPromocion:self.datosUsuario.codigoRedimir==nil?@" ":self.datosUsuario.codigoRedimir tipoDominio:dominioAux idDominio:[NSString stringWithFormat:@"%i", self.datosUsuario.idDominio]];
 
 }
 

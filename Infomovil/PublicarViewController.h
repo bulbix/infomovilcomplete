@@ -44,7 +44,7 @@ typedef enum {
 
 @property (nonatomic) NSString *nPais;
 
-
+@property (nonatomic, strong) DatosUsuario *datos;
 
 
 - (IBAction)mostrarOpcion:(UIButton *)sender;
