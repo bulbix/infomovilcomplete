@@ -32,7 +32,7 @@
     NSString *dominioAux;
     if([self.datos.tipoDeUsuario isEqualToString:@"canal"]){
         dominioAux = @"tel";
-    }else if([self.datos.tipoDeUsuario isEqualToString:@"normal"] || [self.datos.tipoDeUsuario isEqualToString:@"normaltel"]){
+    }else if([self.datos.tipoDeUsuario isEqualToString:@"normal"]){
         dominioAux = @"recurso";
     
     }
@@ -152,6 +152,8 @@
                      [StringUtils encriptar:codProm conToken:self.datos.token != nil ? self.datos.token: passwordEncriptar],//codProm
                      [StringUtils encriptar:domainType conToken:self.datos.token != nil ? self.datos.token: passwordEncriptar],
                      [StringUtils encriptar:idDominio conToken:self.datos.token != nil ? self.datos.token: passwordEncriptar]];
+    
+    NSLog(@"EL DOMINIO ENVIADO ES: %@", domainType);
     
     self.strSoapAction = @"wsInfomovildomain";
     NSLog(@"la peticion es %@", stringXML);

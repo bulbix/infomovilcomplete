@@ -173,7 +173,7 @@
         
         
         
-    }else if([self.datosUsuario.tipoDeUsuario isEqualToString:@"normal"] || [self.datosUsuario.tipoDeUsuario isEqualToString:@"normaltel"]){
+    }else if([self.datosUsuario.tipoDeUsuario isEqualToString:@"normal"] ){
         self.label1.text = [NSString stringWithFormat:NSLocalizedString(@"disponibleRecurso", nil),[self.datosUsuario dominio]];
     }
 
@@ -221,10 +221,11 @@
     NSString *dominioAux;
     if([self.datos.tipoDeUsuario isEqualToString:@"canal"]){
         dominioAux = @"tel";
-    }else if([self.datos.tipoDeUsuario isEqualToString:@"normal"] || [self.datos.tipoDeUsuario isEqualToString:@"normaltel"]){
+    }else if([self.datos.tipoDeUsuario isEqualToString:@"normal"] ){
         dominioAux = @"recurso";
         
     }
+    NSLog(@"EL DOMINIO FUE: %@", dominioAux);
         operacionWS2 = 2;
         self.datosUsuario = [DatosUsuario sharedInstance];
         WS_HandlerDominio *dominioHandler = [[WS_HandlerDominio alloc] init];

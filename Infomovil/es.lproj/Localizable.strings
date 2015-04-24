@@ -470,7 +470,7 @@
 
 "paso2Eliminar" = "¿Estás seguro que deseas eliminar los datos?";
 
-"errorPassword" = "Contraseña debe tener de 8 a 15 caracteres\n(letras y números)\nNo puede contener la palabra Infomovil\nNo puede ser igual al correo";
+"errorPassword" = "Contraseña de de 8 a 15 caracteres (letras y números). No contener la palabra Infomovil. No puede ser igual al correo";
 "imagenPromoCorrecta" = "Tu imagen se ha procesado correctamente y esta lista para subirse";
 
 "registrarMensaje" =  "Por favor, crea una cuenta con tu\ne-mail y una contraseña.";
@@ -642,3 +642,4 @@
 "msjDominioPublicar"="Publica tu sitio ahora";
 "etiquetaDominioTel" ="www.misitio.tel";
 "etiquetaRecursoNormal" ="www.infomovil.com/misitio";
+"tiempoAgotado" = "Se ha agotado el tiempo de espera, intenta nuevamente." ;

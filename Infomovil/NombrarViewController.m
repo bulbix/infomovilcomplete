@@ -139,7 +139,7 @@
     
     if([self.datosUsuario.tipoDeUsuario isEqualToString:@"canal"]){
         [self.labelTel setHidden:NO];
-    }else if([self.datosUsuario.tipoDeUsuario isEqualToString:@"normal"] || [self.datosUsuario.tipoDeUsuario isEqualToString:@"normaltel"] ){
+    }else if([self.datosUsuario.tipoDeUsuario isEqualToString:@"normal"]  ){
         self.labelW.text = @"www.infomovil.com/";
         [self.labelTel setHidden:YES];
         if(IS_IPAD){
@@ -170,7 +170,7 @@
     
     if([self.datosUsuario.tipoDeUsuario isEqualToString:@"canal"]){
         [self.labelDominio setText:NSLocalizedString(@"etiquetaDominioTel", nil)];
-    }else if([self.datosUsuario.tipoDeUsuario isEqualToString:@"normal"] || [self.datosUsuario.tipoDeUsuario isEqualToString:@"normaltel"]){
+    }else if([self.datosUsuario.tipoDeUsuario isEqualToString:@"normal"]){
         [self.labelDominio setText:NSLocalizedString(@"etiquetaRecursoNormal", nil)];
     
     }
@@ -372,7 +372,7 @@
     NSString *dominioAux;
     if([self.datos.tipoDeUsuario isEqualToString:@"canal"]){
         dominioAux = @"tel";
-    }else if([self.datos.tipoDeUsuario isEqualToString:@"normal"] || [self.datosUsuario.tipoDeUsuario isEqualToString:@"normaltel"]){
+    }else if([self.datos.tipoDeUsuario isEqualToString:@"normal"]){
         dominioAux = @"recurso";
         
     }

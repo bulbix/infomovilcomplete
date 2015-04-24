@@ -31,6 +31,10 @@
 
 @implementation GaleriaImagenesViewController
 
+@synthesize urlImagen;
+
+
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -40,14 +44,8 @@
 }
 
 - (void)viewDidLoad{
-    
-    
-    
     [super viewDidLoad];
     self.datosUsuario = [DatosUsuario sharedInstance];
-    maxNumeroImagenes = [[self.datosUsuario.itemsDominio objectAtIndex:self.indiceItem] estatus];
-    
-    NSLog(@"ENTRO A VIEWDIDLOAD DE GALERIAIMAGENESVIEWCONTROLLER Y EL NUMERO MAXIMO DE IMAGENES ES: %i", [[self.datosUsuario.itemsDominio objectAtIndex:self.indiceItem] estatus]);
 
     UIImage *imagenAgregar = [UIImage imageNamed:@"btnagregar.png"];
     UIButton *botonAgregar = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -79,19 +77,19 @@
 		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"imagenes", @" ") nombreImagen:@"NBverde.png"];
 	}
     self.datosUsuario = [DatosUsuario sharedInstance];
-    self.arregloImagenes = self.datosUsuario.arregloGaleriaImagenes;
-    NSMutableArray *arrayAux = self.datosUsuario.arregloEstatusEdicion;
+    NSLog(@"LA CANTIDAD DE IMAGENES EN GALERIA SON : %i ",[self.datosUsuario.arregloUrlImagenesGaleria count]);
+    self.arregloImagenes = self.datosUsuario.arregloUrlImagenesGaleria;
     if ([self.arregloImagenes count] > 0) {
         [self.tablaGaleria setHidden:NO];
         [self.vistaInfo setHidden:YES];
         [self.tablaGaleria reloadData];
         [self mostrarBotones];
-        [arrayAux replaceObjectAtIndex:8 withObject:@YES];
+        [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:8 withObject:@YES];
     }
     else {
         [self.tablaGaleria setHidden:YES];
         [self.vistaInfo setHidden:NO];
-        [arrayAux replaceObjectAtIndex:8 withObject:@NO];
+        [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:8 withObject:@NO];
         
         self.navigationItem.rightBarButtonItems = Nil;
         UIImage *imageAceptar = [UIImage imageNamed:@"btnagregar.png"];
@@ -101,9 +99,6 @@
         [btAceptar addTarget:self action:@selector(agregarImagen:) forControlEvents:UIControlEventTouchUpInside];
         UIBarButtonItem *botonAceptar = [[UIBarButtonItem alloc] initWithCustomView:btAceptar];
         self.navigationItem.rightBarButtonItem = botonAceptar;
-		
-		
-        
     }
 	[self mostrarBotones];
     
@@ -254,7 +249,9 @@
 }
 
 -(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    GaleriaImagenes *imagen = [self.arregloImagenes objectAtIndex:indexPath.row];
+    self.datosUsuario = [DatosUsuario sharedInstance];
+    self.urlImagen = [self.datosUsuario.arregloUrlImagenesGaleria objectAtIndex:indexPath.row];
+    
     static NSString *identificador = @"GaleriaCell";
     GaleriaCell *cell = [tableView dequeueReusableCellWithIdentifier:identificador];
     if (cell == Nil) {
@@ -262,16 +259,25 @@
         cell = [nib objectAtIndex:0];
     }
     cell.vistaGaleria.layer.cornerRadius = 5.0f;
-    NSData *pngData = [NSData dataWithContentsOfFile:imagen.rutaImagen];
-    UIImage *image = [UIImage imageWithData:pngData];
-    [cell.imagenPrevia setImage:image];
-    [cell.pieFoto setText:imagen.pieFoto];
-    [cell.anchoFoto setText:[NSString stringWithFormat:@"%i px", imagen.ancho]];
-    [cell.altoFoto setText:[NSString stringWithFormat:@"%i px", imagen.alto]];
-    [cell.pesoFoto setText:[NSString stringWithFormat:@"%.1f kB", [pngData length]/1000.00]];
-    [cell.labelAlto setText:NSLocalizedString(@"alto", Nil)];
-    [cell.labelAncho setText:NSLocalizedString(@"ancho", Nil)];
-    [cell.labelTamano setText:NSLocalizedString(@"tamano", Nil)];
+    [cell.pieFoto setText:[self.datosUsuario.arregloDescripcionImagenGaleria objectAtIndex:indexPath.row]];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:  self.urlImagen ]
+                                             cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                         timeoutInterval:25.0];
+    NSError *requestError;
+    NSURLResponse *urlResponse = nil;
+    NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&requestError];
+    if (response == nil) {
+        if (requestError != nil) {
+            NSLog(@"GaleriaPaso2ViewController Error Code imagen: %ld", (long)requestError.code);
+            NSLog(@"GaleriaPaso2ViewController Description error: %@", [requestError localizedDescription]);
+            [cell.imagenPrevia setImage:[UIImage imageNamed:@"previsualizador.png"]];
+        }
+    }else {
+        NSLog(@"ENTRO A TRATAR DE CARGAR LA IMAGEN ");
+        UIImage *image = [UIImage imageWithData:response];
+        [cell.imagenPrevia setImage:image];
+    }
     
     if( [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && [self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"] && indexPath.row > 1){
         cell.sombrearCelda.hidden = NO;
@@ -395,7 +401,6 @@
 
 -(void) resultadoConsultaDominio:(NSString *)resultado {
     if ([resultado isEqualToString:@"Exito"]) {
-     //   [[AppsFlyerTracker sharedTracker] trackEvent:@"Edito Imagenes" withValue:@""];
         [self enviarEventoGAconCategoria:@"Edito" yEtiqueta:@"Imagenes"];
         exito = YES;
     }

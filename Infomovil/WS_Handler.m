@@ -8,7 +8,7 @@
 
 #import "WS_Handler.h"
 #import "NSStringUtiles.h"
-
+#import <FacebookSDK/FacebookSDK.h>
 
 @implementation WS_Handler
 
@@ -354,7 +354,7 @@
 	NSURL *url = [[NSURL alloc] initWithString:strServiceUrl];
 	NSMutableURLRequest *urlRequest = [[NSMutableURLRequest alloc] initWithURL:url];
 	[url release];
-    [urlRequest setTimeoutInterval:20];
+    [urlRequest setTimeoutInterval:30];
 	
 	[urlRequest addValue:@"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
 	[urlRequest addValue:[NSString stringWithFormat:@"%d",[dataPeticion length]] forHTTPHeaderField:@"Content-Length"];
@@ -382,11 +382,25 @@
         NSLog(@"El codigo de error en WS_Handler es: %ld y su descripcion es: %@", (long)error.code, error.localizedDescription);
         // Time out es -1001
 #endif
+        if(error.code == -1001) {
+            AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"tiempoAgotado", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+            [alert show];
+        }
+    
         if(error.code == -1005) {
             AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
             [alert show];
+            NSHTTPCookieStorage* cookies = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+            NSArray* facebookCookies = [cookies cookiesForURL:[NSURL         URLWithString:@"https://facebook.com/"]];
+            
+            for (NSHTTPCookie* cookie in facebookCookies) {
+                [cookies deleteCookie:cookie];
+            }
         }
-        return [[error localizedDescription] dataUsingEncoding:NSUTF8StringEncoding];
+       // return [[error localizedDescription] dataUsingEncoding:NSUTF8StringEncoding];
+        NSString *codigoError = [NSString stringWithFormat:@"%ld",(long)error.code ];
+        NSData* cData = [codigoError dataUsingEncoding:NSUTF8StringEncoding];
+        return cData;
 	}
 	
 	return dataResp;

@@ -47,7 +47,7 @@
         [stringXML appendFormat:@"<token>%@</token></ws:updateImage></soapenv:Body></soapenv:Envelope>", [StringUtils encriptar:datos.emailUsuario conToken:passwordEncriptar]];
     }
     
-    NSLog(@"El string es %@", stringXML);
+  //  NSLog(@"El string es %@", stringXML);
     self.strSoapAction = @"WSInfomovilDomain";
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
     NSLog(@"La Respuesta en WS_HandlerGaleria del metodo actualizarGarleria es %s", [dataResult bytes]);
@@ -144,32 +144,27 @@
         if ([parser parse]) {
             if (requiereEncriptar) {
                 datos = [DatosUsuario sharedInstance];
-                datos.token = self.token;
-                NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
-                if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
+                //datos.token = self.token;
+               // NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
+                if (self.resultado == nil || [[self.resultado stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [self.resultado isEqualToString:@"Error de token"]) {
+                    NSLog(@"ENTRO A ERROR DE TOKEN");
                     [self.galeriaDelegate errorToken];
                 }
                 else {
-                   // NSLog(@"EL RESULTADO DESENCRIPTADO ES: %@", [StringUtils desEncriptar:self.resultado conToken:datos.token]);
+                  
                     if ([self.resultado isEqualToString:@"Exito"]) {
-                        NSFileManager *fileManager = [NSFileManager defaultManager];
-                        NSError *error;
-                        BOOL success = [fileManager removeItemAtPath:self.imagenInsertarAux.rutaImagen error:&error];
-#if DEBUG
-                        if (success) {
-                            NSLog(@"Archivo eliminado");
-                        }
-                        else {
-                            NSLog(@"No se puedo eliminar %@", [error localizedDescription]);
-                        }
-#endif
+                   
                         switch (self.tipoGaleria) {
                             case PhotoGaleryTypeLogo:
                                 datos.imagenLogo = [[GaleriaImagenes alloc] init];
                                 break;
                             case PhotoGaleryTypeImage:
-                                [self.arregloGaleria removeObjectAtIndex:self.indiceSeleccionado];
-                                [datos setArregloGaleriaImagenes:self.arregloGaleria];
+                                NSLog(@"SI SE PUDO ELIMINAR LA FOTO DE GALERIA");
+                                [datos.arregloUrlImagenesGaleria removeObjectAtIndex:self.indiceSeleccionado];
+                                [datos.arregloIdImagenGaleria removeObjectAtIndex:self.indiceSeleccionado];
+                                [datos.arregloDescripcionImagenGaleria removeObjectAtIndex:self.indiceSeleccionado];
+                                [datos.arregloTipoImagenGaleria removeObjectAtIndex:self.indiceSeleccionado];
+                                
                                 
                             default:
                                 break;
@@ -227,7 +222,7 @@
          "</soapenv:Body>"
          "</soapenv:Envelope>" ];
     }
-    NSLog(@"El string es %@", stringXML);
+   // NSLog(@"El string es %@", stringXML);
     self.strSoapAction = @"WSInfomovilDomain";
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
     if (dataResult != nil) {
@@ -248,15 +243,30 @@
                     if (idAux > 0) {
                         if (self.tipoGaleria == PhotoGaleryTypeImage) {
                             NSLog(@"ENTRO A LA OPCION DE GALERIA DE LOS USUARIOS");
-                            //[imagenInsertar setIdImagen:idAux];
-                            //[self.arregloGaleria addObject:imagenInsertar];
-                            [datos setArregloGaleriaImagenes:self.arregloGaleria];
+                            [self.datosUsuario.arregloUrlImagenesGaleria addObject:self.urlResultado];
+                            [self.datosUsuario.arregloTipoImagenGaleria addObject:@"IMAGEN"];
+                            if(![self.resultado isEqualToString:@"Exito"] && ![self.resultado isEqualToString:@"No Exito"] && ![self.resultado isEqualToString:@"Error de token"]){
+                                 NSLog(@"EL ID DE IMAGEN ES: %@", self.resultado);
+                                [self.datosUsuario.arregloIdImagenGaleria addObject:self.resultado];
+                            }
+                            NSLog(@"LOS VALORES GUARDADOS SON PRIMERO RESULTADO: %@", self.resultado);
+                            NSLog(@"LOS VALORES GUARDADOS SON arregloUrlImagenesGaleria RESULTADO: %@", self.resultado);
+                            NSLog(@"LOS VALORES GUARDADOS SON arregloTipoImagenGaleria RESULTADO: %@", self.urlResultado);
+                           
                         }
                         else {
                             NSLog(@"ENTRO A LA OPCION LOGO");
                             [self.datosUsuario.arregloUrlImagenes addObject:self.urlResultado];
                             [self.datosUsuario.arregloTipoImagen addObject:@"LOGO"];
                             [self.datosUsuario.arregloDescripcionImagen addObject:@""];
+                            if(![self.resultado isEqualToString:@"Exito"] && ![self.resultado isEqualToString:@"No Exito"] && ![self.resultado isEqualToString:@"Error de token"]){
+                                NSLog(@"EL ID DE IMAGEN ES: %@", self.resultado);
+                                [self.datosUsuario.arregloIdImagen addObject:self.resultado];
+                            }
+                            
+                          
+                            NSLog(@"LOS VALORES GUARDADOS SON arregloUrlImagenesGaleria RESULTADO: %@", self.resultado);
+                            NSLog(@"LOS VALORES GUARDADOS SON arregloTipoImagenGaleria RESULTADO: %@", self.urlResultado);
                         }
                         [self.galeriaDelegate resultadoConsultaDominio:@"Exito"];
                     }
@@ -304,11 +314,8 @@
     
     if ([elementName isEqualToString:@"resultado"]) {
         self.resultado = [StringUtils desEncriptar:self.currentElementString conToken:self.datosUsuario.token];
-        NSLog(@"EL resultado: %@", self.resultado);
-        if(![self.resultado isEqualToString:@"Exito"] && ![self.resultado isEqualToString:@"No Exito"] && ![self.resultado isEqualToString:@"Error de token"]){
-            NSLog(@"EL ID DE IMAGEN ES: %@", self.resultado);
-            [self.datosUsuario.arregloIdImagen addObject:self.resultado];
-        }
+        NSLog(@"EL resultado DE LA IMAGEN : %@", self.resultado);
+        
         
     }else if([elementName isEqualToString:@"urlImagen"]){
         self.urlResultado = [StringUtils desEncriptar:self.currentElementString conToken:self.datosUsuario.token];

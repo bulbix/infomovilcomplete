@@ -36,6 +36,7 @@
 @property(nonatomic, strong) GaleriaImagenes *imagenActual;
 @property (nonatomic, strong) AlertView *alertGaleria;
 @property(nonatomic, strong) UIImage *imagenTemp;
+@property(nonatomic, strong) NSString *descripcionGaleria;
 
 @end
 
@@ -162,7 +163,7 @@
                     tipoAux = arrAux;
                     self.idImagen = [self.datosUsuario.arregloIdImagen objectAtIndex:i];
                     self.urlImagen = [self.datosUsuario.arregloUrlImagenes objectAtIndex:i];
-                    NSLog(@"LOS VALORES [GUARDADOS SON: %@ Y %@", self.idImagen, self.urlImagen);
+                    NSLog(@"LOS VALORES GUARDADOS SON: %@ Y %@", self.idImagen, self.urlImagen);
                     existeFoto = YES;
                 }
                 
@@ -175,21 +176,16 @@
         }
             break;
         case PhotoGaleryTypeOffer:
+            NSLog(@"ENTRO A LA OFERTA DE GALERIA");
             [self.labelTituloFoto setHidden:YES];
             [self.pieFoto setHidden:YES];
             self.navigationItem.rightBarButtonItem = nil;
             [self.vistaContenedorBoton setFrame:CGRectMake(20, 186, 280, 61)];
             [self.btnEliminar setFrame:CGRectMake(271, 257, 29, 35)];
-            if ( ![NSString isEmptyString:_strImagenPath ]  )
-            {
-                self.imagenActual = [[GaleriaImagenes alloc] init];
-                [_imagenActual setRutaImagen:_strImagenPath];
-                self.operacion = GaleriaImagenesEditar;
-                estaEditando = YES;
-
-            } else {
-                self.imagenActual = [[GaleriaImagenes alloc] init];
-            }
+           
+            self.operacion = GaleriaImagenesEditar;
+            estaEditando = YES;
+           
             break;
             
         default:
@@ -206,7 +202,8 @@
           // Ya guarde el id y la url del logo anteriormente en acomodarvista //
             break;
         case PhotoGaleryTypeImage:
-            self.imagenActual = [self.datosUsuario.imgGaleriaArray objectAtIndex:self.index];
+            self.urlImagen = [self.datosUsuario.arregloUrlImagenesGaleria objectAtIndex:self.index];
+            self.descripcionGaleria = [self.datosUsuario.arregloDescripcionImagenGaleria objectAtIndex:self.index];
             break;
         case PhotoGaleryTypeOffer:
             // self.imagenActual = [[GaleriaImagenes alloc] init];
@@ -229,14 +226,14 @@
             [self.vistaPreviaImagen setImage:[UIImage imageNamed:@"previsualizador.png"]];
         }
     }else {
-        NSLog(@"ENTRO A TRATAR DE CARGAR LA IMAGEN ");
+        NSLog(@"ENTRO A TRATAR DE CARGAR LA IMAGEN DE GALERIA");
         UIImage *image = [UIImage imageWithData:response];
         [self.vistaPreviaImagen setImage:image];
     }
     [self.btnEliminar setEnabled:YES];
-    //existeFoto = YES;
-    //[self.pieFoto setEnabled:YES];
-    //[self.pieFoto setText:[self.imagenActual pieFoto]];
+    existeFoto = YES;
+    [self.pieFoto setEnabled:YES];
+    [self.pieFoto setText:self.descripcionGaleria];
 }
 
 - (void)didReceiveMemoryWarning
@@ -303,7 +300,7 @@
 
 -(void) textFieldDidEndEditing:(UITextField *)textField{
 	if(self.operacion == GaleriaImagenesEditar){
-		[[self.arregloImagenes objectAtIndex:self.index] setPieFoto: textField.text];
+		//[[self.arregloImagenes objectAtIndex:self.index] setPieFoto: textField.text];
 		cambioPie = YES;
 	}
 }
@@ -353,10 +350,11 @@
 }
 
 -(IBAction)guardarInformacion:(id)sender {
-    NSLog(@"ESTOY GUARDANDO CON ELL METODO GUARDAR INFORMACION");
+    
 	[[self view] endEditing:YES];
     self.datosUsuario = [DatosUsuario sharedInstance];
     if (self.operacion == GaleriaImagenesAgregar) {
+        NSLog(@"ESTOY GUARDANDO CON ELL METODO GUARDAR INFORMACION EL LOGO");
         if (self.modifico && seleccionoImagen) {
             NSLog(@"MODIFICO Y SELECCIONO IMAGEN ");
             [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
@@ -364,23 +362,11 @@
         }else{
 			[self.navigationController popViewControllerAnimated:YES];
 		}
-    }
-	else if(self.operacion == GaleriaImagenesEditar){
+    }else if(self.operacion == GaleriaImagenesEditar){
+        NSLog(@"ESTOY GUARDANDO CON ELL METODO GUARDAR INFORMACION EL LOGO");
 		if(cambioPie){
-            NSLog(@"LA CANTIDAD DE ARREGLOGALERIAIMAGENES ES: %i", [self.datosUsuario.arregloGaleriaImagenes count]);
-            self.arregloImagenes = [[NSMutableArray alloc] initWithCapacity:[self.datosUsuario.arregloGaleriaImagenes count]];
-            for (GaleriaImagenes *galeria in self.datosUsuario.arregloGaleriaImagenes) {
-                GaleriaImagenes *galeriaAux = [[GaleriaImagenes alloc] init];
-                NSLog(@"EL ID IMAGEN EN EL ARREGLO DE GALERIA IMAGENES ES: %i ", [galeria idImagen]);
-                [galeriaAux setIdImagen:[galeria idImagen]];
-                [galeriaAux setPieFoto:[galeria pieFoto]];
-                [galeriaAux setRutaImagen:[galeria rutaImagen]];
-                [galeriaAux setImagenIdAux:[galeria imagenIdAux]];
-                [galeriaAux setAlto:[galeria alto]];
-                [galeriaAux setAncho:[galeria ancho]];
-                [self.arregloImagenes addObject:galeriaAux];
-            }
-			
+            NSLog(@"LA CANTIDAD DE ARREGLOGALERIAIMAGENES ES: %i", [self.datosUsuario.arregloUrlImagenesGaleria count]);
+           
                 if ([CommonUtils hayConexion]) {
 					estaBorrando = NO;
                     [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
@@ -492,7 +478,7 @@
 }
 
 -(void)accionSi {
-    NSLog(@"ENTRO A LA ACCION SI");
+    self.datosUsuario = [DatosUsuario sharedInstance];
     if ( _delegadoGaleria != nil )
         [_delegadoGaleria imagenBorrada];
     
@@ -504,23 +490,27 @@
     }else {
     
         if (!estaBorrando && (self.operacion == GaleriaImagenesAgregar || self.operacion == GaleriaImagenesEditar) ) {
-            if([CommonUtils hayConexion]){
-                NSLog(@"AQUI ESTA GUARDANDO LA INFORMACION!!!!!");
-                [self guardarInformacion:nil];
-            }else{
-                AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
-                [alert show];
-                [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
-            }
+                if([CommonUtils hayConexion]){
+                    NSLog(@"AQUI ESTA GUARDANDO LA INFORMACION!!!!!");
+                    [self guardarInformacion:nil];
+                }else{
+                    AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+                    [alert show];
+                    [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
+                }
         }else {
+            NSLog(@"ENTRO A LA ACCION SI QUIERO ELIMINAR LA FOTO DE GALERIA");
             if (self.galeryType == PhotoGaleryTypeOffer) { // Si es foto de promociones //
                 [self.navigationController popViewControllerAnimated:YES];
             }else {
                 if (self.galeryType == PhotoGaleryTypeImage) { // Si es galeria de imagenes //
-                    self.imagenActual = [self.arregloImagenes objectAtIndex:self.index];
+                   self.idImagen = [self.datosUsuario.arregloIdImagenGaleria objectAtIndex:self.index];
+                }else{
+                    self.idImagen = [self.datosUsuario.arregloIdImagen objectAtIndex:self.index];
                 }
-                
-               // idImagen = [self.idImagen intValue];
+              
+               
+               
                 [self.pieFoto setText:@" "];
                 [self.vistaPreviaImagen setImage:[UIImage imageNamed:@"previsualizador.png"]];
                 self.modifico = NO;
@@ -534,21 +524,21 @@
                     }
                
         }
-    }
+        }
     }
 }
 
 -(void) accionAceptar {
     if (estaBorrando) {
         NSLog(@"accionAceptar BORRADO");
-       self.urlImagen = nil;
+        self.urlImagen = nil;
         [self validaEditados];
         estaBorrando = NO;
         existeFoto = NO;
         self.operacion = GaleriaImagenesAgregar;
         [self.btnEliminar setEnabled:NO];
         [self eliminarLogoDelArreglo];
-        [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:1 withObject:@NO];
+        //[self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:1 withObject:@NO];
 
     }
     else {
@@ -596,7 +586,7 @@
 }
 
 -(void) modificarImagen {
-  NSLog(@"AQUI ESTA EN modificarImagen Que en este caso viene de ELIMINAR imagen!!!!!!!!");
+  NSLog(@"AQUI ELIMINA CUALQUIER IMAGEN LOGO O GALERIA");
         WS_HandlerGaleria *galeria = [[WS_HandlerGaleria alloc] init];
         [galeria setArregloGaleria:self.arregloImagenes];
         [galeria setImagenInsertarAux:self.imagenActual];
@@ -626,11 +616,12 @@
         exitoModificar = YES;
         
         if (!estaBorrando) {
-           // idImagen = [resultado integerValue];
-          
+            NSLog(@"EXITO RESULTO EDITANDO");
+            [self.datosUsuario.arregloDescripcionImagenGaleria addObject:self.pieFoto.text];
+        }else{
+            NSLog(@"EXITO RESULTO BORRANDO");
         }
-    }
-    else {
+    }else {
         exitoModificar = NO;
     }
     [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
@@ -683,21 +674,21 @@
     if (self.galeryType == PhotoGaleryTypeLogo) {
         NSLog(@"Entro a valida editados con el PhotoGaleryTypeLogo");
         self.datosUsuario = [DatosUsuario sharedInstance];
+            if (self.urlImagen != nil && [self.urlImagen length] > 0) {
+                NSLog(@"La urlImagen es: %@", self.urlImagen);
+                [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:1 withObject:@YES];
+            }
+            else {
+                [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:1 withObject:@NO];
+            }
+    }else if (self.galeryType == PhotoGaleryTypeImage) {
+        NSLog(@"Entro a valida editados con el PhotoGaleryTypeImage");
         if (self.urlImagen != nil && [self.urlImagen length] > 0) {
             NSLog(@"La urlImagen es: %@", self.urlImagen);
-            [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:1 withObject:@YES];
+            [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:8 withObject:@YES];
         }
         else {
-            [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:1 withObject:@NO];
-        }
-    }
-    else if (self.galeryType == PhotoGaleryTypeImage) {
-        NSLog(@"ENTRO A EDIGTAR EL LOGO DE BLA BLA BLA");
-        if (self.datosUsuario.logoImg != nil && [self.datosUsuario.logoImg length] > 0) {
-            [self enviarEventoGAconCategoria:@"Edito" yEtiqueta:@"Imagen"];
-        }
-        else {
-            [self enviarEventoGAconCategoria:@"Edito" yEtiqueta:@"Imagen"];
+            [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:8 withObject:@NO];
         }
     }
 }
@@ -706,21 +697,9 @@
     NSLog(@"ENTRO A TERMINO GUARDADO");
     if (self.galeryType == PhotoGaleryTypeImage) {
         self.arregloImagenes = [[NSMutableArray alloc] initWithCapacity:[self.datosUsuario.arregloGaleriaImagenes count]];
-     /*   for (GaleriaImagenes *galeria in self.datosUsuario.arregloGaleriaImagenes) {
-            GaleriaImagenes *galeriaAux = [[GaleriaImagenes alloc] init];
-            // NSLog(@"EL ID DE IMAGEN EN TERMINA GUARDADO ES %i", [galeria idImagen]);
-            // [galeriaAux setIdImagen:[galeria idImagen]];
-            // [galeriaAux setPieFoto:[galeria pieFoto]];
-            // [galeriaAux setRutaImagen:[galeria rutaImagen]];
-            // [galeriaAux setImagenIdAux:[galeria imagenIdAux]];
-            // [galeriaAux setAlto:[galeria alto]];
-            // [galeriaAux setAncho:[galeria ancho]];
-            [self.arregloImagenes addObject:galeriaAux];
-        }
-      */
-    }
-    self.modifico = NO;
     
+    }
+        self.modifico = NO;
         if ([CommonUtils hayConexion]) {
             estaBorrando = NO;
             [self performSelectorInBackground:@selector(modificarImagen) withObject:Nil];
@@ -734,18 +713,26 @@
 }
 
 -(void)eliminarLogoDelArreglo{
-    self.datosUsuario = [DatosUsuario sharedInstance];
-    for(int i = 0; i < [self.datosUsuario.arregloTipoImagen count]; i++){
-        NSMutableString *arrAux = [self.datosUsuario.arregloTipoImagen objectAtIndex:i];
-        if([arrAux isEqualToString:@"LOGO"]){
-            [self.datosUsuario.arregloTipoImagen removeObjectAtIndex:i];
-            [self.datosUsuario.arregloIdImagen removeObjectAtIndex:i];
-            [self.datosUsuario.arregloUrlImagenes removeObjectAtIndex:i];
+    NSLog(@"SE VA A ELIMINAR EL LOGO EN ELIMINARLOGODELARREGLO");
+    if(self.galeryType == PhotoGaleryTypeLogo){
+    
+        self.datosUsuario = [DatosUsuario sharedInstance];
+        for(int i = 0; i < [self.datosUsuario.arregloTipoImagen count]; i++){
+            NSMutableString *arrAux = [self.datosUsuario.arregloTipoImagen objectAtIndex:i];
+            if([arrAux isEqualToString:@"LOGO"]){
+                [self.datosUsuario.arregloTipoImagen removeObjectAtIndex:i];
+                [self.datosUsuario.arregloIdImagen removeObjectAtIndex:i];
+                [self.datosUsuario.arregloUrlImagenes removeObjectAtIndex:i];
+            }
         }
-        
     }
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self.pieFoto resignFirstResponder];
+    return YES;
+}
 
 
 @end

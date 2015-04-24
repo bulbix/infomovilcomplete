@@ -34,13 +34,16 @@
 
 @property (nonatomic, strong) NSMutableArray *arregloGaleriaImagenes; // este no lo usare
 
-// ESTOS SON LOS ARREGLOS PARA MANEJAR LAS IMAGENES //
+// ESTOS SON LOS ARREGLOS PARA MANEJAR LAS IMAGENES DEL LOGO //
 @property (nonatomic, strong) NSMutableArray *arregloUrlImagenes;
 @property (nonatomic, strong) NSMutableArray *arregloIdImagen;
 @property (nonatomic, strong) NSMutableArray *arregloDescripcionImagen;
 @property (nonatomic, strong) NSMutableArray *arregloTipoImagen;
-
-
+// ESTOS SON LOS ARREGLOS PARA MANEJAR LAS IMAGENES DE LA GALERIA //
+@property (nonatomic, strong) NSMutableArray *arregloUrlImagenesGaleria;
+@property (nonatomic, strong) NSMutableArray *arregloIdImagenGaleria;
+@property (nonatomic, strong) NSMutableArray *arregloDescripcionImagenGaleria;
+@property (nonatomic, strong) NSMutableArray *arregloTipoImagenGaleria;
 
 @property (nonatomic, strong) NSMutableArray *arregloEstatusPerfil;
 @property (nonatomic, strong) NSMutableArray *arregloDatosPerfil;

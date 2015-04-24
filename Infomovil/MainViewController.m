@@ -425,14 +425,13 @@
 }
 
 -(void) errorLogin {
-    if (self.alerta)
-    {
-        [NSThread sleepForTimeInterval:1];
-        [self.alerta hide];
-    }
-    AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
-    [alert show];
-    [self fbDidlogout];
+        NSLog(@"REGRESO ERROR CONSULTAUSUARIO!!");
+        if (self.alerta)
+        {
+            [NSThread sleepForTimeInterval:1];
+            [self.alerta hide];
+        }
+        [self fbDidlogout];
 }
 
 -(void) consultaLogin {
@@ -547,11 +546,11 @@
 #endif
     self.datosUsuario.redSocial = @"Facebook";
     
-    if (!loginFacebook) {
+    //if (!loginFacebook) {
         loginFacebook = YES;
         [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
         [self performSelectorInBackground:@selector(consultaLogin) withObject:Nil];
-    }
+    //}
     
 }
 
@@ -593,6 +592,12 @@
     [session closeAndClearTokenInformation];
     [session close];
     [FBSession setActiveSession:nil];
+    NSHTTPCookieStorage* cookies = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    NSArray* facebookCookies = [cookies cookiesForURL:[NSURL         URLWithString:@"https://facebook.com/"]];
+    
+    for (NSHTTPCookie* cookie in facebookCookies) {
+        [cookies deleteCookie:cookie];
+    }
 }
 
 @end

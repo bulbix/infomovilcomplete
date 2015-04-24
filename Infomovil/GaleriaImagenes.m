@@ -28,18 +28,18 @@
         return nil;
     }
     rutaImagen = [aDecoder decodeObjectForKey:@"rutaImagenGaleria"];
-    pieFoto = [aDecoder decodeObjectForKey:@"pieFoto"];
-    ancho = [aDecoder decodeIntegerForKey:@"anchoFoto"];
-    alto = [aDecoder decodeIntegerForKey:@"altoFoto"];
+  //  pieFoto = [aDecoder decodeObjectForKey:@"pieFoto"];
+  //  ancho = [aDecoder decodeIntegerForKey:@"anchoFoto"];
+  //  alto = [aDecoder decodeIntegerForKey:@"altoFoto"];
     idImagen = [aDecoder decodeIntegerForKey:@"idImagen"];
     return self;
 }
 
 -(void) encodeWithCoder:(NSCoder *)aCoder {
     [aCoder encodeObject:rutaImagen forKey:@"rutaImagenGaleria"];
-    [aCoder encodeObject:pieFoto forKey:@"pieFoto"];
-    [aCoder encodeInteger:ancho forKey:@"anchoFoto"];
-    [aCoder encodeInteger:alto forKey:@"altoFoto"];
+  //  [aCoder encodeObject:pieFoto forKey:@"pieFoto"];
+  //  [aCoder encodeInteger:ancho forKey:@"anchoFoto"];
+  //  [aCoder encodeInteger:alto forKey:@"altoFoto"];
     [aCoder encodeInteger:idImagen forKey:@"idImagen"];
 }
 @end

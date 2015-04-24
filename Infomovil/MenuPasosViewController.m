@@ -25,15 +25,17 @@
 #import "AppboyKit.h"
 #import "ElegirPlantillaViewController.h"
 #import "InicioViewController.h"
-
+#import "DominiosUsuario.h"
 
 #define IS_IPHONE5 (([[UIScreen mainScreen] bounds].size.height-568)?NO:YES)
 
 @interface MenuPasosViewController ()
-
+@property (nonatomic, strong) NSMutableArray *arregloDominios;
 @end
 
 @implementation MenuPasosViewController
+
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -215,20 +217,21 @@
             [self.viewDominioNoPublicado setHidden:YES];
             [self.viewDominioPublicado setHidden:NO];
            
-            for(int i= 0; [self.datosUsuario.dominiosUsuario count] > i ; i++){
-            [self.dominio setTitle:[NSString stringWithFormat:@"www.%@.tel", self.datosUsuario.dominio] forState:UIControlStateNormal];
-#if DEBUG
-                [self.dominio setTitle:[NSString stringWithFormat:@"info-movil.com:8080/%@", self.datosUsuario.dominio] forState:UIControlStateNormal];
-#endif
-            }
+            self.arregloDominios = self.datosUsuario.dominiosUsuario;
             
-            if([self.dominio.titleLabel.text isEqualToString:@""] || self.dominio.titleLabel.text == nil || (self.datosUsuario.dominio == (id)[NSNull null]) || ![CommonUtils validarEmail:self.datosUsuario.dominio] || ![self.datosUsuario.dominio isEqualToString:@"(null)"] ){
-                [self.dominio setTitle:[NSString stringWithFormat:@"www.%@.tel", self.datosUsuario.dominio] forState:UIControlStateNormal];
-#if DEBUG
-                [self.dominio setTitle:[NSString stringWithFormat:@"info-movil.com:8080/%@", self.datosUsuario.dominio] forState:UIControlStateNormal];
-#endif
+            for(int i= 0; i< [self.arregloDominios count]; i++){
+                DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:i];
+                if([usuarioDom.domainType isEqualToString:@"tel"]){
+                    NSLog(@"EL DOMINIO FUE TEL ");
+                    [self.dominio setTitle:[NSString stringWithFormat:@"www.%@.tel", self.datosUsuario.dominio] forState:UIControlStateNormal];
+                    
+                }else{
+                    NSLog(@"EL DOMINIO FUE RECURSO");
+                     [self.dominio setTitle:[NSString stringWithFormat:@"info-movil.com:8080/%@", self.datosUsuario.dominio] forState:UIControlStateNormal];
+                }
+
             }
-            
+       
             if(IS_IPHONE5){
                 self.viewDominioPublicado.frame = CGRectMake(0, 320, 320, 90);
             }else if (IS_STANDARD_IPHONE_6_PLUS){

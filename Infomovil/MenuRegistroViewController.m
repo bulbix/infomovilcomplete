@@ -54,6 +54,47 @@
     
     [self mostrarLogo];
     
+    
+   
+    
+  
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(apareceElTeclado:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(desapareceElTeclado:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+    
+    id tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker set:@"FormularioViewController"
+           value:@"Home Screen"];
+    
+    self.navigationItem.rightBarButtonItem = Nil;
+    [self.scrollView setContentSize:CGSizeMake(320, 380)];
+    exito = NO;
+    self.datosUsuario = [DatosUsuario sharedInstance];
+    productTourView = [[CRProductTour alloc] initWithFrame:self.view.frame];
+    CRBubble *bubbleButton1;
+   
+    NSMutableArray *bubbleArray = [[NSMutableArray alloc] initWithObjects:bubbleButton1, /*bubbleButton2,*/ nil];
+    
+    [productTourView setBubbles:bubbleArray];
+    
+    [self.view addSubview:productTourView];
+    
+    self.llamarCrearCuenta.layer.borderWidth = 1.0f;
+    self.llamarCrearCuenta.layer.cornerRadius = 15.0f;
+    self.llamarCrearCuenta.layer.borderColor = [UIColor whiteColor].CGColor;
+   
+    [self.vistaInferior setHidden:YES];
+}
+
+-(void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
     FBLoginView *loginView = [[FBLoginView alloc] init];
     loginView.delegate = self;
     loginView.readPermissions = @[@"public_profile", @"email"];
@@ -64,15 +105,15 @@
         self.raya2.frame = CGRectMake(195, 224, 155, 2);
         self.llamarCrearCuenta.frame = CGRectMake(20, 276, 331, 51);
         self.msjRegistrarConFacebook.frame = CGRectMake(20, 400, 335, 100);
-  
-    }else if(IS_STANDARD_IPHONE_6_PLUS){
-            loginView.frame = CGRectMake(20, 180, 375, 55);
-            self.raya1.frame = CGRectMake(20, 280, 175, 2);
-            self.o.frame = CGRectMake(199, 272, 40, 20);
-            self.raya2.frame = CGRectMake(215, 280, 175, 2);
         
-            self.llamarCrearCuenta.frame = CGRectMake(21, 326, 365, 47);
-            self.msjRegistrarConFacebook.frame = CGRectMake(24, 426, 371, 80);
+    }else if(IS_STANDARD_IPHONE_6_PLUS){
+        loginView.frame = CGRectMake(20, 180, 375, 55);
+        self.raya1.frame = CGRectMake(20, 280, 175, 2);
+        self.o.frame = CGRectMake(199, 272, 40, 20);
+        self.raya2.frame = CGRectMake(215, 280, 175, 2);
+        
+        self.llamarCrearCuenta.frame = CGRectMake(21, 326, 365, 47);
+        self.msjRegistrarConFacebook.frame = CGRectMake(24, 426, 371, 80);
         
     }else if(IS_IPAD){
         loginView.frame = CGRectMake(196, 520, 375, 55);
@@ -114,7 +155,7 @@
             }else if(IS_IPAD){
                 loginButton.frame =CGRectMake(0,0, 375, 55);
                 loginImage = [UIImage imageNamed:@"btn_RegistroFacebook_6iphonePlus.png"];
-            
+                
             }else{
                 loginButton.frame =CGRectMake(0,0, 280, 55);
                 loginImage = [UIImage imageNamed:@"btn_RegistroFacebook.png"];
@@ -152,45 +193,6 @@
     }
     
     [self.view addSubview:loginView];
-   
-    
-  
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(apareceElTeclado:)
-                                                 name:UIKeyboardWillShowNotification
-                                               object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(desapareceElTeclado:)
-                                                 name:UIKeyboardWillHideNotification
-                                               object:nil];
-    
-    id tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker set:@"FormularioViewController"
-           value:@"Home Screen"];
-    
-    self.navigationItem.rightBarButtonItem = Nil;
-    [self.scrollView setContentSize:CGSizeMake(320, 380)];
-    exito = NO;
-    self.datosUsuario = [DatosUsuario sharedInstance];
-    productTourView = [[CRProductTour alloc] initWithFrame:self.view.frame];
-    CRBubble *bubbleButton1;
-   
-    NSMutableArray *bubbleArray = [[NSMutableArray alloc] initWithObjects:bubbleButton1, /*bubbleButton2,*/ nil];
-    
-    [productTourView setBubbles:bubbleArray];
-    
-    [self.view addSubview:productTourView];
-    
-    self.llamarCrearCuenta.layer.borderWidth = 1.0f;
-    self.llamarCrearCuenta.layer.cornerRadius = 15.0f;
-    self.llamarCrearCuenta.layer.borderColor = [UIColor whiteColor].CGColor;
-   
-    [self.vistaInferior setHidden:YES];
-}
-
--(void) viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
    
     
     [self.llamarCrearCuenta setTitle:NSLocalizedString(@"crearCuentaRegistrar", nil) forState:UIControlStateNormal]  ;
@@ -359,7 +361,7 @@
 }
 
 -(void) checaNombre {
-    
+    NSLog(@"ENTRO AL METODO CHECANOMBRE");
     [((AppDelegate *)[[UIApplication sharedApplication] delegate]) restartDate];
     operacionWS = 1;
     WS_HandlerUsuario *handlerUsuario = [[WS_HandlerUsuario alloc] init];
@@ -489,12 +491,16 @@
 }
 
 -(void) errorConsultaUsuario {
+    NSLog(@"REGRESO ERROR CONSULTAUSUARIO!!");
     if (self.alerta)
     {
         [NSThread sleepForTimeInterval:1];
         [self.alerta hide];
     }
-   // [[AlertView initWithDelegate:Nil message:NSLocalizedString(@"ocurrioError", Nil) andAlertViewType:AlertViewTypeInfo] show];
+    [self fbDidlogout];
+   // [self viewWillAppear:YES];
+    //[self.view setNeedsDisplay];
+    
 }
 
 
@@ -519,18 +525,18 @@
 - (void)loginViewFetchedUserInfo:(FBLoginView *)loginView
                             user:(id<FBGraphUser>)user {
     self.datosUsuario.emailUsuario = [user objectForKey:@"email"];
-    
+    NSLog(@"ENTRO DOS VECES ");
 #ifdef _DEBUG
     NSLog(@"Entrando a loginViewFetchedUserInfo:user:");
     NSLog(@"el email es %@", self.datosUsuario.emailUsuario);
 #endif
     self.datosUsuario.redSocial = @"Facebook";
     
-    if (!loginFacebook) {
+    //if (!loginFacebook) {
         loginFacebook = YES;
         [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
         [self performSelectorInBackground:@selector(consultaLogin) withObject:Nil];
-    }
+    //}
     
 }
 
@@ -547,6 +553,7 @@
 }
 
 -(void) consultaLogin {
+    NSLog(@"ENTRO A CONSULTA LOGIN");
     WS_HandlerLogin *login = [[WS_HandlerLogin alloc] init];
     [login setLoginDelegate:self];
     [login setRedSocial:@"Facebook"];
@@ -554,8 +561,23 @@
 }
 
 - (IBAction)llamarCrearCuentaAct:(id)sender{
+    NSLog(@"SE LLAMO A LLAMARCREARCUENTAACT");
     FormularioRegistroViewController *registro = [[FormularioRegistroViewController alloc] initWithNibName:@"FormularioRegistroViewController" bundle:nil];
     [self.navigationController pushViewController:registro animated:YES];
+}
+
+
+- (void)fbDidlogout {
+    FBSession* session = [FBSession activeSession];
+    [session closeAndClearTokenInformation];
+    [session close];
+    [FBSession setActiveSession:nil];
+    NSHTTPCookieStorage* cookies = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    NSArray* facebookCookies = [cookies cookiesForURL:[NSURL         URLWithString:@"https://facebook.com/"]];
+    
+    for (NSHTTPCookie* cookie in facebookCookies) {
+        [cookies deleteCookie:cookie];
+    }
 }
 
 @end

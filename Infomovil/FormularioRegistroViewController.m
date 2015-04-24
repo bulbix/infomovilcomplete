@@ -555,7 +555,7 @@
         }
      
         if (![CommonUtils validarContrasena:self.txtNombre.text contrasena:self.txtContrasena.text]) {
-            AlertView *alert = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"error", @" ") message:NSLocalizedString(@"errorPassword", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+            AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"errorPassword", Nil) andAlertViewType:AlertViewTypeInfo];
             [alert show];
             return NO;
         }

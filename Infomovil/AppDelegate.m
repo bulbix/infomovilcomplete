@@ -281,6 +281,12 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
     [session closeAndClearTokenInformation];
     [session close];
     [FBSession setActiveSession:nil];
+    NSHTTPCookieStorage* cookies = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    NSArray* facebookCookies = [cookies cookiesForURL:[NSURL         URLWithString:@"https://facebook.com/"]];
+    
+    for (NSHTTPCookie* cookie in facebookCookies) {
+        [cookies deleteCookie:cookie];
+    }
 }
 
 
