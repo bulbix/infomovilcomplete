@@ -659,8 +659,12 @@ if(noSeRepiteOprimirElBoton){
                     DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:i];
                     if([usuarioDom.domainType isEqualToString:@"tel"]){
                         NSLog(@"EL DOMINIO FUE TEL ");
-                        dominio.text = [NSString stringWithFormat:@"My website\n\n www.%@.tel",self.datosUsuario.dominio] ;
-                        fechas.text = [NSString stringWithFormat: @"Fecha de inicio: %@\n Fecha de término: %@", usuarioDom.fechaIni, usuarioDom.fechaFin ];
+                        if([usuarioDom.vigente isEqualToString:@"SI"] || [usuarioDom.vigente isEqualToString:@"si"]){
+                            dominio.text = [NSString stringWithFormat:@"My website\n\n www.%@.tel",self.datosUsuario.dominio] ;
+                            fechas.text = [NSString stringWithFormat: @"Fecha de inicio: %@\n Fecha de término: %@", usuarioDom.fechaIni, usuarioDom.fechaFin ];
+                        }else{
+                            dominio.text = [NSString stringWithFormat:@"My website\n\nhttp://infomovil.com%@",self.datosUsuario.dominio] ;
+                        }
                     }
                 }
                 if([dominio.text isEqualToString:@""]){
@@ -680,8 +684,12 @@ if(noSeRepiteOprimirElBoton){
                     DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:i];
                     if([usuarioDom.domainType isEqualToString:@"tel"]){
                         NSLog(@"EL DOMINIO FUE TEL ");
-                        dominio.text = [NSString stringWithFormat:@"Mi sitio web\n\n www.%@.tel",self.datosUsuario.dominio] ;
-                         fechas.text = [NSString stringWithFormat: @"Fecha de inicio: %@\n Fecha de término: %@", usuarioDom.fechaIni, usuarioDom.fechaFin ];
+                        if([usuarioDom.vigente isEqualToString:@"SI"] || [usuarioDom.vigente isEqualToString:@"si"]){
+                            dominio.text = [NSString stringWithFormat:@"Mi sitio web\n\n www.%@.tel",self.datosUsuario.dominio] ;
+                            fechas.text = [NSString stringWithFormat: @"Fecha de inicio: %@\n Fecha de término: %@", usuarioDom.fechaIni, usuarioDom.fechaFin ];
+                        }else{
+                            dominio.text = [NSString stringWithFormat:@"Mi sitio web\n\nhttp://infomovil.com/%@",self.datosUsuario.dominio] ;
+                        }
                     }
                 }
                 if([dominio.text isEqualToString:@""]){
@@ -825,6 +833,7 @@ if(noSeRepiteOprimirElBoton){
         self.viewPlanProComprado.hidden = NO;
         self.datosUsuario.datosPago.statusPago = @"PAGADO";
         self.datosUsuario.descripcionDominio = @"";
+        
         [self compra];
         
         ((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio = @"Pago";

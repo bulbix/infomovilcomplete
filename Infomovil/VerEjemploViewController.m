@@ -54,7 +54,7 @@
     
     NSString *htmlStringToLoad = @"http://info-movil.net/divertido?vistaPrevia=true";
 #if DEBUG
-    htmlStringToLoad = @"http://info-movil.com:8080/divertido?vistaPrevia=true";
+   // htmlStringToLoad = @"http://info-movil.com:8080/divertido?vistaPrevia=true";
 #endif
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:htmlStringToLoad]]];
     [self.view addSubview:self.webView];

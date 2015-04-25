@@ -21,6 +21,8 @@
 
 @interface CompartirViewController () <MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate>
 
+@property (nonatomic, strong) NSMutableArray *arregloDominio;
+
 @property (nonatomic, strong) AlertView *alertActivity;
 
 @end
@@ -106,11 +108,50 @@
 
 -(void) viewWillAppear:(BOOL)animated {
 	
+    self.datosUsuario = [DatosUsuario sharedInstance];
+    NSLog(@"EL USUARIO DOMINIO ES: %@", self.datosUsuario.dominio);
+    if(self.datosUsuario.dominio && ![self.datosUsuario.dominio isEqualToString:@""] && ! (self.datosUsuario.dominio == (id)[NSNull null]) && ![CommonUtils validarEmail:self.datosUsuario.dominio] && ![self.datosUsuario.dominio isEqualToString:@"(null)"]){
+        
+        self.arregloDominio = self.datosUsuario.dominiosUsuario;
+       
+        self.labelNombreDominio.text = @"";
+        NSLog(@"LA CANTIDAD DE DOMINIOS SON: %i", [self.arregloDominio count]);
+        for(int i= 0; i< [self.arregloDominio count]; i++){
+            DominiosUsuario *usuarioDom = [self.arregloDominio objectAtIndex:i];
+            NSLog(@"EL USUARIODOM CON TIPO DE DOMINIO: %@", usuarioDom.domainType);
+            NSLog(@"EL USUARIODOM VIGENTE: %@", usuarioDom.vigente);
+            if([usuarioDom.domainType isEqualToString:@"tel"]){
+                NSLog(@"EL DOMINIO FUE TEL ");
+                if([usuarioDom.vigente isEqualToString:@"SI"] || [usuarioDom.vigente isEqualToString:@"si"]){
+                    NSLog(@"EL DOMINIO FUE VIGENTE ");
+                    [self.dominio setTitle:[NSString stringWithFormat:@"www.%@.tel", self.datosUsuario.dominio] forState:UIControlStateNormal];
+                }
+            }
+        }
+        NSLog(@"EL VALOR DEL TITULO ES: %@", self.labelNombreDominio.text);
+        if([self.dominio.titleLabel.text isEqualToString:@""] || [self.dominio.titleLabel.text isEqualToString:@"(null)"] || self.dominio.titleLabel.text == nil ) {
+            for(int i= 0; i< [self.arregloDominio count]; i++){
+                DominiosUsuario *usuarioDom = [self.arregloDominio objectAtIndex:i];
+                if([usuarioDom.domainType isEqualToString:@"recurso"]){
+                    NSLog(@"EL DOMINIO FUE RECURSO ");
+                    [self.dominio setTitle:[NSString stringWithFormat:@"infomovil.com/%@", self.datosUsuario.dominio] forState:UIControlStateNormal];
+                }
+            }
+        }
+    
+    
+    
     if(self.datosUsuario.dominio && [self.datosUsuario.dominio length] >0 && ![self.datosUsuario.dominio isEqualToString:@"(null)"]){
-    [self.labelNombreDominio setText:[NSString stringWithFormat:@"www.%@.tel", self.datosUsuario.dominio]];
+        [self.labelNombreDominio setText:[NSString stringWithFormat:@"www.%@.tel", self.datosUsuario.dominio]];
     }else{
         [self.labelNombreDominio setText:@""];
     }
+    
+    
+    
+    
+    
+    
 	
 	self.label1.text = NSLocalizedString(@"compartirEtiqueta1", nil);
 	self.label2.text = NSLocalizedString(@"compartirLabel2", nil);

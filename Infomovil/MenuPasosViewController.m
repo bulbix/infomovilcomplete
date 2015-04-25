@@ -50,7 +50,6 @@
 	
     [super viewDidLoad];
     
-   
     if(IS_STANDARD_IPHONE_6){
         self.botonFondo.frame = CGRectMake(45, 50, 270, 53);
         self.botonCrear.frame = CGRectMake(45, 140, 270, 53);
@@ -191,8 +190,6 @@
     
     [self.vistaInferior setHidden:NO];
     
-    
-  
 }
 
 
@@ -211,26 +208,42 @@
 	}
     
         self.datosUsuario = [DatosUsuario sharedInstance];
-        
+        NSLog(@"EL USUARIO DOMINIO ES: %@", self.datosUsuario.dominio);
         if(self.datosUsuario.dominio && ![self.datosUsuario.dominio isEqualToString:@""] && ! (self.datosUsuario.dominio == (id)[NSNull null]) && ![CommonUtils validarEmail:self.datosUsuario.dominio] && ![self.datosUsuario.dominio isEqualToString:@"(null)"]){
             self.dominio.hidden	= NO;
             [self.viewDominioNoPublicado setHidden:YES];
             [self.viewDominioPublicado setHidden:NO];
            
             self.arregloDominios = self.datosUsuario.dominiosUsuario;
-            
+            [self.dominio setTitle:@"" forState:UIControlStateNormal];
+            self.dominio.titleLabel.text = @"";
+            NSLog(@"LA CANTIDAD DE DOMINIOS SON: %i", [self.arregloDominios count]);
             for(int i= 0; i< [self.arregloDominios count]; i++){
                 DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:i];
+                NSLog(@"EL USUARIODOM CON TIPO DE DOMINIO: %@", usuarioDom.domainType);
+                NSLog(@"EL USUARIODOM VIGENTE: %@", usuarioDom.vigente);
                 if([usuarioDom.domainType isEqualToString:@"tel"]){
                     NSLog(@"EL DOMINIO FUE TEL ");
-                    [self.dominio setTitle:[NSString stringWithFormat:@"www.%@.tel", self.datosUsuario.dominio] forState:UIControlStateNormal];
-                    
-                }else{
-                    NSLog(@"EL DOMINIO FUE RECURSO");
-                     [self.dominio setTitle:[NSString stringWithFormat:@"infomovil.com/%@", self.datosUsuario.dominio] forState:UIControlStateNormal];
+                    if([usuarioDom.vigente isEqualToString:@"SI"] || [usuarioDom.vigente isEqualToString:@"si"]){
+                         NSLog(@"EL DOMINIO FUE VIGENTE ");
+                        [self.dominio setTitle:[NSString stringWithFormat:@"www.%@.tel", self.datosUsuario.dominio] forState:UIControlStateNormal];
+                    }
                 }
-
             }
+            NSLog(@"EL VALOR DEL TITULO ES: %@", self.dominio.titleLabel.text);
+            if([self.dominio.titleLabel.text isEqualToString:@""] || [self.dominio.titleLabel.text isEqualToString:@"(null)"] || self.dominio.titleLabel.text == nil ) {
+                for(int i= 0; i< [self.arregloDominios count]; i++){
+                    DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:i];
+                    if([usuarioDom.domainType isEqualToString:@"recurso"]){
+                        NSLog(@"EL DOMINIO FUE RECURSO ");
+                       [self.dominio setTitle:[NSString stringWithFormat:@"infomovil.com/%@", self.datosUsuario.dominio] forState:UIControlStateNormal];
+                    }
+                }
+            }
+            
+            
+            
+            
        
             if(IS_IPHONE5){
                 self.viewDominioPublicado.frame = CGRectMake(0, 320, 320, 90);

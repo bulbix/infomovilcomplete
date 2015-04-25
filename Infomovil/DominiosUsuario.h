@@ -14,6 +14,7 @@
 @property (nonatomic, strong) NSString *domainType;
 @property (nonatomic, strong) NSString *fechaFin;
 @property (nonatomic, strong) NSString *fechaIni;
+@property (nonatomic, strong) NSString *vigente;
 @property (nonatomic, assign) NSInteger idCtrlDomain;
 @property (nonatomic, assign) NSInteger idDomain;
 @property (nonatomic, strong) NSString *statusDominio;

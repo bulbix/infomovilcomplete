@@ -42,9 +42,10 @@
 	
 	NSInteger operacionWS2;
 	BOOL existeDominio;
+    DominiosUsuario *dominioUsuario;
 
 }
-
+@property (nonatomic, strong) NSMutableArray *arregloDominiosUsuario;
 @property (nonatomic, strong) AlertView *alertView;
 @property (nonatomic, strong) NSMutableArray *arregloPais;
 @property (nonatomic, strong) NSDictionary *prefijos;
@@ -320,13 +321,20 @@
         }
         else {
             existeDominio = NO;
-			//[self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
+			
         }
 	}
 	else if(operacionWS2 == 2){
 		NSLog(@"LA OPERACION ES 2 PARA PUBLICAR CREO");
         if ([resultado isEqualToString:@"Exito"]) {
             statusRespuesta = RespuestaStatusExito;
+            self.datosUsuario = [DatosUsuario sharedInstance];
+            dominioUsuario = [[DominiosUsuario alloc] init];
+            [dominioUsuario setDomainType:@"tel"];
+            [dominioUsuario setVigente:@"si"];
+            [self.arregloDominiosUsuario addObject:dominioUsuario];
+            self.datosUsuario.dominiosUsuario = self.arregloDominiosUsuario;
+            
         }
         else if ([resultado isEqualToString:@"Error Publicar"]) {
             statusRespuesta = RespuestaStatusPendiente;

@@ -496,6 +496,9 @@
     else if ([elementName isEqualToString:@"fechaCtrlIni"]) {
         self.currentElementString = [[NSMutableString alloc] init];
     }
+    else if ([elementName isEqualToString:@"vigente"]) {
+        self.currentElementString = [[NSMutableString alloc] init];
+    }
     else if ([elementName isEqualToString:@"idCtrlDomain"]) {
         self.currentElementString = [[NSMutableString alloc] init];
     }
@@ -1004,6 +1007,7 @@
     }
     else if ([elementName isEqualToString:@"domainType"]) {
         NSString *typeAux = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
+          NSLog(@"ENTRO A DOMAINTYPE CON VALOR DE %@", typeAux);
         if ([typeAux isEqualToString:@"recurso"]) {
             esRecurso = YES;
         }
@@ -1011,6 +1015,11 @@
             esRecurso = NO;
         }
         [dominioUsuario setDomainType:typeAux];
+    }
+    else if ([elementName isEqualToString:@"vigente"]) {
+        NSString *typeAux = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
+        NSLog(@"EL VALOR DE VIGENTE ES: %@", typeAux);
+        [dominioUsuario setVigente:typeAux];
     }
     else if ([elementName isEqualToString:@"fechaCtrlFin"]) {
         NSString *auxOffer = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
