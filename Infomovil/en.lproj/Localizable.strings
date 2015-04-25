@@ -535,3 +535,5 @@
 "etiquetaDominioTel" ="www.mysite.tel";
 "etiquetaRecursoNormal" ="www.infomovil.com/mysite";
 "tiempoAgotado" = "Request timed out. Try again" ;
+"errorCompra" = "Has not been able to make your purchase. Please try again." ;
+"errorPublicacion" = "Has not been able to register your website please try again.";

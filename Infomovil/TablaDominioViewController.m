@@ -66,15 +66,17 @@
 
     for(int i= 0; i< [self.arregloDominios count]; i++){
         DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:i];
+/*
 #if DEBUG
         if(![self.datosUsuario.dominio isEqualToString:@"(null)"] && ![self.datosUsuario.dominio isEqualToString:@""] && ![self.datosUsuario.dominio isEqual:[NSNull null]] && !(self.datosUsuario.dominio == nil) && [usuarioDom.domainType isEqualToString:@"recurso"]){
-            [cell.textLabel setText:[NSString stringWithFormat:@"http://info-movil.com:8080/%@", self.datosUsuario.dominio]];
+            [cell.textLabel setText:[NSString stringWithFormat:@"http://infomovil.com/%@", self.datosUsuario.dominio]];
         }
 #else
-        if(![self.datosUsuario.dominio isEqualToString:@"(null)"] && ![self.datosUsuario.dominio isEqualToString:@""] && ![self.datosUsuario.dominio isEqual:[NSNull null]] && !(self.datosUsuario.dominio == nil) && [usuarioDom.domainType isEqualToString:@"tel"]){
+*/
+ if(![self.datosUsuario.dominio isEqualToString:@"(null)"] && ![self.datosUsuario.dominio isEqualToString:@""] && ![self.datosUsuario.dominio isEqual:[NSNull null]] && !(self.datosUsuario.dominio == nil) && [usuarioDom.domainType isEqualToString:@"tel"]){
             [cell.textLabel setText:[NSString stringWithFormat:@"%@.tel", self.datosUsuario.dominio]];
         }
-#endif
+/*#endif*/
         
         [cell.textLabel setTextColor:colorFuenteAzul];
         cell.textLabel.textAlignment = NSTextAlignmentLeft;

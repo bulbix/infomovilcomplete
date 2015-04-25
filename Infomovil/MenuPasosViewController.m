@@ -227,7 +227,7 @@
                     
                 }else{
                     NSLog(@"EL DOMINIO FUE RECURSO");
-                     [self.dominio setTitle:[NSString stringWithFormat:@"info-movil.com:8080/%@", self.datosUsuario.dominio] forState:UIControlStateNormal];
+                     [self.dominio setTitle:[NSString stringWithFormat:@"infomovil.com/%@", self.datosUsuario.dominio] forState:UIControlStateNormal];
                 }
 
             }

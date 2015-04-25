@@ -266,7 +266,7 @@
         if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
             errorMessage = @"Operation failed due to a connection problem, retry later.";
         }else{
-            errorMessage = @"No hay conexión, intentalo nuevamente.";
+            errorMessage = @"No hay conexión, inténtalo nuevamente.";
             }
     }
     

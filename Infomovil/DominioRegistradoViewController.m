@@ -35,7 +35,7 @@
     self.datosUsuario = [DatosUsuario sharedInstance];
     [self.labelDominio setText:[NSString stringWithFormat:@"www.%@.tel", self.datosUsuario.dominio]];
 #if DEBUG
-    [self.labelDominio setText:[NSString stringWithFormat:@"http://info-movil.com:8080/%@", self.datosUsuario.dominio]];
+   // [self.labelDominio setText:[NSString stringWithFormat:@"http://infomovil.com/%@", self.datosUsuario.dominio]];
 #endif
 	
     self.navigationItem.rightBarButtonItem = Nil;

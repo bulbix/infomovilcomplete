@@ -149,6 +149,9 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
         NSLog(@"Transaction error: %@", transaction.error.localizedDescription);
     }
 #endif
+    AlertView *alertaError = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"sentimos", Nil) message:NSLocalizedString(@"errorCompra", Nil) dominio:Nil andAlertViewType:AlertViewTypeInfo];
+    [alertaError show];
+    
     
     [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
     [[NSNotificationCenter defaultCenter]

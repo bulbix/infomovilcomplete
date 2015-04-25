@@ -185,7 +185,7 @@
                         self.datos.itemsDominio = [StringUtils ordenarItems:self.arregloItems];
                         self.datos.idDominio = [stringResult intValue];
                         self.datos.codigoError = codigoError.length > 0 ? codigoError.intValue : 0;
-                        self.datos.fechaInicialTel = [NSDateFormatter changeDateFormatOfString:[StringUtils desEncriptar:self.telIni
+                     /*   self.datos.fechaInicialTel = [NSDateFormatter changeDateFormatOfString:[StringUtils desEncriptar:self.telIni
                                                                                                            conToken:self.datos.token]
                                                                                      from:@"yyyy-MM-dd"
                                                                                        to:@"dd-MM-yyy"];
@@ -193,7 +193,7 @@
                                                                                                          conToken:self.datos.token]
                                                                                    from:@"yyyy-MM-dd"
                                                                                      to:@"dd-MM-yyy"];
-
+                       */
                         self.datos.fechaInicial = [NSDateFormatter changeDateFormatOfString:[StringUtils desEncriptar:self.fechaInicio conToken:self.datos.token]
                                                                                   from:@"yyyy-MM-dd"
                                                                                     to:@"dd-MM-yyy"];
@@ -229,7 +229,7 @@
                         self.datos.emailUsuario = email;
                         self.datos.passwordUsuario = pass;
                         self.datos.idDominio = [stringResult intValue];
-                        self.datos.fechaInicialTel = [NSDateFormatter changeDateFormatOfString:[StringUtils desEncriptar:self.telIni
+                      /*  self.datos.fechaInicialTel = [NSDateFormatter changeDateFormatOfString:[StringUtils desEncriptar:self.telIni
                                                                                                            conToken:self.datos.token]
                                                                                      from:@"yyyy-MM-dd"
                                                                                        to:@"dd-MM-yyy"];
@@ -237,6 +237,7 @@
                                                                                                          conToken:self.datos.token]
                                                                                    from:@"yyyy-MM-dd"
                                                                                      to:@"dd-MM-yyy"];
+                       */
                         self.datos.idDominio = respuestaInt;
                         self.datos.dominio = user;
                         ((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio = @"Pendiente";
@@ -531,7 +532,7 @@
                     [self.wSHandlerDelegate errorToken];
                 }
                 else {
-                    self.datos.fechaInicialTel = [NSDateFormatter changeDateFormatOfString:[StringUtils desEncriptar:self.fechaInicio
+                   /* self.datos.fechaInicialTel = [NSDateFormatter changeDateFormatOfString:[StringUtils desEncriptar:self.fechaInicio
                                                                                                        conToken:self.datos.token]
                                                                                  from:@"yyyy-MM-dd"
                                                                                    to:@"dd-MM-yyy"];
@@ -539,7 +540,7 @@
                                                                                                      conToken:self.datos.token]
                                                                                from:@"yyyy-MM-dd"
                                                                                  to:@"dd-MM-yyy"];
-                    
+                    */
                     ((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio = stringResult;
                     [self.wSHandlerDelegate resultadoConsultaDominio:@"Exito"];
                 }

@@ -41,11 +41,10 @@
 		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"felicidades", @" ") nombreImagen:@"plecaroja.png"];
 	}
 	
+    
     [self.labelDominio setText:[NSString stringWithFormat:@"www.%@.tel", self.datosUsuario.dominio]];
     
-#if DEBUG
-    [self.labelDominio setText:[NSString stringWithFormat:@"info-movil.com:8080/%@", self.datosUsuario.dominio]];
-#endif
+
     
     
     UIImage *image = [UIImage imageNamed:@"btnregresar.png"];
@@ -60,7 +59,7 @@
     self.navigationItem.rightBarButtonItem = Nil;
 	
 	self.label1.text = NSLocalizedString(@"felicidades2", nil);
-	self.label2.text = [NSString stringWithFormat:NSLocalizedString(@"fechas", nil),self.datosUsuario.fechaFinalTel] ;
+	self.label2.text = [NSString stringWithFormat:NSLocalizedString(@"fechas", nil),self.datosUsuario.fechaDominioFin] ;
     self.label3.text = NSLocalizedString(@"promueve", nil);
 	_labelPublicaTiempo.text = NSLocalizedString(@"tiempoPublica", nil);
 	

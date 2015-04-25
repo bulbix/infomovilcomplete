@@ -7,12 +7,14 @@
 //
 
 #import <StoreKit/StoreKit.h>
+#import "WS_HandlerProtocol.h"
+#import "InfomovilViewController.h"
 
 UIKIT_EXTERN NSString *const IAPHelperProductPurchasedNotification;
 
 typedef void (^RequestProductsCompletionHandler)(BOOL success, NSArray * products);
 
-@interface IAPHelper : NSObject
+@interface IAPHelper : NSObject <AlertViewDelegate, WS_HandlerProtocol>
 
 - (id)initWithProductIdentifiers:(NSSet *)productIdentifiers;
 - (void)requestProductsWithCompletionHandler:(RequestProductsCompletionHandler)completionHandler;

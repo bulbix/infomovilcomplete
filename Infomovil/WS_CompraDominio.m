@@ -168,29 +168,7 @@
             self.datosUsuario.fechaInicial = self.currentElementString;
         }
     }
-    else if ([elementName isEqualToString:@"fTelNamesIni"]){
-        NSString *strAux;
-        if(requiereEncriptar){
-            strAux = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
-        }else{
-            strAux = self.currentElementString;
-        }
-        if(strAux != nil && ![strAux isEqualToString:@"(null)"]){
-            self.datosUsuario.fechaInicialTel =strAux;
-        }
-    }
-    else if ([elementName isEqualToString:@"fTelNamesFin"]){
-        NSString *strAux;
-        if(requiereEncriptar){
-            strAux = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
-        }else{
-            strAux = self.currentElementString;
-        }
-        if(strAux != nil && ![strAux isEqualToString:@"(null)"]){
-            self.datosUsuario.fechaFinalTel =strAux;
-        }
-    
-    }
+   
 }
 
 -(void) ordenarItemsCompraDom{

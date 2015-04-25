@@ -43,10 +43,10 @@
     BOOL noSeRepiteOprimirElBoton;
     NSArray *_products;
     NSNumberFormatter * _priceFormatter;
-  
-
 }
 
+
+@property (nonatomic, strong) NSMutableArray *arregloDominios;
 @property (nonatomic, strong) AlertView *alerta;
 @property (nonatomic, strong) CNPPopupController *popupController;
 
@@ -121,8 +121,6 @@ int opcionButton = 0 ;
         _imgBeneficios.image = [UIImage imageNamed:@"beneficios-es.png"];
 	}
     
-    
-    //AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
         
     
     
@@ -202,9 +200,6 @@ int opcionButton = 0 ;
     self.tituloPlanPro.text = NSLocalizedString(@"mensajeCuenta", @" ");
     self.navigationItem.rightBarButtonItem = Nil;
 	
-	
-    
-	
 	medio = NO;
 	uno = NO;
 	
@@ -245,11 +240,11 @@ int opcionButton = 0 ;
 -(void) viewWillAppear:(BOOL)animated {
     DatosUsuario *datosUsuario = [DatosUsuario sharedInstance];
     if(self.selector.selectedSegmentIndex == 1){
-    if(datosUsuario.dominio == nil || [datosUsuario.dominio isEqualToString:@""] || (datosUsuario.dominio == (id)[NSNull null]) || [CommonUtils validarEmail:datosUsuario.dominio] || [datosUsuario.dominio isEqualToString:@"(null)"]){
-        AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"msjDominioPublicar", Nil) andAlertViewType:AlertViewTypeQuestion];
-        [alert show];
+        if(datosUsuario.dominio == nil || [datosUsuario.dominio isEqualToString:@""] || (datosUsuario.dominio == (id)[NSNull null]) || [CommonUtils validarEmail:datosUsuario.dominio] || [datosUsuario.dominio isEqualToString:@"(null)"]){
+            AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"msjDominioPublicar", Nil) andAlertViewType:AlertViewTypeQuestion];
+            [alert show];
         
-    }
+        }
     }
     
     noSeRepiteOprimirElBoton = YES;
@@ -283,12 +278,12 @@ int opcionButton = 0 ;
         }else{
             self.viewCompraPlanPro.hidden = NO;
             self.viewPlanProComprado.hidden = YES;
-           // [self.vistaInferior setHidden:YES];
+         
         }
-	
+	/*
         self.datosUsuario = [DatosUsuario sharedInstance];
         if(self.datosUsuario.nombroSitio || ![((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Tramite"]){
-            if ([self.datosUsuario.fechaInicialTel isEqualToString:@""] && [self.datosUsuario.fechaFinalTel isEqualToString:@""]) {
+            if ([self.datosUsuario.fechaDominioIni isEqualToString:@""] && [self.datosUsuario.fechaDominioFin isEqualToString:@""]) {
                 NSDate *dateInit = [NSDate date];
                 NSDateComponents *setMonths			= [[NSDateComponents alloc] init];
                 NSCalendar		*calendar			= [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
@@ -307,7 +302,9 @@ int opcionButton = 0 ;
 			
             }else{
             }
+     
         }
+     */
         [self enviarEventoGAconCategoria:@"Ver" yEtiqueta:@"Plan Pro"];
     }
 }
@@ -636,24 +633,69 @@ if(noSeRepiteOprimirElBoton){
             }else{
                 dominio = [[UILabel alloc]initWithFrame:CGRectMake(0, 40, 320, 100)];
             }
-      
+        
+        UILabel *fechas;
+        fechas.font = customFont;
+        if(IS_STANDARD_IPHONE_6){
+            fechas = [[UILabel alloc]initWithFrame:CGRectMake(0, 120,375, 100)];
+            [fechas setFont: [UIFont fontWithName:@"Avenir-Book" size:16]];
+            [dominio setFont: [UIFont fontWithName:@"Avenir-Book" size:18]];
+        }else if(IS_STANDARD_IPHONE_6_PLUS){
+            fechas = [[UILabel alloc]initWithFrame:CGRectMake(0, 180,414, 100)];
+            [fechas setFont: [UIFont fontWithName:@"Avenir-Book" size:20]];
+            [dominio setFont: [UIFont fontWithName:@"Avenir-Book" size:20]];
+        }else if(IS_IPAD){
+            fechas = [[UILabel alloc]initWithFrame:CGRectMake(184, 180,400, 200)];
+            [fechas setFont: [UIFont fontWithName:@"Avenir-Book" size:20]];
+            [dominio setFont: [UIFont fontWithName:@"Avenir-Book" size:24]];
+        }else{
+            fechas = [[UILabel alloc]initWithFrame:CGRectMake(0, 120,320, 100)];
+        }
+        
             if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-                
-            
-#if DEBUG
-                dominio.text = [NSString stringWithFormat:@"My website\n\nhttp://info-movil.com:8080/%@",self.datosUsuario.dominio] ;
-#else
-                dominio.text = [NSString stringWithFormat:@"My website\n\n www.%@.tel",self.datosUsuario.dominio] ;
-#endif
+                self.arregloDominios = self.datosUsuario.dominiosUsuario;
+                dominio.text = @"";
+                for(int i= 0; i< [self.arregloDominios count]; i++){
+                    DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:i];
+                    if([usuarioDom.domainType isEqualToString:@"tel"]){
+                        NSLog(@"EL DOMINIO FUE TEL ");
+                        dominio.text = [NSString stringWithFormat:@"My website\n\n www.%@.tel",self.datosUsuario.dominio] ;
+                        fechas.text = [NSString stringWithFormat: @"Fecha de inicio: %@\n Fecha de término: %@", usuarioDom.fechaIni, usuarioDom.fechaFin ];
+                    }
+                }
+                if([dominio.text isEqualToString:@""]){
+                    for(int i= 0; i< [self.arregloDominios count]; i++){
+                        DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:i];
+                        if([usuarioDom.domainType isEqualToString:@"recurso"]){
+                            NSLog(@"EL DOMINIO FUE RECURSO ");
+                            dominio.text = [NSString stringWithFormat:@"My website\n\nhttp://infomovil.com/%@",self.datosUsuario.dominio] ;
+                        }
+                    }
+                }
+
             }else{
-                
-#if DEBUG
-                dominio.text = [NSString stringWithFormat:@"Mi sitio web\n\nhttp://info-movil.com:8080/%@",self.datosUsuario.dominio] ;
-#else
-                dominio.text = [NSString stringWithFormat:@"Mi sitio web\n\n www.%@.tel",self.datosUsuario.dominio] ;
-#endif
+                self.arregloDominios = self.datosUsuario.dominiosUsuario;
+                dominio.text = @"";
+                for(int i= 0; i< [self.arregloDominios count]; i++){
+                    DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:i];
+                    if([usuarioDom.domainType isEqualToString:@"tel"]){
+                        NSLog(@"EL DOMINIO FUE TEL ");
+                        dominio.text = [NSString stringWithFormat:@"Mi sitio web\n\n www.%@.tel",self.datosUsuario.dominio] ;
+                         fechas.text = [NSString stringWithFormat: @"Fecha de inicio: %@\n Fecha de término: %@", usuarioDom.fechaIni, usuarioDom.fechaFin ];
+                    }
+                }
+                if([dominio.text isEqualToString:@""]){
+                    for(int i= 0; i< [self.arregloDominios count]; i++){
+                        DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:i];
+                        if([usuarioDom.domainType isEqualToString:@"recurso"]){
+                            NSLog(@"EL DOMINIO FUE RECURSO ");
+                            dominio.text = [NSString stringWithFormat:@"Mi sitio web\n\nhttp://infomovil.com/%@",self.datosUsuario.dominio] ;
+                            
+                        }
+                    }
+                }
             }
-            
+        
             dominio.font = customFont;
             dominio.numberOfLines = 5;
             dominio.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
@@ -666,29 +708,9 @@ if(noSeRepiteOprimirElBoton){
                                                   alpha:1.0f];
 
             dominio.textAlignment = NSTextAlignmentCenter;
-            [self.vistaDominio addSubview:dominio];
-            
-            // IRC FECHA INICIO Y FIN
-            UILabel *fechas;
-            fechas.font = customFont;
-            if(IS_STANDARD_IPHONE_6){
-                fechas = [[UILabel alloc]initWithFrame:CGRectMake(0, 120,375, 100)];
-                [fechas setFont: [UIFont fontWithName:@"Avenir-Book" size:16]];
-                [dominio setFont: [UIFont fontWithName:@"Avenir-Book" size:18]];
-            }else if(IS_STANDARD_IPHONE_6_PLUS){
-                fechas = [[UILabel alloc]initWithFrame:CGRectMake(0, 180,414, 100)];
-                [fechas setFont: [UIFont fontWithName:@"Avenir-Book" size:20]];
-                [dominio setFont: [UIFont fontWithName:@"Avenir-Book" size:20]];
-            }else if(IS_IPAD){
-                fechas = [[UILabel alloc]initWithFrame:CGRectMake(184, 180,400, 200)];
-                [fechas setFont: [UIFont fontWithName:@"Avenir-Book" size:20]];
-                 [dominio setFont: [UIFont fontWithName:@"Avenir-Book" size:24]];
-            }else{
-                fechas = [[UILabel alloc]initWithFrame:CGRectMake(0, 120,320, 100)];
-            }
-            
-            fechas.text = [NSString stringWithFormat: @"Fecha de inicio: %@\n Fecha de término: %@", self.datosUsuario.fechaInicialTel, self.datosUsuario.fechaFinalTel ];
-            
+        
+        [self.vistaDominio addSubview:dominio];
+        
             fechas.numberOfLines = 5;
             fechas.baselineAdjustment = UIBaselineAdjustmentAlignBaselines;
             fechas.adjustsFontSizeToFitWidth = YES;
@@ -711,9 +733,6 @@ if(noSeRepiteOprimirElBoton){
             }else{
                 [self.scrollContenido scrollRectToVisible:CGRectMake(320, 0, self.scrollContenido.frame.size.width, self.scrollContenido.frame.size.height) animated:YES];
             }
-            
-      
-      
     }
 	
             
@@ -826,6 +845,10 @@ if(noSeRepiteOprimirElBoton){
     self.selector.selectedSegmentIndex = 0;
     [self tipoCuenta:self];
     
+}
+
+-(void) errorConsultaWS {
+    //[self performSelectorOnMainThread:@selector(errorLogin) withObject:Nil waitUntilDone:YES];
 }
 
 

@@ -319,7 +319,7 @@
          NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
          [prefs setObject:[NSString stringWithFormat:@"http://info-movil.net/%@?vistaPrevia=true", self.datosUsuario.dominio] forKey:@"urlVistaPrevia"];
 #if DEBUG
-         [prefs setObject:[NSString stringWithFormat:@"http://info-movil.com:8080/%@?vistaPrevia=true", self.datosUsuario.dominio] forKey:@"urlVistaPrevia"];
+       //  [prefs setObject:[NSString stringWithFormat:@"http://info-movil.com:8080/%@?vistaPrevia=true", self.datosUsuario.dominio] forKey:@"urlVistaPrevia"];
 #endif
          
          [prefs synchronize];
@@ -329,7 +329,7 @@
          NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
          [prefs setObject:[NSString stringWithFormat:@"http://info-movil.net/xxx?vistaPrevia=true&idDominio=%ld", (long)self.datosUsuario.idDominio] forKey:@"urlVistaPrevia"];
 #if DEBUG
-      [prefs setObject:[NSString stringWithFormat:@"http://info-movil.com:8080/xxx?vistaPrevia=true&idDominio=%ld", (long)self.datosUsuario.idDominio] forKey:@"urlVistaPrevia"];
+     // [prefs setObject:[NSString stringWithFormat:@"http://info-movil.com:8080/xxx?vistaPrevia=true&idDominio=%ld", (long)self.datosUsuario.idDominio] forKey:@"urlVistaPrevia"];
 #endif
          [prefs synchronize];
          VistaPreviaWebViewController *vistaPrevia = [[VistaPreviaWebViewController alloc] initWithNibName:@"VistaPreviaWeb" bundle:Nil];

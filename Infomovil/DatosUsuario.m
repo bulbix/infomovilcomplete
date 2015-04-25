@@ -144,9 +144,8 @@
 	
 	self.fechaInicial = Nil;
 	self.fechaFinal = Nil;
-	
-	self.fechaInicialTel = Nil;
-	self.fechaFinalTel = Nil;
+    self.fechaDominioIni = nil;
+    self.fechaDominioFin = nil;
     
     self.descripcionDominio = Nil;
     self.plantilla = Nil;

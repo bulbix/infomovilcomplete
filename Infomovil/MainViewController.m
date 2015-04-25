@@ -45,13 +45,10 @@
     [super viewDidLoad];
     [self.vistaInferior setHidden:YES];
     self.datosUsuario = [DatosUsuario sharedInstance];
+    [self fbDidlogout];
     FBLoginView *loginView = [[FBLoginView alloc] init];
     loginView.delegate = self;
     loginView.readPermissions = @[@"public_profile", @"email"];
-    
-    
-    
-    
    
     if(IS_STANDARD_IPHONE_6){
         loginView.frame = CGRectMake(20, 130, 335, 55);
@@ -69,7 +66,7 @@
         self.btnOlvidePass.frame = CGRectMake(190, 364, 170, 31);
         
     }
-    //MBC
+    
     else if(IS_STANDARD_IPHONE_6_PLUS){
         loginView.frame = CGRectMake(20, 180, 375, 55);
         self.raya1.frame = CGRectMake(20, 265, 175, 2);

@@ -445,13 +445,13 @@
     NSLog(@"ENTRO A SALVAR IMAGEN!!");
         NSString *nombreImagen = [StringUtils randomStringWithLength:15];
         UIImage *imagenTomada = [self.vistaPreviaImagen image];
-        NSData *pngData = UIImageJPEGRepresentation(imagenTomada, 0.5); //UIImagePNGRepresentation(imagenTomada);
+        NSData *pngData = UIImageJPEGRepresentation(imagenTomada, 1.0); //UIImagePNGRepresentation(imagenTomada);
         
         while([pngData length] > 100000) {
             @autoreleasepool {
                 CGSize newSize = CGSizeMake(imagenTomada.size.width*0.85, imagenTomada.size.height*0.85);
                 imagenTomada = [ImageUtils resizeImage:imagenTomada newSize:newSize];
-                pngData = UIImageJPEGRepresentation(imagenTomada, 0.5); //UIImagePNGRepresentation(imagenTomada);
+                pngData = UIImageJPEGRepresentation(imagenTomada, 0.9); //UIImagePNGRepresentation(imagenTomada);
             }
         }
     

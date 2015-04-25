@@ -191,7 +191,7 @@
                 [self.vistaAlert setFrame:CGRectMake(21, 150, 278, 200)];
             }
             
-            self.labelMensaje = [[UILabel alloc] initWithFrame:CGRectMake(10, 70, 263, 200)];
+            self.labelMensaje = [[UILabel alloc] initWithFrame:CGRectMake(10, 70, 263, 75)];
             [self.labelMensaje setFont:[UIFont fontWithName:@"Avenir-Book" size:17]];
             [self.labelMensaje setTextColor:[UIColor blackColor]];
             [self.labelMensaje setNumberOfLines:10];
@@ -206,7 +206,7 @@
             [self.vistaAlert addSubview:self.labelDominio];
             
             self.botonAceptar = [UIButton buttonWithType:UIButtonTypeCustom];
-            [self.botonAceptar setFrame:CGRectMake(0, 180, 278, 54)];
+            [self.botonAceptar setFrame:CGRectMake(0, 170, 278, 54)];
             [self.botonAceptar setBackgroundImage:[UIImage imageNamed:@"btnaceptarmensajes.png"] forState:UIControlStateNormal];
             if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
 				[self.botonAceptar setTitle:@"Accept" forState:UIControlStateNormal];

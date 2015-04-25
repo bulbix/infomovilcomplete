@@ -347,15 +347,10 @@
         [NSThread sleepForTimeInterval:1];
         [self.alertView hide];
     }
-   /* AlertView *alertAct = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
-    [alertAct show];
-    [StringUtils terminarSession];
+   
+        AlertView *alertAct = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"errorPublicacion", Nil) andAlertViewType:AlertViewTypeInfo];
+        [alertAct show];
     
-    InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"InicioViewController" bundle:Nil];
-    [self.navigationController pushViewController:inicio animated:YES];
-    */
-    AlertView *alertAct = [AlertView initWithDelegate:Nil message:@"No se ha podido registrar tu sitio web por favor intentalo nuevamente." andAlertViewType:AlertViewTypeInfo];
-    [alertAct show];
     
 }
 
@@ -371,7 +366,7 @@
         [self.alertView hide];
     }
     [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
-   // [[AlertView initWithDelegate:Nil message:NSLocalizedString(@"ocurrioError", Nil) andAlertViewType:AlertViewTypeInfo] show];
+   
 }
 
 
