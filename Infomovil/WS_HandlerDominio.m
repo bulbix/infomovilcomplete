@@ -587,6 +587,34 @@
     else if ([elementName isEqualToString:@"codeCamp"]) {
         self.currentElementString = [[NSMutableString alloc] init];
     }
+    // IRC ESTATUS DOMINIO //
+    else if ([elementName isEqualToString:@"listUsuarioDominiosVO"]) {
+     //   dominioUsuario = [[DominiosUsuario alloc] init];
+    }
+    else if ([elementName isEqualToString:@"domainCtrlName"]) {
+        self.currentElementString = [[NSMutableString alloc] init];
+    }
+    else if ([elementName isEqualToString:@"domainType"]) {
+        self.currentElementString = [[NSMutableString alloc] init];
+    }
+    else if ([elementName isEqualToString:@"fechaCtrlFin"]) {
+        self.currentElementString = [[NSMutableString alloc] init];
+    }
+    else if ([elementName isEqualToString:@"fechaCtrlIni"]) {
+        self.currentElementString = [[NSMutableString alloc] init];
+    }
+    else if ([elementName isEqualToString:@"vigente"]) {
+        self.currentElementString = [[NSMutableString alloc] init];
+    }
+    else if ([elementName isEqualToString:@"idCtrlDomain"]) {
+        self.currentElementString = [[NSMutableString alloc] init];
+    }
+    else if ([elementName isEqualToString:@"idDomain"]) {
+        self.currentElementString = [[NSMutableString alloc] init];
+    }
+    else if ([elementName isEqualToString:@"statusCtrlDominio"]) {
+        self.currentElementString = [[NSMutableString alloc] init];
+    }
 }
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {

@@ -64,7 +64,6 @@
     
     [self.labelImagenesMensaje setText:NSLocalizedString(@"galeriaVertical", Nil)];
     [self.labelImagenesMensaje2 setText:NSLocalizedString(@"redimensionaImagen", Nil)];
-    
     self.vistaInfo.layer.cornerRadius = 5.0f;
     
 }
@@ -185,11 +184,15 @@
         UIBarButtonItem *botonEdit = [[UIBarButtonItem alloc] initWithCustomView:btEdit];
         
 	
+        // IRC ordenar imagenes quitar esta linea y descomentar las de abajo //
+        self.navigationItem.rightBarButtonItems = @[botonAdd];
+        /*
         if([self.arregloImagenes count]>1){
 			self.navigationItem.rightBarButtonItems = @[botonEdit, botonAdd];
 		}else{
 			self.navigationItem.rightBarButtonItems = @[botonAdd];
 		}
+         */
     }
 }
 
