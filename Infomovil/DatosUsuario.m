@@ -152,7 +152,7 @@
     self.imgGaleriaArray = Nil;
     self.auxStrSesionUser = Nil;
     self.auxStrSesionPass = Nil;
-    
+    self.urlPromocion = Nil;
     
 }
 

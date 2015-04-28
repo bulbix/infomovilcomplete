@@ -29,7 +29,9 @@
                      "<soapenv:Header/>"
                      "<soapenv:Body>"
                      "<ws:updateImage>"
-                     "<domainId>%@</domainId>" , [StringUtils encriptar:[NSString stringWithFormat:@"%i", datos.idDominio] conToken:datos.token]];
+                     "<domainId>%@</domainId>" ,
+                     [StringUtils encriptar:[NSString stringWithFormat:@"%i", datos.idDominio] conToken:datos.token]];
+        NSLog(@"LOS VALORES ENVIADOS SON: %i", datos.idDominio);
         for (int i = 0; i < [self.arregloGaleria count]; i++) {
             GaleriaImagenes *galeria = [self.arregloGaleria objectAtIndex:i];
             NSData *dataImage = [NSData dataWithContentsOfFile:galeria.rutaImagen];
@@ -43,9 +45,11 @@
              [StringUtils encriptar:galeria.pieFoto conToken:datos.token],
              [StringUtils encriptar:[NSString stringWithFormat:@"%i", galeria.idImagen] conToken:datos.token],
              [Base64 encode:dataImage]];
+            NSLog(@"LOS VALORES ENVIADOS SON: %@", galeria.pieFoto);
         }
         [stringXML appendFormat:@"<token>%@</token></ws:updateImage></soapenv:Body></soapenv:Envelope>", [StringUtils encriptar:datos.emailUsuario conToken:passwordEncriptar]];
     }
+    
     
   //  NSLog(@"El string es %@", stringXML);
     self.strSoapAction = @"WSInfomovilDomain";
@@ -61,6 +65,7 @@
 					datos.token = self.token;
 				}
                 if (self.token == nil) {
+                    NSLog(@"OCURRIO UN ERROR EN EL TOKEN");
                     [self.galeriaDelegate errorToken];
                 } else {
                     int aux=0;
@@ -82,8 +87,6 @@
                         NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
                         if (stringResult == nil)
                             stringResult = [StringUtils desEncriptar:self.resultado conToken:self.token];
-                        
-                        
                             [self.galeriaDelegate resultadoConsultaDominio:stringResult];
                     }
                 }

@@ -196,14 +196,10 @@
             }
             // ACOMODA LOS CONTACTOS //
                 [self acomodaContactos];
+             self.datosUsuario.arregloContacto = self.arregloContactos;
+
             ///////////////////////////////////////////
-            
-            
-            
-            
-            
-            /* self.datosUsuario.arregloContacto = self.arregloContactos;
-                NSLog(@"LA CANTIDAD DE ARREGLO IMAGENES ES : %i ", [self.datosUsuario.arregloIdImagen count]);
+            /*    NSLog(@"LA CANTIDAD DE ARREGLO IMAGENES ES : %i ", [self.datosUsuario.arregloIdImagen count]);
                 for (NSInteger i = 0; i < [self.datosUsuario.arregloIdImagen count]; i++) {
                     GaleriaImagenes *galImagenes = [self.arregloImagenes objectAtIndex:i];
                     if (galImagenes.pieFoto != Nil && galImagenes.pieFoto.length > 0) {
@@ -441,7 +437,6 @@
     }
     else if ([elementName isEqualToString:@"template"]) {
         self.currentElementString = [[NSMutableString alloc] init];
-       
     }
     else if ([elementName isEqualToString:@"descripcionItem"]) {
         self.currentElementString = [[NSMutableString alloc] init];
@@ -458,13 +453,6 @@
 	else if ([elementName isEqualToString:@"fechaFin"]){
 		self.currentElementString = [[NSMutableString alloc] init];
 	}
-    /*
-	else if ([elementName isEqualToString:@"fTelNamesIni"]){
-		self.currentElementString = [[NSMutableString alloc] init];
-	}
-	else if ([elementName isEqualToString:@"fTelNamesFin"]){
-		self.currentElementString = [[NSMutableString alloc] init];
-	}*/
     else if ([elementName isEqualToString:@"descripcionDominio"]){
         self.currentElementString = [[NSMutableString alloc] init];
     }
@@ -528,6 +516,8 @@
         self.currentElementString = [[NSMutableString alloc] init];
     }else if ([elementName isEqualToString:@"canal"]) {
         self.currentElementString = [[NSMutableString alloc] init];
+    }else if ([elementName isEqualToString:@"urlImage"]) {
+        self.currentElementString = [[NSMutableString alloc] init];
     }
 
 }
@@ -557,6 +547,7 @@
     else if ([elementName isEqualToString:@"listRecordNaptrVo"]) {
         [self.arregloContactos addObject:self.contactoActual];
         self.currentElementString = [[NSMutableString alloc] init];
+        NSLog(@"Entro a contactos 1 vez!!");
     }
     else if ([elementName isEqualToString:@"claveContacto"]) {
         [self.contactoActual setIdContacto:[self.currentElementString integerValue]];
@@ -661,7 +652,6 @@
             
             NSString *filePath = [[StringUtils pathForDocumentsDirectory] stringByAppendingPathComponent:@"imagenPromocion.jpg"];
             [dataImagen writeToFile:filePath atomically:YES];
-            //        [self.diccionarioPromocion setObject:filePath forKey:@"rutaImagen"];
             [self.promocionElegida setPathImageOffer:filePath];
         }
         
@@ -699,6 +689,10 @@
     else if ([elementName isEqualToString:@"listOffertRecordVO"]) {
 
         self.datosUsuario.promocionActual = self.promocionElegida;
+    }
+    else if ([elementName isEqualToString:@"urlImage"]) {
+        self.datosUsuario.urlPromocion = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
+        NSLog(@"LA URL DE LA IMAGEN PROMOCION ES: %@", self.datosUsuario.urlPromocion);
     }
    /* 
     else if ([elementName isEqualToString:@"listImagenVO"]) { NSLog(@"ENTRO A listImagenVO");
@@ -1023,14 +1017,15 @@
     }
     else if ([elementName isEqualToString:@"fechaCtrlFin"]) {
         NSString *auxOffer = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
-        auxOffer = [auxOffer substringToIndex: MIN(10, [auxOffer length])];
+       // auxOffer = [auxOffer substringToIndex: MIN(10, [auxOffer length])];
          [dominioUsuario setFechaFin:auxOffer];
-      
+       
     }
     else if ([elementName isEqualToString:@"fechaCtrlIni"]) {
         NSString *auxOffer = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
-        auxOffer = [auxOffer substringToIndex: MIN(10, [auxOffer length])];
+        //auxOffer = [auxOffer substringToIndex: MIN(10, [auxOffer length])];
         [dominioUsuario setFechaIni:auxOffer];
+      
     }
     else if ([elementName isEqualToString:@"idCtrlDomain"]) {
         NSString *strAux = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
@@ -1048,6 +1043,7 @@
     else if ([elementName isEqualToString:@"tipoUsuario"]) {
         NSString *strAux = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
         self.datosUsuario.tipoDeUsuario = strAux;
+        NSLog(@"EL TIPO DE USUARIO ES: %@", self.datosUsuario.tipoDeUsuario);
     }else if ([elementName isEqualToString:@"campania"]) {
         NSString *strAux = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
         self.datosUsuario.campania = strAux;

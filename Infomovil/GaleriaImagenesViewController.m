@@ -200,9 +200,7 @@
 }
 
 -(IBAction)agregarImagen:(id)sender {
-
-    
-    
+NSLog(@"AQUI ESTA EN AGREGAR IMAGEN ");
     if ([self.arregloImagenes count] < 2) {
         GaleriaPaso2ViewController *galeria = [[GaleriaPaso2ViewController alloc] initWithNibName:@"GaleriaPaso2ViewController" bundle:nil];
         [galeria setOperacion:GaleriaImagenesAgregar];
@@ -261,22 +259,26 @@
     cell.vistaGaleria.layer.cornerRadius = 5.0f;
     [cell.pieFoto setText:[self.datosUsuario.arregloDescripcionImagenGaleria objectAtIndex:indexPath.row]];
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:  self.urlImagen ]
+    if ([CommonUtils hayConexion]) {
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:  self.urlImagen ]
                                              cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                         timeoutInterval:25.0];
-    NSError *requestError;
-    NSURLResponse *urlResponse = nil;
-    NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&requestError];
-    if (response == nil) {
-        if (requestError != nil) {
-            NSLog(@"GaleriaPaso2ViewController Error Code imagen: %ld", (long)requestError.code);
-            NSLog(@"GaleriaPaso2ViewController Description error: %@", [requestError localizedDescription]);
-            [cell.imagenPrevia setImage:[UIImage imageNamed:@"previsualizador.png"]];
+                                         timeoutInterval:20.0];
+        NSError *requestError;
+        NSURLResponse *urlResponse = nil;
+        NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&requestError];
+        if (response == nil) {
+            if (requestError != nil) {
+                NSLog(@"GaleriaPaso2ViewController Error Code imagen: %ld", (long)requestError.code);
+                NSLog(@"GaleriaPaso2ViewController Description error: %@", [requestError localizedDescription]);
+                [cell.imagenPrevia setImage:[UIImage imageNamed:@"previsualizador.png"]];
+            }
+        }else {
+            NSLog(@"ENTRO A TRATAR DE CARGAR LA IMAGEN ");
+            UIImage *image = [UIImage imageWithData:response];
+            [cell.imagenPrevia setImage:image];
         }
-    }else {
-        NSLog(@"ENTRO A TRATAR DE CARGAR LA IMAGEN ");
-        UIImage *image = [UIImage imageWithData:response];
-        [cell.imagenPrevia setImage:image];
+    }else{
+        [cell.imagenPrevia setImage:[UIImage imageNamed:@"previsualizador.png"]];
     }
     
     if( [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && [self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"] && indexPath.row > 1){
@@ -332,6 +334,7 @@
 }
 
 -(IBAction)editarTabla:(id)sender {
+    NSLog(@"AQUI ESTA EDITANDO LA TABLA");
     if (self.editing) {
         [self.tablaGaleria setEditing:NO animated:YES];
         [self setEditing:NO animated:YES];
@@ -392,7 +395,7 @@
 }
 
 -(void) actualizarGaleria {
-  
+  NSLog(@"AQUI ESTA ACTUALIZANDO LA GALERIA");
         WS_HandlerGaleria *handlerGaleria = [[WS_HandlerGaleria alloc] init];
         [handlerGaleria setArregloGaleria:self.arregloImagenes];
         [handlerGaleria setGaleriaDelegate:self];

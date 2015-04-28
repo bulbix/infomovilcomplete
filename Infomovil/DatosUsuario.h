@@ -95,8 +95,8 @@
 @property (nonatomic, strong) NSMutableArray *arregloVisitas;
 @property (nonatomic, strong) NSMutableArray *arregloVisitantes;
 // FECHAS PARA EL DOMINIO TEL Y RECURSO //
-@property (nonatomic, strong) NSMutableArray *fechaDominioIni;
-@property (nonatomic, strong) NSMutableArray *fechaDominioFin;
+@property (nonatomic, strong) NSString *fechaDominioIni;
+@property (nonatomic, strong) NSString *fechaDominioFin;
 
 @property (nonatomic, strong) NSString * fechaInicial;
 @property (nonatomic, strong) NSString * fechaFinal;
@@ -104,7 +104,8 @@
 
 
 @property (nonatomic, strong) NSString * plantilla;
-
+// PARA PROMOCIONES //
+@property (nonatomic, strong) NSString *urlPromocion;
 @property (nonatomic, strong) OffertRecord *promocionActual;
 
 @property (nonatomic, strong) PagoModel *datosPago;

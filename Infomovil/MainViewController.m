@@ -406,7 +406,7 @@
                 strMensaje = NSLocalizedString(@"errorLogin", Nil);
                 break;
             default:
-                strMensaje = NSLocalizedString(@"ocurrioError", Nil);
+                strMensaje = NSLocalizedString(@"errorLogin", Nil);
                 break;
         }
         self.datosUsuario.existeLogin = NO;

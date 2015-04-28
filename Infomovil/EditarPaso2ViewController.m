@@ -130,7 +130,7 @@
         
         [self.labelCodigoPostal setFrame:CGRectMake(84, 495, 600, 35 )];
         [self.txtCodigoPostal setFrame:CGRectMake(84, 530, 600, 35)];
-        
+        [_btnBorra setFrame:CGRectMake(600, 600, 50, 50)];
         
         [self.labelDireccion1 setFont:[UIFont fontWithName:@"Avenir-Book" size:18]];
         [self.txtCalle setFont:[UIFont fontWithName:@"Avenir-Book" size:18]];

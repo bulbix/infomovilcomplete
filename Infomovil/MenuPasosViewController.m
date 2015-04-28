@@ -197,7 +197,6 @@
 
 -(void) viewWillAppear:(BOOL)animated {
     
-	self.datosUsuario = [DatosUsuario sharedInstance];
     [super viewWillAppear:animated];
     [self.tituloVista setHidden:NO];
 	

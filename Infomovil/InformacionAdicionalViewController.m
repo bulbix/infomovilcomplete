@@ -90,6 +90,7 @@
         [self.label setFrame:CGRectMake(40, 150, 500, 60)];
         [self.imgBull1 setFrame:CGRectMake(20, 105, 10, 10)];
         [self.imgBull2 setFrame:CGRectMake(20, 160, 10, 10)];
+        [self.tablaInformacion setFrame:CGRectMake(84, 40, 600, 800)];
     }else if(IS_STANDARD_IPHONE_6){
         [self.vistaInformacion setFrame:CGRectMake(20, 50, 335, 300)];
         [self.labelTexto1 setFrame:CGRectMake(40, 80, 300, 60)];

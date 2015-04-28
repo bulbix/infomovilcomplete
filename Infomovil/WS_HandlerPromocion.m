@@ -37,6 +37,7 @@
         [parser setDelegate:self];
         if ([parser parse]) {
             datos.token = self.token;
+            datos.urlPromocion = nil;
             NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
             if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                 [self.promocionDelegate errorToken];

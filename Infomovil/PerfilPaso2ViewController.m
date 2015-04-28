@@ -151,7 +151,7 @@
     }else if(IS_IPAD){
         [self.txtDescripcion setFrame:CGRectMake(134, 70, 500, 200)];
         [self.btnEliminar setFrame:CGRectMake(550, 300, 29, 35)];
-        [self.btnEliminar2 setFrame:CGRectMake(650, 450, 29, 35)];
+        [self.btnEliminar2 setFrame:CGRectMake(550, 450, 29, 35)];
         [self.labelInfo setFrame:CGRectMake(550, 300, 33, 21)];
         [self.fixed setWidth:600.0f];
         [self.labelTituloHorarios setFrame:CGRectMake(0, 20, 768, 30)];

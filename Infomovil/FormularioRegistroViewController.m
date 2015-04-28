@@ -423,10 +423,13 @@
         operacionWS = 2;
         WS_HandlerDominio *dominioHandler = [[WS_HandlerDominio alloc] init];
         [dominioHandler setWSHandlerDelegate:self];
-    codPromocion = codPromocion == nil?@"":codPromocion;
-    codPromocion = [NSString trim:codPromocion];
+        codPromocion = codPromocion == nil?@"":codPromocion;
+        codPromocion = [NSString trim:codPromocion];
 
         [dominioHandler crearUsuario:nombre conNombre:@"" password:password status:@"9" nombre:nil direccion1:nil direccion2:nil pais:nil codigoPromocion:codPromocion tipoDominio:dominioTipo idDominio:@""];
+        self.datosUsuario = [DatosUsuario sharedInstance];
+        self.datosUsuario.tipoDeUsuario = @"normal";
+    
 }
 
 -(void) ocultarActivity {

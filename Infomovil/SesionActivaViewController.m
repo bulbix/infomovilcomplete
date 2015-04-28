@@ -87,8 +87,28 @@
         MenuPasosViewController *menuPasos = [[MenuPasosViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:nil];
         [self.navigationController pushViewController:menuPasos animated:YES];
     }else {
-        AlertView *alerta = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
-        [alerta show];
+        NSString *strMensaje;
+        switch (idDominio) {
+            case -4:
+                strMensaje = NSLocalizedString(@"txtCuentaCancelada", Nil);
+                break;
+            case -3:
+                strMensaje = NSLocalizedString(@"errorLogin", Nil);
+                break;
+            case -2:
+                strMensaje = NSLocalizedString(@"errorLogin", Nil);
+                break;
+            case -1:
+                strMensaje = NSLocalizedString(@"errorLogin", Nil);
+                break;
+            default:
+                strMensaje = NSLocalizedString(@"ocurrioError", Nil);
+                break;
+        }
+        self.datosUsuario.existeLogin = NO;
+        AlertView *alertaError = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"error", Nil) message:strMensaje dominio:Nil andAlertViewType:AlertViewTypeInfo];
+        [alertaError show];
+       
         [self mostrarBotones];
     }
    [self performSelectorOnMainThread:@selector(ocultarActividad) withObject:nil waitUntilDone:NO];

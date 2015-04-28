@@ -136,7 +136,7 @@
     else {
         [self.nombreDominio setEnabled:YES];
     }
-    
+    NSLog(@"EL TIPO DE USUARIO EN NOMBRAR ES: %@", self.datosUsuario.tipoDeUsuario);
     if([self.datosUsuario.tipoDeUsuario isEqualToString:@"canal"]){
         [self.labelTel setHidden:NO];
     }else if([self.datosUsuario.tipoDeUsuario isEqualToString:@"normal"]  ){

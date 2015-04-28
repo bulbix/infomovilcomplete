@@ -18,7 +18,6 @@
 @property (nonatomic, strong) DatosUsuario *datosUsuario;
 @property (nonatomic, strong) Contacto *contactoActual;
 @property (nonatomic, strong) NSMutableArray *arregloContactos;
-//@property (nonatomic, strong) NSMutableDictionary *diccionarioPromocion;
 @property (nonatomic, strong) GaleriaImagenes *galeria;
 @property (nonatomic, strong) NSMutableArray *arregloImagenes;
 @property (nonatomic, strong) id<WS_HandlerProtocol> loginDelegate;

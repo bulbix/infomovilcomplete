@@ -198,8 +198,8 @@
 "aceptaCondiciones" = "Si continúas, aceptas las condiciones del servicio y la Política de Privacidad de Infomovil";
 
 "disponible" = "www.%@.tel está disponible\nRegístralo para publicar tu sitio web.";
-"disponibleTel" = "www.%@.tel está disponible\nRegístralo para publicar tu sitio web.";
-"disponibleRecurso" = "www.infomovil.com/%@ está disponible\nRegístralo para publicar tu sitio web.";
+"disponibleTel" = "www.%@.tel está disponible. Regístralo para publicar tu sitio web.";
+"disponibleRecurso" = "www.infomovil.com/%@ está disponible. Regístralo para publicar tu sitio web.";
 "confirmalo" = "";//"Ya publícalo y ¡ponte en línea!";
 "enLinea" = "Ya estás en línea.";
 "comparteSitio" = "Comparte el sitio con tus amigos y contactos.";

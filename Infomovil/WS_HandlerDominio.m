@@ -131,7 +131,7 @@
 					 "</UserDomainVO>"
 					 "</ws:insertUserDomain1>"
 					 "</soapenv:Body>"
-					 "</soapenv:Envelope>", //[StringUtils encriptar:dominio conToken:passwordEncriptar],
+					 "</soapenv:Envelope>",
                      [StringUtils encriptar:email conToken:passwordEncriptar],
 					 [StringUtils encriptar:@"0" conToken:self.datos.token != nil ? self.datos.token : passwordEncriptar],//phone
                      [StringUtils encriptar:pass conToken:self.datos.token != nil ? self.datos.token : passwordEncriptar],//password
@@ -166,9 +166,8 @@
         if ([parser parse]) {
             if (requiereEncriptar) {
                self.datos = [DatosUsuario sharedInstance];
-               
-                //self.datos.codigoRedimir = codigoPromocional;
-                
+                self.datos.fechaDominioIni = [StringUtils desEncriptar:self.telIni conToken:self.token];
+                self.datos.fechaDominioFin = [StringUtils desEncriptar:self.telFin conToken:self.token];
                 NSLog(@"LOS VALORES QUE ME CAUSAN RUIDO SON %@ Y EL OTRO ES: %@", self.datos.token,[StringUtils desEncriptar:self.resultado conToken:self.datos.token] );
                 
                 NSString * stringResult = [StringUtils desEncriptar:self.resultado conToken:self.datos.token];
@@ -185,15 +184,8 @@
                         self.datos.itemsDominio = [StringUtils ordenarItems:self.arregloItems];
                         self.datos.idDominio = [stringResult intValue];
                         self.datos.codigoError = codigoError.length > 0 ? codigoError.intValue : 0;
-                     /*   self.datos.fechaInicialTel = [NSDateFormatter changeDateFormatOfString:[StringUtils desEncriptar:self.telIni
-                                                                                                           conToken:self.datos.token]
-                                                                                     from:@"yyyy-MM-dd"
-                                                                                       to:@"dd-MM-yyy"];
-                        self.datos.fechaFinalTel = [NSDateFormatter changeDateFormatOfString:[StringUtils desEncriptar:self.telFin
-                                                                                                         conToken:self.datos.token]
-                                                                                   from:@"yyyy-MM-dd"
-                                                                                     to:@"dd-MM-yyy"];
-                       */
+                     
+                       
                         self.datos.fechaInicial = [NSDateFormatter changeDateFormatOfString:[StringUtils desEncriptar:self.fechaInicio conToken:self.datos.token]
                                                                                   from:@"yyyy-MM-dd"
                                                                                     to:@"dd-MM-yyy"];
@@ -229,15 +221,7 @@
                         self.datos.emailUsuario = email;
                         self.datos.passwordUsuario = pass;
                         self.datos.idDominio = [stringResult intValue];
-                      /*  self.datos.fechaInicialTel = [NSDateFormatter changeDateFormatOfString:[StringUtils desEncriptar:self.telIni
-                                                                                                           conToken:self.datos.token]
-                                                                                     from:@"yyyy-MM-dd"
-                                                                                       to:@"dd-MM-yyy"];
-                        self.datos.fechaFinalTel = [NSDateFormatter changeDateFormatOfString:[StringUtils desEncriptar:self.telFin
-                                                                                                         conToken:self.datos.token]
-                                                                                   from:@"yyyy-MM-dd"
-                                                                                     to:@"dd-MM-yyy"];
-                       */
+                     
                         self.datos.idDominio = respuestaInt;
                         self.datos.dominio = user;
                         ((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio = @"Pendiente";
@@ -532,15 +516,9 @@
                     [self.wSHandlerDelegate errorToken];
                 }
                 else {
-                   /* self.datos.fechaInicialTel = [NSDateFormatter changeDateFormatOfString:[StringUtils desEncriptar:self.fechaInicio
-                                                                                                       conToken:self.datos.token]
-                                                                                 from:@"yyyy-MM-dd"
-                                                                                   to:@"dd-MM-yyy"];
-                    self.datos.fechaFinalTel = [NSDateFormatter changeDateFormatOfString:[StringUtils desEncriptar:self.fechaFinal
-                                                                                                     conToken:self.datos.token]
-                                                                               from:@"yyyy-MM-dd"
-                                                                                 to:@"dd-MM-yyy"];
-                    */
+                  // OBTENER LAS FECHAS AQUI //
+                    
+                    
                     ((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio = stringResult;
                     [self.wSHandlerDelegate resultadoConsultaDominio:@"Exito"];
                 }
@@ -625,9 +603,11 @@
     }
 	else if ([elementName isEqualToString:@"fTelNamesIni"]){
 		self.telIni= self.currentElementString;
+        NSLog(@"EL VALOR DE LAS FECHAS INICIALES: %@",  [StringUtils desEncriptar:self.telIni conToken:self.token]);
 	}
 	else if ([elementName isEqualToString:@"fTelNamesFin"]){
 		self.telFin = self.currentElementString;
+        NSLog(@"EL VALOR DE LAS FECHAS INICIALES: %@",  [StringUtils desEncriptar:self.telFin conToken:self.token]);
 	}
     else if ([elementName isEqualToString:@"fechaIni"]){
         self.fechaInicio = self.currentElementString;

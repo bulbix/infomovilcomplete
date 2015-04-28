@@ -152,7 +152,7 @@
 	NSString *strTwitterValida = [[[[strTwitter stringByReplacingOccurrencesOfString:@"https://" withString:@""] stringByReplacingOccurrencesOfString:@"HTTPS://" withString:@""] stringByReplacingOccurrencesOfString:@"www." withString:@""] stringByReplacingOccurrencesOfString:@"WWW." withString:@""];
 	
 	//Expresion regular para validar la url de twitter
-	NSString *twitterRegex = @"(twitter|TWITTER)\\.(com|COM)\\/[a-zA-Z0-9\\*\\?\\+\\[\\(\\)\\{\\}\\^\\$\\|\\.\\/\\ ]{1,}";
+	NSString *twitterRegex = @"(twitter|TWITTER)\\.(com|COM)\\/[a-zA-Z0-9_\\*\\?\\+\\[\\(\\)\\{\\}\\^\\$\\|\\.\\/\\ ]{1,}";
 	NSPredicate * twitterTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",twitterRegex];
 	
 	if([twitterTest evaluateWithObject:strTwitterValida] == YES)

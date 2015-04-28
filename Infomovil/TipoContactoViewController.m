@@ -101,7 +101,6 @@
     [cell.imageView setImage:imagenTipo];
     [cell.textLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:17]];
 //    [cell.textLabel setTextColor:colorFuenteAzul];
-    
 //    [cell.textLabel setFrame:CGRectMake(250, cell.textLabel.frame.origin.y, cell.textLabel.frame.size.width, cell.textLabel.frame.size.height)];
     return cell;
 }

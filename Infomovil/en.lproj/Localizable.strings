@@ -154,8 +154,8 @@
 "tienesCuenta"="Already have an account?";
 "aceptaCondiciones"="By continuing, you accept the Terms and Privacy Conditions of Infomovil";
 "disponible"="www.%@.tel is available\nRegister it to publish your website.";
-"disponibleTel"="www.%@.tel is available\nRegister it to publish your website.";
-"disponibleRecurso"="www.infomovil.com/%@ is available\nRegister it to publish your website.";
+"disponibleTel"="www.%@.tel is available. Register it to publish your website.";
+"disponibleRecurso"="www.infomovil.com/%@ is available. Register it to publish your website.";
 
 "confirmalo"="";//"Publish your site and get on line!";
 

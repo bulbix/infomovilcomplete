@@ -286,6 +286,9 @@
     
     if( [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && [self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"] && indexPath.row > 1){
         cell.opacarContacto.hidden = NO;
+        if(IS_IPAD){
+            [cell.opacarContacto setFrame:CGRectMake(0, 0, 600, 63)];
+        }
     }else{
         cell.opacarContacto.hidden = YES;
     }
