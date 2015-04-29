@@ -28,6 +28,7 @@
 @property (nonatomic, strong) DatosUsuario *datosUsuario;
 
 -(void) actualizarGaleria;
+-(void) actualizarGaleriaDescripcion:(NSInteger)indexImage descripcion:(NSString *)descImage;
 -(void) eliminarImagen:(NSInteger)idImagen;
 -(void) insertarImagen:(GaleriaImagenes *) imagenInsertar;
 

@@ -241,7 +241,7 @@
      @"http://infomovil.com", @"caption",
      mensaje, @"description",
      @"http://www.infomovil.com/", @"link",
-     @"http://info-movil.com:8080/images/259-X-49.png",@"picture",
+     @"http://info-movil.net/templates/Index/images/logo_infomovil.png",@"picture",
      nil];
     //FBSession* session = [FBSession activeSession];
     // Invoke the dialog

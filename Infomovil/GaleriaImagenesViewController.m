@@ -263,9 +263,11 @@ NSLog(@"AQUI ESTA EN AGREGAR IMAGEN ");
     [cell.pieFoto setText:[self.datosUsuario.arregloDescripcionImagenGaleria objectAtIndex:indexPath.row]];
     
     if ([CommonUtils hayConexion]) {
+        
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:  self.urlImagen ]
-                                             cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                             cachePolicy:NSURLRequestReturnCacheDataElseLoad
                                          timeoutInterval:20.0];
+        //NSURLRequestUseProtocolCachePolicy
         NSError *requestError;
         NSURLResponse *urlResponse = nil;
         NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&requestError];
@@ -280,6 +282,9 @@ NSLog(@"AQUI ESTA EN AGREGAR IMAGEN ");
             UIImage *image = [UIImage imageWithData:response];
             [cell.imagenPrevia setImage:image];
         }
+        
+        
+        
     }else{
         [cell.imagenPrevia setImage:[UIImage imageNamed:@"previsualizador.png"]];
     }
