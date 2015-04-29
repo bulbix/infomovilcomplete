@@ -84,9 +84,9 @@ BOOL actualizo;
     
     nombreWebServiceTemplate = @[@"Divertido", @"Clasico", @"Creativo",@"Moderno", @"Estandar1"];
     
-    descripcionPlantilla = @[@"Estilo popular para Restaurantes, Pizzerias, Taquerías, Antros, Bares, etc.", @"Estilo popular para eventos formales, bodas, quinceaños, abogados, despachos, profesionistas, etc.", @"Estilo popular para creativos, músicos, estudiantes, fotógrafos, agencias, diseñadores, artistas,etc.",@"Estilo popular para empresas de tecnología, freelancers, distribuidoras de productos electrónicos, etc.", @"Estilo popular para todo tipo de productos y servicios."];
+    descripcionPlantilla = @[@"Estilo popular para Restaurantes, Pizzerías, Taquerías, Antros, Bares, etc.", @"Estilo popular para eventos formales, bodas, quinceaños, abogados, despachos, profesionistas, etc.", @"Estilo popular para creativos, músicos, estudiantes, fotógrafos, agencias, diseñadores, artistas,etc.",@"Estilo popular para empresas de tecnología, freelancers, distribuidoras de productos electrónicos, etc.", @"Estilo popular para todo tipo de productos y servicios."];
     
-    descripcionPlantillaEn = @[@"Popular style for Restaurants, Pizzerias, Taquerías, Nightclubs, Bars, etc.", @"Popular style for formal events, weddings, quinceanera, lawyers, law firms, professionals, etc.", @"Popular style for creatives, musicians, students, photographers, agencies, designers, artists, etc.", @"Popular style for technology companies, freelancers, distributors of electronic products, etc.", @"Popular style for all kinds of products and services"];
+    descripcionPlantillaEn = @[@"Popular style for Restaurants, Pizzerías, Taquerías, Nightclubs, Bars, etc.", @"Popular style for formal events, weddings, quinceanera, lawyers, law firms, professionals, etc.", @"Popular style for creatives, musicians, students, photographers, agencies, designers, artists, etc.", @"Popular style for technology companies, freelancers, distributors of electronic products, etc.", @"Popular style for all kinds of products and services"];
     
     
     self.scrollTemplate.tag = 1;

@@ -358,13 +358,10 @@
 }
 
 -(void) checaDominio {
-   
         operacionWS = 1;
         WS_HandlerDominio *dominioHandler = [[WS_HandlerDominio alloc] init];
         [dominioHandler setWSHandlerDelegate:self];
         [dominioHandler consultaDominio:textoDominio];
-   
-    
 }
 
 -(void) crearDominio {

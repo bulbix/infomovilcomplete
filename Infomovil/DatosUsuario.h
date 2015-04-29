@@ -130,6 +130,20 @@
 @property (nonatomic, strong) NSString *canal;
 @property (nonatomic, strong) NSString *campania;
 
+//// ESTAS SON LAS VARIABLES PARA CONSULTA DE USUARIO ///////
+
+@property (nonatomic, strong) NSString *consultaStatusCtrlDominio;
+@property (nonatomic, strong) NSString *consultaidDomain;
+@property (nonatomic, strong) NSString *consultaFechaCtrlIni;
+@property (nonatomic, strong) NSString *consultaVigente;
+@property (nonatomic, strong) NSString *consultaidCtrlDomain;
+@property (nonatomic, strong) NSString *consultaFechaCtrlFin;
+@property (nonatomic, strong) NSString *consultaDomainType;
+@property (nonatomic, strong) NSString *consultaDomainName;
+@property (nonatomic, strong) NSString *consultaLista;
+
+
+
 + (id)sharedInstance;
 
 - (id)initWithContentsOfFile:(NSString *)path;

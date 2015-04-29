@@ -17,8 +17,10 @@
     NSString *codigoError;
     NSString *statusDominio;
     NSString *codigoPromocional;
+     DominiosUsuario *dominioUsuario;
 }
 
+@property (nonatomic, strong) NSMutableArray *arregloDominiosUsuario;
 @property (nonatomic, strong) NSMutableArray *arregloItems;
 
 @end
@@ -125,7 +127,7 @@
 					 "<direccion1>%@</direccion1>"
 					 "<direccion2>%@</direccion2>"
 					 "<nPais>%@</nPais>"
-                     "<codigoCamp>%@</codigoCamp>"
+                     "<codigoCamp></codigoCamp>"
                      "<domainType>%@</domainType>"
                      "<idDominio>%@</idDominio>"
 					 "</UserDomainVO>"
@@ -149,7 +151,6 @@
 					 [StringUtils encriptar:dir1 conToken:self.datos.token != nil ? self.datos.token : passwordEncriptar],//dir1
 					 [StringUtils encriptar:dir2 conToken:self.datos.token != nil ? self.datos.token : passwordEncriptar],//dir2
 					 [StringUtils encriptar:nPais conToken:self.datos.token != nil ? self.datos.token : passwordEncriptar],//npais
-                     [StringUtils encriptar:codProm conToken:self.datos.token != nil ? self.datos.token: passwordEncriptar],//codProm
                      [StringUtils encriptar:domainType conToken:self.datos.token != nil ? self.datos.token: passwordEncriptar],
                      [StringUtils encriptar:idDominio conToken:self.datos.token != nil ? self.datos.token: passwordEncriptar]];
     
@@ -504,21 +505,28 @@
                            [StringUtils encriptar:[NSString stringWithFormat:@"%i", self.datos.idDominio] conToken:self.datos.token],
                            [StringUtils encriptar:self.datos.emailUsuario conToken:passwordEncriptar]];
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
+    
+    NSLog(@"LOS VALORES QUE ENVIO SON :%i   y   %@", self.datos.idDominio, self.datos.emailUsuario);
+    
     NSLog(@"La respuesta es en ws_handlerdominio consultaEstatusDominio %s", [dataResult bytes]);
+    
     if (dataResult != nil) {
+        self.arregloDominiosUsuario = [[NSMutableArray alloc] init];
+        dominioUsuario = [[DominiosUsuario alloc] init];
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
         [parser setDelegate:self];
         if ([parser parse]) {
                 self.datos = [DatosUsuario sharedInstance];
-            
-                NSString * stringResult = [StringUtils desEncriptar:self.resultado conToken:self.datos.token];
+                if ([self.arregloDominiosUsuario count] > 0) {
+                    self.datos.dominiosUsuario = self.arregloDominiosUsuario;
+                    NSLog(@"SI AGREGO EL DOMINIOSUSUARIO EL ARREGLO DE DOMINIOSUSUARIO Y CONTIENE %i", [self.datos.dominiosUsuario count] );
+                }
+                NSString * stringResult = [StringUtils desEncriptar:self.resultadoDominio conToken:self.datos.token];
                 if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                     [self.wSHandlerDelegate errorToken];
                 }
                 else {
-                  // OBTENER LAS FECHAS AQUI //
-                    
-                    
+                
                     ((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio = stringResult;
                     [self.wSHandlerDelegate resultadoConsultaDominio:@"Exito"];
                 }
@@ -589,7 +597,8 @@
     }
     // IRC ESTATUS DOMINIO //
     else if ([elementName isEqualToString:@"listUsuarioDominiosVO"]) {
-     //   dominioUsuario = [[DominiosUsuario alloc] init];
+        dominioUsuario = [[DominiosUsuario alloc] init];
+        self.currentElementString = [[NSMutableString alloc] init];
     }
     else if ([elementName isEqualToString:@"domainCtrlName"]) {
         self.currentElementString = [[NSMutableString alloc] init];
@@ -618,10 +627,11 @@
 }
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
+    self.datos = [DatosUsuario sharedInstance];
     if ([elementName isEqualToString:@"getExistDomainReturn"]) {
         self.resultado = self.currentElementString;
-        NSLog(@"EL RESULTADO ES GETEXISTDOMAINRETURN: %@", [StringUtils desEncriptar:self.resultado conToken:self.datos.token]);
-        NSLog(@"EL RESULTADO ES GETEXISTDOMAINRETURN CON OTRO TOKEN: %@", [StringUtils desEncriptar:self.resultado conToken:self.token]);
+        NSLog(@"EL RESULTADO ES GETEXISTDOMAINRETURN: %@", [StringUtils desEncriptar:datos.token conToken:self.datos.token]);
+        NSLog(@"EL RESULTADO ES GETEXISTDOMAINRETURN CON OTRO TOKEN: %@", [StringUtils desEncriptar:self.resultado conToken:datos.token]);
     }
     else if ([elementName isEqualToString:@"resultado"]) {
         self.resultado = self.currentElementString;
@@ -644,7 +654,7 @@
         self.fechaFinal = self.currentElementString;
 	}
     else if ([elementName isEqualToString:@"statusDominio"]) {
-        statusDominio = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
+            statusDominio = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
 
     }
     else if ([elementName isEqualToString:@"listStatusDomainVO"]) {
@@ -674,11 +684,84 @@
         codigoPromocional = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
     }
     
-    else if ([elementName isEqualToString:@"domainType"]) {
-#if DEBUG
-        NSLog(@"WS_ HANDLERDOMINIO DOMAINTYPE %@" ,[StringUtils desEncriptar:self.currentElementString conToken:self.token]);
-#endif
+ 
+    
+    ////////////////// CONSULTA ESTATUS DOMINIO ///////////////////////
+    
+    // IRC ESTATUS DOMINIO //
+  /*  else if ([elementName isEqualToString:@"listUsuarioDominiosVO"]) {
+        self.datos.consultaLista = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
     }
+    else if ([elementName isEqualToString:@"domainCtrlName"]) {
+        
+        self.datos.consultaDomainName =[StringUtils desEncriptar:self.currentElementString conToken:self.token];
+    }
+    else if ([elementName isEqualToString:@"domainType"]) {
+        
+        self.datos.consultaDomainType =[StringUtils desEncriptar:self.currentElementString conToken:self.token];
+    }
+    else if ([elementName isEqualToString:@"fechaCtrlFin"]) {
+     
+        self.datos.consultaFechaCtrlFin = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
+    }
+    else if ([elementName isEqualToString:@"fechaCtrlIni"]) {
+       
+       self.datos.consultaFechaCtrlIni = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
+    }
+    else if ([elementName isEqualToString:@"vigente"]) {
+       
+        self.datos.consultaVigente = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
+    }
+    else if ([elementName isEqualToString:@"idCtrlDomain"]) {
+      
+        self.datos.consultaidCtrlDomain = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
+    }
+    else if ([elementName isEqualToString:@"idDomain"]) {
+     
+        self.datos.consultaidDomain = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
+    }
+    else if ([elementName isEqualToString:@"statusCtrlDominio"]) {
+      
+        self.datos.consultaStatusCtrlDominio = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
+    }*/
+    else if ([elementName isEqualToString:@"listUsuarioDominiosVO"]) {
+        [dominioUsuario setVigente:@"SI"];
+        [self.arregloDominiosUsuario addObject:dominioUsuario];
+        self.resultadoDominio = self.currentElementString;
+        NSLog(@"ENTRO A LISTUSUARIODOMINIOSVO");
+    }
+    else if ([elementName isEqualToString:@"domainCtrlName"]) {
+        [dominioUsuario setDomainName:[StringUtils desEncriptar:self.currentElementString conToken:self.token]];
+        NSLog(@"EL NOMBRE DE DOMINIO ES %@", [StringUtils desEncriptar:self.currentElementString conToken:self.token]);
+    }
+    else if ([elementName isEqualToString:@"domainType"]) {
+        NSString *typeAux = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
+        [dominioUsuario setDomainType:typeAux];
+        NSLog(@"EL TIPO DE DOMINIO ES: %@", typeAux);
+    }
+    else if ([elementName isEqualToString:@"fechaCtrlFin"]) {
+        NSString *auxOffer = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
+        [dominioUsuario setFechaFin:auxOffer];
+        NSLog(@"LA FECHA DE CONTROL ES FIN: %@",auxOffer);
+    }
+    else if ([elementName isEqualToString:@"fechaCtrlIni"]) {
+        NSString *auxOffer = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
+        [dominioUsuario setFechaIni:auxOffer];
+        NSLog(@"LA FECHA DE CONTROL ES INI: %@",auxOffer);
+        
+    }
+    else if ([elementName isEqualToString:@"idCtrlDomain"]) {
+        NSString *strAux = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
+        [dominioUsuario setIdCtrlDomain:[strAux integerValue]];
+        NSLog(@"EL CONTROL DOMINIO: %@",strAux);
+    }
+    
+    else if ([elementName isEqualToString:@"statusCtrlDominio"]) {
+        [dominioUsuario setStatusDominio:[StringUtils desEncriptar:self.currentElementString conToken:self.token]];
+        NSLog(@"EL ESTATUS CONTROL DOMINIO: %@",[StringUtils desEncriptar:self.currentElementString conToken:self.token]);
+    }
+    
+    
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {

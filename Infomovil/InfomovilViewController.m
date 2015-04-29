@@ -217,7 +217,7 @@
 
 #pragma mark
 - (void)setBotonRegresar
-{
+{      NSLog(@"ENTRO A SET BOTON REGRESAR!!!");
     self.navigationItem.hidesBackButton = YES;
     UIImage *image						= [UIImage imageNamed:@"btnregresar.png"];
     UIButton *backButton				= [UIButton buttonWithType:UIButtonTypeCustom];
@@ -250,7 +250,7 @@
    
     // IRC comentado APPBOY //
     // [feedNavigationContext setAppboyDelegate:self];
-    
+    NSLog(@"ENTRO A MOSTRAR FEED");
     UIImage *image = [UIImage imageNamed:@"btnregresar.png"];
     
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -283,7 +283,7 @@
     
 }
 
--(IBAction)closeModalNaviagationView:(id)sender {
+-(IBAction)closeModalNaviagationView:(id)sender { 
     [self.navigationController popViewControllerAnimated:YES];
 }
 

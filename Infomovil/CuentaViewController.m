@@ -158,10 +158,10 @@ int opcionButton = 0 ;
         self.imgBeneficios.frame = CGRectMake(45, 265 ,324 , 161);
         
     }else if(IS_IPAD){
-        self.selector.frame = CGRectMake(20, 35, 728, 30);
-        self.scrollContenido.frame = CGRectMake(0, 70, 768, 1024);
+        self.selector.frame = CGRectMake(134, 80, 500, 35);
+        self.scrollContenido.frame = CGRectMake(0, 120, 768, 1024);
         [self.scrollContenido setContentSize:CGSizeMake(1536, 2048)];
-        self.viewCompraPlanPro.frame = CGRectMake(0, 0, 768, 1024);
+        self.viewCompraPlanPro.frame = CGRectMake(0, 0, 768, 900);
         self.vistaPlanPro.frame = CGRectMake(0, 0, 768, 1024);
         [self.vistaPlanPro setContentSize:CGSizeMake(768, 1024)];
         self.vistaDominio.frame = CGRectMake(768, 0, 768, 1024);

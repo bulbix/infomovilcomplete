@@ -21,6 +21,7 @@
 @property (nonatomic, strong) id<WS_HandlerProtocol> wSHandlerDelegate;
 @property (nonatomic, strong) NSString *currentElementString;
 @property (nonatomic, strong) NSString *resultado;
+@property (nonatomic, strong) NSString *resultadoDominio;
 @property (nonatomic, strong) NSString *token;
 @property (nonatomic, strong) NSString *devToken;
 @property (nonatomic, strong) NSString *telIni;

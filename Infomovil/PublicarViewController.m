@@ -43,13 +43,15 @@
 	NSInteger operacionWS2;
 	BOOL existeDominio;
     DominiosUsuario *dominioUsuario;
+   
 
 }
 @property (nonatomic, strong) NSMutableArray *arregloDominiosUsuario;
 @property (nonatomic, strong) AlertView *alertView;
 @property (nonatomic, strong) NSMutableArray *arregloPais;
 @property (nonatomic, strong) NSDictionary *prefijos;
-
+@property BOOL errorBandera;
+@property BOOL regresarBandera;
 @end
 
 @implementation PublicarViewController
@@ -61,6 +63,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.errorBandera = NO;
+        self.regresarBandera = NO;
     }
     return self;
 }
@@ -74,7 +78,21 @@
 	}else{
 		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"publicar", @" ") nombreImagen:@"plecaroja.png"];
 	}
-     
+    
+    
+    UIImage *image = [UIImage imageNamed:@"btnregresar.png"];
+    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [backButton setFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
+    [backButton setImage:image forState:UIControlStateNormal];
+    [backButton addTarget:self action:@selector(regresar:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *buttonBack = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+    self.navigationItem.leftBarButtonItem = buttonBack;
+
+    
+    
+    
+    
     operacionWS = WSOperacionNombrar;
     publicoDominio = NO;
 	creoDominio = NO;
@@ -155,7 +173,7 @@
         [self.labelPais setFrame:CGRectMake(84, 390, 400, 35)];
         [self.labelPais setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
         [self.vistaCombo setFrame:CGRectMake(84, 420, 600, 40)];
-        [self.imgBull setFrame:CGRectMake(550, 420, 20, 20)];
+        [self.imgBull setFrame:CGRectMake(540, 10, 20, 20)];
         [self.boton setFrame:CGRectMake(274, 500, 220, 40)];
         [self.boton.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
         
@@ -170,9 +188,6 @@
 	 NSLog(@"EL DOMINIO QUE QUIERE PUBLICAR ES: %@", self.datosUsuario.dominio);
     if([self.datosUsuario.tipoDeUsuario isEqualToString:@"canal"]){
         self.label1.text = [NSString stringWithFormat:NSLocalizedString(@"disponibleTel", nil),[self.datosUsuario dominio]];
-      
-        
-        
         
     }else if([self.datosUsuario.tipoDeUsuario isEqualToString:@"normal"] ){
         self.label1.text = [NSString stringWithFormat:NSLocalizedString(@"disponibleRecurso", nil),[self.datosUsuario dominio]];
@@ -191,8 +206,29 @@
 	selectOculto = YES;
 	existeDominio = NO;
 	operacionWS2 = 0;
-	
 }
+
+-(IBAction)regresar:(id)sender {
+    self.datosUsuario = [DatosUsuario sharedInstance];
+    if(self.errorBandera == YES){
+         self.regresarBandera = YES;
+        if( [CommonUtils hayConexion]){
+            [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
+            [self performSelectorInBackground:@selector(checaPublicacion) withObject:Nil];
+        }else{
+            self.regresarBandera = NO;
+            AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+            [alert show];
+            
+        }
+    }else{
+        [self.navigationController popViewControllerAnimated:YES];
+    
+    }
+}
+
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -200,7 +236,7 @@
     // Dispose of any resources that can be recreated.
 }
 
--(IBAction)guardarInformacion:(id)sender {
+-(IBAction)guardarInformacion:(id)sender { NSLog(@"ENTRO A GUARDAR INFORMACION");
 	[self confirmarDominio:nil];
 }
 
@@ -310,6 +346,25 @@
 -(void) resultadoConsultaDominio:(NSString *)resultado {
      NSLog(@"REGRESO POR RESULTADOCONSULTADOMINIO %@", resultado);
     self.datosUsuario = [DatosUsuario sharedInstance];
+    if(self.errorBandera == YES || self.regresarBandera == YES){
+        if([resultado isEqualToString: @"Exito"]){
+            self.errorBandera =  NO;
+            self.regresarBandera = NO;
+            if (self.alertView)
+            {
+                [NSThread sleepForTimeInterval:1];
+                [self.alertView hide];
+            }
+            MenuPasosViewController *pasoView = [[MenuPasosViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
+            [self.navigationController pushViewController:pasoView animated:YES];
+            AlertView *alert = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"felicidades", @" ") message:NSLocalizedString(@"nombradoExitoso", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+            [alert show];
+        }
+        
+    }else{
+        
+    
+    
 	if(operacionWS == 1){
         if ([resultado isEqualToString:@"No existe"]) {
             existeDominio = YES;
@@ -352,6 +407,8 @@
     
 		[self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
 	}
+        
+    }
 }
 -(void) errorToken {
     if (self.alertView)
@@ -363,13 +420,19 @@
         self.datosUsuario.dominio = nil;
         AlertView *alertAct = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"errorPublicacion", Nil) andAlertViewType:AlertViewTypeInfo];
         [alertAct show];
-    
+    self.errorBandera = YES;
     
 }
 
 -(void) errorConsultaWS {
-     NSLog(@"REGRESO POR ERROR CONSULTAWS");
-    //[self performSelectorOnMainThread:@selector(errorPublicar) withObject:Nil waitUntilDone:YES];
+    NSLog(@"REGRESO POR ERROR CONSULTAWS");
+    [NSThread sleepForTimeInterval:1];
+    [self.alertView hide];
+        AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"errorPublicacion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+        [alert show];
+        self.errorBandera = YES;
+    [NSThread sleepForTimeInterval:1];
+    [self.alertView hide];
 }
 
 -(void) errorPublicar {
@@ -379,6 +442,7 @@
         [self.alertView hide];
     }
     [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
+    self.errorBandera = YES;
    
 }
 
@@ -442,7 +506,7 @@
 	 
 }
 
-- (IBAction)mostrarOpcion:(UIButton *)sender {
+- (IBAction)mostrarOpcion:(UIButton *)sender { NSLog(@"MOSTRAR OPCION");
 	SelectorPaisViewController *selector = [[SelectorPaisViewController alloc] initWithNibName:@"SelectorPaisViewController" bundle:Nil];
     selector.publicarController = self;
 	if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
@@ -450,39 +514,63 @@
 	}else{
 		selector.nombreTituloVista = @"plecaroja.png";
 	}
-    //selector.nombreTituloVista = @"barraverde.png";
     [self.navigationController pushViewController:selector animated:YES];
 }
 
 - (IBAction)confirmarDominio:(id)sender {
+    NSLog(@"ENTRO A CONFIRMAR DOMINIO!!!!!ª");
 	BOOL resultado = [self validarCampos];
-	
-	[[self view] endEditing:YES];
-    if(resultado){
-        if( [CommonUtils hayConexion]){
-            [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
-            [self performSelectorInBackground:@selector(checaDominio) withObject:Nil];
+    [[self view] endEditing:YES];
+    if(self.errorBandera == YES){
+        if(resultado){
+            if( [CommonUtils hayConexion]){
+               [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
+                [self performSelectorInBackground:@selector(checaPublicacion) withObject:Nil];
+                
+                
+            }else{
+                AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+                [alert show];
+        
+            }
         }else{
-            AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+            AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message: mensajeError dominio:Nil andAlertViewType:AlertViewTypeInfo];
             [alert show];
         
         }
+    }else{
+        
+        if(resultado){
+            if( [CommonUtils hayConexion]){
+                [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
+                [self performSelectorInBackground:@selector(checaDominio) withObject:Nil];
+            }else{
+                AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+                [alert show];
+            }
     
-	}else{
-        AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message: mensajeError dominio:Nil andAlertViewType:AlertViewTypeInfo];
-        [alert show];
-	}
+        }else{
+            AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message: mensajeError dominio:Nil andAlertViewType:AlertViewTypeInfo];
+            [alert show];
+        }
+    }
 }
 
 -(void) checaDominio {
    
-        DatosUsuario * datos = [DatosUsuario sharedInstance];
+       self.datosUsuario = [DatosUsuario sharedInstance];
         operacionWS = 1;
         WS_HandlerDominio *dominioHandler = [[WS_HandlerDominio alloc] init];
         [dominioHandler setWSHandlerDelegate:self];
-        [dominioHandler consultaDominio:datos.dominio];
+        [dominioHandler consultaDominio:self.datosUsuario.dominio];
   
     
+}
+
+-(void) checaPublicacion{
+    WS_HandlerDominio *dominioHandler = [[WS_HandlerDominio alloc] init];
+    [dominioHandler setWSHandlerDelegate:self];
+    [dominioHandler consultaEstatusDominio];
 }
 
 -(void)crearDominio2{
@@ -506,7 +594,7 @@
 }
 
 
--(void) accionAceptar {
+-(void) accionAceptar { NSLog(@"ENTRO EN ACCION ACEPTAR!!!!!!! PUBLICARVC");
     if (statusRespuesta == RespuestaStatusPendiente) {
         MenuPasosViewController *pasoView = [[MenuPasosViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
         [self.navigationController pushViewController:pasoView animated:YES];
@@ -516,7 +604,7 @@
 #pragma mark Keyboard Controls Delegate
 
 - (void)keyboardControlsDonePressed:(BSKeyboardControls *)keyboardControls
-{
+{   NSLog(@"SE ENTRO AL KEYBOARD PRESSED");
     [self.view endEditing:YES];
 }
 

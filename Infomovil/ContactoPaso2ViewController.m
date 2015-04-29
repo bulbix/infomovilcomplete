@@ -140,7 +140,7 @@
                         self.txtTelefono.frame = CGRectMake(70, 120, 280, 30);
                         [self.txtDescripcion setFrame:CGRectMake(self.txtDescripcion.frame.origin.x, 180, self.txtDescripcion.frame.size.width, self.txtDescripcion.frame.size.height)];
                     }else if(IS_IPAD){
-                         [self.scrollVista setContentSize:CGSizeMake(768, 800)];
+                         [self.scrollVista setContentSize:CGSizeMake(500, 800)];
                         self.txtTelefono.frame = CGRectMake(20, 120, 600, 30);
                         [self.txtDescripcion setFrame:CGRectMake(self.txtDescripcion.frame.origin.x, 181, self.txtDescripcion.frame.size.width, self.txtDescripcion.frame.size.height)];
                     }else{
@@ -235,7 +235,7 @@
                     [self.txtDescripcion setFrame:CGRectMake(self.txtDescripcion.frame.origin.x, 180, self.txtDescripcion.frame.size.width, self.txtDescripcion.frame.size.height)];
                     [self.labelDescripcion setFrame:CGRectMake(self.labelDescripcion.frame.origin.x, 158, self.labelDescripcion.frame.size.width, self.labelDescripcion.frame.size.height)];
                 }else if(IS_IPAD){
-                    [self.scrollVista setContentSize:CGSizeMake(768,800)];
+                    [self.scrollVista setContentSize:CGSizeMake(500,800)];
                     self.txtTelefono.frame = CGRectMake(20, 86, 600, 30);
                     [self.txtDescripcion setFrame:CGRectMake(self.txtDescripcion.frame.origin.x, 185, self.txtDescripcion.frame.size.width, self.txtDescripcion.frame.size.height)];
                     [self.labelDescripcion setFrame:CGRectMake(self.labelDescripcion.frame.origin.x, 160, self.labelDescripcion.frame.size.width, self.labelDescripcion.frame.size.height)];
@@ -307,7 +307,7 @@
                         self.txtTelefono.frame = CGRectMake(20, 120, 280, 30);
                         [self.txtDescripcion setFrame:CGRectMake(self.txtDescripcion.frame.origin.x, 180, self.txtDescripcion.frame.size.width, self.txtDescripcion.frame.size.height)];
                     }else if(IS_IPAD){
-                        [self.scrollVista setContentSize:CGSizeMake(768, 800)];
+                        [self.scrollVista setContentSize:CGSizeMake(500, 800)];
                         self.txtTelefono.frame = CGRectMake(20, 120, 600, 30);
                         [self.txtDescripcion setFrame:CGRectMake(self.txtDescripcion.frame.origin.x, 185, self.txtDescripcion.frame.size.width, self.txtDescripcion.frame.size.height)];
                     }else{
@@ -385,7 +385,7 @@
                     [self.txtDescripcion setFrame:CGRectMake(self.txtDescripcion.frame.origin.x, 180, self.txtDescripcion.frame.size.width, self.txtDescripcion.frame.size.height)];
                     [self.labelDescripcion setFrame:CGRectMake(self.labelDescripcion.frame.origin.x, 158, self.labelDescripcion.frame.size.width, self.labelDescripcion.frame.size.height)];
                 }else if(IS_IPAD){
-                    [self.scrollVista setContentSize:CGSizeMake(768,800)];
+                    [self.scrollVista setContentSize:CGSizeMake(500,800)];
                     self.txtTelefono.frame = CGRectMake(20, 86, 600, 30);
                     [self.txtDescripcion setFrame:CGRectMake(self.txtDescripcion.frame.origin.x, 185, self.txtDescripcion.frame.size.width, self.txtDescripcion.frame.size.height)];
                     [self.labelDescripcion setFrame:CGRectMake(self.labelDescripcion.frame.origin.x, 124, self.labelDescripcion.frame.size.width, self.labelDescripcion.frame.size.height)];

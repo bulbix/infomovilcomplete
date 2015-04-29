@@ -26,7 +26,9 @@
     ItemsDominio *itemDominio;
     DominiosUsuario *dominioUsuario;
     BOOL esRecurso;
+    
 }
+
 
 @property CLLocationDegrees latitude;
 @property CLLocationDegrees longitude;
@@ -1001,7 +1003,6 @@
     }
     else if ([elementName isEqualToString:@"domainType"]) {
         NSString *typeAux = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
-          NSLog(@"ENTRO A DOMAINTYPE CON VALOR DE %@", typeAux);
         if ([typeAux isEqualToString:@"recurso"]) {
             esRecurso = YES;
         }
@@ -1012,18 +1013,15 @@
     }
     else if ([elementName isEqualToString:@"vigente"]) {
         NSString *typeAux = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
-        NSLog(@"EL VALOR DE VIGENTE ES: %@", typeAux);
         [dominioUsuario setVigente:typeAux];
     }
     else if ([elementName isEqualToString:@"fechaCtrlFin"]) {
         NSString *auxOffer = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
-       // auxOffer = [auxOffer substringToIndex: MIN(10, [auxOffer length])];
          [dominioUsuario setFechaFin:auxOffer];
        
     }
     else if ([elementName isEqualToString:@"fechaCtrlIni"]) {
         NSString *auxOffer = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
-        //auxOffer = [auxOffer substringToIndex: MIN(10, [auxOffer length])];
         [dominioUsuario setFechaIni:auxOffer];
       
     }
@@ -1034,7 +1032,6 @@
 
     else if ([elementName isEqualToString:@"statusCtrlDominio"]) {
         [dominioUsuario setStatusDominio:[StringUtils desEncriptar:self.currentElementString conToken:self.token]];
-        NSLog(@"EL STATUSCTRLDOMINIO ES: %@",[StringUtils desEncriptar:self.currentElementString conToken:self.token]);
     }
     else if ([elementName isEqualToString:@"statusVisible"]) {
         NSString *strAux = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
