@@ -10,7 +10,8 @@
 #import "WS_HandlerProtocol.h"
 typedef enum {
     GaleriaImagenesAgregar,
-    GaleriaImagenesEditar
+    GaleriaImagenesEditar,
+    GaleriaImagenesOfertaGuardar
 }GaleriaImagenesOperacion;
 
 

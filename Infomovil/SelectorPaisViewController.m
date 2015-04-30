@@ -42,9 +42,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    [self.vistaCircular setImage:[UIImage imageNamed:@"plecaverde.png"]];
-//    [self.vistaCircular setImage:[UIImage imageNamed:@"plecacreasitio.png"]];
-//    [self.tituloVista setText:NSLocalizedString(@"pais", @" ")];
     
     codigoPais = [NSLocale ISOCountryCodes];
     local = [[NSLocale alloc] initWithLocaleIdentifier:[[NSLocale currentLocale] localeIdentifier]];
@@ -62,8 +59,6 @@
         [self.botonConfiguracion setFrame:CGRectMake(240, 0, 80, 68)];
     }
     self.navigationItem.rightBarButtonItem = Nil;
-    
-//    self.tablaPais.layer.borderWidth = 0.5f;
     self.tablaPais.layer.cornerRadius = 5.0f;
     
     [self fillDataSourceArray];
@@ -86,7 +81,6 @@
 	}else{
 		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"pais", @" ") nombreImagen:@"NBverde"];
 	}
-   // [self.vistaInferior setHidden:YES];
 }
 
 - (void)didReceiveMemoryWarning

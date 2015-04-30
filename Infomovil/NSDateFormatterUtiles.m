@@ -16,8 +16,7 @@
 	@try
 	{
 		NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-//        [dateFormatter setLocale:[[NSLocale preferredLanguages] objectAtIndex:0]];
-//        dateFormatter.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
+
 		[dateFormatter setDateFormat:format];
 		
 		NSDate *date = [dateFormatter dateFromString:string];
@@ -83,6 +82,7 @@
 	[dateFormatter setDateFormat:format];
 	@try
 	{
+        
 		NSString *strFecha = [dateFormatter stringFromDate:date];
 		
 		if ([format rangeOfString:@"HH"].location != NSNotFound)
