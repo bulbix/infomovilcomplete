@@ -66,12 +66,19 @@
             self.leyenda4.frame = CGRectMake(255, 930, 200, 25);
             self.leyenda5.frame = CGRectMake(385,930, 150, 25);
             
+        }else if(IS_IPHONE_4){
+            self.leyenda1.frame = CGRectMake(47, 410, 200, 21);
+            self.leyenda3.frame = CGRectMake(45, 432, 28, 21);
+            self.leyenda4.frame = CGRectMake(65, 433, 144, 21);
+            self.leyenda2.frame = CGRectMake(217, 411, 80, 21);
+            self.leyenda5.frame = CGRectMake(190,432, 83, 21);
         }else{
             self.leyenda1.frame = CGRectMake(47, 510, 200, 21);
             self.leyenda3.frame = CGRectMake(45, 532, 28, 21);
             self.leyenda4.frame = CGRectMake(65, 533, 144, 21);
             self.leyenda2.frame = CGRectMake(217, 511, 80, 21);
             self.leyenda5.frame = CGRectMake(190,532, 83, 21);
+        
         }
 		
 	}else{
@@ -95,7 +102,15 @@
             self.leyenda4.frame = CGRectMake(246, 932, 200, 25);
             self.leyenda5.frame = CGRectMake(385,931, 150, 25);
       
+      }else if(IS_IPHONE_4){
+          self.leyenda1.frame = CGRectMake(6, 410, 152, 21);
+          self.leyenda2.frame = CGRectMake(160, 411, 152, 21);
+          self.leyenda3.frame = CGRectMake(37, 432, 28, 21);
+          self.leyenda4.frame = CGRectMake(65, 433, 144, 21);
+          self.leyenda5.frame = CGRectMake(202,432, 83, 21);
       }else{
+          
+          
             self.leyenda1.frame = CGRectMake(6, 510, 152, 21);
             self.leyenda2.frame = CGRectMake(160, 511, 152, 21);
             self.leyenda3.frame = CGRectMake(37, 532, 28, 21);

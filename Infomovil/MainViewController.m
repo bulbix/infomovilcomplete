@@ -393,16 +393,10 @@
         [self fbDidlogout]; // CErrar sesion de facebook
         NSString *strMensaje;
         switch (respuestaError) {
-            case -4:
-                strMensaje = NSLocalizedString(@"txtCuentaCancelada", Nil);
-                break;
             case -3:
                 strMensaje = NSLocalizedString(@"errorLogin", Nil);
                 break;
             case -2:
-                strMensaje = NSLocalizedString(@"errorLogin", Nil);
-                break;
-            case 0:
                 strMensaje = NSLocalizedString(@"errorLogin", Nil);
                 break;
             default:

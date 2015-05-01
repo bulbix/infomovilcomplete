@@ -522,7 +522,7 @@
 
 "proximamentePlanPro" = "COMING SOON!";
 
-"vistaPreviaPlanPro" = "Previous view";
+"vistaPreviaPlanPro" = "preview";
 
 "elegirEstilo" = "Choose style";
 "etiquetaEstilo" = "STYLE";
@@ -537,3 +537,4 @@
 "tiempoAgotado" = "Request timed out. Try again" ;
 "errorCompra" = "Has not been able to make your purchase. Please try again." ;
 "errorPublicacion" = "Has not been able to register your website please try again.";
+"faltaImagenActualizar" = "You must select an image before upgrading";

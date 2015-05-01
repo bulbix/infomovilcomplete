@@ -89,16 +89,10 @@
     }else {
         NSString *strMensaje;
         switch (idDominio) {
-            case -4:
-                strMensaje = NSLocalizedString(@"txtCuentaCancelada", Nil);
-                break;
             case -3:
                 strMensaje = NSLocalizedString(@"errorLogin", Nil);
                 break;
             case -2:
-                strMensaje = NSLocalizedString(@"errorLogin", Nil);
-                break;
-            case -1:
                 strMensaje = NSLocalizedString(@"errorLogin", Nil);
                 break;
             default:

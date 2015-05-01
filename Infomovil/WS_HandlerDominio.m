@@ -104,7 +104,7 @@
 -(void) crearUsuario:(NSString *)email conNombre:(NSString *)user password:(NSString *)pass status:(NSString *)s nombre:(NSString *)nom direccion1:(NSString *)dir1 direccion2:(NSString *)dir2 pais:(NSString *) nPais codigoPromocion:(NSString *)codProm tipoDominio:(NSString *)domainType idDominio:(NSString *)idDominio {
     self.datos = [DatosUsuario sharedInstance];
     NSString *stringXML;
-		
+		NSLog(@"EL CREAR USUARIO ENTRO A INSERTUSERDOMAIN1");
 		stringXML = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.webservice.infomovil.org/\">"
 					 "<soapenv:Header/>"
 					 "<soapenv:Body>"
@@ -167,11 +167,17 @@
         if ([parser parse]) {
             if (requiereEncriptar) {
                self.datos = [DatosUsuario sharedInstance];
+                NSLog(@"EL TOKEN QUE TENGO PARA ENCRIPTAR ES: %@",self.datos.token);
+                
+                if(self.token != nil){
+                    self.datos.token = self.token;
+                
+                }
                 self.datos.fechaDominioIni = [StringUtils desEncriptar:self.telIni conToken:self.token];
                 self.datos.fechaDominioFin = [StringUtils desEncriptar:self.telFin conToken:self.token];
                 NSLog(@"LOS VALORES QUE ME CAUSAN RUIDO SON %@ Y EL OTRO ES: %@", self.datos.token,[StringUtils desEncriptar:self.resultado conToken:self.datos.token] );
                 
-                NSString * stringResult = [StringUtils desEncriptar:self.resultado conToken:self.datos.token];
+                NSString * stringResult = [StringUtils desEncriptar:self.resultado conToken:passwordEncriptar];
                 if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                     NSLog(@"HUBO UN ERROR DE TOKEN AL CREAR AL USUARIO crearUsuario !");
                     [self.wSHandlerDelegate errorToken];
@@ -630,14 +636,15 @@
     self.datos = [DatosUsuario sharedInstance];
     if ([elementName isEqualToString:@"getExistDomainReturn"]) {
         self.resultado = self.currentElementString;
-        NSLog(@"EL RESULTADO ES GETEXISTDOMAINRETURN: %@", [StringUtils desEncriptar:datos.token conToken:self.datos.token]);
-        NSLog(@"EL RESULTADO ES GETEXISTDOMAINRETURN CON OTRO TOKEN: %@", [StringUtils desEncriptar:self.resultado conToken:datos.token]);
+        NSLog(@"EL RESULTADO ES GETEXISTDOMAINRETURN: %@", [StringUtils desEncriptar:self.resultado conToken:self.datos.token]);
+        NSLog(@"EL RESULTADO ES GETEXISTDOMAINRETURN CON OTRO TOKEN: %@", [StringUtils desEncriptar:self.resultado conToken:self.token]);
     }
     else if ([elementName isEqualToString:@"resultado"]) {
         self.resultado = self.currentElementString;
     }
     else if ([elementName isEqualToString:@"token"]) {
         self.token = [StringUtils desEncriptar:self.currentElementString conToken:passwordEncriptar];
+        NSLog(@"EL SELF TOKEN ES: %@", self.token);
     }
 	else if ([elementName isEqualToString:@"fTelNamesIni"]){
 		self.telIni= self.currentElementString;
@@ -654,7 +661,7 @@
         self.fechaFinal = self.currentElementString;
 	}
     else if ([elementName isEqualToString:@"statusDominio"]) {
-            statusDominio = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
+        statusDominio = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
 
     }
     else if ([elementName isEqualToString:@"listStatusDomainVO"]) {

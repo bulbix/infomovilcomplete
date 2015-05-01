@@ -645,3 +645,4 @@
 "tiempoAgotado" = "Se ha agotado el tiempo de espera, inténtalo nuevamente." ;
 "errorCompra" = "No se ha podido realizar tu compra. Por favor inténtalo nuevamente." ;
 "errorPublicacion" = "No se ha podido registrar tu sitio web por favor inténtalo nuevamente.";
+"faltaImagenActualizar" = "Debes seleccionar una imagen antes de actualizar";

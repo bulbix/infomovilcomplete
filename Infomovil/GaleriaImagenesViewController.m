@@ -246,6 +246,7 @@ NSLog(@"AQUI ESTA EN AGREGAR IMAGEN ");
 #pragma mark - UITableViewDatasource
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSLog(@"LA TABLA DE NUMERO DE FILAS ES: %i", [self.arregloImagenes count]);
     return [self.arregloImagenes count];
 }
 
@@ -260,7 +261,15 @@ NSLog(@"AQUI ESTA EN AGREGAR IMAGEN ");
         cell = [nib objectAtIndex:0];
     }
     cell.vistaGaleria.layer.cornerRadius = 5.0f;
-    [cell.pieFoto setText:[self.datosUsuario.arregloDescripcionImagenGaleria objectAtIndex:indexPath.row]];
+    cell.pieFoto.frame = CGRectMake(69, 11, 450, 50);
+    NSLog(@"LA CANTIDAD DE DESCRIPCIONES QUE TIENE EL ARREGLO SON: %i", [self.datosUsuario.arregloDescripcionImagenGaleria count]);
+    @try {
+        [cell.pieFoto setText:[self.datosUsuario.arregloDescripcionImagenGaleria objectAtIndex:indexPath.row]];
+    }
+    @catch (NSException *exception) {
+        [cell.pieFoto setText:@""];
+    }
+    
     
     if ([CommonUtils hayConexion]) {
         

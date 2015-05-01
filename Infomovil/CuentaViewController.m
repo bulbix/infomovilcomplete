@@ -140,7 +140,7 @@ int opcionButton = 0 ;
         
         
     }else if(IS_STANDARD_IPHONE_6_PLUS){
-        self.selector.frame = CGRectMake(20, 10, 374, 30);
+        self.selector.frame = CGRectMake(30, 10, 354, 30);
         self.scrollContenido.frame = CGRectMake(0, 50, 414, 736);
         [self.scrollContenido setContentSize:CGSizeMake(828, 1472)];
         self.viewCompraPlanPro.frame = CGRectMake(0, 0, 414, 736);
@@ -262,7 +262,7 @@ int opcionButton = 0 ;
             }else if(IS_STANDARD_IPHONE_6){
                 [self.MensajePlanProComprado setFrame:CGRectMake(70, 60, 220, 150)];
             }else if(IS_IPAD){
-                [self.MensajePlanProComprado setFrame:CGRectMake(184, 120, 400, 400)];
+                [self.MensajePlanProComprado setFrame:CGRectMake(184, 10, 400, 300)];
                 [self.MensajePlanProComprado setFont:[UIFont fontWithName:@"Avenir-Book" size:22]];
                 
             }

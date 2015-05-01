@@ -75,7 +75,7 @@
         self.datosUsuario.auxStrSesionPass = @"";
     
     }
-    NSString *version = versionDefault;
+    
     NSString *stringXML;
         stringXML = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.webservice.infomovil.org/\">"
                      "<soapenv:Header/>"
@@ -101,7 +101,7 @@
                      [StringUtils encriptar:@"false" conToken:passwordEncriptar],
                      [StringUtils encriptar:@"" conToken:passwordEncriptar],
                      [StringUtils encriptar:@"APP STORE" conToken:passwordEncriptar],
-                     [StringUtils encriptar:version conToken:passwordEncriptar]];
+                     [StringUtils encriptar:versionDefault conToken:passwordEncriptar]];
     
 #ifdef DEBUG
     NSLog(@"El string es %@", stringXML);
@@ -549,7 +549,7 @@
     else if ([elementName isEqualToString:@"listRecordNaptrVo"]) {
         [self.arregloContactos addObject:self.contactoActual];
         self.currentElementString = [[NSMutableString alloc] init];
-        NSLog(@"Entro a contactos 1 vez!!");
+       
     }
     else if ([elementName isEqualToString:@"claveContacto"]) {
         [self.contactoActual setIdContacto:[self.currentElementString integerValue]];

@@ -18,6 +18,7 @@
 @property(nonatomic, strong) UIImageView *vistaCircular;
 @property (nonatomic) BOOL modifico;
 
+
 @property (nonatomic, strong) BSKeyboardControls *keyboardControls;
 @property (nonatomic, strong) DatosUsuario *datosUsuario;
 

@@ -146,7 +146,7 @@
         
        
             if ([[_promocionActual pathImageOffer] length] > 0)
-			{
+            {   NSLog(@"el pathImageOffer sigue teniendo caracteres y son : %i", [[_promocionActual pathImageOffer] length]);
                 Datos *datosAux = [arregloSec1 objectAtIndex:1];
                 [datosAux setEstatus:YES];
             } else {

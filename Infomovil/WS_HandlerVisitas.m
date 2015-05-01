@@ -46,7 +46,6 @@
             }
             
                 DatosUsuario *datos = [DatosUsuario sharedInstance];
-                datos.token = self.token;
                 datos.arregloVisitas = self.arregloVisitas;
                 [self.wSHandlerDelegate resultadoConsultaDominio:@"Exito"];
             
@@ -88,7 +87,6 @@
             }
             
                 DatosUsuario *datos = [DatosUsuario sharedInstance];
-                datos.token = self.token;
                 datos.arregloVisitantes = self.arregloVisitas;
                 [self.wSHandlerDelegate resultadoConsultaDominio:@"Exito"];
             
@@ -131,10 +129,8 @@
                 [self.wSHandlerDelegate errorToken];
             }
                 DatosUsuario *datos = [DatosUsuario sharedInstance];
-                datos.token = self.token;
                 datos.arregloVisitantes = self.arregloVisitas;
                 [self.wSHandlerDelegate resultadoConsultaDominio:@"Exito"];
-            
             
         }
         else {

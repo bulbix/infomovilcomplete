@@ -61,7 +61,6 @@
         if ([parser parse]) {
             if (requiereEncriptar) {
                 datos = [DatosUsuario sharedInstance];
-                datos.token = self.token;
                 NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
                 if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                     [self.direccionDelegate errorToken];
@@ -130,7 +129,6 @@
         if ([parser parse]) {
             if (requiereEncriptar) {
                 datos = [DatosUsuario sharedInstance];
-                datos.token = self.token;
 
                 if (self.token == nil) {
                     [self.direccionDelegate errorToken];
@@ -199,7 +197,6 @@
         if ([parser parse]) {
             if (requiereEncriptar) {
                 datos = [DatosUsuario sharedInstance];
-                datos.token = self.token;
                 NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
                 if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                     [self.direccionDelegate errorToken];
@@ -269,7 +266,6 @@
         if ([parser parse]) {
             if (requiereEncriptar) {
                 datos = [DatosUsuario sharedInstance];
-                datos.token = self.token;
                 NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
                 
                 if (stringResult == nil)
@@ -354,7 +350,6 @@
         if ([parser parse]) {
             if (requiereEncriptar) {
                 datos = [DatosUsuario sharedInstance];
-                datos.token = self.token;
                 NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
                 if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                     [self.direccionDelegate errorToken];
@@ -432,7 +427,6 @@
         if ([parser parse]) {
             if (requiereEncriptar) {
                 datos = [DatosUsuario sharedInstance];
-                datos.token = self.token;
                 NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
                 if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                     [self.direccionDelegate errorToken];
@@ -515,7 +509,6 @@
         if ([parser parse]) {
             datos = [DatosUsuario sharedInstance];
             if (requiereEncriptar) {
-                datos.token = self.token;
 
                 //NSString *x = [StringUtils desEncriptar:self.idDominio conToken:self.token];
                 NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
@@ -588,7 +581,6 @@
         if ([parser parse]) {
 			datos = [DatosUsuario sharedInstance];
             if (requiereEncriptar) {
-                datos.token = self.token;
                 NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
                 if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                     [self.direccionDelegate errorToken];
@@ -613,8 +605,6 @@
                 }
                 
             }else{
-//            datos = [DatosUsuario sharedInstance];
-//            datos.token = self.token;
 				[self.direccionDelegate resultadoConsultaDominio:self.resultado];
 			}
         }

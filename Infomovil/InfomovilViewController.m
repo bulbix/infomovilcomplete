@@ -27,6 +27,7 @@
 @synthesize modifico;
 
 
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -217,7 +218,7 @@
 
 #pragma mark
 - (void)setBotonRegresar
-{      NSLog(@"ENTRO A SET BOTON REGRESAR!!!");
+{      NSLog(@"ENTRO A SET BOTON REGRESAR EN INFOMOVIL VIEWCONTROLLE!!!");
     self.navigationItem.hidesBackButton = YES;
     UIImage *image						= [UIImage imageNamed:@"btnregresar.png"];
     UIButton *backButton				= [UIButton buttonWithType:UIButtonTypeCustom];

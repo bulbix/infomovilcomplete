@@ -50,7 +50,6 @@
         if ([parser parse]) {
 			if(requiereEncriptar){
                 datos = [DatosUsuario sharedInstance];
-                datos.token = self.token;
                 NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
                 if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                     [self.cambiarPasswordDelegate errorToken];
@@ -96,8 +95,6 @@
         if ([parser parse])
         {
             datos = [DatosUsuario sharedInstance];
-            datos.token = self.token;
-            //[self.cambiarPasswordDelegate resultadoPassword:[StringUtils desEncriptar:self.currentElementString conToken:datos.token]];
             NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
             if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                 [self.cambiarPasswordDelegate errorToken];

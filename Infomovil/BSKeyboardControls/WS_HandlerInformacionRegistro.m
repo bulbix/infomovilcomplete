@@ -94,7 +94,6 @@
         if ([parser parse]) {
 			if(requiereEncriptar){
                 datos = [DatosUsuario sharedInstance];
-                datos.token = self.token;
                 NSString *stringResult = [StringUtils desEncriptar:self.currentElementString conToken:datos.token];
                 if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                     [self.informacionRegistroDelegate errorToken];

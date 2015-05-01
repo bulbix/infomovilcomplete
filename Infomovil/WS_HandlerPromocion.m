@@ -36,7 +36,6 @@
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
         [parser setDelegate:self];
         if ([parser parse]) {
-            datos.token = self.token;
             datos.urlPromocion = nil;
             NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
             if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
@@ -111,8 +110,8 @@
         [parser setDelegate:self];
         if ([parser parse])
 		{
-            datos.token = self.token;
-            NSString *stringResult = [StringUtils desEncriptar:_resultado conToken:self.token];
+            
+            NSString *stringResult = [StringUtils desEncriptar:_resultado conToken:datos.token];
             if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                 [self.promocionDelegate errorToken];
             }
@@ -121,9 +120,12 @@
                 if (idAux > 0) {
                     self.oferta.idOffer = idAux;
                     datos.promocionActual = self.oferta;
+                    datos.urlPromocion = [StringUtils desEncriptar:self.urlPromocion conToken:datos.token];
+                    NSLog(@"EL RESULTADO ACTUALIZAR PROMOCION ES UN EXITO");
                     [self.promocionDelegate resultadoConsultaDominio:@"Exito"];
                 }
                 else {
+                    
                     [self.promocionDelegate resultadoConsultaDominio:@"No Exito"];
                 }
             }
@@ -161,6 +163,9 @@
     }
     else if ([elementName isEqualToString:@"token"]) {
         self.token = [StringUtils desEncriptar:self.currentElementString conToken:passwordEncriptar];
+    }
+    else if ([elementName isEqualToString:@"urlImagen"]) {
+        self.urlPromocion = self.currentElementString;
     }
 }
 

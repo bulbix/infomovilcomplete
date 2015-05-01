@@ -101,7 +101,6 @@
         if ([parser parse]) {
             if (requiereEncriptar) {
                 datos = [DatosUsuario sharedInstance];
-                datos.token = self.token;
                 if (self.token == nil || [[self.token stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0) {
                     [self.contactosDelegate errorToken];
                 }
@@ -209,7 +208,6 @@
         if ([parser parse]) {
             if (requiereEncriptar) {
                 DatosUsuario *datos = [DatosUsuario sharedInstance];
-                datos.token = self.token;
                 NSString *stringResult = ([ids count] > 0) ? @"Exito" : [StringUtils desEncriptar:self.resultado conToken:datos.token];
                 if ( stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                     [self.contactosDelegate errorToken];
@@ -296,7 +294,6 @@
         if ([parser parse]) {
             if (requiereEncriptar) {
                 DatosUsuario *datos = [DatosUsuario sharedInstance];
-                datos.token = self.token;
                 NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
                 if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0 || [stringResult isEqualToString:@"Error de token"]) {
                     [self.contactosDelegate errorToken];
@@ -414,9 +411,7 @@
         if ([parser parse]) {
             if (requiereEncriptar) {
                 datos = [DatosUsuario sharedInstance];
-				if(datos.token == Nil){
-					datos.token = self.token;
-				}
+				
                 if (self.token == nil || [[self.token stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0) {
                     [self.contactosDelegate errorToken];
                 }
@@ -491,7 +486,6 @@
         if ([parser parse]) {
             if (requiereEncriptar) {
                 DatosUsuario *datos = [DatosUsuario sharedInstance];
-                datos.token = self.token;
                 if (self.token == nil || [[self.token stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0) {
                     [self.contactosDelegate errorToken];
                 }
