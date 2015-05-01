@@ -437,8 +437,7 @@
             [alert show];
         }
         else {
-            MenuPasosViewController *comparte = [[MenuPasosViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
-            [self.navigationController pushViewController:comparte animated:YES];
+           [self.navigationController popViewControllerAnimated:YES];
             
         }
         return;
@@ -449,8 +448,7 @@
             [alert show];
         }
         else {
-            MenuPasosViewController *comparte = [[MenuPasosViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
-            [self.navigationController pushViewController:comparte animated:YES];
+            [self.navigationController popViewControllerAnimated:YES];
            
         }
         
@@ -471,7 +469,6 @@
             [self.navigationController popViewControllerAnimated:YES];
         }
     }
-    
 }
 
 -(void) accionNo { NSLog(@"NO ACEPTO");
