@@ -15,7 +15,7 @@
 #import "AppsFlyerTracker.h"
 #import "WS_HandlerLogin.h"
 #import "AppboyKit.h"
-#import "InicioViewController.h"
+#import "MainViewController.h"
 
 @interface FormularioRegistroViewController (){
     UITextField *textoSeleccionado;
@@ -66,6 +66,8 @@
     id tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:@"FormularioViewController"
            value:@"Home Screen"];
+    
+    
 
     self.navigationItem.rightBarButtonItem = Nil;
     
@@ -530,7 +532,7 @@
     [alertAct show];
     [StringUtils terminarSession];
     
-    InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"InicioViewController" bundle:Nil];
+    MainViewController *inicio = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:Nil];
     [self.navigationController pushViewController:inicio animated:YES];
 }
 
@@ -546,7 +548,6 @@
         [NSThread sleepForTimeInterval:1];
         [self.alerta hide];
     }
-   // [[AlertView initWithDelegate:Nil message:NSLocalizedString(@"ocurrioError", Nil) andAlertViewType:AlertViewTypeInfo] show];
 }
 
 -(BOOL) validaCampos {

@@ -19,7 +19,7 @@
 #import "TextAndGraphAlertView.h"
 #import "AppsFlyerTracker.h"
 #import "AppDelegate.h"
-#import "InicioViewController.h"
+#import "MainViewController.h"
 
 @interface ListaTelefonosViewController () <ContactosCellDelegate> {
     BOOL actualizoContactos;
@@ -444,7 +444,7 @@
     [alertAct show];
     [StringUtils terminarSession];
     
-    InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"InicioViewController" bundle:Nil];
+    MainViewController *inicio = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:Nil];
     [self.navigationController pushViewController:inicio animated:YES];
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     [prefs setInteger:0 forKey:@"ActualizandoEstatus1SolaVez"];

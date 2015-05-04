@@ -16,6 +16,8 @@
 #import "AppsFlyerTracker.h"
 #import <FacebookSDK/FacebookSDK.h>
 #import "AppboyKit.h"
+#import "MenuRegistroViewController.h"
+
 @import LocalAuthentication;
 
 @interface MainViewController () <FBLoginViewDelegate> {
@@ -74,8 +76,8 @@
         self.raya2.frame = CGRectMake(215, 265, 175, 2);
         
         [self.scrollLogin setContentSize:CGSizeMake(414, 500)];
-        self.txtEmail.frame = CGRectMake(20,300, 375, 47);
-        self.txtPassword.frame = CGRectMake(20, 355, 375, 47);
+        self.txtEmail.frame = CGRectMake(20,300, 375, 50);
+        self.txtPassword.frame = CGRectMake(20, 355, 375, 50);
         self.boton.frame = CGRectMake(20, 460, 375, 50);
         
         self.label.frame = CGRectMake(220,411 ,165, 31);
@@ -91,11 +93,10 @@
         
         self.scrollLogin.frame = CGRectMake(0, 0, 768, 1024);
         [self.scrollLogin setContentSize:CGSizeMake(768, 1024)];
-        
+        UIColor *color = [UIColor whiteColor];
         self.txtEmail.frame = CGRectMake(196,430, 375, 61);
         [self.txtEmail setBackground:[UIImage imageNamed:@"input_semitrans@1x" ]];
         [self.txtEmail setBackgroundColor:[UIColor clearColor]];
-        UIColor *color = [UIColor whiteColor];
         self.txtEmail.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"mainLabelCorreo", nil) attributes:@{NSForegroundColorAttributeName: color}];
         [self.txtEmail setFont: [UIFont fontWithName:@"Avenir-Book" size:18]];
         UIImage *lineImg = [UIImage imageNamed:@"line@1x.png"];
@@ -124,18 +125,49 @@
         
         self.boton.frame = CGRectMake(202, 640, 362, 48);
         [self.boton.titleLabel setFont: [UIFont fontWithName:@"Avenir-Book" size:18]];
-        [self.boton setBackgroundColor:[UIColor clearColor]];
-        self.boton.layer.borderWidth = 1.0f;
-        self.boton.layer.cornerRadius = 15.0f;
-        self.boton.layer.borderColor = [UIColor whiteColor].CGColor;
-        [self mostrarLogo];
+      
+        
+        
         [self.raya1 setHidden:YES];
         [self.raya2 setHidden:YES];
         [self.o setHidden:YES];
         [self.imgLogo setHidden:YES];
-    }else{
-        loginView.frame = CGRectMake(20, 130, 280, 55);
+    }else if(IS_IPHONE_4){
+        self.txtEmail.frame = CGRectMake(16,232, 288, 45);
+        self.txtPassword.frame = CGRectMake(16, 287, 288, 45);
         [self.scrollLogin setContentSize:CGSizeMake(320, 420)];
+         loginView.frame = CGRectMake(20, 140, 280, 40);
+        UIColor *color = [UIColor whiteColor];
+        [self.txtPassword setBackgroundColor:[UIColor clearColor]];
+        [self.txtPassword setBackground:[UIImage imageNamed:@"input_semitrans@1x" ]];
+        self.txtPassword.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"contrasena", nil) attributes:@{NSForegroundColorAttributeName: color}];
+        [self.txtEmail setBackground:[UIImage imageNamed:@"input_semitrans@1x" ]];
+        [self.txtEmail setBackgroundColor:[UIColor clearColor]];
+        self.txtEmail.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"mainLabelCorreo", nil) attributes:@{NSForegroundColorAttributeName: color}];
+        if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
+            [self.recordarbtn setFrame:CGRectMake(22, 350, 211, 22)];
+        }else{
+             [self.recordarbtn setFrame:CGRectMake(22, 350, 186, 22)];
+        }
+        
+    
+    }else{
+        [self.scrollLogin setContentSize:CGSizeMake(320, 420)];
+        loginView.frame = CGRectMake(20, 120, 280, 50);
+        UIColor *color = [UIColor whiteColor];
+        self.txtEmail.frame = CGRectMake(16,232, 288, 55);
+        self.txtPassword.frame = CGRectMake(16, 287, 288, 55);
+        [self.txtPassword setBackgroundColor:[UIColor clearColor]];
+        [self.txtPassword setBackground:[UIImage imageNamed:@"input_semitrans@1x" ]];
+        self.txtPassword.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"contrasena", nil) attributes:@{NSForegroundColorAttributeName: color}];
+        [self.txtEmail setBackground:[UIImage imageNamed:@"input_semitrans@1x" ]];
+        [self.txtEmail setBackgroundColor:[UIColor clearColor]];
+        self.txtEmail.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"mainLabelCorreo", nil) attributes:@{NSForegroundColorAttributeName: color}];
+        if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
+            [self.recordarbtn setFrame:CGRectMake(22, 350, 211, 22)];
+        }else{
+            [self.recordarbtn setFrame:CGRectMake(22, 350, 186, 22)];
+        }
     }
     
     for (id obj in loginView.subviews)
@@ -146,18 +178,18 @@
             UIButton * loginButton =  obj;
             UIImage *loginImage;
             if(IS_STANDARD_IPHONE_6){
-                loginButton.frame =CGRectMake(0,0, 335, 55);
-                loginImage = [UIImage imageNamed:@"btn_RegistroFacebook_6iPhone.png"];
+                loginButton.frame =CGRectMake(0,0, 335, 50);
+                loginImage = [UIImage imageNamed:@"btn_facebook_335_55.png"];
             }else if (IS_STANDARD_IPHONE_6_PLUS){
-                loginButton.frame =CGRectMake(0,0, 375, 55);
-                loginImage = [UIImage imageNamed:@"btn_RegistroFacebook_6iphonePlus.png"];
+                loginButton.frame =CGRectMake(0,0, 375, 50);
+                loginImage = [UIImage imageNamed:@"btn_facebook_375x55.png"];
             }else if(IS_IPAD){
                 loginButton.frame =CGRectMake(0, 0, 375, 61);
-                loginImage = [UIImage imageNamed:@"btn_RegistroFacebook_6iphonePlus.png"];
+                loginImage = [UIImage imageNamed:@"btn_facebook_375x61.png"];
             
             }else{
-                loginButton.frame =CGRectMake(0,0, 280, 55);
-                loginImage = [UIImage imageNamed:@"btn_RegistroFacebook.png"];
+                loginButton.frame =CGRectMake(0,0, 280, 50);
+                loginImage = [UIImage imageNamed:@"btn_facebook_280x55.png"];
             }
             
             [loginButton setBackgroundImage:loginImage forState:UIControlStateNormal];
@@ -176,17 +208,17 @@
             loginLabel.textAlignment = NSTextAlignmentCenter;
             
             if(IS_STANDARD_IPHONE_6){
-                loginLabel.frame =CGRectMake(15,6, 335, 45);
+                loginLabel.frame =CGRectMake(0,0, 335, 50);
                 [loginLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
             }else if(IS_STANDARD_IPHONE_6_PLUS){
-                loginLabel.frame =CGRectMake(25,6, 375, 45);
+                loginLabel.frame =CGRectMake(0,0, 375, 50);
                 [loginLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
             
             }else if(IS_IPAD){
-                loginLabel.frame =CGRectMake(10,6, 375, 45);
+                loginLabel.frame =CGRectMake(0,0, 375, 61);
                 [loginLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:18]];
             }else{
-                loginLabel.frame =CGRectMake(15,6, 280, 45);
+                loginLabel.frame =CGRectMake(0,0, 280, 50);
                 [loginLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
             }
             
@@ -254,6 +286,7 @@
     [super viewWillAppear:animated];
     [self.navigationController.navigationBar setHidden:YES];
    
+    /*
     UIButton *botonRegresar = [UIButton buttonWithType:UIButtonTypeCustom];
     if(IS_IPAD){
         [botonRegresar setBackgroundImage:[UIImage imageNamed:@"btn_back_iPad"] forState:UIControlStateNormal];
@@ -262,16 +295,21 @@
         [botonRegresar setBackgroundImage:[UIImage imageNamed:@"backNuevo.png"] forState:UIControlStateNormal];
         [botonRegresar setFrame:CGRectMake(10, 25, 36, 36)];
     }
-    
+   
     [botonRegresar addTarget:self action:@selector(regresarMenu:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:botonRegresar];
-	
+	*/
     [self.recordarbtn setTitle:NSLocalizedString(@"recordarCuenta", nil) forState:UIControlStateNormal]  ;
 	self.txtEmail.placeholder = NSLocalizedString(@"mainLabelCorreo", nil);
 	self.txtPassword.placeholder = NSLocalizedString(@"contrasena", nil);
 	self.label.text = NSLocalizedString(@"mainLabel", nil);
 	[self.boton setTitle:NSLocalizedString(@"mainBoton", nil) forState:UIControlStateNormal]  ;
-	[self.vistaInferior setHidden:YES];
+    [self.btnRegistrate setTitle:NSLocalizedString(@"cuentaTodavia",nil) forState:UIControlStateNormal];
+    self.editaTuSitio.text = NSLocalizedString(@"editaTuSitio",nil);
+    [self.vistaInferior setHidden:YES];
+    self.boton.layer.cornerRadius = 10.0f;
+    self.boton.layer.borderWidth = 1.0f;
+    self.boton.layer.borderColor = [UIColor whiteColor].CGColor;
  
     
 }
@@ -590,5 +628,15 @@
         [cookies deleteCookie:cookie];
     }
 }
+
+- (IBAction)irARegistrate:(id)sender {
+    
+    MenuRegistroViewController *registro = [[MenuRegistroViewController alloc] initWithNibName:@"MenuRegistroViewController" bundle:nil];
+    [self.navigationController pushViewController:registro animated:YES];
+}
+
+
+
+
 
 @end

@@ -16,7 +16,7 @@
 #import "UIViewDefs.h"
 #import "GaleriaPaso2ViewController.h"
 #import "NSStringUtiles.h"
-#import "InicioViewController.h"
+#import "MainViewController.h"
 
 #define VIGENCIA_FORMAT @"dd - MMMM - YYYY"
 
@@ -679,7 +679,7 @@
     AlertView *alertAct = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
     [alertAct show];
     [StringUtils terminarSession];
-    InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"InicioViewController" bundle:Nil];
+    MainViewController *inicio = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:Nil];
     [self.navigationController pushViewController:inicio animated:YES];
     
     

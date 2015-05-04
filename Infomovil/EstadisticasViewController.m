@@ -18,7 +18,7 @@
 #import "PNChartDelegate.h"
 #import "MenuPasosViewController.h"
 #import "AppsFlyerTracker.h"
-#import "InicioViewController.h"
+#import "MainViewController.h"
 
 
 @interface EstadisticasViewController () <PNChartDelegate> {
@@ -250,7 +250,7 @@
 -(void) accionAceptar {
     if (errorToken) {
         [StringUtils terminarSession];
-        InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
+        MainViewController *inicio = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:Nil];
         [self.navigationController pushViewController:inicio animated:YES];
     }
 }
@@ -449,7 +449,7 @@
     [alertAct show];
     [StringUtils terminarSession];
     
-    InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"InicioViewController" bundle:Nil];
+    MainViewController *inicio = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:Nil];
     [self.navigationController pushViewController:inicio animated:YES];
 }
 

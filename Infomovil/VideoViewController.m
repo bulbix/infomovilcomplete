@@ -12,7 +12,7 @@
 #import "VistaVideoViewController.h"
 #import "WS_HandlerVideo.h"
 #import "JsonParserVideo.h"
-#import "InicioViewController.h"
+#import "MainViewController.h"
 
 @interface VideoViewController () {
     //    BOOL modifico;
@@ -304,7 +304,7 @@
     [alertAct show];
     [StringUtils terminarSession];
     
-    InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"InicioViewController" bundle:Nil];
+    MainViewController *inicio = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:Nil];
     [self.navigationController pushViewController:inicio animated:YES];
 }
 

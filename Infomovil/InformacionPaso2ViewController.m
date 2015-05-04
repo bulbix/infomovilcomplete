@@ -11,7 +11,7 @@
 #import "InformacionAdicional.h"
 #import "KeywordDataModel.h"
 #import "WS_ActualizarDireccion.h"
-#import "InicioViewController.h"
+#import "MainViewController.h"
 
 @interface InformacionPaso2ViewController () {
 //    BOOL self.modifico;
@@ -390,7 +390,7 @@
     [alertAct show];
     [StringUtils terminarSession];
     
-    InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"InicioViewController" bundle:Nil];
+    MainViewController *inicio = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:Nil];
     [self.navigationController pushViewController:inicio animated:YES];
 }
 

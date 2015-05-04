@@ -12,7 +12,7 @@
 #import "CompartirPublicacionViewController.h"
 #import "MenuPasosViewController.h"
 #import "WS_HandlerPublicar.h"
-#import "InicioViewController.h"
+#import "MainViewController.h"
 
 @interface NombrarViewController () {
 //    BOOL modifico;
@@ -248,7 +248,7 @@
 		[self.datosUsuario eliminarDatos];
 		((AppDelegate*)	[[UIApplication sharedApplication] delegate]).statusDominio = @"Gratuito";
 		
-        InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
+        MainViewController *inicio = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:Nil];
         [self.navigationController pushViewController:inicio animated:YES];
 	}
     else if (existeDominio) {
@@ -423,7 +423,7 @@
     [alertAct show];
     [StringUtils terminarSession];
     
-    InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"InicioViewController" bundle:Nil];
+    MainViewController *inicio = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:Nil];
     [self.navigationController pushViewController:inicio animated:YES];
 }
 

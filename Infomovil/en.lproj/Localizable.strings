@@ -497,7 +497,7 @@
 "subtituloCuentaPlanPro" = "Choose your plan enjoys the benefits";
 "BeneficiosCuentaPlanPro" = "PRO PLAN BENEFITS";
 // Mensaje pantalla Registrar Usuario //
-"msjRegistrarUsuarioFB" = "If you register with Facebook never post to your wall without your permission";
+"msjRegistrarUsuarioFB" = "never post to your wall without your permission";
 
 //Pantalla Crear Editar //
 "inicioRapido" = "Quick start";
@@ -507,7 +507,7 @@
 
 
 //IRC inicio //
-"recordarCuenta" = "Remember me";
+"recordarCuenta" = "Remember my account";
 "crearCuentaRegistrar" = "Create account";
 "contrasenaRegistrar" = " Password";
 "confirmarContrasena" = " Confirm password";
@@ -538,3 +538,5 @@
 "errorCompra" = "Has not been able to make your purchase. Please try again." ;
 "errorPublicacion" = "Has not been able to register your website please try again.";
 "faltaImagenActualizar" = "You must select an image before upgrading";
+"cuentaTodavia"="Don't have an Account? Register"; // or You do not have an account yet?
+"editaTuSitio" = "Edit your site";

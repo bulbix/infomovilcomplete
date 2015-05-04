@@ -13,8 +13,9 @@
 #import "MenuPasosViewController.h"
 #import "WS_HandlerCambiarPassword.h"
 #import "WS_HandlerDominio.h"
+#import "MainViewController.h"
 #import "FeedbackViewController.h"
-#import "InicioViewController.h"
+
 
 @interface ConfiguracionViewController () <WS_HandlerProtocol> {
 	
@@ -233,7 +234,7 @@
     ((AppDelegate*)	[[UIApplication sharedApplication] delegate]).statusDominio = @"Gratuito";
     
     
-    InicioViewController *Inicio = [[InicioViewController alloc] initWithNibName:@"InicioViewController" bundle:Nil];
+    MainViewController *Inicio = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:Nil];
     [self.navigationController pushViewController:Inicio animated:YES];
 }
 -(void) actualizarPassword {
@@ -290,7 +291,7 @@
     [alertAct show];
     [StringUtils terminarSession];
     
-    InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"InicioViewController" bundle:Nil];
+    MainViewController *inicio = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:Nil];
     [self.navigationController pushViewController:inicio animated:YES];
 }
 -(void) resultadoPassword:(NSString *)resultado {

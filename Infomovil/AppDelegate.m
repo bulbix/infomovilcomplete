@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "InicioViewController.h"
+
 #import "WS_ItemsDominio.h"
 
 #import <GooglePlus/GooglePlus.h>
@@ -21,7 +21,7 @@
 #import "iVersion.h"
 #import "SesionActivaViewController.h"
 #import <HockeySDK/HockeySDK.h>
-
+#import "MainViewController.h"
 
 @implementation AppDelegate
 
@@ -89,7 +89,7 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
         SesionActivaViewController *inicioController = [[SesionActivaViewController alloc] initWithNibName:@"SesionActiva" bundle:nil];
         self.navigationController = [[UINavigationController alloc] initWithRootViewController:inicioController];
     }else{
-        InicioViewController *inicioController = [[InicioViewController alloc] initWithNibName:@"InicioViewController" bundle:nil];
+        MainViewController *inicioController = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
         self.navigationController = [[UINavigationController alloc] initWithRootViewController:inicioController];
        
     }

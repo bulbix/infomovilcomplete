@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FormularioRegistroViewController">
@@ -14,7 +14,6 @@
                 <outlet property="label2" destination="Gpy-6T-dn8" id="y7c-ou-4Ot"/>
                 <outlet property="label4" destination="LuM-Rv-gT8" id="zpg-70-XGh"/>
                 <outlet property="label5" destination="bie-rO-kXj" id="h1f-1u-aFJ"/>
-                <outlet property="labelCodigo" destination="883-zh-2lZ" id="jlF-Oi-d4O"/>
                 <outlet property="labelCodigoPais" destination="ORs-oa-bNQ" id="ucJ-jJ-YdE"/>
                 <outlet property="labelInfo" destination="c7D-OK-h3h" id="YJ1-5j-XOa"/>
                 <outlet property="labelNumeroMovil" destination="bie-rO-kXj" id="3CU-bO-RKS"/>
@@ -51,29 +50,12 @@
                                 <outlet property="delegate" destination="-1" id="p4O-cm-Kwx"/>
                             </connections>
                         </textField>
-                        <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Contraseña" minimumFontSize="17" id="8a3-4z-icp">
-                            <rect key="frame" x="20" y="197" width="280" height="45"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                            <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" secureTextEntry="YES"/>
-                            <connections>
-                                <outlet property="delegate" destination="-1" id="ihB-Mi-a91"/>
-                            </connections>
-                        </textField>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100/100" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="c7D-OK-h3h">
                             <rect key="frame" x="284" y="575" width="33" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="8"/>
                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="883-zh-2lZ">
-                            <rect key="frame" x="20" y="294" width="280" height="21"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                            <color key="textColor" red="0.1843137255" green="0.63921568630000003" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Confirmar contraseña" minimumFontSize="17" id="igI-0R-LV1">
@@ -106,6 +88,16 @@
                                 <action selector="verificarNombre:" destination="-1" eventType="touchUpInside" id="LQK-Bk-4M3"/>
                             </connections>
                         </button>
+                        <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Contraseña" minimumFontSize="17" id="8a3-4z-icp">
+                            <rect key="frame" x="20" y="197" width="280" height="45"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" secureTextEntry="YES"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="ihB-Mi-a91"/>
+                            </connections>
+                        </textField>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>

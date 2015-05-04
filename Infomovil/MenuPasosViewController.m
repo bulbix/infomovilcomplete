@@ -24,7 +24,7 @@
 #import "AppDelegate.h"
 #import "AppboyKit.h"
 #import "ElegirPlantillaViewController.h"
-#import "InicioViewController.h"
+#import "MainViewController.h"
 #import "DominiosUsuario.h"
 
 #define IS_IPHONE5 (([[UIScreen mainScreen] bounds].size.height-568)?NO:YES)
@@ -425,7 +425,7 @@
     ((AppDelegate*)	[[UIApplication sharedApplication] delegate]).statusDominio = @"Gratuito";
    
     
-    InicioViewController *Inicio = [[InicioViewController alloc] initWithNibName:@"InicioViewController" bundle:Nil];
+    MainViewController *Inicio = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:Nil];
     [self.navigationController pushViewController:Inicio animated:YES];
    
 }

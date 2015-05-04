@@ -12,7 +12,7 @@
 #import "WS_HandlerGaleria.h"
 #import "OffertRecord.h"
 #import "NSStringUtiles.h"
-#import "InicioViewController.h"
+#import "MainViewController.h"
 #import "MenuPasosViewController.h"
 
 @interface GaleriaPaso2ViewController () {
@@ -709,7 +709,7 @@
     [alertAct show];
     [StringUtils terminarSession];
     
-    InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"InicioViewController" bundle:Nil];
+    MainViewController *inicio = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:Nil];
     [self.navigationController pushViewController:inicio animated:YES];
 }
 

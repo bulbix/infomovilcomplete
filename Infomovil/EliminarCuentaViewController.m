@@ -9,7 +9,7 @@
 #import "EliminarCuentaViewController.h"
 #import "WS_HandlerDominio.h"
 #import "CambiarPasswordViewController.h"
-#import "InicioViewController.h"
+#import "MainViewController.h"
 
 @interface EliminarCuentaViewController () {
     BOOL selectOculto;
@@ -271,7 +271,7 @@
     }
     if (exito) {
      
-        InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
+        MainViewController *inicio = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:Nil];
         [self.navigationController pushViewController:inicio animated:YES];
 		self.alertEliminar = [AlertView initWithDelegate:self message:NSLocalizedString(@"cuentaEliminada", nil) andAlertViewType:AlertViewTypeInfo];
 		[self.alertEliminar show];
@@ -333,7 +333,7 @@
     [alertAct show];
     [StringUtils terminarSession];
     
-    InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"InicioViewController" bundle:Nil];
+    MainViewController *inicio = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:Nil];
     [self.navigationController pushViewController:inicio animated:YES];
 }
 

@@ -720,6 +720,10 @@
 		BFCB96E91AA611B600DDD753 /* HockeySDK.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = BFCB96E41AA611B600DDD753 /* HockeySDK.xcconfig */; };
 		BFCB96EA1AA611B600DDD753 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BFCB96E51AA611B600DDD753 /* HockeySDKResources.bundle */; };
 		BFCB96EB1AA611B600DDD753 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = BFCB96E61AA611B600DDD753 /* LICENSE */; };
+		BFCC3E6B1AF81A3F003791B8 /* btn_facebook_280x55.png in Resources */ = {isa = PBXBuildFile; fileRef = BFCC3E671AF81A3F003791B8 /* btn_facebook_280x55.png */; };
+		BFCC3E6C1AF81A3F003791B8 /* btn_facebook_335_55.png in Resources */ = {isa = PBXBuildFile; fileRef = BFCC3E681AF81A3F003791B8 /* btn_facebook_335_55.png */; };
+		BFCC3E6D1AF81A3F003791B8 /* btn_facebook_375x55.png in Resources */ = {isa = PBXBuildFile; fileRef = BFCC3E691AF81A3F003791B8 /* btn_facebook_375x55.png */; };
+		BFCC3E6E1AF81A3F003791B8 /* btn_facebook_375x61.png in Resources */ = {isa = PBXBuildFile; fileRef = BFCC3E6A1AF81A3F003791B8 /* btn_facebook_375x61.png */; };
 		BFCC5BEA1AC4C8C9009B38F1 /* tempOff-.png in Resources */ = {isa = PBXBuildFile; fileRef = BFCC5BE91AC4C8C9009B38F1 /* tempOff-.png */; };
 		BFCC5BEC1AC4CFE9009B38F1 /* tempOn-.png in Resources */ = {isa = PBXBuildFile; fileRef = BFCC5BEB1AC4CFE9009B38F1 /* tempOn-.png */; };
 		BFD0AB951A9E44E800D5FF63 /* VerEjemplo.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFD0AB941A9E44E800D5FF63 /* VerEjemplo.xib */; };
@@ -1791,6 +1795,10 @@
 		BFCB96E41AA611B600DDD753 /* HockeySDK.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = HockeySDK.xcconfig; sourceTree = "<group>"; };
 		BFCB96E51AA611B600DDD753 /* HockeySDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HockeySDKResources.bundle; sourceTree = "<group>"; };
 		BFCB96E61AA611B600DDD753 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		BFCC3E671AF81A3F003791B8 /* btn_facebook_280x55.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_facebook_280x55.png; sourceTree = "<group>"; };
+		BFCC3E681AF81A3F003791B8 /* btn_facebook_335_55.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_facebook_335_55.png; sourceTree = "<group>"; };
+		BFCC3E691AF81A3F003791B8 /* btn_facebook_375x55.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_facebook_375x55.png; sourceTree = "<group>"; };
+		BFCC3E6A1AF81A3F003791B8 /* btn_facebook_375x61.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_facebook_375x61.png; sourceTree = "<group>"; };
 		BFCC5BE91AC4C8C9009B38F1 /* tempOff-.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tempOff-.png"; path = "Infomovil/imagenesInfomovil/Templates/tempOff-.png"; sourceTree = SOURCE_ROOT; };
 		BFCC5BEB1AC4CFE9009B38F1 /* tempOn-.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tempOn-.png"; path = "Infomovil/imagenesInfomovil/Templates/tempOn-.png"; sourceTree = SOURCE_ROOT; };
 		BFD0AB941A9E44E800D5FF63 /* VerEjemplo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VerEjemplo.xib; sourceTree = "<group>"; };
@@ -3443,6 +3451,10 @@
 		BFED49661AAFBB4C009E33A9 /* LoginFacebook */ = {
 			isa = PBXGroup;
 			children = (
+				BFCC3E671AF81A3F003791B8 /* btn_facebook_280x55.png */,
+				BFCC3E681AF81A3F003791B8 /* btn_facebook_335_55.png */,
+				BFCC3E691AF81A3F003791B8 /* btn_facebook_375x55.png */,
+				BFCC3E6A1AF81A3F003791B8 /* btn_facebook_375x61.png */,
 				BF891C6A1ABA07390082C107 /* btn_RegistroFacebook_6iPhone.png */,
 				BF891C6B1ABA07390082C107 /* btn_RegistroFacebook_6iphonePlus.png */,
 				BFED49671AAFBB4C009E33A9 /* btn_RegistroFacebook.png */,
@@ -3552,6 +3564,7 @@
 				0F9F52BF189890C6000F9FA5 /* clinkedin.png in Resources */,
 				BF15BD5A1AA54DD2009A6398 /* 6mInac-en.png in Resources */,
 				0F9F533418989413000F9FA5 /* clinkedin@2x.png in Resources */,
+				BFCC3E6D1AF81A3F003791B8 /* btn_facebook_375x55.png in Resources */,
 				BF15BD491AA54DD2009A6398 /* 3mAc-en@2x.png in Resources */,
 				BF891C761ABA75AB0082C107 /* tempOff@3x.png in Resources */,
 				0F68946818E5412400025050 /* plecacreasitio@2x.png in Resources */,
@@ -3746,6 +3759,7 @@
 				0F4C66EB18F5E1C400CC6DA8 /* btnsino.png in Resources */,
 				0FCB0F6018E2137600C37A37 /* compartirtwitter.png in Resources */,
 				65714AD61919AD8900BC2647 /* micompartiron@2x.png in Resources */,
+				BFCC3E6E1AF81A3F003791B8 /* btn_facebook_375x61.png in Resources */,
 				0F5104DA18BEC37400538435 /* flechas@2x.png in Resources */,
 				0F5104D418BE50CF00538435 /* CatalogoInformacion.plist in Resources */,
 				0F578E3718BC0A2400888C87 /* barra@2x.png in Resources */,
@@ -3830,6 +3844,7 @@
 				BF15BD351AA54DD2009A6398 /* 12mInac-en.png in Resources */,
 				0FCB0F6D18E25CBD00C37A37 /* plecalogin.png in Resources */,
 				0F9F532018989413000F9FA5 /* 4@2x.png in Resources */,
+				BFCC3E6B1AF81A3F003791B8 /* btn_facebook_280x55.png in Resources */,
 				65581B1619350C8000B5D4ED /* btnexampleEn@2x.png in Resources */,
 				0F9F533218989413000F9FA5 /* cfax@2x.png in Resources */,
 				0F6CBD2819081F540077B065 /* TipsViewController.xib in Resources */,
@@ -3972,6 +3987,7 @@
 				BF891C6D1ABA07390082C107 /* btn_RegistroFacebook_6iphonePlus.png in Resources */,
 				0F9F534818989413000F9FA5 /* micuentaon@2x.png in Resources */,
 				0F680EF918ECD79300A02347 /* mireportes.png in Resources */,
+				BFCC3E6C1AF81A3F003791B8 /* btn_facebook_335_55.png in Resources */,
 				0F59BEB518CA32A30037FE8A /* c-twitter.png in Resources */,
 				0FF4210C189983C9003EEBB1 /* tomarfoto.png in Resources */,
 				65065DD2190FEB6600189316 /* tips3.png in Resources */,

@@ -9,7 +9,7 @@
 #import "EditarPaso2ViewController.h"
 #import "KeywordDataModel.h"
 #import "WS_ActualizarDireccion.h"
-#import "InicioViewController.h"
+#import "MainViewController.h"
 
 @interface EditarPaso2ViewController () {
     UITextField *textoEditado;
@@ -502,7 +502,7 @@
     AlertView *alertAct = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
     [alertAct show];
     [StringUtils terminarSession];
-    InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"InicioViewController" bundle:Nil];
+    MainViewController *inicio = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:Nil];
     [self.navigationController pushViewController:inicio animated:YES];
 }
 

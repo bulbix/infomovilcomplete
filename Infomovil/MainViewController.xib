@@ -9,6 +9,8 @@
             <connections>
                 <outlet property="boton" destination="Juy-4m-fqk" id="1nv-5S-xn7"/>
                 <outlet property="btnOlvidePass" destination="SHM-Kn-1sb" id="ktS-tY-VuB"/>
+                <outlet property="btnRegistrate" destination="hzj-zB-fwt" id="ERK-8l-Oqo"/>
+                <outlet property="editaTuSitio" destination="iwV-f1-WQY" id="bFi-YJ-b4c"/>
                 <outlet property="imgLogo" destination="mLM-rE-S56" id="KIt-M2-nET"/>
                 <outlet property="label" destination="Yam-Dn-cMF" id="uuT-i3-GoM"/>
                 <outlet property="o" destination="8Hn-Y8-rMi" id="k4O-hH-blI"/>
@@ -35,16 +37,10 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                     <subviews>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¿Olvidaste tu contraseña?" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Yam-Dn-cMF">
-                            <rect key="frame" x="135" y="360" width="165" height="31"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="SHM-Kn-1sb">
+                            <rect key="frame" x="24" y="516" width="213" height="22"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="SHM-Kn-1sb">
-                            <rect key="frame" x="119" y="364" width="181" height="21"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                             <state key="normal">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -54,30 +50,30 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zeC-2d-wsB">
-                            <rect key="frame" x="20" y="214" width="122" height="2"/>
+                            <rect key="frame" x="20" y="202" width="122" height="2"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="O" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8Hn-Y8-rMi">
-                            <rect key="frame" x="153" y="204" width="17" height="21"/>
+                            <rect key="frame" x="153" y="192" width="17" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Zhf-AC-7LB">
-                            <rect key="frame" x="177" y="214" width="122" height="2"/>
+                            <rect key="frame" x="177" y="202" width="122" height="2"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DDN-fC-vU1">
-                            <rect key="frame" x="20" y="364" width="22" height="22"/>
+                            <rect key="frame" x="24" y="350" width="22" height="22"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                             <state key="normal" image="recordarOff.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -86,11 +82,11 @@
                                 <action selector="recordarLoginAct1:" destination="-1" eventType="touchUpInside" id="ZUW-Sg-BI5"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="aV4-wQ-ILe">
-                            <rect key="frame" x="8" y="360" width="124" height="31"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="aV4-wQ-ILe">
+                            <rect key="frame" x="22" y="350" width="211" height="22"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
-                            <state key="normal" title="Remember me">
+                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                            <state key="normal" title="Remember my account">
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -99,23 +95,23 @@
                             </connections>
                         </button>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Contraseña" minimumFontSize="17" id="sI3-Z4-eOe">
-                            <rect key="frame" x="20" y="305" width="280" height="47"/>
+                            <rect key="frame" x="20" y="287" width="280" height="45"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                             <textInputTraits key="textInputTraits" returnKeyType="send" secureTextEntry="YES"/>
                             <connections>
                                 <outlet property="delegate" destination="-1" id="Jcn-k0-5hZ"/>
                             </connections>
                         </textField>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoRegistrado.png" id="mLM-rE-S56">
-                            <rect key="frame" x="33" y="55" width="267" height="49"/>
+                            <rect key="frame" x="33" y="23" width="267" height="49"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Juy-4m-fqk">
-                            <rect key="frame" x="20" y="410" width="280" height="50"/>
+                            <rect key="frame" x="19" y="380" width="280" height="45"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.23529411764705882" green="0.29019607843137252" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.18431372549019609" green="0.63921568627450975" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                             <state key="normal" title="Inicia sesión">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -126,15 +122,40 @@
                             </connections>
                         </button>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Dirección de correo" minimumFontSize="17" id="YYV-iB-sOb">
-                            <rect key="frame" x="20" y="250" width="280" height="47"/>
+                            <rect key="frame" x="20" y="232" width="280" height="45"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                             <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="send"/>
                             <connections>
                                 <outlet property="delegate" destination="-1" id="1LL-wd-5pY"/>
                             </connections>
                         </textField>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edita tu sitio" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iwV-f1-WQY">
+                            <rect key="frame" x="33" y="80" width="252" height="33"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="26"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hzj-zB-fwt">
+                            <rect key="frame" x="20" y="479" width="279" height="29"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                            <state key="normal" title="¿Aún no tienes cuenta? Registrate">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="irARegistrate:" destination="-1" eventType="touchUpInside" id="KAY-aO-PJj"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¿Olvidaste tu contraseña?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Yam-Dn-cMF">
+                            <rect key="frame" x="64" y="440" width="205" height="31"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <connections>
                         <outlet property="delegate" destination="-1" id="4wz-W4-x6z"/>

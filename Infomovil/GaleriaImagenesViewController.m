@@ -15,7 +15,7 @@
 #import "CuentaViewController.h"
 #import "AppsFlyerTracker.h"
 #import "AppDelegate.h"
-#import "InicioViewController.h"
+#import "MainViewController.h"
 
 @interface GaleriaImagenesViewController () {
     BOOL exito;
@@ -439,7 +439,7 @@ NSLog(@"AQUI ESTA EN AGREGAR IMAGEN ");
     [alertAct show];
     [StringUtils terminarSession];
     
-    InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"InicioViewController" bundle:Nil];
+    MainViewController *inicio = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:Nil];
     [self.navigationController pushViewController:inicio animated:YES];
 }
 

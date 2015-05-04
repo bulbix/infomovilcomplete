@@ -8,7 +8,7 @@
 
 #import "VistaVideoViewController.h"
 #import "WS_HandlerVideo.h"
-#import "InicioViewController.h"
+#import "MainViewController.h"
 
 @interface VistaVideoViewController () {
     NSString *idVideoSel;
@@ -241,7 +241,7 @@
     [alertAct show];
     [StringUtils terminarSession];
     
-    InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"InicioViewController" bundle:Nil];
+    MainViewController *inicio = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:Nil];
     [self.navigationController pushViewController:inicio animated:YES];
 }
 

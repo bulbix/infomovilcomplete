@@ -9,7 +9,7 @@
 #import "SesionActivaViewController.h"
 #import "WS_handlerLogin.h"
 #import "MenuPasosViewController.h"
-#import "InicioViewController.h"
+#import "MainViewController.h"
 
 @interface SesionActivaViewController (){}
 @property (nonatomic, strong) AlertView *alerta;
@@ -157,7 +157,7 @@
 
 
 - (IBAction)IniciarSesionConOtraCuenta:(id)sender {
-    InicioViewController *Inicio = [[InicioViewController alloc] initWithNibName:@"InicioViewController" bundle:Nil];
+    MainViewController *Inicio = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:Nil];
     [self.navigationController pushViewController:Inicio animated:YES];
     
 }

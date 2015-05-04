@@ -8,7 +8,7 @@
 
 #import "MapaUbicacionViewController.h"
 #import "WS_HandlerActualizarMapa.h"
-#import "InicioViewController.h"
+#import "MainViewController.h"
 
 @interface MapaUbicacionViewController () <CLLocationManagerDelegate>{
     BOOL borrar;
@@ -373,7 +373,7 @@
     [alertAct show];
     [StringUtils terminarSession];
     
-    InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"InicioViewController" bundle:Nil];
+    MainViewController *inicio = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:Nil];
     [self.navigationController pushViewController:inicio animated:YES];
 }
 

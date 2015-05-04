@@ -13,7 +13,7 @@
 #import "KeywordDataModel.h"
 #import "WS_ActualizarDireccion.h"
 #import "UIViewDefs.h"
-#import "InicioViewController.h"
+#import "MainViewController.h"
 
 @interface PerfilPaso2ViewController () {
     ListaHorarios *horarioSeleccionado;
@@ -702,7 +702,7 @@
     [alertAct show];
     [StringUtils terminarSession];
     
-    InicioViewController *inicio = [[InicioViewController alloc] initWithNibName:@"InicioViewController" bundle:Nil];
+    MainViewController *inicio = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:Nil];
     [self.navigationController pushViewController:inicio animated:YES];
 }
 

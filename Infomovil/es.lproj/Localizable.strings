@@ -292,7 +292,7 @@
 "inicioBotonPruebalo" = "Pruébalo";
 "inicioBotonSesion" = "Inicia sesión";
 
-"inicioLeyenda1" = "Si continúas, aceptas las";
+"inicioLeyenda1" = "Al hacer clic, aceptas las";
 "inicioLeyenda2" = "condiciones del servicio";
 "inicioLeyenda3" = "y la";
 "inicioLeyenda4" = "política de privacidad";
@@ -608,7 +608,7 @@
 "subtituloCuentaPlanPro" = "Elige tu plan disfruta de los beneficios";
 "BeneficiosCuentaPlanPro" = "BENEFICIOS DEL PLAN PRO";
 // Mensaje pantalla Registrar Usuario //
-"msjRegistrarUsuarioFB" = "Si te registras con Facebook jamás publicaremos en tu muro sin tu permiso";
+"msjRegistrarUsuarioFB" = "y jamás publicaremos en tu muro sin tu permiso";
 
 //Pantalla Crear Editar //
 "inicioRapido" = "Inicio rápido";
@@ -618,7 +618,7 @@
 
 
 //IRC inicio //
-"recordarCuenta" = "Recordar";
+"recordarCuenta" = "Recordar mi cuenta";
 "crearCuentaRegistrar" = "Crear cuenta";
 "contrasenaRegistrar" = " Contraseña";
 "confirmarContrasena" = " Confirmar contraseña";
@@ -646,3 +646,5 @@
 "errorCompra" = "No se ha podido realizar tu compra. Por favor inténtalo nuevamente." ;
 "errorPublicacion" = "No se ha podido registrar tu sitio web por favor inténtalo nuevamente.";
 "faltaImagenActualizar" = "Debes seleccionar una imagen antes de actualizar";
+"cuentaTodavia"="¿Aún no tienes cuenta? Registrate";
+"editaTuSitio" = "Edita tu sitio";

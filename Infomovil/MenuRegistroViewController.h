@@ -17,19 +17,30 @@
 }
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
-
-@property (strong, nonatomic) IBOutlet UIButton *boton;
-
 @property (weak, nonatomic) IBOutlet UILabel *raya1;
 @property (weak, nonatomic) IBOutlet UILabel *o;
 @property (weak, nonatomic) IBOutlet UILabel *raya2;
 @property (weak, nonatomic) IBOutlet UILabel *slogan;
-
-
-- (IBAction)verificarNombre:(UIButton *)sender;
-//- (IBAction)seleccionaCodigoPais:(id)sender;
+// Nuevo Registro //
+@property (weak, nonatomic) IBOutlet UIButton *btnRegistrar;
+@property (weak, nonatomic) IBOutlet UITextField *txtNombre;
+@property (weak, nonatomic) IBOutlet UITextField *txtContrasena;
+@property (weak, nonatomic) IBOutlet UITextField *txtContrasenaConfirmar;
 @property (weak, nonatomic) IBOutlet UILabel *msjRegistrarConFacebook;
-@property (weak, nonatomic) IBOutlet UIButton *llamarCrearCuenta;
-- (IBAction)llamarCrearCuentaAct:(id)sender;
+@property (weak, nonatomic) IBOutlet UIImageView *imgLogoInfo;
+
+
+
+@property (weak, nonatomic) IBOutlet UILabel *leyenda1;
+@property (weak, nonatomic) IBOutlet UIButton *leyenda2;
+@property (weak, nonatomic) IBOutlet UILabel *leyenda3;
+@property (weak, nonatomic) IBOutlet UIButton *leyenda4;
+@property (weak, nonatomic) IBOutlet UILabel *leyenda5;
+
+
+
+- (IBAction)mostrarTerminos:(id)sender;
+- (IBAction)mostrarCondiciones:(id)sender;
+- (IBAction)verificarNombre:(UIButton *)sender;
 
 @end
