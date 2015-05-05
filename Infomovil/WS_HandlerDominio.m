@@ -177,7 +177,7 @@
                 self.datos.fechaDominioFin = [StringUtils desEncriptar:self.telFin conToken:self.token];
                 NSLog(@"LOS VALORES QUE ME CAUSAN RUIDO SON %@ Y EL OTRO ES: %@", self.datos.token,[StringUtils desEncriptar:self.resultado conToken:self.datos.token] );
                 
-                NSString * stringResult = [StringUtils desEncriptar:self.resultado conToken:passwordEncriptar];
+                NSString * stringResult = [StringUtils desEncriptar:self.resultado conToken:self.datos.token];
                 if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                     NSLog(@"HUBO UN ERROR DE TOKEN AL CREAR AL USUARIO crearUsuario !");
                     [self.wSHandlerDelegate errorToken];

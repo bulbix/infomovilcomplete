@@ -39,7 +39,6 @@
     [self mostrarLogo];
     [self.vistaInferior setHidden:YES];
     [self.navigationController.navigationBar setHidden:YES];
-    
     [self pantallaAcomodaPublicar];
     self.navigationItem.hidesBackButton	= YES;
   

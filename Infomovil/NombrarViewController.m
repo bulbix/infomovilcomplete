@@ -471,10 +471,10 @@
 	[UIView beginAnimations:nil context:NULL];
 	[UIView setAnimationDuration:0.3];
     if(IS_IPHONE_5){
-        rect = CGRectMake(self.view.frame.origin.x,self.view.frame.origin.y-30,self.view.frame.size.width,self.view.frame.size.height);
+        rect = CGRectMake(self.view.frame.origin.x,self.view.frame.origin.y-10,self.view.frame.size.width,self.view.frame.size.height);
         self.view.frame = rect;
     }else if(IS_IPHONE_4){
-        rect = CGRectMake(self.view.frame.origin.x,self.view.frame.origin.y-120,self.view.frame.size.width,self.view.frame.size.height);
+        rect = CGRectMake(self.view.frame.origin.x,self.view.frame.origin.y,self.view.frame.size.width,self.view.frame.size.height);
         self.view.frame = rect;
     }
 	
@@ -490,10 +490,10 @@
 	[UIView beginAnimations:nil context:NULL];
 	[UIView setAnimationDuration:0.3];
     if(IS_IPHONE_5){
-        rect = CGRectMake(self.view.frame.origin.x,self.view.frame.origin.y+30,self.view.frame.size.width,self.view.frame.size.height);
+        rect = CGRectMake(self.view.frame.origin.x,self.view.frame.origin.y+10,self.view.frame.size.width,self.view.frame.size.height);
         self.view.frame = rect;
     }else if(IS_IPHONE_4){
-        rect = CGRectMake(self.view.frame.origin.x,self.view.frame.origin.y+120,self.view.frame.size.width,self.view.frame.size.height);
+        rect = CGRectMake(self.view.frame.origin.x,self.view.frame.origin.y,self.view.frame.size.width,self.view.frame.size.height);
         self.view.frame = rect;
     }
 	

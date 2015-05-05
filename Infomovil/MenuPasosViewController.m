@@ -412,16 +412,16 @@
 
 -(void) accionSi {
     self.datosUsuario = [DatosUsuario sharedInstance];
-    NSString *correo = self.datosUsuario.emailUsuario;
+  //  NSString *correo = self.datosUsuario.emailUsuario;
     if ([self.datosUsuario.redSocial isEqualToString:@"Facebook"]) {
         [((AppDelegate*)[[UIApplication sharedApplication] delegate]) fbDidlogout];
     }
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+   /* dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         WS_HandlerDominio *handlerDominio = [[WS_HandlerDominio alloc] init];
         [handlerDominio setWSHandlerDelegate:self];
         [handlerDominio cerrarSession:correo];
     });
-
+    */
     ((AppDelegate*)	[[UIApplication sharedApplication] delegate]).statusDominio = @"Gratuito";
    
     
