@@ -540,3 +540,5 @@
 "faltaImagenActualizar" = "You must select an image before upgrading";
 "cuentaTodavia"="Don't have an Account? Register"; // or You do not have an account yet?
 "editaTuSitio" = "Edit your website";
+"noSeHaPodido" = "Could not load the preview.";
+"msgGuardarTemplate" = "Updating style";

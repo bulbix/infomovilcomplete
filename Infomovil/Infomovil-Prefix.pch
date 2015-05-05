@@ -77,7 +77,7 @@ typedef enum {
 // PRODUCCION
 //#define llaveAppboy @"90ff8582-5bf7-450b-ace5-d2191d0b9fe6"
 // ios_app_qa
-#define llaveAppboy @"418813e5-5c95-4710-8ce1-d23d55fb4d5d"
+#define llaveAppboy @"96559b65-0520-4c33-84b1-94dab248653e"
 
 #define versionDefault @"3.0.1"
 

@@ -106,11 +106,10 @@
 	else if([elementName isEqualToString:@"ns2:getItemsGratisDomainResponse"]){
 		datos = [DatosUsuario sharedInstance];
 		datos.itemsDominio = items;
-#if DEBUG
-		for(ItemsDominio * item in datos.itemsDominio)
-			NSLog(@"items: %@ , descripcion: %@ , status: %i", item, item.descripcionItem, item.estatus);
+
+		
     }
-#endif
+
 }
 
 

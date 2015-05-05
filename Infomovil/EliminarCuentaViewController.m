@@ -278,7 +278,7 @@
 		
 		self.datosUsuario = [DatosUsuario sharedInstance];
 		[StringUtils deleteResourcesWithExtension:@"jpg"];
-		//[StringUtils deleteFile];
+		[StringUtils deleteFile];
 		[self.datosUsuario eliminarDatos];
 		((AppDelegate*)	[[UIApplication sharedApplication] delegate]).statusDominio = @"Gratuito";
 	

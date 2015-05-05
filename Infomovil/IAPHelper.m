@@ -77,27 +77,22 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
 #pragma mark - SKProductsRequestDelegate
 
 - (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response {
-    @try {
-        _productsRequest = nil;
-       
-        NSArray * skProducts = response.products;
-        for (SKProduct * skProduct in skProducts) {
-#if DEBUG
-            NSLog(@"Found product en IAPHelper: %@ %@ %0.2f",
-#endif
-                      skProduct.productIdentifier,
-                      skProduct.localizedTitle,
-                      skProduct.price.floatValue);
-        }
-        if ([CommonUtils hayConexion]) {
-            _completionHandler(YES, skProducts);
-        }
-        _completionHandler = nil;
-    }@catch (NSException *exception) {
-#if DEBUG
-        NSLog(@"No pudo recuperar los datos de los produsctos de compra");
-#endif
+    
+    NSLog(@"Loaded list of products...");
+    _productsRequest = nil;
+    
+    NSArray * skProducts = response.products;
+    for (SKProduct * skProduct in skProducts) {
+        NSLog(@"Found product en IAPHelper: %@ %@ %0.2f",
+              skProduct.productIdentifier,
+              skProduct.localizedTitle,
+              skProduct.price.floatValue);
     }
+    if ([CommonUtils hayConexion]) {
+        _completionHandler(YES, skProducts);
+    }
+    _completionHandler = nil;
+    
 }
 
 - (void)request:(SKRequest *)request didFailWithError:(NSError *)error {

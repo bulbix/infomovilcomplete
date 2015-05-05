@@ -159,6 +159,12 @@
             self.leyenda4.frame = CGRectMake(60, 458, 144, 21);
             self.leyenda2.frame = CGRectMake(160, 441, 170, 21);
             self.leyenda5.frame = CGRectMake(197,457, 83, 21);
+        }else if(IS_STANDARD_IPHONE_6_PLUS){
+            self.leyenda1.frame = CGRectMake(60, 620, 270, 21);
+            self.leyenda3.frame = CGRectMake(75, 642, 28, 21);
+            self.leyenda4.frame = CGRectMake(100, 643, 144, 21);
+            self.leyenda2.frame = CGRectMake(203, 621, 180, 21);
+            self.leyenda5.frame = CGRectMake(240,642, 83, 21);
         }else{
             self.leyenda1.frame = CGRectMake(6, 510, 152, 21);
             self.leyenda2.frame = CGRectMake(160, 511, 152, 21);

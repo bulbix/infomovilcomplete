@@ -313,7 +313,7 @@ BOOL actualizo;
 }
 
 -(void) mostrarActivity {
-    self.alertActivity = [AlertView initWithDelegate:self message:NSLocalizedString(@"msgGuardarImagen", Nil) andAlertViewType:AlertViewTypeActivity];
+    self.alertActivity = [AlertView initWithDelegate:self message:NSLocalizedString(@"msgGuardarTemplate", Nil) andAlertViewType:AlertViewTypeActivity];
     [self.alertActivity show];
     
 }

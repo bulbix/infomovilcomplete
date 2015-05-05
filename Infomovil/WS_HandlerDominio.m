@@ -84,7 +84,7 @@
         [self.wSHandlerDelegate errorConsultaWS];
     }
 }
-
+/*
 -(void) consultaDominio:(NSString *)dominio conTipo:(NSString *)tipo {
    
     NSString *stringXML = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.webservice.infomovil.org/\">"
@@ -99,10 +99,17 @@
     self.strSoapAction = @"wsInfomovildomain";
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
 }
-
+*/
 
 -(void) crearUsuario:(NSString *)email conNombre:(NSString *)user password:(NSString *)pass status:(NSString *)s nombre:(NSString *)nom direccion1:(NSString *)dir1 direccion2:(NSString *)dir2 pais:(NSString *) nPais codigoPromocion:(NSString *)codProm tipoDominio:(NSString *)domainType idDominio:(NSString *)idDominio {
     self.datos = [DatosUsuario sharedInstance];
+    
+    NSUserDefaults *prefSesion = [NSUserDefaults standardUserDefaults];
+    if([prefSesion integerForKey:@"intSesionActiva"] == 1){
+        [prefSesion setInteger:0 forKey:@"intSesionActiva"];
+        [prefSesion synchronize];
+    }
+    
     NSString *stringXML;
 		NSLog(@"EL CREAR USUARIO ENTRO A INSERTUSERDOMAIN1");
 		stringXML = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.webservice.infomovil.org/\">"

@@ -514,6 +514,7 @@
 "msgGuardarDescripcion" = "Actualizando Descripción";
 "msgGuardarDireccion" = "Actualizando Dirección";
 "msgGuardarImagen" = "Actualizando Imagen";
+"msgGuardarTemplate" = "Actualizando estilo";
 "msgGuardarInfoAd" = "Actualizando Información adicional";
 "msgGuardarLogo" = "Actualizando Logo";
 "msgGuardarMapa" = "Actualizando Mapa";
@@ -648,3 +649,4 @@
 "faltaImagenActualizar" = "Debes seleccionar una imagen antes de actualizar";
 "cuentaTodavia"="¿Aún no tienes cuenta? Registrate";
 "editaTuSitio" = "Edita tu sitio web";
+"noSeHaPodido" = "No se ha podido cargar la vista previa.";

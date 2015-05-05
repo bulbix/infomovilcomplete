@@ -58,9 +58,7 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
     [[BITHockeyManager sharedHockeyManager] startManager];
     [[BITHockeyManager sharedHockeyManager].authenticator
      authenticateInstallation];
-    
-   */
-    
+  */
     //-- Set Notification
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.000000) {
         UIUserNotificationSettings * settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
@@ -278,7 +276,7 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
     [FBSession setActiveSession:nil];
     NSHTTPCookieStorage* cookies = [NSHTTPCookieStorage sharedHTTPCookieStorage];
     NSArray* facebookCookies = [cookies cookiesForURL:[NSURL         URLWithString:@"https://facebook.com/"]];
-    
+    [StringUtils deleteFile];
     for (NSHTTPCookie* cookie in facebookCookies) {
         [cookies deleteCookie:cookie];
     }
