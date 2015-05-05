@@ -24,10 +24,8 @@
 @interface CuentaViewController () <CNPPopupControllerDelegate> {
     NSInteger noVisitas;
     NSInteger tipoVista;
-	
 	NSMutableArray * pro;
 	NSMutableArray * domain;
-	
 	NSMutableArray * arreglo;
 	
 	BOOL tipo; //NO = version pro
@@ -395,7 +393,7 @@ int opcionButton = 0 ;
     
 }
 
--(void)resultadoCompraDominio:(BOOL)estado{
+-(void)resultadoCompraDominio:(BOOL)estado{ NSLog(@"OCURRIO UN ERROR EN LA COMPRA!");
     if(estado && ![self.datosUsuario.datosPago.statusPago isEqualToString: @"PAGADO"]){
         if(opcionButton == 1){
             [self compraProducto1mes];
@@ -404,6 +402,11 @@ int opcionButton = 0 ;
         }else if(opcionButton == 3){
             [self compraProducto12meses];
         }
+    }else{
+        [NSThread sleepForTimeInterval:1];
+        [self.alerta hide];
+        AlertView *alertaError = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"sentimos", Nil) message:NSLocalizedString(@"errorCompra", Nil) dominio:Nil andAlertViewType:AlertViewTypeInfo];
+        [alertaError show];
     }
 }
 
@@ -510,6 +513,8 @@ if(noSeRepiteOprimirElBoton){
             [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
            
         }
+    }else{
+        NSLog(@"SE REPITIO EL BOTON OPRIMIDO");
     }
 }
 
@@ -844,7 +849,13 @@ if(noSeRepiteOprimirElBoton){
 }
 
 -(void) errorConsultaWS {
+    
+    NSLog(@"ENTRO A ERRORCONSULTAWS");
     //[self performSelectorOnMainThread:@selector(errorLogin) withObject:Nil waitUntilDone:YES];
+    noSeRepiteOprimirElBoton = YES;
+    [NSThread sleepForTimeInterval:1];
+    [self.alerta hide];
+    
 }
 
 

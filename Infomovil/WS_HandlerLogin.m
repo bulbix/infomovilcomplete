@@ -104,6 +104,7 @@
                      [StringUtils encriptar:versionDefault conToken:passwordEncriptar]];
     
 #ifdef DEBUG
+    NSLog(@"VALORES DE MI PETICION: %@ y %@", usuario, password);
     NSLog(@"El string es %@", stringXML);
 #endif
     
@@ -113,14 +114,12 @@
     if (dataResult != nil) {
         self.datosUsuario.email = usuario;
         self.datosUsuario.emailUsuario = usuario;
-        self.datosUsuario.token = self.token;
-        self.datosUsuario = [DatosUsuario sharedInstance];
         self.arregloContactos = [[NSMutableArray alloc] init];
         self.arregloImagenes = [[NSMutableArray alloc] init];
         self.arregloDireccion = [[NSMutableArray alloc] init];
         self.datosUsuario.imgGaleriaArray = [[NSMutableArray alloc] init];
         self.datosUsuario.logoImg = [[NSString alloc] init];
-        
+        self.datosUsuario.arregloEstatusEdicion = [[NSMutableArray alloc] init];
         self.datosUsuario.arregloUrlImagenes = [[NSMutableArray alloc] init];
         self.datosUsuario.arregloIdImagen = [[NSMutableArray alloc] init];
         self.datosUsuario.arregloDescripcionImagen = [[NSMutableArray alloc] init];
@@ -145,8 +144,8 @@
         self.arregloPerfil = [[NSMutableArray alloc] initWithArray:@[[[KeywordDataModel alloc] init], [[KeywordDataModel alloc] init], [[KeywordDataModel alloc] init], [[KeywordDataModel alloc] init], [[KeywordDataModel alloc] init], [[KeywordDataModel alloc] init], [[KeywordDataModel alloc] init]]];
         self.arregloAdicional = [[NSMutableArray alloc] init];
         self.diccionarioInformacion = [[NSDictionary alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"CatalogoInformacion" ofType:@"plist"]];
-        NSArray *arregloAux = @[@NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO];
-        self.datosUsuario.arregloEstatusEdicion = [[NSMutableArray alloc] init];
+        NSArray *arregloAux = [[NSArray alloc] init];
+        arregloAux = @[@NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO];
         [self.datosUsuario.arregloEstatusEdicion addObjectsFromArray:arregloAux];
         self.arregloItems = [[NSMutableArray alloc] init];
         self.arregloTiposDominio = [[NSMutableArray alloc] init];
@@ -154,9 +153,9 @@
         guardarLogo = NO;
         self.currentElementString = [[NSMutableString alloc] init];
         if([parser parse]) {
-
-                self.datosUsuario = [DatosUsuario sharedInstance];
-                self.datosUsuario.token = self.token;
+                if([self.token length] > 0){
+                    self.datosUsuario.token = self.token;
+                }
                 [StringUtils deleteResourcesWithExtension:@"js"];
                 [StringUtils deleteResourcesWithExtension:@"css"];
 				
@@ -178,15 +177,17 @@
                     NSLog(@"LOS DOMINIOS QUE ME ESTA ENVIANDO SON: %@", [StringUtils desEncriptar:self.datosUsuario.dominio conToken:self.datosUsuario.token]);
                 }
                 if (self.nombreEmpresaAux.length > 0 && self.nombreEmpresaAux != Nil) {
-                    self.nombreEmpresaAux = [StringUtils desEncriptar:self.nombreEmpresaAux conToken:self.token];
+                    self.nombreEmpresaAux = [StringUtils desEncriptar:self.nombreEmpresaAux conToken:self.datosUsuario.token];
+                    NSLog(@"EL TOKEN DE DATOS USUARIO : %@ Y SELF ES: %@", self.datosUsuario.token, self.token);
                     if (![self.nombreEmpresaAux isEqualToString:@"Título"] && ![self.nombreEmpresaAux isEqualToString:@"(null)"] && self.nombreEmpresaAux != nil && ![self.nombreEmpresaAux isEqualToString:@""]) {
                         self.datosUsuario.nombreEmpresa = self.nombreEmpresaAux;
                         
                         [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:0 withObject:@YES];
                     }
+                    NSLog(@"EL VALOR DE LA EMPRESA ES: %@", self.nombreEmpresaAux);
                 }
             if (self.datosUsuario.urlVideo.length > 0 && self.datosUsuario.urlVideo != Nil) {
-                NSString *auxVideo = [StringUtils desEncriptar:self.datosUsuario.urlVideo conToken:self.token];
+                NSString *auxVideo = [StringUtils desEncriptar:self.datosUsuario.urlVideo conToken:self.datosUsuario.token];
                 
                 if(auxVideo.length > 0 && auxVideo != Nil && ![auxVideo isEqualToString:@""]){
                     NSLog(@" self.datosUsuario.urlVideo es %@",  self.datosUsuario.urlVideo);
@@ -521,6 +522,10 @@
     }else if ([elementName isEqualToString:@"urlImage"]) {
         self.currentElementString = [[NSMutableString alloc] init];
     }
+    
+    else if([elementName isEqualToString:@"nameEmpresa"]){
+        self.currentElementString = [[NSMutableString alloc] init];
+    }
 
 }
 
@@ -829,6 +834,10 @@
     }
     else if ([elementName isEqualToString:@"token"]) {
         self.token = [StringUtils desEncriptar:self.currentElementString conToken:passwordEncriptar];
+        if( [self.token length] > 0){
+            self.datosUsuario.token = self.token;
+        }
+        NSLog(@"EL TOKEN KE tengo ES: %@ y el token ke me envia es: %@", self.datosUsuario.token , self.token);
     }
     else if ([elementName isEqualToString:@"calleNum"]) {
         if (requiereEncriptar) {
@@ -914,11 +923,12 @@
     }
 	else if ([elementName isEqualToString:@"nameEmpresa"]) {
 		if (requiereEncriptar) {
-			self.datosUsuario.nombreOrganizacion = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
+			self.datosUsuario.nombreOrganizacion = [StringUtils desEncriptar:self.currentElementString conToken:self.datosUsuario.token];
 		}
 		else {
 			self.datosUsuario.nombreOrganizacion = self.currentElementString;
 		}
+        NSLog(@"EL VALOR : %@", self.datosUsuario.nombreOrganizacion);
 		self.currentElementString = [[NSMutableString alloc] init];
 	}
     else if ([elementName isEqualToString:@"listStatusDomainVO"]) {

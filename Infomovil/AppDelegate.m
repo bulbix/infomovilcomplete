@@ -47,15 +47,10 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:launchOptions forKey:@"launchingWithOptions"];
     [defaults synchronize];
-   
-   
    /*
     //AppsFlyer
     [AppsFlyerTracker sharedTracker].appsFlyerDevKey = @"5KoF92vzAFbhSj9PRduNCn";
     [AppsFlyerTracker sharedTracker].appleAppID = @"898313250";
-    
-    
-    
     
     //HOCKEYAPP  //
     
@@ -63,8 +58,8 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
     [[BITHockeyManager sharedHockeyManager] startManager];
     [[BITHockeyManager sharedHockeyManager].authenticator
      authenticateInstallation];
-    */
-   
+    
+   */
     
     //-- Set Notification
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.000000) {
@@ -82,10 +77,8 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     
-   
-    
     NSUserDefaults *prefSesion = [NSUserDefaults standardUserDefaults];
-    if([prefSesion integerForKey:@"intSesionActiva"] == 1){
+    if([prefSesion integerForKey:@"intSesionActiva"] == 1 && [[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0){
         SesionActivaViewController *inicioController = [[SesionActivaViewController alloc] initWithNibName:@"SesionActiva" bundle:nil];
         self.navigationController = [[UINavigationController alloc] initWithRootViewController:inicioController];
     }else{

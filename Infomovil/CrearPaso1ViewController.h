@@ -14,4 +14,5 @@
 @property (nonatomic, strong) NSMutableArray *arregloCampos;
 @property (weak, nonatomic) IBOutlet UITableView *tablaEditar;
 
+
 @end

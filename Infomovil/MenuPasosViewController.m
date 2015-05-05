@@ -31,6 +31,8 @@
 
 @interface MenuPasosViewController ()
 @property (nonatomic, strong) NSMutableArray *arregloDominios;
+@property (nonatomic, strong) NSArray *arregloEstatusEdicionLocal;
+@property (nonatomic,nonatomic)BOOL eligioTemplateLocal;
 @end
 
 @implementation MenuPasosViewController
@@ -47,7 +49,7 @@
 }
 
 - (void)viewDidLoad{
-	
+	 NSLog(@"ENTRO AL VIEWDIDLOAD MENU PASOS VIEWCONTROLLER");
     [super viewDidLoad];
     
     if(IS_STANDARD_IPHONE_6){
@@ -99,7 +101,10 @@
         self.line3.frame = CGRectMake(20, 273, 280, 1);
     }
 	
-    self.datosUsuario				= [DatosUsuario sharedInstance];
+    self.datosUsuario = [DatosUsuario sharedInstance];
+    self.eligioTemplateLocal = self.datosUsuario.eligioTemplate;
+    self.arregloEstatusEdicionLocal = [[NSMutableArray alloc] init];
+    self.arregloEstatusEdicionLocal = [self.datosUsuario.arregloEstatusEdicion mutableCopy];
     self.datosUsuario.editoPagina	= NO;
     
         [self.navigationItem setHidesBackButton:YES animated:NO];
@@ -196,7 +201,7 @@
 
 
 -(void) viewWillAppear:(BOOL)animated {
-    
+    NSLog(@"ENTRO AL VIEWWILLAPPLEAR MENU PASOS VIEWCONTROLLER");
     [super viewWillAppear:animated];
     [self.tituloVista setHidden:NO];
 	
@@ -339,10 +344,10 @@
 - (IBAction)crearEditar:(UIButton *)sender {
     self.datosUsuario = [DatosUsuario sharedInstance];
 
-	self.datosUsuario.eligioTemplate = YES;
+//	self.datosUsuario.eligioTemplate = YES;
 
     
-    if (self.datosUsuario.eligioTemplate) {
+    if (self.eligioTemplateLocal) {
         CrearPaso1ViewController *crear = [[CrearPaso1ViewController alloc] initWithNibName:@"CrearPaso1ViewController" bundle:nil];
         [self.navigationController pushViewController:crear animated:YES];
     }
@@ -354,6 +359,7 @@
 
 - (IBAction)nombrar:(UIButton *)sender {
     self.datosUsuario = [DatosUsuario sharedInstance];
+    NSLog(@"EL VALOR DE NOMBROSITIO EN MENUPASO ES: %@", self.datosUsuario.nombroSitio);
     if (!self.datosUsuario.nombroSitio) {
         if ([self perfilEditado]) {
             FormularioRegistroViewController *nombrar = [[FormularioRegistroViewController alloc] initWithNibName:@"FormularioRegistroViewController" bundle:nil];
@@ -371,6 +377,7 @@
 }
 
 - (IBAction)publicar:(UIButton *)sender {
+    NSLog(@"SE MANDO A LLAMAR PUBLICAR");
     self.datosUsuario = [DatosUsuario sharedInstance];
     if ( self.datosUsuario.dominio && ![self.datosUsuario.dominio isEqualToString:@""] && ! (self.datosUsuario.dominio == (id)[NSNull null]) && ![CommonUtils validarEmail:self.datosUsuario.dominio] && ![self.datosUsuario.dominio isEqualToString:@"(null)"]) {
         
@@ -391,11 +398,13 @@
 }
 
 -(BOOL) perfilEditado {
+    NSLog(@"ENTRO A PERFIL EDITADO!!! EN MENU PASOS VIEW CONTROLLER");
     BOOL fueEditado = NO;
     self.datosUsuario = [DatosUsuario sharedInstance];
-    if ([self.datosUsuario.arregloEstatusEdicion count] > 0) {
-        for (int i = 0; i < [self.datosUsuario.arregloEstatusEdicion count]; i++) {
-            if ([[self.datosUsuario.arregloEstatusEdicion objectAtIndex:i]  isEqual: @YES]) {
+    NSLog(@"EN MENUPASOSVIEWCONTROLLER ES ahora: %i", [self.arregloEstatusEdicionLocal count]);
+    if ([self.arregloEstatusEdicionLocal count] > 0) {
+        for (int i = 0; i < [self.arregloEstatusEdicionLocal count]; i++) {
+            if ([[self.arregloEstatusEdicionLocal objectAtIndex:i]  isEqual: @YES] ) {
                 fueEditado = YES;
                 break;
             }
@@ -416,12 +425,12 @@
     if ([self.datosUsuario.redSocial isEqualToString:@"Facebook"]) {
         [((AppDelegate*)[[UIApplication sharedApplication] delegate]) fbDidlogout];
     }
-   /* dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         WS_HandlerDominio *handlerDominio = [[WS_HandlerDominio alloc] init];
         [handlerDominio setWSHandlerDelegate:self];
-        [handlerDominio cerrarSession:correo];
+       // [handlerDominio cerrarSession:correo];
     });
-    */
+    
     ((AppDelegate*)	[[UIApplication sharedApplication] delegate]).statusDominio = @"Gratuito";
    
     
@@ -447,7 +456,7 @@
 - (IBAction)irInicioRapido:(id)sender {
     self.datosUsuario = [DatosUsuario sharedInstance];
   
-    if (self.datosUsuario.eligioTemplate) {
+    if (self.eligioTemplateLocal) {
         InicioRapidoViewController *inicioRapido = [[InicioRapidoViewController alloc] initWithNibName:@"InicioRapidoViewController" bundle:Nil];
         [self.navigationController pushViewController:inicioRapido animated:YES];
     }

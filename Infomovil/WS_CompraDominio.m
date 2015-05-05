@@ -70,7 +70,8 @@
 
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
     NSLog(@"WS_CompraDominio La respuesta es %s", [dataResult bytes]);
-    if (dataResult != nil) {
+    if (dataResult != nil && [dataResult length] > 0) {
+        NSLog(@"CONSIDERO QUE DATA RESULT ES MAYOR A CERO O TRAE ALGUN DATO");
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
         [parser setDelegate:self];
         if ([parser parse]) {
@@ -92,6 +93,7 @@
         }
     }
     else {
+         NSLog(@"REGRESO ERROR CONSULTAWS");
         [self.compraDominioDelegate errorConsultaWS];
     }
     

@@ -37,7 +37,6 @@
 @end
 
 @implementation CrearPaso1ViewController
-
 @synthesize arregloCampos;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -53,12 +52,14 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    self.datosUsuario = [DatosUsuario sharedInstance];
 	if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
 		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"crearEditar", Nil) nombreImagen:@"barraverde.png"];
 	}else{
 		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"crearEditar", Nil) nombreImagen:@"NBverde.png"];
 	}
-    self.datosUsuario = [DatosUsuario sharedInstance];
+    
     
     if (existeItems) {
         arregloCampos = self.datosUsuario.itemsDominio;
@@ -81,7 +82,7 @@
         arregloCampos = [[NSMutableArray alloc] initWithArray:arregloAux];
         self.datosUsuario.itemsDominio = arregloCampos;
     }
-    
+   
     if ([self.datosUsuario.arregloEstatusEdicion count] == 0) {
      
         NSArray *arregloAux = @[@NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO];

@@ -30,7 +30,6 @@
 @end
 
 @implementation InicioViewController
-@synthesize datosUsuario;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -152,12 +151,12 @@
 	self.leyenda5.text = NSLocalizedString(@"inicioLeyenda5", nil);
 	
 	self.version.text = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleShortVersionString"];
-	 datosUsuario = [DatosUsuario sharedInstance];
+	 self.datosUsuario = [DatosUsuario sharedInstance];
 	if (existeItems) {
        
         if ([CommonUtils hayConexion]) {
-            if ([datosUsuario.fechaConsulta compare:[NSDate date]] == NSOrderedAscending || datosUsuario.fechaConsulta == nil) {
-                datosUsuario.fechaConsulta = [NSDate date];
+            if ([self.datosUsuario.fechaConsulta compare:[NSDate date]] == NSOrderedAscending || self.datosUsuario.fechaConsulta == nil) {
+                self.datosUsuario.fechaConsulta = [NSDate date];
             }
         }
 

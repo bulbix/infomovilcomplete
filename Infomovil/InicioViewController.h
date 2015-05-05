@@ -23,7 +23,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *leyenda5;
 @property (strong, nonatomic) IBOutlet UILabel *version;
 
-@property (nonatomic, strong) DatosUsuario *datosUsuario;
+
 
 
 - (IBAction)probarInfomovil:(UIButton *)sender;

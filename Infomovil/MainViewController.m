@@ -33,7 +33,7 @@
 
 @implementation MainViewController
 
-@synthesize datosUsuario;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -53,26 +53,46 @@
     FBLoginView *loginView = [[FBLoginView alloc] init];
     loginView.delegate = self;
     loginView.readPermissions = @[@"public_profile", @"email"];
-   
+    UIColor *color = [UIColor whiteColor];
     if(IS_STANDARD_IPHONE_6){
-        loginView.frame = CGRectMake(20, 130, 335, 55);
-        self.raya1.frame = CGRectMake(20, 220, 155, 2);
-        self.o.frame = CGRectMake(178, 212, 40, 20);
-        self.raya2.frame = CGRectMake(195, 220, 155, 2);
-        
+        loginView.frame = CGRectMake(20, 160, 335, 50);
+        self.raya1.frame = CGRectMake(20, 230, 155, 2);
+        self.o.frame = CGRectMake(178, 222, 40, 20);
+        self.raya2.frame = CGRectMake(195, 230, 155, 2);
+        self.editaTuSitio.frame = CGRectMake(20, 100, 335, 55);
         self.imgLogo.frame = CGRectMake(64, 58, 267, 49);
         [self.scrollLogin addSubview:self.imgLogo];
-        [self.scrollLogin setContentSize:CGSizeMake(375, 580)];
+        [self.scrollLogin setContentSize:CGSizeMake(375, 680)];
+        [self.scrollLogin setFrame:CGRectMake(0, 0, 375, 680)];
         self.txtEmail.frame = CGRectMake(20,250, 335, 47);
         self.txtPassword.frame = CGRectMake(20, 305, 335, 47);
         self.boton.frame = CGRectMake(20, 410, 335, 50);
         self.label.frame = CGRectMake(185,360 ,165, 31);
         self.btnOlvidePass.frame = CGRectMake(190, 364, 170, 31);
-        
-    }
-    
-    else if(IS_STANDARD_IPHONE_6_PLUS){
-        loginView.frame = CGRectMake(20, 180, 375, 55);
+        [self.txtPassword setBackgroundColor:[UIColor clearColor]];
+        [self.txtPassword setBackground:[UIImage imageNamed:@"input_semitrans@1x" ]];
+        self.txtPassword.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"contrasena", nil) attributes:@{NSForegroundColorAttributeName: color}];
+        [self.txtPassword setFont: [UIFont fontWithName:@"Avenir-Book" size:16]];
+        [self.txtEmail setBackground:[UIImage imageNamed:@"input_semitrans@1x" ]];
+        [self.txtEmail setBackgroundColor:[UIColor clearColor]];
+        self.txtEmail.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"mainLabelCorreo", nil) attributes:@{NSForegroundColorAttributeName: color}];
+         [self.txtEmail setFont: [UIFont fontWithName:@"Avenir-Book" size:16]];
+        if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
+            self.recordarbtn.frame = CGRectMake(20, 360,180, 31);
+            [self.recordarbtn.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:14]];
+            self.recordarLogin1.frame = CGRectMake( 25, 364, 22, 22);
+        }else{
+            self.recordarbtn.frame = CGRectMake(20, 364, 150, 31);
+            [self.recordarbtn.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:14]];
+            self.recordarLogin1.frame = CGRectMake( 20, 364, 22, 22);
+            
+        }
+        [self.btnRegistrate setFrame:CGRectMake(20, 480, 335, 50)];
+        [self.btnRegistrate.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
+        self.boton.frame = CGRectMake(25, 420, 325, 50);
+        [self.boton.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
+    }else if(IS_STANDARD_IPHONE_6_PLUS){
+        loginView.frame = CGRectMake(20, 180, 360, 50);
         self.raya1.frame = CGRectMake(20, 265, 175, 2);
         self.o.frame = CGRectMake(199, 257, 40, 20);
         self.raya2.frame = CGRectMake(215, 265, 175, 2);
@@ -83,19 +103,33 @@
         self.boton.frame = CGRectMake(20, 460, 375, 50);
         
         self.label.frame = CGRectMake(220,411 ,165, 31);
-        self.btnOlvidePass.frame = CGRectMake(220, 411, 181, 31);
+        self.btnOlvidePass.frame = CGRectMake(220,411 ,180, 31);
+       
         
-        self.recordarbtn.frame = CGRectMake(8, 411,124, 31);
-        self.recordarLogin1.frame = CGRectMake( 20, 411, 22, 22);
+        self.recordarbtn.frame = CGRectMake(70, 411,150, 31);
+        self.recordarLogin1.frame = CGRectMake( 30, 411, 22, 22);
         self.imgLogo.frame = CGRectMake(84, 58, 267, 49);
         [self.scrollLogin addSubview:self.imgLogo];
-       
+        
+        
+        [self.txtPassword setBackgroundColor:[UIColor clearColor]];
+        [self.txtPassword setBackground:[UIImage imageNamed:@"input_semitrans@1x" ]];
+        self.txtPassword.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"contrasena", nil) attributes:@{NSForegroundColorAttributeName: color}];
+        [self.txtPassword setFont: [UIFont fontWithName:@"Avenir-Book" size:16]];
+        [self.txtEmail setBackground:[UIImage imageNamed:@"input_semitrans@1x" ]];
+        [self.txtEmail setBackgroundColor:[UIColor clearColor]];
+        self.txtEmail.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"mainLabelCorreo", nil) attributes:@{NSForegroundColorAttributeName: color}];
+        [self.txtEmail setFont: [UIFont fontWithName:@"Avenir-Book" size:16]];
+         [self.editaTuSitio setFrame:CGRectMake(20, 120, 360,33 )];
+        self.scrollLogin.frame = CGRectMake(0, 0, 414, 700);
+        [self.btnRegistrate setFrame:CGRectMake(20, 550, 360, 50)];
+        [self.btnRegistrate.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:18]];
     }else if(IS_IPAD){
         loginView.frame = CGRectMake(196, 300, 375, 50);
         
         self.scrollLogin.frame = CGRectMake(0, 0, 768, 1024);
         [self.scrollLogin setContentSize:CGSizeMake(768, 1024)];
-        UIColor *color = [UIColor whiteColor];
+       
         self.txtEmail.frame = CGRectMake(196,430, 375, 61);
         [self.txtEmail setBackground:[UIImage imageNamed:@"input_semitrans@1x" ]];
         [self.txtEmail setBackgroundColor:[UIColor clearColor]];
@@ -133,7 +167,6 @@
         [self.o setHidden:YES];
         [self.btnRegistrate setFrame:CGRectMake(196, 800, 375, 50)];
          [self.btnRegistrate.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:18]];
-         [self.editaTuSitio setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
         [self.imgLogo setFrame:CGRectMake(250, 150, 267,50 )];
         [self.editaTuSitio setFrame:CGRectMake(196, 230, 375,33 )];
         [self.editaTuSitio setFont:[UIFont fontWithName:@"Avenir-Book" size:24]];
@@ -320,11 +353,17 @@
     if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
         
         if(IS_STANDARD_IPHONE_6){
-            self.leyenda1.frame = CGRectMake(47, 510, 200, 21);
-            self.leyenda3.frame = CGRectMake(45, 532, 28, 21);
-            self.leyenda4.frame = CGRectMake(90, 533, 144, 21);
-            self.leyenda2.frame = CGRectMake(190, 511, 80, 21);
-            self.leyenda5.frame = CGRectMake(190,532, 83, 21);
+            self.leyenda1.frame = CGRectMake(77, 560, 200, 21);
+            self.leyenda3.frame = CGRectMake(75, 582, 28, 21);
+            self.leyenda4.frame = CGRectMake(93, 583, 144, 21);
+            self.leyenda2.frame = CGRectMake(245, 561, 80, 21);
+            self.leyenda5.frame = CGRectMake(220,582, 83, 21);
+        }else if(IS_STANDARD_IPHONE_6_PLUS){
+            self.leyenda1.frame = CGRectMake(77, 620, 200, 21);
+            self.leyenda3.frame = CGRectMake(75, 642, 28, 21);
+            self.leyenda4.frame = CGRectMake(93, 643, 144, 21);
+            self.leyenda2.frame = CGRectMake(245, 621, 80, 21);
+            self.leyenda5.frame = CGRectMake(220,642, 83, 21);
         }else if(IS_IPAD){
             [self.leyenda1 setFont: [UIFont fontWithName:@"Avenir-Book" size:18]];
             [self.leyenda2.titleLabel setFont: [UIFont fontWithName:@"Avenir-Book" size:18]];
@@ -356,11 +395,11 @@
     }else{
         
         if(IS_STANDARD_IPHONE_6){
-            self.leyenda1.frame = CGRectMake(6, 510, 152, 21);
-            self.leyenda2.frame = CGRectMake(160, 511, 152, 21);
-            self.leyenda3.frame = CGRectMake(37, 532, 28, 21);
-            self.leyenda4.frame = CGRectMake(65, 533, 144, 21);
-            self.leyenda5.frame = CGRectMake(202,532, 83, 21);
+            self.leyenda1.frame = CGRectMake(6, 560, 152, 21);
+            self.leyenda2.frame = CGRectMake(160, 561, 152, 21);
+            self.leyenda3.frame = CGRectMake(37, 582, 28, 21);
+            self.leyenda4.frame = CGRectMake(65, 583, 144, 21);
+            self.leyenda5.frame = CGRectMake(202,582, 83, 21);
         }else if(IS_IPAD){
             [self.leyenda1 setFont: [UIFont fontWithName:@"Avenir-Book" size:18]];
             [self.leyenda2.titleLabel setFont: [UIFont fontWithName:@"Avenir-Book" size:18]];
@@ -522,8 +561,11 @@
             case -2:
                 strMensaje = NSLocalizedString(@"errorLogin", Nil);
                 break;
-            default:
+            case -1:
                 strMensaje = NSLocalizedString(@"errorLogin", Nil);
+                break;
+            default:
+                strMensaje = NSLocalizedString(@"ocurrioError", Nil);
                 break;
         }
         self.datosUsuario.existeLogin = NO;
@@ -549,12 +591,14 @@
 }
 
 -(void) consultaLogin {
+    /*
     if (buscandoSesion) {
         WS_HandlerDominio *handlerDominio = [[WS_HandlerDominio alloc] init];
         [handlerDominio setWSHandlerDelegate:self];
         [handlerDominio consultaSession:self.txtEmail.text];
     }
     else {
+        */
         [StringUtils deleteResourcesWithExtension:@"jpg"];
         [StringUtils deleteFile];
         NSString *passLogin = @"";
@@ -571,7 +615,7 @@
         }
         
         [login obtieneLogin:emailLogin conPassword:passLogin];
-    }
+    //}
 }
 
 #pragma mark - UITextFieldDelegate

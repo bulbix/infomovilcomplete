@@ -56,10 +56,10 @@
 -(void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
-		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"labelInicioRapido", Nil) nombreImagen:@"barraverde.png"];
-	}else{
-		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"labelInicioRapido", Nil) nombreImagen:@"NBverde.png"];
-	}
+        [self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"labelInicioRapido", @" ") nombreImagen:@"barramorada.png"];
+    }else{
+        [self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"labelInicioRapido", @" ") nombreImagen:@"NBlila.png"];
+    }
     [self.vistaInferior setHidden:NO];
     self.arregloDatos = [[NSArray alloc] initWithObjects:NSLocalizedString(@"nombreEmpresa", Nil),
                          NSLocalizedString(@"descripcionCorta", @" "),
@@ -90,6 +90,8 @@
     if (self.datosUsuario.arregloEstatusPerfil != nil) {
         [self.arregloStatusInicio replaceObjectAtIndex:3 withObject:[self.datosUsuario.arregloEstatusPerfil objectAtIndex:0]];
     }
+   
+    [self.vistaInferior setHidden:YES];
     
     [self.tablaInicio reloadData];
 }

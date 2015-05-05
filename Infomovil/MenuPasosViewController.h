@@ -36,7 +36,7 @@
 - (IBAction)nombrar:(UIButton *)sender;
 - (IBAction)publicar:(UIButton *)sender;
 - (IBAction)verEjemplo:(UIButton *)sender;
-- (void) pantallaAcomodaPublicar;
+
 
 - (IBAction)IrAlDominio:(id)sender;
 

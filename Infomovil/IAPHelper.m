@@ -79,7 +79,7 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
 - (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response {
     @try {
         _productsRequest = nil;
-    
+       
         NSArray * skProducts = response.products;
         for (SKProduct * skProduct in skProducts) {
 #if DEBUG
@@ -89,8 +89,9 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
                       skProduct.localizedTitle,
                       skProduct.price.floatValue);
         }
-    
-        _completionHandler(YES, skProducts);
+        if ([CommonUtils hayConexion]) {
+            _completionHandler(YES, skProducts);
+        }
         _completionHandler = nil;
     }@catch (NSException *exception) {
 #if DEBUG

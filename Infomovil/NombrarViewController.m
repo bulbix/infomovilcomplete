@@ -502,5 +502,10 @@
 }
 
 
-
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (textField == self.nombreDominio) {
+        [textField resignFirstResponder];
+    } 
+    return YES;
+}
 @end

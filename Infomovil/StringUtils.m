@@ -43,7 +43,7 @@
 }
 
 + (BOOL) deleteFile {
-    BOOL exito = NO;
+   /* BOOL exito = NO;
     NSString *filePath = [[StringUtils pathForDocumentsDirectory] stringByAppendingPathComponent:@"datos.plist"];
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSError *error = Nil;
@@ -57,6 +57,8 @@
     }
 #endif
     return exito;
+    */
+    return YES;
 }
 
 + (NSString *)encriptar:(NSString *)texto conToken:(NSString *)token {
@@ -168,7 +170,7 @@
 + (void) terminarSession {
     DatosUsuario *datosUsuario = [DatosUsuario sharedInstance];
     [StringUtils deleteResourcesWithExtension:@"jpg"];
-   // [StringUtils deleteFile];
+    [StringUtils deleteFile];
     [datosUsuario eliminarDatos];
     ((AppDelegate *)[[UIApplication sharedApplication] delegate]).statusDominio = @"Gratuito";
    

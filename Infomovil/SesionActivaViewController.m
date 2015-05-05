@@ -10,6 +10,7 @@
 #import "WS_handlerLogin.h"
 #import "MenuPasosViewController.h"
 #import "MainViewController.h"
+#import "ItemsDominio.h"
 
 @interface SesionActivaViewController (){}
 @property (nonatomic, strong) AlertView *alerta;
@@ -18,14 +19,41 @@
 
 @implementation SesionActivaViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.datosUsuario = [DatosUsuario sharedInstance];
+   // [self enviarEventoGAconCategoria:@"Pruebalo" yEtiqueta:@"pruebalo"];
+    if (self.datosUsuario.existeLogin) {
+        [StringUtils deleteResourcesWithExtension:@"jpg"];
+        [StringUtils deleteFile];
+        [self.datosUsuario eliminarDatos];
+    }
+    
+    if([[self.datosUsuario.itemsDominio objectAtIndex:0] descripcionIdioma] == nil){
+        
+        NSMutableArray *items = [[NSMutableArray alloc] init];
+        NSArray *arregloDescripcion = @[NSLocalizedString(@"nombreEmpresa", @" "), NSLocalizedString(@"logo", @" "), NSLocalizedString(@"descripcionCorta", @" "), NSLocalizedString(@"contacto", @" "), NSLocalizedString(@"mapa", @" "), NSLocalizedString(@"video", @" "), NSLocalizedString(@"promociones", @" "), NSLocalizedString(@"galeriaImagenes", @" "), NSLocalizedString(@"perfil", @" "), NSLocalizedString(@"direccion", @" "),  NSLocalizedString(@"informacionAdicional", @" ")];
+        NSArray *arregloStatus = @[@"1",@"1",@"1",@"3",@"1",@"0",@"1",@"2",@"7",@"7",@"1"];
+        
+        for(int i = 0; i<11;i++){
+            ItemsDominio * item = [[ItemsDominio alloc] init];
+            [item setDescripcionItem:[arregloDescripcion objectAtIndex:i]];
+            [item setDescripcionIdioma:[arregloDescripcion objectAtIndex:i]];
+            [item setEstatus:[[arregloStatus objectAtIndex:i] integerValue]];
+            
+            [items addObject:item];
+        }
+        self.datosUsuario.itemsDominio = items;
+    }
+    
     
     [self.btnReintentarConexion setEnabled:YES];
     NSString *passLogin = nil;
     NSString *emailLogin = nil;
     NSUserDefaults *prefSesion = [NSUserDefaults standardUserDefaults];
-    self.datosUsuario = [DatosUsuario sharedInstance];
+    
     WS_HandlerLogin *login = [[WS_HandlerLogin alloc] init];
     [login setLoginDelegate:self];
     if ( [prefSesion integerForKey:@"intSesionFacebook"] == 1){
@@ -34,6 +62,9 @@
     
     passLogin = [prefSesion stringForKey:@"strSesionPass"];
     emailLogin = [prefSesion stringForKey:@"strSesionUser"];
+    
+    NSLog(@"EL USUARIO Y PASSWORD QUE ESTOY BUSCANDO SON: %@ Y %@", passLogin,emailLogin);
+    
     [login obtieneLogin:emailLogin conPassword:passLogin];
     [self performSelectorOnMainThread:@selector(mostrarActividad) withObject:nil waitUntilDone:YES];
     [self mostrarLogo];
@@ -80,13 +111,19 @@
 }
 
 -(void)resultadoLogin:(NSInteger)idDominio{
+    self.datosUsuario = [DatosUsuario sharedInstance];
 #if DEBUG
     NSLog(@"Regreso resultadoLogin con Dominio %i", idDominio);
 #endif
     if (idDominio > 0) {
+        NSLog(@"EL IDDOMINIO EN SESION ACTIVA ES: %i", idDominio);
+       
         ((AppDelegate*) [[UIApplication sharedApplication] delegate]).logueado =YES;
+        self.datosUsuario.existeLogin = YES;
         MenuPasosViewController *menuPasos = [[MenuPasosViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:nil];
         [self.navigationController pushViewController:menuPasos animated:YES];
+      
+        
     }else {
         NSString *strMensaje;
         switch (idDominio) {
@@ -94,6 +131,9 @@
                 strMensaje = NSLocalizedString(@"errorLogin", Nil);
                 break;
             case -2:
+                strMensaje = NSLocalizedString(@"errorLogin", Nil);
+                break;
+            case -1:
                 strMensaje = NSLocalizedString(@"errorLogin", Nil);
                 break;
             default:
@@ -126,7 +166,6 @@
         NSString *passLogin = nil;
         NSString *emailLogin = nil;
         NSUserDefaults *prefSesion = [NSUserDefaults standardUserDefaults];
-        self.datosUsuario = [DatosUsuario sharedInstance];
         WS_HandlerLogin *login = [[WS_HandlerLogin alloc] init];
         [login setLoginDelegate:self];
         if ( [prefSesion integerForKey:@"intSesionFacebook"] == 1){

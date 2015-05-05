@@ -397,6 +397,10 @@
                 [cookies deleteCookie:cookie];
             }
         }
+        
+        if(error.code == -1003) {
+            return [@"" dataUsingEncoding:NSUTF8StringEncoding];;
+        }
        // return [[error localizedDescription] dataUsingEncoding:NSUTF8StringEncoding];
         NSString *codigoError = [NSString stringWithFormat:@"%ld",(long)error.code ];
         NSData* cData = [codigoError dataUsingEncoding:NSUTF8StringEncoding];
