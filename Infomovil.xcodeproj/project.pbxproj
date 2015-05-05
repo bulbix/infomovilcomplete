@@ -724,6 +724,7 @@
 		BFCC3E6C1AF81A3F003791B8 /* btn_facebook_335_55.png in Resources */ = {isa = PBXBuildFile; fileRef = BFCC3E681AF81A3F003791B8 /* btn_facebook_335_55.png */; };
 		BFCC3E6D1AF81A3F003791B8 /* btn_facebook_375x55.png in Resources */ = {isa = PBXBuildFile; fileRef = BFCC3E691AF81A3F003791B8 /* btn_facebook_375x55.png */; };
 		BFCC3E6E1AF81A3F003791B8 /* btn_facebook_375x61.png in Resources */ = {isa = PBXBuildFile; fileRef = BFCC3E6A1AF81A3F003791B8 /* btn_facebook_375x61.png */; };
+		BFCC3E701AF83BA2003791B8 /* btn_facebook_280x40.png in Resources */ = {isa = PBXBuildFile; fileRef = BFCC3E6F1AF83BA2003791B8 /* btn_facebook_280x40.png */; };
 		BFCC5BEA1AC4C8C9009B38F1 /* tempOff-.png in Resources */ = {isa = PBXBuildFile; fileRef = BFCC5BE91AC4C8C9009B38F1 /* tempOff-.png */; };
 		BFCC5BEC1AC4CFE9009B38F1 /* tempOn-.png in Resources */ = {isa = PBXBuildFile; fileRef = BFCC5BEB1AC4CFE9009B38F1 /* tempOn-.png */; };
 		BFD0AB951A9E44E800D5FF63 /* VerEjemplo.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFD0AB941A9E44E800D5FF63 /* VerEjemplo.xib */; };
@@ -1799,6 +1800,7 @@
 		BFCC3E681AF81A3F003791B8 /* btn_facebook_335_55.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_facebook_335_55.png; sourceTree = "<group>"; };
 		BFCC3E691AF81A3F003791B8 /* btn_facebook_375x55.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_facebook_375x55.png; sourceTree = "<group>"; };
 		BFCC3E6A1AF81A3F003791B8 /* btn_facebook_375x61.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_facebook_375x61.png; sourceTree = "<group>"; };
+		BFCC3E6F1AF83BA2003791B8 /* btn_facebook_280x40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_facebook_280x40.png; sourceTree = "<group>"; };
 		BFCC5BE91AC4C8C9009B38F1 /* tempOff-.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tempOff-.png"; path = "Infomovil/imagenesInfomovil/Templates/tempOff-.png"; sourceTree = SOURCE_ROOT; };
 		BFCC5BEB1AC4CFE9009B38F1 /* tempOn-.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tempOn-.png"; path = "Infomovil/imagenesInfomovil/Templates/tempOn-.png"; sourceTree = SOURCE_ROOT; };
 		BFD0AB941A9E44E800D5FF63 /* VerEjemplo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VerEjemplo.xib; sourceTree = "<group>"; };
@@ -3451,6 +3453,7 @@
 		BFED49661AAFBB4C009E33A9 /* LoginFacebook */ = {
 			isa = PBXGroup;
 			children = (
+				BFCC3E6F1AF83BA2003791B8 /* btn_facebook_280x40.png */,
 				BFCC3E671AF81A3F003791B8 /* btn_facebook_280x55.png */,
 				BFCC3E681AF81A3F003791B8 /* btn_facebook_335_55.png */,
 				BFCC3E691AF81A3F003791B8 /* btn_facebook_375x55.png */,
@@ -3569,6 +3572,7 @@
 				BF891C761ABA75AB0082C107 /* tempOff@3x.png in Resources */,
 				0F68946818E5412400025050 /* plecacreasitio@2x.png in Resources */,
 				0F9F52A9189890C6000F9FA5 /* 2.png in Resources */,
+				BFCC3E701AF83BA2003791B8 /* btn_facebook_280x40.png in Resources */,
 				0F9F52B6189890C6000F9FA5 /* btnsi.png in Resources */,
 				65065DE5190FEB8000189316 /* tips2@2x.png in Resources */,
 				65065DED190FEB8000189316 /* tipsWhats@2x.png in Resources */,

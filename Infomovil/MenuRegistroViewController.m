@@ -110,11 +110,11 @@
             self.leyenda5.frame = CGRectMake(385,930, 150, 25);
             
         }else if(IS_IPHONE_4){
-            self.leyenda1.frame = CGRectMake(47, 410, 200, 21);
-            self.leyenda3.frame = CGRectMake(45, 432, 28, 21);
-            self.leyenda4.frame = CGRectMake(65, 433, 144, 21);
-            self.leyenda2.frame = CGRectMake(217, 411, 80, 21);
-            self.leyenda5.frame = CGRectMake(190,432, 83, 21);
+            self.leyenda1.frame = CGRectMake(47, 440, 200, 21);
+            self.leyenda3.frame = CGRectMake(45, 457, 28, 21);
+            self.leyenda4.frame = CGRectMake(65, 458, 144, 21);
+            self.leyenda2.frame = CGRectMake(217, 441, 80, 21);
+            self.leyenda5.frame = CGRectMake(190,457, 83, 21);
         }else{
             self.leyenda1.frame = CGRectMake(47, 510, 200, 21);
             self.leyenda3.frame = CGRectMake(45, 532, 28, 21);
@@ -146,14 +146,12 @@
             self.leyenda5.frame = CGRectMake(385,931, 150, 25);
             
         }else if(IS_IPHONE_4){
-            self.leyenda1.frame = CGRectMake(6, 410, 152, 21);
-            self.leyenda2.frame = CGRectMake(160, 411, 152, 21);
-            self.leyenda3.frame = CGRectMake(37, 432, 28, 21);
-            self.leyenda4.frame = CGRectMake(65, 433, 144, 21);
-            self.leyenda5.frame = CGRectMake(202,432, 83, 21);
+            self.leyenda1.frame = CGRectMake(10, 440, 200, 21);
+            self.leyenda3.frame = CGRectMake(35, 457, 28, 21);
+            self.leyenda4.frame = CGRectMake(60, 458, 144, 21);
+            self.leyenda2.frame = CGRectMake(160, 441, 170, 21);
+            self.leyenda5.frame = CGRectMake(197,457, 83, 21);
         }else{
-            
-            
             self.leyenda1.frame = CGRectMake(6, 510, 152, 21);
             self.leyenda2.frame = CGRectMake(160, 511, 152, 21);
             self.leyenda3.frame = CGRectMake(37, 532, 28, 21);
@@ -195,10 +193,10 @@
         self.raya2.frame = CGRectMake(215, 280, 175, 2);
         self.msjRegistrarConFacebook.frame = CGRectMake(24, 426, 371, 80);
     }else if(IS_IPAD){
-        loginView.frame = CGRectMake(196, 520, 375, 61);
+        loginView.frame = CGRectMake(196, 300, 375, 50);
         UIImage *lineImg = [UIImage imageNamed:@"line@1x.png"];
         UIImageView * myImageView = [[UIImageView alloc] initWithImage:lineImg];
-        CGRect myFrame = CGRectMake(146, 600, 475, 2);
+        CGRect myFrame = CGRectMake(146, 450, 475, 2);
         [myImageView setFrame:myFrame];
         [self.view addSubview:myImageView];
         self.msjRegistrarConFacebook.frame = CGRectMake(184, 800, 400, 160);
@@ -206,11 +204,25 @@
         [self.raya1 setHidden:YES];
         [self.o setHidden:YES];
         [self.raya2 setHidden:YES];
+        [self.txtNombre setFrame:CGRectMake(196, 500, 375, 50)];
+        [self.txtContrasena setFrame:CGRectMake(196, 560, 375, 50)];
+        [self.txtContrasenaConfirmar setFrame:CGRectMake(196, 620, 375, 50)];
+        [self.btnRegistrar setFrame:CGRectMake(196, 700, 375, 50)];
+        [self.imgLogoInfo setFrame:CGRectMake(250, 150, 267,50 )];
+        [self.msjCreaTuSitio setFont:[UIFont fontWithName:@"Avenir-Book" size:24]];
+        [self.msjCreaTuSitio setFrame:CGRectMake(196, 230, 375,33 )];
+        [self.msjRegistrarConFacebook setFrame:CGRectMake(180, 390, 402, 33)];
+        [self.txtNombre setFont:[UIFont fontWithName:@"Avenir-Book" size:18]];
+        [self.txtContrasena setFont:[UIFont fontWithName:@"Avenir-Book" size:18]];
+        [self.txtContrasenaConfirmar setFont:[UIFont fontWithName:@"Avenir-Book" size:18]];
+        [self.btnRegistrar.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:18]];
+        
+        
     }else if(IS_IPHONE_4){
-        loginView.frame = CGRectMake(20, 130, 280, 50);
+        loginView.frame = CGRectMake(20, 110, 280, 50);
         
     }else{
-        loginView.frame = CGRectMake(20, 130, 280, 50);
+        loginView.frame = CGRectMake(20, 110, 280, 50);
     }
     
     for (id obj in loginView.subviews)
@@ -221,17 +233,20 @@
             UIButton * loginButton =  obj;
             UIImage *loginImage;
             if(IS_STANDARD_IPHONE_6){
-                loginButton.frame =CGRectMake(0,0, 335, 55);
+                loginButton.frame =CGRectMake(0,0, 335, 50);
                 loginImage = [UIImage imageNamed:@"btn_facebook_335_55.png"];
             }else if (IS_STANDARD_IPHONE_6_PLUS){
-                loginButton.frame =CGRectMake(0,0, 375, 55);
+                loginButton.frame =CGRectMake(0,0, 375, 50);
                 loginImage = [UIImage imageNamed:@"btn_facebook_375x55.png"];
             }else if(IS_IPAD){
-                loginButton.frame =CGRectMake(0,0, 375, 55);
-                loginImage = [UIImage imageNamed:@"btn_facebook_375x61.png"];
+                loginButton.frame =CGRectMake(0,0, 375, 50);
+                loginImage = [UIImage imageNamed:@"btn_facebook_375x55.png"];
                 
+            }else if(IS_IPHONE_4){
+                loginButton.frame =CGRectMake(0,0, 280, 40);
+                loginImage = [UIImage imageNamed:@"btn_facebook_280x55.png"];
             }else{
-                loginButton.frame =CGRectMake(0,0, 280, 55);
+                loginButton.frame =CGRectMake(0,0, 280, 50);
                 loginImage = [UIImage imageNamed:@"btn_facebook_280x55.png"];
             }
             [loginButton setBackgroundImage:loginImage forState:UIControlStateNormal];
@@ -249,14 +264,17 @@
             }
             loginLabel.textAlignment = NSTextAlignmentCenter;
             if(IS_STANDARD_IPHONE_6){
-                loginLabel.frame =CGRectMake(15,6, 335, 45);
+                loginLabel.frame =CGRectMake(15,6, 335, 50);
                 [loginLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
             }else if(IS_STANDARD_IPHONE_6_PLUS){
-                loginLabel.frame =CGRectMake(25,6, 375, 45);
+                loginLabel.frame =CGRectMake(25,6, 375, 50);
                 [loginLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
             }else if(IS_IPAD){
-                loginLabel.frame =CGRectMake(15,6, 375, 45);
+                loginLabel.frame =CGRectMake(0,0, 375, 50);
                 [loginLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:18]];
+            }else if(IS_IPHONE_4){
+                loginLabel.frame =CGRectMake(0,0, 280, 50);
+                [loginLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
             }else{
                 loginLabel.frame =CGRectMake(0,0, 280, 50);
                 [loginLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
@@ -278,6 +296,14 @@
         [botonRegresar setBackgroundImage:[UIImage imageNamed:@"backNuevo.png"] forState:UIControlStateNormal];
         [botonRegresar setFrame:CGRectMake(10, 25, 36, 36)];
     }
+    
+    if(IS_IPHONE_4){
+        [self.txtNombre setFrame:CGRectMake(20, 220,274,40)];
+        [self.txtContrasena setFrame:CGRectMake(20, 270, 274, 40)];
+        [self.txtContrasenaConfirmar setFrame:CGRectMake(20, 320, 274, 40)];
+        [self.btnRegistrar setFrame:CGRectMake(20, 380, 280, 40)];
+    }
+    
     
     [botonRegresar addTarget:self action:@selector(regresarMenu:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:botonRegresar];
@@ -307,7 +333,8 @@
     self.leyenda3.text = NSLocalizedString(@"inicioLeyenda3", nil);
     [self.leyenda4 setTitle:NSLocalizedString(@"inicioLeyenda4", nil) forState:UIControlStateNormal] ;
     self.leyenda5.text = NSLocalizedString(@"inicioLeyenda5", nil);
-    
+    [self.btnRegistrar setTitle:NSLocalizedString(@"formularioBoton", nil) forState:UIControlStateNormal] ;
+    self.msjCreaTuSitio.text = NSLocalizedString(@"creaSitio", nil);
 }
 // Boton de regresar //
 -(IBAction)regresarMenu:(id)sender {

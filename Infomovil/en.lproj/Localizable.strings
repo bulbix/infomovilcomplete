@@ -497,7 +497,7 @@
 "subtituloCuentaPlanPro" = "Choose your plan enjoys the benefits";
 "BeneficiosCuentaPlanPro" = "PRO PLAN BENEFITS";
 // Mensaje pantalla Registrar Usuario //
-"msjRegistrarUsuarioFB" = "never post to your wall without your permission";
+"msjRegistrarUsuarioFB" = "Never post to your wall without your permission";
 
 //Pantalla Crear Editar //
 "inicioRapido" = "Quick start";
@@ -539,4 +539,4 @@
 "errorPublicacion" = "Has not been able to register your website please try again.";
 "faltaImagenActualizar" = "You must select an image before upgrading";
 "cuentaTodavia"="Don't have an Account? Register"; // or You do not have an account yet?
-"editaTuSitio" = "Edit your site";
+"editaTuSitio" = "Edit your website";

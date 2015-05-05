@@ -37,4 +37,17 @@
 - (IBAction)recordarLoginAct1:(id)sender;
 - (IBAction)recordarLoginAct2:(id)sender;
 
+
+@property (weak, nonatomic) IBOutlet UILabel *leyenda1;
+@property (weak, nonatomic) IBOutlet UIButton *leyenda2;
+@property (weak, nonatomic) IBOutlet UILabel *leyenda3;
+@property (weak, nonatomic) IBOutlet UIButton *leyenda4;
+@property (weak, nonatomic) IBOutlet UILabel *leyenda5;
+
+
+
+
+
+
+
 @end

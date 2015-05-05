@@ -608,7 +608,7 @@
 "subtituloCuentaPlanPro" = "Elige tu plan disfruta de los beneficios";
 "BeneficiosCuentaPlanPro" = "BENEFICIOS DEL PLAN PRO";
 // Mensaje pantalla Registrar Usuario //
-"msjRegistrarUsuarioFB" = "y jamás publicaremos en tu muro sin tu permiso";
+"msjRegistrarUsuarioFB" = "Y jamás publicaremos en tu muro sin tu permiso";
 
 //Pantalla Crear Editar //
 "inicioRapido" = "Inicio rápido";
@@ -647,4 +647,4 @@
 "errorPublicacion" = "No se ha podido registrar tu sitio web por favor inténtalo nuevamente.";
 "faltaImagenActualizar" = "Debes seleccionar una imagen antes de actualizar";
 "cuentaTodavia"="¿Aún no tienes cuenta? Registrate";
-"editaTuSitio" = "Edita tu sitio";
+"editaTuSitio" = "Edita tu sitio web";

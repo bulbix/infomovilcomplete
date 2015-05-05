@@ -61,6 +61,12 @@
     self.navigationItem.leftBarButtonItem = Nil;
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+ [self.vistaInferior setHidden:YES];
+}
+
+
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
