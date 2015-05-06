@@ -88,33 +88,23 @@
 -(void) eliminarDatos {
     self.nombreEmpresa = Nil;
     self.descripcion = Nil;
-    //    self.rutaLogo = datosOrigen.rutaLogo;
-    
     self.colorSeleccionado = Nil;
     self.pathFondo = Nil;
     self.eligioTemplate = NO;
-    //    self.telefonosContacto = datosOrigen.telefonosContacto;
     self.direccion = Nil;
-    
     self.arregloEstatusEdicion = Nil;
-    
     self.arregloEstatusPromocion = Nil;
-    
     self.rutaImagenPromocion = Nil;
-
     self.promocionActual = Nil;
     self.arregloGaleriaImagenes = Nil;
     self.arregloContacto = Nil;
-
     self.arregloEstatusPerfil = Nil;
     self.arregloDatosPerfil = Nil;
     self.arregloInformacionAdicional = Nil;
-    
     self.emailUsuario = Nil;
     self.numeroUsuario = Nil;
     self.passwordUsuario = Nil;
 	self.existeLogin = NO;
-	
     self.dominio = Nil;
     self.localizacion = Nil;
     self.videoSeleccionado = Nil;
@@ -124,7 +114,6 @@
     self.existeLogin = NO;
     self.imagenLogo = NO;
     self.editoPagina = NO;
-	
 	self.tipoRegistro = NO;
 	self.nombreOrganizacion = Nil;
 	self.servicioCliente = Nil;
@@ -138,21 +127,34 @@
 	self.pais = Nil;
 	self.codigoPais = Nil;
     self.urlVideo = Nil;
-	
-
     self.fechaConsulta = Nil;
-	
 	self.fechaInicial = Nil;
 	self.fechaFinal = Nil;
     self.fechaDominioIni = nil;
     self.fechaDominioFin = nil;
-    
     self.descripcionDominio = Nil;
     self.plantilla = Nil;
     self.imgGaleriaArray = Nil;
     self.auxStrSesionUser = Nil;
     self.auxStrSesionPass = Nil;
     self.urlPromocion = Nil;
+    self.nombreTemplate = Nil;
+    self.redSocial = Nil;
+    self.tipoDeUsuario = Nil;
+    self.canal = Nil;
+    self.campania = Nil;
+    self.consultaStatusCtrlDominio = Nil;
+    self.consultaidDomain = Nil;
+    self.consultaFechaCtrlIni = Nil;
+    self.consultaVigente = Nil;
+    self.consultaidCtrlDomain = Nil;
+    self.consultaFechaCtrlFin = Nil;
+    self.consultaDomainType = Nil;
+    self.consultaDomainName = Nil;
+    self.consultaLista = Nil;
+    
+  
+    
     
 }
 
