@@ -181,7 +181,7 @@
         [btEdit setFrame:CGRectMake(0, 0, imagenEdit.size.width, imagenEdit.size.height)];
         [btEdit setImage:imagenEdit forState:UIControlStateNormal];
         [btEdit addTarget:self action:@selector(editarTabla:) forControlEvents:UIControlEventTouchUpInside];
-        UIBarButtonItem *botonEdit = [[UIBarButtonItem alloc] initWithCustomView:btEdit];
+       // UIBarButtonItem *botonEdit = [[UIBarButtonItem alloc] initWithCustomView:btEdit];
         
 	
         // IRC ordenar imagenes quitar esta linea y descomentar las de abajo //

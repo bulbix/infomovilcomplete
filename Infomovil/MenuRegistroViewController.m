@@ -45,6 +45,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        loginFacebook = YES;
     }
     return self;
 }
@@ -492,8 +493,10 @@
 }
 
 -(void) mostrarActivity {
-    self.alerta = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"cargando", @" ") message:Nil dominio:Nil andAlertViewType:AlertViewTypeActivity];
-    [self.alerta show];
+   
+        self.alerta = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"cargando", @" ") message:Nil dominio:Nil andAlertViewType:AlertViewTypeActivity];
+        [self.alerta show];
+    
 }
 
 -(void) checaNombre {
@@ -515,13 +518,14 @@
         [self.alerta hide];
     }
     if (existeUsuario) {
-        
+        loginFacebook = NO;
         
         if (idDominio == 0) {
+            loginFacebook = YES;
             AlertView *alert = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"error", Nil) message:NSLocalizedString(@"errorCrearDominio", Nil) dominio:Nil andAlertViewType:AlertViewTypeInfo];
             [alert show];
         }else{
-            
+            loginFacebook = NO;
             [[AppsFlyerTracker sharedTracker] setCustomerUserID:self.datosUsuario.emailUsuario];
             [[AppsFlyerTracker sharedTracker] trackEvent:@"Registro Usuario" withValue:@""];
            
@@ -543,6 +547,7 @@
         
     }
     else {
+        loginFacebook = YES;
         FBSession* session = [FBSession activeSession];
         [session closeAndClearTokenInformation];
         [session close];
@@ -560,22 +565,36 @@
     if(operacionWS == 1){
         if ([resultado isEqualToString:@"No existe"]) {
             existeUsuario = YES;
+            loginFacebook = NO;
             [self crearDominio];
         }
         else {
+            loginFacebook = YES;
             existeUsuario = NO;
-            [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
+            if (self.alerta)
+            {
+                [NSThread sleepForTimeInterval:1];
+                [self.alerta hide];
+            }
+            //[self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
         }
     }else{
+        loginFacebook = NO;
         DatosUsuario *datos = [DatosUsuario sharedInstance];
         idDominio = datos.idDominio;
-        [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
+        if (self.alerta)
+        {
+            [NSThread sleepForTimeInterval:1];
+            [self.alerta hide];
+        }
+        //[self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
     }
 }
 
 -(void) resultadoLogin:(NSInteger) idDominioLogin {
     if (idDominioLogin > 0) {
         loginExitoso = YES;
+        loginFacebook = NO;
         idDominio = idDominioLogin;
         existeUsuario = YES;
         self.datosUsuario.redSocial = @"Facebook";
@@ -590,6 +609,7 @@
         [prefSesion synchronize];
     }
     else {
+        loginFacebook = YES;
         respuestaError = idDominioLogin;
         loginExitoso = NO;
     }
@@ -597,6 +617,7 @@
 }
 
 -(void) errorToken {
+    loginFacebook = YES;
     if (self.alerta)
     {
         [NSThread sleepForTimeInterval:1];
@@ -618,6 +639,7 @@
 
 -(void) errorConsultaUsuario {
     NSLog(@"REGRESO ERROR CONSULTAUSUARIO!!");
+    loginFacebook = YES;
     if (self.alerta)
     {
         [NSThread sleepForTimeInterval:1];
@@ -658,11 +680,12 @@
 #endif
     self.datosUsuario.redSocial = @"Facebook";
     
-    //if (!loginFacebook) {
-        loginFacebook = YES;
-        [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
+    if(loginFacebook == YES) {
+        
+        loginFacebook = NO;
+       // [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
         [self performSelectorInBackground:@selector(consultaLogin) withObject:Nil];
-    //}
+    }
     
 }
 

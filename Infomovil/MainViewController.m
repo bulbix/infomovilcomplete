@@ -40,6 +40,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        loginFacebook = YES;
     }
     return self;
 }
@@ -484,7 +485,7 @@
 -(void) resultadoLogin:(NSInteger) idDominio {
     if (idDominio > 0) {
         loginExitoso = YES;
-        
+        loginFacebook = NO;
         self.datosUsuario = [DatosUsuario sharedInstance];
         // Se guarda la sesion //
         NSUserDefaults *prefSesion = [NSUserDefaults standardUserDefaults];
@@ -496,6 +497,7 @@
   
     }
     else {
+        loginFacebook = YES;
         respuestaError = idDominio;
         loginExitoso = NO;
          NSUserDefaults *prefSesion = [NSUserDefaults standardUserDefaults];
@@ -508,14 +510,17 @@
 -(void) resultadoConsultaDominio:(NSString *)resultado {
     if ([resultado isEqualToString:@"Exito"]) {
         existeUnaSesion = YES;
+        loginFacebook = NO;
     }
     else {
         existeUnaSesion = NO;
+        loginFacebook = YES;
     }
     [self performSelectorInBackground:@selector(ocultarActivity) withObject:Nil];
 }
 -(void) errorConsultaWS {
     [self performSelectorOnMainThread:@selector(errorLogin) withObject:Nil waitUntilDone:YES];
+    loginFacebook = YES;
 }
 
 -(void) mostrarActivity {
@@ -533,6 +538,7 @@
     }
     else {
     if (loginExitoso) {
+        loginFacebook = NO;
         NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
         NSDictionary *launch =  [defaults objectForKey:@"launchingWithOptions"];
         [Appboy startWithApiKey:llaveAppboy
@@ -546,16 +552,15 @@
         }
         
         [self.datosUsuario setPasswordUsuario:self.txtPassword.text];
-       
-        
+    
         [[AppsFlyerTracker sharedTracker] setCustomerUserID:self.txtEmail.text];
-       
         
         ((AppDelegate*) [[UIApplication sharedApplication] delegate]).logueado =YES;
         MenuPasosViewController *menuPasos = [[MenuPasosViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:nil];
         [self.navigationController pushViewController:menuPasos animated:YES];
     }
     else {
+        loginFacebook = YES;
         [self fbDidlogout]; // CErrar sesion de facebook
         NSString *strMensaje;
         switch (respuestaError) {
@@ -586,6 +591,7 @@
 
 -(void) errorLogin {
         NSLog(@"REGRESO ERROR CONSULTAUSUARIO!!");
+        loginFacebook = YES;
         if (self.alerta)
         {
             [NSThread sleepForTimeInterval:1];
@@ -708,11 +714,12 @@
 #endif
     self.datosUsuario.redSocial = @"Facebook";
     
-    //if (!loginFacebook) {
-        loginFacebook = YES;
+     if(loginFacebook == YES) {
+    
+        loginFacebook = NO;
         [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
         [self performSelectorInBackground:@selector(consultaLogin) withObject:Nil];
-    //}
+    }
     
 }
 
