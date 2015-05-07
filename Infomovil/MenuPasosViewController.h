@@ -33,7 +33,6 @@
 
 - (IBAction)elegirPlantilla:(UIButton *)sender;
 - (IBAction)crearEditar:(UIButton *)sender;
-- (IBAction)nombrar:(UIButton *)sender;
 - (IBAction)publicar:(UIButton *)sender;
 - (IBAction)verEjemplo:(UIButton *)sender;
 

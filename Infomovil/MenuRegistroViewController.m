@@ -5,7 +5,7 @@
 //  Created by Isaac Rosas Camarillo on 12/02/15.
 //  Copyright (c) 2015 Sergio Sánchez Flores. All rights reserved.
 //
-#import "FormularioRegistroViewController.h"
+
 #import "NombrarViewController.h"
 #import "WS_HandlerUsuario.h"
 #import "SelectorPaisViewController.h"
@@ -44,7 +44,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
         loginFacebook = YES;
     }
     return self;
@@ -65,7 +64,7 @@
                                                object:nil];
     
     id tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker set:@"FormularioViewController"
+    [tracker set:@"MenuRegistroViewController"
            value:@"Home Screen"];
   
     self.navigationItem.rightBarButtonItem = Nil;
@@ -562,13 +561,17 @@
 }
 
 -(void) resultadoConsultaDominio:(NSString *)resultado {
-    if(operacionWS == 1){
+    NSLog(@"EL RESULTADO QUE ME ENVIO EL REGISTRO ES: %@",resultado);
+    if(operacionWS == 1 || [resultado isEqualToString:@"Exito"]){
+        NSLog(@"ENTRO 1");
         if ([resultado isEqualToString:@"No existe"]) {
+            NSLog(@"ENTRO 2");
             existeUsuario = YES;
             loginFacebook = NO;
             [self crearDominio];
         }
         else {
+            NSLog(@"ENTRO 3");
             loginFacebook = YES;
             existeUsuario = NO;
             if (self.alerta)
@@ -579,6 +582,7 @@
             //[self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
         }
     }else{
+        NSLog(@"ENTRO 4");
         loginFacebook = NO;
         DatosUsuario *datos = [DatosUsuario sharedInstance];
         idDominio = datos.idDominio;
@@ -646,8 +650,6 @@
         [self.alerta hide];
     }
     [self fbDidlogout];
-   // [self viewWillAppear:YES];
-    //[self.view setNeedsDisplay];
     
 }
 
@@ -708,13 +710,7 @@
     [login setRedSocial:@"Facebook"];
     [login obtieneLogin:self.datosUsuario.emailUsuario conPassword:@" "];
 }
-/*
-- (IBAction)llamarCrearCuentaAct:(id)sender{
-    NSLog(@"SE LLAMO A LLAMARCREARCUENTAACT");
-    FormularioRegistroViewController *registro = [[FormularioRegistroViewController alloc] initWithNibName:@"FormularioRegistroViewController" bundle:nil];
-    [self.navigationController pushViewController:registro animated:YES];
-}
-*/
+
 
 - (void)fbDidlogout {
     FBSession* session = [FBSession activeSession];
@@ -763,13 +759,7 @@
     if ([self validaCampos]) {
         nombre = self.txtNombre.text;
         password = self.txtContrasena.text;
-        if ([codPromocion length] > 0 && ![CommonUtils validaCodigoRedimir:codPromocion]) {
-            [[AlertView initWithDelegate:Nil message:NSLocalizedString(@"txtErrorCodigo", nil) andAlertViewType:AlertViewTypeInfo] show];
-        }
-        
-        else {
-            
-            //Descomentar esto es para que realize las peticiones al servidor
+
             if ([CommonUtils hayConexion]) {
                 [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
                 [self performSelectorInBackground:@selector(checaNombre) withObject:Nil];
@@ -779,7 +769,6 @@
                 [alert show];
             }
         }
-    }
 }
 
 

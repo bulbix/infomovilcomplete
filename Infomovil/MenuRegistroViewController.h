@@ -9,10 +9,9 @@
 
 #import "InfomovilViewController.h"
 #import "WS_HandlerProtocol.h"
-#import "SeleccionaPaisProtocol.h"
 #import "CRProductTour.h"
 
-@interface MenuRegistroViewController : InfomovilViewController <UIScrollViewDelegate, UITextFieldDelegate, AlertViewDelegate, WS_HandlerProtocol,SeleccionaPaisProtocol> {
+@interface MenuRegistroViewController : InfomovilViewController <UIScrollViewDelegate, UITextFieldDelegate, AlertViewDelegate, WS_HandlerProtocol> {
     CRProductTour *productTourView;
 }
 

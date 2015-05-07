@@ -408,7 +408,7 @@
 "salirTitulo" = "Salir de Cuenta";
 "salirMensaje" = "¿Estás seguro que deseas salir? Tendrás que re-ingresar con tu usuario y contraseña";
 
-//FormularioRegistroViewController
+
 "formularioLabel" = " Contraseña";
 "formularioLabel6" = "Confirmar contraseña";
 "formularioPassword" = "Los campos de contraseña no coinciden";
@@ -416,7 +416,7 @@
 //ConfiguracionViewController
 "configuracionCorreo" = "Ninguna cuenta de correo asociada";
 
-//FormularioRegistro
+
 "formularioBoton" = "¡Regístrame!";
 
 "perfinNegocioProfesion" = "Negocio | Profesión";

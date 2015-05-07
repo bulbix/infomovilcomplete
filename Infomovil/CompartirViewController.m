@@ -235,7 +235,7 @@
      @"http://infomovil.com", @"caption",
      mensaje, @"description",
      @"http://www.infomovil.com/", @"link",
-     @"http://infomovil.com/templates/Index/images/logo_infomovil.png", @"picture",
+     @"http://info-movil.com:8080/templates/Index/images/icn_infomovil_200.png", @"picture",
      nil];
    
     [FBWebDialogs presentFeedDialogModallyWithSession:nil

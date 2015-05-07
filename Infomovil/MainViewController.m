@@ -11,7 +11,7 @@
 #import "WS_HandlerLogin.h"
 #import "WS_HandlerDominio.h"
 #import "CambiarPasswordViewController.h"
-#import "FormularioRegistroViewController.h"
+
 #import "NombrarViewController.h"
 #import "AppsFlyerTracker.h"
 #import <FacebookSDK/FacebookSDK.h>

@@ -192,6 +192,7 @@
                 }
                 else {
                     NSInteger respuestaInt = [stringResult integerValue];
+                    NSLog(@"LA RESPUESTA ES : %i", respuestaInt);
                     if (respuestaInt > 0) {
                         self.datos.emailUsuario = email;
                         self.datos.passwordUsuario = pass;

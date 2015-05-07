@@ -9,7 +9,7 @@
 #import "MenuPasosViewController.h"
 #import "ColorPickerViewController.h"
 #import "CrearPaso1ViewController.h"
-#import "FormularioRegistroViewController.h"
+
 #import "PublicarViewController.h"
 #import "DominioRegistradoViewController.h"
 #import "IrAMiSitioViewController.h"
@@ -349,24 +349,6 @@
     }
     else {
         AlertView *vistaNotificacion = [AlertView initWithDelegate:self message:NSLocalizedString(@"eligeTemplate", Nil) andAlertViewType:AlertViewTypeInfo];
-        [vistaNotificacion show];
-    }
-}
-
-- (IBAction)nombrar:(UIButton *)sender { NSLog(@"NOMBRAR");
-    self.datosUsuario = [DatosUsuario sharedInstance];
-    if (!self.datosUsuario.nombroSitio) {
-        if ([self perfilEditado]) {
-            FormularioRegistroViewController *nombrar = [[FormularioRegistroViewController alloc] initWithNibName:@"FormularioRegistroViewController" bundle:nil];
-            [self.navigationController pushViewController:nombrar animated:YES];
-        }
-        else {
-            AlertView *vistaNotificacion = [AlertView initWithDelegate:self message:NSLocalizedString(@"editaPagina", Nil) andAlertViewType:AlertViewTypeInfo];
-            [vistaNotificacion show];
-        }
-    }
-    else {
-        AlertView *vistaNotificacion = [AlertView initWithDelegate:self message:NSLocalizedString(@"yaNombro", Nil) andAlertViewType:AlertViewTypeInfo];
         [vistaNotificacion show];
     }
 }
