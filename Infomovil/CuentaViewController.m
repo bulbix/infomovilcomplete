@@ -393,8 +393,8 @@ int opcionButton = 0 ;
     
 }
 
--(void)resultadoCompraDominio:(BOOL)estado{ NSLog(@"OCURRIO UN ERROR EN LA COMPRA!");
-    if(estado && ![self.datosUsuario.datosPago.statusPago isEqualToString: @"PAGADO"]){
+-(void)resultadoCompraDominio:(BOOL)estado{ NSLog(@"EL ESTATUS ES: %@", self.datosUsuario.datosPago.statusPago);
+    if(estado == YES && [self.datosUsuario.datosPago.statusPago isEqualToString: @"INTENTO PAGO"]){
         if(opcionButton == 1){
             [self compraProducto1mes];
         }else if(opcionButton == 2){

@@ -145,8 +145,13 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
         NSLog(@"Transaction error: %@", transaction.error.localizedDescription);
     }
 #endif
-    AlertView *alertaError = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"sentimos", Nil) message:NSLocalizedString(@"errorCompra", Nil) dominio:Nil andAlertViewType:AlertViewTypeInfo];
-    [alertaError show];
+    if(transaction.error.localizedDescription == nil || [transaction.error.localizedDescription isEqualToString:@""] || [transaction.error.localizedDescription length] <= 0){
+        AlertView *alertaError = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"sentimos", Nil) message:NSLocalizedString(@"errorCompra", Nil) dominio:Nil andAlertViewType:AlertViewTypeInfo];
+        [alertaError show];
+    }else{
+        AlertView *alertaError = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"sentimos", Nil) message:transaction.error.localizedDescription dominio:Nil andAlertViewType:AlertViewTypeInfo];
+        [alertaError show];
+    }
     
     
     [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
