@@ -13,6 +13,7 @@
 @interface WS_HandlerGaleria(){
 	NSMutableArray *arregloImagenes;
 	NSMutableArray * ids;
+   
 }
 
 @end
@@ -102,7 +103,7 @@
 }
 
 -(void) actualizarGaleriaDescripcion:(NSInteger)indexImage descripcion:(NSString *)descImage{
-    NSLog(@"ENTRO EN ACTUALIZAR GALERA DE WS_HANDLERGALERIA");
+    NSLog(@"ENTRO EN ACTUALIZAR GALERA DE WS_HANDLERGALERIA DESCRIPCION");
     ids = [[NSMutableArray alloc] init];
     DatosUsuario *datos = [DatosUsuario sharedInstance];
     NSMutableString *stringXML;
@@ -121,21 +122,25 @@
                      [StringUtils encriptar:@"IOS" conToken:datos.token],
                      [StringUtils encriptar:versionDefault conToken:datos.token],
                      [StringUtils encriptar:[NSString stringWithFormat:@"%i", datos.idDominio] conToken:datos.token]];
-        NSLog(@"LOS VALORES ENVIADOS SON: %i y de arreglogariea son %i", datos.idDominio, [self.arregloGaleria count]);
+        NSLog(@"LOS VALORES ENVIADOS SON: %i y de arreglogariea son %i y el url Image es: %@", datos.idDominio, [self.arregloGaleria count], [datos.arregloUrlImagenesGaleria objectAtIndex:indexImage]);
         
             [stringXML appendFormat:@"<arg1>"
              "<typeImage>%@</typeImage>"
              "<descripcionImagen>%@</descripcionImagen>"
              "<idImagen>%@</idImagen>"
-             "<imagenClobGaleria></imagenClobGaleria>"
+             "<imagenClobGaleria>%@</imagenClobGaleria>"
              "</arg1>",
              [StringUtils encriptar:@"IMAGEN" conToken:datos.token],
              [StringUtils encriptar:descImage conToken:datos.token],
-             [StringUtils encriptar:idImagenInt conToken:datos.token]];
+             [StringUtils encriptar:idImagenInt conToken:datos.token],
+             [StringUtils encriptar:[datos.arregloUrlImagenesGaleria objectAtIndex:indexImage] conToken:datos.token]];
         }
         [stringXML appendFormat:@"<token>%@</token></ws:updateImage></soapenv:Body></soapenv:Envelope>", [StringUtils encriptar:datos.emailUsuario conToken:passwordEncriptar]];
     
-    
+    self.arregloUrlGaleriaAux = [[NSMutableArray alloc] init];
+    self.arregloTypeImageGaleriaAux = [[NSMutableArray alloc] init];
+    self.arregloDescripcionImageGaleriaAux = [[NSMutableArray alloc] init];
+    self.arregloIdImagenGaleriaAux = [[NSMutableArray alloc] init];
     
     NSLog(@"El string es %@", stringXML);
     self.strSoapAction = @"WSInfomovilDomain";
@@ -145,34 +150,25 @@
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
         [parser setDelegate:self];
         if ([parser parse]) {
-            if (requiereEncriptar) {
-                datos = [DatosUsuario sharedInstance];
-                int aux=0;
-                int idAux=0;
-                for(int x = 0;x < ids.count;x++)
-                {
-                    GaleriaImagenes *imagen = [self.arregloGaleria objectAtIndex:x];
-                    
-                    imagen.idImagen = [[StringUtils desEncriptar:[ids objectAtIndex:x] conToken:datos.token] integerValue];
-                    aux++;
-                    idAux = imagen.idImagen;
-                }
-                if(aux==1){
-                    [self.galeriaDelegate resultadoConsultaDominio:[NSString stringWithFormat:@"%i",idAux]];
-                } else if(self.resultado == nil){
-                    [datos setArregloGaleriaImagenes:self.arregloGaleria];
-                    NSLog(@"ENTRO A actualizarGaleriaDescripcion Y REGRESO EXITO");
-                    [datos.arregloDescripcionImagenGaleria replaceObjectAtIndex:indexImage withObject:descImage];
-                    [self.galeriaDelegate resultadoConsultaDominio:@"Exito"];
-                } else {
-                    NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
-                    [self.galeriaDelegate resultadoConsultaDominio:stringResult];
-                }
+            datos = [DatosUsuario sharedInstance];
+            
+            if (self.resultadoLista == nil || [[self.resultadoLista stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [self.resultadoLista isEqualToString:@"Error de token"]) {
+                NSLog(@"ENTRO A ERROR DE TOKEN");
+                [self.galeriaDelegate errorToken];
+            }else{
+                datos.arregloUrlImagenesGaleria = nil;
+                datos.arregloTipoImagenGaleria = nil;
+                datos.arregloIdImagenGaleria = nil;
+                datos.arregloDescripcionImagenGaleria = nil;
                 
+                datos.arregloUrlImagenesGaleria = [[NSMutableArray alloc] initWithArray:self.arregloUrlGaleriaAux copyItems:YES];
+                datos.arregloTipoImagenGaleria = [[NSMutableArray alloc] initWithArray:self.arregloTypeImageGaleriaAux copyItems:YES];
+                datos.arregloIdImagenGaleria = [[NSMutableArray alloc] initWithArray:self.arregloIdImagenGaleriaAux copyItems:YES];
+                datos.arregloDescripcionImagenGaleria = [[NSMutableArray alloc] initWithArray:self.arregloDescripcionImageGaleriaAux copyItems:YES];
+                [self.galeriaDelegate resultadoConsultaDominio:@"Exito"];
             }
-            else {NSLog(@"REGRESSO resultadoConsultaDominio DEL METODO ACTUALIZAR GALERIA ACTUALIZARGALERIADESCRIPCION");
-                [self.galeriaDelegate resultadoConsultaDominio:self.resultado];
-            }
+            
+            
         }
         else {
             [self.galeriaDelegate errorConsultaWS];
@@ -196,8 +192,8 @@
                      "</ws:deleteImage>"
                      "</soapenv:Body>"
                      "</soapenv:Envelope>",
-                     [StringUtils encriptar:[NSString stringWithFormat:@"%i",datos.idDominio] conToken:datos.token],
-                     [StringUtils encriptar: [NSString stringWithFormat:@"%i",idImagen] conToken:datos.token],
+                     [StringUtils encriptar:[NSString stringWithFormat:@"%li",(long)datos.idDominio] conToken:datos.token],
+                     [StringUtils encriptar: [NSString stringWithFormat:@"%li",(long)idImagen] conToken:datos.token],
                      [StringUtils encriptar: datos.emailUsuario conToken:passwordEncriptar]];
     
    // NSLog(@"El string es %@", stringXML);
@@ -377,6 +373,20 @@
     else if([elementName isEqualToString:@"urlImagen"]){
         self.currentElementString = [[NSMutableString alloc] init];
     }
+    
+    
+    else if([elementName isEqualToString:@"url"]){
+        self.currentElementString = [[NSMutableString alloc] init];
+    }
+    else if([elementName isEqualToString:@"typeImage"]){
+        self.currentElementString = [[NSMutableString alloc] init];
+    }
+    else if([elementName isEqualToString:@"descripcionImagen"]){
+        self.currentElementString = [[NSMutableString alloc] init];
+    }
+    else if([elementName isEqualToString:@"idImagen"]){
+        self.currentElementString = [[NSMutableString alloc] init];
+    }
 }
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
@@ -384,15 +394,39 @@
     
     if ([elementName isEqualToString:@"resultado"]) {
         self.resultado = [StringUtils desEncriptar:self.currentElementString conToken:self.datosUsuario.token];
-        NSLog(@"EL resultado DE LA IMAGEN : %@", self.resultado);
+        NSLog(@"EL RESULTADO ES: %@", self.resultado);
         
-        
-    }else if([elementName isEqualToString:@"urlImagen"]){
+    }
+    else if([elementName isEqualToString:@"urlImagen"]){
         self.urlResultado = [StringUtils desEncriptar:self.currentElementString conToken:self.datosUsuario.token];
         NSLog(@"EL resultado de la urlResultado es: %@", self.urlResultado);
     }
+    else if([elementName isEqualToString:@"listImagenVO"]){
+        self.resultadoLista = [StringUtils desEncriptar:self.currentElementString conToken:self.datosUsuario.token];
+        NSLog(@"LA LISTA QUE ME ENVIO ES: %@", self.resultadoLista);
+    }
+    else if([elementName isEqualToString:@"url"]){
+        self.resultado = [StringUtils desEncriptar:self.currentElementString conToken:self.datosUsuario.token];
+        [self.arregloUrlGaleriaAux addObject:self.resultado];
+        NSLog(@"EL resultado de la urlResultado  en URL es: %@", self.resultado);
+    }
+    else if([elementName isEqualToString:@"typeImage"]){
+        self.resultado = [StringUtils desEncriptar:self.currentElementString conToken:self.datosUsuario.token];
+        [self.arregloTypeImageGaleriaAux addObject:self.resultado];
+        NSLog(@"EL resultado de la urlResultado  en typeImage es: %@", self.resultado);
+    }
+    else if([elementName isEqualToString:@"descripcionImagen"]){
+        self.resultado = [StringUtils desEncriptar:self.currentElementString conToken:self.datosUsuario.token];
+        [self.arregloDescripcionImageGaleriaAux addObject:self.resultado];
+        NSLog(@"EL resultado de la urlResultado  en descripcionImagen es: %@", self.resultado);
+    }
+    else if([elementName isEqualToString:@"idImagen"]){
+        self.resultado = [StringUtils desEncriptar:self.currentElementString conToken:self.datosUsuario.token];
+        [self.arregloIdImagenGaleriaAux addObject:self.resultado];
+        NSLog(@"EL resultado de la urlResultado  en idImagen es: %@", self.resultado);
+    }
+    
 }
-
 
 
 @end

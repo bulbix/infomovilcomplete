@@ -17,10 +17,18 @@
 @property (nonatomic, strong) id<WS_HandlerProtocol> galeriaDelegate;
 @property (nonatomic, strong) NSString *currentElementString;
 @property (nonatomic, strong) NSString *resultado;
+@property (nonatomic, strong) NSString *resultadoLista;
 @property (nonatomic, strong) NSString *urlResultado;
 @property (nonatomic, strong) NSString *token;
 
 @property (nonatomic, strong) NSMutableArray *arregloGaleria;
+
+@property (nonatomic, strong) NSMutableArray *arregloUrlGaleriaAux;
+@property (nonatomic, strong) NSMutableArray *arregloTypeImageGaleriaAux;
+@property (nonatomic, strong) NSMutableArray *arregloDescripcionImageGaleriaAux;
+@property (nonatomic, strong) NSMutableArray *arregloIdImagenGaleriaAux;
+
+
 @property (nonatomic, strong) GaleriaImagenes *imagenInsertarAux;
 @property (nonatomic, assign) NSInteger indiceSeleccionado;
 @property (nonatomic, assign) PhotoGaleryType tipoGaleria;

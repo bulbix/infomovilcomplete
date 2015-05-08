@@ -129,7 +129,7 @@
         loginView.frame = CGRectMake(196, 300, 375, 50);
         
         self.scrollLogin.frame = CGRectMake(0, 0, 768, 1024);
-        [self.scrollLogin setContentSize:CGSizeMake(768, 1024)];
+        [self.scrollLogin setContentSize:CGSizeMake(768, 500)];
        
         self.txtEmail.frame = CGRectMake(196,430, 375, 61);
         [self.txtEmail setBackground:[UIImage imageNamed:@"input_semitrans@1x" ]];
@@ -173,10 +173,13 @@
         [self.editaTuSitio setFont:[UIFont fontWithName:@"Avenir-Book" size:24]];
         
     }else if(IS_IPHONE_4){
-        self.txtEmail.frame = CGRectMake(16,200, 288, 40);
-        self.txtPassword.frame = CGRectMake(16, 240, 288, 40);
+        self.editaTuSitio.text = nil;
+        self.editaTuSitio.hidden = YES;
+        self.editaTuSitio.enabled = YES;
+        self.txtEmail.frame = CGRectMake(16,180, 288, 50);
+        self.txtPassword.frame = CGRectMake(16, 240, 288, 50);
         [self.scrollLogin setContentSize:CGSizeMake(320, 420)];
-         loginView.frame = CGRectMake(20, 120, 280, 40);
+         loginView.frame = CGRectMake(20, 100, 280, 50);
         UIColor *color = [UIColor whiteColor];
         [self.txtPassword setBackgroundColor:[UIColor clearColor]];
         [self.txtPassword setBackground:[UIImage imageNamed:@"input_semitrans@1x" ]];
@@ -189,14 +192,14 @@
         }else{
             [self.recordarbtn setFrame:CGRectMake(22, 290, 155, 22)];
         }
-        [self.btnRegistrate setFrame:CGRectMake(20, 400, 280, 30)];
-        [self.boton setFrame:CGRectMake(20, 340, 280, 40)];
-        self.raya1.frame = CGRectMake(20, 180, 122, 2);
-        self.o.frame = CGRectMake(153, 172, 17, 21);
-        self.raya2.frame = CGRectMake(177, 182, 122, 2);
+        [self.btnRegistrate setFrame:CGRectMake(20, 390, 280, 30)];
+        [self.boton setFrame:CGRectMake(20, 330, 280, 42)];
+        self.raya1.frame = CGRectMake(20, 160, 122, 2);
+        self.o.frame = CGRectMake(153, 152, 17, 21);
+        self.raya2.frame = CGRectMake(177, 162, 122, 2);
         self.recordarLogin1.frame = CGRectMake( 20, 290, 22, 22);
-        self.btnOlvidePass.frame = CGRectMake(111, 310, 189, 22);
-        self.label.frame = CGRectMake(111, 310, 189, 22);
+        self.btnOlvidePass.frame = CGRectMake(111, 295, 189, 22);
+        self.label.frame = CGRectMake(111, 295, 189, 22);
     }else{
         [self.scrollLogin setContentSize:CGSizeMake(320, 420)];
         loginView.frame = CGRectMake(20, 120, 280, 50);
@@ -309,27 +312,6 @@
     self.txtPassword.leftView = leftView2;
     self.txtPassword.leftViewMode = UITextFieldViewModeAlways;
     self.txtPassword.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-    
-    
-    
-    
-    NSUserDefaults *prefsLogin = [NSUserDefaults standardUserDefaults];
-    if( [prefsLogin integerForKey:@"intRecordar"] == 1 && ![[prefsLogin stringForKey:@"strRecordarUser"] isEqualToString:@""] && ![[prefsLogin stringForKey:@"strRecordarPass"] isEqualToString:@""]){
-       self.txtEmail.text = [prefsLogin stringForKey:@"strRecordarUser"];
-       self.txtPassword.text = [prefsLogin stringForKey:@"strRecordarPass"];
-       [self.recordarLogin1 setBackgroundImage:[UIImage imageNamed:@"recordarOn.png"] forState:UIControlStateNormal];
-    }else{
-        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-        // saving an NSString
-        [prefs setObject:@"" forKey:@"strRecordarUser"];
-        [prefs setObject:@"" forKey:@"strRecordarPass"];
-        // saving an NSInteger
-        [prefs setInteger:0 forKey:@"integerKey"];
-        [prefs synchronize];
-        [self.recordarLogin1 setBackgroundImage:[UIImage imageNamed:@"recordarOff.png"] forState:UIControlStateNormal];
-    }
-  
-    
     
 	
 }
@@ -735,26 +717,8 @@
 #endif
 }
 
-- (IBAction)recordarLoginAct1:(id)sender {
-    [self cambiarStatusRecordar];
-}
 
-- (IBAction)recordarLoginAct2:(id)sender {
-    [self cambiarStatusRecordar];
-}
--(void)cambiarStatusRecordar{
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    if([prefs integerForKey:@"intRecordar"] == 1){
-        [prefs setInteger:0 forKey:@"intRecordar"];
-        [prefs synchronize];
-        [self.recordarLogin1 setBackgroundImage:[UIImage imageNamed:@"recordarOff.png"] forState:UIControlStateNormal];
-    }else{
-        [prefs setInteger:1 forKey:@"intRecordar"];
-        [prefs synchronize];
-        [self.recordarLogin1 setBackgroundImage:[UIImage imageNamed:@"recordarOn.png"] forState:UIControlStateNormal];
-    }
 
-}
 
 - (void)fbDidlogout {
     FBSession* session = [FBSession activeSession];

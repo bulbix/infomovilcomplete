@@ -102,14 +102,7 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
                                       }];
     }
 	
-    // For save an Login (User y password) //
-    NSUserDefaults *prefsLogin = [NSUserDefaults standardUserDefaults];
-    if(![prefsLogin integerForKey:@"intRecordar"] || [prefsLogin integerForKey:@"intRecordar"] == 0){
-        [prefsLogin setObject:@"" forKey:@"strRecordarUser"];
-        [prefsLogin setObject:@"" forKey:@"strRecordarPass"];
-        [prefsLogin setInteger:0 forKey:@"intRecordar"];
-        [prefsLogin synchronize];
-    }
+   
     
     //[self fbDidlogout];
    // Se limpian los datos al entrar a la aplicación //

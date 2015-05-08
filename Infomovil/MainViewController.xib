@@ -21,8 +21,6 @@
                 <outlet property="o" destination="8Hn-Y8-rMi" id="k4O-hH-blI"/>
                 <outlet property="raya1" destination="zeC-2d-wsB" id="sg9-gT-6a3"/>
                 <outlet property="raya2" destination="Zhf-AC-7LB" id="EbL-8J-zvP"/>
-                <outlet property="recordarLogin1" destination="DDN-fC-vU1" id="Q6q-DJ-RkX"/>
-                <outlet property="recordarbtn" destination="aV4-wQ-ILe" id="XiV-1I-U20"/>
                 <outlet property="scrollLogin" destination="C8b-Ww-Q7b" id="Z2U-J4-GxD"/>
                 <outlet property="txtEmail" destination="YYV-iB-sOb" id="TEc-ey-gDJ"/>
                 <outlet property="txtPassword" destination="sI3-Z4-eOe" id="Hc2-0s-WLE"/>
@@ -72,28 +70,6 @@
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DDN-fC-vU1">
-                            <rect key="frame" x="24" y="332" width="22" height="22"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                            <state key="normal" image="recordarOff.png">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="recordarLoginAct1:" destination="-1" eventType="touchUpInside" id="ZUW-Sg-BI5"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="aV4-wQ-ILe">
-                            <rect key="frame" x="22" y="332" width="155" height="22"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
-                            <state key="normal" title="Recordar mi cuenta">
-                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="recordarLoginAct2:" destination="-1" eventType="touchUpInside" id="9Ap-yL-ELS"/>
-                            </connections>
-                        </button>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Contraseña" minimumFontSize="17" id="sI3-Z4-eOe">
                             <rect key="frame" x="20" y="266" width="280" height="45"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
@@ -220,7 +196,6 @@
     <resources>
         <image name="iPhone.png" width="322" height="568"/>
         <image name="logoRegistrado.png" width="267" height="49"/>
-        <image name="recordarOff.png" width="225" height="225"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

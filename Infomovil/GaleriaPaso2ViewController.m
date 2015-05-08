@@ -139,7 +139,7 @@
     }
 }
 
--(void)viewWillAppear:(BOOL)animated{
+-(void)viewWillAppear:(BOOL)animated{ NSLog(@"VIEWWILLAPPEAR");
 	if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
         [self acomodarBarraNavegacionConTitulo:self.tituloPaso nombreImagen:@"barraverde.png"];
 	}else{
@@ -260,7 +260,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)tomarFoto:(UIButton *)sender {
+- (IBAction)tomarFoto:(UIButton *)sender { NSLog(@"tomarFoto");
     if (existeFoto) {
         AlertView *alertaFoto = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"eliminaImagenAviso", Nil) andAlertViewType:AlertViewTypeInfo];
         [alertaFoto show];
@@ -275,7 +275,7 @@
     
 }
 
-- (IBAction)usarFoto:(UIButton *)sender {
+- (IBAction)usarFoto:(UIButton *)sender {NSLog(@"usarFoto");
     if (existeFoto) {
         AlertView *alertaFoto = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"eliminaImagenAviso", Nil) andAlertViewType:AlertViewTypeInfo];
         [alertaFoto show];
@@ -290,7 +290,7 @@
     
 }
 
-- (IBAction)eliminarFoto:(UIButton *)sender {
+- (IBAction)eliminarFoto:(UIButton *)sender { NSLog(@"eliminarFoto");
     if (self.operacion == GaleriaImagenesEditar) { // si existe logo //
         NSLog(@"ENTRO A OPERACION BORRANDO");
         estaBorrando = YES;
@@ -305,7 +305,7 @@
     [alerta show];
 }
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info { NSLog(@"imagePickerController");
     self.imagenTemp = [info objectForKey:UIImagePickerControllerOriginalImage];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     [picker dismissViewControllerAnimated:NO completion:^{
@@ -329,7 +329,7 @@
 	}
 }
 
-- (IBAction)openEditor:(id)sender {
+- (IBAction)openEditor:(id)sender { NSLog(@"openEditor");
     PECropViewController *controller = [[PECropViewController alloc] init];
     controller.delegate = self;
     controller.image = imagenTemp;
@@ -338,7 +338,7 @@
     [self presentViewController:navigationController animated:YES completion:NULL];
 }
 
-- (void)cropViewController:(PECropViewController *)controller didFinishCroppingImage:(UIImage *)croppedImage {
+- (void)cropViewController:(PECropViewController *)controller didFinishCroppingImage:(UIImage *)croppedImage { NSLog(@"cropViewController");
     [controller dismissViewControllerAnimated:YES completion:NULL];
     [self.vistaPreviaImagen setImage:croppedImage];
     self.modifico = YES;
@@ -347,7 +347,7 @@
     self.imagenTemp = nil;
 }
 
-- (void)cropViewControllerDidCancel:(PECropViewController *)controller {
+- (void)cropViewControllerDidCancel:(PECropViewController *)controller { NSLog(@"cropViewControllerDidCancel");
     [controller dismissViewControllerAnimated:YES completion:^{
         [self.vistaPreviaImagen setImage:[UIImage imageNamed:@"previsualizador.png"]];
         self.modifico = NO;
@@ -355,7 +355,7 @@
     }];
 }
 
--(void) apareceElTeclado:(NSNotification*)aNotification {
+-(void) apareceElTeclado:(NSNotification*)aNotification { NSLog(@"apareceElTeclado");
     NSDictionary *infoNotificacion = [aNotification userInfo];
     CGSize tamanioTeclado = [[infoNotificacion objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     UIEdgeInsets edgeInsets = UIEdgeInsetsMake(0, 0, tamanioTeclado.height, 0);
@@ -373,7 +373,7 @@
     [UIView commitAnimations];
 }
 
--(IBAction)guardarInformacion:(id)sender {
+-(IBAction)guardarInformacion:(id)sender { NSLog(@"guardarInformacion");
     NSLog(@"ENTRO A GUARDAR INFORMACION");
 	[[self view] endEditing:YES];
     self.datosUsuario = [DatosUsuario sharedInstance];
@@ -474,15 +474,13 @@
 -(void) accionNo { NSLog(@"NO ACEPTO");
     if (noEditando) {
         noEditando = NO;
-         [self.navigationController popViewControllerAnimated:YES];
-    }
-    else {
+        
+    }else{
         if (self.operacion == GaleriaImagenesAgregar) {
             [self validaEditados];
-            [self.navigationController popViewControllerAnimated:YES];
         }
     }
-    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void) terminaRegreso:(NSString *) path { NSLog(@"ENTRO A TERMINA REGRESO");
@@ -563,7 +561,7 @@
                 }
         }else {
             NSLog(@"ENTRO A LA ACCION SI QUIERO ELIMINAR LA FOTO DE GALERIA");
-            if (self.galeryType == PhotoGaleryTypeOffer) { // Si es foto de promociones //
+           if (self.galeryType == PhotoGaleryTypeOffer) { // Si es foto de promociones //
                 [self.navigationController popViewControllerAnimated:YES];
                 
                 NSLog(@"ENTRO A LA ACCION SI QUIERO ELIMINAR LA FOTO DE PROMOCIONES");
@@ -743,7 +741,7 @@
 
 }
 
--(void) validaEditados {
+-(void) validaEditados { NSLog(@"validaEditados");
     if (self.galeryType == PhotoGaleryTypeLogo) {
         NSLog(@"Entro a valida editados con el PhotoGaleryTypeLogo");
         self.datosUsuario = [DatosUsuario sharedInstance];

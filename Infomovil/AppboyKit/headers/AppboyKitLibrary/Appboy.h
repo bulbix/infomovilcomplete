@@ -14,15 +14,16 @@
 #import <UIKit/UIKit.h>
 
 #ifndef APPBOY_SDK_VERSION
-#define APPBOY_SDK_VERSION @"2.9.2"
+#define APPBOY_SDK_VERSION @"2.11.2"
 #endif
 
-@class ABKSlideupController;
+@class ABKInAppMessageController;
 @class ABKFeedController;
 @class ABKUser;
-@class ABKSlideup;
-@class ABKSlideupViewController;
-@protocol ABKSlideupControllerDelegate;
+@class ABKInAppMessage;
+@class ABKInAppMessageViewController;
+@protocol ABKInAppMessageControllerDelegate;
+@protocol ABKAppboyEndpointDelegate;
 
 @interface Appboy : NSObject
 
@@ -101,6 +102,11 @@ extern NSString *const ABKFlushIntervalOptionKey;
  */
 extern NSString *const ABKDisableAutomaticLocationCollectionKey;
 
+/*!
+ * This key can be set to a class that extends ABKAppboyEndpointDelegate which can be used to modifying or substitute the API and Resource
+ * (e.g. image) URIs used by the Appboy SDK.
+ */
+extern NSString *const ABKAppboyEndpointDelegateKey;
 
 /* ------------------------------------------------------------------------------------------------------
  * Enums
@@ -109,8 +115,8 @@ extern NSString *const ABKDisableAutomaticLocationCollectionKey;
 /*!
 * Possible values for the SDK's request processing policies:
 *   ABKAutomaticRequestProcessing (default) - All server communication is handled automatically. This includes flushing
-*        analytics data to the server, updating the feed, requesting new slideups and posting feedback. Appboy's
-*        communication policy is to perform immediate server requests when user facing data is required (new slideups,
+*        analytics data to the server, updating the feed, requesting new in-app messages and posting feedback. Appboy's
+*        communication policy is to perform immediate server requests when user facing data is required (new in-app messages,
 *        feed refreshes, etc.), and to otherwise perform periodic flushes of new analytics data every few seconds.
 *        The interval between periodic flushes can be set explicitly using the ABKFlushInterval startup option.
 *   ABKAutomaticRequestProcessingExceptForDataFlush - The same as ABKAutomaticRequestProcessing, except that updates to
@@ -139,22 +145,16 @@ typedef NS_ENUM(NSInteger, ABKRequestProcessingPolicy) {
 /*!
 * Possible values for the SDK's social account acquisition policies:
 *   ABKAutomaticSocialAccountAcquisition (default) - At app startup and after you've set a social account identifier
-*       on the user object, Appboy will automatically attempt to fetch Twitter and Facebook social account data
+*       on the user object, Appboy will automatically attempt to fetch Twitter account data
 *       for the user and flush it to the server. In all cases, Appboy's automatic data acquisition will ensure that the
 *       user is not prompted or that the UI of your application is otherwise affected. For this reason, when Appboy
 *       tries to perform the data acquisition, your app must have already been granted the relevant permissions to
 *       obtain social account data. If you've specified the twitterAccountIdentifier, Appboy will only attempt to grab
 *       data for that twitter account. If you haven't specified it, Appboy will grab data for the first Twitter account
-*       returned by the system. An upcoming release will enable identifier targeting for Facebook as well.
-*
-*       Note: If you have not integrated the Facebook SDK into your app, there is no way to grab Facebook data without
-*       prompting the user, so you must call <pre>[[Appboy sharedInstance] promptUserForAccessToSocialNetwork:ABKSocialNetworkFacebook];</pre>
-*       and allow the user to be prompted. If you have integrated the Facebook SDK, you must ensure that the user has
-*       allowed read permissions. If permission is granted, Appboy will collect the user's basic public profile info
-*       "user_about_me" "email" "user_hometown" "user_birthday" and, if permission is granted, "user_likes".
+*       returned by the system.
 *   ABKAutomaticSocialAccountAcquisitionWithIdentifierOnly - Appboy will only attempt to obtain social account information when
 *       an identifier is set on the user for the corresponding social network. Note: This currently only works for
-*       Twitter accounts. An upcoming release will enable identifier targeting for Facebook as well.
+*       Twitter accounts.
 *   ABKManualSocialAccountAcquisition - Appboy will NOT try to acquire social account data. You must call
 *       <pre>[[Appboy sharedInstance] promptUserForAccessToSocialNetwork:(ABKSocialNetwork)];</pre>
 */
@@ -179,10 +179,10 @@ typedef NS_OPTIONS(NSUInteger, ABKSocialNetwork) {
 @property (nonatomic, retain, readonly) ABKFeedController *feedController;
 
 /*!
- * The current slideup manager.
- * See ABKSlideupController.h.
+ * The current in-app message manager.
+ * See ABKInAppMessageController.h.
  */
-@property (nonatomic, retain, readonly) ABKSlideupController *slideupController;
+@property (nonatomic, retain, readonly) ABKInAppMessageController *inAppMessageController;
 
 /*!
  * The current app user. 
@@ -216,7 +216,8 @@ typedef NS_OPTIONS(NSUInteger, ABKSocialNetwork) {
  * @deprecated This property is now deprecated and will be removed in the future. Please use 
  * [[Appboy sharedInstance].feedController cardCountForCategories:ABKCardCategoryAll] instead.
  */
-@property (readonly, nonatomic, assign) NSInteger cardCount __deprecated;
+@property (readonly, nonatomic, assign) NSInteger cardCount __deprecated_msg("Please use \n"
+"[[Appboy sharedInstance].feedController cardCountForCategories:ABKCardCategoryAll] instead");
 
 /*!
  * unreadCardCount is the number of currently active cards which have not been viewed.
@@ -232,7 +233,8 @@ typedef NS_OPTIONS(NSUInteger, ABKSocialNetwork) {
  * @deprecated This property is now deprecated and will be removed in the future. Please use
  * [[Appboy sharedInstance].feedController unreadCardCountForCategories:ABKCardCategoryAll] instead.
  */
-@property (readonly, nonatomic, assign) NSInteger unreadCardCount __deprecated;
+@property (readonly, nonatomic, assign) NSInteger unreadCardCount __deprecated_msg("Please use \n"
+"[[Appboy sharedInstance].feedController unreadCardCountForCategories:ABKCardCategoryAll] instead");
 
 /*!
 * The policy regarding processing of network requests by the SDK. See the enumeration values for more information on
@@ -249,10 +251,15 @@ typedef NS_OPTIONS(NSUInteger, ABKSocialNetwork) {
 @property (nonatomic, assign) ABKRequestProcessingPolicy requestProcessingPolicy;
 
 
+/*!
+ * An class extending ABKAppboyEndpointDelegate can be set to route Appboy API and Resource traffic in a custom way.
+ * For example, one might proxy Appboy image downloads by having the getResourceEndpoint method return a proxy URI.
+ */
+@property (nonatomic, retain) id<ABKAppboyEndpointDelegate> appboyEndpointDelegate;
+
 /* ------------------------------------------------------------------------------------------------------
  * Methods
  */
-
 
 /*!
  * Enqueues a data flush request for the current user and immediately starts processing the network queue. Note that if
@@ -261,7 +268,7 @@ typedef NS_OPTIONS(NSUInteger, ABKSocialNetwork) {
  *
  * If you're using ABKManualRequestProcessing, you need to call this after each network related activity in your app.
  * This includes:
- * * Retrieving an updated feed and slideup after a new session is opened or the user is changed. Appboy will
+ * * Retrieving an updated feed and in-app message after a new session is opened or the user is changed. Appboy will
  * automatically add the request for new data to the network queue, you just need to give it permission to execute
  * that request.
  * * Flushing updated user data (custom events, custom attributes, as well as automatically collected data).
@@ -303,16 +310,33 @@ typedef NS_OPTIONS(NSUInteger, ABKSocialNetwork) {
  * @discussion This method forwards remote notifications to Appboy. Call it from the application:didReceiveRemoteNotification
  * method of your App Delegate.
  */
-- (void) registerApplication:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)notification;
+- (void)  registerApplication:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)notification;
+
+/*!
+ * @param application The app's UIApplication object
+ * @param notification An NSDictionary passed in from the didReceiveRemoteNotification:fetchCompletionHandler: call
+ * @param completionHandler A block passed in from the didReceiveRemoteNotification:fetchCompletionHandler: call
+ *
+ * @discussion This method forwards remote notifications to Appboy. When it's called in the background, Appboy will request
+ * a refresh of the news feed and call the completionHandler when the request is finished; If it's called while the app
+ * is in the foreground, Appboy won't fetch the news feed, and won't call the completionHandler.
+ * Call it from the application:didReceiveRemoteNotification:fetchCompletionHandler: method of your App Delegate.
+ */
+- (void) registerApplication:(UIApplication *)application
+didReceiveRemoteNotification:(NSDictionary *)notification
+      fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler;
 
 /*!
  * @param identifier The action identifier passed in from the handleActionWithIdentifier:forRemoteNotification:.
  * @param userInfo An NSDictionary passed in from the handleActionWithIdentifier:forRemoteNotification: call.
+ * @param completionHandler A block passed in from the didReceiveRemoteNotification:fetchCompletionHandler: call
  *
  * @discussion This method forwards remote notifications and the custom action chosen by user to Appboy. Call it from
  * the application:handleActionWithIdentifier:forRemoteNotification: method of your App Delegate.
  */
-- (void) getActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo;
+- (void) getActionWithIdentifier:(NSString *)identifier
+           forRemoteNotification:(NSDictionary *)userInfo
+               completionHandler:(void (^)())completionHandler;
 
 /*!
 * @param userID The new user's ID (from the host application).
@@ -339,7 +363,7 @@ typedef NS_OPTIONS(NSUInteger, ABKSocialNetwork) {
 *   - Note that switching from one an anonymous user to an identified user or from one identified user to another is
 *     a relatively costly operation. When you request the
 *     user switch, the current session for the previous user is automatically closed and a new session is started.
-*     Appboy will also automatically make a data refresh request to get the news feed, slideup and other information
+*     Appboy will also automatically make a data refresh request to get the news feed, in-app message and other information
 *     for the new user.
 *
 *  Note: Once you identify a user, you cannot go back to the "anonymous" profile. The transition from anonymous
@@ -419,19 +443,10 @@ typedef NS_OPTIONS(NSUInteger, ABKSocialNetwork) {
 * We generally advise that you don't call this method on startup, as it will immediately prompt your users for
 * Twitter access.
 *
-* Notes:
-*   For ABKSocialNetworkTwitter:
-*   This only works for iOS5 and higher. In older versions, this method is a no-op.
-*
-*   For ABKSocialNetworkFacebook:
-*   This requires your Facebook App ID, which you enter in your app's plist under the key "FacebookAppID".
-*   Also, you must have configured a Facebook app with your bundle ID. For more help, see "Create a Facebook App" at
-*   https://developers.facebook.com/docs/getting-started/facebook-sdk-for-ios/
-*   Calls to this method without a defined FacebookAppID will NSLog an error and do nothing.
-*
-*   It is highly recommended that you also install the Facebook iOS SDK in your app. If you include the Facebook SDK
-*   in your app, this method will work for all iOS versions and provide a high-quality integration experience for the
-*   end user. If you do not include the Facebook SDK, this method call will only work on iOS6 or higher.
+* Please note that In versions 2.10 and above, Appboy will no longer prompt users to connect their Facebook accounts.
+* Please refer to the method "promptUserToConnectFacebookAccountOnDeviceAndFetchAccountData" in SocialNetworkViewController.m
+* (https://github.com/Appboy/appboy-ios-sdk/blob/master/Example/Stopwatch/SocialNetworkViewController.m) to continue
+* prompting users to connect their Facebook account.
 */
 - (void) promptUserForAccessToSocialNetwork:(ABKSocialNetwork)socialNetwork;
 
@@ -473,9 +488,16 @@ typedef NS_OPTIONS(NSUInteger, ABKSocialNetwork) {
 - (void) requestFeedRefresh;
 
 /*!
- * Enqueues a slideup request for the current user. Note that if the queue already contains another request for the
- * current user, that the slideup request will be merged into the already existing request and only one will execute
+ * Enqueues an in-app message request for the current user. Note that if the queue already contains another request for the
+ * current user, that the in-app message request will be merged into the already existing request and only one will execute
  * for that user.
  */
-- (void) requestSlideupRefresh;
+- (void) requestInAppMessageRefresh;
+
+/*!
+ * Enqueues an in-app message request for the current user. Note that this is deprecated from version 2.11.0. Please use
+ * requestInAppMessageRefresh instead.
+ */
+- (void) requestSlideupRefresh __deprecated_msg("This method is deprecated in version 2.11. Please use "
+"requestInAppMessageRefresh instead.");
 @end

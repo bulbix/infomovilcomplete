@@ -102,13 +102,13 @@
                 else if(IS_STANDARD_IPHONE_6_PLUS){
                     [self.vistaAlert setFrame:CGRectMake(68, 150, 278, 182)];
                 }else if(IS_IPAD){
-                    [self.vistaAlert setFrame:CGRectMake(245, 400, 300, 182)];
+                    [self.vistaAlert setFrame:CGRectMake(245, 400, 278, 182)];
                 }else{
                     [self.vistaAlert setFrame:CGRectMake(21, 150, 278, 182)];
                 }
                 if(IS_IPAD){
-                    [self.botonNo setFrame:CGRectMake(150, 128, 149, 54)];
-                    [self.botonSi setFrame:CGRectMake(0, 128, 149, 54)];
+                    [self.botonNo setFrame:CGRectMake(139, 128, 139, 54)];
+                    [self.botonSi setFrame:CGRectMake(0, 128, 139, 54)];
                 }else{
                     [self.botonNo setFrame:CGRectMake(139, 128, 139, 54)];
                     [self.botonSi setFrame:CGRectMake(0, 128, 139, 54)];
@@ -153,7 +153,7 @@
                 else if(IS_STANDARD_IPHONE_6_PLUS){
                     [self.vistaAlert setFrame:CGRectMake(65, 150, 278, 182)];
                 }else if(IS_IPAD){
-                    [self.vistaAlert setFrame:CGRectMake(245, 400, 300, 182)];
+                    [self.vistaAlert setFrame:CGRectMake(245, 400, 278, 182)];
                    
                 
                 }else{
@@ -172,7 +172,7 @@
             else if(IS_STANDARD_IPHONE_6_PLUS){
                 [self.vistaAlert setFrame:CGRectMake(80, 150, 278, 182)];
             }else if(IS_IPAD){
-                [self.vistaAlert setFrame:CGRectMake(245, 400, 300, 182)];
+                [self.vistaAlert setFrame:CGRectMake(245, 400, 278, 182)];
             }else{
                 [self.vistaAlert setFrame:CGRectMake(21, 150, 278, 182)];
             }
@@ -191,7 +191,7 @@
             else if(IS_STANDARD_IPHONE_6_PLUS){
                 [self.vistaAlert setFrame:CGRectMake(80, 150, 278, 200)];
             }else if(IS_IPAD){
-                [self.vistaAlert setFrame:CGRectMake(234, 400, 300, 182)];
+                [self.vistaAlert setFrame:CGRectMake(234, 400, 278, 182)];
             }else{
                 [self.vistaAlert setFrame:CGRectMake(21, 150, 278, 200)];
             }
@@ -212,7 +212,7 @@
             
             self.botonAceptar = [UIButton buttonWithType:UIButtonTypeCustom];
             if(IS_IPAD){
-                [self.botonAceptar setFrame:CGRectMake(0, 150, 300, 62)];
+                [self.botonAceptar setFrame:CGRectMake(0, 150, 278, 62)];
             }else{
                 [self.botonAceptar setFrame:CGRectMake(0, 170, 278, 54)];
             
@@ -235,7 +235,7 @@
                 else if(IS_STANDARD_IPHONE_6_PLUS){
                     [self.vistaAlert setFrame:CGRectMake(80, 150, 278, 200)];
                 }else if(IS_IPAD){
-                    [self.vistaAlert setFrame:CGRectMake(234, 400, 300, 182)];
+                    [self.vistaAlert setFrame:CGRectMake(234, 400, 278, 182)];
                    
                 }else{
                     [self.vistaAlert setFrame:CGRectMake(21, 150, 278, 182)];
@@ -248,7 +248,7 @@
                 else if(IS_STANDARD_IPHONE_6_PLUS){
                     [self.botonAceptar setFrame:CGRectMake(0, 170, 278, 54)];
                 }else if(IS_IPAD){
-                    [self.botonAceptar setFrame:CGRectMake(0, 145, 300, 62)];
+                    [self.botonAceptar setFrame:CGRectMake(0, 145, 278, 62)];
                 }else{
                     [self.botonAceptar setFrame:CGRectMake(0, 128, 278, 54)];
                 }
@@ -309,7 +309,7 @@
             if(IS_STANDARD_IPHONE_6){
                 [self.vistaAlert setFrame:CGRectMake(50, 150, 278, 200)];
             }else if(IS_IPAD){
-                [self.vistaAlert setFrame:CGRectMake(234, 400, 300, 182)];
+                [self.vistaAlert setFrame:CGRectMake(234, 400, 278, 182)];
                 
             }else if(IS_STANDARD_IPHONE_6_PLUS){
                 [self.vistaAlert setFrame:CGRectMake(80, 150, 278, 200)];
@@ -340,7 +340,7 @@
             
             self.botonAceptar = [UIButton buttonWithType:UIButtonTypeCustom];
             if(IS_IPAD){
-                [self.botonAceptar setFrame:CGRectMake(0, 145, 300, 62)];
+                [self.botonAceptar setFrame:CGRectMake(0, 145, 278, 62)];
             }else{
                 [self.botonAceptar setFrame:CGRectMake(0, 140, 278, 54)];
             }

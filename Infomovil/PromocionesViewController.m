@@ -425,7 +425,7 @@
 	switch (index)
 	{
 		case 1:
-        {
+        { NSLog(@"ELIGIO TIPO FOTO 1");
             GaleriaPaso2ViewController *galeriaPaso2 = [[GaleriaPaso2ViewController alloc] initWithNibName:@"GaleriaPaso2ViewController" bundle:Nil];
             [galeriaPaso2 setGaleryType:PhotoGaleryTypeOffer];
             [galeriaPaso2 setTituloPaso:NSLocalizedString(@"promociones", nil)];
@@ -435,7 +435,7 @@
         }
 			break;
 		case 0:
-        {
+        {  NSLog(@"ELIGIO TIPO FOTO 0");
             NSArray *promo		= [arregloPromociones objectAtIndex:0];
             NSInteger i			= 0;
             
@@ -451,8 +451,10 @@
             }
 
 			[_promocionActual setPathImageOffer:@""];
-			if ( index != seleccionAnterior )
+            if ( index != seleccionAnterior ){
 				self.modifico = YES;
+                NSLog(@"ELIGIO DIFERENTE!!!");
+            }
         }
 			break;
 		default:break;
@@ -461,10 +463,12 @@
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	if ( indexPath.section == 0 )
+    if ( indexPath.section == 0 ){
 		[self eligeTipoFoto:indexPath.row];
-	else
+    }
+    else{
 		[self eligeRedimir:indexPath.row];
+    }
 	
 	[_tablaPromociones reloadData];
 }
@@ -500,7 +504,7 @@
 	
 }
 
--(void) accionNo {
+-(void) accionNo {NSLog(@"ENTRO EN ACCION NO!!");
     [self.navigationController popViewControllerAnimated:YES];
 }
 

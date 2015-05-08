@@ -60,14 +60,7 @@
         self.datosUsuario.auxStrSesionUser = usuario;
         self.datosUsuario.auxStrSesionPass = password;
        
-        NSUserDefaults *prefsLogin = [NSUserDefaults standardUserDefaults];
-        if( [prefsLogin integerForKey:@"intRecordar"] == 1){
-            // 1.- si quiere recordar usuario
-            // 0.- No quiere recordar usuario
-            [prefsLogin setObject:usuario forKey:@"strRecordarUser"];
-            [prefsLogin setObject:password forKey:@"strRecordarPass"];
-            [prefsLogin synchronize];
-        }
+       
     }else{
         // 2 = Inicio de sesion con Email
         self.datosUsuario.auxSesionFacebook = 1;

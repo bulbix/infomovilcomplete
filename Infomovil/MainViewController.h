@@ -34,8 +34,7 @@
 - (IBAction)iniciarSesion:(id)sender;
 - (IBAction)cambiarPassword:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UIButton *recordarLogin1;
-- (IBAction)recordarLoginAct1:(id)sender;
-- (IBAction)recordarLoginAct2:(id)sender;
+
 
 
 @property (weak, nonatomic) IBOutlet UILabel *leyenda1;
