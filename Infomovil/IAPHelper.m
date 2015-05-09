@@ -89,7 +89,9 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
               skProduct.price.floatValue);
     }
     if ([CommonUtils hayConexion]) {
-        _completionHandler(YES, skProducts);
+        if([skProducts count] > 0){
+            _completionHandler(YES, skProducts);
+        }
     }
     _completionHandler = nil;
     

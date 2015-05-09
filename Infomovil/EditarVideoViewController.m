@@ -35,28 +35,7 @@
     [self.txtTitulo setText:[self.videoSeleccionado titulo]];
     [self.txtDescripcion setText:[self.videoSeleccionado descripcionVideo]];
     [self.imagenPreviaVideo setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://i.ytimg.com/vi/%@/0.jpg", self.videoSeleccionado.idVideo]]]]];
-    
-    
-    if(IS_IPAD){
-    
-    
-    }else if(IS_STANDARD_IPHONE_6_PLUS){
-    
-    
-    }else if(IS_STANDARD_IPHONE_6){
-    
-    
-    
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
+ 
     
 }
 

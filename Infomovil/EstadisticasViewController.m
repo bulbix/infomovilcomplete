@@ -311,10 +311,10 @@
             [labelTexto setFont:[UIFont fontWithName:@"Avenir-Book" size:15]];
 			NSString * language = [[NSLocale preferredLanguages] objectAtIndex:0];
 			if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-				[labelTexto setText:[NSString stringWithFormat:@"Total Visits %i", numeroVisitantes]];
+				[labelTexto setText:[NSString stringWithFormat:@"Total Visits %li", (long)numeroVisitantes]];
 			}
             else {
-                [labelTexto setText:[NSString stringWithFormat:@"Visitas Totales %i", numeroVisitantes]];
+                [labelTexto setText:[NSString stringWithFormat:@"Visitas Totales %li", (long)numeroVisitantes]];
             }
             [labelTexto setTextAlignment:NSTextAlignmentCenter];
             UIImage *imagenAux = [labelTexto imageFromLayer];
@@ -325,10 +325,10 @@
             
             if ([((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && ![self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]) {
                 if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-                    [labelTexto2 setText:[NSString stringWithFormat:@"Unique visitors %i", [visitaTotales visitas]]];
+                    [labelTexto2 setText:[NSString stringWithFormat:@"Unique visitors %li", (long)[visitaTotales visitas]]];
                 }
                 else {
-                    [labelTexto2 setText:[NSString stringWithFormat:@"Visitantes Únicos %i", [visitaTotales visitas]]];
+                    [labelTexto2 setText:[NSString stringWithFormat:@"Visitantes Únicos %li", (long)[visitaTotales visitas]]];
                 }
             }
             else {
@@ -356,12 +356,12 @@
 			NSString * language = [[NSLocale preferredLanguages] objectAtIndex:0];
 
             if([language rangeOfString:@"es"].location != NSNotFound ){
-				[labelTexto setText:[NSString stringWithFormat:@"Visitas Totales %i", numeroVisitantes]];
+				[labelTexto setText:[NSString stringWithFormat:@"Visitas Totales %li", (long)numeroVisitantes]];
 			}else if( [language rangeOfString:@"en"].location != NSNotFound ){
-				[labelTexto setText:[NSString stringWithFormat:@"Total Visits %i", numeroVisitantes]];
+				[labelTexto setText:[NSString stringWithFormat:@"Total Visits %li", (long)numeroVisitantes]];
 			}
             else {
-                [labelTexto setText:[NSString stringWithFormat:@"Visitas Totales %i", numeroVisitantes]];
+                [labelTexto setText:[NSString stringWithFormat:@"Visitas Totales %li", (long)numeroVisitantes]];
             }
             
 			[labelTexto setTextAlignment:NSTextAlignmentCenter];
@@ -371,12 +371,12 @@
             [labelTexto2 setFont:[UIFont fontWithName:@"Avenir-Book" size:15]];
             if ([((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && ![self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]) {
                 if([language rangeOfString:@"es"].location != NSNotFound ){
-                    [labelTexto2 setText:[NSString stringWithFormat:@"Visitantes Únicos %i", [visitaTotales visitas]]];
+                    [labelTexto2 setText:[NSString stringWithFormat:@"Visitantes Únicos %li", (long)[visitaTotales visitas]]];
                 }else if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-                    [labelTexto2 setText:[NSString stringWithFormat:@"Unique visitors %i", [visitaTotales visitas]]];
+                    [labelTexto2 setText:[NSString stringWithFormat:@"Unique visitors %li", (long)[visitaTotales visitas]]];
                 }
                 else {
-                    [labelTexto2 setText:[NSString stringWithFormat:@"Visitantes Únicos %i", [visitaTotales visitas]]];
+                    [labelTexto2 setText:[NSString stringWithFormat:@"Visitantes Únicos %li", (long)[visitaTotales visitas]]];
                 }
             }
             else {

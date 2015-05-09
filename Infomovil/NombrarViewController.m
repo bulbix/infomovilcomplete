@@ -13,6 +13,9 @@
 #import "MenuPasosViewController.h"
 #import "WS_HandlerPublicar.h"
 #import "MainViewController.h"
+#import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
+
 
 @interface NombrarViewController () {
 //    BOOL modifico;
@@ -47,7 +50,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     //MBC
     if(IS_STANDARD_IPHONE_6){
         [self.scroll setFrame:CGRectMake(0, 0, 375, 667)];
@@ -85,13 +87,14 @@
         
     
     }else{
+        [self.scroll setFrame:CGRectMake(0, 0, 768, 1024)];
         [self.label1 setFrame:CGRectMake(20, 47, 280, 47)];
         [self.label2 setFrame:CGRectMake(20, 40, 280, 61)];
         [self.labelW setFrame:CGRectMake(11, 108, 52, 24)];
         [self.nombreDominio setFrame:CGRectMake(63, 105, 200, 30)];
         [self.labelTel setFrame:CGRectMake(261, 108, 28, 24)];
         [self.labelDominio setFrame:CGRectMake(20, 158, 280, 24)];
-        [self.boton setFrame:CGRectMake(60, 220, 200, 35)];
+        [self.boton setFrame:CGRectMake(50, 200, 220, 40)];
     }
     
     if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
@@ -175,12 +178,17 @@
     
     }
     
-    
+    [self.vistaInferior setHidden:YES];
     
 #if DEBUG
     [self.labelDominio setText:[NSString stringWithFormat:@"www.info-movil.com/misitio"]];
 #endif
     
+    self.popUpCenter.layer.cornerRadius = 10;
+    self.popUpCenter.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
+    self.btnPublicar.layer.cornerRadius = 10;
+    
+   // [self.nombreDominio becomeFirstResponder];
     
 }
 
@@ -319,9 +327,13 @@
             self.datosUsuario = [DatosUsuario sharedInstance];
             self.modifico = YES;
 			self.datosUsuario.dominio = self.nombreDominio.text;
-            PublicarViewController *publicar = [[PublicarViewController alloc] initWithNibName:@"PublicarViewController" bundle:Nil];
+           
+            
+            [self showAnimate];
+            
+            /* PublicarViewController *publicar = [[PublicarViewController alloc] initWithNibName:@"PublicarViewController" bundle:Nil];
             [self.navigationController pushViewController:publicar animated:YES];
-			
+			*/
         }
         else {
             alert = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noDisponible", @" ") dominio:nil andAlertViewType:AlertViewTypeInfo];
@@ -329,31 +341,6 @@
             [alert show];
         }
     }
-    /*else {
-        if (idDominio == 0) {
-            alert = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"error", Nil) message:NSLocalizedString(@"errorCrearDominio", Nil) dominio:Nil andAlertViewType:AlertViewTypeInfo];
-            [alert show];
-        }
-        else {
-            self.datosUsuario = [DatosUsuario sharedInstance];
-            self.datosUsuario.idDominio = idDominio;
-			self.datosUsuario.dominio = nameDominio;
-            self.datosUsuario.nombroSitio = YES;
-            creoDominio = YES;
-            alert = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"felicidades", @" ") message:NSLocalizedString(@"nombradoExitoso", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
-            [alert show];
-			
-			[self.navigationController popViewControllerAnimated:YES];
-			
-			((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio = @"Gratuito";
-			
-			CompartirPublicacionViewController *compartir = [[CompartirPublicacionViewController alloc] initWithNibName:@"CompartirPublicacionViewController" bundle:nil];
-			
-			UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:compartir];
-			
-			[self.navigationController presentViewController:navController animated:YES completion:Nil];
-        }
-    }*/
     
 }
 
@@ -390,11 +377,11 @@
 }
 
 -(void) resultadoConsultaDominio:(NSString *)resultado {
+    [self navigationController].navigationBarHidden = NO;
 	self.datosUsuario = [DatosUsuario sharedInstance];
     if (operacionWS == 1) {
         if ([resultado isEqualToString:@"No existe"]) {
             existeDominio = YES;
-			//self.datosUsuario.dominio = self.nombreDominio.text;
 			[self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
         }
         else {
@@ -402,12 +389,6 @@
 			 [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
         }
     }
-    /*else if(operacionWS == 2){
-        idDominio = [resultado integerValue];
-		nameDominio = self.nombreDominio.text;
-		//[self informacionDominio];
-		[self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
-    }*/
 	else{
 		[self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
 	}
@@ -507,5 +488,47 @@
         [textField resignFirstResponder];
     } 
     return YES;
+}
+
+
+- (void)showAnimate
+{
+    
+    [self navigationController].navigationBarHidden = YES;
+    [self.popUpView setHidden:NO];
+    [self.scroll setHidden:YES];
+    [self.popUpView setFrame:CGRectMake(0, 0, 320, 568)];
+    self.view.transform = CGAffineTransformMakeScale(1.3, 1.3);
+    [UIView animateWithDuration:.40 animations:^{
+        self.view.transform = CGAffineTransformMakeScale(1, 1);
+    }];
+}
+
+- (void)removeAnimate
+{
+    [self navigationController].navigationBarHidden = NO;
+    [self.popUpView setHidden:YES];
+    [self.scroll setHidden:NO];
+    [UIView animateWithDuration:.40 animations:^{
+       self.popUpView.transform = CGAffineTransformMakeScale(1, 1);
+    }];
+}
+
+
+
+- (IBAction)cerrarPopUpAction:(id)sender {
+    [self removeAnimate];
+}
+
+- (void)showInView:(UIView *)aView animated:(BOOL)animated
+{
+    [aView addSubview:self.view];
+    if (animated) {
+        [self showAnimate];
+    }
+}
+
+
+- (IBAction)publicarAction:(id)sender {
 }
 @end

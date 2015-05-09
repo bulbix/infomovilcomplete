@@ -103,6 +103,7 @@
         }
     }
     else {
+        [self.txtDescripcion becomeFirstResponder];
         [self.vistaHorarios setHidden:YES];
         [self.vistaPerfil setHidden:NO];
         [self configuraVista];
@@ -114,18 +115,12 @@
     }
     self.modifico = NO;
     [self.labelTituloHorarios setText:NSLocalizedString(@"defineHorario", Nil)];
-    
     self.txtDescripcion.layer.cornerRadius = 5;
-    
     self.tablaHorarios.layer.cornerRadius = 5;
-	
 	[self.vistaPerfil setContentSize:CGSizeMake(320, 0)];
-	
 	self.datosUsuario = [DatosUsuario sharedInstance];
-//	respaldoHorarios = [self.datosUsuario.arregloHorario copy];
-//	respaldo = [self.datosUsuario.arregloDatosPerfil copy];
 	respaldo = [[NSMutableArray alloc] initWithArray:self.datosUsuario.arregloDatosPerfil copyItems:YES];
-//	respaldoHorarios = [[NSMutableArray alloc] initWithArray:self.datosUsuario.arregloHorario copyItems:YES];
+
     
     if(IS_STANDARD_IPHONE_6){
         [self.txtDescripcion setFrame:CGRectMake(50, 70, 275, 150)];
@@ -175,7 +170,7 @@
     self.datosUsuario = [DatosUsuario sharedInstance];
     if (index == 2)
 	{
-
+        
         self.arrayDataContent = [[NSMutableArray alloc] init];
         KeywordDataModel *keyAux = [self.datosUsuario.arregloDatosPerfil objectAtIndex:index];
         if (keyAux.keywordValue != nil && keyAux.keywordValue.length > 0)
@@ -465,7 +460,7 @@
 	[self.view endEditing:YES];
     if (estaEliminando && index != 2 )
     {
-        NSLog(@"EL INDEX A ELIMINAR ES: %i",index);
+        NSLog(@"EL INDEX A ELIMINAR ES: %li",(long)index);
         self.datosUsuario = [DatosUsuario sharedInstance];
         idPerfil = [[self.datosUsuario.arregloDatosPerfil objectAtIndex:index] idKeyword];
         [self copiarArreglo];

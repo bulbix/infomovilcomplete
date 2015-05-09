@@ -48,7 +48,6 @@
     self.navigationItem.leftBarButtonItem = buttonBack;
     self.datosUsuario = [DatosUsuario sharedInstance];
 	 respaldo = self.datosUsuario.videoSeleccionado;
-	//respaldo = [[VideoModel alloc] in];
     if (self.videoSeleccionado == nil) {
         self.videoSeleccionado = self.datosUsuario.videoSeleccionado;
     }
@@ -58,32 +57,7 @@
 		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"video", @" ") nombreImagen:@"NBverde.png"];
 	}
 	NSString *htmlString;
-//	if ([self.videoSeleccionado.link objectAtIndex:0] != nil) {
-//		NSURL *urlVideo = [NSURL URLWithString:[[self.videoSeleccionado.link objectAtIndex:0] objectForKey:@"href"]];
-//		NSArray *queryComponentes = [urlVideo.query componentsSeparatedByString:@"&"];
-//		NSString *videoID = Nil;
-//		for (NSString *pair in queryComponentes) {
-//			NSArray *pairComponents = [pair componentsSeparatedByString:@"="];
-//			if ([pairComponents[0] isEqualToString:@"v"]) {
-//				videoID = pairComponents[1];
-//				break;
-//			}
-//		}
-//		if (!videoID) {
-//			return;
-//		}
-//		htmlString = @"<html><head>\
-//		<meta name = \"viewport\" content = \"initial-scale = 1.0, user-scalable = no, width = 320\"/></head>\
-//		<body style=\"background:#000;margin-top:0px;margin-left:0px\">\
-//		<iframe id=\"ytplayer\" type=\"text/html\" width=\"320\" height=\"240\"\
-//		src=\"http://www.youtube.com/embed/%@?autoplay=1\"\
-//		frameborder=\"0\"/>\
-//		</body></html>";
-//		
-//		htmlString = [NSString stringWithFormat:htmlString, videoID, videoID];
-//		idVideoSel = videoID;
-//	}
-//	else {
+
     
     if(IS_IPAD){
         htmlString = @"<html><head>\
@@ -122,20 +96,14 @@
 		</body></html>";
     }
 		htmlString = [NSString stringWithFormat:htmlString, self.videoSeleccionado.linkSolo];
-//	}
-    
-//    static NSString *youTubeVideoHTML = @"<!DOCTYPE html><html><head><style>body{margin:0px 0px 0px 0px;}</style></head> <body> <div id=\"player\"></div> <script> var tag = document.createElement('script'); tag.src = \"http://www.youtube.com/player_api\"; var firstScriptTag = document.getElementsByTagName('script')[0]; firstScriptTag.parentNode.insertBefore(tag, firstScriptTag); var player; function onYouTubePlayerAPIReady() { player = new YT.Player('player', { width:'%0.0f', height:'%0.0f', videoId:'%@', events: { 'onReady': onPlayerReady, } }); } function onPlayerReady(event) { event.target.playVideo(); } </script> </body> </html>";
-//    
-//    NSString *html = [NSString stringWithFormat:youTubeVideoHTML, self.webView.frame.size.width, self.webView.frame.size.height, self.videoSeleccionado.idVideo];
-//    
-//    [self.webView loadHTMLString:html baseURL:[[NSBundle mainBundle] resourceURL]];
-    
-    
-    
+ 
     [self.webView loadHTMLString:htmlString baseURL:[NSURL URLWithString:@"http://www.youtube.com"]];
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [self.vistaInferior setHidden:YES];
 
+}
 
 - (void)didReceiveMemoryWarning
 {

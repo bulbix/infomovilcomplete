@@ -186,6 +186,7 @@
 
 - (IBAction)buscarVideoConURL:(id)sender {
     NSString *strUrl = self.txtUrlVideo.text;
+    NSLog(@"EL VIDEO ES: %@", self.txtUrlVideo.text);
     if ([CommonUtils validarYoutubeURL:strUrl]) {
         NSArray *arrayVideo;
         if ([strUrl rangeOfString:@"youtube"].location != NSNotFound) {
@@ -200,6 +201,7 @@
             self.idVideo = [arrayVideo objectAtIndex:0];
         }
         self.tipoBusqueda = 2;
+        NSLog(@"el id video es: %@   y   %@  y %@", self.idVideo, [arrayVideo description] , strUrl);
     }
     else {
         self.idVideo = strUrl;
@@ -225,9 +227,6 @@
         [self.navigationController pushViewController:seleccionaVideo animated:YES];
     }
     else {
-//        EditarVideoViewController *editarVideo = [[EditarVideoViewController alloc] initWithNibName:@"EditarVideoViewController" bundle:Nil];
-//        [editarVideo setVideoSeleccionado:[self.arregloVideos objectAtIndex:0]];
-//        [self.navigationController pushViewController:editarVideo animated:YES];
         self.datosUsuario = [DatosUsuario sharedInstance];
         self.datosUsuario.videoSeleccionado = [self.arregloVideos objectAtIndex:0];
         VistaVideoViewController *vistaVideo = [[VistaVideoViewController alloc] initWithNibName:@"VistaVideoViewController" bundle:Nil];

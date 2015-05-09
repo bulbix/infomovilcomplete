@@ -596,7 +596,7 @@
 
 
 "FBLV:LogOutButton" = "Log Out";
-"FBLV:LogInButton" = "Log In";
+"FBLV:LogInButton" = "Log in";
 "FBLV:LoggedInAs" = "Logged in as: %@";
 "FBLV:LoggedInUsingFacebook" = "Logged in using Facebook";
 "FBLV:LogOutAction" = "Log Out";
@@ -650,3 +650,7 @@
 "cuentaTodavia"="¿Aún no tienes cuenta? Registrate";
 "editaTuSitio" = "Edita tu sitio web";
 "noSeHaPodido" = "No se ha podido cargar la vista previa.";
+"yaTienesCuenta" = "¿Ya tienes cuenta? Ingresa";
+"estaDisponiblePublica" = "¡Esta disponible!";
+"publicaTuSitioWeb" = "Publica tu sitio web.";
+"publicaTuSitioWebAccion" = "Publicar!";

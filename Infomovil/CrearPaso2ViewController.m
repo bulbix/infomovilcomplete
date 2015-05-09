@@ -85,6 +85,7 @@
 	[self setBotonRegresar];
 	
 	borrar = NO;
+   
 }
 
 
@@ -137,12 +138,15 @@
 	switch (index)
 	{
 		case 0:
+            [self.textEmpresa becomeFirstResponder];
+            
 			[self.vistaEmpresa setHidden:NO];
 			[self.labelInstruccion setText:NSLocalizedString(@"agregaNombreEmpresa", nil)];
 			[textEmpresa setHidden:NO];
 			[txtDescripcion setHidden:YES];
 			break;
 		case  3:
+            [self.txtDescripcion becomeFirstResponder];
 			[self.vistaEmpresa setHidden:NO];
 			[self.labelInstruccion setText:NSLocalizedString(@"agregaDescripcion", @" ")];
 			[textEmpresa setHidden:YES];
@@ -162,8 +166,6 @@
 }
 // IDM Al padre
 -(void) desapareceElTeclado {
-
-	
 	[self desapareceElTeclado:_scrollEmpresa];
 	[[self scrollEmpresa] scrollRectToVisible:_vista.frame animated:YES];
 }
@@ -177,7 +179,6 @@
     [UIView animateWithDuration:0.4f animations:^{
         [labelInfo setFrame:CGRectMake(265, textField.frame.origin.y + textField.frame.size.height, 33, 21)];
     }];
-//    [self muestraContadorTexto:[textField.text length] conLimite:255 paraVista:textField];
 	labelInfo.hidden = NO;
 }
 -(void)textFieldDidEndEditing:(UITextField *)textField {
@@ -199,13 +200,13 @@
 	
 	if ( textoLength <= maxLength )
 	{
-		[self.labelInfo setText:[NSString stringWithFormat:@"%i/%li", textoLength, (long)maxLength]];
+		[self.labelInfo setText:[NSString stringWithFormat:@"%li/%li", (long)textoLength, (long)maxLength]];
 		self.modifico = YES;
 		return YES;
     }
 	
 	return NO;
-//    return [self shouldChangeText:string withLimit:255 forFinalLenght:[textField.text length] - range.length + [string length]];
+
 }
 
 #pragma mark - UITextViewDelegate
@@ -225,7 +226,7 @@
     }
 	
 	return NO;
-//    return [self shouldChangeText:text withLimit:255 forFinalLenght:[textView.text length] - range.length + [text length]];
+
 }
 
 -(void)textViewDidBeginEditing:(UITextView *)textView {
@@ -236,8 +237,6 @@
         [labelInfo setFrame:CGRectMake(265, textView.frame.origin.y + textView.frame.size.height, 33, 21)];
     }];
 	[self apareceTeclado];
-//    [self muestraContadorTexto:[textView.text length] conLimite:255 paraVista:textView];
-	
 	labelInfo.hidden = NO;
 }
 
@@ -246,8 +245,6 @@
         [labelInfo setFrame:CGRectMake(265, 600, 33, 21)];
     }];
 	[self desapareceElTeclado];
-//    [self ocultaContadorTexto];
-	
 	labelInfo.hidden = YES;
 }
 

@@ -25,11 +25,11 @@
                            "<soapenv:Body>"
                            "<ws:getEstadisticas>"
                            "<Domain>%@</Domain>"
-                           "<TipoConsulta>%i</TipoConsulta>"
+                           "<TipoConsulta>%li</TipoConsulta>"
 						   "<token>%@</token>"
                            "</ws:getEstadisticas>"
                            "</soapenv:Body>"
-                           "</soapenv:Envelope>", [StringUtils encriptar:dominio conToken:datosUsuario.token], opcionSeleccionada, [StringUtils encriptar:datosUsuario.emailUsuario conToken:passwordEncriptar]];
+                           "</soapenv:Envelope>", [StringUtils encriptar:dominio conToken:datosUsuario.token], (long)opcionSeleccionada, [StringUtils encriptar:datosUsuario.emailUsuario conToken:passwordEncriptar]];
     consultaVisitantes = NO;
     
     self.strSoapAction = @"wsInfomovildomain";

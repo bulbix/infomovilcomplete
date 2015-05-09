@@ -26,7 +26,7 @@
                      "<token>%@</token>"
                      "</ws:updateInserLocRecord>"
                      "</soapenv:Body>"
-                     "</soapenv:Envelope>", [StringUtils encriptar:[NSString stringWithFormat:@"%i", datosUsuario.idDominio] conToken:datosUsuario.token],
+                     "</soapenv:Envelope>", [StringUtils encriptar:[NSString stringWithFormat:@"%li", (long)datosUsuario.idDominio] conToken:datosUsuario.token],
                      [StringUtils encriptar:[NSString stringWithFormat:@"%f", self.location.coordinate.latitude] conToken:datosUsuario.token],
                      [StringUtils encriptar:[NSString stringWithFormat:@"%f",self.location.coordinate.longitude] conToken:datosUsuario.token],
                      [StringUtils encriptar:datosUsuario.emailUsuario conToken:passwordEncriptar]];
@@ -36,14 +36,14 @@
                      "<soapenv:Header/>"
                      "<soapenv:Body>"
                      "<ws:updateInserLocRecord>"
-                     "<domainId>%i</domainId>"
+                     "<domainId>%li</domainId>"
                      "<localizacionVO>"
                      "<latitudeLoc>%f</latitudeLoc>"
                      "<longitudeLoc>%f</longitudeLoc>"
                      "</localizacionVO>"
                      "</ws:updateInserLocRecord>"
                      "</soapenv:Body>"
-                     "</soapenv:Envelope>", datosUsuario.idDominio, self.location.coordinate.latitude, self.location.coordinate.longitude];
+                     "</soapenv:Envelope>", (long)datosUsuario.idDominio, self.location.coordinate.latitude, self.location.coordinate.longitude];
     }
     
     
@@ -92,7 +92,7 @@
                      "<token>%@</token>"
                      "</ws:deleteLocRecord>"
                      "</soapenv:Body>"
-                     "</soapenv:Envelope>", [StringUtils encriptar:[NSString stringWithFormat:@"%i", datosUsuario.idDominio] conToken:datosUsuario.token],
+                     "</soapenv:Envelope>", [StringUtils encriptar:[NSString stringWithFormat:@"%li", (long)datosUsuario.idDominio] conToken:datosUsuario.token],
                      [StringUtils encriptar:datosUsuario.emailUsuario conToken:passwordEncriptar]];
     }
     else {
@@ -100,10 +100,10 @@
                      "<soapenv:Header/>"
                      "<soapenv:Body>"
                      "<ws:deleteLocRecord>"
-                     "<domainId>%i</domainId>"
+                     "<domainId>%li</domainId>"
                      "</ws:deleteLocRecord>"
                      "</soapenv:Body>"
-                     "</soapenv:Envelope>", datosUsuario.idDominio];
+                     "</soapenv:Envelope>", (long)datosUsuario.idDominio];
     }
     
     

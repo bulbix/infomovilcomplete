@@ -402,7 +402,10 @@ int opcionButton = 0 ;
         }else if(opcionButton == 3){
             [self compraProducto12meses];
         }
+    }else if([self.datosUsuario.datosPago.statusPago isEqualToString: @"PAGADO"]){
+        return;
     }else{
+    
         [NSThread sleepForTimeInterval:1];
         [self.alerta hide];
         AlertView *alertaError = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"sentimos", Nil) message:NSLocalizedString(@"errorCompra", Nil) dominio:Nil andAlertViewType:AlertViewTypeInfo];
