@@ -317,6 +317,9 @@
 //TipsViewController
 "tipsTitulo1" = "¡Cuida los detalles y prueba tu sitio web!";
 "tipsLabel11" = "1. Ten cuidado para evitar errores de dedo.\n2. Has pruebas con tu sitio:\nwww.%@.tel";
+
+"tipsLabel111" = "1. Ten cuidado para evitar errores de dedo.\n2. Has pruebas con tu sitio:\nwww.infomovil.com/%@";
+
 "tipsLabel12" = "Abre el sitio en un explorador";
 "tipsLabel13" = "Prueba los botones de contacto (tel, e-mail)";
 "tipsLabel14" = "Revisa bien todos los textos";

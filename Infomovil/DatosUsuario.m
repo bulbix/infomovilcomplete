@@ -152,8 +152,19 @@
     self.consultaDomainType = Nil;
     self.consultaDomainName = Nil;
     self.consultaLista = Nil;
+    self.arregloGaleriaImagenes = Nil;
+
+    self.arregloUrlImagenes = Nil;
+    self.arregloDescripcionImagen = Nil;
+    self.arregloIdImagen = Nil;
+    self.arregloTipoImagen = nil;
     
-  
+    self.arregloUrlImagenesGaleria = Nil;
+    self.arregloTipoImagenGaleria = Nil;
+    self.arregloIdImagenGaleria = Nil;
+    self.arregloDescripcionImagenGaleria = Nil;
+    
+    
     
     
 }

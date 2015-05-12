@@ -113,7 +113,7 @@
     if(self.datosUsuario.dominio && ![self.datosUsuario.dominio isEqualToString:@""] && ! (self.datosUsuario.dominio == (id)[NSNull null]) && ![CommonUtils validarEmail:self.datosUsuario.dominio] && ![self.datosUsuario.dominio isEqualToString:@"(null)"]){
         self.arregloDominio = self.datosUsuario.dominiosUsuario;
         self.labelNombreDominio.text = @"";
-        NSLog(@"LA CANTIDAD DE DOMINIOS SON: %i", [self.arregloDominio count]);
+        NSLog(@"LA CANTIDAD DE DOMINIOS SON: %lu", (unsigned long)[self.arregloDominio count]);
         for(int i= 0; i< [self.arregloDominio count]; i++){
             DominiosUsuario *usuarioDom = [self.arregloDominio objectAtIndex:i];
             NSLog(@"EL USUARIODOM CON TIPO DE DOMINIO: %@", usuarioDom.domainType);

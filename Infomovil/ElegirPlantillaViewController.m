@@ -118,11 +118,20 @@ BOOL actualizo;
         if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
             pController.nombrePlantilla.text = [nombrePlantillaEn objectAtIndex:i];
             pController.descripcionPlantilla.text = [descripcionPlantillaEn objectAtIndex:i];
+            if(IS_IPAD){
+            [pController.btnVerEjemploPlantilla setBackgroundImage:[UIImage imageNamed:@"verEjemplo-en@3x.png"] forState:UIControlStateNormal];
+            }else{
             [pController.btnVerEjemploPlantilla setBackgroundImage:[UIImage imageNamed:@"verEjemplo-en.png"] forState:UIControlStateNormal];
+            }
+            
         }else{
             pController.nombrePlantilla.text = [nombrePlantilla objectAtIndex:i];
             pController.descripcionPlantilla.text = [descripcionPlantilla objectAtIndex:i];
+            if(IS_IPAD){
+            [pController.btnVerEjemploPlantilla setBackgroundImage:[UIImage imageNamed:@"verEjemplo-es@3x.png"] forState:UIControlStateNormal];
+            }else{
             [pController.btnVerEjemploPlantilla setBackgroundImage:[UIImage imageNamed:@"verEjemplo-es.png"] forState:UIControlStateNormal];
+            }
         }
         NSString *bullString =  [NSString stringWithFormat:@"slider%i",i+1];
         UIImage *imgBullet = [UIImage imageNamed:bullString];

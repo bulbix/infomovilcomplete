@@ -32,7 +32,7 @@
 @property (nonatomic, strong) DatosUsuario *datos;
 
 -(void) consultaDominio:(NSString *)dominio;
--(void) consultaDominio:(NSString *)dominio conTipo:(NSString *)tipo;
+
 
 //-(void) crearUsuario:(NSString *)usuario conMovil:(NSString *)numeroMovil password:(NSString *)pass yDominio:(NSString *)dominio;
 -(void) crearUsuario:(NSString *)email conNombre:(NSString *)user password:(NSString *)pass status:(NSString *)s nombre:(NSString *)nom direccion1:(NSString *)dir1 direccion2:(NSString *)dir2 pais:(NSString *) nPais codigoPromocion:(NSString *)codProm tipoDominio:(NSString *)domainType idDominio:(NSString *)idDominio;

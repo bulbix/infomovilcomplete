@@ -7,19 +7,23 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NombrarViewController">
             <connections>
+                <outlet property="MensajeDisponible" destination="Xdn-Mh-pag" id="hvk-Qu-DNB"/>
                 <outlet property="boton" destination="yeq-Ck-nYb" id="gSq-hg-NSE"/>
                 <outlet property="btnPublicar" destination="Efw-V2-S0t" id="bml-yj-P7F"/>
+                <outlet property="cerrarBtn" destination="uKF-fY-MM8" id="UkQ-um-nfw"/>
                 <outlet property="cerrarPopUp" destination="uKF-fY-MM8" id="X1h-FQ-aQh"/>
-                <outlet property="dominioBtn" destination="5ug-Qw-T3Z" id="uhd-Qs-8dE"/>
                 <outlet property="estaDisponibleBtn" destination="Xdn-Mh-pag" id="LIr-wM-a43"/>
+                <outlet property="etiquetaEstatica" destination="O8a-s0-1q4" id="eY1-Z9-MAp"/>
                 <outlet property="label1" destination="hyv-hx-8GE" id="PLK-Io-T8m"/>
                 <outlet property="label2" destination="k1x-hr-Dhm" id="hc7-6O-dvF"/>
                 <outlet property="labelDominio" destination="D1h-Tr-yBA" id="gSV-d8-K9D"/>
                 <outlet property="labelTel" destination="Tkv-8Y-brU" id="nHx-kj-lOI"/>
                 <outlet property="labelW" destination="Pbo-cw-Jka" id="rZx-CL-2V7"/>
+                <outlet property="nombreDelDominio" destination="5ug-Qw-T3Z" id="xAB-Jc-1HD"/>
                 <outlet property="nombreDominio" destination="eJQ-jY-weI" id="5B7-TU-Mx0"/>
                 <outlet property="popUpCenter" destination="cHb-VD-QrX" id="srX-dE-ed9"/>
                 <outlet property="popUpView" destination="MCP-tK-KRt" id="0kh-mm-01h"/>
+                <outlet property="publicarBtn" destination="Efw-V2-S0t" id="c1f-5W-uFY"/>
                 <outlet property="scroll" destination="oOj-Bw-2F4" id="AOl-Rt-cbY"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>

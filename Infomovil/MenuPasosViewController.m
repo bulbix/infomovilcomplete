@@ -201,12 +201,18 @@
     [super viewWillAppear:animated];
     [self.tituloVista setHidden:NO];
 	
-    if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
-		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"creaSitio", @" ") nombreImagen:@"barramorada.png"];
-	}else{
-		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"creaSitio", @" ") nombreImagen:@"NBlila.png"];
-	}
     
+    
+#if DEBUG
+        [self acomodarBarraNavegacionConTitulo:@"AMBIENTE DE QA" nombreImagen:@"barramorada.png"];
+#else
+    if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+        [self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"creaSitio", @" ") nombreImagen:@"barramorada.png"];
+    }else{
+        [self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"creaSitio", @" ") nombreImagen:@"NBlila.png"];
+    }
+    
+#endif
         self.datosUsuario = [DatosUsuario sharedInstance];
         NSLog(@"EL USUARIO DOMINIO ES: %@", self.datosUsuario.dominio);
         if(self.datosUsuario.dominio && ![self.datosUsuario.dominio isEqualToString:@""] && ! (self.datosUsuario.dominio == (id)[NSNull null]) && ![CommonUtils validarEmail:self.datosUsuario.dominio] && ![self.datosUsuario.dominio isEqualToString:@"(null)"]){
@@ -217,7 +223,7 @@
             self.arregloDominios = self.datosUsuario.dominiosUsuario;
             [self.dominio setTitle:@"" forState:UIControlStateNormal];
             self.dominio.titleLabel.text = @"";
-            NSLog(@"LA CANTIDAD DE DOMINIOS SON: %i", [self.arregloDominios count]);
+            NSLog(@"LA CANTIDAD DE DOMINIOS SON: %lu", (unsigned long)[self.arregloDominios count]);
             for(int i= 0; i< [self.arregloDominios count]; i++){
                 DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:i];
                 NSLog(@"EL USUARIODOM CON TIPO DE DOMINIO: %@", usuarioDom.domainType);
@@ -226,6 +232,10 @@
                     NSLog(@"EL DOMINIO FUE TEL ");
                     if([usuarioDom.vigente isEqualToString:@"SI"] || [usuarioDom.vigente isEqualToString:@"si"]){
                          NSLog(@"EL DOMINIO FUE VIGENTE ");
+                        
+                        if([self.datosUsuario.dominio length] > 16 && !IS_IPAD){
+                            [self.dominio.titleLabel setFont: [UIFont fontWithName:@"Avenir-Book" size:16]];
+                        }
                         [self.dominio setTitle:[NSString stringWithFormat:@"www.%@.tel", self.datosUsuario.dominio] forState:UIControlStateNormal];
                     }
                 }
@@ -236,7 +246,10 @@
                     DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:i];
                     if([usuarioDom.domainType isEqualToString:@"recurso"]){
                         NSLog(@"EL DOMINIO FUE RECURSO ");
-                       [self.dominio setTitle:[NSString stringWithFormat:@"infomovil.com/%@", self.datosUsuario.dominio] forState:UIControlStateNormal];
+                        if([self.datosUsuario.dominio length] > 16 && !IS_IPAD){
+                            [self.dominio.titleLabel setFont: [UIFont fontWithName:@"Avenir-Book" size:16]];
+                        }
+                       [self.dominio setTitle:[NSString stringWithFormat:@"www.infomovil.com/%@", self.datosUsuario.dominio] forState:UIControlStateNormal];
                     }
                 }
             }
@@ -309,8 +322,8 @@
            
         }
     }
-   [self.vistaInferior setHidden:NO];
-	
+     [self.vistaInferior setHidden:NO];
+	[self.navigationController.navigationBar setHidden:NO];
 }
 
 - (void)didReceiveMemoryWarning
@@ -353,7 +366,7 @@
     }
 }
 
-- (IBAction)publicar:(UIButton *)sender { NSLog(@"PUBLICAR");
+- (IBAction)publicar:(UIButton *)sender {
     self.datosUsuario = [DatosUsuario sharedInstance];
     if ( self.datosUsuario.dominio && ![self.datosUsuario.dominio isEqualToString:@""] && ! (self.datosUsuario.dominio == (id)[NSNull null]) && ![CommonUtils validarEmail:self.datosUsuario.dominio] && ![self.datosUsuario.dominio isEqualToString:@"(null)"]) {
         

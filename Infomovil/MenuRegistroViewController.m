@@ -249,10 +249,16 @@
         
     }else if(IS_IPHONE_4){
         loginView.frame = CGRectMake(20, 75, 280, 45);
-        [self.msjRegistrarConFacebook setFrame:CGRectMake(0, 120, 320, 33)];
-        self.raya1.frame = CGRectMake(24, 160, 122, 2);
-        self.o.frame = CGRectMake(154,150,12,21);
-        self.raya2.frame = CGRectMake(174, 160, 124, 2);
+        [self.msjRegistrarConFacebook setFrame:CGRectMake(0, 115, 320, 40)];
+        self.raya1.frame = CGRectMake(24, 163, 122, 2);
+        self.o.frame = CGRectMake(154,153,12,21);
+        self.raya2.frame = CGRectMake(174, 163, 124, 2);
+        if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
+           [self.msjRegistrarConFacebook setFont:[UIFont fontWithName:@"Avenir-Book" size:12]];
+        }else{
+             [self.msjRegistrarConFacebook setFont:[UIFont fontWithName:@"Avenir-Book" size:13]];
+        }
+       
     }else{
         loginView.frame = CGRectMake(20, 110, 280, 45);
     }
@@ -329,7 +335,7 @@
         [botonRegresar setFrame:CGRectMake(10, 390, 300, 40)];
         [botonRegresar.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
     }else if(IS_IPHONE_5){
-        [botonRegresar setFrame:CGRectMake(22, 450, 276, 45)];
+        [botonRegresar setFrame:CGRectMake(0, 450, 320, 45)];
         [botonRegresar.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:18]];
     }else if(IS_STANDARD_IPHONE_6){
         [botonRegresar setFrame:CGRectMake(20, 525, 335, 50)];
@@ -550,10 +556,17 @@
             // IRC APPBOY //
             NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
             NSDictionary *launch =  [defaults objectForKey:@"launchingWithOptions"];
-            [Appboy startWithApiKey:llaveAppboy
+            //  IRC //
+         /*   [Appboy startWithApiKey:llaveAppboy
                       inApplication:[UIApplication sharedApplication]
                   withLaunchOptions:launch];
              [[Appboy sharedInstance] changeUser:self.datosUsuario.emailUsuario];
+        
+            NSDictionary *dicUser =
+            ABKFacebookUser *facebookUser = [[ABKFacebookUser alloc] initWithFacebookUserDictionary:self.datosUsuario.emailUsuario numberOfFriends:-1 likes:Nil];
+            [Appboy sharedInstance].user.facebookUser = facebookUser;
+           */
+            
             [self enviarEventoGAconCategoria:@"Registrar" yEtiqueta:@"Usuario"];
             // IRC Dominio
             ((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio = @"Tramite";
@@ -581,7 +594,7 @@
 
 -(void) resultadoConsultaDominio:(NSString *)resultado {
     NSLog(@"EL RESULTADO QUE ME ENVIO EL REGISTRO ES: %@",resultado);
-    if(operacionWS == 1 || [resultado isEqualToString:@"Exito"]){
+    if(operacionWS == 1 ){
         NSLog(@"ENTRO 1");
         if ([resultado isEqualToString:@"No existe"]) {
             NSLog(@"ENTRO 2");
@@ -598,7 +611,9 @@
                 [NSThread sleepForTimeInterval:1];
                 [self.alerta hide];
             }
-            //[self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
+            loginFacebook = YES;
+            AlertView *alert = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"error", Nil) message:NSLocalizedString(@"emailAsociado", Nil) dominio:Nil andAlertViewType:AlertViewTypeInfo];
+            [alert show];
         }
     }else{
         NSLog(@"ENTRO 4");
@@ -610,7 +625,7 @@
             [NSThread sleepForTimeInterval:1];
             [self.alerta hide];
         }
-        //[self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
+        [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
     }
 }
 
@@ -636,6 +651,7 @@
         respuestaError = idDominioLogin;
         loginExitoso = NO;
     }
+    NSLog(@"ESTE ES EL OCULTAR ACTIVITY DE RESULTADO LOGIN");
     [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
 }
 
@@ -694,7 +710,7 @@
 - (void)loginViewFetchedUserInfo:(FBLoginView *)loginView
                             user:(id<FBGraphUser>)user {
     self.datosUsuario.emailUsuario = [user objectForKey:@"email"];
-    NSLog(@"ENTRO DOS VECES ");
+   
 #ifdef _DEBUG
     NSLog(@"Entrando a loginViewFetchedUserInfo:user:");
     NSLog(@"el email es %@", self.datosUsuario.emailUsuario);
@@ -702,7 +718,7 @@
     self.datosUsuario.redSocial = @"Facebook";
     
     if(loginFacebook == YES) {
-        
+         NSLog(@"ENTRO DOS VECES ");
         loginFacebook = NO;
        // [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
         [self performSelectorInBackground:@selector(consultaLogin) withObject:Nil];

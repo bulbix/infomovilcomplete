@@ -9,6 +9,15 @@
 #import "InfomovilViewController.h"
 #import "WS_HandlerProtocol.h"
 
+
+
+typedef enum {
+    RespuestaStatusExito2,
+    RespuestaStatusPendiente2,
+    RespuestaStatusExistente2,
+    RespuestaStatusError2
+}RespuestaEstatus2;
+
 @interface NombrarViewController : InfomovilViewController <AlertViewDelegate, UITextFieldDelegate, WS_HandlerProtocol>
 @property (strong, nonatomic) IBOutlet UIScrollView *scroll;
 
@@ -25,10 +34,22 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *btnPublicar;
 
-@property (nonatomic, strong) DatosUsuario *datos;
+
 @property (weak, nonatomic) IBOutlet UIView *popUpView;
 @property (weak, nonatomic) IBOutlet UILabel *estaDisponibleBtn;
-@property (weak, nonatomic) IBOutlet UILabel *dominioBtn;
+
+
+// propiedades del ipad //
+@property (weak, nonatomic) IBOutlet UILabel *etiquetaEstatica;
+@property (weak, nonatomic) IBOutlet UILabel *nombreDelDominio;
+@property (weak, nonatomic) IBOutlet UILabel *MensajeDisponible;
+@property (weak, nonatomic) IBOutlet UIButton *publicarBtn;
+@property (weak, nonatomic) IBOutlet UIButton *cerrarBtn;
+
+
+
+
+
 
 @property (weak, nonatomic) IBOutlet UIButton *cerrarPopUp;
 - (IBAction)cerrarPopUpAction:(id)sender;

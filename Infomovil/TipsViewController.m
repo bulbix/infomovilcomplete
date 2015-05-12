@@ -148,7 +148,7 @@
     if(self.datosUsuario.dominio && ![self.datosUsuario.dominio isEqualToString:@""] && ! (self.datosUsuario.dominio == (id)[NSNull null]) && ![CommonUtils validarEmail:self.datosUsuario.dominio] && ![self.datosUsuario.dominio isEqualToString:@"(null)"]){
         self.arregloDominio = self.datosUsuario.dominiosUsuario;
         self.dominioParaCompartir = @"";
-        NSLog(@"LA CANTIDAD DE DOMINIOS SON: %i", [self.arregloDominio count]);
+        NSLog(@"LA CANTIDAD DE DOMINIOS SON: %lu", (unsigned long)[self.arregloDominio count]);
         for(int i= 0; i< [self.arregloDominio count]; i++){
             DominiosUsuario *usuarioDom = [self.arregloDominio objectAtIndex:i];
             NSLog(@"EL USUARIODOM CON TIPO DE DOMINIO: %@", usuarioDom.domainType);
@@ -184,7 +184,14 @@
     }
 	
 	self.seccionUnoTItulo.text = NSLocalizedString(@"tipsTitulo1", nil);
-	self.seccionUnoLabel1.text = [NSString stringWithFormat:NSLocalizedString(@"tipsLabel11", nil), self.datosUsuario.dominio];
+    if([self.datosUsuario.tipoDeUsuario isEqualToString:@"canal"]){
+        self.seccionUnoLabel1.text = [NSString stringWithFormat:NSLocalizedString(@"tipsLabel11", nil), self.datosUsuario.dominio];
+    }else if([self.datosUsuario.tipoDeUsuario isEqualToString:@"normal"]){
+        self.seccionUnoLabel1.text = [NSString stringWithFormat:NSLocalizedString(@"tipsLabel111", nil), self.datosUsuario.dominio];
+    }else{
+        self.seccionUnoLabel1.text = [NSString stringWithFormat:NSLocalizedString(@"tipsLabel11", nil), self.datosUsuario.dominio];
+    }
+    
 	self.seccionUnoLabel2.text = NSLocalizedString(@"tipsLabel12", nil);
 	self.seccionUnoLabel3.text = NSLocalizedString(@"tipsLabel13", nil);
 	self.seccionUnoLabel4.text = NSLocalizedString(@"tipsLabel14", nil);
@@ -393,7 +400,7 @@
         
     }
     
-	//[[AppsFlyerTracker sharedTracker] trackEvent:@"Compartir Twitter" withValue:@""];
+	
     [self enviarEventoGAconCategoria:@"Compartir" yEtiqueta:@"Twitter"];
 }
 

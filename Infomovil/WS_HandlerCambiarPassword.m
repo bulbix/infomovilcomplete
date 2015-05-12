@@ -48,6 +48,9 @@
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
         [parser setDelegate:self];
         if ([parser parse]) {
+            if(self.token != nil){
+                datos.token = self.token;
+            }
 			if(requiereEncriptar){
                 datos = [DatosUsuario sharedInstance];
                 NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
@@ -72,7 +75,7 @@
 }
 
 -(void) actualizaPasswordConEmail:(NSString *) email {
-    DatosUsuario *datos = nil;//[DatosUsuario sharedInstance];
+   DatosUsuario *datos = [DatosUsuario sharedInstance];
 	NSString *stringXML;
     stringXML = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.webservice.infomovil.org/\">"
                  "<soapenv:Header/>"
@@ -94,7 +97,9 @@
         [parser setDelegate:self];
         if ([parser parse])
         {
-            datos = [DatosUsuario sharedInstance];
+            if(self.token != nil){
+                datos.token = self.token;
+            }
             NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
             if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                 [self.cambiarPasswordDelegate errorToken];
@@ -122,10 +127,10 @@
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict {
     if ([elementName isEqualToString:@"resultado"]) {
-        self.currentElementString = @" ";
+        self.currentElementString = [[NSMutableString alloc] init];
     }
     else if ([elementName isEqualToString:@"token"]) {
-        self.currentElementString = @" ";
+       self.currentElementString = [[NSMutableString alloc] init];
     }
 }
 

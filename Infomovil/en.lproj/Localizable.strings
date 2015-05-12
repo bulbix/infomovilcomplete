@@ -244,6 +244,7 @@
 
 "tipsTitulo1"="Take care with the details and test your site";
 "tipsLabel11"="1. Be careful to avoid making typos\n2. Test your site:\nwww.%@.tel";
+"tipsLabel111"="1. Be careful to avoid making typos\n2. Test your site:\nwww.infomovil.com/%@";
 "tipsLabel12"="Open a browser";
 "tipsLabel13"="Test the contact buttons (call, e-mail)";
 "tipsLabel14"="Check all your text";
@@ -497,7 +498,7 @@
 "subtituloCuentaPlanPro" = "Choose your plan enjoys the benefits";
 "BeneficiosCuentaPlanPro" = "PRO PLAN BENEFITS";
 // Mensaje pantalla Registrar Usuario //
-"msjRegistrarUsuarioFB" = "Never post to your wall without your permission";
+"msjRegistrarUsuarioFB" = "We'll never post to your wall\n without your permission";
 
 //Pantalla Crear Editar //
 "inicioRapido" = "Quick start";
@@ -542,7 +543,7 @@
 "editaTuSitio" = "Edit your website";
 "noSeHaPodido" = "Could not load the preview.";
 "msgGuardarTemplate" = "Updating style";
-"yaTienesCuenta" = "Do you already have an account? Login";
+"yaTienesCuenta" = "Already have an account? Login";
 "estaDisponiblePublica" = "Available!";
 "publicaTuSitioWeb" = "Publish your website.";
 "publicaTuSitioWebAccion" = "publish!";

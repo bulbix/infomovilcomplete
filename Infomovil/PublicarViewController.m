@@ -206,6 +206,8 @@
 	selectOculto = YES;
 	existeDominio = NO;
 	operacionWS2 = 0;
+    
+    [self.vistaInferior setHidden:YES];
 }
 
 -(IBAction)regresar:(id)sender {
@@ -268,7 +270,7 @@
         WS_HandlerDominio *dominioHandler = [[WS_HandlerDominio alloc] init];
         [dominioHandler setWSHandlerDelegate:self];
         
-        [dominioHandler crearUsuario:self.datosUsuario.emailUsuario conNombre:self.datosUsuario.dominio password:self.datosUsuario.passwordUsuario status:@"1" nombre:self.txtNombre.text direccion1:self.txtDir1.text direccion2:self.txtDir2.text pais:self.nPais codigoPromocion:self.datosUsuario.codigoRedimir==nil?@" ":self.datosUsuario.codigoRedimir tipoDominio:dominioAux idDominio:[NSString stringWithFormat:@"%i", self.datosUsuario.idDominio]];
+        [dominioHandler crearUsuario:self.datosUsuario.emailUsuario conNombre:self.datosUsuario.dominio password:self.datosUsuario.passwordUsuario status:@"1" nombre:self.txtNombre.text direccion1:self.txtDir1.text direccion2:self.txtDir2.text pais:self.nPais codigoPromocion:self.datosUsuario.codigoRedimir==nil?@" ":self.datosUsuario.codigoRedimir tipoDominio:dominioAux idDominio:[NSString stringWithFormat:@"%li", (long)self.datosUsuario.idDominio]];
 
 }
 
@@ -297,7 +299,10 @@
         }
         else if (statusRespuesta == RespuestaStatusExito) {
             [[AppsFlyerTracker sharedTracker] trackEvent:@"Publicar Dominio" withValue:@""];
+            
             [[Appboy sharedInstance] logCustomEvent:@"Publicar Dominio"];
+            [[Appboy sharedInstance].user setCustomAttributeWithKey:@"tipoDominio" andStringValue:self.datosUsuario.tipoDeUsuario];
+            
             [self enviarEventoGAconCategoria:@"Publicar" yEtiqueta:@"Dominio"];
             self.datosUsuario.nombroSitio = YES;
             NSLog(@"self.datos usuario nombre de dominio %@", self.datosUsuario.dominio);

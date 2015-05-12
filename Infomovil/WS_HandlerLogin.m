@@ -146,7 +146,7 @@
         guardarLogo = NO;
         self.currentElementString = [[NSMutableString alloc] init];
         if([parser parse]) {
-                if([self.token length] > 0){
+                if([self.token length] > 0 && self.token != nil){
                     self.datosUsuario.token = self.token;
                 }
                 [StringUtils deleteResourcesWithExtension:@"js"];

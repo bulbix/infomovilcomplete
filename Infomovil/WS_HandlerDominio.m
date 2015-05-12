@@ -176,12 +176,12 @@
                self.datos = [DatosUsuario sharedInstance];
                 NSLog(@"EL TOKEN QUE TENGO PARA ENCRIPTAR ES: %@",self.datos.token);
                 
-                if(self.token != nil){
+                if(self.token != nil && [self.token length] > 0) {
                     self.datos.token = self.token;
                 
                 }
-                self.datos.fechaDominioIni = [StringUtils desEncriptar:self.telIni conToken:self.token];
-                self.datos.fechaDominioFin = [StringUtils desEncriptar:self.telFin conToken:self.token];
+                self.datos.fechaDominioIni = [StringUtils desEncriptar:self.telIni conToken:self.datos.token];
+                self.datos.fechaDominioFin = [StringUtils desEncriptar:self.telFin conToken:self.datos.token];
                 NSLog(@"LOS VALORES QUE ME CAUSAN RUIDO SON %@ Y EL OTRO ES: %@", self.datos.token,[StringUtils desEncriptar:self.resultado conToken:self.datos.token] );
                 
                 NSString * stringResult = [StringUtils desEncriptar:self.resultado conToken:self.datos.token];
@@ -649,6 +649,7 @@
     }
     else if ([elementName isEqualToString:@"resultado"]) {
         self.resultado = self.currentElementString;
+        NSLog(@"EL RESULTADO ES resultado: %@", [StringUtils desEncriptar:self.resultado conToken:self.datos.token]);
     }
     else if ([elementName isEqualToString:@"token"]) {
         self.token = [StringUtils desEncriptar:self.currentElementString conToken:passwordEncriptar];
