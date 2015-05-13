@@ -90,7 +90,10 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
     }
     if ([CommonUtils hayConexion]) {
         if([skProducts count] > 0){
-            _completionHandler(YES, skProducts);
+            if(_completionHandler)
+            {
+                _completionHandler(YES, skProducts);
+            }
         }
     }
     _completionHandler = nil;

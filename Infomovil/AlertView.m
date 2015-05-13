@@ -164,7 +164,7 @@
             }
             break;
         
-        case AlertViewTypeActivity:
+        case AlertViewTypeActivity:{
             //MBC
             if(IS_STANDARD_IPHONE_6){
                 [self.vistaAlert setFrame:CGRectMake(50, 150, 278, 182)];
@@ -176,12 +176,12 @@
             }else{
                 [self.vistaAlert setFrame:CGRectMake(21, 150, 278, 182)];
             }
-            
+            // TODO: IRC
             self.activityIndicator = [[ETActivityIndicatorView alloc] initWithFrame:CGRectMake(109, 40, 60, 60) andColor:colorMorado];
             [self.activityIndicator startAnimating];
             [self.vistaAlert addSubview:self.activityIndicator];
             [self.labelTitulo setFrame:CGRectMake(10, 110, 258, 30)];
-            break;
+        } break;
             
         case AlertViewTypeInfo:
             //MBC

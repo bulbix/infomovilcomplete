@@ -613,9 +613,10 @@ if(noSeRepiteOprimirElBoton){
             }else if(IS_STANDARD_IPHONE_6_PLUS){
                 dominio = [[UILabel alloc]initWithFrame:CGRectMake(0, 40, 414, 100)];
             }else if(IS_IPAD){
-                dominio = [[UILabel alloc]initWithFrame:CGRectMake(0, 80, 768, 100)];
+                dominio = [[UILabel alloc]initWithFrame:CGRectMake(0, 200, 768, 100)];
             }else{
-                dominio = [[UILabel alloc]initWithFrame:CGRectMake(0, 40, 320, 100)];
+                dominio = [[UILabel alloc]initWithFrame:CGRectMake(0, 75, 320, 100)];
+                
             }
         
         UILabel *fechas;
@@ -630,10 +631,11 @@ if(noSeRepiteOprimirElBoton){
             [dominio setFont: [UIFont fontWithName:@"Avenir-Book" size:20]];
         }else if(IS_IPAD){
             fechas = [[UILabel alloc]initWithFrame:CGRectMake(184, 180,400, 200)];
-            [fechas setFont: [UIFont fontWithName:@"Avenir-Book" size:20]];
+            [fechas setFont: [UIFont fontWithName:@"Avenir-Book" size:24]];
             [dominio setFont: [UIFont fontWithName:@"Avenir-Book" size:24]];
         }else{
             fechas = [[UILabel alloc]initWithFrame:CGRectMake(0, 120,320, 100)];
+            dominio.font = customFont;
         }
         
             if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
@@ -653,7 +655,7 @@ if(noSeRepiteOprimirElBoton){
                             }
                             
                         }else{
-                            dominio.text = [NSString stringWithFormat:@"My website\n\nhttp://infomovil.com%@",self.datosUsuario.dominio] ;
+                            dominio.text = [NSString stringWithFormat:@"My website\n\nwww.infomovil.com%@",self.datosUsuario.dominio] ;
                         }
                     }
                 }
@@ -662,7 +664,7 @@ if(noSeRepiteOprimirElBoton){
                         DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:i];
                         if([usuarioDom.domainType isEqualToString:@"recurso"]){
                             NSLog(@"EL DOMINIO FUE RECURSO ");
-                            dominio.text = [NSString stringWithFormat:@"My website\n\nhttp://infomovil.com/%@",self.datosUsuario.dominio] ;
+                            dominio.text = [NSString stringWithFormat:@"My website\n\nwww.infomovil.com/%@",self.datosUsuario.dominio] ;
                         }
                     }
                 }
@@ -683,7 +685,7 @@ if(noSeRepiteOprimirElBoton){
                                fechas.text = [NSString stringWithFormat: @"Fecha de inicio: %@\n Fecha de término: %@", usuarioDom.fechaIni, usuarioDom.fechaFin ];
                            }
                         }else{
-                            dominio.text = [NSString stringWithFormat:@"Mi sitio web\n\nhttp://infomovil.com/%@",self.datosUsuario.dominio] ;
+                            dominio.text = [NSString stringWithFormat:@"Mi sitio web\n\nwww.infomovil.com/%@",self.datosUsuario.dominio] ;
                         }
                     }
                 }
@@ -692,14 +694,13 @@ if(noSeRepiteOprimirElBoton){
                         DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:i];
                         if([usuarioDom.domainType isEqualToString:@"recurso"]){
                             NSLog(@"EL DOMINIO FUE RECURSO ");
-                            dominio.text = [NSString stringWithFormat:@"Mi sitio web\n\nhttp://infomovil.com/%@",self.datosUsuario.dominio] ;
+                            dominio.text = [NSString stringWithFormat:@"Mi sitio web\n\nwww.infomovil.com/%@",self.datosUsuario.dominio] ;
                             
                         }
                     }
                 }
             }
         
-            dominio.font = customFont;
             dominio.numberOfLines = 5;
             dominio.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
             dominio.adjustsFontSizeToFitWidth = YES;
@@ -712,7 +713,7 @@ if(noSeRepiteOprimirElBoton){
 
             dominio.textAlignment = NSTextAlignmentCenter;
         
-        [self.vistaDominio addSubview:dominio];
+            [self.vistaDominio addSubview:dominio];
         
             fechas.numberOfLines = 5;
             fechas.baselineAdjustment = UIBaselineAdjustmentAlignBaselines;
@@ -767,7 +768,7 @@ if(noSeRepiteOprimirElBoton){
         }else if(IS_STANDARD_IPHONE_6){
             [self.MensajePlanProComprado setFrame:CGRectMake(70, 60, 220, 150)];
         }else if(IS_IPAD){
-            [self.MensajePlanProComprado setFrame:CGRectMake(184, 120, 400, 400)];
+            [self.MensajePlanProComprado setFrame:CGRectMake(184, 10, 400, 400)];
             [self.MensajePlanProComprado setFont:[UIFont fontWithName:@"Avenir-Book" size:22]];
             
         }

@@ -65,7 +65,7 @@ static NSString *const FacebookFriendsEndpointUrl = @"https://graph.facebook.com
     [self fbDidlogout];
     FBLoginView *loginView = [[FBLoginView alloc] init];
     loginView.delegate = self;
-    loginView.readPermissions = @[@"public_profile", @"email", @"user_photos",@"user_about_me", @"user_hometown", @"user_likes", @"user_birthday"];
+    loginView.readPermissions = @[@"public_profile", @"email",@"user_about_me",@"user_likes"];
 
     UIColor *color = [UIColor whiteColor];
     if(IS_STANDARD_IPHONE_6){
@@ -554,6 +554,12 @@ static NSString *const FacebookFriendsEndpointUrl = @"https://graph.facebook.com
         [self fbDidlogout]; // CErrar sesion de facebook
         NSString *strMensaje;
         switch (respuestaError) {
+            case -5:
+                strMensaje = NSLocalizedString(@"errorLogin", Nil);
+                break;
+            case -4:
+                strMensaje = NSLocalizedString(@"errorLogin", Nil);
+                break;
             case -3:
                 strMensaje = NSLocalizedString(@"errorLogin", Nil);
                 break;
@@ -591,14 +597,7 @@ static NSString *const FacebookFriendsEndpointUrl = @"https://graph.facebook.com
 }
 
 -(void) consultaLogin {
-    /*
-    if (buscandoSesion) {
-        WS_HandlerDominio *handlerDominio = [[WS_HandlerDominio alloc] init];
-        [handlerDominio setWSHandlerDelegate:self];
-        [handlerDominio consultaSession:self.txtEmail.text];
-    }
-    else {
-        */
+  
         [StringUtils deleteResourcesWithExtension:@"jpg"];
         [StringUtils deleteFile];
         NSString *passLogin = @"";
@@ -658,10 +657,6 @@ static NSString *const FacebookFriendsEndpointUrl = @"https://graph.facebook.com
 -(void) desapareceElTeclado:(NSNotification *)aNotificacion {
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.3];
-   // CGPoint pt;
-   // pt.x = 0;
-   // pt.y = 0;
-    //[self.scrollLogin setContentOffset:pt animated:YES];
      [[self scrollLogin] setContentInset:UIEdgeInsetsMake(0, 0,0, 0)];
     [UIView commitAnimations];
     
@@ -710,97 +705,7 @@ static NSString *const FacebookFriendsEndpointUrl = @"https://graph.facebook.com
         [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
         [self performSelectorInBackground:@selector(consultaLogin) withObject:Nil];
     }
-
-    [[Appboy sharedInstance] logSocialShare:ABKSocialNetworkFacebook];
-    ACAccountStore *store = [[ACAccountStore alloc] init];
-    // Please put your Facebook ID in the app's plist file with key "FacebookAppID"
-    NSString *facebookID = [[NSBundle mainBundle] infoDictionary][FacebookIDPlistKey];
-    // Here you can change Facebook read permission.
-   // NSArray *facebookPermission = @[@"user_about_me", @"email", @"user_hometown", @"user_likes", @"user_birthday",@"publish_stream"];
-    NSArray *facebookPermission = @[@"email",@"publish_stream"];
-    ACAccountType *facebookAccountType = [store accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierFacebook];
-
-    NSDictionary *options = @{ACFacebookAppIdKey:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"FacebookAppID"], ACFacebookPermissionsKey:facebookPermission, ACFacebookAudienceKey:ACFacebookAudienceFriends};
-    
-  /*  NSDictionary *options = @{ACFacebookAppIdKey: facebookID,
-                              //ACFacebookPermissionsKey: @[@"publish_stream"],
-                              ACFacebookAudienceKey: ACFacebookAudienceFriends,
-                              ACFacebookPermissionsKey : facebookPermission
-                              };
-    */
-    void (^requestAccessCompletionBlock)(ACAccount *, NSString *) = ^(ACAccount *account,  NSString *endPointUrl) {
-        // Now make an authenticated request to our endpoint
-        NSURL *url = [NSURL URLWithString:endPointUrl];
-        //  Build the request with our parameter
-        SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeFacebook requestMethod:SLRequestMethodGET URL:url parameters:nil];
-        [request setAccount:account];
-        
-        [request performRequestWithHandler:
-         ^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-             if (!responseData) {
-                 NSLog(@"Error from Facebook response: %@", error);
-             } else {
-                 NSError *jsonError;
-                 NSDictionary *result = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&jsonError];
-                 if ([endPointUrl isEqualToString:FacebookUserProfileEndpointUrl]) {
-                     self.facebookUserProfile = result;
-                 } else if ([endPointUrl isEqualToString:FacebookLikesEndpointUrl]) {
-                     self.facebookLikes = result[@"data"];
-                 } else if ([endPointUrl isEqualToString:FacebookFriendsEndpointUrl]) {
-                     self.numberOfFacebookFriends = ((NSArray *)result[@"data"]).count;
-                 }
-                 dispatch_async(dispatch_get_main_queue(), ^{
-                     // The block is called in the background thread, so here we need to make sure to update the UI in the main thread.
-                     self.facebookDataTextView.text =[[result description] stringByAppendingString:self.facebookDataTextView.text];
-                 });
-             }
-         }];
-    };
-    
-    //  Request permission from the user to access the available Facebook accounts
-    [store requestAccessToAccountsWithType:facebookAccountType
-                                   options:options
-                                completion:^(BOOL granted, NSError *error) {
-                                    if (error) {
-                                        NSLog(@"Error returned from OS Facebook access request: %@", error);
-                                        return;
-                                    }
-                                    if (!granted) {
-                                        NSLog(@"No Facebook account connected to the device, or user rejected request.");
-                                    } else {
-                                        // Grab the available accounts
-                                        NSArray *facebookAccounts = [store accountsWithAccountType:facebookAccountType];
-                                        
-                                        if ([facebookAccounts count] > 0) {
-                                            // Use the first account for simplicity
-                                            ACAccount *account = facebookAccounts[0];
-                                            
-                                            [store renewCredentialsForAccount:account completion:^(ACAccountCredentialRenewResult renewResult, NSError *renewError) {
-                                                if (renewError) {
-                                                    NSLog(@"Error encountered while renewing Facebook account: %@", error);
-                                                } else {
-                                                    NSLog(@"Renewed Facebook access token with status %d", renewResult);
-                                                    requestAccessCompletionBlock(account, FacebookUserProfileEndpointUrl);
-                                                    requestAccessCompletionBlock(account, FacebookLikesEndpointUrl);
-                                                    requestAccessCompletionBlock(account, FacebookFriendsEndpointUrl);
-                                                }
-                                               
-                                            }];
-                                        }
-                                    }
-                                }];
-    
-    
-    
-    
-    
-    
-    NSLog(@"LOS VALORES DE FACEBOOK SON: %@ - %ld  - %@", self.facebookUserProfile, (long)self.numberOfFacebookFriends, self.facebookLikes);
-    ABKFacebookUser *facebookUser = [[ABKFacebookUser alloc] initWithFacebookUserDictionary:self.facebookUserProfile numberOfFriends:self.numberOfFacebookFriends likes:self.facebookLikes];
-    [Appboy sharedInstance].user.facebookUser = facebookUser;
-    
    
-    
 }
 
 - (void)loginViewShowingLoggedInUser:(FBLoginView *)loginView {

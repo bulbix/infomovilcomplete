@@ -542,7 +542,7 @@
         else {
 			((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio = valor;
         }
-		
+        NSLog(@"EL ESTATUS DOMINIO ES: %@", valor);
 	}
     else if ([elementName isEqualToString:@"listRecordNaptrVo"]) {
         [self.arregloContactos addObject:self.contactoActual];

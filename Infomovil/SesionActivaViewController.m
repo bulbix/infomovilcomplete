@@ -113,10 +113,10 @@
 -(void)resultadoLogin:(NSInteger)idDominio{
     self.datosUsuario = [DatosUsuario sharedInstance];
 #if DEBUG
-    NSLog(@"Regreso resultadoLogin con Dominio %i", idDominio);
+    NSLog(@"Regreso resultadoLogin con Dominio %li", (long)idDominio);
 #endif
     if (idDominio > 0) {
-        NSLog(@"EL IDDOMINIO EN SESION ACTIVA ES: %i", idDominio);
+        NSLog(@"EL IDDOMINIO EN SESION ACTIVA ES: %li", (long)idDominio);
        
         ((AppDelegate*) [[UIApplication sharedApplication] delegate]).logueado =YES;
         self.datosUsuario.existeLogin = YES;
@@ -127,6 +127,12 @@
     }else {
         NSString *strMensaje;
         switch (idDominio) {
+            case -5:
+                strMensaje = NSLocalizedString(@"errorLogin", Nil);
+                break;
+            case -4:
+                strMensaje = NSLocalizedString(@"errorLogin", Nil);
+                break;
             case -3:
                 strMensaje = NSLocalizedString(@"errorLogin", Nil);
                 break;

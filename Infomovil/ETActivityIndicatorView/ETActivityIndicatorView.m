@@ -82,7 +82,6 @@
         }
         
         circleSize = 15*radius/55;
-        
         //add circles
         circleDelay = [NSTimer scheduledTimerWithTimeInterval: 0.20 target: self
                                                  selector: @selector(nextCircle) userInfo: nil repeats: YES];
@@ -91,7 +90,7 @@
 
 -(void)nextCircle{
     if (circleNumber<maxCircleNumber){
-        
+       
         circleNumber ++;
         
         Circle *circle = [[Circle alloc] initWithFrame:CGRectMake((self.frame.size.width-circleSize)/2 - 1, self.frame.size.height-circleSize -1, circleSize +2, circleSize+2)];
@@ -103,13 +102,13 @@
         CGPathMoveToPoint(circlePath, NULL, self.frame.size.width/2, self.frame.size.height-circleSize/2);
         
         CGPathAddArc(circlePath, NULL, self.frame.size.width/2, self.frame.size.height/2, radius-15/2, M_PI_2, -M_PI_2*3, NO);
-        
         CAKeyframeAnimation *circleAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
         circleAnimation.duration = 1.5;
         circleAnimation.timingFunction = [CAMediaTimingFunction functionWithControlPoints:0.15f :0.60f :0.85f :0.4f];
         [circleAnimation setCalculationMode:kCAAnimationPaced];
         circleAnimation.path = circlePath;
         circleAnimation.repeatCount = HUGE_VALF;
+        NSLog(@"EL HUGE_VALF ES: %f", circleAnimation.repeatCount);
         [circle.layer addAnimation:circleAnimation forKey:@"circleAnimation"];
         
         CGPathRelease(circlePath);

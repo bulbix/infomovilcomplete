@@ -650,7 +650,7 @@
 "errorCompra" = "No se ha podido realizar tu compra. Por favor inténtalo nuevamente." ;
 "errorPublicacion" = "No se ha podido registrar tu sitio web por favor inténtalo nuevamente.";
 "faltaImagenActualizar" = "Debes seleccionar una imagen antes de actualizar";
-"cuentaTodavia"="¿Aún no tienes cuenta? Registrate";
+"cuentaTodavia"="¿Aún no tienes cuenta? Regístrate";
 "editaTuSitio" = "Edita tu sitio web";
 "noSeHaPodido" = "No se ha podido cargar la vista previa.";
 "yaTienesCuenta" = "¿Ya tienes cuenta? Ingresa";

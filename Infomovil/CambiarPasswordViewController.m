@@ -182,7 +182,7 @@
         [NSThread sleepForTimeInterval:1];
         [self.alertaContacto hide];
     }
-    [[AlertView initWithDelegate:Nil message:NSLocalizedString(@"ocurrioError", Nil) andAlertViewType:AlertViewTypeInfo] show];
+    [[AlertView initWithDelegate:Nil message:NSLocalizedString(@"    ", Nil) andAlertViewType:AlertViewTypeInfo] show];
     [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
 }
 
