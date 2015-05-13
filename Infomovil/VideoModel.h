@@ -13,7 +13,7 @@
 @property (nonatomic, strong) NSString *autor;
 @property (nonatomic, strong) NSString *titulo;
 @property (nonatomic, strong) NSArray *link;
-@property (nonatomic, strong) NSArray *thumbnail;
+@property (nonatomic, strong) NSString *thumbnail;
 @property (nonatomic, strong) UIImage *imagenPrevia;
 
 @property (nonatomic, strong) NSString *linkSolo;

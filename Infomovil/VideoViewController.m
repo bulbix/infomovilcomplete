@@ -187,23 +187,7 @@
 - (IBAction)buscarVideoConURL:(id)sender {
     NSString *strUrl = self.txtUrlVideo.text;
     NSLog(@"EL VIDEO ES: %@", self.txtUrlVideo.text);
-    if ([CommonUtils validarYoutubeURL:strUrl]) {
-        NSArray *arrayVideo;
-        if ([strUrl rangeOfString:@"youtube"].location != NSNotFound) {
-            arrayVideo = [strUrl componentsSeparatedByString:@"watch?v="];
-        }
-        else {
-            arrayVideo = [strUrl componentsSeparatedByString:@"be/"];
-        }
-        
-        if ([arrayVideo count] >= 2) {
-            arrayVideo = [[arrayVideo objectAtIndex:1] componentsSeparatedByString:@"&"];
-            self.idVideo = [arrayVideo objectAtIndex:0];
-        }
-        self.tipoBusqueda = 2;
-        NSLog(@"el id video es: %@   y   %@  y %@", self.idVideo, [arrayVideo description] , strUrl);
-    }
-    else {
+    if ([CommonUtils validarYoutubeURL:strUrl] == NO) {
         self.idVideo = strUrl;
         self.tipoBusqueda = 1;
     }
@@ -324,9 +308,21 @@
     [self performSelectorOnMainThread:@selector(terminaConsultaVideo) withObject:Nil waitUntilDone:YES];
 }
 
+-(void)errorBusqueda{
+ [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
+    AlertView *alerta = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"videoDesconocido", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+    [alerta show];
+
+}
+
 #pragma mark - UITextFieldDelegate
 -(void) textFieldDidBeginEditing:(UITextField *)textField {
-    [self apareceTeclado:_scrollVideo withRefFrame:textField.frame];
+   // [self apareceTeclado:_scrollVideo withRefFrame:textField.frame];
+    CGSize tamanioTeclado = CGSizeMake(320, 235);
+    UIEdgeInsets edgeInsets = UIEdgeInsetsMake(0, 0, tamanioTeclado.height+20, 0);
+    [self.scrollVideo setContentInset:edgeInsets];
+    [self.scrollVideo setScrollIndicatorInsets:edgeInsets];
+    [self.scrollVideo scrollRectToVisible:textField.frame animated:YES];
 }
 -(void)textFieldDidEndEditing:(UITextField *)textField {
 	[self desapareceElTeclado:_scrollVideo];

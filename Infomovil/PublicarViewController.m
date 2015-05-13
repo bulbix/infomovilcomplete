@@ -299,10 +299,15 @@
         }
         else if (statusRespuesta == RespuestaStatusExito) {
             [[AppsFlyerTracker sharedTracker] trackEvent:@"Publicar Dominio" withValue:@""];
-            
             [[Appboy sharedInstance] logCustomEvent:@"Publicar Dominio"];
-            [[Appboy sharedInstance].user setCustomAttributeWithKey:@"tipoDominio" andStringValue:self.datosUsuario.tipoDeUsuario];
-            
+            if([self.datosUsuario.tipoDeUsuario isEqualToString:@"normal"]){
+                [[Appboy sharedInstance].user setCustomAttributeWithKey:@"tipoDominio" andStringValue:@"recurso"];
+            }else if([self.datosUsuario.tipoDeUsuario isEqualToString:@"canal"]){
+                [[Appboy sharedInstance].user setCustomAttributeWithKey:@"tipoDominio" andStringValue:@"tel"];
+            }else{
+                [[Appboy sharedInstance].user setCustomAttributeWithKey:@"tipoDominio" andStringValue:@"recurso"];
+            }
+            [[Appboy sharedInstance].user setCustomAttributeWithKey:@"nombreDominio" andStringValue:self.datosUsuario.dominio];
             [self enviarEventoGAconCategoria:@"Publicar" yEtiqueta:@"Dominio"];
             self.datosUsuario.nombroSitio = YES;
             NSLog(@"self.datos usuario nombre de dominio %@", self.datosUsuario.dominio);
@@ -312,24 +317,6 @@
             [alert show];
             MenuPasosViewController *comparte = [[MenuPasosViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
             [self.navigationController pushViewController:comparte animated:YES];
-    /*
-            NSInteger lessVC;
-            if (self.datosUsuario.vistaOrigen == 12) {
-               
-                lessVC = 4;
-            }
-            else {
-               
-                lessVC = 3;
-            }
-			[self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex: self.navigationController.viewControllers.count-lessVC] animated:YES];
-
-			CompartirPublicacionViewController *compartir = [[CompartirPublicacionViewController alloc] initWithNibName:@"CompartirPublicacionViewController" bundle:nil];
-			
-                UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:compartir];
-               [self.navigationController presentViewController:navController animated:YES completion:Nil];
-     */
-            
 			
 		}
         else if (statusRespuesta == RespuestaStatusPendiente) {
@@ -360,6 +347,20 @@
                 [NSThread sleepForTimeInterval:1];
                 [self.alertView hide];
             }
+            [[AppsFlyerTracker sharedTracker] trackEvent:@"Publicar Dominio" withValue:@""];
+            [[Appboy sharedInstance] logCustomEvent:@"Publicar Dominio"];
+            if([self.datosUsuario.tipoDeUsuario isEqualToString:@"normal"]){
+                [[Appboy sharedInstance].user setCustomAttributeWithKey:@"tipoDominio" andStringValue:@"recurso"];
+            }else if([self.datosUsuario.tipoDeUsuario isEqualToString:@"canal"]){
+                [[Appboy sharedInstance].user setCustomAttributeWithKey:@"tipoDominio" andStringValue:@"tel"];
+            }else{
+                [[Appboy sharedInstance].user setCustomAttributeWithKey:@"tipoDominio" andStringValue:@"recurso"];
+            }
+            [[Appboy sharedInstance].user setCustomAttributeWithKey:@"nombreDominio" andStringValue:self.datosUsuario.dominio];
+            [self enviarEventoGAconCategoria:@"Publicar" yEtiqueta:@"Dominio"];
+            self.datosUsuario.nombroSitio = YES;
+            NSLog(@"self.datos usuario nombre de dominio %@", self.datosUsuario.dominio);
+            creoDominio = YES;
             MenuPasosViewController *pasoView = [[MenuPasosViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
             [self.navigationController pushViewController:pasoView animated:YES];
             AlertView *alert = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"felicidades", @" ") message:NSLocalizedString(@"nombradoExitoso", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];

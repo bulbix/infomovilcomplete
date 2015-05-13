@@ -15,54 +15,63 @@
     self.tipoBusqueda = tipoBusqueda;
     if (tipoBusqueda == 1) { //Videos en base a una frase
         criterioBusqueda = [criterioBusqueda stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
-        urlBusqueda = [NSString stringWithFormat:@"http://gdata.youtube.com/feeds/api/videos?q=%@&max-results=20&alt=json", [StringUtils eliminarAcentos:criterioBusqueda]];
+        urlBusqueda = [NSString stringWithFormat:@"https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&q=%@&maxResults=20&key=AIzaSyBfyUsYuAxuiHu1IeOW-L6dbfkNfEIEIEU",criterioBusqueda];
     }
     else {// video con el id
         urlBusqueda = [NSString stringWithFormat:@"http://gdata.youtube.com/feeds/api/videos/%@?alt=json", criterioBusqueda];
+        NSLog(@"ENTRO A VIDEO CON EL ID");
     }
     NSData *urlData = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlBusqueda]];
-    [self iniciarParseo:urlData];
+    if(urlData != nil){
+        [self iniciarParseo:urlData];
+    }else{
+        [self.delegate errorBusqueda];
+    }
 }
 
 -(void) iniciarParseo:(NSData *)dataWeb {
     NSError *error = nil;
     NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:dataWeb options:kNilOptions error:&error];
+    NSLog(@"EL DICCIONARIO QUE ME REGRESA ES: %@", jsonDict);
     self.arregloVideos = [[NSMutableArray alloc] init];
     if (error != nil) {
         //        
     }
     else {
-        NSArray *arreglo;
         if (self.tipoBusqueda == 1) {
-            NSDictionary *dictFeed = [jsonDict objectForKey:@"feed"];
-            arreglo = [dictFeed objectForKey:@"entry"];
-            for (int i = 0; i < [arreglo count]; i++) {
-                NSDictionary *dictAux = [arreglo objectAtIndex:i];
-                [self recuperaVideo:dictAux];
+            NSDictionary *dictFeed = [jsonDict objectForKey:@"items"];
+            NSLog(@"EL DICCIONARIO TIENE : %i", [dictFeed count]);
+            for (int i = 0; i < [dictFeed count]; i++) {
+                NSDictionary *dictFeed = [[jsonDict objectForKey:@"items"] objectAtIndex:i];
+                NSDictionary *dictAux = [dictFeed objectForKey:@"id"];
+                NSDictionary *dictAux2 = [dictFeed objectForKey:@"snippet"];
+                NSDictionary *dictAux3 = [[dictAux2 objectForKey:@"thumbnails"]objectForKey:@"default"];
+                [self recuperaVideo:dictAux dict2:dictAux2 dict3:dictAux3 ];
             }
         }
-        else {
-            NSDictionary *dictAux = [jsonDict objectForKey:@"entry"];
-            [self recuperaVideo:dictAux];
-        }
+        
     }
     [self.delegate resultadoVideo:self.arregloVideos];
 }
 
--(void) recuperaVideo:(NSDictionary *) dictAux {
+-(void) recuperaVideo:(NSDictionary *) dictAux dict2:(NSDictionary *) dictAux2 dict3:(NSDictionary *) dictAux3 {
     VideoModel *video = [[VideoModel alloc] init];
-    video.link = [dictAux objectForKey:@"link"];
-    video.linkSolo = [[[dictAux objectForKey:@"link"] objectAtIndex:0] objectForKey:@"href"];
-    video.autor = [[[[dictAux objectForKey:@"author"] objectAtIndex:0] objectForKey:@"name"] objectForKey:@"$t"];
-    video.titulo = [[dictAux objectForKey:@"title"] objectForKey:@"$t"];
-    video.descripcionVideo = [[dictAux objectForKey:@"content"] objectForKey:@"$t"];
-    video.thumbnail = [[dictAux objectForKey:@"media$group"] objectForKey:@"media$thumbnail"];
-    video.categoria = [[[dictAux objectForKey:@"category"] objectAtIndex:1] objectForKey:@"label"];
-    NSData *img = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[video.thumbnail objectAtIndex:3] objectForKey:@"url"]]];
+    //video.link = [dictAux objectForKey:@"link"];
+    //video.linkSolo = [[[dictAux objectForKey:@"link"] objectAtIndex:0] objectForKey:@"href"];
+    //video.autor = [[[[dictAux objectForKey:@"author"] objectAtIndex:0] objectForKey:@"name"] objectForKey:@"$t"];
+    video.titulo = [dictAux2 objectForKey:@"title"];
+    NSLog(@"TITULO: %@", video.titulo);
+    video.descripcionVideo = [dictAux2 objectForKey:@"description"];
+    NSLog(@"DESCRIPTION: %@", video.description);
+    video.thumbnail = [dictAux3 objectForKey:@"url"];
+    NSLog(@"THUMBNAIL: %@", video.thumbnail);
+    //video.categoria = [[[dictAux objectForKey:@"category"] objectAtIndex:1] objectForKey:@"label"];
+    NSData *img = [NSData dataWithContentsOfURL:[NSURL URLWithString:video.thumbnail]];
     video.imagenPrevia = [UIImage imageWithData:img];
-    NSArray *arrayVideoAux = [video.linkSolo componentsSeparatedByString:@"watch?v="];
-    arrayVideoAux = [[arrayVideoAux objectAtIndex:1] componentsSeparatedByString:@"&"];
-    video.idVideo = [arrayVideoAux objectAtIndex:0];
+    //NSArray *arrayVideoAux = [video.linkSolo componentsSeparatedByString:@"watch?v="];
+    //arrayVideoAux = [[arrayVideoAux objectAtIndex:1] componentsSeparatedByString:@"&"];
+    video.idVideo = [dictAux objectForKey:@"videoId"];
+    NSLog(@"VIDEOID: %@", video.idVideo);
     video.linkSolo = [NSString stringWithFormat:@"http://www.youtube.com/embed/%@", video.idVideo];
     [self.arregloVideos addObject:video];
 }

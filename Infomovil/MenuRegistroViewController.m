@@ -240,7 +240,7 @@
         [self.imgLogoInfo setFrame:CGRectMake(250, 150, 267,50 )];
         [self.msjCreaTuSitio setFont:[UIFont fontWithName:@"Avenir-Book" size:24]];
         [self.msjCreaTuSitio setFrame:CGRectMake(196, 230, 375,33 )];
-        [self.msjRegistrarConFacebook setFrame:CGRectMake(180, 380, 402, 33)];
+        [self.msjRegistrarConFacebook setFrame:CGRectMake(180, 380, 402, 50)];
         [self.txtNombre setFont:[UIFont fontWithName:@"Avenir-Book" size:18]];
         [self.txtContrasena setFont:[UIFont fontWithName:@"Avenir-Book" size:18]];
         [self.txtContrasenaConfirmar setFont:[UIFont fontWithName:@"Avenir-Book" size:18]];
@@ -536,6 +536,7 @@
 
 
 -(void) ocultarActivity {
+   self.datosUsuario = [DatosUsuario sharedInstance];
     if (self.alerta)
     {
         [NSThread sleepForTimeInterval:1];
@@ -557,15 +558,22 @@
             NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
             NSDictionary *launch =  [defaults objectForKey:@"launchingWithOptions"];
             //  IRC //
-         /*   [Appboy startWithApiKey:llaveAppboy
+            [Appboy startWithApiKey:llaveAppboy
                       inApplication:[UIApplication sharedApplication]
                   withLaunchOptions:launch];
+            NSLog(@"EL APPBOY DE CHANGE USER 1");
              [[Appboy sharedInstance] changeUser:self.datosUsuario.emailUsuario];
-        
-            NSDictionary *dicUser =
-            ABKFacebookUser *facebookUser = [[ABKFacebookUser alloc] initWithFacebookUserDictionary:self.datosUsuario.emailUsuario numberOfFriends:-1 likes:Nil];
-            [Appboy sharedInstance].user.facebookUser = facebookUser;
-           */
+             [Appboy sharedInstance].user.email = self.datosUsuario.emailUsuario;
+            if([self.datosUsuario.emailUsuario isEqualToString:@""] || self.datosUsuario.emailUsuario == nil){
+                [[Appboy sharedInstance] changeUser:self.datosUsuario.auxStrSesionUser];
+                [Appboy sharedInstance].user.email = self.datosUsuario.auxStrSesionUser;
+            }
+            
+            
+            if([self.datosUsuario.redSocial isEqualToString:@"Facebook"]){
+                ABKFacebookUser *facebookUser = [[ABKFacebookUser alloc] initWithFacebookUserDictionary:nil numberOfFriends:-1 likes:Nil];
+                [Appboy sharedInstance].user.facebookUser = facebookUser;
+            }
             
             [self enviarEventoGAconCategoria:@"Registrar" yEtiqueta:@"Usuario"];
             // IRC Dominio
@@ -871,45 +879,6 @@
     self.datosUsuario.tipoDeUsuario = @"normal";
     
 }
-/*
--(void) ocultarActivity {
-    if (self.alerta)
-    {
-        [NSThread sleepForTimeInterval:1];
-        [self.alerta hide];
-    }
-    if (existeUsuario) {
-        if (idDominio == 0) {
-            AlertView *alert = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"error", Nil) message:NSLocalizedString(@"errorCrearDominio", Nil) dominio:Nil andAlertViewType:AlertViewTypeInfo];
-            [alert show];
-        }else{
-            [[AppsFlyerTracker sharedTracker] setCustomerUserID:self.txtNombre.text];
-            [[AppsFlyerTracker sharedTracker] trackEvent:@"Registro Usuario" withValue:@""];
-            // IRC APPBOY //
-            NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-            NSDictionary *launch =  [defaults objectForKey:@"launchingWithOptions"];
-            [Appboy startWithApiKey:llaveAppboy
-                      inApplication:[UIApplication sharedApplication]
-                  withLaunchOptions:launch];
-            [[Appboy sharedInstance] changeUser:self.txtNombre.text];
-            
-            
-            [self enviarEventoGAconCategoria:@"Registrar" yEtiqueta:@"Usuario"];
-            // IRC Dominio
-            ((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio = @"Tramite";
-            
-            MenuPasosViewController *menuPasos = [[MenuPasosViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:nil];
-            [self.navigationController pushViewController:menuPasos animated:YES];
-        }
-    }
-    else {
-        exito = NO;
-        AlertView *alert = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"errorEmail", Nil) message:NSLocalizedString(@"emailAsociado", Nil) dominio:Nil andAlertViewType:AlertViewTypeInfo];
-        [alert show];
-    }
-}
-*/
-
 
 
 

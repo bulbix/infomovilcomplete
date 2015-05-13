@@ -125,7 +125,7 @@
             video.descripcionVideo = [[dictAux objectForKey:@"content"] objectForKey:@"$t"];
             video.thumbnail = [[dictAux objectForKey:@"media$group"] objectForKey:@"media$thumbnail"];
             video.categoria = [[[dictAux objectForKey:@"category"] objectAtIndex:1] objectForKey:@"label"];
-            NSData *img = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[video.thumbnail objectAtIndex:3] objectForKey:@"url"]]];
+            NSData *img = [NSData dataWithContentsOfURL:[NSURL URLWithString:video.thumbnail]];
             video.imagenPrevia = [UIImage imageWithData:img];
             [self.arregloVideos addObject:video];
         }

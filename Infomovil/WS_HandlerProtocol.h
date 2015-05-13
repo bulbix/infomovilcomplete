@@ -22,4 +22,5 @@
 -(void) errorToken;
 
 -(void) resultadoVideo:(NSMutableArray*)arregloVideos;
+-(void) errorBusqueda;
 @end

@@ -350,35 +350,19 @@
             [alert show];
         }
     }else if(operacionWS == 12) {
+        NSLog(@"ENTRO A OCULTAR ACTIVITY CON OPERACION 12 Y statusRespuesta %d",RespuestaStatusExistente2);
         self.datosUsuario = [DatosUsuario sharedInstance];
         AlertView *alert;
         if (statusRespuesta == RespuestaStatusExistente2) {
-            NSLog(@"NO  ENTRO EN ESTATUS EXISTENTE");
             alert = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"error", Nil) message:NSLocalizedString(@"txtErrorDomainNombrar", Nil) dominio:Nil andAlertViewType:AlertViewTypeInfo];
             [alert show];
             
             [self.navigationController popViewControllerAnimated:YES];
-        }
-        else if (statusRespuesta == RespuestaStatusExito2) {
-            NSLog(@"ENTRO A RESPUESTA DE ESTATUS EXITO EN OCULTAR ACTIVITY");
-            [[AppsFlyerTracker sharedTracker] trackEvent:@"Publicar Dominio" withValue:@""];
-            [[Appboy sharedInstance] logCustomEvent:@"Publicar Dominio"];
-            [[Appboy sharedInstance].user setCustomAttributeWithKey:@"tipoDominio" andStringValue:self.datosUsuario.tipoDeUsuario];
-            
-            [self enviarEventoGAconCategoria:@"Publicar" yEtiqueta:@"Dominio"];
-            self.datosUsuario.nombroSitio = YES;
-            NSLog(@"self.datos usuario nombre de dominio %@", self.datosUsuario.dominio);
-            creoDominio = YES;
-            
-            alert = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"felicidades", @" ") message:NSLocalizedString(@"nombradoExitoso", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
-            [alert show];
-            [self navigationController].navigationBarHidden = NO;
-            MenuPasosViewController *comparte = [[MenuPasosViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
-            [self.navigationController pushViewController:comparte animated:YES];
+        }else if (statusRespuesta == RespuestaStatusExito2) {
             
             
-        }
-        else if (statusRespuesta == RespuestaStatusPendiente2) {
+            
+        }else if (statusRespuesta == RespuestaStatusPendiente2) {
             self.datosUsuario.nombroSitio = YES;
             creoDominio = YES;
             
@@ -456,13 +440,18 @@
         }
         else {
             existeDominio = NO;
-            NSLog(@"EL DOMINIO SI EXISTE POR ESO ENTRO AKI");
-            //[self checaPublicacion];
+            [self checaPublicacion];
             //[self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
         }
     }else if(operacionWS == 12){
-        NSLog(@"LA OPERACION ES 2 PARA PUBLICAR ");
+        NSLog(@"LA OPERACION ES 12 PARA PUBLICAR y el resultado es: %@", resultado);
         if ([resultado isEqualToString:@"Exito"]) {
+            if (alertActivity)
+            {
+                [NSThread sleepForTimeInterval:1];
+                [alertActivity hide];
+            }
+            
             statusRespuesta = RespuestaStatusExito2;
             dominioUsuario = [[DominiosUsuario alloc] init];
             if([self.datosUsuario.tipoDeUsuario isEqualToString:@"canal"]){
@@ -476,7 +465,28 @@
             [self.arregloDominiosUsuario addObject:dominioUsuario];
             self.datosUsuario.dominiosUsuario = self.arregloDominiosUsuario;
             NSLog(@"LA CANTIDAD QUE AGREGO DE DOMINIOSUSUARIOS SON  %lu y el arreglo %lu", (unsigned long)[self.datosUsuario.dominiosUsuario count] , (unsigned long)[self.arregloDominiosUsuario count]);
-            [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
+            NSLog(@"ENTRO A RESPUESTA DE ESTATUS EXITO EN OCULTAR ACTIVITY");
+            [[AppsFlyerTracker sharedTracker] trackEvent:@"Publicar Dominio" withValue:@""];
+            [[Appboy sharedInstance] logCustomEvent:@"Publicar Dominio"];
+            if([self.datosUsuario.tipoDeUsuario isEqualToString:@"normal"]){
+                [[Appboy sharedInstance].user setCustomAttributeWithKey:@"tipoDominio" andStringValue:@"recurso"];
+            }else if([self.datosUsuario.tipoDeUsuario isEqualToString:@"canal"]){
+                [[Appboy sharedInstance].user setCustomAttributeWithKey:@"tipoDominio" andStringValue:@"tel"];
+            }else{
+                [[Appboy sharedInstance].user setCustomAttributeWithKey:@"tipoDominio" andStringValue:@"recurso"];
+            }
+            [[Appboy sharedInstance].user setCustomAttributeWithKey:@"nombreDominio" andStringValue:self.datosUsuario.dominio];
+            [self enviarEventoGAconCategoria:@"Publicar" yEtiqueta:@"Dominio"];
+            self.datosUsuario.nombroSitio = YES;
+            NSLog(@"self.datos usuario nombre de dominio %@", self.datosUsuario.dominio);
+            creoDominio = YES;
+            
+            AlertView *alert  = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"felicidades", @" ") message:NSLocalizedString(@"nombradoExitoso", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+            [alert show];
+            [self navigationController].navigationBarHidden = NO;
+            MenuPasosViewController *comparte = [[MenuPasosViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
+            [self.navigationController pushViewController:comparte animated:YES];
+            // [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
         }
         else if ([resultado isEqualToString:@"Error Publicar"]) {
             statusRespuesta = RespuestaStatusPendiente2;
@@ -503,11 +513,16 @@
         }
         [[AppsFlyerTracker sharedTracker] trackEvent:@"Publicar Dominio" withValue:@""];
         [[Appboy sharedInstance] logCustomEvent:@"Publicar Dominio"];
-        [[Appboy sharedInstance].user setCustomAttributeWithKey:@"tipoDominio" andStringValue:self.datosUsuario.tipoDeUsuario];
-        
+        if([self.datosUsuario.tipoDeUsuario isEqualToString:@"normal"]){
+            [[Appboy sharedInstance].user setCustomAttributeWithKey:@"tipoDominio" andStringValue:@"recurso"];
+        }else if([self.datosUsuario.tipoDeUsuario isEqualToString:@"canal"]){
+            [[Appboy sharedInstance].user setCustomAttributeWithKey:@"tipoDominio" andStringValue:@"tel"];
+        }else{
+            [[Appboy sharedInstance].user setCustomAttributeWithKey:@"tipoDominio" andStringValue:@"recurso"];
+        }
+        [[Appboy sharedInstance].user setCustomAttributeWithKey:@"nombreDominio" andStringValue:self.datosUsuario.dominio];
         [self enviarEventoGAconCategoria:@"Publicar" yEtiqueta:@"Dominio"];
         self.datosUsuario.nombroSitio = YES;
-        NSLog(@"self.datos usuario nombre de dominio %@", self.datosUsuario.dominio);
         creoDominio = YES;
         
         AlertView * alert = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"felicidades", @" ") message:NSLocalizedString(@"nombradoExitoso", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
@@ -523,7 +538,6 @@
 
 
 -(void)crearDominio2{
-    operacionWS = 12;
     [self performSelectorInBackground:@selector(crearDominio) withObject:Nil];
 }
 
@@ -694,10 +708,15 @@
 }
 
 -(void) checaPublicacion{
-    operacionWS = 13;
-    WS_HandlerDominio *dominioHandler = [[WS_HandlerDominio alloc] init];
-    [dominioHandler setWSHandlerDelegate:self];
-    [dominioHandler consultaEstatusDominio];
+     if( [CommonUtils hayConexion]){
+         operacionWS = 13;
+         WS_HandlerDominio *dominioHandler = [[WS_HandlerDominio alloc] init];
+         [dominioHandler setWSHandlerDelegate:self];
+         [dominioHandler consultaEstatusDominio];
+     }else{
+         AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+         [alert show];
+     }
 }
 
 
