@@ -40,7 +40,6 @@
     else {
         if (self.tipoBusqueda == 1) {
             NSDictionary *dictFeed = [jsonDict objectForKey:@"items"];
-            NSLog(@"EL DICCIONARIO TIENE : %i", [dictFeed count]);
             for (int i = 0; i < [dictFeed count]; i++) {
                 NSDictionary *dictFeed = [[jsonDict objectForKey:@"items"] objectAtIndex:i];
                 NSDictionary *dictAux = [dictFeed objectForKey:@"id"];
@@ -56,20 +55,14 @@
 
 -(void) recuperaVideo:(NSDictionary *) dictAux dict2:(NSDictionary *) dictAux2 dict3:(NSDictionary *) dictAux3 {
     VideoModel *video = [[VideoModel alloc] init];
-    //video.link = [dictAux objectForKey:@"link"];
-    //video.linkSolo = [[[dictAux objectForKey:@"link"] objectAtIndex:0] objectForKey:@"href"];
-    //video.autor = [[[[dictAux objectForKey:@"author"] objectAtIndex:0] objectForKey:@"name"] objectForKey:@"$t"];
     video.titulo = [dictAux2 objectForKey:@"title"];
     NSLog(@"TITULO: %@", video.titulo);
     video.descripcionVideo = [dictAux2 objectForKey:@"description"];
     NSLog(@"DESCRIPTION: %@", video.description);
     video.thumbnail = [dictAux3 objectForKey:@"url"];
     NSLog(@"THUMBNAIL: %@", video.thumbnail);
-    //video.categoria = [[[dictAux objectForKey:@"category"] objectAtIndex:1] objectForKey:@"label"];
     NSData *img = [NSData dataWithContentsOfURL:[NSURL URLWithString:video.thumbnail]];
     video.imagenPrevia = [UIImage imageWithData:img];
-    //NSArray *arrayVideoAux = [video.linkSolo componentsSeparatedByString:@"watch?v="];
-    //arrayVideoAux = [[arrayVideoAux objectAtIndex:1] componentsSeparatedByString:@"&"];
     video.idVideo = [dictAux objectForKey:@"videoId"];
     NSLog(@"VIDEOID: %@", video.idVideo);
     video.linkSolo = [NSString stringWithFormat:@"http://www.youtube.com/embed/%@", video.idVideo];

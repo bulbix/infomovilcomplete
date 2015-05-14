@@ -76,7 +76,6 @@
 		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"imagenes", @" ") nombreImagen:@"NBverde.png"];
 	}
     self.datosUsuario = [DatosUsuario sharedInstance];
-    NSLog(@"LA CANTIDAD DE IMAGENES EN GALERIA SON : %i ",[self.datosUsuario.arregloUrlImagenesGaleria count]);
     self.arregloImagenes = self.datosUsuario.arregloUrlImagenesGaleria;
     if ([self.arregloImagenes count] > 0) {
         [self.tablaGaleria setHidden:NO];
@@ -246,7 +245,6 @@ NSLog(@"AQUI ESTA EN AGREGAR IMAGEN ");
 #pragma mark - UITableViewDatasource
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSLog(@"LA TABLA DE NUMERO DE FILAS ES: %i", [self.arregloImagenes count]);
     return [self.arregloImagenes count];
 }
 
@@ -262,8 +260,7 @@ NSLog(@"AQUI ESTA EN AGREGAR IMAGEN ");
     }
     cell.vistaGaleria.layer.cornerRadius = 5.0f;
     cell.pieFoto.frame = CGRectMake(69, 11, 450, 50);
-    NSLog(@"LA CANTIDAD DE DESCRIPCIONES QUE TIENE EL ARREGLO SON: %i", [self.datosUsuario.arregloDescripcionImagenGaleria count]);
-    @try {
+     @try {
         [cell.pieFoto setText:[self.datosUsuario.arregloDescripcionImagenGaleria objectAtIndex:indexPath.row]];
     }
     @catch (NSException *exception) {

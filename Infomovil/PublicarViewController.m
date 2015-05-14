@@ -395,7 +395,7 @@
             self.arregloDominiosUsuario = [[NSMutableArray alloc] init];
             [self.arregloDominiosUsuario addObject:dominioUsuario];
             self.datosUsuario.dominiosUsuario = self.arregloDominiosUsuario;
-            NSLog(@"LA CANTIDAD QUE AGREGO DE DOMINIOSUSUARIOS SON  %i y el arreglo %i", [self.datosUsuario.dominiosUsuario count] , [self.arregloDominiosUsuario count]);
+         
             
         }
         else if ([resultado isEqualToString:@"Error Publicar"]) {

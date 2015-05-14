@@ -75,6 +75,7 @@
     CGFloat height = 100;
     bool sizeFound = false;
     while (!sizeFound) {
+        NSLog(@"Begin loop");
         CGFloat previousSize = 0.0;
         CGFloat currSize = 0.0;
         for (float fSize = fontSize; fSize < fontSize+6; fSize++) {
@@ -91,12 +92,17 @@
             else {
                 previousSize = currSize;
             }
+            NSLog(@"fontSize = %f\tbounds = (%f x %f) = %f",
+                  fSize,
+                  r.size.width,
+                  r.size.height,r.size.width*r.size.height);
         }
         if (previousSize == currSize) {
             sizeFound = true;
         }
         
     }
+    NSLog(@"Size found with width %f and height %f", width, height);
     
     return CGSizeMake(width, height);
 }

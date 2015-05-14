@@ -232,10 +232,10 @@
     NSMutableDictionary *params =
     [NSMutableDictionary dictionaryWithObjectsAndKeys:
      @"Infomovil", @"name",
-     @"http://infomovil.com", @"caption",
+     @"www.infomovil.com", @"caption",
      mensaje, @"description",
-     @"http://www.infomovil.com/", @"link",
-     @"http://info-movil.com:8080/templates/Index/images/icn_infomovil_200.png", @"picture",
+     @"www.infomovil.com/", @"link",
+     @"www.info-movil.com:8080/templates/Index/images/icn_infomovil_200.png", @"picture",
      nil];
    
     [FBWebDialogs presentFeedDialogModallyWithSession:nil
@@ -331,9 +331,9 @@
     }
     else {
 		if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-			[[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat: @"http://twitter.com/intent/tweet?text=I%%20just%%20created%%20a%%20mobile%%20website%%20with%%20infomovil.com.%%0ACheck%%20it%%20out%%20and%%20help%%20us%%20grow%%0A%@" ,self.dominioParaCompartir]]];
+			[[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat: @"www.twitter.com/intent/tweet?text=I%%20just%%20created%%20a%%20mobile%%20website%%20with%%20infomovil.com.%%0ACheck%%20it%%20out%%20and%%20help%%20us%%20grow%%0A%@" ,self.dominioParaCompartir]]];
 		}else{
-			[[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat: @"http://twitter.com/intent/tweet?text=Acabo%%20de%%20crear%%20un%%20sitio%%20web%%20movil%%20con%%20infomovil.com.%%0AVisitalo%%20y%%20ayudanos%%20a%%20crecer%%0A%@" ,self.dominioParaCompartir]]];
+			[[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat: @"www.twitter.com/intent/tweet?text=Acabo%%20de%%20crear%%20un%%20sitio%%20web%%20movil%%20con%%20infomovil.com.%%0AVisitalo%%20y%%20ayudanos%%20a%%20crecer%%0A%@" ,self.dominioParaCompartir]]];
 		}
     }
 	

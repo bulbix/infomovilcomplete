@@ -24,7 +24,6 @@
     [super viewDidLoad];
     
     self.datosUsuario = [DatosUsuario sharedInstance];
-   // [self enviarEventoGAconCategoria:@"Pruebalo" yEtiqueta:@"pruebalo"];
     if (self.datosUsuario.existeLogin) {
         [StringUtils deleteResourcesWithExtension:@"jpg"];
         [StringUtils deleteFile];
@@ -147,6 +146,8 @@
                 break;
         }
         self.datosUsuario.existeLogin = NO;
+        MainViewController *Inicio = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:Nil];
+        [self.navigationController pushViewController:Inicio animated:YES];
         AlertView *alertaError = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"error", Nil) message:strMensaje dominio:Nil andAlertViewType:AlertViewTypeInfo];
         [alertaError show];
        

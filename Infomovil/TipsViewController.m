@@ -245,10 +245,10 @@
     NSMutableDictionary *params =
     [NSMutableDictionary dictionaryWithObjectsAndKeys:
      @"Infomovil", @"name",
-     @"http://infomovil.com", @"caption",
+     @"www.infomovil.com", @"caption",
      mensaje, @"description",
-     @"http://www.infomovil.com/", @"link",
-     @"http://infomovil.com/templates/Index/images/logo_infomovil.png",@"picture",
+     @"www.infomovil.com/", @"link",
+     @"www.infomovil.com/templates/Index/images/logo_infomovil.png",@"picture",
      nil];
     //FBSession* session = [FBSession activeSession];
     // Invoke the dialog

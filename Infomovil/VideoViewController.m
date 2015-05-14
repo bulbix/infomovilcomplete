@@ -212,11 +212,16 @@
     }
     else {
         self.datosUsuario = [DatosUsuario sharedInstance];
-        self.datosUsuario.videoSeleccionado = [self.arregloVideos objectAtIndex:0];
-        VistaVideoViewController *vistaVideo = [[VistaVideoViewController alloc] initWithNibName:@"VistaVideoViewController" bundle:Nil];
-        vistaVideo.videoSeleccionado = [self.arregloVideos objectAtIndex:0];
-        vistaVideo.modifico = YES;
-        [self.navigationController pushViewController:vistaVideo animated:YES];
+        if([self.arregloVideos count] > 0){
+            self.datosUsuario.videoSeleccionado = [self.arregloVideos objectAtIndex:0];
+            VistaVideoViewController *vistaVideo = [[VistaVideoViewController alloc] initWithNibName:@"VistaVideoViewController" bundle:Nil];
+            vistaVideo.videoSeleccionado = [self.arregloVideos objectAtIndex:0];
+            vistaVideo.modifico = YES;
+            [self.navigationController pushViewController:vistaVideo animated:YES];
+        }else{
+            AlertView *alertInfo = [AlertView initWithDelegate:self message:NSLocalizedString(@"noVideo", Nil) andAlertViewType:AlertViewTypeInfo];
+            [alertInfo show];
+        }
     }
 }
 

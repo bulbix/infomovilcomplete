@@ -230,7 +230,7 @@
 
 "mainLabelCorreo"=" E-mail";
 "mainLabelPassword"=" Password";
-"mainLabel"="Forget password?";
+"mainLabel"="Forgot password?";
 "mainBoton"="Log in";
 
 "compartirLabel1"="Congratulations!\n\n";
@@ -476,7 +476,7 @@
 /*Web View Default Button Labels*/
 "Appboy.slideup.webview.done-button.title" = "Done";
 
-"labelInicioRapidoTexto" = "Llena estos datos clave, selecciona un nombre y pública tu sitio web.\nTiempo estimado:  5 minutos.";
+"labelInicioRapidoTexto" = "Fill these key data, select a name and your public website.\n Estimated time: 5 minutes.";
 "labelVerEjemplo" = "See example";
 "labelInicioRapido" = "Quick start";
 "mensajeInicioRapido" = "Please fill the sections";

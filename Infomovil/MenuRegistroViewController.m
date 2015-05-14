@@ -426,17 +426,17 @@
         }
         else {
             if ([string isEqualToString:@""]) {
-                [self.labelInfo setText:[NSString stringWithFormat:@"%i/%li", textoLength-1, (long)maxLength]];
+                [self.labelInfo setText:[NSString stringWithFormat:@"%li/%li", textoLength-1, (long)maxLength]];
             }
             else {
-                [self.labelInfo setText:[NSString stringWithFormat:@"%i/%li", textoLength+1, (long)maxLength]];
+                [self.labelInfo setText:[NSString stringWithFormat:@"%li/%li", textoLength+1, (long)maxLength]];
             }
             return YES;
         }
     }
     else {
         if ([string isEqualToString:@""]) {
-            [self.labelInfo setText:[NSString stringWithFormat:@"%i/%li", textoLength-1, (long)maxLength]];
+            [self.labelInfo setText:[NSString stringWithFormat:@"%li/%li", textoLength-1, (long)maxLength]];
             return YES;
         }
         return NO;

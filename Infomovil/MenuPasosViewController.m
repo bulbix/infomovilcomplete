@@ -7,16 +7,13 @@
 //
 
 #import "MenuPasosViewController.h"
-#import "ColorPickerViewController.h"
 #import "CrearPaso1ViewController.h"
-
 #import "PublicarViewController.h"
 #import "DominioRegistradoViewController.h"
 #import "IrAMiSitioViewController.h"
 #import "TipsViewController.h"
 #import "NombrarViewController.h"
 #import "WS_HandlerDominio.h"
-#import "AppboyKit.h"
 #import "InicioRapidoViewController.h"
 #import "VerTutorialViewController.h"
 #import "VerEjemploViewController.h"
@@ -30,6 +27,9 @@
 #define IS_IPHONE5 (([[UIScreen mainScreen] bounds].size.height-568)?NO:YES)
 
 @interface MenuPasosViewController ()
+{
+BOOL banderaRegresar;
+}
 @property (nonatomic, strong) NSMutableArray *arregloDominios;
 @end
 
@@ -42,6 +42,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        banderaRegresar = NO;
     }
     return self;
 }
@@ -192,15 +193,15 @@
     
 }
 
-
+-(void)accionNo{
+    banderaRegresar = NO;
+}
 
 
 -(void) viewWillAppear:(BOOL)animated {
-    
-	self.datosUsuario = [DatosUsuario sharedInstance];
     [super viewWillAppear:animated];
     [self.tituloVista setHidden:NO];
-	
+	banderaRegresar = NO;
     
     
 #if DEBUG
@@ -352,10 +353,7 @@
 
 - (IBAction)crearEditar:(UIButton *)sender {
     self.datosUsuario = [DatosUsuario sharedInstance];
-
 	self.datosUsuario.eligioTemplate = YES;
-
-    
     if (self.datosUsuario.eligioTemplate) {
         CrearPaso1ViewController *crear = [[CrearPaso1ViewController alloc] initWithNibName:@"CrearPaso1ViewController" bundle:nil];
         [self.navigationController pushViewController:crear animated:YES];
@@ -402,29 +400,34 @@
 
 
 -(IBAction)regresar:(id)sender {
-	[[AlertView initWithDelegate:self message:NSLocalizedString(@"salirMensaje", nil)
+    if(banderaRegresar == NO){
+        banderaRegresar = YES;
+        [[AlertView initWithDelegate:self message:NSLocalizedString(@"salirMensaje", nil)
 				andAlertViewType:AlertViewTypeQuestion] show];
+    }
 }
 
 -(void) accionSi {
-    MainViewController *Inicio = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:Nil];
-    [self.navigationController pushViewController:Inicio animated:YES];
-    self.datosUsuario = [DatosUsuario sharedInstance];
-    NSString *correo = self.datosUsuario.emailUsuario;
-    if ([self.datosUsuario.redSocial isEqualToString:@"Facebook"]) {
-        [((AppDelegate*)[[UIApplication sharedApplication] delegate]) fbDidlogout];
-    }
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+    NSLog(@"LA ACCION DE RESPUESTA ES SI");
+    if(banderaRegresar == YES){
+        banderaRegresar = NO;
+        MainViewController *Inicio = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:Nil];
+        [self.navigationController pushViewController:Inicio animated:YES];
+        self.datosUsuario = [DatosUsuario sharedInstance];
+        NSString *correo = self.datosUsuario.emailUsuario;
+  /*  dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        
+    });
+    */
         WS_HandlerDominio *handlerDominio = [[WS_HandlerDominio alloc] init];
         [handlerDominio setWSHandlerDelegate:self];
-       [handlerDominio cerrarSession:correo];
+        [handlerDominio cerrarSession:correo];
         [StringUtils deleteFile];
-    });
-    
-    ((AppDelegate*)	[[UIApplication sharedApplication] delegate]).statusDominio = @"Gratuito";
-   
-    
-    
+        if ([self.datosUsuario.redSocial isEqualToString:@"Facebook"]) {
+            [((AppDelegate*)[[UIApplication sharedApplication] delegate]) fbDidlogout];
+        }
+        ((AppDelegate*)	[[UIApplication sharedApplication] delegate]).statusDominio = @"Gratuito";
+    }
    
 }
 

@@ -42,7 +42,7 @@
     
     return alerta;
 }
-+(id)initWithDelegate:(id<AlertViewDelegate>)delegate titulo:(NSString *)titulo message:(NSString *)mensaje dominio:(NSString *)dominio andAlertViewType:(AlertViewType)type {
++(id)initWithDelegate:(id<AlertViewDelegate>)delegate titulo:(NSString *)titulo message:(NSString *)mensaje dominio:(NSString *)dominio andAlertViewType:(AlertViewType)type { NSLog(@"ENTRO AQUÍ");
     CGRect frameAlert = [[UIScreen mainScreen] bounds];
     
     AlertView *alerta = [[AlertView alloc] initWithFrame:frameAlert andAlertViewType:type andTypeInit:2];
@@ -106,13 +106,9 @@
                 }else{
                     [self.vistaAlert setFrame:CGRectMake(21, 150, 278, 182)];
                 }
-                if(IS_IPAD){
-                    [self.botonNo setFrame:CGRectMake(139, 128, 139, 54)];
-                    [self.botonSi setFrame:CGRectMake(0, 128, 139, 54)];
-                }else{
-                    [self.botonNo setFrame:CGRectMake(139, 128, 139, 54)];
-                    [self.botonSi setFrame:CGRectMake(0, 128, 139, 54)];
-                    }
+                
+                [self.botonNo setFrame:CGRectMake(139, 128, 139, 54)];
+                [self.botonSi setFrame:CGRectMake(0, 128, 139, 54)];
             }
             break;
 			
@@ -154,7 +150,6 @@
                     [self.vistaAlert setFrame:CGRectMake(65, 150, 278, 182)];
                 }else if(IS_IPAD){
                     [self.vistaAlert setFrame:CGRectMake(245, 400, 278, 182)];
-                   
                 
                 }else{
                     [self.vistaAlert setFrame:CGRectMake(21, 150, 278, 182)];
@@ -164,7 +159,7 @@
             }
             break;
         
-        case AlertViewTypeActivity:{
+        case AlertViewTypeActivity:
             //MBC
             if(IS_STANDARD_IPHONE_6){
                 [self.vistaAlert setFrame:CGRectMake(50, 150, 278, 182)];
@@ -176,12 +171,12 @@
             }else{
                 [self.vistaAlert setFrame:CGRectMake(21, 150, 278, 182)];
             }
-            // TODO: IRC
+            
             self.activityIndicator = [[ETActivityIndicatorView alloc] initWithFrame:CGRectMake(109, 40, 60, 60) andColor:colorMorado];
             [self.activityIndicator startAnimating];
             [self.vistaAlert addSubview:self.activityIndicator];
             [self.labelTitulo setFrame:CGRectMake(10, 110, 258, 30)];
-        } break;
+            break;
             
         case AlertViewTypeInfo:
             //MBC
@@ -191,7 +186,7 @@
             else if(IS_STANDARD_IPHONE_6_PLUS){
                 [self.vistaAlert setFrame:CGRectMake(80, 150, 278, 200)];
             }else if(IS_IPAD){
-                [self.vistaAlert setFrame:CGRectMake(234, 400, 278, 182)];
+                [self.vistaAlert setFrame:CGRectMake(245, 400, 278, 182)];
             }else{
                 [self.vistaAlert setFrame:CGRectMake(21, 150, 278, 200)];
             }
@@ -199,7 +194,7 @@
             self.labelMensaje = [[UILabel alloc] initWithFrame:CGRectMake(10, 70, 263, 75)];
             [self.labelMensaje setFont:[UIFont fontWithName:@"Avenir-Book" size:17]];
             [self.labelMensaje setTextColor:[UIColor blackColor]];
-            [self.labelMensaje setNumberOfLines:10];
+            [self.labelMensaje setNumberOfLines:3];
             [self.labelMensaje setTextAlignment:NSTextAlignmentCenter];
             [self.vistaAlert addSubview:self.labelMensaje];
             
@@ -211,12 +206,7 @@
             [self.vistaAlert addSubview:self.labelDominio];
             
             self.botonAceptar = [UIButton buttonWithType:UIButtonTypeCustom];
-            if(IS_IPAD){
-                [self.botonAceptar setFrame:CGRectMake(0, 150, 278, 62)];
-            }else{
-                [self.botonAceptar setFrame:CGRectMake(0, 170, 278, 54)];
-            
-            }
+            [self.botonAceptar setFrame:CGRectMake(0, 146, 278, 54)];
             [self.botonAceptar setBackgroundImage:[UIImage imageNamed:@"btnaceptarmensajes.png"] forState:UIControlStateNormal];
             if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
 				[self.botonAceptar setTitle:@"Accept" forState:UIControlStateNormal];
@@ -228,27 +218,26 @@
             [self.vistaAlert addSubview:self.botonAceptar];
 			
             if (tipo == 1) {
-                
+                //MBC
                 if(IS_STANDARD_IPHONE_6){
-                    [self.vistaAlert setFrame:CGRectMake(50, 150, 278, 240)];
+                    [self.vistaAlert setFrame:CGRectMake(50, 150, 278, 200)];
                 }
                 else if(IS_STANDARD_IPHONE_6_PLUS){
                     [self.vistaAlert setFrame:CGRectMake(80, 150, 278, 200)];
                 }else if(IS_IPAD){
-                    [self.vistaAlert setFrame:CGRectMake(234, 400, 278, 182)];
-                   
+                    [self.vistaAlert setFrame:CGRectMake(245, 400, 278, 182)];
                 }else{
                     [self.vistaAlert setFrame:CGRectMake(21, 150, 278, 182)];
                 }
                 self.labelDominio.hidden = YES;
-                
+                //MBC
                 if(IS_STANDARD_IPHONE_6){
                     [self.botonAceptar setFrame:CGRectMake(0, 140, 278, 54)];
                 }
                 else if(IS_STANDARD_IPHONE_6_PLUS){
                     [self.botonAceptar setFrame:CGRectMake(0, 170, 278, 54)];
                 }else if(IS_IPAD){
-                    [self.botonAceptar setFrame:CGRectMake(0, 145, 278, 62)];
+                    [self.vistaAlert setFrame:CGRectMake(245, 400, 278, 182)];
                 }else{
                     [self.botonAceptar setFrame:CGRectMake(0, 128, 278, 54)];
                 }
@@ -309,8 +298,7 @@
             if(IS_STANDARD_IPHONE_6){
                 [self.vistaAlert setFrame:CGRectMake(50, 150, 278, 200)];
             }else if(IS_IPAD){
-                [self.vistaAlert setFrame:CGRectMake(234, 400, 278, 182)];
-                
+                [self.vistaAlert setFrame:CGRectMake(245, 400, 278, 182)];
             }else if(IS_STANDARD_IPHONE_6_PLUS){
                 [self.vistaAlert setFrame:CGRectMake(80, 150, 278, 200)];
             }
@@ -339,11 +327,7 @@
             [self.vistaAlert addSubview:self.imagenLogo];
             
             self.botonAceptar = [UIButton buttonWithType:UIButtonTypeCustom];
-            if(IS_IPAD){
-                [self.botonAceptar setFrame:CGRectMake(0, 145, 278, 62)];
-            }else{
-                [self.botonAceptar setFrame:CGRectMake(0, 140, 278, 54)];
-            }
+            [self.botonAceptar setFrame:CGRectMake(0, 140, 278, 54)];
             [self.botonAceptar setBackgroundImage:[UIImage imageNamed:@"btnaceptarmensajes.png"] forState:UIControlStateNormal];
             if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
 				[self.botonAceptar setTitle:@"Accept" forState:UIControlStateNormal];
@@ -394,12 +378,19 @@
 }
 
 -(void) hide {
+    //[UIView animateWithDuration:0.3f animations:^{
         [self setAlpha:0];
+    //} completion:^(BOOL finished) {
+	//	NSLog(@"Super vista %@",self.superview);
         [self removeFromSuperview];
+    //}];
 }
 
 -(IBAction)presionarSi:(id)sender {
-
+//    if ([self.delegado respondsToSelector:@selector(accionSi)]) {
+//        [self.delegado accionSi];
+//		
+//    }
 	[self performSelectorInBackground:@selector(ejecutaSelector) withObject:NULL];
 	[self hide];
     
