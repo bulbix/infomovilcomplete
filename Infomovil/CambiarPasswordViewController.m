@@ -131,7 +131,7 @@
 		[alert show];
     }
     else {
-        AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"errorActualizacion", Nil) andAlertViewType:AlertViewTypeInfo];
+        AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"cambiarAlerta", Nil) andAlertViewType:AlertViewTypeInfo];
         [alert show];
     }
  
@@ -169,11 +169,14 @@
         [NSThread sleepForTimeInterval:1];
         [self.alertaContacto hide];
     }
-    AlertView *alertAct = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
-    [alertAct show];
-    [StringUtils terminarSession];
-    MainViewController *inicio = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:Nil];
-    [self.navigationController pushViewController:inicio animated:YES];
+   // AlertView *alertAct = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
+   // [alertAct show];
+    AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"cambiarAlerta", Nil) andAlertViewType:AlertViewTypeInfo];
+    [alert show];
+    
+    //[StringUtils terminarSession];
+    //MainViewController *inicio = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:Nil];
+    //[self.navigationController pushViewController:inicio animated:YES];
 }
 
 -(void) errorContacto {

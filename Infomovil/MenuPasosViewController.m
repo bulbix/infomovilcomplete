@@ -119,16 +119,15 @@ BOOL banderaRegresar;
     
 	
 	((AppDelegate *)[[UIApplication sharedApplication] delegate]).ultimoView = self;
-	
+	/*
     UIImage *image = [UIImage imageNamed:@"btnregresar.png"];
-    
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [backButton setFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
     [backButton setImage:image forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(regresar:) forControlEvents:UIControlEventTouchUpInside];
-    
     UIBarButtonItem *buttonBack = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     self.navigationItem.leftBarButtonItem = buttonBack;
+     */
     if (self.datosUsuario.codigoError > 0) {
         NSString *strMensaje;
         switch (self.datosUsuario.codigoError) {

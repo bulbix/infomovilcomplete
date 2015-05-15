@@ -452,7 +452,7 @@
 
 #pragma mark - WS_HandlerProtocol
 -(void) resultadoLogin:(NSInteger) idDominio {
-     NSLog(@"RESULTADOLOGIN");
+     NSLog(@"RESULTADOLOGIN CON DOMINIO: %i", idDominio);
     if (idDominio > 0) {
         loginExitoso = YES;
         loginFacebook = NO;
@@ -470,6 +470,7 @@
         loginFacebook = YES;
         respuestaError = idDominio;
         loginExitoso = NO;
+        buscandoSesion = NO;
          NSUserDefaults *prefSesion = [NSUserDefaults standardUserDefaults];
         [prefSesion setInteger:0 forKey:@"intSesionActiva"];
         [prefSesion synchronize];
@@ -478,7 +479,7 @@
 }
 
 -(void) resultadoConsultaDominio:(NSString *)resultado {
-     NSLog(@"RESULTADOCONSULTADOMINIO");
+     NSLog(@"RESULTADOCONSULTADOMINIO CON RESULTADO: %@", resultado);
     if ([resultado isEqualToString:@"Exito"]) {
         existeUnaSesion = YES;
         loginFacebook = NO;
@@ -513,11 +514,13 @@
     }else {
     if (loginExitoso) {
          NSLog(@"LOGINEXITOSO");
-        NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+     /*   NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
         NSDictionary *launch =  [defaults objectForKey:@"launchingWithOptions"];
+        
         [Appboy startWithApiKey:llaveAppboy
                   inApplication:[UIApplication sharedApplication]
               withLaunchOptions:launch];
+       */ 
         NSLog(@"EL APPBOY DE CHANGE USER 2 ES: %@ y el tipo de usuario es: %@ y red social %@ y el sesionUser %@", self.txtEmail.text, self.datosUsuario.tipoDeUsuario, self.datosUsuario.redSocial, self.datosUsuario.auxStrSesionUser);
         
         if([self.txtEmail.text isEqualToString:@""] || self.txtEmail.text == nil){

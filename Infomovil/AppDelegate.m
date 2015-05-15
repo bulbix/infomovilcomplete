@@ -22,6 +22,8 @@
 #import "SesionActivaViewController.h"
 #import <HockeySDK/HockeySDK.h>
 #import "MainViewController.h"
+#import "ElegirPlantillaViewController.h"
+
 
 @implementation AppDelegate
 
@@ -60,6 +62,12 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
      authenticateInstallation];
   */
     //-- Set Notification
+    
+    [Appboy startWithApiKey:llaveAppboy
+              inApplication:[UIApplication sharedApplication]
+          withLaunchOptions:launchOptions];
+    
+    
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.000000) {
         UIUserNotificationSettings * settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
         [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
@@ -159,7 +167,7 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
     if (managedObjectContext != nil) {
         if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
            
-#ifdef _DEBUG
+#if DEBUG
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
 #endif
             abort();
@@ -211,7 +219,7 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
     if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
        
-#ifdef _DEBUG
+#if DEBUG
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
 #endif
         abort();
@@ -231,24 +239,23 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
-#ifdef _DEBUG
+#if DEBUG
     NSString *token = [[deviceToken description] stringByTrimmingCharactersInSet: [NSCharacterSet characterSetWithCharactersInString:@"<>"]];
     token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
 
     NSLog(@"content---%@ **************************************************************", token);
 #endif
-    
+
     [[Appboy sharedInstance] registerPushToken:[NSString stringWithFormat:@"%@", deviceToken]];
     
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
 {
-#ifdef _DEBUG
+//#if DEBUG
     NSString *strError = [NSString stringWithFormat:@"Error: %@",error];
-
-    NSLog(@"%@",strError);
-#endif
+    NSLog(@"EL ERROR DEL REGISTRO DE LA NOTIFICACION%@",strError);
+//#endif
 }
 
 
@@ -258,8 +265,12 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    NSLog(@"RECIBI UNA NOTIFICACIÓN!!!! : %@",[userInfo description]);
     [[Appboy sharedInstance] registerApplication:application
                     didReceiveRemoteNotification:userInfo];
+
+    
+    
 }
  
 - (void)fbDidlogout {
