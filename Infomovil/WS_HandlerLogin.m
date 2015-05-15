@@ -166,8 +166,13 @@
                     }
                 }
                 if (self.datosUsuario.dominio.length > 0 && self.datosUsuario.dominio != Nil) {
-                    self.datosUsuario.dominio = [StringUtils desEncriptar:self.datosUsuario.dominio conToken:self.datosUsuario.token];
-                    NSLog(@"LOS DOMINIOS QUE ME ESTA ENVIANDO SON: %@", [StringUtils desEncriptar:self.datosUsuario.dominio conToken:self.datosUsuario.token]);
+                    NSString * idDominioAux = [StringUtils desEncriptar:self.datosUsuario.dominio conToken:self.datosUsuario.token];
+                    if([CommonUtils validarIdFacebook:idDominioAux]){
+                        self.datosUsuario.dominio = @"";
+                    }else{
+                      self.datosUsuario.dominio =[StringUtils desEncriptar:self.datosUsuario.dominio conToken:self.datosUsuario.token];
+                    }
+                    NSLog(@"LOS DOMINIOS QUE ME ESTA ENVIANDO SON: %@", self.datosUsuario.dominio);
                 }
                 if (self.nombreEmpresaAux.length > 0 && self.nombreEmpresaAux != Nil) {
                     self.nombreEmpresaAux = [StringUtils desEncriptar:self.nombreEmpresaAux conToken:self.datosUsuario.token];
@@ -193,26 +198,6 @@
             // ACOMODA LOS CONTACTOS //
                 [self acomodaContactos];
              self.datosUsuario.arregloContacto = self.arregloContactos;
-
-            ///////////////////////////////////////////
-            /*    NSLog(@"LA CANTIDAD DE ARREGLO IMAGENES ES : %i ", [self.datosUsuario.arregloIdImagen count]);
-                for (NSInteger i = 0; i < [self.datosUsuario.arregloIdImagen count]; i++) {
-                    GaleriaImagenes *galImagenes = [self.arregloImagenes objectAtIndex:i];
-                    if (galImagenes.pieFoto != Nil && galImagenes.pieFoto.length > 0) {
-                        galImagenes.pieFoto = [StringUtils desEncriptar:galImagenes.pieFoto conToken:self.datosUsuario.token];
-                    }
-                    */
-                    /*if (galImagenes.imagenIdAux != Nil && galImagenes.imagenIdAux.length > 0) {
-                        NSString *auxString = [StringUtils desEncriptar:galImagenes.imagenIdAux conToken:self.datosUsuario.token];
-                        NSLog(@"EL ID DE LA IMAGEN ES: %@", auxString);
-                        [galImagenes setIdImagen:[auxString integerValue]];
-                    }
-                    [self.arregloImagenes replaceObjectAtIndex:i withObject:galImagenes];
-                
-                     }
-                //self.datosUsuario.arregloGaleriaImagenes = self.arregloImagenes;
-            */
-                     // ARREGLO DE DIRECCIONES //
            
             if ([self.arregloDireccion count] > 0) {
                     BOOL hayDatos = NO;
@@ -273,17 +258,7 @@
 							x++;
 						}
 					}
-                    /*
-                    if(x == 8){
-						self.datosUsuario.arregloDatosPerfil = self.arregloPerfil;
-						[self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:9 withObject:@NO];
-					}else{
-						self.datosUsuario.arregloDatosPerfil = self.arregloPerfil;
-						[self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:9 withObject:@YES];
-		
-                        [self validaEditados];
-					}
-                    */
+               
                     self.datosUsuario.arregloDatosPerfil = self.arregloPerfil;
                     [self validaEditados];
                 }

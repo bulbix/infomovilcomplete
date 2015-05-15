@@ -38,19 +38,30 @@
         //        
     }
     else {
-        if (self.tipoBusqueda == 1) {
-            NSDictionary *dictFeed = [jsonDict objectForKey:@"items"];
-            for (int i = 0; i < [dictFeed count]; i++) {
-                NSDictionary *dictFeed = [[jsonDict objectForKey:@"items"] objectAtIndex:i];
-                NSDictionary *dictAux = [dictFeed objectForKey:@"id"];
-                NSDictionary *dictAux2 = [dictFeed objectForKey:@"snippet"];
-                NSDictionary *dictAux3 = [[dictAux2 objectForKey:@"thumbnails"]objectForKey:@"default"];
-                [self recuperaVideo:dictAux dict2:dictAux2 dict3:dictAux3 ];
+        if([[jsonDict objectForKey:@"items"] count] > 0){
+            if (self.tipoBusqueda == 1) {
+                NSDictionary *dictFeed = [jsonDict objectForKey:@"items"];
+                for (int i = 0; i < [dictFeed count]; i++) {
+                    NSDictionary *dictFeed = [[jsonDict objectForKey:@"items"] objectAtIndex:i];
+                    NSDictionary *dictAux = [dictFeed objectForKey:@"id"];
+                    NSDictionary *dictAux2 = [dictFeed objectForKey:@"snippet"];
+                    NSDictionary *dictAux3 = [[dictAux2 objectForKey:@"thumbnails"]objectForKey:@"default"];
+                    [self recuperaVideo:dictAux dict2:dictAux2 dict3:dictAux3 ];
+                }
+            
             }
+           [self.delegate resultadoVideo:self.arregloVideos];
+        }else{
+            [self.delegate errorBusqueda];
+            
         }
         
+        
+        
+        
+        
     }
-    [self.delegate resultadoVideo:self.arregloVideos];
+   
 }
 
 -(void) recuperaVideo:(NSDictionary *) dictAux dict2:(NSDictionary *) dictAux2 dict3:(NSDictionary *) dictAux3 {

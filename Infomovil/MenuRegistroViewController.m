@@ -189,6 +189,7 @@
 -(void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     UIColor *color = [UIColor whiteColor];
+     [self fbDidlogout];
     FBLoginView *loginView = [[FBLoginView alloc] init];
     loginView.delegate = self;
     loginView.readPermissions = @[@"public_profile", @"email"];
@@ -388,6 +389,7 @@
 }
 // Boton de regresar //
 -(IBAction)regresarMenu:(id)sender {
+    NSLog(@"REGRESARMENU");
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -398,6 +400,7 @@
 }
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField {
+    NSLog(@"TEXTFIELDDIDBEGINEDITING");
     textoSeleccionado = textField;
     NSInteger textoLength = [textField.text length];
     [self.labelInfo setText:[NSString stringWithFormat:@"%li/%i", (long)textoLength, 255]];
@@ -409,6 +412,7 @@
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField {
+    NSLog(@"TEXTFIELDDIDENDEDITING");
     [UIView animateWithDuration:0.4f animations:^{
         [self.labelInfo setFrame:CGRectMake(284, 600, 33, 21)];
     }];
@@ -417,6 +421,7 @@
 }
 
 -(BOOL) textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    NSLog(@"TEXTFIELD");
     self.modifico = YES;
     NSInteger maxLength = 255;
     NSInteger textoLength = [textField.text length];
@@ -426,17 +431,17 @@
         }
         else {
             if ([string isEqualToString:@""]) {
-                [self.labelInfo setText:[NSString stringWithFormat:@"%li/%li", textoLength-1, (long)maxLength]];
+                [self.labelInfo setText:[NSString stringWithFormat:@"%i/%li", textoLength-1, (long)maxLength]];
             }
             else {
-                [self.labelInfo setText:[NSString stringWithFormat:@"%li/%li", textoLength+1, (long)maxLength]];
+                [self.labelInfo setText:[NSString stringWithFormat:@"%i/%li", textoLength+1, (long)maxLength]];
             }
             return YES;
         }
     }
     else {
         if ([string isEqualToString:@""]) {
-            [self.labelInfo setText:[NSString stringWithFormat:@"%li/%li", textoLength-1, (long)maxLength]];
+            [self.labelInfo setText:[NSString stringWithFormat:@"%i/%li", textoLength-1, (long)maxLength]];
             return YES;
         }
         return NO;
@@ -444,6 +449,7 @@
 }
 
 -(IBAction)guardarInformacion:(id)sender {
+    NSLog(@"GUARDARINFORMACION");
     [[self view] endEditing:YES];
         self.datosUsuario = [DatosUsuario sharedInstance];
         if ([CommonUtils hayConexion]) {
@@ -457,6 +463,7 @@
 }
 
 -(void) accionAceptar {
+    NSLog(@"ACCIONACEPTAR");
     if (exito) {
         NombrarViewController *nombrar = [[NombrarViewController alloc] initWithNibName:@"NombrarViewController" bundle:Nil];
         [self.navigationController pushViewController:nombrar animated:YES];
@@ -485,6 +492,7 @@
 
 
 -(void) desapareceElTeclado:(NSNotification *)aNotificacion {
+    NSLog(@"DESAPARECEELTECLADO");
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.3];
     UIEdgeInsets edgeInsets = UIEdgeInsetsZero;
@@ -494,6 +502,7 @@
 }
 
 -(void) apareceElTeclado{
+    NSLog(@"APARECETECLADO");
     CGSize tamanioTeclado = CGSizeMake(320, 260);
     UIEdgeInsets edgeInsets = UIEdgeInsetsMake(0, 0, tamanioTeclado.height+15, 0);
     [[self scrollView] setContentInset:edgeInsets];
@@ -510,14 +519,14 @@
 }
 
 -(IBAction)regresar:(id)sender {
+    NSLog(@"REGRESAR ID SENDER");
     [[self view] endEditing:YES];
-    
     [self.navigationController popViewControllerAnimated:YES];
     
 }
 
 -(void) mostrarActivity {
-   
+   regresar:
         self.alerta = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"cargando", @" ") message:Nil dominio:Nil andAlertViewType:AlertViewTypeActivity];
         [self.alerta show];
     
@@ -536,6 +545,7 @@
 
 
 -(void) ocultarActivity {
+    NSLog(@"OCULTARACTIVITY");
    self.datosUsuario = [DatosUsuario sharedInstance];
     if (self.alerta)
     {
@@ -544,8 +554,7 @@
     }
     if (existeUsuario) {
         loginFacebook = NO;
-        
-        if (idDominio == 0) {
+        if (idDominio <= 0) {
             loginFacebook = YES;
             AlertView *alert = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"error", Nil) message:NSLocalizedString(@"errorCrearDominio", Nil) dominio:Nil andAlertViewType:AlertViewTypeInfo];
             [alert show];
@@ -570,11 +579,11 @@
             }
             
             
-            if([self.datosUsuario.redSocial isEqualToString:@"Facebook"]){
+       /*     if([self.datosUsuario.redSocial isEqualToString:@"Facebook"]){
                 ABKFacebookUser *facebookUser = [[ABKFacebookUser alloc] initWithFacebookUserDictionary:nil numberOfFriends:-1 likes:Nil];
                 [Appboy sharedInstance].user.facebookUser = facebookUser;
             }
-            
+         */
             [self enviarEventoGAconCategoria:@"Registrar" yEtiqueta:@"Usuario"];
             // IRC Dominio
             ((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio = @"Tramite";
@@ -609,10 +618,9 @@
             existeUsuario = YES;
             loginFacebook = NO;
             [self crearDominio];
-        }
-        else {
+        }else {
             NSLog(@"ENTRO 3");
-            loginFacebook = YES;
+       //     loginFacebook = YES;
             existeUsuario = NO;
             if (self.alerta)
             {
@@ -638,14 +646,14 @@
 }
 
 -(void) resultadoLogin:(NSInteger) idDominioLogin {
+    NSLog(@"RESULTADOLOGIN ME REGRESO EL ID DOMINIO LOGIN : i", idDominioLogin);
+    self.datosUsuario = [DatosUsuario sharedInstance];
     if (idDominioLogin > 0) {
         loginExitoso = YES;
         loginFacebook = NO;
         idDominio = idDominioLogin;
         existeUsuario = YES;
         self.datosUsuario.redSocial = @"Facebook";
-        
-        self.datosUsuario = [DatosUsuario sharedInstance];
         // Se guarda la sesion //
         NSUserDefaults *prefSesion = [NSUserDefaults standardUserDefaults];
         [prefSesion setObject:self.datosUsuario.auxStrSesionUser forKey:@"strSesionUser"];
@@ -664,6 +672,7 @@
 }
 
 -(void) errorToken {
+    NSLog(@"ERRORTOKEN");
     loginFacebook = YES;
     if (self.alerta)
     {
@@ -681,6 +690,7 @@
 
 
 -(void) errorConsultaWS {
+     NSLog(@"ERRORCONSULTAWS");
     [self performSelectorOnMainThread:@selector(errorConsultaUsuario) withObject:Nil waitUntilDone:YES];
 }
 
@@ -702,13 +712,14 @@
 
 - (void)keyboardControlsDonePressed:(BSKeyboardControls *)keyboardControls
 {
+     NSLog(@"KEYBOARDCONTROLSDONE");
     [self.view endEditing:YES];
 }
 
 
 #pragma mark - FBLoginViewDelegate
 - (void)loginView:(FBLoginView *)loginView handleError:(NSError *)error {
-#ifdef _DEBUG
+#if DEBUG
     NSLog(@"Entrando a loginView:handleError:");
     NSLog(@"El error es %@  ***********", [error description]);
 #endif
@@ -717,45 +728,51 @@
 
 - (void)loginViewFetchedUserInfo:(FBLoginView *)loginView
                             user:(id<FBGraphUser>)user {
-    self.datosUsuario.emailUsuario = [user objectForKey:@"email"];
-   
-#ifdef _DEBUG
+     NSLog(@"LOGINVIEWFETCHED");
+    
+    if([[user objectForKey:@"email"] isEqualToString:@""] || [user objectForKey:@"email"] == nil){
+        self.datosUsuario.emailUsuario = [user objectForKey:@"id"];
+    }else{
+        self.datosUsuario.emailUsuario = [user objectForKey:@"email"];
+    }
+#if DEBUG
     NSLog(@"Entrando a loginViewFetchedUserInfo:user:");
     NSLog(@"el email es %@", self.datosUsuario.emailUsuario);
 #endif
     self.datosUsuario.redSocial = @"Facebook";
-    
     if(loginFacebook == YES) {
-         NSLog(@"ENTRO DOS VECES ");
+         NSLog(@"SOLO DEBE PASAR UNA VEZ ");
         loginFacebook = NO;
-       // [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
         [self performSelectorInBackground:@selector(consultaLogin) withObject:Nil];
     }
     
 }
 
 - (void)loginViewShowingLoggedInUser:(FBLoginView *)loginView {
-#ifdef _DEBUG
+#if DEBUG
     NSLog(@"Entrando a loginViewShowingLoggedInUser:");
 #endif
 }
 
 - (void) loginViewShowingLoggedOutUser:(FBLoginView *)loginView {
-#ifdef _DEBUG
+#if DEBUG
     NSLog(@"Entrando a loginViewShowingLoggedOutUser:");
 #endif
 }
 
 -(void) consultaLogin {
     NSLog(@"ENTRO A CONSULTA LOGIN");
-    WS_HandlerLogin *login = [[WS_HandlerLogin alloc] init];
-    [login setLoginDelegate:self];
-    [login setRedSocial:@"Facebook"];
-    [login obtieneLogin:self.datosUsuario.emailUsuario conPassword:@" "];
+    if(loginFacebook == YES){
+        WS_HandlerLogin *login = [[WS_HandlerLogin alloc] init];
+        [login setLoginDelegate:self];
+        [login setRedSocial:@"Facebook"];
+        [login obtieneLogin:self.datosUsuario.emailUsuario conPassword:@" "];
+    }
 }
 
 
 - (void)fbDidlogout {
+     NSLog(@"LOGOUTFACEBOOK");
     FBSession* session = [FBSession activeSession];
     [session closeAndClearTokenInformation];
     [session close];
@@ -770,6 +787,7 @@
 
 
 -(BOOL) validaCampos {
+     NSLog(@"VALIDACAMPOS");
     if ((self.txtNombre.text.length) > 0 && (self.txtContrasena.text.length > 0) ){
         if (![CommonUtils validarEmail:self.txtNombre.text]) {
             AlertView *alert = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"error", @" ") message:NSLocalizedString(@"emailIncorrecto", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
@@ -799,6 +817,7 @@
 
 
 - (IBAction)verificarNombre:(UIButton *)sender {
+     NSLog(@"VERIFICARNOMBRE");
     if ([self validaCampos]) {
         nombre = self.txtNombre.text;
         password = self.txtContrasena.text;
@@ -816,6 +835,7 @@
 
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
+     NSLog(@"TEXTFIELSHOULDRETURN");
     if(textField.tag < 3){
         NSInteger nextTag = textField.tag + 1;
         // Try to find next responder
@@ -849,12 +869,14 @@
 
 
 -(void) accionNo {
+     NSLog(@"ACCIONNO");
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 
 
 -(void) apareceElTeclado:(NSNotification*)aNotification {
+     NSLog(@"APARECEELTECLADO");
     NSDictionary *infoNotificacion = [aNotification userInfo];
     CGSize tamanioTeclado = [[infoNotificacion objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     UIEdgeInsets edgeInsets = UIEdgeInsetsMake(0, 0, tamanioTeclado.height+15, 0);
@@ -867,7 +889,7 @@
 
 
 -(void) crearDominio {
-    
+     NSLog(@"CREARDOMINIO");
     [((AppDelegate *)[[UIApplication sharedApplication] delegate]) restartDate];
     operacionWS = 2;
     WS_HandlerDominio *dominioHandler = [[WS_HandlerDominio alloc] init];

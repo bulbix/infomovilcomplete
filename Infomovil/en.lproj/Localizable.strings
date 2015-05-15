@@ -548,3 +548,5 @@
 "publicaTuSitioWeb" = "Publish your website.";
 "publicaTuSitioWebAccion" = "publish!";
 "videoDesconocido"="We found no results check your words or use different";
+"errorCambioPassword" = "Could not upgrade, try again";
+"necesitaEmail" = "A valid email is required to reset the password.";

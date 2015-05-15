@@ -14,32 +14,18 @@
 -(void) actualizaPassword {
     DatosUsuario *datos = [DatosUsuario sharedInstance];
 	NSString *stringXML;
-	if (requiereEncriptar) {
+	
 		stringXML = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.webservice.infomovil.org/\">"
 					 "<soapenv:Header/>"
 					 "<soapenv:Body>"
 					 "<ws:cambioPassword>"
 					 "<Usuario>%@</Usuario>"
-					 //"<dominio>%@</dominio>"
 					 "<token>%@</token>"
 					 "</ws:cambioPassword>"
 					 "</soapenv:Body>"
-					 "</soapenv:Envelope>",[StringUtils encriptar:datos.emailUsuario conToken:datos.token],
-					 //[StringUtils encriptar:datos.dominio conToken:datos.token],
-					 //[StringUtils encriptar:datos.emailUsuario conToken:passwordEncriptar]];
+					 "</soapenv:Envelope>",[StringUtils encriptar:datos.emailUsuario conToken:passwordEncriptar],
 					 [StringUtils encriptar:datos.emailUsuario conToken:passwordEncriptar]];
-	}else{
-		stringXML = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.webservice.infomovil.org/\">"
-					 "<soapenv:Header/>"
-					 "<soapenv:Body>"
-					 "<ws:cambioPassword>"
-					 "<Usuario>%@</Usuario>"
-					 //"<dominio>%@</dominio>"
-					 "</ws:cambioPassword>"
-					 "</soapenv:Body>"
-					 "</soapenv:Envelope>",datos.emailUsuario];//,
-					 //datos.dominio];
-	}
+
     self.strSoapAction = @"WSInfomovilDomain";
 	NSLog(@"La peticion es %@", stringXML);
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
@@ -48,12 +34,13 @@
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
         [parser setDelegate:self];
         if ([parser parse]) {
-            if(self.token != nil){
+            if(self.token != nil && datos.token == nil){
                 datos.token = self.token;
             }
 			if(requiereEncriptar){
-                datos = [DatosUsuario sharedInstance];
+              
                 NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
+                NSLog(@"EL TOKEN DE DATOS ES: %@ y EL SELF TOKEN ES: %@ y stringresult: %@", datos.token, self.token , stringResult);
                 if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                     [self.cambiarPasswordDelegate errorToken];
                 }
@@ -97,10 +84,11 @@
         [parser setDelegate:self];
         if ([parser parse])
         {
-            if(self.token != nil){
+            if(self.token != nil && datos.token == nil){
                 datos.token = self.token;
             }
             NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
+             NSLog(@"EL TOKEN DE DATOS ES: %@ y EL SELF TOKEN ES: %@ y stringresult: %@", datos.token, self.token , stringResult);
             if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                 [self.cambiarPasswordDelegate errorToken];
             } 
@@ -137,6 +125,7 @@
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
     if ([elementName isEqualToString:@"resultado"]) {
         self.resultado = self.currentElementString;
+        NSLog(@"EL RESULTADO ES: %@", self.resultado);
     }
     else if ([elementName isEqualToString:@"token"]) {
         self.token = [StringUtils desEncriptar:self.currentElementString conToken:passwordEncriptar];

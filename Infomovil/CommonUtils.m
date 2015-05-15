@@ -116,6 +116,19 @@
     return valido;
 }
 
+
++(BOOL)validarIdFacebook:(NSString *)idFacebook{
+    //por default no es valido
+    BOOL validos = NO;
+    
+    NSString *idRegex = @"^([0-9])*$";
+    NSPredicate *faceTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",idRegex];
+    validos = [faceTest evaluateWithObject:idFacebook];
+    
+    return validos;
+    
+}
+
 + (BOOL)validaNumeroDeTel:(NSString *)strTel {
 	NSString *strRegexTel;
 	NSPredicate *predRegexDeValidacion;

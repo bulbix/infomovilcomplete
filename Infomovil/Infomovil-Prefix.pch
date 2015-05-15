@@ -63,7 +63,7 @@ typedef enum {
 #define colorFuenteVerde [UIColor colorWithRed:(47/255.0f) green:(163/255.0f) blue:(153/255.0f) alpha:1.0]
 
 /* desarrollo */
-//#define rutaWS @"http://172.17.3.192:8080"
+//#define rutaWS @"http://172.17.3.192:8081"
 //#define rutaWS @"http://172.17.3.181:9090"
 /* productivo */
 #define dominioTipo @"recurso"
@@ -79,7 +79,7 @@ typedef enum {
 // ios_app_qa
 #define llaveAppboy @"96559b65-0520-4c33-84b1-94dab248653e"
 
-#define versionDefault @"3.0.1"
+#define versionDefault @"3.0.2"
 
 #define nombreServicio @"WsInfomovil"
 //#define nombreServicio @"PreReg"

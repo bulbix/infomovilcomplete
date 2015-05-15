@@ -39,10 +39,22 @@
     if(index == 0)
     {
         titulo  = NSLocalizedString(@"condicionesServicio",nil);
+        
+#if DEBUG
+        url     = @"http://infomovil.com/pages/legal/terminos.html";
+#else
         url     = [NSString stringWithFormat:@"%@/pages/legal/terminos.html",rutaWS];
+#endif
     }else{
         titulo = NSLocalizedString(@"politicaPrivacidad",nil);
+        
+#if DEBUG
+        url = @"http://infomovil.com/pages/legal/aviso.html";
+#else
         url = [NSString stringWithFormat:@"%@/pages/legal/aviso.html",rutaWS ];
+#endif
+        
+        
     }
     
     [self acomodarBarraNavegacionConTitulo:titulo nombreImagen:imagenBarra];

@@ -191,8 +191,7 @@
         self.idVideo = strUrl;
         self.tipoBusqueda = 1;
     }
-    self.alertaVideo = [AlertView initWithDelegate:self message:@"" andAlertViewType:AlertViewTypeActivity];
-    [self.alertaVideo show];
+    [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
     [self performSelectorInBackground:@selector(consultarVideo) withObject:Nil];
     
 }

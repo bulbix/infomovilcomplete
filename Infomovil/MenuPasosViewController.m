@@ -102,7 +102,7 @@ BOOL banderaRegresar;
 	
     self.datosUsuario				= [DatosUsuario sharedInstance];
     self.datosUsuario.editoPagina	= NO;
-    
+    NSLog(@"EL DOMINIO QUE ME ENVIO 1 ES: %@", self.datosUsuario.dominio);
         [self.navigationItem setHidesBackButton:YES animated:NO];
         self.navigationItem.backBarButtonItem	= nil;
         self.navigationItem.rightBarButtonItem = Nil;
@@ -215,7 +215,7 @@ BOOL banderaRegresar;
     
 #endif
         self.datosUsuario = [DatosUsuario sharedInstance];
-        NSLog(@"EL USUARIO DOMINIO ES: %@", self.datosUsuario.dominio);
+        NSLog(@"EL DOMINIO QUE ME ENVIO ES: %@", self.datosUsuario.dominio);
         if(self.datosUsuario.dominio && ![self.datosUsuario.dominio isEqualToString:@""] && ! (self.datosUsuario.dominio == (id)[NSNull null]) && ![CommonUtils validarEmail:self.datosUsuario.dominio] && ![self.datosUsuario.dominio isEqualToString:@"(null)"]){
             self.dominio.hidden	= NO;
             [self.viewDominioNoPublicado setHidden:YES];
@@ -234,7 +234,7 @@ BOOL banderaRegresar;
                     if([usuarioDom.vigente isEqualToString:@"SI"] || [usuarioDom.vigente isEqualToString:@"si"]){
                          NSLog(@"EL DOMINIO FUE VIGENTE ");
                         
-                        if([self.datosUsuario.dominio length] > 16 && !IS_IPAD){
+                        if([self.datosUsuario.dominio length] > 12 && !IS_IPAD){
                             [self.dominio.titleLabel setFont: [UIFont fontWithName:@"Avenir-Book" size:16]];
                         }
                         [self.dominio setTitle:[NSString stringWithFormat:@"www.%@.tel", self.datosUsuario.dominio] forState:UIControlStateNormal];
@@ -247,10 +247,18 @@ BOOL banderaRegresar;
                     DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:i];
                     if([usuarioDom.domainType isEqualToString:@"recurso"]){
                         NSLog(@"EL DOMINIO FUE RECURSO ");
-                        if([self.datosUsuario.dominio length] > 16 && !IS_IPAD){
+                        if([self.datosUsuario.dominio length] > 12 && !IS_IPAD){
                             [self.dominio.titleLabel setFont: [UIFont fontWithName:@"Avenir-Book" size:16]];
                         }
-                       [self.dominio setTitle:[NSString stringWithFormat:@"www.infomovil.com/%@", self.datosUsuario.dominio] forState:UIControlStateNormal];
+                      
+#if DEBUG
+                         [self.dominio setTitle:[NSString stringWithFormat:@"www.info-movil.com:8080/%@", self.datosUsuario.dominio] forState:UIControlStateNormal];
+#else
+                         [self.dominio setTitle:[NSString stringWithFormat:@"www.infomovil.com/%@", self.datosUsuario.dominio] forState:UIControlStateNormal];
+                        
+#endif
+                        
+                        
                     }
                 }
             }
@@ -402,8 +410,9 @@ BOOL banderaRegresar;
 -(IBAction)regresar:(id)sender {
     if(banderaRegresar == NO){
         banderaRegresar = YES;
-        [[AlertView initWithDelegate:self message:NSLocalizedString(@"salirMensaje", nil)
-				andAlertViewType:AlertViewTypeQuestion] show];
+        AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"salirMensaje", Nil) andAlertViewType:AlertViewTypeQuestion];
+        [alert show];
+        
     }
 }
 
@@ -415,14 +424,14 @@ BOOL banderaRegresar;
         [self.navigationController pushViewController:Inicio animated:YES];
         self.datosUsuario = [DatosUsuario sharedInstance];
         NSString *correo = self.datosUsuario.emailUsuario;
-  /*  dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        
-    });
-    */
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         WS_HandlerDominio *handlerDominio = [[WS_HandlerDominio alloc] init];
         [handlerDominio setWSHandlerDelegate:self];
         [handlerDominio cerrarSession:correo];
         [StringUtils deleteFile];
+    });
+    
+        
         if ([self.datosUsuario.redSocial isEqualToString:@"Facebook"]) {
             [((AppDelegate*)[[UIApplication sharedApplication] delegate]) fbDidlogout];
         }
@@ -436,7 +445,15 @@ BOOL banderaRegresar;
 - (IBAction)IrAlDominio:(id)sender {
     if([self.dominio.titleLabel.text length] > 0){
         NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+         self.datosUsuario = [DatosUsuario sharedInstance];
+#if DEBUG
+        NSString *dominioAux = [NSString stringWithFormat:@"http://info-movil.com:8080/%@", self.datosUsuario.dominio];
+        [prefs setObject:dominioAux forKey:@"urlMisitio"];
+#else
         [prefs setObject:[NSString stringWithFormat:@"http://%@", self.dominio.titleLabel.text] forKey:@"urlMisitio"];
+#endif
+        
+        
         [prefs synchronize];
         IrAMiSitioViewController *verMiSitio = [[IrAMiSitioViewController alloc] initWithNibName:@"IrAMisitio" bundle:Nil];
         [self.navigationController pushViewController:verMiSitio animated:YES];

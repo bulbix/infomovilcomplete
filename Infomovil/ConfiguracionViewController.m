@@ -76,8 +76,15 @@
     self.navigationItem.rightBarButtonItem = Nil;
 	
 	self.datosUsuario = [DatosUsuario sharedInstance];
-	self.label.text = self.datosUsuario.emailUsuario;
-	self.label.textColor = colorFuenteVerde;
+	
+    if([CommonUtils validarEmail:self.datosUsuario.emailUsuario]){
+        self.label.text = self.datosUsuario.emailUsuario;
+    }else{
+        self.label.text = @"";
+    
+    }
+    
+    self.label.textColor = colorFuenteVerde;
 	
     if(IS_IPAD){
         [self.botonConfiguracion setFrame:CGRectMake(264, 10, 88, 80)];
@@ -161,11 +168,19 @@
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+   self.datosUsuario = [DatosUsuario sharedInstance];
     if (indexPath.section == 0) {
 
         if (indexPath.row == 0) {
-			AlertView * alerta = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeContrasenia", @" ") andAlertViewType:AlertViewTypeInfo3];
-			[alerta show];
+            if([CommonUtils validarEmail:self.datosUsuario.emailUsuario]){
+                AlertView * alerta = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeContrasenia", @" ") andAlertViewType:AlertViewTypeInfo3];
+                [alerta show];
+            }else{
+                AlertView * alerta = [AlertView initWithDelegate:self message:NSLocalizedString(@"necesitaEmail", @" ") andAlertViewType:AlertViewTypeInfo];
+                [alerta show];
+                
+            }
+			
 			
             
         }
@@ -182,7 +197,7 @@
     }
     else {
         if (indexPath.row == 0) {
-			self.datosUsuario = [DatosUsuario sharedInstance];
+			
 			if ([MFMailComposeViewController canSendMail]){
 				MFMailComposeViewController *controller = [[MFMailComposeViewController alloc] init];
 				controller.mailComposeDelegate = self;
@@ -287,7 +302,7 @@
         [NSThread sleepForTimeInterval:1];
         [self.alertaContacto hide];
     }
-    AlertView *alertAct = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
+    AlertView *alertAct = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"errorCambioPassword", Nil) andAlertViewType:AlertViewTypeInfo];
     [alertAct show];
     [StringUtils terminarSession];
     

@@ -15,6 +15,7 @@
 +(BOOL) validarDominio:(NSString *)nombreDominio;
 +(BOOL) validarContrasena:(NSString *)usuario contrasena:(NSString *)contrasena;
 +(BOOL) validarEmail:(NSString *)email;
++(BOOL)validarIdFacebook:(NSString *)idFacebook;
 + (BOOL)validaNumeroDeTel:(NSString *)strTel;
 +(NSString *)validaFacebookUrl:(NSString *)strFacebook;
 +(NSString *)validaTwitterUrl:(NSString *)strTwitter;

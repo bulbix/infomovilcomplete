@@ -44,10 +44,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *leyenda5;
 
 
-@property (retain, nonatomic) IBOutlet UITextView *facebookDataTextView;
-@property (retain, nonatomic) NSDictionary *facebookUserProfile;
-@property (retain, nonatomic) NSArray *facebookLikes;
-@property (assign, nonatomic) NSInteger numberOfFacebookFriends;
 
 
 

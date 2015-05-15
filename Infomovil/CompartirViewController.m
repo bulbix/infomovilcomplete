@@ -133,7 +133,7 @@
                 DominiosUsuario *usuarioDom = [self.arregloDominio objectAtIndex:i];
                 if([usuarioDom.domainType isEqualToString:@"recurso"]){
                     NSLog(@"EL DOMINIO FUE RECURSO ");
-                    [self.labelNombreDominio setText:[NSString stringWithFormat:@"infomovil.com/%@", self.datosUsuario.dominio]];
+                    [self.labelNombreDominio setText:[NSString stringWithFormat:@"www.infomovil.com/%@", self.datosUsuario.dominio]];
                     self.dominioParaCompartir = self.labelNombreDominio.text;
                 }
             }
@@ -225,9 +225,9 @@
 - (void) publishWithWebDialog {
     NSString *mensaje = nil;
     if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-        mensaje =[NSString stringWithFormat: @"I just created a website with infomovil.com.\nCheck it out and help us grow!\n%@",self.dominioParaCompartir];
+        mensaje =[NSString stringWithFormat: @"I just created a website with www.infomovil.com.\nCheck it out and help us grow!\n%@",self.dominioParaCompartir];
     }else{
-        mensaje =[NSString stringWithFormat: @"Acabo de crear un sitio web con infomovil.com. ¡Visítalo y ayúdanos a crecer!\n%@",self.dominioParaCompartir];
+        mensaje =[NSString stringWithFormat: @"Acabo de crear un sitio web con www.infomovil.com. ¡Visítalo y ayúdanos a crecer!\n%@",self.dominioParaCompartir];
     }
     NSMutableDictionary *params =
     [NSMutableDictionary dictionaryWithObjectsAndKeys:
@@ -235,7 +235,7 @@
      @"www.infomovil.com", @"caption",
      mensaje, @"description",
      @"www.infomovil.com/", @"link",
-     @"www.info-movil.com:8080/templates/Index/images/icn_infomovil_200.png", @"picture",
+     @"http://info-movil.com:8080/templates/Index/images/icn_infomovil_200.png", @"picture",
      nil];
    
     [FBWebDialogs presentFeedDialogModallyWithSession:nil
@@ -252,7 +252,7 @@
              } else {
                  NSDictionary *urlParams = [self parseURLParams:[resultURL query]];
                  if (![urlParams valueForKey:@"post_id"]) {
-                     [self checkErrorMessage: error];
+                   //  [self checkErrorMessage: error];
                  } else {
                      [self showAlert];
                  }
@@ -275,14 +275,15 @@
     NSString *errorMessage = @"";
     if (error.fberrorUserMessage) {
         errorMessage = error.fberrorUserMessage;
-    } else {
+        NSLog(@"EL ERROR CORRECTO DE FACEBOOK ES: %@", error.fberrorUserMessage);
+     } else {
         if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
             errorMessage = @"Operation failed due to a connection problem, retry later.";
         }else{
             errorMessage = @"No hay conexión, inténtalo nuevamente.";
         }
     }
-    
+
     [[[UIAlertView alloc] initWithTitle:@"Aviso"
                                 message:errorMessage
                                delegate:nil
@@ -322,9 +323,9 @@
             [self dismissViewControllerAnimated:YES completion:Nil];
         };
 		if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-			[controller setInitialText:[NSString stringWithFormat:@"I just created a website with infomovil.com.\nCheck it out and help us grow!\n%@",self.dominioParaCompartir]];
+			[controller setInitialText:[NSString stringWithFormat:@"I just created a website with www.infomovil.com.\nCheck it out and help us grow!\n%@",self.dominioParaCompartir]];
 		}else{
-			[controller setInitialText:[NSString stringWithFormat:@"Acabo de crear un sitio web con infomovil.com.\n¡Visítalo y ayúdanos a crecer!\n%@",self.dominioParaCompartir]];
+			[controller setInitialText:[NSString stringWithFormat:@"Acabo de crear un sitio web con www.infomovil.com.\n¡Visítalo y ayúdanos a crecer!\n%@",self.dominioParaCompartir]];
 		}
        
         [self presentViewController:controller animated:YES completion:nil];
@@ -349,10 +350,10 @@
 		NSString *message;
 		if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
 			[controller setSubject:@"Check our website"];
-			message = [[NSString stringWithFormat:@"I just created a website with infomovil.com.\nCheck it out and help us grow!\n%@",self.dominioParaCompartir] stringByReplacingOccurrencesOfString:@"\n" withString:@"<br>"];
+			message = [[NSString stringWithFormat:@"I just created a website with www.infomovil.com.\nCheck it out and help us grow!\n%@",self.dominioParaCompartir] stringByReplacingOccurrencesOfString:@"\n" withString:@"<br>"];
 		}else{
 			[controller setSubject:@"Checa nuestro sitio web"];
-			message = [[NSString stringWithFormat:@"Acabo de crear un sitio web con infomovil.com.\n¡Visítalo y ayúdanos a crecer!\n%@",self.dominioParaCompartir] stringByReplacingOccurrencesOfString:@"\n" withString:@"<br>"];
+			message = [[NSString stringWithFormat:@"Acabo de crear un sitio web con www.infomovil.com.\n¡Visítalo y ayúdanos a crecer!\n%@",self.dominioParaCompartir] stringByReplacingOccurrencesOfString:@"\n" withString:@"<br>"];
 		}
 		
 		[controller setMessageBody:message isHTML:YES];
@@ -375,9 +376,9 @@
     }
 	NSString *mensaje;
 	if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-		mensaje = @"I just created a website with infomovil.com.\nCheck it out and help us grow!\n%@";
+		mensaje = @"I just created a website with www.infomovil.com.\nCheck it out and help us grow!\n%@";
 	}else{
-		mensaje = @"Acabo de crear un sitio web con infomovil.com.\n¡Visítalo y ayúdanos a crecer!\n%@";
+		mensaje = @"Acabo de crear un sitio web con www.infomovil.com.\n¡Visítalo y ayúdanos a crecer!\n%@";
 	}
 	
     NSString *message = [NSString stringWithFormat: mensaje,self.dominioParaCompartir];
@@ -393,11 +394,12 @@
 }
 
 - (IBAction)compartirWhatsapp:(UIButton *)sender {
+    NSLog(@"EL DOMINIO DE WHATS APP COMPARTIDO ES: %@",self.dominioParaCompartir);
 	 NSURL *whatsappURL;
 	if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-		 whatsappURL = [NSURL URLWithString:[NSString stringWithFormat:@"whatsapp://send?text=I%%20just%%20created%%20a%%20website%%20with%%20infomovil.com.%%0ACheck%%20it%%20out%%20and%%20help%%20us%%20grow%%0A%@", self.dominioParaCompartir]];
+		 whatsappURL = [NSURL URLWithString:[NSString stringWithFormat:@"whatsapp://send?text=I%%20just%%20created%%20a%%20website%%20with%%20www.infomovil.com.%%0ACheck%%20it%%20out%%20and%%20help%%20us%%20grow%%0A%@", self.dominioParaCompartir]];
 	}else{
-		 whatsappURL = [NSURL URLWithString:[NSString stringWithFormat:@"whatsapp://send?text=Acabo%%20de%%20crear%%20un%%20sitio%%20web%%20con%%20infomovil.com.%%0AVisitalo%%20y%%20ayudanos%%20a%%20crecer%%0A%@", self.dominioParaCompartir]];
+		 whatsappURL = [NSURL URLWithString:[NSString stringWithFormat:@"whatsapp://send?text=Acabo%%20de%%20crear%%20un%%20sitio%%20web%%20con%%20www.infomovil.com.%%0AVisitalo%%20y%%20ayudanos%%20a%%20crecer%%0A%@", self.dominioParaCompartir]];
 	}
     if ([[UIApplication sharedApplication] canOpenURL: whatsappURL]) {
         [[UIApplication sharedApplication] openURL: whatsappURL];
@@ -422,9 +424,9 @@
 	
 	NSString *message;
 	if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-		message = @"I just created a website with infomovil.com.\nCheck it out and help us grow!\n%@";
+		message = @"I just created a website with www.infomovil.com.\nCheck it out and help us grow!\n%@";
 	}else{
-		message = @"Acabo de crear un sitio web con infomovil.com.\n¡Visítalo y ayúdanos a crecer!\n%@";
+		message = @"Acabo de crear un sitio web con www.infomovil.com.\n¡Visítalo y ayúdanos a crecer!\n%@";
 	}
 		
 		NSString *inputText = [NSString stringWithFormat:message, self.dominioParaCompartir];

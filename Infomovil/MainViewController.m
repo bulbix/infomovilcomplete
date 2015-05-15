@@ -34,15 +34,6 @@
 
 @end
 
-
-
-static NSString *const FacebookIDPlistKey = @"FacebookAppID";
-static NSString *const FacebookUserProfileEndpointUrl = @"https://graph.facebook.com/me";
-static NSString *const FacebookLikesEndpointUrl = @"https://graph.facebook.com/me/likes";
-static NSString *const FacebookFriendsEndpointUrl = @"https://graph.facebook.com/me/friends";
-
-
-
 @implementation MainViewController
 
 
@@ -65,7 +56,7 @@ static NSString *const FacebookFriendsEndpointUrl = @"https://graph.facebook.com
     [self fbDidlogout];
     FBLoginView *loginView = [[FBLoginView alloc] init];
     loginView.delegate = self;
-    loginView.readPermissions = @[@"public_profile", @"email",@"user_about_me",@"user_likes"];
+    loginView.readPermissions = @[@"public_profile", @"email"];
 
     UIColor *color = [UIColor whiteColor];
     if(IS_STANDARD_IPHONE_6){
@@ -315,12 +306,16 @@ static NSString *const FacebookFriendsEndpointUrl = @"https://graph.facebook.com
 -(void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.navigationController.navigationBar setHidden:YES];
-  
     [self.recordarbtn setTitle:NSLocalizedString(@"recordarCuenta", nil) forState:UIControlStateNormal]  ;
 	self.txtEmail.placeholder = NSLocalizedString(@"mainLabelCorreo", nil);
 	self.txtPassword.placeholder = NSLocalizedString(@"contrasena", nil);
 	self.label.text = NSLocalizedString(@"mainLabel", nil);
-	[self.boton setTitle:NSLocalizedString(@"mainBoton", nil) forState:UIControlStateNormal]  ;
+#if DEBUG
+    [self.boton setTitle:@"LOGIN QA" forState:UIControlStateNormal]  ;
+#else
+    [self.boton setTitle:NSLocalizedString(@"mainBoton", nil) forState:UIControlStateNormal]  ;
+#endif
+
     [self.btnRegistrate setTitle:NSLocalizedString(@"cuentaTodavia",nil) forState:UIControlStateNormal];
     self.editaTuSitio.text = NSLocalizedString(@"editaTuSitio",nil);
     [self.vistaInferior setHidden:YES];
@@ -428,15 +423,12 @@ static NSString *const FacebookFriendsEndpointUrl = @"https://graph.facebook.com
     // Dispose of any resources that can be recreated.
 }
 
--(IBAction)regresarMenu:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
-}
+
 - (IBAction)iniciarSesion:(id)sender {
 
     if ([CommonUtils validarEmail:self.txtEmail.text] && ![self.txtPassword.text isEqualToString:@""]) {
         if ([CommonUtils hayConexion]) {
             self.datosUsuario.redSocial = @"";
-            
             buscandoSesion = YES;
             [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
             [self performSelectorInBackground:@selector(consultaLogin) withObject:Nil];
@@ -444,8 +436,6 @@ static NSString *const FacebookFriendsEndpointUrl = @"https://graph.facebook.com
             AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
             [alert show];
         }
-        
-        
 	}else{
 		AlertView *alert = [AlertView initWithDelegate:nil message:NSLocalizedString(@"incompletos", @" ") andAlertViewType:AlertViewTypeInfo];
 		[alert show];
@@ -453,6 +443,7 @@ static NSString *const FacebookFriendsEndpointUrl = @"https://graph.facebook.com
 }
 
 - (IBAction)cambiarPassword:(UIButton *)sender {
+     NSLog(@"CAMBIARPASSWORD");
     CambiarPasswordViewController *cambiaPass = [[CambiarPasswordViewController alloc] initWithNibName:@"CambiarPasswordViewController" bundle:Nil];
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:cambiaPass];
     [self.navigationController presentViewController:navController animated:YES completion:Nil];
@@ -461,6 +452,7 @@ static NSString *const FacebookFriendsEndpointUrl = @"https://graph.facebook.com
 
 #pragma mark - WS_HandlerProtocol
 -(void) resultadoLogin:(NSInteger) idDominio {
+     NSLog(@"RESULTADOLOGIN");
     if (idDominio > 0) {
         loginExitoso = YES;
         loginFacebook = NO;
@@ -479,13 +471,14 @@ static NSString *const FacebookFriendsEndpointUrl = @"https://graph.facebook.com
         respuestaError = idDominio;
         loginExitoso = NO;
          NSUserDefaults *prefSesion = [NSUserDefaults standardUserDefaults];
-        [prefSesion setInteger:1 forKey:@"intSesionActiva"];
+        [prefSesion setInteger:0 forKey:@"intSesionActiva"];
         [prefSesion synchronize];
     }
     [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
 }
 
 -(void) resultadoConsultaDominio:(NSString *)resultado {
+     NSLog(@"RESULTADOCONSULTADOMINIO");
     if ([resultado isEqualToString:@"Exito"]) {
         existeUnaSesion = YES;
         loginFacebook = NO;
@@ -497,59 +490,65 @@ static NSString *const FacebookFriendsEndpointUrl = @"https://graph.facebook.com
     [self performSelectorInBackground:@selector(ocultarActivity) withObject:Nil];
 }
 -(void) errorConsultaWS {
+     NSLog(@"ERRORCONSULTAWS");
     [self performSelectorOnMainThread:@selector(errorLogin) withObject:Nil waitUntilDone:YES];
     loginFacebook = YES;
 }
 
 -(void) mostrarActivity {
+     NSLog(@"MOSTRARACTIVITY");
     self.alerta = [AlertView initWithDelegate:self message:NSLocalizedString(@"msgValidandoUsuario", Nil) andAlertViewType:AlertViewTypeActivity];
-    //self.alerta.transform = CGAffineTransformTranslate( _alerta.transform, 20.0, 100.0 );
     [self.alerta show];
 }
 -(void) ocultarActivity {
+    NSLog(@"ENTRO A OCULTAR ACTIVITY");
     self.datosUsuario = [DatosUsuario sharedInstance];
     if (buscandoSesion) {
-       
+        NSLog(@"BUSCANDOSESION");
             buscandoSesion = NO;
-            [self performSelectorInBackground:@selector(consultaLogin) withObject:Nil];
-        
-    }
-    else {
+            [NSThread sleepForTimeInterval:1];
+            [self.alerta hide];
+        MenuPasosViewController *menuPasos = [[MenuPasosViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:nil];
+        [self.navigationController pushViewController:menuPasos animated:YES];
+    }else {
     if (loginExitoso) {
-        loginFacebook = NO;
+         NSLog(@"LOGINEXITOSO");
         NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
         NSDictionary *launch =  [defaults objectForKey:@"launchingWithOptions"];
         [Appboy startWithApiKey:llaveAppboy
                   inApplication:[UIApplication sharedApplication]
               withLaunchOptions:launch];
+        NSLog(@"EL APPBOY DE CHANGE USER 2 ES: %@ y el tipo de usuario es: %@ y red social %@ y el sesionUser %@", self.txtEmail.text, self.datosUsuario.tipoDeUsuario, self.datosUsuario.redSocial, self.datosUsuario.auxStrSesionUser);
         
-        
-        NSLog(@"EL APPBOY DE CHANGE USER 2 ES: %@", self.txtEmail.text);
-        [[Appboy sharedInstance] changeUser:self.txtEmail.text];
-        [Appboy sharedInstance].user.email = self.txtEmail.text;
         if([self.txtEmail.text isEqualToString:@""] || self.txtEmail.text == nil){
             [[Appboy sharedInstance] changeUser:self.datosUsuario.auxStrSesionUser];
             [Appboy sharedInstance].user.email = self.datosUsuario.auxStrSesionUser;
+            if([self.datosUsuario.tipoDeUsuario isEqualToString:@"canal"]){
+                [[Appboy sharedInstance].user setCustomAttributeWithKey:@"canal" andStringValue:self.datosUsuario.canal];
+                [[Appboy sharedInstance].user setCustomAttributeWithKey:@"campania" andStringValue:self.datosUsuario.campania];
+            }
            
+        }else{
+            [[Appboy sharedInstance] changeUser:self.txtEmail.text];
+            [Appboy sharedInstance].user.email = self.txtEmail.text;
+            if([self.datosUsuario.tipoDeUsuario isEqualToString:@"canal"]){
+                [[Appboy sharedInstance].user setCustomAttributeWithKey:@"canal" andStringValue:self.datosUsuario.canal];
+                [[Appboy sharedInstance].user setCustomAttributeWithKey:@"campania" andStringValue:self.datosUsuario.campania];
+            }
         }
-        
-        
+        [[AppsFlyerTracker sharedTracker] setCustomerUserID:self.txtEmail.text];
         
         self.datosUsuario.existeLogin = YES;
-        
         if (![self.datosUsuario.redSocial isEqualToString:@"Facebook"]) {
             [self.datosUsuario setEmailUsuario:self.txtEmail.text];
         }
-        
         [self.datosUsuario setPasswordUsuario:self.txtPassword.text];
-    
-        [[AppsFlyerTracker sharedTracker] setCustomerUserID:self.txtEmail.text];
-        
         ((AppDelegate*) [[UIApplication sharedApplication] delegate]).logueado =YES;
         MenuPasosViewController *menuPasos = [[MenuPasosViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:nil];
         [self.navigationController pushViewController:menuPasos animated:YES];
     }
     else {
+         NSLog(@"LOGIN NO EXITOSO");
         loginFacebook = YES;
         [self fbDidlogout]; // CErrar sesion de facebook
         NSString *strMensaje;
@@ -586,7 +585,7 @@ static NSString *const FacebookFriendsEndpointUrl = @"https://graph.facebook.com
 }
 
 -(void) errorLogin {
-        NSLog(@"REGRESO ERROR CONSULTAUSUARIO!!");
+        NSLog(@"ERROR LOGIN");
         loginFacebook = YES;
         if (self.alerta)
         {
@@ -597,7 +596,7 @@ static NSString *const FacebookFriendsEndpointUrl = @"https://graph.facebook.com
 }
 
 -(void) consultaLogin {
-  
+   NSLog(@"CONSULTA LOGIN");
         [StringUtils deleteResourcesWithExtension:@"jpg"];
         [StringUtils deleteFile];
         NSString *passLogin = @"";
@@ -620,15 +619,17 @@ static NSString *const FacebookFriendsEndpointUrl = @"https://graph.facebook.com
 #pragma mark - UITextFieldDelegate
 
 -(void) textFieldDidBeginEditing:(UITextField *)textField {
+     NSLog(@"TEXTFIELDIDBEGINEDITING");
     textoEditado = textField;
     [self.keyboardControls setActiveField:textField];
 }
 
 -(void) textFieldDidEndEditing:(UITextField *)textField {
-    
+     NSLog(@"textFieldDidEndEditing");
 }
 
 -(void) apareceElTeclado:(NSNotification*)aNotification {
+    NSLog(@"APARECEELTECLADO");
     NSDictionary *infoNotificacion = [aNotification userInfo];
     CGSize tamanioTeclado = [[infoNotificacion objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     UIEdgeInsets edgeInsets;
@@ -646,6 +647,7 @@ static NSString *const FacebookFriendsEndpointUrl = @"https://graph.facebook.com
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    NSLog(@"TEXTFIELDSHOULDRETURN");
     if([self.txtEmail.text length] == 0 && [self.txtPassword.text length] == 0) {
         return NO;
     }
@@ -655,6 +657,7 @@ static NSString *const FacebookFriendsEndpointUrl = @"https://graph.facebook.com
 }
 
 -(void) desapareceElTeclado:(NSNotification *)aNotificacion {
+    NSLog(@"DESAPARECEELTECLADO");
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.3];
      [[self scrollLogin] setContentInset:UIEdgeInsetsMake(0, 0,0, 0)];
@@ -669,11 +672,13 @@ static NSString *const FacebookFriendsEndpointUrl = @"https://graph.facebook.com
 
 - (void)keyboardControlsDonePressed:(BSKeyboardControls *)keyboardControls
 {
+    NSLog(@"KEYBOARDCONTROLSDONEPRESSED");
     [self.view endEditing:YES];
 }
 
 #pragma mark AlertViewDelegate
 -(void) accionAceptar2 {
+    NSLog(@"ACCIONACEPTAR");
     buscandoSesion = NO;
     [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
     [self performSelectorInBackground:@selector(consultaLogin) withObject:Nil];
@@ -682,6 +687,7 @@ static NSString *const FacebookFriendsEndpointUrl = @"https://graph.facebook.com
 
 #pragma mark - FBLoginViewDelegate
 - (void)loginView:(FBLoginView *)loginView handleError:(NSError *)error {
+    NSLog(@"LOGINVIEW");
 #ifdef _DEBUG
     NSLog(@"Entrando a loginView:handleError:");
     NSLog(@"El error de facebook es %@  ***********", [error description]);
@@ -691,16 +697,19 @@ static NSString *const FacebookFriendsEndpointUrl = @"https://graph.facebook.com
 
 - (void)loginViewFetchedUserInfo:(FBLoginView *)loginView
                             user:(id<FBGraphUser>)user {
-    self.datosUsuario.emailUsuario = [user objectForKey:@"email"];
-   
-#ifdef _DEBUG
+    NSLog(@"LOGINVIEWFETCHUSERINFO");
+    if([[user objectForKey:@"email"] isEqualToString:@""] || [user objectForKey:@"email"] == nil){
+        self.datosUsuario.emailUsuario = [user objectForKey:@"id"];
+    }else{
+        self.datosUsuario.emailUsuario = [user objectForKey:@"email"];
+    }
+    
+#if DEBUG
     NSLog(@"Entrando a loginViewFetchedUserInfo:user:");
     NSLog(@"el email de facebook es: %@", self.datosUsuario.emailUsuario);
 #endif
     self.datosUsuario.redSocial = @"Facebook";
-    
      if(loginFacebook == YES) {
-    
         loginFacebook = NO;
         [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
         [self performSelectorInBackground:@selector(consultaLogin) withObject:Nil];
@@ -709,13 +718,13 @@ static NSString *const FacebookFriendsEndpointUrl = @"https://graph.facebook.com
 }
 
 - (void)loginViewShowingLoggedInUser:(FBLoginView *)loginView {
-#ifdef _DEBUG
+#if DEBUG
     NSLog(@"Entrando a loginViewShowingLoggedInUser:");
 #endif
 }
 
 - (void) loginViewShowingLoggedOutUser:(FBLoginView *)loginView {
-#ifdef _DEBUG
+#if DEBUG
     NSLog(@"Entrando a loginViewShowingLoggedOutUser:");
 #endif
 }
@@ -724,6 +733,7 @@ static NSString *const FacebookFriendsEndpointUrl = @"https://graph.facebook.com
 
 
 - (void)fbDidlogout {
+    NSLog(@"FBDIDLOGOUT");
     FBSession* session = [FBSession activeSession];
     [session closeAndClearTokenInformation];
     [session close];
@@ -737,7 +747,7 @@ static NSString *const FacebookFriendsEndpointUrl = @"https://graph.facebook.com
 }
 
 - (IBAction)irARegistrate:(id)sender {
-    
+    NSLog(@"IRAREGISTRATE");
     MenuRegistroViewController *registro = [[MenuRegistroViewController alloc] initWithNibName:@"MenuRegistroViewController" bundle:nil];
     [self.navigationController pushViewController:registro animated:YES];
 }

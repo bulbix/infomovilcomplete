@@ -658,3 +658,5 @@
 "publicaTuSitioWeb" = "Publica tu sitio web.";
 "publicaTuSitioWebAccion" = "Publicar!";
 "videoDesconocido" = "No se encontraron resultados revisa tus palabras o utiliza diferentes.";
+"errorCambioPassword" = "No se ha podido modificar el password, inténtalo nuevamente.";
+"necesitaEmail" = "Se requiere un email valido para reestablecer la contraseña.";

@@ -418,7 +418,7 @@ int opcionButton = 0 ;
 if(noSeRepiteOprimirElBoton){
     noSeRepiteOprimirElBoton = NO;
     opcionButton = 1;
-    [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
+    [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:NO];
     
     @try {
         if([_products count] <= 0){
@@ -473,7 +473,7 @@ if(noSeRepiteOprimirElBoton){
     if(noSeRepiteOprimirElBoton){
     noSeRepiteOprimirElBoton = NO;
     opcionButton = 2;
-    [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
+    [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:NO];
     @try {
             if([_products count] <= 0){
                     if([CommonUtils hayConexion]){
@@ -525,7 +525,7 @@ if(noSeRepiteOprimirElBoton){
 if(noSeRepiteOprimirElBoton){
     noSeRepiteOprimirElBoton = NO;
     opcionButton = 3;
-    [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
+    [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:NO];
     @try {
         if([_products count] <= 0){
             if([CommonUtils hayConexion]){
@@ -753,15 +753,13 @@ if(noSeRepiteOprimirElBoton){
 
 
 -(void) mostrarActivity {
-   
     self.alerta = [AlertView initWithDelegate:self message:NSLocalizedString(@"cargando", Nil) andAlertViewType:AlertViewTypeActivity];
     [self.alerta show];
 }
 -(void) ocultarActivity {
     noSeRepiteOprimirElBoton = YES;
     
-    if (self.alerta)
-    {
+   
         //MBC
         if(IS_STANDARD_IPHONE_6_PLUS){
             [self.MensajePlanProComprado setFrame:CGRectMake(70, 60, 414, 150)];
@@ -778,9 +776,9 @@ if(noSeRepiteOprimirElBoton){
             self.MensajePlanProComprado.text = [NSString stringWithFormat:@"Este sitio ya cuenta con PLAN PRO disfruta sus beneficios.\n\nFecha de inicio: %@\nFecha de término: %@",self.datosUsuario.fechaInicial, self.datosUsuario.fechaFinal];
         }
         
-        [NSThread sleepForTimeInterval:1];
-        [self.alerta hide];
-    }
+    [NSThread sleepForTimeInterval:1];
+    [self.alerta hide];
+    
 }
 
 

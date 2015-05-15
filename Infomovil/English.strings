@@ -87,7 +87,7 @@
 "errorPublico"="Sorry, there was an error publishing your site";
 "errorLogin"="Error. Please enter your data again.";
 "actualizacionCorrecta"="The update was successful";
-"errorActualizacion"="Error with the update";
+"errorActualizacion"="No change has been published, try again";
 "seleccionaPais"="Select your country code";
 "infoDeRegistro"="Account information";
 "nombreOrganizacion"="Name of organizastion";
