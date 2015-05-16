@@ -79,23 +79,7 @@
     [self.botonCambioEstadisticas setTitleTextAttributes:highlightedAttributes forState:UIControlStateHighlighted];
     botonPulsado = 0;
     opcionConsulta = 2;
-    self.datosUsuario = [DatosUsuario sharedInstance];
-    if(self.datosUsuario.dominio == nil || [self.datosUsuario.dominio isEqualToString:@""] || (self.datosUsuario.dominio == (id)[NSNull null]) || [CommonUtils validarEmail:self.datosUsuario.dominio] || [self.datosUsuario.dominio isEqualToString:@"(null)"]){
-        AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"msjEstadisticasPublicar", Nil) andAlertViewType:AlertViewTypeQuestion];
-        [alert show];
-        dominioNoPublicado = YES;
-        
-    }else{
-        if ([CommonUtils hayConexion] ) {
-            [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
-            [self performSelectorInBackground:@selector(consultaVisitas) withObject:Nil];
-        }
-        else {
-            AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
-            [alert show];
-        }
-    
-    }
+   
     errorToken = NO;
     
     if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
@@ -128,6 +112,23 @@
 
 -(void) viewWillAppear:(BOOL)animated {
 
+    self.datosUsuario = [DatosUsuario sharedInstance];
+    if(self.datosUsuario.dominio == nil || [self.datosUsuario.dominio isEqualToString:@""] || (self.datosUsuario.dominio == (id)[NSNull null]) || [CommonUtils validarEmail:self.datosUsuario.dominio] || [self.datosUsuario.dominio isEqualToString:@"(null)"]){
+        AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"msjEstadisticasPublicar", Nil) andAlertViewType:AlertViewTypeQuestion];
+        [alert show];
+        dominioNoPublicado = YES;
+        
+    }else{
+        if ([CommonUtils hayConexion] ) {
+            [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
+            [self performSelectorInBackground:@selector(consultaVisitas) withObject:Nil];
+        }
+        else {
+            AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+            [alert show];
+        }
+    }
+    
     
     if(IS_IPAD){
         [self.botonEstadisticas setFrame:CGRectMake(0, 10, 88, 80)];

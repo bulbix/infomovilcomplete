@@ -44,11 +44,22 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
    
-   
+    UILocalNotification *notification = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+    if (notification) {
+        NSLog(@"IRC app recieved notification from remote%@",notification);
+        [self application:application didReceiveRemoteNotification:(NSDictionary*)notification];
+    }else{
+        NSLog(@"IRC app did not recieve notification");
+    }
+    
+    
+    
     // Lo guardo como default para utilizarlo en appboy
+  /*
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:launchOptions forKey:@"launchingWithOptions"];
     [defaults synchronize];
+   */
    /*
     //AppsFlyer
     [AppsFlyerTracker sharedTracker].appsFlyerDevKey = @"5KoF92vzAFbhSj9PRduNCn";
@@ -122,21 +133,22 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
     return YES;
 }
 
-- (void)applicationWillResignActive:(UIApplication *)application
-{
-   
+- (void)applicationWillResignActive:(UIApplication *)application{
+    NSLog(@"LA APP ESTA EN applicationWillResignActive"); // cuand se va a back
 }
+   
+
 /*  // NO UTILIZARLOS PORQUE SE EJECUTA EL APPBOY //
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
  
 }
-
-- (void)applicationWillEnterForeground:(UIApplication *)application
-{
- 
-}
 */
+- (void)applicationWillEnterForeground:(UIApplication *)application
+{  NSLog(@"LA APP ESTA EN applicationWillEnterForeground"); // cuando regresa del back
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+}
+
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
 	[[AppsFlyerTracker sharedTracker] trackAppLaunch];
@@ -268,18 +280,37 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
     NSLog(@"RECIBI UNA NOTIFICACIÓN!!!! : %@",[userInfo description]);
     [[Appboy sharedInstance] registerApplication:application
                     didReceiveRemoteNotification:userInfo];
-
-   /* if([[userInfo objectForKey:@"ab_uri"] isEqualToString:@"infomovil://Estilo"]){
-        ElegirPlantillaViewController *comparte = [[ElegirPlantillaViewController alloc] initWithNibName:@"ElegirPlantillaViewController" bundle:Nil];
-        [self.navigationController pushViewController:comparte animated:YES];
+    NSLog(@"La aplicación se encuentra en : %ld",(long)application.applicationState);
+    if ( application.applicationState == UIApplicationStateInactive || application.applicationState == UIApplicationStateBackground  )
+    {
+        
+        if([[userInfo objectForKey:@"ab_uri"] isEqualToString:@"infomovil://Nombre_Sitio"]){
+            SesionActivaViewController *sesionActiva = [[SesionActivaViewController alloc] initWithNibName:@"SesionActiva" bundle:Nil];
+            NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setInteger:1 forKey:@"SELECCIONDEEPLINK"];
+            [defaults synchronize];
+            [self.navigationController pushViewController:sesionActiva animated:YES];
+        
+        }else if([[userInfo objectForKey:@"ab_uri"] isEqualToString:@"infomovil://CrearEditar"]){
+            SesionActivaViewController *sesionActiva = [[SesionActivaViewController alloc] initWithNibName:@"SesionActiva" bundle:Nil];
+            NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setInteger:2 forKey:@"SELECCIONDEEPLINK"];
+            [defaults synchronize];
+            [self.navigationController pushViewController:sesionActiva animated:YES];
+        
+        }else if([[userInfo objectForKey:@"ab_uri"] isEqualToString:@"infomovil://Compartir"]){
+            SesionActivaViewController *sesionActiva = [[SesionActivaViewController alloc] initWithNibName:@"SesionActiva" bundle:Nil];
+            NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setInteger:3 forKey:@"SELECCIONDEEPLINK"];
+            [defaults synchronize];
+            [self.navigationController pushViewController:sesionActiva animated:YES];
+    
+        }
+        
     }
-    */
     
     
-    
-  
-    
-    
+   
 }
  
 - (void)fbDidlogout {

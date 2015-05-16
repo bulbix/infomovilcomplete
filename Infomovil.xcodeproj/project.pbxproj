@@ -127,7 +127,6 @@
 		0F5EF9D918C96E080013D37B /* WS_ActualizarDireccion.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5EF9D818C96E080013D37B /* WS_ActualizarDireccion.m */; };
 		0F5EF9DC18C97DD20013D37B /* WS_HandlerPromocion.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5EF9DB18C97DD20013D37B /* WS_HandlerPromocion.m */; };
 		0F5EF9DF18C9870F0013D37B /* WS_HandlerGaleria.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5EF9DE18C9870F0013D37B /* WS_HandlerGaleria.m */; };
-		0F605D4518DA73870065C2B2 /* CompartirPublicacionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F605D4318DA73870065C2B2 /* CompartirPublicacionViewController.m */; };
 		0F609D3A18DBC624004DF9EA /* WS_Handler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F609D3918DBC624004DF9EA /* WS_Handler.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		0F616ED418AAA89F00372B4B /* Horarios.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F616ED318AAA89F00372B4B /* Horarios.plist */; };
 		0F616ED718AAB39C00372B4B /* ListaHorarios.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F616ED618AAB39C00372B4B /* ListaHorarios.m */; };
@@ -495,7 +494,6 @@
 		65714ADE1919AF6000BC2647 /* share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65714ADD1919AF6000BC2647 /* share@2x.png */; };
 		659FE6DA18E4D2DD00E3D801 /* WS_HandlerInformacionRegistro.m in Sources */ = {isa = PBXBuildFile; fileRef = 659FE6D918E4D2DD00E3D801 /* WS_HandlerInformacionRegistro.m */; };
 		659FE6DD18E4FC4800E3D801 /* WS_HandlerCambiarPassword.m in Sources */ = {isa = PBXBuildFile; fileRef = 659FE6DC18E4FC4800E3D801 /* WS_HandlerCambiarPassword.m */; };
-		65B38AA11912BE280073DCBD /* CompartirPublicacionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65B38AA01912BE280073DCBD /* CompartirPublicacionViewController.xib */; };
 		65B38AA31912BFDE0073DCBD /* Spanish.strings in Resources */ = {isa = PBXBuildFile; fileRef = 65B38AA21912BFDE0073DCBD /* Spanish.strings */; };
 		65B38AA51912BFEB0073DCBD /* English.strings in Resources */ = {isa = PBXBuildFile; fileRef = 65B38AA41912BFEB0073DCBD /* English.strings */; };
 		65BC0C12191BEE2800067C4D /* PerfilViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65BC0C11191BEE2800067C4D /* PerfilViewController.xib */; };
@@ -894,8 +892,6 @@
 		0F5EF9DB18C97DD20013D37B /* WS_HandlerPromocion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WS_HandlerPromocion.m; sourceTree = "<group>"; };
 		0F5EF9DD18C9870F0013D37B /* WS_HandlerGaleria.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WS_HandlerGaleria.h; sourceTree = "<group>"; };
 		0F5EF9DE18C9870F0013D37B /* WS_HandlerGaleria.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WS_HandlerGaleria.m; sourceTree = "<group>"; };
-		0F605D4218DA73870065C2B2 /* CompartirPublicacionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompartirPublicacionViewController.h; sourceTree = "<group>"; };
-		0F605D4318DA73870065C2B2 /* CompartirPublicacionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompartirPublicacionViewController.m; sourceTree = "<group>"; };
 		0F609D3818DBC624004DF9EA /* WS_Handler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WS_Handler.h; sourceTree = "<group>"; };
 		0F609D3918DBC624004DF9EA /* WS_Handler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WS_Handler.m; sourceTree = "<group>"; };
 		0F616ED318AAA89F00372B4B /* Horarios.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Horarios.plist; sourceTree = "<group>"; };
@@ -1394,7 +1390,6 @@
 		659FE6D918E4D2DD00E3D801 /* WS_HandlerInformacionRegistro.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WS_HandlerInformacionRegistro.m; path = BSKeyboardControls/WS_HandlerInformacionRegistro.m; sourceTree = "<group>"; };
 		659FE6DB18E4FC4800E3D801 /* WS_HandlerCambiarPassword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WS_HandlerCambiarPassword.h; sourceTree = "<group>"; };
 		659FE6DC18E4FC4800E3D801 /* WS_HandlerCambiarPassword.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WS_HandlerCambiarPassword.m; sourceTree = "<group>"; };
-		65B38AA01912BE280073DCBD /* CompartirPublicacionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CompartirPublicacionViewController.xib; sourceTree = "<group>"; };
 		65B38AA21912BFDE0073DCBD /* Spanish.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Spanish.strings; sourceTree = "<group>"; };
 		65B38AA41912BFEB0073DCBD /* English.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = English.strings; sourceTree = "<group>"; };
 		65BC0C11191BEE2800067C4D /* PerfilViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PerfilViewController.xib; sourceTree = "<group>"; };
@@ -2412,9 +2407,6 @@
 				0F850DFE1885BFC60008A0CA /* PublicarViewController.h */,
 				0F850DFF1885BFC60008A0CA /* PublicarViewController.m */,
 				0F850E001885BFC60008A0CA /* PublicarViewController.xib */,
-				0F605D4218DA73870065C2B2 /* CompartirPublicacionViewController.h */,
-				0F605D4318DA73870065C2B2 /* CompartirPublicacionViewController.m */,
-				65B38AA01912BE280073DCBD /* CompartirPublicacionViewController.xib */,
 			);
 			name = Publicar;
 			sourceTree = "<group>";
@@ -3439,7 +3431,6 @@
 				0F9F533218989413000F9FA5 /* cfax@2x.png in Resources */,
 				0F6CBD2819081F540077B065 /* TipsViewController.xib in Resources */,
 				0FC6C6A918DD0C1D009E69A2 /* btnorganizar.png in Resources */,
-				65B38AA11912BE280073DCBD /* CompartirPublicacionViewController.xib in Resources */,
 				BFD292881AB36A140066AF30 /* template3.png in Resources */,
 				0F8B214A18849EDB00F016B3 /* GaleriaPaso2ViewController.xib in Resources */,
 				65714ADC1919AF4900BC2647 /* share.png in Resources */,
@@ -3745,7 +3736,6 @@
 				0F079C221872378D007AFCC2 /* CrearPaso1ViewController.m in Sources */,
 				659FE6DD18E4FC4800E3D801 /* WS_HandlerCambiarPassword.m in Sources */,
 				68B2200619E7636200E7FA7A /* RKTabItem.m in Sources */,
-				0F605D4518DA73870065C2B2 /* CompartirPublicacionViewController.m in Sources */,
 				6501152D191D4707004D90EA /* GTMNSString+URLArguments.m in Sources */,
 				0F8B213F1884733700F016B3 /* GaleriaImagenesViewController.m in Sources */,
 				0FE02825186E48FF007C27B0 /* Infomovil.xcdatamodeld in Sources */,

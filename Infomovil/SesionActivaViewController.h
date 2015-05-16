@@ -16,5 +16,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnSesionOtraCuenta;
 @property (weak, nonatomic) IBOutlet UIImageView *imgBackground;
 
-
+    
+    
 @end

@@ -646,7 +646,7 @@
 }
 
 -(void) resultadoLogin:(NSInteger) idDominioLogin {
-    NSLog(@"RESULTADOLOGIN ME REGRESO EL ID DOMINIO LOGIN : i", idDominioLogin);
+   
     self.datosUsuario = [DatosUsuario sharedInstance];
     if (idDominioLogin > 0) {
         loginExitoso = YES;

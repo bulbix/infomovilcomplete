@@ -11,6 +11,9 @@
 #import "MenuPasosViewController.h"
 #import "MainViewController.h"
 #import "ItemsDominio.h"
+#import "NombrarViewController.h"
+#import "CrearPaso1ViewController.h"
+#import "CompartirViewController.h"
 
 @interface SesionActivaViewController (){}
 @property (nonatomic, strong) AlertView *alerta;
@@ -116,12 +119,28 @@
 #endif
     if (idDominio > 0) {
         NSLog(@"EL IDDOMINIO EN SESION ACTIVA ES: %li", (long)idDominio);
-       
         ((AppDelegate*) [[UIApplication sharedApplication] delegate]).logueado =YES;
+        NSUserDefaults *prefDeepLink = [NSUserDefaults standardUserDefaults];
         self.datosUsuario.existeLogin = YES;
-        MenuPasosViewController *menuPasos = [[MenuPasosViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:nil];
-        [self.navigationController pushViewController:menuPasos animated:YES];
-      
+        if([prefDeepLink integerForKey:@"SELECCIONDEEPLINK"] == 1){
+            NombrarViewController *menuPasos = [[NombrarViewController alloc] initWithNibName:@"NombrarViewController" bundle:nil];
+            [self.navigationController pushViewController:menuPasos animated:YES];
+            
+        }else if([prefDeepLink integerForKey:@"SELECCIONDEEPLINK"] == 2){
+            CrearPaso1ViewController *menuPasos = [[CrearPaso1ViewController alloc] initWithNibName:@"CrearPaso1ViewController" bundle:nil];
+            [self.navigationController pushViewController:menuPasos animated:YES];
+            
+        }else if([prefDeepLink integerForKey:@"SELECCIONDEEPLINK"] == 3){
+            CompartirViewController *menuPasos = [[CompartirViewController alloc] initWithNibName:@"CompartirViewController" bundle:nil];
+            [self.navigationController pushViewController:menuPasos animated:YES];
+        
+        }else{
+            MenuPasosViewController *menuPasos = [[MenuPasosViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:nil];
+            [self.navigationController pushViewController:menuPasos animated:YES];
+        }
+        
+        [prefDeepLink setInteger:0 forKey:@"SELECCIONDEEPLINK"];
+        [prefDeepLink synchronize];
         
     }else {
         NSString *strMensaje;
@@ -237,6 +256,7 @@
     }
     return NO;
 }
+
 
 
 @end
