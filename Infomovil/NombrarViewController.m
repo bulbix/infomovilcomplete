@@ -192,7 +192,8 @@
     self.popUpCenter.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
     self.btnPublicar.layer.cornerRadius = 10;
     
-   // [self.nombreDominio becomeFirstResponder];
+    self.MensajeDisponible.text = NSLocalizedString(@"estaDisponiblePublica", nil);
+    [self.btnPublicar setTitle:NSLocalizedString(@"publicaTuSitioWebAccion", nil) forState:UIControlStateNormal];
     
 }
 
@@ -655,7 +656,7 @@
         [self.etiquetaEstatica setFrame:CGRectMake(10, 62, 300, 24)];
         [self.nombreDelDominio setFrame:CGRectMake(10, 81, 300, 25)];
         [self.MensajeDisponible setFrame:CGRectMake(10, 98, 300, 85)];
-        [self.publicarBtn setFrame:CGRectMake(30, 200, 260, 45)];
+        [self.btnPublicar setFrame:CGRectMake(30, 200, 260, 45)];
         [self.cerrarBtn setFrame:CGRectMake(240, 20, 46, 30)];
     }else{
         [self.popUpView setFrame:CGRectMake(0, 0, 320, 568)];

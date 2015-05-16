@@ -281,6 +281,8 @@ int opcionButton = 0 ;
 	
         [self enviarEventoGAconCategoria:@"Ver" yEtiqueta:@"Plan Pro"];
     }
+    self.beneficiosPlanPro.text = NSLocalizedString(@"BeneficiosCuentaPlanPro", Nil);
+    self.subtituloPlanPro.text = NSLocalizedString(@"subtituloCuentaPlanPro", Nil);
 }
 
 

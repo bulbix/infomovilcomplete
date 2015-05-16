@@ -532,6 +532,7 @@
 "misitioURL"="mysite";
 "publicarTwitter" = "Your latest Tweets are posted on your site.";
 "msjCompartirPublicar" = "In order to share your website you must publish it first. Would you like to publish it now?";
+"msjEstadisticasPublicar" = "To see statistics on your website you must publish it first. Would you like to publish it now?";
 "msjDominioPublicar"="Publish your website";
 "etiquetaDominioTel" ="www.mysite.tel";
 "etiquetaRecursoNormal" ="www.infomovil.com/mysite";
@@ -546,7 +547,9 @@
 "yaTienesCuenta" = "Already have an account? Login";
 "estaDisponiblePublica" = "Available!";
 "publicaTuSitioWeb" = "Publish your website.";
-"publicaTuSitioWebAccion" = "publish!";
+"publicaTuSitioWebAccion" = "Publish!";
 "videoDesconocido"="We found no results check your words or use different";
 "errorCambioPassword" = "Could not upgrade, try again";
-"necesitaEmail" = "A valid email is required to reset the password.";
+"necesitaEmail" = "You may change your password in Facebook!";
+"eligePlanCuenta" ="Choose your plan and purchase plan pro" ;
+"publicarNombrar" = "!Publish¡";

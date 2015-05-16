@@ -19,7 +19,7 @@
 #import "MenuPasosViewController.h"
 #import "AppsFlyerTracker.h"
 #import "MainViewController.h"
-
+#import "NombrarViewController.h"
 
 @interface EstadisticasViewController () <PNChartDelegate> {
     NSInteger opcionConsulta;
@@ -28,6 +28,7 @@
     BOOL visitantesTotales;
     PNLineChart *chartLine;
     BOOL errorToken;
+    BOOL dominioNoPublicado;
 }
 
 @property (nonatomic, strong) AlertView *alertActivity;
@@ -40,6 +41,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        dominioNoPublicado = NO;
     }
     return self;
 }
@@ -47,6 +49,8 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     self.guardarVista = YES;
+    
+    
     
     //MBC
     if(IS_STANDARD_IPHONE_6_PLUS){
@@ -75,13 +79,22 @@
     [self.botonCambioEstadisticas setTitleTextAttributes:highlightedAttributes forState:UIControlStateHighlighted];
     botonPulsado = 0;
     opcionConsulta = 2;
-    if ([CommonUtils hayConexion]) {
-        [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
-        [self performSelectorInBackground:@selector(consultaVisitas) withObject:Nil];
-    }
-    else {
-        AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+    self.datosUsuario = [DatosUsuario sharedInstance];
+    if(self.datosUsuario.dominio == nil || [self.datosUsuario.dominio isEqualToString:@""] || (self.datosUsuario.dominio == (id)[NSNull null]) || [CommonUtils validarEmail:self.datosUsuario.dominio] || [self.datosUsuario.dominio isEqualToString:@"(null)"]){
+        AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"msjEstadisticasPublicar", Nil) andAlertViewType:AlertViewTypeQuestion];
         [alert show];
+        dominioNoPublicado = YES;
+        
+    }else{
+        if ([CommonUtils hayConexion] ) {
+            [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
+            [self performSelectorInBackground:@selector(consultaVisitas) withObject:Nil];
+        }
+        else {
+            AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+            [alert show];
+        }
+    
     }
     errorToken = NO;
     
@@ -115,6 +128,7 @@
 
 -(void) viewWillAppear:(BOOL)animated {
 
+    
     if(IS_IPAD){
         [self.botonEstadisticas setFrame:CGRectMake(0, 10, 88, 80)];
     }else{
@@ -243,10 +257,25 @@
 }
 
 -(void) accionSi {
-    CuentaViewController *cuenta = [[CuentaViewController alloc] initWithNibName:@"CuentaViewController" bundle:Nil];
-    [cuenta setRegresarAnterior:YES];
-    [self.navigationController pushViewController:cuenta animated:YES];
+    if(dominioNoPublicado == YES){
+        NombrarViewController *comparte = [[NombrarViewController alloc] initWithNibName:@"NombrarViewController" bundle:Nil];
+        [self.navigationController pushViewController:comparte animated:YES];
+        dominioNoPublicado = NO;
+    }else{
+        CuentaViewController *cuenta = [[CuentaViewController alloc] initWithNibName:@"CuentaViewController" bundle:Nil];
+        [cuenta setRegresarAnterior:YES];
+        [self.navigationController pushViewController:cuenta animated:YES];
+    }
+    
 }
+
+-(void) accionNo {
+    MenuPasosViewController *comparte = [[MenuPasosViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
+    [self.navigationController pushViewController:comparte animated:YES];
+    dominioNoPublicado = NO;
+}
+
+
 -(void) accionAceptar {
     if (errorToken) {
         [StringUtils terminarSession];
@@ -445,12 +474,13 @@
         [NSThread sleepForTimeInterval:1];
         [self.alertActivity hide];
     }
-    AlertView *alertAct = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
+   /* AlertView *alertAct = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
     [alertAct show];
     [StringUtils terminarSession];
     
     MainViewController *inicio = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:Nil];
     [self.navigationController pushViewController:inicio animated:YES];
+    */
 }
 
 

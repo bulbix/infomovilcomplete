@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NombrarViewController">
@@ -12,7 +12,6 @@
                 <outlet property="btnPublicar" destination="Efw-V2-S0t" id="bml-yj-P7F"/>
                 <outlet property="cerrarBtn" destination="uKF-fY-MM8" id="UkQ-um-nfw"/>
                 <outlet property="cerrarPopUp" destination="uKF-fY-MM8" id="X1h-FQ-aQh"/>
-                <outlet property="estaDisponibleBtn" destination="Xdn-Mh-pag" id="LIr-wM-a43"/>
                 <outlet property="etiquetaEstatica" destination="O8a-s0-1q4" id="eY1-Z9-MAp"/>
                 <outlet property="label1" destination="hyv-hx-8GE" id="PLK-Io-T8m"/>
                 <outlet property="label2" destination="k1x-hr-Dhm" id="hc7-6O-dvF"/>
@@ -23,7 +22,6 @@
                 <outlet property="nombreDominio" destination="eJQ-jY-weI" id="5B7-TU-Mx0"/>
                 <outlet property="popUpCenter" destination="cHb-VD-QrX" id="srX-dE-ed9"/>
                 <outlet property="popUpView" destination="MCP-tK-KRt" id="0kh-mm-01h"/>
-                <outlet property="publicarBtn" destination="Efw-V2-S0t" id="c1f-5W-uFY"/>
                 <outlet property="scroll" destination="oOj-Bw-2F4" id="AOl-Rt-cbY"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>

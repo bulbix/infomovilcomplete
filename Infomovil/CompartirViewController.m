@@ -34,8 +34,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
-        self.datosUsuario = [DatosUsuario sharedInstance];
     }
     return self;
 }
@@ -84,12 +82,10 @@
 	}
 	
     UIImage *image = [UIImage imageNamed:@"btnregresar.png"];
-    
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [backButton setFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
     [backButton setImage:image forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(regresar:) forControlEvents:UIControlEventTouchUpInside];
-    
     UIBarButtonItem *buttonBack = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     self.navigationItem.leftBarButtonItem = buttonBack;
     if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
@@ -141,13 +137,7 @@
     
     }
     
-   
-    
-    
-    
-    
-    
-    
+  
 	
 	self.label1.text = NSLocalizedString(@"compartirEtiqueta1", nil);
 	self.label2.text = NSLocalizedString(@"compartirLabel2", nil);
@@ -438,7 +428,6 @@
 		if (![shareBuilder2 open]) {
 		}
 	
-	//[[AppsFlyerTracker sharedTracker] trackEvent:@"Compartir Google+" withValue:@""];
     [self enviarEventoGAconCategoria:@"Compartir" yEtiqueta:@"Google+"];
 }
 
@@ -468,19 +457,7 @@
 - (void)finishedSharing:(BOOL)shared {
 
 }
-/*
-- (void)finishedWithAuth: (GTMOAuth2Authentication *)auth
-                   error: (NSError *) error
-{
 
-	if (error) {
-		// Haz algún error de control aquí.
-	} else {
-		
-	}
-
-}
-*/
 -(void)accionSi{
     NombrarViewController *comparte = [[NombrarViewController alloc] initWithNibName:@"NombrarViewController" bundle:Nil];
     [self.navigationController pushViewController:comparte animated:YES];

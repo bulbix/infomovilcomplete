@@ -125,7 +125,8 @@
         self.arregloVisitas = [[NSMutableArray alloc] init];
         [parser setDelegate:self];
         if ([parser parse]) {
-            if (self.token == nil) {
+ // IRC //
+            if (self.token == nil  ) {
                 [self.wSHandlerDelegate errorToken];
             }
                 DatosUsuario *datos = [DatosUsuario sharedInstance];

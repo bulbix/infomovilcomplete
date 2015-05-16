@@ -105,7 +105,7 @@
         
         self.seccionUnoTItulo.frame = CGRectMake(40, 10, 520, 60);
         [self.seccionUnoTItulo setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
-        self.seccionUnoLabel1.frame = CGRectMake(40, 80, 520, 60);
+        self.seccionUnoLabel1.frame = CGRectMake(40, 80, 520, 100);
         self.seccionUnoLabel2.frame = CGRectMake(40, 150, 520, 60);
         self.seccionUnoLabel3.frame =CGRectMake(40, 220, 520, 60);
         self.seccionUnoLabel4.frame = CGRectMake(40, 290, 520, 60);

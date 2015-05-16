@@ -572,6 +572,7 @@
 		BF66CE151A966FE500EA6D00 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF66CE141A966FE500EA6D00 /* FacebookSDK.framework */; };
 		BF66CE181A96709D00EA6D00 /* FacebookSDKOverrides.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = BF66CE161A96709D00EA6D00 /* FacebookSDKOverrides.bundle */; };
 		BF66CE191A96709D00EA6D00 /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF66CE171A96709D00EA6D00 /* FBAudienceNetwork.framework */; };
+		BF7A010E1B06BBED006E7EA7 /* imagenesWeb in Resources */ = {isa = PBXBuildFile; fileRef = BF7A010D1B06BBED006E7EA7 /* imagenesWeb */; };
 		BF891C651AB9F33D0082C107 /* MenuPasosViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF891C641AB9F33D0082C107 /* MenuPasosViewController.xib */; };
 		BF891C741ABA75AB0082C107 /* tempOff.png in Resources */ = {isa = PBXBuildFile; fileRef = BF891C6E1ABA75AB0082C107 /* tempOff.png */; };
 		BF891C751ABA75AB0082C107 /* tempOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF891C6F1ABA75AB0082C107 /* tempOff@2x.png */; };
@@ -1491,6 +1492,7 @@
 		BF66CE141A966FE500EA6D00 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = Infomovil/FacebookSDK.framework; sourceTree = "<group>"; };
 		BF66CE161A96709D00EA6D00 /* FacebookSDKOverrides.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FacebookSDKOverrides.bundle; path = Infomovil/FacebookSDKOverrides.bundle; sourceTree = "<group>"; };
 		BF66CE171A96709D00EA6D00 /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBAudienceNetwork.framework; path = Infomovil/FBAudienceNetwork.framework; sourceTree = "<group>"; };
+		BF7A010D1B06BBED006E7EA7 /* imagenesWeb */ = {isa = PBXFileReference; lastKnownFileType = folder; path = imagenesWeb; sourceTree = "<group>"; };
 		BF891C641AB9F33D0082C107 /* MenuPasosViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuPasosViewController.xib; sourceTree = "<group>"; };
 		BF891C6E1ABA75AB0082C107 /* tempOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tempOff.png; path = Infomovil/imagenesInfomovil/Templates/tempOff.png; sourceTree = SOURCE_ROOT; };
 		BF891C6F1ABA75AB0082C107 /* tempOff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tempOff@2x.png"; path = "Infomovil/imagenesInfomovil/Templates/tempOff@2x.png"; sourceTree = SOURCE_ROOT; };
@@ -1872,6 +1874,7 @@
 		0F5CFA49189733E100D27B2E /* imagenesInfomovil */ = {
 			isa = PBXGroup;
 			children = (
+				BF7A010D1B06BBED006E7EA7 /* imagenesWeb */,
 				BFD29D1F1AC2139D008EADB9 /* iPad */,
 				BF63A1881AB3C24A0077A5C2 /* bullets */,
 				BFD292661AB36A140066AF30 /* templates */,
@@ -3462,6 +3465,7 @@
 				655F6C2818EDC2CF00C4347A /* NBbermellon.png in Resources */,
 				BFB69B321A83D0BD0022107C /* FeedbackViewController.xib in Resources */,
 				0F680EF818ECD79300A02347 /* micuenta.png in Resources */,
+				BF7A010E1B06BBED006E7EA7 /* imagenesWeb in Resources */,
 				0FCB0F5F18E2137600C37A37 /* compartirsms.png in Resources */,
 				BF15BD651AA54DD2009A6398 /* beneficios-es@3x.png in Resources */,
 				BF15BD641AA54DD2009A6398 /* beneficios-es@2x.png in Resources */,

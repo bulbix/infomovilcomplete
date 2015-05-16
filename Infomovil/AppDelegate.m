@@ -269,6 +269,15 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
     [[Appboy sharedInstance] registerApplication:application
                     didReceiveRemoteNotification:userInfo];
 
+   /* if([[userInfo objectForKey:@"ab_uri"] isEqualToString:@"infomovil://Estilo"]){
+        ElegirPlantillaViewController *comparte = [[ElegirPlantillaViewController alloc] initWithNibName:@"ElegirPlantillaViewController" bundle:Nil];
+        [self.navigationController pushViewController:comparte animated:YES];
+    }
+    */
+    
+    
+    
+  
     
     
 }
@@ -278,10 +287,10 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
     [session closeAndClearTokenInformation];
     [session close];
     [FBSession setActiveSession:nil];
-    NSHTTPCookieStorage* cookies = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-    NSArray* facebookCookies = [cookies cookiesForURL:[NSURL         URLWithString:@"https://facebook.com/"]];
-    [StringUtils deleteFile];
-    for (NSHTTPCookie* cookie in facebookCookies) {
+        NSHTTPCookieStorage* cookies = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+        NSArray* facebookCookies = [cookies cookiesForURL:[NSURL         URLWithString:@"https://facebook.com/"]];
+        [StringUtils deleteFile];
+        for (NSHTTPCookie* cookie in facebookCookies) {
         [cookies deleteCookie:cookie];
     }
 }
