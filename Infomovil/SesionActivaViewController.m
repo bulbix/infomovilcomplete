@@ -54,7 +54,7 @@
     
     
     NSUserDefaults *prefSesion = [NSUserDefaults standardUserDefaults];
-    if([prefSesion integerForKey:@"intSesionActiva"] == 1 && [[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0){
+    if([prefSesion integerForKey:@"intSesionActiva"] == 1 && [[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0){
         NSString *passLogin = nil;
         NSString *emailLogin = nil;
         WS_HandlerLogin *login = [[WS_HandlerLogin alloc] init];

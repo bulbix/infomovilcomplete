@@ -43,6 +43,10 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    // Se limpian los datos al entrar a la aplicación //
+    self.datosUsuario = [DatosUsuario sharedInstance];
+    [self.datosUsuario eliminarDatos];
    
     UILocalNotification *notification = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
     if (notification) {
@@ -95,7 +99,7 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
     self.window.backgroundColor = [UIColor whiteColor];
     
     NSUserDefaults *prefSesion = [NSUserDefaults standardUserDefaults];
-    if([prefSesion integerForKey:@"intSesionActiva"] == 1 && [[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0){
+    if([prefSesion integerForKey:@"intSesionActiva"] == 1 && [[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0){
         SesionActivaViewController *inicioController = [[SesionActivaViewController alloc] initWithNibName:@"SesionActiva" bundle:nil];
         self.navigationController = [[UINavigationController alloc] initWithRootViewController:inicioController];
     }else{
@@ -120,14 +124,7 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
                                       completionHandler:^(FBSession *session, FBSessionState state, NSError *error) {
                                       }];
     }
-	
-   
-    
-    //[self fbDidlogout];
-   // Se limpian los datos al entrar a la aplicación //
-    self.datosUsuario = [DatosUsuario sharedInstance];
-    [self.datosUsuario eliminarDatos];
-  
+
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     
     return YES;
@@ -285,7 +282,7 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
     {
         
         NSUserDefaults *prefSesion = [NSUserDefaults standardUserDefaults];
-        if([prefSesion integerForKey:@"intSesionActiva"] == 1 && [[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0){
+        if([prefSesion integerForKey:@"intSesionActiva"] == 1 && [[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0){
         
         if([[userInfo objectForKey:@"ab_uri"] isEqualToString:@"infomovil://Nombrar_Sitio"]){
             SesionActivaViewController *sesionActiva = [[SesionActivaViewController alloc] initWithNibName:@"SesionActiva" bundle:Nil];
