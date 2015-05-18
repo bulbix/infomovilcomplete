@@ -700,7 +700,7 @@
 
 - (void)loginViewFetchedUserInfo:(FBLoginView *)loginView
                             user:(id<FBGraphUser>)user {
-    NSLog(@"LOGINVIEWFETCHUSERINFO tiene de id : %@", [user objectForKey:@"id"]);
+    NSLog(@"LOGINVIEWFETCHUSERINFO tiene de id : %@ y el nombre es: %@ y como user id es: %@", [user objectForKey:@"id"], [user objectForKey:@"name"], [user objectForKey:@"user_id"]);
     if([[user objectForKey:@"email"] isEqualToString:@""] || [user objectForKey:@"email"] == nil){
         self.datosUsuario.emailUsuario = [user objectForKey:@"id"];
     }else{

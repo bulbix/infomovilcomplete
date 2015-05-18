@@ -26,7 +26,7 @@
 #import "NombrarViewController.h"
 #import "AppsFlyerTracker.h"
 #import "AppDelegate.h"
-
+#import "MenuPasosViewController.h"
 
 @interface CrearPaso1ViewController (){
 	AlertView * alertaVideo;
@@ -108,7 +108,14 @@
 			editados++;
 		}
 	}
-	
+    UIImage *image = [UIImage imageNamed:@"btnregresar.png"];
+    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [backButton setFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
+    [backButton setImage:image forState:UIControlStateNormal];
+    [backButton addTarget:self action:@selector(regresar:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *buttonBack = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+    self.navigationItem.leftBarButtonItem = buttonBack;
 
 	[self.vistaInferior setHidden:NO];
     
@@ -149,6 +156,16 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(IBAction)regresar:(id)sender {
+    self.datosUsuario.dominio = @"";
+    [[self view] endEditing:YES];
+    
+    MenuPasosViewController *comparte = [[MenuPasosViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
+    [self.navigationController pushViewController:comparte animated:YES];
+    
+}
+
 
 #pragma mark - UITableView Datasource
 

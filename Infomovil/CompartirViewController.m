@@ -200,56 +200,74 @@
 
 -(IBAction)regresar:(id)sender {
 
-		[self.navigationController popToViewController:((AppDelegate *)[[UIApplication sharedApplication] delegate]).ultimoView
-											  animated:YES];
+    MenuPasosViewController *comparte = [[MenuPasosViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
+    [self.navigationController pushViewController:comparte animated:YES];
 
 }
 
 - (IBAction)compartirFacebook:(UIButton *)sender
 {
-    [self publishWithWebDialog];
-    [self enviarEventoGAconCategoria:@"Compartir" yEtiqueta:@"Facebook"];
+    if ([CommonUtils hayConexion]) {
+        [self publishWithWebDialog];
+        [self enviarEventoGAconCategoria:@"Compartir" yEtiqueta:@"Facebook"];
+    } else{
+        AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+        [alert show];
+    
+    }
 }
 
 
 - (void) publishWithWebDialog {
-    NSString *mensaje = nil;
-    if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-        mensaje =[NSString stringWithFormat: @"I just created a website with www.infomovil.com.\nCheck it out and help us grow!\n%@",self.dominioParaCompartir];
-    }else{
-        mensaje =[NSString stringWithFormat: @"Acabo de crear un sitio web con www.infomovil.com. ¡Visítalo y ayúdanos a crecer!\n%@",self.dominioParaCompartir];
-    }
-    NSMutableDictionary *params =
-    [NSMutableDictionary dictionaryWithObjectsAndKeys:
-     @"Infomovil", @"name",
-     @"www.infomovil.com", @"caption",
-     mensaje, @"description",
-     @"www.infomovil.com/", @"link",
-     @"http://info-movil.com:8080/templates/Index/images/icn_infomovil_200.png", @"picture",
-     nil];
-   
-    [FBWebDialogs presentFeedDialogModallyWithSession:nil
-                                           parameters:params
-                                              handler:
-     ^(FBWebDialogResult result, NSURL *resultURL, NSError *error) {
-         if (error) {
-             [self checkErrorMessage:error];
-         } else {
-             if (result == FBWebDialogResultDialogNotCompleted) {
+    [FBSession openActiveSessionWithReadPermissions:nil
+                                       allowLoginUI:YES
+                                  completionHandler:^(FBSession *session,
+                                                      FBSessionState state,
+                                                      NSError *error) {
+                                      
+                                      if (session.isOpen) {
+                                          NSString *mensaje = nil;
+                                          if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
+                                              mensaje =[NSString stringWithFormat: @"I just created a website with www.infomovil.com.\nCheck it out and help us grow!\n%@",self.dominioParaCompartir];
+                                          }else{
+                                              mensaje =[NSString stringWithFormat: @"Acabo de crear un sitio web con www.infomovil.com. ¡Visítalo y ayúdanos a crecer!\n%@",self.dominioParaCompartir];
+                                          }
+                                          NSMutableDictionary *params =
+                                          [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                           @"Infomovil", @"name",
+                                           @"www.infomovil.com", @"caption",
+                                           mensaje, @"description",
+                                           @"www.infomovil.com/", @"link",
+                                           @"http://info-movil.com:8080/templates/Index/images/icn_infomovil_200.png",@"picture",
+                                           nil];
+                                          [FBWebDialogs presentFeedDialogModallyWithSession:nil
+                                                                                 parameters:params
+                                                                                    handler:
+                                           ^(FBWebDialogResult result, NSURL *resultURL, NSError *error) {
+                                               if (error) {
+                                                   [self checkErrorMessage:error];
+                                               } else {
+                                                   if (result == FBWebDialogResultDialogNotCompleted) {
 #if DEBUG
-                 NSLog(@"El usuario cancelo el post de face");
+                                                       NSLog(@"El usuario cancelo el post de face");
 #endif
-             } else {
-                 NSDictionary *urlParams = [self parseURLParams:[resultURL query]];
-                 if (![urlParams valueForKey:@"post_id"]) {
-                   //  [self checkErrorMessage: error];
-                 } else {
-                     [self showAlert];
-                 }
-             }
-         }
-     }];
+                                                   } else {
+                                                       // Handle the publish feed callback
+                                                       NSDictionary *urlParams = [self parseURLParams:[resultURL query]];
+                                                       if (![urlParams valueForKey:@"post_id"]) {
+                                                           //[self checkErrorMessage2: error];
+                                                       } else {
+                                                           // User clicked the Share button
+                                                           //[self checkPostId:urlParams];
+                                                           [self showAlert];
+                                                       }
+                                                   }
+                                               }
+                                           }];
+                                          
+                                      }}];
 }
+
 
 - (void)showAlert{
     
@@ -297,38 +315,40 @@
 }
 
 - (IBAction)compartirTwitter:(UIButton *)sender {
-//    NSString *message = NSLocalizedString(@"mensajeTwitter", Nil);
-    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]) {
-        [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
-		[self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
-        SLComposeViewController *controller = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
-        controller.completionHandler = ^(SLComposeViewControllerResult result){
+    if ([CommonUtils hayConexion]) {
+        if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]) {
+            SLComposeViewController *controller = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+            controller.completionHandler = ^(SLComposeViewControllerResult result){
 #if DEBUG
-            if (result == SLComposeViewControllerResultCancelled) {
-                NSLog(@"FB sharing cancelled");
-            } else {
-                NSLog(@"FB sharing successful");
-            }
+                if (result == SLComposeViewControllerResultCancelled) {
+                    NSLog(@"FB sharing cancelled");
+                } else {
+                    NSLog(@"FB sharing successful");
+                }
 #endif
-            [self dismissViewControllerAnimated:YES completion:Nil];
-        };
-		if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-			[controller setInitialText:[NSString stringWithFormat:@"I just created a website with www.infomovil.com.\nCheck it out and help us grow!\n%@",self.dominioParaCompartir]];
-		}else{
-			[controller setInitialText:[NSString stringWithFormat:@"Acabo de crear un sitio web con www.infomovil.com.\n¡Visítalo y ayúdanos a crecer!\n%@",self.dominioParaCompartir]];
-		}
-       
-        [self presentViewController:controller animated:YES completion:nil];
+                [self dismissViewControllerAnimated:YES completion:Nil];
+            };
+            if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
+                [controller setInitialText:[NSString stringWithFormat:@"I just created a website with www.infomovil.com.\nCheck it out and help us grow!\n%@",self.dominioParaCompartir]];
+            }else{
+                [controller setInitialText:[NSString stringWithFormat:@"Acabo de crear un sitio web con www.infomovil.com.\n¡Visítalo y ayúdanos a crecer!\n%@",self.dominioParaCompartir]];
+            }
+            
+            [self presentViewController:controller animated:YES completion:nil];
+        }
+        else {
+            if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat: @"https://twitter.com/intent/tweet?text=I%%20just%%20created%%20a%%20mobile%%20website%%20with%%20www.infomovil.com.%%0ACheck%%20it%%20out%%20and%%20help%%20us%%20grow%%0A%@" ,self.dominioParaCompartir]]];
+            }else{
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat: @"https://twitter.com/intent/tweet?text=Acabo%%20de%%20crear%%20un%%20sitio%%20web%%20movil%%20con%%20www.infomovil.com.%%0AVisitalo%%20y%%20ayudanos%%20a%%20crecer%%0A%@" ,self.dominioParaCompartir]]];
+            }
+        }
+        
+    }else{
+        AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+        [alert show];
+        
     }
-    else {
-		if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-			[[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat: @"www.twitter.com/intent/tweet?text=I%%20just%%20created%%20a%%20mobile%%20website%%20with%%20infomovil.com.%%0ACheck%%20it%%20out%%20and%%20help%%20us%%20grow%%0A%@" ,self.dominioParaCompartir]]];
-		}else{
-			[[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat: @"www.twitter.com/intent/tweet?text=Acabo%%20de%%20crear%%20un%%20sitio%%20web%%20movil%%20con%%20infomovil.com.%%0AVisitalo%%20y%%20ayudanos%%20a%%20crecer%%0A%@" ,self.dominioParaCompartir]]];
-		}
-    }
-	
-	//[[AppsFlyerTracker sharedTracker] trackEvent:@"Compartir Twitter" withValue:@""];
     [self enviarEventoGAconCategoria:@"Compartir" yEtiqueta:@"Twitter"];
 }
 

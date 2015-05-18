@@ -49,26 +49,30 @@
         }
         self.datosUsuario.itemsDominio = items;
     }
-    
-    
     [self.btnReintentarConexion setEnabled:YES];
-    NSString *passLogin = nil;
-    NSString *emailLogin = nil;
-    NSUserDefaults *prefSesion = [NSUserDefaults standardUserDefaults];
     
-    WS_HandlerLogin *login = [[WS_HandlerLogin alloc] init];
-    [login setLoginDelegate:self];
-    if ( [prefSesion integerForKey:@"intSesionFacebook"] == 1){
-        [login setRedSocial:@"Facebook"];
+    
+    
+    NSUserDefaults *prefSesion = [NSUserDefaults standardUserDefaults];
+    if([prefSesion integerForKey:@"intSesionActiva"] == 1 && [[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0){
+        NSString *passLogin = nil;
+        NSString *emailLogin = nil;
+        WS_HandlerLogin *login = [[WS_HandlerLogin alloc] init];
+        [login setLoginDelegate:self];
+        if ( [prefSesion integerForKey:@"intSesionFacebook"] == 1){
+            [login setRedSocial:@"Facebook"];
+        }
+        passLogin = [prefSesion stringForKey:@"strSesionPass"];
+        emailLogin = [prefSesion stringForKey:@"strSesionUser"];
+        NSLog(@"EL USUARIO Y PASSWORD QUE ESTOY BUSCANDO SON: %@ Y %@", passLogin,emailLogin);
+        [login obtieneLogin:emailLogin conPassword:passLogin];
+        [self performSelectorOnMainThread:@selector(mostrarActividad) withObject:nil waitUntilDone:YES];
+    }else{
+        MainViewController *inicioController = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
+        [self.navigationController pushViewController:inicioController animated:YES];
     }
     
-    passLogin = [prefSesion stringForKey:@"strSesionPass"];
-    emailLogin = [prefSesion stringForKey:@"strSesionUser"];
     
-    NSLog(@"EL USUARIO Y PASSWORD QUE ESTOY BUSCANDO SON: %@ Y %@", passLogin,emailLogin);
-    
-    [login obtieneLogin:emailLogin conPassword:passLogin];
-    [self performSelectorOnMainThread:@selector(mostrarActividad) withObject:nil waitUntilDone:YES];
     [self mostrarLogo];
     [self.vistaInferior setHidden:YES];
     [self.navigationController.navigationBar setHidden:YES];
@@ -123,8 +127,10 @@
         NSUserDefaults *prefDeepLink = [NSUserDefaults standardUserDefaults];
         self.datosUsuario.existeLogin = YES;
         if([prefDeepLink integerForKey:@"SELECCIONDEEPLINK"] == 1){
-            NombrarViewController *menuPasos = [[NombrarViewController alloc] initWithNibName:@"NombrarViewController" bundle:nil];
-            [self.navigationController pushViewController:menuPasos animated:YES];
+           if (self.datosUsuario.dominio && ![self.datosUsuario.dominio isEqualToString:@""] && ! (self.datosUsuario.dominio == (id)[NSNull null]) && ![CommonUtils validarEmail:self.datosUsuario.dominio] && ![self.datosUsuario.dominio isEqualToString:@"(null)"] ){
+               NombrarViewController *menuPasos = [[NombrarViewController alloc] initWithNibName:@"NombrarViewController" bundle:nil];
+               [self.navigationController pushViewController:menuPasos animated:YES];
+           }
             
         }else if([prefDeepLink integerForKey:@"SELECCIONDEEPLINK"] == 2){
             CrearPaso1ViewController *menuPasos = [[CrearPaso1ViewController alloc] initWithNibName:@"CrearPaso1ViewController" bundle:nil];

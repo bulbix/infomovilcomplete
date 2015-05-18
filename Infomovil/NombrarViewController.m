@@ -293,7 +293,9 @@
 -(IBAction)regresar:(id)sender {
     self.datosUsuario.dominio = @"";
     [[self view] endEditing:YES];
-    [self.navigationController popViewControllerAnimated:YES];
+   
+    MenuPasosViewController *comparte = [[MenuPasosViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
+    [self.navigationController pushViewController:comparte animated:YES];
 
  }
 
@@ -487,7 +489,7 @@
             [self navigationController].navigationBarHidden = NO;
             MenuPasosViewController *comparte = [[MenuPasosViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
             [self.navigationController pushViewController:comparte animated:YES];
-            // [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
+          
         }
         else if ([resultado isEqualToString:@"Error Publicar"]) {
             statusRespuesta = RespuestaStatusPendiente2;

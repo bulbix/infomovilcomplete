@@ -277,14 +277,17 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    NSLog(@"RECIBI UNA NOTIFICACIÓN!!!! : %@",[userInfo description]);
+   
     [[Appboy sharedInstance] registerApplication:application
                     didReceiveRemoteNotification:userInfo];
     NSLog(@"La aplicación se encuentra en : %ld",(long)application.applicationState);
     if ( application.applicationState == UIApplicationStateInactive || application.applicationState == UIApplicationStateBackground  )
     {
         
-        if([[userInfo objectForKey:@"ab_uri"] isEqualToString:@"infomovil://Nombre_Sitio"]){
+        NSUserDefaults *prefSesion = [NSUserDefaults standardUserDefaults];
+        if([prefSesion integerForKey:@"intSesionActiva"] == 1 && [[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0){
+        
+        if([[userInfo objectForKey:@"ab_uri"] isEqualToString:@"infomovil://Nombrar_Sitio"]){
             SesionActivaViewController *sesionActiva = [[SesionActivaViewController alloc] initWithNibName:@"SesionActiva" bundle:Nil];
             NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
             [defaults setInteger:1 forKey:@"SELECCIONDEEPLINK"];
@@ -306,7 +309,14 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
             [self.navigationController pushViewController:sesionActiva animated:YES];
     
         }
-        
+            
+    }else{
+        MainViewController *inicioController = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
+            [self.navigationController pushViewController:inicioController animated:YES];
+        }
+            
+            
+            
     }
     
     
