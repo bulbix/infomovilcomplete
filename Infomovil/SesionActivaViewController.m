@@ -127,9 +127,13 @@
         NSUserDefaults *prefDeepLink = [NSUserDefaults standardUserDefaults];
         self.datosUsuario.existeLogin = YES;
         if([prefDeepLink integerForKey:@"SELECCIONDEEPLINK"] == 1){
-           if (self.datosUsuario.dominio && ![self.datosUsuario.dominio isEqualToString:@""] && ! (self.datosUsuario.dominio == (id)[NSNull null]) && ![CommonUtils validarEmail:self.datosUsuario.dominio] && ![self.datosUsuario.dominio isEqualToString:@"(null)"] ){
+           if ([self.datosUsuario.dominio isEqualToString:@""] || (self.datosUsuario.dominio == (id)[NSNull null]) || [CommonUtils validarEmail:self.datosUsuario.dominio] || [self.datosUsuario.dominio isEqualToString:@"(null)"] || [CommonUtils validarIdFacebook:self.datosUsuario.dominio] ){
                NombrarViewController *menuPasos = [[NombrarViewController alloc] initWithNibName:@"NombrarViewController" bundle:nil];
                [self.navigationController pushViewController:menuPasos animated:YES];
+           }else{
+               MenuPasosViewController *menuPasos = [[MenuPasosViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:nil];
+               [self.navigationController pushViewController:menuPasos animated:YES];
+           
            }
             
         }else if([prefDeepLink integerForKey:@"SELECCIONDEEPLINK"] == 2){
@@ -137,8 +141,13 @@
             [self.navigationController pushViewController:menuPasos animated:YES];
             
         }else if([prefDeepLink integerForKey:@"SELECCIONDEEPLINK"] == 3){
-            CompartirViewController *menuPasos = [[CompartirViewController alloc] initWithNibName:@"CompartirViewController" bundle:nil];
-            [self.navigationController pushViewController:menuPasos animated:YES];
+            if ([self.datosUsuario.dominio isEqualToString:@""] || (self.datosUsuario.dominio == (id)[NSNull null]) || [CommonUtils validarEmail:self.datosUsuario.dominio] || [self.datosUsuario.dominio isEqualToString:@"(null)"] || [CommonUtils validarIdFacebook:self.datosUsuario.dominio] ){
+                MenuPasosViewController *menuPasos = [[MenuPasosViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:nil];
+                [self.navigationController pushViewController:menuPasos animated:YES];
+            }else{
+                CompartirViewController *menuPasos = [[CompartirViewController alloc] initWithNibName:@"CompartirViewController" bundle:nil];
+                [self.navigationController pushViewController:menuPasos animated:YES];
+            }
         
         }else{
             MenuPasosViewController *menuPasos = [[MenuPasosViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:nil];
