@@ -159,6 +159,7 @@
         
     }else {
         NSString *strMensaje;
+        
         switch (idDominio) {
             case -5:
                 strMensaje = NSLocalizedString(@"errorLogin", Nil);
