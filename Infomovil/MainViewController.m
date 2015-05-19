@@ -509,18 +509,35 @@
             buscandoSesion = NO;
             [NSThread sleepForTimeInterval:1];
             [self.alerta hide];
+        if([self.txtEmail.text isEqualToString:@""] || self.txtEmail.text == nil){
+        [[Appboy sharedInstance] changeUser:self.datosUsuario.auxStrSesionUser];
+        [Appboy sharedInstance].user.email = self.datosUsuario.auxStrSesionUser;
+        if([self.datosUsuario.tipoDeUsuario isEqualToString:@"canal"]){
+            [[Appboy sharedInstance].user setCustomAttributeWithKey:@"canal" andStringValue:self.datosUsuario.canal];
+            [[Appboy sharedInstance].user setCustomAttributeWithKey:@"campania" andStringValue:self.datosUsuario.campania];
+        }
+        
+    }else{
+        [[Appboy sharedInstance] changeUser:self.txtEmail.text];
+        [Appboy sharedInstance].user.email = self.txtEmail.text;
+        if([self.datosUsuario.tipoDeUsuario isEqualToString:@"canal"]){
+            [[Appboy sharedInstance].user setCustomAttributeWithKey:@"canal" andStringValue:self.datosUsuario.canal];
+            [[Appboy sharedInstance].user setCustomAttributeWithKey:@"campania" andStringValue:self.datosUsuario.campania];
+        }
+    }
+    [[AppsFlyerTracker sharedTracker] setCustomerUserID:self.txtEmail.text];
         MenuPasosViewController *menuPasos = [[MenuPasosViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:nil];
         [self.navigationController pushViewController:menuPasos animated:YES];
     }else {
     if (loginExitoso) {
          NSLog(@"LOGINEXITOSO");
-     /*   NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+        NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
         NSDictionary *launch =  [defaults objectForKey:@"launchingWithOptions"];
         
         [Appboy startWithApiKey:llaveAppboy
                   inApplication:[UIApplication sharedApplication]
               withLaunchOptions:launch];
-       */ 
+      
         NSLog(@"EL APPBOY DE CHANGE USER 2 ES: %@ y el tipo de usuario es: %@ y red social %@ y el sesionUser %@", self.txtEmail.text, self.datosUsuario.tipoDeUsuario, self.datosUsuario.redSocial, self.datosUsuario.auxStrSesionUser);
         
         if([self.txtEmail.text isEqualToString:@""] || self.txtEmail.text == nil){
@@ -700,7 +717,7 @@
 
 - (void)loginViewFetchedUserInfo:(FBLoginView *)loginView
                             user:(id<FBGraphUser>)user {
-    NSLog(@"LOGINVIEWFETCHUSERINFO tiene de id : %@ y el nombre es: %@ y como user id es: %@", [user objectForKey:@"id"], [user objectForKey:@"name"], [user objectForKey:@"user_id"]);
+    NSLog(@"LOGINVIEWFETCHUSERINFO tiene de id : %@ y el nombre es: %@ y como user id es: %@", [user objectForKey:@"id"], [user objectForKey:@"name"],[user description]);
     if([[user objectForKey:@"email"] isEqualToString:@""] || [user objectForKey:@"email"] == nil){
         self.datosUsuario.emailUsuario = [user objectForKey:@"id"];
     }else{
