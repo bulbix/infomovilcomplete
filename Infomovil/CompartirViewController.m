@@ -39,7 +39,6 @@
 }
 
 - (void)viewDidLoad{
-    NSLog(@"ENTRO A VIEWDIDLOAD DE COMPARTIRVIEWCONTROLLER");
     
     [super viewDidLoad];
     if(IS_STANDARD_IPHONE_6_PLUS){
@@ -105,30 +104,28 @@
 -(void) viewWillAppear:(BOOL)animated {
 	
     self.datosUsuario = [DatosUsuario sharedInstance];
-    NSLog(@"EL USUARIO DOMINIO ES: %@", self.datosUsuario.dominio);
     if(self.datosUsuario.dominio && ![self.datosUsuario.dominio isEqualToString:@""] && ! (self.datosUsuario.dominio == (id)[NSNull null]) && ![CommonUtils validarEmail:self.datosUsuario.dominio] && ![self.datosUsuario.dominio isEqualToString:@"(null)"]){
         self.arregloDominio = self.datosUsuario.dominiosUsuario;
         self.labelNombreDominio.text = @"";
-        NSLog(@"LA CANTIDAD DE DOMINIOS SON: %lu", (unsigned long)[self.arregloDominio count]);
+    
         for(int i= 0; i< [self.arregloDominio count]; i++){
             DominiosUsuario *usuarioDom = [self.arregloDominio objectAtIndex:i];
-            NSLog(@"EL USUARIODOM CON TIPO DE DOMINIO: %@", usuarioDom.domainType);
-            NSLog(@"EL USUARIODOM VIGENTE: %@", usuarioDom.vigente);
+            
             if([usuarioDom.domainType isEqualToString:@"tel"]){
-                NSLog(@"EL DOMINIO FUE TEL ");
+              
                 if([usuarioDom.vigente isEqualToString:@"SI"] || [usuarioDom.vigente isEqualToString:@"si"]){
-                    NSLog(@"EL DOMINIO FUE VIGENTE ");
+                 
                     [self.labelNombreDominio setText:[NSString stringWithFormat:@"www.%@.tel", self.datosUsuario.dominio]];
                     self.dominioParaCompartir = self.labelNombreDominio.text;
                 }
             }
         }
-        NSLog(@"EL VALOR DEL TITULO ES: %@", self.labelNombreDominio.text);
+     
         if([self.labelNombreDominio.text isEqualToString:@""] || [self.labelNombreDominio.text isEqualToString:@"(null)"] || self.labelNombreDominio == nil ) {
             for(int i= 0; i< [self.arregloDominio count]; i++){
                 DominiosUsuario *usuarioDom = [self.arregloDominio objectAtIndex:i];
                 if([usuarioDom.domainType isEqualToString:@"recurso"]){
-                    NSLog(@"EL DOMINIO FUE RECURSO ");
+                   
                     [self.labelNombreDominio setText:[NSString stringWithFormat:@"www.infomovil.com/%@", self.datosUsuario.dominio]];
                     self.dominioParaCompartir = self.labelNombreDominio.text;
                 }
@@ -283,7 +280,7 @@
     NSString *errorMessage = @"";
     if (error.fberrorUserMessage) {
         errorMessage = error.fberrorUserMessage;
-        NSLog(@"EL ERROR CORRECTO DE FACEBOOK ES: %@", error.fberrorUserMessage);
+     
      } else {
         if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
             errorMessage = @"Operation failed due to a connection problem, retry later.";
@@ -404,7 +401,7 @@
 }
 
 - (IBAction)compartirWhatsapp:(UIButton *)sender {
-    NSLog(@"EL DOMINIO DE WHATS APP COMPARTIDO ES: %@",self.dominioParaCompartir);
+  
 	 NSURL *whatsappURL;
 	if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
 		 whatsappURL = [NSURL URLWithString:[NSString stringWithFormat:@"whatsapp://send?text=I%%20just%%20created%%20a%%20website%%20with%%20www.infomovil.com.%%0ACheck%%20it%%20out%%20and%%20help%%20us%%20grow%%0A%@", self.dominioParaCompartir]];

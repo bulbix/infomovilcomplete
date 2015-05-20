@@ -279,7 +279,7 @@ BOOL actualizo;
 
 
 -(void)guardarTemplate:(id)sender {
-    NSLog(@"La plantilla es: %i", self.plantillaAPublicar);
+  
     self.datosUsuario = [DatosUsuario sharedInstance];
     switch (self.plantillaAPublicar) {
         case 0:{
@@ -347,7 +347,7 @@ BOOL actualizo;
 
 
 -(void) resultadoConsultaDominio:(NSString *)resultado {
-    NSLog(@"EL RESULTADO EN resultadoConsultaDominio %@", resultado);
+ 
     self.datosUsuario = [DatosUsuario sharedInstance];
     if ([resultado isEqualToString:@"Exito"]) {
         actualizo = YES;
@@ -355,16 +355,16 @@ BOOL actualizo;
     }
     else {
         actualizo = NO;
-        NSLog(@"NO ACTUALIZO");
+     
     }
     [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
 }
 
--(void) errorConsultaWS { NSLog(@"ENTRO A ERROR CONSULTAWS");
+-(void) errorConsultaWS {
     [self performSelectorOnMainThread:@selector(errorActualizar) withObject:Nil waitUntilDone:YES];
 }
 
--(void) errorActualizar { NSLog(@"ENTRO A ERROR ACTUALIZAR");
+-(void) errorActualizar { 
     if ( self.alertActivity )
     {
         [NSThread sleepForTimeInterval:1];

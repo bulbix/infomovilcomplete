@@ -395,7 +395,7 @@ int opcionButton = 0 ;
     
 }
 
--(void)resultadoCompraDominio:(BOOL)estado{ NSLog(@"EL ESTATUS ES: %@", self.datosUsuario.datosPago.statusPago);
+-(void)resultadoCompraDominio:(BOOL)estado{
     if(estado == YES && [self.datosUsuario.datosPago.statusPago isEqualToString: @"INTENTO PAGO"]){
         if(opcionButton == 1){
             [self compraProducto1mes];
@@ -519,7 +519,9 @@ if(noSeRepiteOprimirElBoton){
            
         }
     }else{
+#if DEBUG
         NSLog(@"SE REPITIO EL BOTON OPRIMIDO");
+#endif
     }
 }
 
@@ -646,7 +648,7 @@ if(noSeRepiteOprimirElBoton){
                 for(int i= 0; i< [self.arregloDominios count]; i++){
                     DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:i];
                     if([usuarioDom.domainType isEqualToString:@"tel"]){
-                        NSLog(@"EL DOMINIO FUE TEL ");
+                  
                         if([usuarioDom.vigente isEqualToString:@"SI"] || [usuarioDom.vigente isEqualToString:@"si"]){
                             dominio.text = [NSString stringWithFormat:@"My website\n\n www.%@.tel",self.datosUsuario.dominio] ;
                             if(self.datosUsuario.fechaDominioIni && ![self.datosUsuario.fechaDominioIni isEqualToString:@""] && ![self.datosUsuario.fechaDominioIni isEqualToString:@"(null)"] && self.datosUsuario.fechaDominioIni != nil){
@@ -665,7 +667,7 @@ if(noSeRepiteOprimirElBoton){
                     for(int i= 0; i< [self.arregloDominios count]; i++){
                         DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:i];
                         if([usuarioDom.domainType isEqualToString:@"recurso"]){
-                            NSLog(@"EL DOMINIO FUE RECURSO ");
+                           
                             dominio.text = [NSString stringWithFormat:@"My website\n\nwww.infomovil.com/%@",self.datosUsuario.dominio] ;
                         }
                     }
@@ -677,7 +679,7 @@ if(noSeRepiteOprimirElBoton){
                 for(int i= 0; i< [self.arregloDominios count]; i++){
                     DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:i];
                     if([usuarioDom.domainType isEqualToString:@"tel"]){
-                        NSLog(@"EL DOMINIO FUE TEL ");
+                    
                         if([usuarioDom.vigente isEqualToString:@"SI"] || [usuarioDom.vigente isEqualToString:@"si"]){
                             dominio.text = [NSString stringWithFormat:@"Mi sitio web\n\n www.%@.tel",self.datosUsuario.dominio] ;
                            if(self.datosUsuario.fechaDominioIni && ![self.datosUsuario.fechaDominioIni isEqualToString:@""] && ![self.datosUsuario.fechaDominioIni isEqualToString:@"(null)"] && self.datosUsuario.fechaDominioIni != nil){
@@ -695,7 +697,7 @@ if(noSeRepiteOprimirElBoton){
                     for(int i= 0; i< [self.arregloDominios count]; i++){
                         DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:i];
                         if([usuarioDom.domainType isEqualToString:@"recurso"]){
-                            NSLog(@"EL DOMINIO FUE RECURSO ");
+                          
                             dominio.text = [NSString stringWithFormat:@"Mi sitio web\n\nwww.infomovil.com/%@",self.datosUsuario.dominio] ;
                             
                         }
@@ -854,8 +856,6 @@ if(noSeRepiteOprimirElBoton){
 
 -(void) errorConsultaWS {
     
-    NSLog(@"ENTRO A ERRORCONSULTAWS");
-    //[self performSelectorOnMainThread:@selector(errorLogin) withObject:Nil waitUntilDone:YES];
     noSeRepiteOprimirElBoton = YES;
     [NSThread sleepForTimeInterval:1];
     [self.alerta hide];

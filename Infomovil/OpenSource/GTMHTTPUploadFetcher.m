@@ -228,7 +228,9 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected;
       resultData = [uploadFileHandle_ readDataOfLength:length];
     }
     @catch (NSException *exception) {
-      NSLog(@"uploadFileHandle exception: %@", exception);
+#if DEBUG
+        NSLog(@"uploadFileHandle exception: %@", exception);
+#endif
     }
   }
 

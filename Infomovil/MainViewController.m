@@ -443,7 +443,6 @@
 }
 
 - (IBAction)cambiarPassword:(UIButton *)sender {
-     NSLog(@"CAMBIARPASSWORD");
     CambiarPasswordViewController *cambiaPass = [[CambiarPasswordViewController alloc] initWithNibName:@"CambiarPasswordViewController" bundle:Nil];
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:cambiaPass];
     [self.navigationController presentViewController:navController animated:YES completion:Nil];
@@ -452,7 +451,7 @@
 
 #pragma mark - WS_HandlerProtocol
 -(void) resultadoLogin:(NSInteger) idDominio {
-     NSLog(@"RESULTADOLOGIN CON DOMINIO: %i", idDominio);
+    
     if (idDominio > 0) {
         loginExitoso = YES;
         loginFacebook = NO;
@@ -479,7 +478,7 @@
 }
 
 -(void) resultadoConsultaDominio:(NSString *)resultado {
-     NSLog(@"RESULTADOCONSULTADOMINIO CON RESULTADO: %@", resultado);
+    
     if ([resultado isEqualToString:@"Exito"]) {
         existeUnaSesion = YES;
         loginFacebook = NO;
@@ -491,21 +490,20 @@
     [self performSelectorInBackground:@selector(ocultarActivity) withObject:Nil];
 }
 -(void) errorConsultaWS {
-     NSLog(@"ERRORCONSULTAWS");
+    
     [self performSelectorOnMainThread:@selector(errorLogin) withObject:Nil waitUntilDone:YES];
     loginFacebook = YES;
 }
 
 -(void) mostrarActivity {
-     NSLog(@"MOSTRARACTIVITY");
+   
     self.alerta = [AlertView initWithDelegate:self message:NSLocalizedString(@"msgValidandoUsuario", Nil) andAlertViewType:AlertViewTypeActivity];
     [self.alerta show];
 }
 -(void) ocultarActivity {
-    NSLog(@"ENTRO A OCULTAR ACTIVITY");
+   
     self.datosUsuario = [DatosUsuario sharedInstance];
     if (buscandoSesion) {
-        NSLog(@"BUSCANDOSESION");
             buscandoSesion = NO;
             [NSThread sleepForTimeInterval:1];
             [self.alerta hide];
@@ -530,7 +528,7 @@
         [self.navigationController pushViewController:menuPasos animated:YES];
     }else {
     if (loginExitoso) {
-         NSLog(@"LOGINEXITOSO");
+       
         NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
         NSDictionary *launch =  [defaults objectForKey:@"launchingWithOptions"];
         
@@ -538,7 +536,6 @@
                   inApplication:[UIApplication sharedApplication]
               withLaunchOptions:launch];
       
-        NSLog(@"EL APPBOY DE CHANGE USER 2 ES: %@ y el tipo de usuario es: %@ y red social %@ y el sesionUser %@", self.txtEmail.text, self.datosUsuario.tipoDeUsuario, self.datosUsuario.redSocial, self.datosUsuario.auxStrSesionUser);
         
         if([self.txtEmail.text isEqualToString:@""] || self.txtEmail.text == nil){
             [[Appboy sharedInstance] changeUser:self.datosUsuario.auxStrSesionUser];
@@ -568,7 +565,7 @@
         [self.navigationController pushViewController:menuPasos animated:YES];
     }
     else {
-         NSLog(@"LOGIN NO EXITOSO");
+        
         loginFacebook = YES;
         [self fbDidlogout]; // CErrar sesion de facebook
         NSString *strMensaje;
@@ -605,7 +602,7 @@
 }
 
 -(void) errorLogin {
-        NSLog(@"ERROR LOGIN");
+    
         loginFacebook = YES;
         if (self.alerta)
         {
@@ -616,7 +613,7 @@
 }
 
 -(void) consultaLogin {
-   NSLog(@"CONSULTA LOGIN");
+   
         [StringUtils deleteResourcesWithExtension:@"jpg"];
         [StringUtils deleteFile];
         NSString *passLogin = @"";
@@ -639,17 +636,17 @@
 #pragma mark - UITextFieldDelegate
 
 -(void) textFieldDidBeginEditing:(UITextField *)textField {
-     NSLog(@"TEXTFIELDIDBEGINEDITING");
+   
     textoEditado = textField;
     [self.keyboardControls setActiveField:textField];
 }
 
 -(void) textFieldDidEndEditing:(UITextField *)textField {
-     NSLog(@"textFieldDidEndEditing");
+    
 }
 
 -(void) apareceElTeclado:(NSNotification*)aNotification {
-    NSLog(@"APARECEELTECLADO");
+  
     NSDictionary *infoNotificacion = [aNotification userInfo];
     CGSize tamanioTeclado = [[infoNotificacion objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     UIEdgeInsets edgeInsets;
@@ -667,7 +664,7 @@
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    NSLog(@"TEXTFIELDSHOULDRETURN");
+   
     if([self.txtEmail.text length] == 0 && [self.txtPassword.text length] == 0) {
         return NO;
     }
@@ -677,7 +674,7 @@
 }
 
 -(void) desapareceElTeclado:(NSNotification *)aNotificacion {
-    NSLog(@"DESAPARECEELTECLADO");
+   
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.3];
      [[self scrollLogin] setContentInset:UIEdgeInsetsMake(0, 0,0, 0)];
@@ -692,13 +689,11 @@
 
 - (void)keyboardControlsDonePressed:(BSKeyboardControls *)keyboardControls
 {
-    NSLog(@"KEYBOARDCONTROLSDONEPRESSED");
     [self.view endEditing:YES];
 }
 
 #pragma mark AlertViewDelegate
 -(void) accionAceptar2 {
-    NSLog(@"ACCIONACEPTAR");
     buscandoSesion = NO;
     [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
     [self performSelectorInBackground:@selector(consultaLogin) withObject:Nil];
@@ -707,7 +702,6 @@
 
 #pragma mark - FBLoginViewDelegate
 - (void)loginView:(FBLoginView *)loginView handleError:(NSError *)error {
-    NSLog(@"LOGINVIEW");
 #ifdef _DEBUG
     NSLog(@"Entrando a loginView:handleError:");
     NSLog(@"El error de facebook es %@  ***********", [error description]);
@@ -717,7 +711,6 @@
 
 - (void)loginViewFetchedUserInfo:(FBLoginView *)loginView
                             user:(id<FBGraphUser>)user {
-    NSLog(@"LOGINVIEWFETCHUSERINFO tiene de id : %@ y el nombre es: %@ y como user id es: %@", [user objectForKey:@"id"], [user objectForKey:@"name"],[user description]);
     if([[user objectForKey:@"email"] isEqualToString:@""] || [user objectForKey:@"email"] == nil){
         self.datosUsuario.emailUsuario = [user objectForKey:@"id"];
     }else{
@@ -753,7 +746,6 @@
 
 
 - (void)fbDidlogout {
-    NSLog(@"FBDIDLOGOUT");
     FBSession* session = [FBSession activeSession];
     [session closeAndClearTokenInformation];
     [session close];
@@ -767,7 +759,6 @@
 }
 
 - (IBAction)irARegistrate:(id)sender {
-    NSLog(@"IRAREGISTRATE");
     MenuRegistroViewController *registro = [[MenuRegistroViewController alloc] initWithNibName:@"MenuRegistroViewController" bundle:nil];
     [self.navigationController pushViewController:registro animated:YES];
 }

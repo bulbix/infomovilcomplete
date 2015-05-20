@@ -550,7 +550,7 @@ static NSString *const iVersionMacAppStoreURLFormat = @"macappstore://itunes.app
             //deprecated code path
             else if ([self.delegate respondsToSelector:@selector(iVersionVersionCheckFailed:)])
             {
-                NSLog(@"iVersionVersionCheckFailed: delegate method is deprecated, use iVersionVersionCheckDidFailWithError: instead");
+               
                 [self.delegate performSelector:@selector(iVersionVersionCheckFailed:) withObject:self.downloadError];
             }
             return;

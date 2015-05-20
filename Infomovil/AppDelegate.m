@@ -50,7 +50,6 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
    
     UILocalNotification *notification = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
     if (notification) {
-        NSLog(@"IRC app recieved notification from remote%@",notification);
         [self application:application didReceiveRemoteNotification:(NSDictionary*)notification];
     }else{
         NSLog(@"IRC app did not recieve notification");
@@ -64,7 +63,7 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
     [defaults setObject:launchOptions forKey:@"launchingWithOptions"];
     [defaults synchronize];
    */
-   /*
+   
     //AppsFlyer
     [AppsFlyerTracker sharedTracker].appsFlyerDevKey = @"5KoF92vzAFbhSj9PRduNCn";
     [AppsFlyerTracker sharedTracker].appleAppID = @"898313250";
@@ -75,9 +74,8 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
     [[BITHockeyManager sharedHockeyManager] startManager];
     [[BITHockeyManager sharedHockeyManager].authenticator
      authenticateInstallation];
-  */
+  
     //-- Set Notification
-    
     [Appboy startWithApiKey:llaveAppboy
               inApplication:[UIApplication sharedApplication]
           withLaunchOptions:launchOptions];
@@ -131,9 +129,11 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application{
+#if DEBUG
     NSLog(@"LA APP ESTA EN applicationWillResignActive"); // cuand se va a back
+#endif
 }
-   
+
 
 /*  // NO UTILIZARLOS PORQUE SE EJECUTA EL APPBOY //
 - (void)applicationDidEnterBackground:(UIApplication *)application
@@ -261,10 +261,10 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
 {
-//#if DEBUG
+#if DEBUG
     NSString *strError = [NSString stringWithFormat:@"Error: %@",error];
     NSLog(@"EL ERROR DEL REGISTRO DE LA NOTIFICACION%@",strError);
-//#endif
+#endif
 }
 
 
@@ -277,7 +277,9 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
    
     [[Appboy sharedInstance] registerApplication:application
                     didReceiveRemoteNotification:userInfo];
+#if DEBUG
     NSLog(@"La aplicación se encuentra en : %ld",(long)application.applicationState);
+#endif
     if ( application.applicationState == UIApplicationStateInactive || application.applicationState == UIApplicationStateBackground  )
     {
         
@@ -305,16 +307,18 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
             [defaults synchronize];
             [self.navigationController pushViewController:sesionActiva animated:YES];
     
+        }else if([[userInfo objectForKey:@"ab_uri"] isEqualToString:@"infomovil://Reportes"]){
+            SesionActivaViewController *sesionActiva = [[SesionActivaViewController alloc] initWithNibName:@"SesionActiva" bundle:Nil];
+            NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setInteger:4 forKey:@"SELECCIONDEEPLINK"];
+            [defaults synchronize];
+            [self.navigationController pushViewController:sesionActiva animated:YES];
+            
         }
-            
-    }else{
-        MainViewController *inicioController = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
-            [self.navigationController pushViewController:inicioController animated:YES];
-        }
-            
-            
             
     }
+        
+}
     
     
    

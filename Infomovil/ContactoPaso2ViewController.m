@@ -289,7 +289,7 @@
                 if ([self.labelPais.text isEqualToString:@"País"] || [self.labelPais.text isEqualToString:@"Country"]) {
                     [self.labelPais setText:[self.contactoSeleccionado pais]];
                     [self.labelCodigo setText:[self.contactoSeleccionado idPais]];
-                    NSLog(@"LABELPAIS : %@  Y LABEL CODIGO ES: %@", self.labelPais, self.labelCodigo);
+                  
                 }
                 [self.txtTelefono setText:[self.contactoSeleccionado noContacto]];
                 [self.txtDescripcion setText:[self.contactoSeleccionado descripcion]];

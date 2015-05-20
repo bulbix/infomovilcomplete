@@ -158,9 +158,7 @@
 }
 
 -(IBAction)regresar:(id)sender {
-    self.datosUsuario.dominio = @"";
     [[self view] endEditing:YES];
-    
     MenuPasosViewController *comparte = [[MenuPasosViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
     [self.navigationController pushViewController:comparte animated:YES];
     

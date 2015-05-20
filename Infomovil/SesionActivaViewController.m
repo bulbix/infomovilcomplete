@@ -14,6 +14,8 @@
 #import "NombrarViewController.h"
 #import "CrearPaso1ViewController.h"
 #import "CompartirViewController.h"
+#import "EstadisticasViewController.h"
+
 
 @interface SesionActivaViewController (){}
 @property (nonatomic, strong) AlertView *alerta;
@@ -149,6 +151,11 @@
                 [self.navigationController pushViewController:menuPasos animated:YES];
             }
         
+        }else if([prefDeepLink integerForKey:@"SELECCIONDEEPLINK"] == 4){
+           
+                EstadisticasViewController *estadisticas = [[EstadisticasViewController alloc] initWithNibName:@"EstadisticasViewController" bundle:nil];
+                [self.navigationController pushViewController:estadisticas animated:YES];
+            
         }else{
             MenuPasosViewController *menuPasos = [[MenuPasosViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:nil];
             [self.navigationController pushViewController:menuPasos animated:YES];

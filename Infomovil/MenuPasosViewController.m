@@ -102,7 +102,7 @@ BOOL banderaRegresar;
 	
     self.datosUsuario				= [DatosUsuario sharedInstance];
     self.datosUsuario.editoPagina	= NO;
-    NSLog(@"EL DOMINIO QUE ME ENVIO 1 ES: %@", self.datosUsuario.dominio);
+  
         [self.navigationItem setHidesBackButton:YES animated:NO];
         self.navigationItem.backBarButtonItem	= nil;
         self.navigationItem.rightBarButtonItem = Nil;
@@ -159,7 +159,7 @@ BOOL banderaRegresar;
     if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
         [self.botonFondo setBackgroundImage:[UIImage imageNamed:@"elegirestilo-en.png"] forState:UIControlStateNormal];
         [self.botonCrear setBackgroundImage:[UIImage imageNamed:@"btncreateeditEn.png"] forState:UIControlStateNormal];
-       
+        NSLog(@"EL DOMINIO DEL USUARIO ES: %@",  self.datosUsuario.dominio);
         if ( self.datosUsuario.dominio && ![self.datosUsuario.dominio isEqualToString:@""] && ! (self.datosUsuario.dominio == (id)[NSNull null]) && ![CommonUtils validarEmail:self.datosUsuario.dominio] && ![self.datosUsuario.dominio isEqualToString:@"(null)"] ){
             [self.botonPublicar setBackgroundImage:[UIImage imageNamed:@"tips.png"] forState:UIControlStateNormal];
            
@@ -206,7 +206,7 @@ BOOL banderaRegresar;
     
 #endif
         self.datosUsuario = [DatosUsuario sharedInstance];
-        NSLog(@"EL DOMINIO QUE ME ENVIO ES: %@", self.datosUsuario.dominio);
+    
         if(self.datosUsuario.dominio && ![self.datosUsuario.dominio isEqualToString:@""] && ! (self.datosUsuario.dominio == (id)[NSNull null]) && ![CommonUtils validarEmail:self.datosUsuario.dominio] && ![self.datosUsuario.dominio isEqualToString:@"(null)"]){
             self.dominio.hidden	= NO;
             [self.viewDominioNoPublicado setHidden:YES];
@@ -215,15 +215,15 @@ BOOL banderaRegresar;
             self.arregloDominios = self.datosUsuario.dominiosUsuario;
             [self.dominio setTitle:@"" forState:UIControlStateNormal];
             self.dominio.titleLabel.text = @"";
-            NSLog(@"LA CANTIDAD DE DOMINIOS SON: %lu", (unsigned long)[self.arregloDominios count]);
+           
             for(int i= 0; i< [self.arregloDominios count]; i++){
                 DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:i];
-                NSLog(@"EL USUARIODOM CON TIPO DE DOMINIO: %@", usuarioDom.domainType);
-                NSLog(@"EL USUARIODOM VIGENTE: %@", usuarioDom.vigente);
+               
+               
                 if([usuarioDom.domainType isEqualToString:@"tel"]){
-                    NSLog(@"EL DOMINIO FUE TEL ");
+                  
                     if([usuarioDom.vigente isEqualToString:@"SI"] || [usuarioDom.vigente isEqualToString:@"si"]){
-                         NSLog(@"EL DOMINIO FUE VIGENTE ");
+                        
                         
                         if([self.datosUsuario.dominio length] > 12 && !IS_IPAD){
                             [self.dominio.titleLabel setFont: [UIFont fontWithName:@"Avenir-Book" size:16]];
@@ -232,12 +232,12 @@ BOOL banderaRegresar;
                     }
                 }
             }
-            NSLog(@"EL VALOR DEL TITULO ES: %@", self.dominio.titleLabel.text);
+           
             if([self.dominio.titleLabel.text isEqualToString:@""] || [self.dominio.titleLabel.text isEqualToString:@"(null)"] || self.dominio.titleLabel.text == nil ) {
                 for(int i= 0; i< [self.arregloDominios count]; i++){
                     DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:i];
                     if([usuarioDom.domainType isEqualToString:@"recurso"]){
-                        NSLog(@"EL DOMINIO FUE RECURSO ");
+                    
                         if([self.datosUsuario.dominio length] > 12 && !IS_IPAD){
                             [self.dominio.titleLabel setFont: [UIFont fontWithName:@"Avenir-Book" size:16]];
                         }
@@ -295,6 +295,8 @@ BOOL banderaRegresar;
   
 	
     [self.tituloVista setTextColor:[UIColor whiteColor]];
+    
+    
     [self.inicioRapidobtn setTitle:NSLocalizedString(@"inicioRapido", Nil) forState:UIControlStateNormal];
     [self.verTutorialbtn setTitle:NSLocalizedString(@"verTutorial", Nil) forState:UIControlStateNormal];
     [self.botonEjemplo setTitle:NSLocalizedString(@"verEjemplo", Nil) forState:UIControlStateNormal];
@@ -324,6 +326,7 @@ BOOL banderaRegresar;
     }
      [self.vistaInferior setHidden:NO];
 	[self.navigationController.navigationBar setHidden:NO];
+     NSLog(@"EL DOMINIO DEL USUARIO ES2: %@",  self.datosUsuario.dominio);
 }
 
 - (void)didReceiveMemoryWarning
@@ -408,7 +411,7 @@ BOOL banderaRegresar;
 }
 
 -(void) accionSi {
-    NSLog(@"LA ACCION DE RESPUESTA ES SI");
+   
     if(banderaRegresar == YES){
         banderaRegresar = NO;
         MainViewController *Inicio = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:Nil];

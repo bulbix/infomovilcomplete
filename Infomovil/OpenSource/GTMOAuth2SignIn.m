@@ -877,7 +877,7 @@ static void ReachabilityCallBack(SCNetworkReachabilityRef target,
         if (error) {
           NSString *errStr = [[[NSString alloc] initWithData:data
                                                     encoding:NSUTF8StringEncoding] autorelease];
-          NSLog(@"revoke error: %@", errStr);
+         
         }
   #endif // DEBUG
       }];

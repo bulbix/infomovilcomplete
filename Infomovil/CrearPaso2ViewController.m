@@ -338,7 +338,7 @@
     
 }
 
--(void) actualizar { NSLog(@"Actualiza EL NOMBRE DE LA COMPAÑIA!!");
+-(void) actualizar {
   
         WS_HandlerActualizarDominio *actualizarDominio = [[WS_HandlerActualizarDominio alloc] init];
         [actualizarDominio setActualizarDominioDelegate:self];

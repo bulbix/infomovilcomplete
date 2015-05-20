@@ -250,9 +250,6 @@
 -(IBAction)mostrarFeed:(id)sender {
     ABKFeedViewControllerNavigationContext *feedNavigationContext = [[ABKFeedViewControllerNavigationContext alloc] init];
    
-    // IRC comentado APPBOY //
-    // [feedNavigationContext setAppboyDelegate:self];
-    NSLog(@"ENTRO A MOSTRAR FEED");
     UIImage *image = [UIImage imageNamed:@"btnregresar.png"];
     
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];

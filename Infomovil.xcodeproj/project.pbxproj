@@ -516,6 +516,23 @@
 		AB5280DC19AE593B001AB735 /* InstruccionesContacto.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB5280DA19AE593B001AB735 /* InstruccionesContacto.xib */; };
 		AB60A849198065E300E1C476 /* logoRegistrado.png in Resources */ = {isa = PBXBuildFile; fileRef = AB60A848198065E300E1C476 /* logoRegistrado.png */; };
 		AB60A84B1980662000E1C476 /* logoRegistrado@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB60A84A1980661F00E1C476 /* logoRegistrado@2x.png */; };
+		BF069B6A1B0BCB1100167EAF /* c-email.png in Resources */ = {isa = PBXBuildFile; fileRef = BF069B591B0BCB1100167EAF /* c-email.png */; };
+		BF069B6B1B0BCB1100167EAF /* c-facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = BF069B5A1B0BCB1100167EAF /* c-facebook.png */; };
+		BF069B6C1B0BCB1100167EAF /* c-twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = BF069B5B1B0BCB1100167EAF /* c-twitter.png */; };
+		BF069B6D1B0BCB1100167EAF /* contactanos.png in Resources */ = {isa = PBXBuildFile; fileRef = BF069B5C1B0BCB1100167EAF /* contactanos.png */; };
+		BF069B6E1B0BCB1100167EAF /* contacto.png in Resources */ = {isa = PBXBuildFile; fileRef = BF069B5D1B0BCB1100167EAF /* contacto.png */; };
+		BF069B6F1B0BCB1100167EAF /* direccion.png in Resources */ = {isa = PBXBuildFile; fileRef = BF069B5E1B0BCB1100167EAF /* direccion.png */; };
+		BF069B701B0BCB1100167EAF /* emailprevia.png in Resources */ = {isa = PBXBuildFile; fileRef = BF069B5F1B0BCB1100167EAF /* emailprevia.png */; };
+		BF069B711B0BCB1100167EAF /* facebookprevia.png in Resources */ = {isa = PBXBuildFile; fileRef = BF069B601B0BCB1100167EAF /* facebookprevia.png */; };
+		BF069B721B0BCB1100167EAF /* informacion.png in Resources */ = {isa = PBXBuildFile; fileRef = BF069B611B0BCB1100167EAF /* informacion.png */; };
+		BF069B731B0BCB1100167EAF /* llamanos.png in Resources */ = {isa = PBXBuildFile; fileRef = BF069B621B0BCB1100167EAF /* llamanos.png */; };
+		BF069B741B0BCB1100167EAF /* no-avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = BF069B631B0BCB1100167EAF /* no-avatar.png */; };
+		BF069B751B0BCB1100167EAF /* perfil.png in Resources */ = {isa = PBXBuildFile; fileRef = BF069B641B0BCB1100167EAF /* perfil.png */; };
+		BF069B761B0BCB1100167EAF /* promociones.png in Resources */ = {isa = PBXBuildFile; fileRef = BF069B651B0BCB1100167EAF /* promociones.png */; };
+		BF069B771B0BCB1100167EAF /* promocionesdefault.png in Resources */ = {isa = PBXBuildFile; fileRef = BF069B661B0BCB1100167EAF /* promocionesdefault.png */; };
+		BF069B781B0BCB1100167EAF /* twitterprevia.png in Resources */ = {isa = PBXBuildFile; fileRef = BF069B671B0BCB1100167EAF /* twitterprevia.png */; };
+		BF069B791B0BCB1100167EAF /* ubícanos.png in Resources */ = {isa = PBXBuildFile; fileRef = BF069B681B0BCB1100167EAF /* ubícanos.png */; };
+		BF069B7A1B0BCB1100167EAF /* video.png in Resources */ = {isa = PBXBuildFile; fileRef = BF069B691B0BCB1100167EAF /* video.png */; };
 		BF15BD2F1AA54DD2009A6398 /* 12mAc-en.png in Resources */ = {isa = PBXBuildFile; fileRef = BF15BCF51AA54DD2009A6398 /* 12mAc-en.png */; };
 		BF15BD301AA54DD2009A6398 /* 12mAc-en@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF15BCF61AA54DD2009A6398 /* 12mAc-en@2x.png */; };
 		BF15BD311AA54DD2009A6398 /* 12mAc-en@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF15BCF71AA54DD2009A6398 /* 12mAc-en@3x.png */; };
@@ -570,7 +587,6 @@
 		BF66CE151A966FE500EA6D00 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF66CE141A966FE500EA6D00 /* FacebookSDK.framework */; };
 		BF66CE181A96709D00EA6D00 /* FacebookSDKOverrides.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = BF66CE161A96709D00EA6D00 /* FacebookSDKOverrides.bundle */; };
 		BF66CE191A96709D00EA6D00 /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF66CE171A96709D00EA6D00 /* FBAudienceNetwork.framework */; };
-		BF7A010E1B06BBED006E7EA7 /* imagenesWeb in Resources */ = {isa = PBXBuildFile; fileRef = BF7A010D1B06BBED006E7EA7 /* imagenesWeb */; };
 		BF891C651AB9F33D0082C107 /* MenuPasosViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF891C641AB9F33D0082C107 /* MenuPasosViewController.xib */; };
 		BF891C741ABA75AB0082C107 /* tempOff.png in Resources */ = {isa = PBXBuildFile; fileRef = BF891C6E1ABA75AB0082C107 /* tempOff.png */; };
 		BF891C751ABA75AB0082C107 /* tempOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF891C6F1ABA75AB0082C107 /* tempOff@2x.png */; };
@@ -1423,6 +1439,23 @@
 		AB5280DD19AE594D001AB735 /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = es.lproj/InstruccionesContacto.xib; sourceTree = "<group>"; };
 		AB60A848198065E300E1C476 /* logoRegistrado.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoRegistrado.png; sourceTree = "<group>"; };
 		AB60A84A1980661F00E1C476 /* logoRegistrado@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logoRegistrado@2x.png"; sourceTree = "<group>"; };
+		BF069B591B0BCB1100167EAF /* c-email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "c-email.png"; path = "imagenesWeb/c-email.png"; sourceTree = "<group>"; };
+		BF069B5A1B0BCB1100167EAF /* c-facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "c-facebook.png"; path = "imagenesWeb/c-facebook.png"; sourceTree = "<group>"; };
+		BF069B5B1B0BCB1100167EAF /* c-twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "c-twitter.png"; path = "imagenesWeb/c-twitter.png"; sourceTree = "<group>"; };
+		BF069B5C1B0BCB1100167EAF /* contactanos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = contactanos.png; path = imagenesWeb/contactanos.png; sourceTree = "<group>"; };
+		BF069B5D1B0BCB1100167EAF /* contacto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = contacto.png; path = imagenesWeb/contacto.png; sourceTree = "<group>"; };
+		BF069B5E1B0BCB1100167EAF /* direccion.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = direccion.png; path = imagenesWeb/direccion.png; sourceTree = "<group>"; };
+		BF069B5F1B0BCB1100167EAF /* emailprevia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = emailprevia.png; path = imagenesWeb/emailprevia.png; sourceTree = "<group>"; };
+		BF069B601B0BCB1100167EAF /* facebookprevia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = facebookprevia.png; path = imagenesWeb/facebookprevia.png; sourceTree = "<group>"; };
+		BF069B611B0BCB1100167EAF /* informacion.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = informacion.png; path = imagenesWeb/informacion.png; sourceTree = "<group>"; };
+		BF069B621B0BCB1100167EAF /* llamanos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = llamanos.png; path = imagenesWeb/llamanos.png; sourceTree = "<group>"; };
+		BF069B631B0BCB1100167EAF /* no-avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "no-avatar.png"; path = "imagenesWeb/no-avatar.png"; sourceTree = "<group>"; };
+		BF069B641B0BCB1100167EAF /* perfil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = perfil.png; path = imagenesWeb/perfil.png; sourceTree = "<group>"; };
+		BF069B651B0BCB1100167EAF /* promociones.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = promociones.png; path = imagenesWeb/promociones.png; sourceTree = "<group>"; };
+		BF069B661B0BCB1100167EAF /* promocionesdefault.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = promocionesdefault.png; path = imagenesWeb/promocionesdefault.png; sourceTree = "<group>"; };
+		BF069B671B0BCB1100167EAF /* twitterprevia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = twitterprevia.png; path = imagenesWeb/twitterprevia.png; sourceTree = "<group>"; };
+		BF069B681B0BCB1100167EAF /* ubícanos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ubícanos.png"; path = "imagenesWeb/ubícanos.png"; sourceTree = "<group>"; };
+		BF069B691B0BCB1100167EAF /* video.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = video.png; path = imagenesWeb/video.png; sourceTree = "<group>"; };
 		BF15BCF51AA54DD2009A6398 /* 12mAc-en.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "12mAc-en.png"; sourceTree = "<group>"; };
 		BF15BCF61AA54DD2009A6398 /* 12mAc-en@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "12mAc-en@2x.png"; sourceTree = "<group>"; };
 		BF15BCF71AA54DD2009A6398 /* 12mAc-en@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "12mAc-en@3x.png"; sourceTree = "<group>"; };
@@ -1487,7 +1520,6 @@
 		BF66CE141A966FE500EA6D00 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = Infomovil/FacebookSDK.framework; sourceTree = "<group>"; };
 		BF66CE161A96709D00EA6D00 /* FacebookSDKOverrides.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FacebookSDKOverrides.bundle; path = Infomovil/FacebookSDKOverrides.bundle; sourceTree = "<group>"; };
 		BF66CE171A96709D00EA6D00 /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBAudienceNetwork.framework; path = Infomovil/FBAudienceNetwork.framework; sourceTree = "<group>"; };
-		BF7A010D1B06BBED006E7EA7 /* imagenesWeb */ = {isa = PBXFileReference; lastKnownFileType = folder; path = imagenesWeb; sourceTree = "<group>"; };
 		BF891C641AB9F33D0082C107 /* MenuPasosViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuPasosViewController.xib; sourceTree = "<group>"; };
 		BF891C6E1ABA75AB0082C107 /* tempOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tempOff.png; path = Infomovil/imagenesInfomovil/Templates/tempOff.png; sourceTree = SOURCE_ROOT; };
 		BF891C6F1ABA75AB0082C107 /* tempOff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tempOff@2x.png"; path = "Infomovil/imagenesInfomovil/Templates/tempOff@2x.png"; sourceTree = SOURCE_ROOT; };
@@ -1869,7 +1901,7 @@
 		0F5CFA49189733E100D27B2E /* imagenesInfomovil */ = {
 			isa = PBXGroup;
 			children = (
-				BF7A010D1B06BBED006E7EA7 /* imagenesWeb */,
+				BF069B561B0BCAEA00167EAF /* ImagenesParaWeb */,
 				BFD29D1F1AC2139D008EADB9 /* iPad */,
 				BF63A1881AB3C24A0077A5C2 /* bullets */,
 				BFD292661AB36A140066AF30 /* templates */,
@@ -2815,6 +2847,30 @@
 			path = CNPPopupController;
 			sourceTree = "<group>";
 		};
+		BF069B561B0BCAEA00167EAF /* ImagenesParaWeb */ = {
+			isa = PBXGroup;
+			children = (
+				BF069B591B0BCB1100167EAF /* c-email.png */,
+				BF069B5A1B0BCB1100167EAF /* c-facebook.png */,
+				BF069B5B1B0BCB1100167EAF /* c-twitter.png */,
+				BF069B5C1B0BCB1100167EAF /* contactanos.png */,
+				BF069B5D1B0BCB1100167EAF /* contacto.png */,
+				BF069B5E1B0BCB1100167EAF /* direccion.png */,
+				BF069B5F1B0BCB1100167EAF /* emailprevia.png */,
+				BF069B601B0BCB1100167EAF /* facebookprevia.png */,
+				BF069B611B0BCB1100167EAF /* informacion.png */,
+				BF069B621B0BCB1100167EAF /* llamanos.png */,
+				BF069B631B0BCB1100167EAF /* no-avatar.png */,
+				BF069B641B0BCB1100167EAF /* perfil.png */,
+				BF069B651B0BCB1100167EAF /* promociones.png */,
+				BF069B661B0BCB1100167EAF /* promocionesdefault.png */,
+				BF069B671B0BCB1100167EAF /* twitterprevia.png */,
+				BF069B681B0BCB1100167EAF /* ubícanos.png */,
+				BF069B691B0BCB1100167EAF /* video.png */,
+			);
+			name = ImagenesParaWeb;
+			sourceTree = "<group>";
+		};
 		BF15BCF41AA54DD2009A6398 /* imagenesPlanPro */ = {
 			isa = PBXGroup;
 			children = (
@@ -3229,6 +3285,8 @@
 				0F9F52DF189890C6000F9FA5 /* previsualizador.png in Resources */,
 				0F9F533C18989413000F9FA5 /* ctwitter@2x.png in Resources */,
 				BF891C771ABA75AB0082C107 /* tempOn.png in Resources */,
+				BF069B6E1B0BCB1100167EAF /* contacto.png in Resources */,
+				BF069B791B0BCB1100167EAF /* ubícanos.png in Resources */,
 				0F70B50D18AD4BB700049C47 /* VideoCell.xib in Resources */,
 				65714AD41919AD8900BC2647 /* micompartir@2x.png in Resources */,
 				BF51604A1ADF15B200ECC1C3 /* SesionActiva.xib in Resources */,
@@ -3258,6 +3316,7 @@
 				65065DD8190FEB6600189316 /* tipsTwit.png in Resources */,
 				BFD29D5B1AC2139D008EADB9 /* btn_registrame@2x.png in Resources */,
 				0F578E4C18BC356A00888C87 /* btnsiguiente2@2x.png in Resources */,
+				BF069B7A1B0BCB1100167EAF /* video.png in Resources */,
 				0F9F532C18989413000F9FA5 /* btnsiguiente@2x.png in Resources */,
 				BF63A1901AB3C24A0077A5C2 /* slider3.png in Resources */,
 				65581B1519350C8000B5D4ED /* btncreateeditEn@2x.png in Resources */,
@@ -3288,11 +3347,13 @@
 				0F9F52AC189890C6000F9FA5 /* basura.png in Resources */,
 				0F11EDF9190712C700401686 /* smscompartir@2x.png in Resources */,
 				BFD29D571AC2139D008EADB9 /* btn_play@2x.png in Resources */,
+				BF069B701B0BCB1100167EAF /* emailprevia.png in Resources */,
 				65608FEC1970886C00B3C914 /* btniPhone.png in Resources */,
 				65581B2C19350C9300B5D4ED /* settingsEn.png in Resources */,
 				BF15BD5D1AA54DD2009A6398 /* 6mInac-es.png in Resources */,
 				BFA858931AA018AE00A9CB6F /* splash-1242x2208@2x.png in Resources */,
 				0FCB0F6118E2137600C37A37 /* compartirwhatsapp.png in Resources */,
+				BF069B711B0BCB1100167EAF /* facebookprevia.png in Resources */,
 				BFD292A81AB3A5520066AF30 /* verEjemplo-es.png in Resources */,
 				0F5C546F1892D21D000028CA /* PEPhotoCropEditor.bundle in Resources */,
 				0F6CBD1D190801D70077B065 /* NBrosa@2x.png in Resources */,
@@ -3304,6 +3365,7 @@
 				0F11EDFD1907367500401686 /* imagenalerta.png in Resources */,
 				BF63A1911AB3C24A0077A5C2 /* slider4.png in Resources */,
 				BFD29D771AC2139D008EADB9 /* temp_moderno@2x.png in Resources */,
+				BF069B741B0BCB1100167EAF /* no-avatar.png in Resources */,
 				0FCB0F5E18E2137600C37A37 /* compartirfacebook.png in Resources */,
 				0F578E3318BBB13700888C87 /* TerminosCondicionesViewController.xib in Resources */,
 				0F9F534B18989413000F9FA5 /* mireporteson@2x.png in Resources */,
@@ -3317,6 +3379,7 @@
 				0F680EE318EC75E500A02347 /* barraroja.png in Resources */,
 				BFD29D621AC2139D008EADB9 /* input_semitrans@1x.png in Resources */,
 				0FF4211E1899845B003EEBB1 /* tomarfoto@2x.png in Resources */,
+				BF069B721B0BCB1100167EAF /* informacion.png in Resources */,
 				0F9F532E18989413000F9FA5 /* camara@2x.png in Resources */,
 				0F9F52D6189890C6000F9FA5 /* mireporteson.png in Resources */,
 				AB5280DC19AE593B001AB735 /* InstruccionesContacto.xib in Resources */,
@@ -3355,6 +3418,7 @@
 				0F850E021885BFC60008A0CA /* PublicarViewController.xib in Resources */,
 				0F4C66EB18F5E1C400CC6DA8 /* btnsino.png in Resources */,
 				0FCB0F6018E2137600C37A37 /* compartirtwitter.png in Resources */,
+				BF069B6C1B0BCB1100167EAF /* c-twitter.png in Resources */,
 				65714AD61919AD8900BC2647 /* micompartiron@2x.png in Resources */,
 				BFCC3E6E1AF81A3F003791B8 /* btn_facebook_375x61.png in Resources */,
 				0F5104DA18BEC37400538435 /* flechas@2x.png in Resources */,
@@ -3363,6 +3427,7 @@
 				65608FF3197088DE00B3C914 /* btniPhone@2x.png in Resources */,
 				65C153771933EEC800C426B3 /* plecaroja@2x.png in Resources */,
 				0F9E0E8F18A5485A00657EEA /* Localizable.strings in Resources */,
+				BF069B761B0BCB1100167EAF /* promociones.png in Resources */,
 				65065DE6190FEB8000189316 /* tips3@2x.png in Resources */,
 				0F9F533B18989413000F9FA5 /* ctelefono@2x.png in Resources */,
 				BF15BD5C1AA54DD2009A6398 /* 6mInac-en@3x.png in Resources */,
@@ -3370,6 +3435,7 @@
 				0F9F532618989413000F9FA5 /* btnno@2x.png in Resources */,
 				BF15BD5E1AA54DD2009A6398 /* 6mInac-es@2x.png in Resources */,
 				0F4D573618BCF02D00A003A3 /* EliminarCuentaViewController.xib in Resources */,
+				BF069B6B1B0BCB1100167EAF /* c-facebook.png in Resources */,
 				0F9F52D3189890C6000F9FA5 /* micuentaon.png in Resources */,
 				0F5E042B18EF8CDA00AC4657 /* login.png in Resources */,
 				0F5E042F18EF8FA900AC4657 /* cemail@2x.png in Resources */,
@@ -3414,6 +3480,7 @@
 				BF891C781ABA75AB0082C107 /* tempOn@2x.png in Resources */,
 				0F9E0E9A18A5A06B00657EEA /* GaleriaCell.xib in Resources */,
 				BFD29D6F1AC2139D008EADB9 /* temp_creativo@2x.png in Resources */,
+				BF069B6D1B0BCB1100167EAF /* contactanos.png in Resources */,
 				0FC6C6BB18DD0E4B009E69A2 /* boton.png in Resources */,
 				0F616ED418AAA89F00372B4B /* Horarios.plist in Resources */,
 				BFD29D641AC2139D008EADB9 /* line@1x.png in Resources */,
@@ -3435,6 +3502,7 @@
 				0F8B214A18849EDB00F016B3 /* GaleriaPaso2ViewController.xib in Resources */,
 				65714ADC1919AF4900BC2647 /* share.png in Resources */,
 				BFD29D701AC2139D008EADB9 /* temp_divertido@1x.png in Resources */,
+				BF069B6F1B0BCB1100167EAF /* direccion.png in Resources */,
 				BFD29D751AC2139D008EADB9 /* temp_inac@2x.png in Resources */,
 				BF648FAC1A94FC5900AFDEAD /* InicioRapidoViewController.xib in Resources */,
 				0FF61CC818A2FB51004025CD /* BuscaDireccionViewController.xib in Resources */,
@@ -3443,6 +3511,7 @@
 				0F11EDFB190712C700401686 /* whatsappcompartir@2x.png in Resources */,
 				655F6C2218EDC2BB00C4347A /* NBturquesa@2x.png in Resources */,
 				BFD29D7B1AC2139D008EADB9 /* verEjemplo@2x.png in Resources */,
+				BF069B781B0BCB1100167EAF /* twitterprevia.png in Resources */,
 				0F5E042D18EF8F5900AC4657 /* cemail.png in Resources */,
 				0F6C72EF189B2272000B2E51 /* grafica.png in Resources */,
 				0F9F533618989413000F9FA5 /* contrasena@2x.png in Resources */,
@@ -3456,7 +3525,6 @@
 				655F6C2818EDC2CF00C4347A /* NBbermellon.png in Resources */,
 				BFB69B321A83D0BD0022107C /* FeedbackViewController.xib in Resources */,
 				0F680EF818ECD79300A02347 /* micuenta.png in Resources */,
-				BF7A010E1B06BBED006E7EA7 /* imagenesWeb in Resources */,
 				0FCB0F5F18E2137600C37A37 /* compartirsms.png in Resources */,
 				BF15BD651AA54DD2009A6398 /* beneficios-es@3x.png in Resources */,
 				BF15BD641AA54DD2009A6398 /* beneficios-es@2x.png in Resources */,
@@ -3496,6 +3564,7 @@
 				0F11EDFF1907367E00401686 /* imagenalerta@2x.png in Resources */,
 				BF63A1921AB3C24A0077A5C2 /* slider5.png in Resources */,
 				65714AD81919AD8900BC2647 /* megafono@2x.png in Resources */,
+				BF069B751B0BCB1100167EAF /* perfil.png in Resources */,
 				65065DD0190FEB6600189316 /* tips1.png in Resources */,
 				BF15BD511AA54DD2009A6398 /* 3mInac-es.png in Resources */,
 				6850120719ED9CC000389185 /* iVersion.bundle in Resources */,
@@ -3521,6 +3590,7 @@
 				0F6729B218A98F0400B1C001 /* CallingCodes.plist in Resources */,
 				BF63A18F1AB3C24A0077A5C2 /* slider2.png in Resources */,
 				BF4963C31AB0C80C008E6DD7 /* ElegirPlantillaViewController.xib in Resources */,
+				BF069B6A1B0BCB1100167EAF /* c-email.png in Resources */,
 				BFD29D6E1AC2139D008EADB9 /* temp_creativo@1x.png in Resources */,
 				0F7D75BB18A403F40088E92C /* PromocionesCell.xib in Resources */,
 				0F43B2B118E5FB5200E2AAE7 /* checkInactivo@2x.png in Resources */,
@@ -3579,6 +3649,7 @@
 				0F9F52E1189890C6000F9FA5 /* usuario.png in Resources */,
 				0F680EDA18EC759900A02347 /* barramorada@2x.png in Resources */,
 				0F5244EF18FE037D001902E6 /* btnblanconuevo@2x.png in Resources */,
+				BF069B731B0BCB1100167EAF /* llamanos.png in Resources */,
 				BFD29D541AC2139D008EADB9 /* btn_facebook@1x.png in Resources */,
 				0F680EEF18ECD76000A02347 /* miconfiguracion@2x.png in Resources */,
 				655F6C2B18EDC2CF00C4347A /* NBverde.png in Resources */,
@@ -3623,6 +3694,7 @@
 				0F9F532B18989413000F9FA5 /* btnsi@2x.png in Resources */,
 				0F5244EE18FE037D001902E6 /* btnazulnuevo@2x.png in Resources */,
 				0F514C2A18CF855A00817774 /* ccelular@2x.png in Resources */,
+				BF069B771B0BCB1100167EAF /* promocionesdefault.png in Resources */,
 				0F9F52A8189890C6000F9FA5 /* 1.png in Resources */,
 				65065DEA190FEB8000189316 /* tipsGoogle@2x.png in Resources */,
 				0F11EDEF190712B300401686 /* smscompartir.png in Resources */,

@@ -202,7 +202,7 @@
 }
 
 -(IBAction)agregarImagen:(id)sender {
-NSLog(@"AQUI ESTA EN AGREGAR IMAGEN ");
+
     if ([self.arregloImagenes count] < 2) {
         GaleriaPaso2ViewController *galeria = [[GaleriaPaso2ViewController alloc] initWithNibName:@"GaleriaPaso2ViewController" bundle:nil];
         [galeria setOperacion:GaleriaImagenesAgregar];
@@ -279,12 +279,11 @@ NSLog(@"AQUI ESTA EN AGREGAR IMAGEN ");
         NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&requestError];
         if (response == nil) {
             if (requestError != nil) {
-                NSLog(@"GaleriaPaso2ViewController Error Code imagen: %ld", (long)requestError.code);
-                NSLog(@"GaleriaPaso2ViewController Description error: %@", [requestError localizedDescription]);
+               
                 [cell.imagenPrevia setImage:[UIImage imageNamed:@"previsualizador.png"]];
             }
         }else {
-            NSLog(@"ENTRO A TRATAR DE CARGAR LA IMAGEN ");
+          
             UIImage *image = [UIImage imageWithData:response];
             [cell.imagenPrevia setImage:image];
         }
@@ -348,7 +347,7 @@ NSLog(@"AQUI ESTA EN AGREGAR IMAGEN ");
 }
 
 -(IBAction)editarTabla:(id)sender {
-    NSLog(@"AQUI ESTA EDITANDO LA TABLA");
+   
     if (self.editing) {
         [self.tablaGaleria setEditing:NO animated:YES];
         [self setEditing:NO animated:YES];
@@ -409,7 +408,7 @@ NSLog(@"AQUI ESTA EN AGREGAR IMAGEN ");
 }
 
 -(void) actualizarGaleria {
-  NSLog(@"AQUI ESTA ACTUALIZANDO LA GALERIA");
+
         WS_HandlerGaleria *handlerGaleria = [[WS_HandlerGaleria alloc] init];
         [handlerGaleria setArregloGaleria:self.arregloImagenes];
         [handlerGaleria setGaleriaDelegate:self];

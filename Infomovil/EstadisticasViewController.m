@@ -164,9 +164,8 @@
 }
 
 -(IBAction)regresar:(id)sender {
- 
-	[self.navigationController popToViewController:((AppDelegate *)[[UIApplication sharedApplication] delegate]).ultimoView
-										  animated:YES];
+    MenuPasosViewController *comparte = [[MenuPasosViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
+    [self.navigationController pushViewController:comparte animated:YES];
 }
 
 -(void) consultaVisitas {
