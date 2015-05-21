@@ -79,7 +79,7 @@ typedef enum {
 // ios_app_qa
 //#define llaveAppboy @"96559b65-0520-4c33-84b1-94dab248653e"
 
-#define versionDefault @"3.0.3"
+#define versionDefault @"3.0.4"
 
 #define nombreServicio @"WsInfomovil"
 //#define nombreServicio @"PreReg"

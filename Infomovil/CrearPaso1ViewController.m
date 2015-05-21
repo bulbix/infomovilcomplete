@@ -338,7 +338,7 @@
 #if DEBUG
          [prefs setObject:[NSString stringWithFormat:@"http://info-movil.com:8080/%@?vistaPrevia=true", self.datosUsuario.dominio] forKey:@"urlVistaPrevia"];
 #else
-         [prefs setObject:[NSString stringWithFormat:@"www.infomovil.com/%@?vistaPrevia=true", self.datosUsuario.dominio] forKey:@"urlVistaPrevia"];
+         [prefs setObject:[NSString stringWithFormat:@"http://www.infomovil.com/%@?vistaPrevia=true", self.datosUsuario.dominio] forKey:@"urlVistaPrevia"];
          
 #endif
          
@@ -347,11 +347,11 @@
          [self.navigationController pushViewController:vistaPrevia animated:YES];
      }else if(self.datosUsuario.idDominio){
          NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-         [prefs setObject:[NSString stringWithFormat:@"www.infomovil.com/xxx?vistaPrevia=true&idDominio=%ld", (long)self.datosUsuario.idDominio] forKey:@"urlVistaPrevia"];
+      
 #if DEBUG
       [prefs setObject:[NSString stringWithFormat:@"http://info-movil.com:8080/xxx?vistaPrevia=true&idDominio=%ld", (long)self.datosUsuario.idDominio] forKey:@"urlVistaPrevia"];
 #else
-         [prefs setObject:[NSString stringWithFormat:@"www.infomovil.com/xxx?vistaPrevia=true&idDominio=%ld", (long)self.datosUsuario.idDominio] forKey:@"urlVistaPrevia"];
+         [prefs setObject:[NSString stringWithFormat:@"http://www.infomovil.com/xxx?vistaPrevia=true&idDominio=%ld", (long)self.datosUsuario.idDominio] forKey:@"urlVistaPrevia"];
 #endif
          [prefs synchronize];
          VistaPreviaWebViewController *vistaPrevia = [[VistaPreviaWebViewController alloc] initWithNibName:@"VistaPreviaWeb" bundle:Nil];
