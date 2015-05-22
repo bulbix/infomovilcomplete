@@ -53,28 +53,6 @@
     }
     [self.btnReintentarConexion setEnabled:YES];
     
-    
-    
-    NSUserDefaults *prefSesion = [NSUserDefaults standardUserDefaults];
-    if([prefSesion integerForKey:@"intSesionActiva"] == 1 && [[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0){
-        NSString *passLogin = nil;
-        NSString *emailLogin = nil;
-        WS_HandlerLogin *login = [[WS_HandlerLogin alloc] init];
-        [login setLoginDelegate:self];
-        if ( [prefSesion integerForKey:@"intSesionFacebook"] == 1){
-            [login setRedSocial:@"Facebook"];
-        }
-        passLogin = [prefSesion stringForKey:@"strSesionPass"];
-        emailLogin = [prefSesion stringForKey:@"strSesionUser"];
-        NSLog(@"EL USUARIO Y PASSWORD QUE ESTOY BUSCANDO SON: %@ Y %@", passLogin,emailLogin);
-        [login obtieneLogin:emailLogin conPassword:passLogin];
-        [self performSelectorOnMainThread:@selector(mostrarActividad) withObject:nil waitUntilDone:YES];
-    }else{
-        MainViewController *inicioController = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
-        [self.navigationController pushViewController:inicioController animated:YES];
-    }
-    
-    
     [self mostrarLogo];
     [self.vistaInferior setHidden:YES];
     [self.navigationController.navigationBar setHidden:YES];
@@ -116,6 +94,32 @@
     self.navigationItem.backBarButtonItem = item;
     
     [self.vistaInferior setHidden:YES];
+    
+    
+    
+    
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    NSUserDefaults *prefSesion = [NSUserDefaults standardUserDefaults];
+    if([prefSesion integerForKey:@"intSesionActiva"] == 1 && [[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0){
+        NSString *passLogin = nil;
+        NSString *emailLogin = nil;
+        WS_HandlerLogin *login = [[WS_HandlerLogin alloc] init];
+        [login setLoginDelegate:self];
+        if ( [prefSesion integerForKey:@"intSesionFacebook"] == 1){
+            [login setRedSocial:@"Facebook"];
+        }
+        passLogin = [prefSesion stringForKey:@"strSesionPass"];
+        emailLogin = [prefSesion stringForKey:@"strSesionUser"];
+        NSLog(@"EL USUARIO Y PASSWORD QUE ESTOY BUSCANDO SON: %@ Y %@", passLogin,emailLogin);
+        [login obtieneLogin:emailLogin conPassword:passLogin];
+        [self performSelectorOnMainThread:@selector(mostrarActividad) withObject:nil waitUntilDone:YES];
+    }else{
+        MainViewController *inicioController = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
+        [self.navigationController pushViewController:inicioController animated:YES];
+    }
+
 }
 
 -(void)resultadoLogin:(NSInteger)idDominio{
