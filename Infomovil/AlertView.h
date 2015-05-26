@@ -24,7 +24,7 @@ typedef enum {
 
 @interface AlertView : UIView
 
-@property (nonatomic, strong) id<AlertViewDelegate> delegado;
+@property (nonatomic,assign) id<AlertViewDelegate> delegado;
 @property (nonatomic) AlertViewType type;
 
 @property (nonatomic, strong) UIView *vistaAlert;

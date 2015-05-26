@@ -103,24 +103,35 @@
 -(void)viewDidAppear:(BOOL)animated{
     NSUserDefaults *prefSesion = [NSUserDefaults standardUserDefaults];
     if([prefSesion integerForKey:@"intSesionActiva"] == 1 && [[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0){
-        NSString *passLogin = nil;
-        NSString *emailLogin = nil;
-        WS_HandlerLogin *login = [[WS_HandlerLogin alloc] init];
-        [login setLoginDelegate:self];
-        if ( [prefSesion integerForKey:@"intSesionFacebook"] == 1){
-            [login setRedSocial:@"Facebook"];
-        }
-        passLogin = [prefSesion stringForKey:@"strSesionPass"];
-        emailLogin = [prefSesion stringForKey:@"strSesionUser"];
-        NSLog(@"EL USUARIO Y PASSWORD QUE ESTOY BUSCANDO SON: %@ Y %@", passLogin,emailLogin);
-        [login obtieneLogin:emailLogin conPassword:passLogin];
         [self performSelectorOnMainThread:@selector(mostrarActividad) withObject:nil waitUntilDone:YES];
+        [self performSelectorInBackground:@selector(consultaLogin) withObject:Nil];
+        
+        
     }else{
         MainViewController *inicioController = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
         [self.navigationController pushViewController:inicioController animated:YES];
     }
 
 }
+
+
+-(void)consultaLogin{
+    NSUserDefaults *prefSesion = [NSUserDefaults standardUserDefaults];
+    NSString *passLogin = nil;
+    NSString *emailLogin = nil;
+    WS_HandlerLogin *login = [[WS_HandlerLogin alloc] init];
+    [login setLoginDelegate:self];
+    if ( [prefSesion integerForKey:@"intSesionFacebook"] == 1){
+        [login setRedSocial:@"Facebook"];
+    }
+    passLogin = [prefSesion stringForKey:@"strSesionPass"];
+    emailLogin = [prefSesion stringForKey:@"strSesionUser"];
+    NSLog(@"EL USUARIO Y PASSWORD QUE ESTOY BUSCANDO SON: %@ Y %@", passLogin,emailLogin);
+    [login obtieneLogin:emailLogin conPassword:passLogin];
+}
+
+
+
 
 -(void)resultadoLogin:(NSInteger)idDominio{
     self.datosUsuario = [DatosUsuario sharedInstance];
@@ -241,6 +252,7 @@
 -(void)mostrarActividad{
     self.alerta = [AlertView initWithDelegate:self message:@"Actualizando datos" andAlertViewType:AlertViewTypeActivity];
     [self.alerta show];
+    
 }
 
 -(void)ocultarActividad{

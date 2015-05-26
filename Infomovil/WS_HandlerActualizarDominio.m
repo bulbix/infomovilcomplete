@@ -15,7 +15,7 @@
     DatosUsuario *datos = [DatosUsuario sharedInstance];
     NSString *stringXML;
     NSLog(@"EL TOKEN CON EL QUE ENCRIPTA ES: %@", datos.token);
-    if (requiereEncriptar) {
+   
         stringXML = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.webservice.infomovil.org/\">"
                      "<soapenv:Header/>"
                      "<soapenv:Body>"
@@ -38,7 +38,7 @@
                      [StringUtils encriptar:[NSString stringWithFormat:@"%i", datos.idDominio] conToken:datos.token],
                      [StringUtils encriptar:datos.email conToken:passwordEncriptar],
                      metodo];
-    }
+    
 
     
     self.strSoapAction = @"WSInfomovilDomain";
@@ -49,28 +49,22 @@
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
         [parser setDelegate:self];
         if ([parser parse]) {
-            if (requiereEncriptar) {
-                datos = [DatosUsuario sharedInstance];
+            if(self.token != nil && [self.token length] > 0 && ![self.token isEqualToString:@" "]){
+                datos.token = self.token;
+            }
                 if ( [metodo isEqualToString:k_UPDATE_TITULO] )
                     datos.nombreEmpresa = self.nombre;
-                else if ( [metodo isEqualToString:k_UPDATE_DESC_CORTA] )
+                else if ([metodo isEqualToString:k_UPDATE_DESC_CORTA] )
                     datos.descripcion = self.descripcion;
+            
                 NSLog(@"EL TOKEN CON EL QUE TRATA DE DESENCRIPTAR ES: %@", datos.token);
                 NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
                 if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0) {
                     [self.actualizarDominioDelegate errorToken];
-                    
                 }
-                
                 else {
                     [self.actualizarDominioDelegate resultadoConsultaDominio:stringResult];
                 }
-                
-            }
-            else {
-                [self.actualizarDominioDelegate resultadoConsultaDominio:self.resultado];
-            }
-            
         }
         else {
             [self.actualizarDominioDelegate errorConsultaWS];
