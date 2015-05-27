@@ -75,7 +75,9 @@
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
         [parser setDelegate:self];
         if ([parser parse]) {
+            if(self.token != nil && [self.token length] > 0 && ![self.token isEqualToString:@" "]){
                 self.datosUsuario.token = self.token;
+            }
 				if(requiereEncriptar){
 					((AppDelegate*)	[[UIApplication sharedApplication] delegate]).statusDominio = [StringUtils desEncriptar:((AppDelegate*)[[UIApplication sharedApplication]delegate]).statusDominio conToken: self.datosUsuario.token ];
 				}

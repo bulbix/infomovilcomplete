@@ -420,22 +420,15 @@ int opcionButton = 0 ;
 
 - (IBAction)comprar1mesBtn:(id)sender {
 if(noSeRepiteOprimirElBoton){
-    noSeRepiteOprimirElBoton = NO;
-    opcionButton = 1;
-    [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:NO];
+   if([CommonUtils hayConexion]){
+       noSeRepiteOprimirElBoton = NO;
+       opcionButton = 1;
     
     @try {
         if([_products count] <= 0){
-            if([CommonUtils hayConexion]){
                 [self obtenerProductos];
-             }else {
-                 [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
-                AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
-                [alert show];
-            }
         }else{
-            
-            if([CommonUtils hayConexion]){
+                [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
                 for(int i = 0 ; [_products count] > 0; i++){
                     SKProduct *product = _products[i];
                     if([product.productIdentifier isEqualToString:@"com.infomovil.infomovil.3_months"]){
@@ -455,11 +448,7 @@ if(noSeRepiteOprimirElBoton){
                         break;
                     }
                 }
-            }else {
-                [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
-                AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
-                [alert show];
-            }
+           
         }
     }
     @catch (NSException *exception) {
@@ -468,6 +457,17 @@ if(noSeRepiteOprimirElBoton){
         NSLog(@"La NSException en comprar1mesBtn es: %@", exception.reason);
 #endif
     }
+        
+    }else {
+        AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+        [alert show];
+    }
+    
+    
+}else{
+#if DEBUG
+    NSLog(@"SE REPITIO EL BOTON OPRIMIDO");
+#endif
 }
 }
 
@@ -475,21 +475,15 @@ if(noSeRepiteOprimirElBoton){
 
 - (IBAction)comprar6mesesBtn:(id)sender {
     if(noSeRepiteOprimirElBoton){
-    noSeRepiteOprimirElBoton = NO;
-    opcionButton = 2;
-    [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:NO];
-    @try {
-            if([_products count] <= 0){
-                    if([CommonUtils hayConexion]){
-                        [self obtenerProductos];
-                    }else {
-                        [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
-                        AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
-                        [alert show];
-                    }
-            }else{
-                
-                if([CommonUtils hayConexion]){
+        if([CommonUtils hayConexion]){
+            noSeRepiteOprimirElBoton = NO;
+            opcionButton = 2;
+    
+            @try {
+                if([_products count] <= 0){
+                    [self obtenerProductos];
+                }else {
+                    [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
                     for(int i = 0 ; [_products count] > 0; i++){
                         SKProduct *product = _products[i];
                         if([product.productIdentifier isEqualToString:@"com.infomovil.infomovil.6_months"]){
@@ -509,16 +503,15 @@ if(noSeRepiteOprimirElBoton){
                             break;
                         }
                     }
-                }else {
-                    [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
-                    AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
-                    [alert show];
                 }
-            }
-        }
-        @catch (NSException *exception) {
+            }@catch (NSException *exception) {
             [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
            
+            }
+        }else {
+            [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
+            AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+            [alert show];
         }
     }else{
 #if DEBUG
@@ -529,46 +522,44 @@ if(noSeRepiteOprimirElBoton){
 
 - (IBAction)comprar12mesesBtn:(id)sender {
 if(noSeRepiteOprimirElBoton){
-    noSeRepiteOprimirElBoton = NO;
-    opcionButton = 3;
-    [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:NO];
-    @try {
-        if([_products count] <= 0){
-            if([CommonUtils hayConexion]){
-                [self obtenerProductos];
-            }else {
-                [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
-                AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
-                [alert show];
-            }
-        }else{
-            if([CommonUtils hayConexion]){
-                for(int i = 0 ; [_products count] > 0; i++){
-                    SKProduct *product = _products[i];
-                    if([product.productIdentifier isEqualToString:@"com.infomovil.infomovil.12_months"]){
-                        self.datosUsuario.datosPago.plan =@"PLAN PRO 12 MESES";
-                        self.datosUsuario.datosPago.comision = @"23";
-                        self.datosUsuario.datosPago.statusPago = @"INTENTO PAGO";
-                        self.datosUsuario.datosPago.tipoCompra = @"PP";
-                        self.datosUsuario.datosPago.titulo = @"iOS";
-                        self.datosUsuario.datosPago.codigoCobro = @" ";
-                        self.datosUsuario.datosPago.pagoId = 0;
-                        self.datosUsuario.datosPago.montoBruto = [NSString stringWithFormat:@"%i", product.price.integerValue ];
-                        [self compra];
-                        break;
+   if([CommonUtils hayConexion]){
+       noSeRepiteOprimirElBoton = NO;
+       opcionButton = 3;
+    
+       @try {
+            if([_products count] <= 0){
+                    [self obtenerProductos];
+            }else{
+                [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
+                    for(int i = 0 ; [_products count] > 0; i++){
+                        SKProduct *product = _products[i];
+                        if([product.productIdentifier isEqualToString:@"com.infomovil.infomovil.12_months"]){
+                            self.datosUsuario.datosPago.plan =@"PLAN PRO 12 MESES";
+                            self.datosUsuario.datosPago.comision = @"23";
+                            self.datosUsuario.datosPago.statusPago = @"INTENTO PAGO";
+                            self.datosUsuario.datosPago.tipoCompra = @"PP";
+                            self.datosUsuario.datosPago.titulo = @"iOS";
+                            self.datosUsuario.datosPago.codigoCobro = @" ";
+                            self.datosUsuario.datosPago.pagoId = 0;
+                            self.datosUsuario.datosPago.montoBruto = [NSString stringWithFormat:@"%i", product.price.integerValue ];
+                            [self compra];
+                            break;
+                        }
                     }
-                }
-            }else {
-                [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
-                AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
-                [alert show];
             }
+        }@catch (NSException *exception) {
+            [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
         }
-    }
-    @catch (NSException *exception) {
-      
-        [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
-    }
+
+   }else {
+       [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
+       AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+       [alert show];
+   }
+}else{
+#if DEBUG
+    NSLog(@"SE REPITIO EL BOTON OPRIMIDO");
+#endif
 }
 }
 
@@ -763,6 +754,7 @@ if(noSeRepiteOprimirElBoton){
 
 
 -(void) mostrarActivity {
+    NSLog(@"CUANTAS VECES ENTRA AKI!!!!");
     self.alerta = [AlertView initWithDelegate:self message:NSLocalizedString(@"cargando", Nil) andAlertViewType:AlertViewTypeActivity];
     [self.alerta show];
 }
@@ -791,7 +783,6 @@ if(noSeRepiteOprimirElBoton){
     [self.alerta hide];
     
 }
-
 
 - (IBAction)comprarDominioBtn:(id)sender {
 }
@@ -862,11 +853,10 @@ if(noSeRepiteOprimirElBoton){
 }
 
 -(void) errorConsultaWS {
-    
+    NSLog(@"DEBE QUITAR LA ALARMA");
     noSeRepiteOprimirElBoton = YES;
     [NSThread sleepForTimeInterval:1];
     [self.alerta hide];
-    
 }
 
 

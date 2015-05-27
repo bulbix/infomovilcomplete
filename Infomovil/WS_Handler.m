@@ -385,9 +385,7 @@
         if(error.code == -1001) {
             AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"tiempoAgotado", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
             [alert show];
-        }
-    
-        if(error.code == -1005) {
+        }else if(error.code == -1005) {
             AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
             [alert show];
             NSHTTPCookieStorage* cookies = [NSHTTPCookieStorage sharedHTTPCookieStorage];
@@ -396,15 +394,13 @@
             for (NSHTTPCookie* cookie in facebookCookies) {
                 [cookies deleteCookie:cookie];
             }
-        }
-        
-        if(error.code == -1003) {
+        }else if(error.code == -1003 || error.code == -1004) {
             return [@"" dataUsingEncoding:NSUTF8StringEncoding];;
+        }else{
+            NSString *codigoError = [NSString stringWithFormat:@"%ld",(long)error.code ];
+            NSData* cData = [codigoError dataUsingEncoding:NSUTF8StringEncoding];
+            return cData;
         }
-       // return [[error localizedDescription] dataUsingEncoding:NSUTF8StringEncoding];
-        NSString *codigoError = [NSString stringWithFormat:@"%ld",(long)error.code ];
-        NSData* cData = [codigoError dataUsingEncoding:NSUTF8StringEncoding];
-        return cData;
 	}
 	
 	return dataResp;

@@ -43,21 +43,25 @@
 }
 
 + (BOOL) deleteFile {
-    BOOL exito = NO;
-    NSString *filePath = [[StringUtils pathForDocumentsDirectory] stringByAppendingPathComponent:@"datos.plist"];
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSError *error = Nil;
-    [fileManager removeItemAtPath:filePath error:&error];
-    if (error == Nil) {
-        exito = YES;
-    }
+   BOOL exito = NO;
+    @try {
+        NSString *filePath = [[StringUtils pathForDocumentsDirectory] stringByAppendingPathComponent:@"datos.plist"];
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        NSError *error = Nil;
+        [fileManager removeItemAtPath:filePath error:&error];
+        if (error == Nil) {
+            exito = YES;
+        }
 #if DEBUG
-    else {
-        NSLog(@"El error es en stringUtils : %@", [error localizedDescription]);
-    }
+        else {
+            NSLog(@"El error es en stringUtils : %@", [error localizedDescription]);
+        }
 #endif
-    return exito;
-    
+        return exito;
+    }
+    @catch (NSException *exception) {
+        return exito;
+    }
 
 }
 
