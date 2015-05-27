@@ -46,9 +46,11 @@
     [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
     
     
-    if(IS_STANDARD_IPHONE_6_PLUS){
+   /* if(IS_STANDARD_IPHONE_6_PLUS){
         [self.webView setFrame:CGRectMake(0, 0, 415, 680)];
-    }else if(IS_STANDARD_IPHONE_6){
+    }else 
+    */
+    if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         [self.webView setFrame:CGRectMake(0, 0, 375, 620)];
     }else if(IS_IPAD){
          [self.webView setFrame:CGRectMake(0, 0, 768, 1024)];

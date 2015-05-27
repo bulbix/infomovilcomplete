@@ -34,12 +34,12 @@
 //    [self.vistaCircular setImage:[UIImage imageNamed:@"plecacreasitio.png"]];
     
     //MBC
-    if(IS_STANDARD_IPHONE_6){
+    if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         [self.cajaBusqueda setFrame:CGRectMake(50, 83, 280, 30)];
-    }
-    else if(IS_STANDARD_IPHONE_6_PLUS){
+    /*}else if(IS_STANDARD_IPHONE_6_PLUS){
         [self.cajaBusqueda setFrame:CGRectMake(70, 83, 280, 30)];
-    }else if(IS_IPAD){
+    */
+     }else if(IS_IPAD){
         [self.labelBuscaDireccion setFrame: CGRectMake(84, 20, 600, 30 )];
         [self.cajaBusqueda setFrame:CGRectMake(84, 60, 600, 30)];
     }else{

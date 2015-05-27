@@ -875,8 +875,7 @@ static void ReachabilityCallBack(SCNetworkReachabilityRef target,
       [fetcher beginFetchWithCompletionHandler:^(NSData *data, NSError *error) {
   #if DEBUG
         if (error) {
-          NSString *errStr = [[[NSString alloc] initWithData:data
-                                                    encoding:NSUTF8StringEncoding] autorelease];
+        //  NSString *errStr = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
          
         }
   #endif // DEBUG

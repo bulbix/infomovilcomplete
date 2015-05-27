@@ -70,27 +70,28 @@
     self.navigationItem.rightBarButtonItem = Nil;
     exito = NO;
     self.datosUsuario = [DatosUsuario sharedInstance];
-    productTourView = [[CRProductTour alloc] initWithFrame:self.view.frame];
+   /* productTourView = [[CRProductTour alloc] initWithFrame:self.view.frame];
     CRBubble *bubbleButton1;
    
-    NSMutableArray *bubbleArray = [[NSMutableArray alloc] initWithObjects:bubbleButton1, /*bubbleButton2,*/ nil];
+   // NSMutableArray *bubbleArray = [[NSMutableArray alloc] initWithObjects:bubbleButton1, nil];
     [productTourView setBubbles:bubbleArray];
     [self.view addSubview:productTourView];
-    
-    NSArray *fields = @[self.txtNombre, self.txtContrasena, self.txtContrasenaConfirmar];
-    self.keyboardControls = [[BSKeyboardControls alloc] initWithFields:fields];
-    [self.keyboardControls setDelegate:self];
-    [self.vistaInferior setHidden:YES];
     
     if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
         bubbleButton1 = [[CRBubble alloc] initWithAttachedView:_txtContrasena title:@" Password" description:@"Must be 8 or more characters\n(letters and numbers)\nCan not contain the word infomovil" arrowPosition:CRArrowPositionBottom andColor:[UIColor whiteColor]];
     }else{
         bubbleButton1 = [[CRBubble alloc] initWithAttachedView:_txtContrasena title:@"Contraseña" description:@"Debe tener de 8 a 15 caracteres\n(letras y números)\nNo puede contener la palabra infomovil\nNo puede ser igual al correo" arrowPosition:CRArrowPositionBottom andColor:[UIColor whiteColor]];
     }
+    */
+    NSArray *fields = @[self.txtNombre, self.txtContrasena, self.txtContrasenaConfirmar];
+    self.keyboardControls = [[BSKeyboardControls alloc] initWithFields:fields];
+    [self.keyboardControls setDelegate:self];
+    [self.vistaInferior setHidden:YES];
+    
     
     if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
         
-        if(IS_STANDARD_IPHONE_6){
+        if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
             self.leyenda1.frame = CGRectMake(77, 600, 200, 21);
             self.leyenda3.frame = CGRectMake(75, 622, 28, 21);
             self.leyenda4.frame = CGRectMake(93, 623, 144, 21);
@@ -115,13 +116,14 @@
             self.leyenda4.frame = CGRectMake(65, 458, 144, 21);
             self.leyenda2.frame = CGRectMake(217, 441, 80, 21);
             self.leyenda5.frame = CGRectMake(190,457, 83, 21);
-        }else if(IS_STANDARD_IPHONE_6_PLUS){
+        /*}else if(IS_STANDARD_IPHONE_6_PLUS){
             self.leyenda1.frame = CGRectMake(77, 670, 200, 21);
             self.leyenda3.frame = CGRectMake(75, 692, 28, 21);
             self.leyenda4.frame = CGRectMake(93, 693, 144, 21);
             self.leyenda2.frame = CGRectMake(245, 671, 80, 21);
             self.leyenda5.frame = CGRectMake(220,692, 83, 21);
-        }else{
+        */
+         }else{
             self.leyenda1.frame = CGRectMake(47, 510, 200, 21);
             self.leyenda3.frame = CGRectMake(45, 532, 28, 21);
             self.leyenda4.frame = CGRectMake(65, 533, 144, 21);
@@ -132,12 +134,12 @@
         
     }else{
         
-        if(IS_STANDARD_IPHONE_6){
-            self.leyenda1.frame = CGRectMake(6, 600, 152, 21);
-            self.leyenda2.frame = CGRectMake(160, 601, 152, 21);
-            self.leyenda3.frame = CGRectMake(37, 622, 28, 21);
-            self.leyenda4.frame = CGRectMake(65, 622, 144, 21);
-            self.leyenda5.frame = CGRectMake(202,622, 83, 21);
+        if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
+            self.leyenda1.frame = CGRectMake(30, 600, 152, 21);
+            self.leyenda2.frame = CGRectMake(184, 601, 152, 21);
+            self.leyenda3.frame = CGRectMake(61, 622, 28, 21);
+            self.leyenda4.frame = CGRectMake(89, 622, 144, 21);
+            self.leyenda5.frame = CGRectMake(226,622, 83, 21);
         }else if(IS_IPAD){
             [self.leyenda1 setFont: [UIFont fontWithName:@"Avenir-Book" size:18]];
             [self.leyenda2.titleLabel setFont: [UIFont fontWithName:@"Avenir-Book" size:18]];
@@ -157,13 +159,14 @@
             self.leyenda4.frame = CGRectMake(60, 458, 144, 21);
             self.leyenda2.frame = CGRectMake(160, 441, 170, 21);
             self.leyenda5.frame = CGRectMake(197,457, 83, 21);
-        }else if(IS_STANDARD_IPHONE_6_PLUS){
+      /*  }else if(IS_STANDARD_IPHONE_6_PLUS){
             self.leyenda1.frame = CGRectMake(60, 680, 270, 21);
             self.leyenda3.frame = CGRectMake(75, 702, 28, 21);
             self.leyenda4.frame = CGRectMake(100, 703, 144, 21);
             self.leyenda2.frame = CGRectMake(203, 681, 180, 21);
             self.leyenda5.frame = CGRectMake(240,702, 83, 21);
-        }else{
+       */
+       }else{
             self.leyenda1.frame = CGRectMake(6, 510, 152, 21);
             self.leyenda2.frame = CGRectMake(160, 511, 152, 21);
             self.leyenda3.frame = CGRectMake(37, 532, 28, 21);
@@ -176,10 +179,11 @@
         [self.scrollView setContentSize:CGSizeMake(320, 420)];
     }else if(IS_IPHONE_5){
         [self.scrollView setContentSize:CGSizeMake(320, 480)];
-    }else if(IS_STANDARD_IPHONE_6){
+    }else if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         [self.scrollView setContentSize:CGSizeMake(375, 500)];
-    }else if(IS_STANDARD_IPHONE_6_PLUS){
+   /* }else if(IS_STANDARD_IPHONE_6_PLUS){
         [self.scrollView setContentSize:CGSizeMake(414, 700)];
+    */
     }else if(IS_IPAD){
         [self.scrollView setContentSize:CGSizeMake(768, 700)];
     }
@@ -193,7 +197,7 @@
     FBLoginView *loginView = [[FBLoginView alloc] init];
     loginView.delegate = self;
     loginView.readPermissions = @[@"public_profile", @"email"];
-    if(IS_STANDARD_IPHONE_6){
+    if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         loginView.frame = CGRectMake(20, 160, 335, 50);
         self.raya1.frame = CGRectMake(20, 264, 155, 2);
         self.o.frame = CGRectMake(178, 256, 155, 20);
@@ -208,7 +212,7 @@
         [self.scrollView addSubview:self.imgLogoInfo];
          self.msjCreaTuSitio.frame = CGRectMake(20, 100, 335, 55);
        
-    }else if(IS_STANDARD_IPHONE_6_PLUS){
+   /* }else if(IS_STANDARD_IPHONE_6_PLUS){
         loginView.frame = CGRectMake(20, 180, 375, 50);
         self.raya1.frame = CGRectMake(20, 280, 175, 2);
         self.o.frame = CGRectMake(199, 272, 40, 20);
@@ -222,6 +226,7 @@
         [self.msjCreaTuSitio setFont:[UIFont fontWithName:@"Avenir-Book" size:24]];
         [self.msjCreaTuSitio setFrame:CGRectMake(20, 120, 375,40 )];
         self.scrollView.frame = CGRectMake(0, 0, 414, 736);
+    */
     }else if(IS_IPAD){
         loginView.frame = CGRectMake(196, 300, 375, 50);
         UIImage *lineImg = [UIImage imageNamed:@"line@1x.png"];
@@ -271,12 +276,13 @@
         {
             UIButton * loginButton =  obj;
             UIImage *loginImage;
-            if(IS_STANDARD_IPHONE_6){
+            if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
                 loginButton.frame =CGRectMake(0,0, 335, 50);
                 loginImage = [UIImage imageNamed:@"btn_facebook_335_55.png"];
-            }else if (IS_STANDARD_IPHONE_6_PLUS){
+           /* }else if (IS_STANDARD_IPHONE_6_PLUS){
                 loginButton.frame =CGRectMake(0,0, 375, 50);
                 loginImage = [UIImage imageNamed:@"btn_facebook_375x55.png"];
+            */
             }else if(IS_IPAD){
                 loginButton.frame =CGRectMake(0,0, 375, 50);
                 loginImage = [UIImage imageNamed:@"btn_facebook_375x55.png"];
@@ -302,13 +308,14 @@
                 loginLabel.text =@"Regístrate usando Facebook";
             }
             loginLabel.textAlignment = NSTextAlignmentCenter;
-            if(IS_STANDARD_IPHONE_6){
+            if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
                 loginLabel.frame =CGRectMake(0,0, 335, 50);
                 [loginLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
-            }else if(IS_STANDARD_IPHONE_6_PLUS){
+            /*}else if(IS_STANDARD_IPHONE_6_PLUS){
                 loginLabel.frame =CGRectMake(0,0, 375, 50);
                 [loginLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
-            }else if(IS_IPAD){
+            */
+             }else if(IS_IPAD){
                 loginLabel.frame =CGRectMake(0,0, 375, 50);
                 [loginLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:18]];
             }else if(IS_IPHONE_4){
@@ -338,14 +345,15 @@
     }else if(IS_IPHONE_5){
         [botonRegresar setFrame:CGRectMake(0, 450, 320, 45)];
         [botonRegresar.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:18]];
-    }else if(IS_STANDARD_IPHONE_6){
+    }else if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         [botonRegresar setFrame:CGRectMake(20, 525, 335, 50)];
         [botonRegresar.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:17]];
-    }else if(IS_STANDARD_IPHONE_6_PLUS){
+    }
+    /*else if(IS_STANDARD_IPHONE_6_PLUS){
         [botonRegresar setFrame:CGRectMake(20, 600, 360, 50)];
         [botonRegresar.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:18]];
     }
-    
+    */
     
     [botonRegresar addTarget:self action:@selector(regresarMenu:) forControlEvents:UIControlEventTouchUpInside];
     [self.scrollView addSubview:botonRegresar];
@@ -400,7 +408,7 @@
 }
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField {
-    NSLog(@"TEXTFIELDDIDBEGINEDITING");
+   
     textoSeleccionado = textField;
     NSInteger textoLength = [textField.text length];
     [self.labelInfo setText:[NSString stringWithFormat:@"%li/%i", (long)textoLength, 255]];
@@ -412,7 +420,6 @@
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField {
-    NSLog(@"TEXTFIELDDIDENDEDITING");
     [UIView animateWithDuration:0.4f animations:^{
         [self.labelInfo setFrame:CGRectMake(284, 600, 33, 21)];
     }];
@@ -796,7 +803,7 @@
         }
         
         if (![CommonUtils validarContrasena:self.txtNombre.text contrasena:self.txtContrasena.text]) {
-            AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"errorPassword", Nil) andAlertViewType:AlertViewTypeInfo];
+            AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"errorPassword", Nil) andAlertViewType:AlertViewTypeInfoPassword];
             [alert show];
             return NO;
         }

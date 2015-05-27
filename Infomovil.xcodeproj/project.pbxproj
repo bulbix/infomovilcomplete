@@ -513,7 +513,6 @@
 		68C200CD19F965610062B2D3 /* TablaDominioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68C200CC19F965610062B2D3 /* TablaDominioViewController.m */; };
 		68C200D119F9D78B0062B2D3 /* CNPPopupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68C200D019F9D78B0062B2D3 /* CNPPopupController.m */; };
 		AB5280D919AE592A001AB735 /* TextAndGraphAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB5280D819AE592A001AB735 /* TextAndGraphAlertView.m */; };
-		AB5280DC19AE593B001AB735 /* InstruccionesContacto.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB5280DA19AE593B001AB735 /* InstruccionesContacto.xib */; };
 		AB60A849198065E300E1C476 /* logoRegistrado.png in Resources */ = {isa = PBXBuildFile; fileRef = AB60A848198065E300E1C476 /* logoRegistrado.png */; };
 		AB60A84B1980662000E1C476 /* logoRegistrado@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB60A84A1980661F00E1C476 /* logoRegistrado@2x.png */; };
 		BF069B6A1B0BCB1100167EAF /* c-email.png in Resources */ = {isa = PBXBuildFile; fileRef = BF069B591B0BCB1100167EAF /* c-email.png */; };
@@ -569,6 +568,7 @@
 		BF4963D51AB11660008E6DD7 /* Plantilla.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF4963D41AB11660008E6DD7 /* Plantilla.xib */; };
 		BF4963D81AB116BE008E6DD7 /* PlantillaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF4963D71AB116BE008E6DD7 /* PlantillaViewController.m */; };
 		BF4B7E951A8A686300D049CD /* WS_PlanPro.m in Sources */ = {isa = PBXBuildFile; fileRef = BF4B7E941A8A686300D049CD /* WS_PlanPro.m */; };
+		BF4C8ED71B14E1E000288F86 /* InstruccionesContacto.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8ED61B14E1E000288F86 /* InstruccionesContacto.xib */; };
 		BF5160481ADF159900ECC1C3 /* SesionActivaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF5160471ADF159900ECC1C3 /* SesionActivaViewController.m */; };
 		BF51604A1ADF15B200ECC1C3 /* SesionActiva.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF5160491ADF15B200ECC1C3 /* SesionActiva.xib */; };
 		BF60DE911A89111F008D963E /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BF60DE8E1A89111F008D963E /* IAPHelper.m */; };
@@ -1435,8 +1435,6 @@
 		68C200D019F9D78B0062B2D3 /* CNPPopupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CNPPopupController.m; sourceTree = "<group>"; };
 		AB5280D719AE592A001AB735 /* TextAndGraphAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextAndGraphAlertView.h; sourceTree = "<group>"; };
 		AB5280D819AE592A001AB735 /* TextAndGraphAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextAndGraphAlertView.m; sourceTree = "<group>"; };
-		AB5280DB19AE593B001AB735 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/InstruccionesContacto.xib; sourceTree = "<group>"; };
-		AB5280DD19AE594D001AB735 /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = es.lproj/InstruccionesContacto.xib; sourceTree = "<group>"; };
 		AB60A848198065E300E1C476 /* logoRegistrado.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoRegistrado.png; sourceTree = "<group>"; };
 		AB60A84A1980661F00E1C476 /* logoRegistrado@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logoRegistrado@2x.png"; sourceTree = "<group>"; };
 		BF069B591B0BCB1100167EAF /* c-email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "c-email.png"; path = "imagenesWeb/c-email.png"; sourceTree = "<group>"; };
@@ -1496,6 +1494,7 @@
 		BF4963D71AB116BE008E6DD7 /* PlantillaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlantillaViewController.m; sourceTree = "<group>"; };
 		BF4B7E931A8A686300D049CD /* WS_PlanPro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WS_PlanPro.h; sourceTree = "<group>"; };
 		BF4B7E941A8A686300D049CD /* WS_PlanPro.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WS_PlanPro.m; sourceTree = "<group>"; };
+		BF4C8ED61B14E1E000288F86 /* InstruccionesContacto.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InstruccionesContacto.xib; sourceTree = "<group>"; };
 		BF5160461ADF159900ECC1C3 /* SesionActivaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SesionActivaViewController.h; sourceTree = "<group>"; };
 		BF5160471ADF159900ECC1C3 /* SesionActivaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SesionActivaViewController.m; sourceTree = "<group>"; };
 		BF5160491ADF15B200ECC1C3 /* SesionActiva.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SesionActiva.xib; sourceTree = "<group>"; };
@@ -1759,7 +1758,7 @@
 		0F011AD918903A7400E279A8 /* Alert */ = {
 			isa = PBXGroup;
 			children = (
-				AB5280DA19AE593B001AB735 /* InstruccionesContacto.xib */,
+				BF4C8ED61B14E1E000288F86 /* InstruccionesContacto.xib */,
 				AB5280D719AE592A001AB735 /* TextAndGraphAlertView.h */,
 				AB5280D819AE592A001AB735 /* TextAndGraphAlertView.m */,
 				0F011ADB18903B4C00E279A8 /* AlertView.h */,
@@ -3382,7 +3381,6 @@
 				BF069B721B0BCB1100167EAF /* informacion.png in Resources */,
 				0F9F532E18989413000F9FA5 /* camara@2x.png in Resources */,
 				0F9F52D6189890C6000F9FA5 /* mireporteson.png in Resources */,
-				AB5280DC19AE593B001AB735 /* InstruccionesContacto.xib in Resources */,
 				0F11EDFA190712C700401686 /* twittercompartir@2x.png in Resources */,
 				BFA858921AA018AE00A9CB6F /* Default@2x.png in Resources */,
 				0F6EDD111909E27D007F3480 /* logonuevo@2x.png in Resources */,
@@ -3440,6 +3438,7 @@
 				0F5E042B18EF8CDA00AC4657 /* login.png in Resources */,
 				0F5E042F18EF8FA900AC4657 /* cemail@2x.png in Resources */,
 				0F44539918DB73CD00873AA0 /* creareditar@2x.png in Resources */,
+				BF4C8ED71B14E1E000288F86 /* InstruccionesContacto.xib in Resources */,
 				0F9F531D18989413000F9FA5 /* 1@2x.png in Resources */,
 				655F6C2A18EDC2CF00C4347A /* NBturquesa.png in Resources */,
 				0F680EE418EC75E500A02347 /* barraturquesa.png in Resources */,
@@ -4013,15 +4012,6 @@
 			name = tipoContacto.plist;
 			sourceTree = "<group>";
 		};
-		AB5280DA19AE593B001AB735 /* InstruccionesContacto.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AB5280DB19AE593B001AB735 /* en */,
-				AB5280DD19AE594D001AB735 /* es */,
-			);
-			name = InstruccionesContacto.xib;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -4061,7 +4051,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = NO;
-				PROVISIONING_PROFILE = "47af71cf-bc3d-4d44-8abc-8c979e59589a";
+				PROVISIONING_PROFILE = "077f4ded-74da-4bc9-802f-e9f6959bbcc2";
 				SDKROOT = iphoneos;
 				VALID_ARCHS = armv7;
 			};
@@ -4135,7 +4125,7 @@
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "47af71cf-bc3d-4d44-8abc-8c979e59589a";
+				PROVISIONING_PROFILE = "077f4ded-74da-4bc9-802f-e9f6959bbcc2";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;

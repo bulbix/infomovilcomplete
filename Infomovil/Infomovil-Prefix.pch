@@ -47,7 +47,8 @@ typedef enum {
 
 #define IS_STANDARD_IPHONE_6 (IS_IPHONE && [[UIScreen mainScreen] bounds].size.height == 667.0  && IS_OS_8_OR_LATER && [UIScreen mainScreen].nativeScale == [UIScreen mainScreen].scale)
 
-#define IS_STANDARD_IPHONE_6_PLUS (IS_IPHONE && [[UIScreen mainScreen] bounds].size.height == 736.0)
+#define IS_STANDARD_IPHONE_6_PLUS (IS_IPHONE && [[UIScreen mainScreen] bounds].size.height == 667.0 && IS_OS_8_OR_LATER && [UIScreen mainScreen].nativeScale < [UIScreen mainScreen].scale)
+
 
 #define IS_IPAD UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad
 
@@ -67,17 +68,19 @@ typedef enum {
 //#define rutaWS @"http://172.17.3.181:9090"
 /* productivo */
 #define dominioTipo @"recurso"
-#define rutaWS @"http://infomovil.com"
+//#define rutaWS @"http://infomovil.com"
 /* test */
 //#define rutaWS @"http://info-movil.com"
+#define rutaWS @"http://104.130.58.204"
+
 
 // APPBOY // IRC //
 // PRE-PRODUCCION
 //#define llaveAppboy @"ce1afa14-800b-4b45-8e8b-3a7696c3ef26"
 // PRODUCCION
-#define llaveAppboy @"90ff8582-5bf7-450b-ace5-d2191d0b9fe6"
+//#define llaveAppboy @"90ff8582-5bf7-450b-ace5-d2191d0b9fe6"
 // ios_app_qa
-//#define llaveAppboy @"96559b65-0520-4c33-84b1-94dab248653e"
+#define llaveAppboy @"96559b65-0520-4c33-84b1-94dab248653e"
 
 #define versionDefault @"3.0.5"
 

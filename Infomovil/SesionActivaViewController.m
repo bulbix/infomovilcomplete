@@ -77,12 +77,13 @@
         [self.imgLine setFrame:CGRectMake(100, 580, 568, 2)];
         [self.btnSesionOtraCuenta setFrame:CGRectMake(100, 800, 568, 50)];
          [self.btnSesionOtraCuenta.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
-    }else if(IS_STANDARD_IPHONE_6_PLUS){
+    /*}else if(IS_STANDARD_IPHONE_6_PLUS){
         [self.imgBackground setFrame:CGRectMake(0, 0, 414, 736)];
         [self.btnReintentarConexion setFrame:CGRectMake(50, 300, 314, 45)];
         [self.imgLine setFrame:CGRectMake(50, 400, 315, 2)];
         [self.btnSesionOtraCuenta setFrame:CGRectMake(50, 600, 314, 45)];
-    }else if(IS_STANDARD_IPHONE_6){
+    */
+     }else if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         [self.imgBackground setFrame:CGRectMake(0, 0, 375, 667)];
         [self.btnReintentarConexion setFrame:CGRectMake(30, 250, 315, 45)];
         [self.imgLine setFrame:CGRectMake(30, 320, 315, 2)];

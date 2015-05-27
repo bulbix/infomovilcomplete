@@ -53,11 +53,13 @@
     
     
     //MBC
-    if(IS_STANDARD_IPHONE_6_PLUS){
+    /*if(IS_STANDARD_IPHONE_6_PLUS){
         [self.botonCambioEstadisticas setFrame:CGRectMake(20, 570, 374, 29)];
         self.botonTotales.frame = CGRectMake(20, 15, 374, 29);
     }
-    else if(IS_STANDARD_IPHONE_6){
+    else
+        */
+        if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
          [self.botonCambioEstadisticas setFrame:CGRectMake(20, 500, 335, 29)];
         self.botonTotales.frame = CGRectMake(20, 15, 335, 30);
     }else if(IS_IPHONE_5){

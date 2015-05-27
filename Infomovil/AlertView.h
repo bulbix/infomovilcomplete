@@ -19,21 +19,22 @@ typedef enum {
     AlertViewTypeInfo2,
     AlertViewTypeActivity,
 	AlertViewTypeInfo3,
-    AlertViewInfoMapa
+    AlertViewInfoMapa,
+    AlertViewTypeInfoPassword
 }AlertViewType;
 
 @interface AlertView : UIView
 
-@property (nonatomic,assign) id<AlertViewDelegate> delegado;
+@property (nonatomic,retain) id<AlertViewDelegate> delegado;
 @property (nonatomic) AlertViewType type;
 
-@property (nonatomic, strong) UIView *vistaAlert;
+@property (nonatomic, retain) UIView *vistaAlert;
 
-@property (nonatomic, strong) UIImageView *imagenEncabezado;
+@property (nonatomic, retain) UIImageView *imagenEncabezado;
 
-@property (nonatomic, strong) UIButton *botonSi;
-@property (nonatomic, strong) UIButton *botonNo;
-@property (nonatomic, strong) UIButton *botonAceptar;
+@property (nonatomic, retain) UIButton *botonSi;
+@property (nonatomic, retain) UIButton *botonNo;
+@property (nonatomic, retain) UIButton *botonAceptar;
 
 @property (nonatomic, strong) UILabel *labelTitulo;
 @property (nonatomic, strong) UILabel *labelPregunta;

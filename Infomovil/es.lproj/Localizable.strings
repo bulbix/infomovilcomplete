@@ -473,7 +473,7 @@
 
 "paso2Eliminar" = "¿Estás seguro que deseas eliminar los datos?";
 
-"errorPassword" = "Contraseña de de 8 a 15 caracteres (letras y números). No contener la palabra Infomovil. No puede ser igual al correo";
+"errorPassword" = "Contraseña de de 8 a 15 caracteres (letras y números). No contener la palabra Info o Infomovil y no puede ser igual al correo";
 "imagenPromoCorrecta" = "Tu imagen se ha procesado correctamente y esta lista para subirse";
 
 "registrarMensaje" =  "Por favor, crea una cuenta con tu\ne-mail y una contraseña.";
@@ -649,6 +649,7 @@
 "etiquetaRecursoNormal" ="www.infomovil.com/misitio";
 "tiempoAgotado" = "Se ha agotado el tiempo de espera, inténtalo nuevamente." ;
 "errorCompra" = "No se ha podido realizar tu compra. Por favor inténtalo nuevamente." ;
+"errorVerMiSitio" = "No se ha podido cargar el sitio web." ;
 "errorPublicacion" = "No se ha podido registrar tu sitio web por favor inténtalo nuevamente.";
 "faltaImagenActualizar" = "Debes seleccionar una imagen antes de actualizar";
 "cuentaTodavia"="¿Aún no tienes cuenta? Regístrate";
@@ -663,3 +664,4 @@
 "necesitaEmail" = "Puedes cambiar tu contraseña en Facebook!";
 "eligePlanCuenta" ="" ;
 "publicarNombrar" = "!Publicar¡";
+"aceptarPop" = "Aceptar";

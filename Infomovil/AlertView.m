@@ -68,8 +68,9 @@
     [self.labelTitulo setTextColor:[UIColor blackColor]];
     [self.labelTitulo setTextAlignment:NSTextAlignmentCenter];
     [self.labelTitulo setBackgroundColor:[UIColor clearColor]];
-    [self.labelTitulo setNumberOfLines:4];
+    [self.labelTitulo setNumberOfLines:10];
     [self.vistaAlert addSubview:self.labelTitulo];
+    
     switch (self.type) {
         case AlertViewTypeQuestion:
             self.botonSi = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -96,11 +97,11 @@
             [self.vistaAlert addSubview:self.botonNo];
             if (tipo == 1) {
                 //MBC
-                if(IS_STANDARD_IPHONE_6){
+                if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
                     [self.vistaAlert setFrame:CGRectMake(50, 150, 278, 182)];
-                }
-                else if(IS_STANDARD_IPHONE_6_PLUS){
+                /*}else if(IS_STANDARD_IPHONE_6_PLUS){
                     [self.vistaAlert setFrame:CGRectMake(68, 150, 278, 182)];
+                */
                 }else if(IS_IPAD){
                     [self.vistaAlert setFrame:CGRectMake(245, 400, 278, 182)];
                 }else{
@@ -143,11 +144,11 @@
             [self.vistaAlert addSubview:self.botonNo];
             if (tipo == 1) {
                 //MBC
-                if(IS_STANDARD_IPHONE_6){
+                if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
                     [self.vistaAlert setFrame:CGRectMake(50, 150, 278, 182)];
-                }
-                else if(IS_STANDARD_IPHONE_6_PLUS){
+               /* }else if(IS_STANDARD_IPHONE_6_PLUS){
                     [self.vistaAlert setFrame:CGRectMake(65, 150, 278, 182)];
+                */
                 }else if(IS_IPAD){
                     [self.vistaAlert setFrame:CGRectMake(245, 400, 278, 182)];
                 
@@ -161,12 +162,12 @@
         
         case AlertViewTypeActivity:
             //MBC
-            if(IS_STANDARD_IPHONE_6){
+            if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
                 [self.vistaAlert setFrame:CGRectMake(50, 150, 278, 182)];
-            }
-            else if(IS_STANDARD_IPHONE_6_PLUS){
+            /*}else if(IS_STANDARD_IPHONE_6_PLUS){
                 [self.vistaAlert setFrame:CGRectMake(80, 150, 278, 182)];
-            }else if(IS_IPAD){
+            */
+             }else if(IS_IPAD){
                 [self.vistaAlert setFrame:CGRectMake(245, 400, 278, 182)];
             }else{
                 [self.vistaAlert setFrame:CGRectMake(21, 150, 278, 182)];
@@ -180,12 +181,12 @@
             
         case AlertViewTypeInfo:
             //MBC
-            if(IS_STANDARD_IPHONE_6){
+            if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
                 [self.vistaAlert setFrame:CGRectMake(50, 150, 278, 200)];
-            }
-            else if(IS_STANDARD_IPHONE_6_PLUS){
+            /*}else if(IS_STANDARD_IPHONE_6_PLUS){
                 [self.vistaAlert setFrame:CGRectMake(80, 150, 278, 200)];
-            }else if(IS_IPAD){
+            */
+             }else if(IS_IPAD){
                 [self.vistaAlert setFrame:CGRectMake(245, 400, 278, 182)];
             }else{
                 [self.vistaAlert setFrame:CGRectMake(21, 150, 278, 200)];
@@ -219,24 +220,24 @@
 			
             if (tipo == 1) {
                 //MBC
-                if(IS_STANDARD_IPHONE_6){
+                if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
                     [self.vistaAlert setFrame:CGRectMake(50, 150, 278, 200)];
-                }
-                else if(IS_STANDARD_IPHONE_6_PLUS){
+                /*}else if(IS_STANDARD_IPHONE_6_PLUS){
                     [self.vistaAlert setFrame:CGRectMake(80, 150, 278, 200)];
-                }else if(IS_IPAD){
+                */
+                 }else if(IS_IPAD){
                     [self.vistaAlert setFrame:CGRectMake(245, 400, 278, 182)];
                 }else{
                     [self.vistaAlert setFrame:CGRectMake(21, 150, 278, 182)];
                 }
                 self.labelDominio.hidden = YES;
                 //MBC
-                if(IS_STANDARD_IPHONE_6){
-                    [self.botonAceptar setFrame:CGRectMake(0, 140, 278, 54)];
-                }
-                else if(IS_STANDARD_IPHONE_6_PLUS){
+                if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
+                    [self.botonAceptar setFrame:CGRectMake(0, 150, 278, 54)];
+                /*}else if(IS_STANDARD_IPHONE_6_PLUS){
                     [self.botonAceptar setFrame:CGRectMake(0, 170, 278, 54)];
-                }else if(IS_IPAD){
+                */
+                 }else if(IS_IPAD){
                     [self.vistaAlert setFrame:CGRectMake(245, 400, 278, 182)];
                 }else{
                     [self.botonAceptar setFrame:CGRectMake(0, 128, 278, 54)];
@@ -295,14 +296,14 @@
             break;
         case AlertViewInfoMapa:
             //MBC
-            if(IS_STANDARD_IPHONE_6){
+            if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
                 [self.vistaAlert setFrame:CGRectMake(50, 150, 278, 200)];
             }else if(IS_IPAD){
                 [self.vistaAlert setFrame:CGRectMake(245, 400, 278, 182)];
-            }else if(IS_STANDARD_IPHONE_6_PLUS){
+            /*}else if(IS_STANDARD_IPHONE_6_PLUS){
                 [self.vistaAlert setFrame:CGRectMake(80, 150, 278, 200)];
-            }
-            else{
+            */
+             }else{
                 [self.vistaAlert setFrame:CGRectMake(21, 150, 278, 182)];
             }
             [self.labelTitulo setHidden:YES];
@@ -337,6 +338,31 @@
             [self.botonAceptar setTitleColor:colorFuenteAzul forState:UIControlStateNormal];
             [self.botonAceptar addTarget:self action:@selector(presionarAceptar:) forControlEvents:UIControlEventTouchUpInside];
             [self.vistaAlert addSubview:self.botonAceptar];
+            break;
+         case AlertViewTypeInfoPassword:
+            if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
+                [self.vistaAlert setFrame:CGRectMake(50, 150, 278, 190)];
+            }else if(IS_IPAD){
+                [self.vistaAlert setFrame:CGRectMake(245, 400, 278, 190)];
+            }else{
+                [self.vistaAlert setFrame:CGRectMake(21, 150, 278, 190)];
+            }
+            
+            self.botonAceptar = [UIButton buttonWithType:UIButtonTypeCustom];
+            [self.botonAceptar setFrame:CGRectMake(0, 146, 278, 54)];
+            [self.botonAceptar setBackgroundImage:[UIImage imageNamed:@"btnaceptarmensajes.png"] forState:UIControlStateNormal];
+            if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
+                [self.botonAceptar setTitle:@"Accept" forState:UIControlStateNormal];
+            }else{
+                [self.botonAceptar setTitle:@"Aceptar" forState:UIControlStateNormal];
+            }
+            [self.botonAceptar setTitleColor:colorFuenteAzul forState:UIControlStateNormal];
+            [self.botonAceptar addTarget:self action:@selector(presionarAceptar:) forControlEvents:UIControlEventTouchUpInside];
+            [self.vistaAlert addSubview:self.botonAceptar];
+             [self.botonAceptar setFrame:CGRectMake(0, 146, 278, 54)];
+            [self.labelTitulo setFrame:CGRectMake(5, 0, 268, 160)];
+            [self.labelTitulo setFont:[UIFont fontWithName:@"Avenir-Book" size:14]];
+            [self.vistaAlert addSubview:self.labelTitulo];
             break;
             
         default:

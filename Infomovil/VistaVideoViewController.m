@@ -68,7 +68,7 @@
         frameborder=\"0\"/>\
         </body></html>";
     
-    }else if(IS_STANDARD_IPHONE_6_PLUS){
+   /* }else if(IS_STANDARD_IPHONE_6_PLUS){
         htmlString = @"<html><head>\
         <meta name = \"viewport\" content = \"initial-scale = 1.0, user-scalable = no, width = 414\"/></head>\
         <body style=\"background:#000;margin-top:0px;margin-left:0px\">\
@@ -76,8 +76,8 @@
         src=\"%@?autoplay=0\"\
         frameborder=\"0\"/>\
         </body></html>";
-    
-    }else if(IS_STANDARD_IPHONE_6){
+    */
+    }else if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         htmlString = @"<html><head>\
         <meta name = \"viewport\" content = \"initial-scale = 1.0, user-scalable = no, width = 414\"/></head>\
         <body style=\"background:#000;margin-top:0px;margin-left:0px\">\

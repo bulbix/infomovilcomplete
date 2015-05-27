@@ -97,13 +97,14 @@ BOOL actualizo;
        PlantillaViewController *pController = [[PlantillaViewController alloc] initWithNibName:@"Plantilla" bundle:[NSBundle mainBundle]];
         UIImage *image;
         
-        if(IS_STANDARD_IPHONE_6){
+        if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
             image = [UIImage imageNamed:[NSString stringWithFormat:@"template%i",i+1]];
             pController.view.frame = CGRectMake(375*i, 0, 375, 667);
-        }else if(IS_STANDARD_IPHONE_6_PLUS){
+      /*  }else if(IS_STANDARD_IPHONE_6_PLUS){
             image = [UIImage imageNamed:[NSString stringWithFormat:@"template%i",i+1]];
             pController.view.frame = CGRectMake(414*i, 0, 414, 736);
-        }else if(IS_IPAD){
+       */
+       }else if(IS_IPAD){
             pController.view.frame = CGRectMake(768*i, 0, 768, 1024);
             image = [UIImage imageNamed:[NSString stringWithFormat:@"template%i@3x",i+1]];
         }else{
@@ -161,7 +162,7 @@ BOOL actualizo;
             pController.nombrePlantilla.frame = CGRectMake(77, 365, 84, 21);
             pController.btnVerEjemploPlantilla.frame = CGRectMake(201, 361, 97, 25);
             pController.descripcionPlantilla.frame = CGRectMake(20, 386, 280, 67);
-        }else if(IS_STANDARD_IPHONE_6){
+        }else if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
             pController.btnTemplateSeleccionado.frame = CGRectMake(40, 320, 36, 37);
             pController.etiquetaEstatica.frame = CGRectMake(40, 365, 52, 21);
             pController.nombrePlantilla.frame = CGRectMake(90, 365, 84, 21);
@@ -169,7 +170,7 @@ BOOL actualizo;
             pController.descripcionPlantilla.frame = CGRectMake(40, 386, 280, 67);
             pController.imgTemplate.frame = CGRectMake(25, 0, 315, 315);
             pController.imgBullets.frame = CGRectMake(100, 480, 176, 13);
-        }else if(IS_STANDARD_IPHONE_6_PLUS){
+       /* }else if(IS_STANDARD_IPHONE_6_PLUS){
             pController.btnTemplateSeleccionado.frame = CGRectMake(70, 320, 36, 37);
             pController.etiquetaEstatica.frame = CGRectMake(70, 365, 52, 21);
             pController.nombrePlantilla.frame = CGRectMake(127, 365, 84, 21);
@@ -177,6 +178,7 @@ BOOL actualizo;
             pController.descripcionPlantilla.frame = CGRectMake(70, 386, 280, 67);
             pController.imgTemplate.frame = CGRectMake(60, 0, 320, 320);
             pController.imgBullets.frame = CGRectMake(122, 480, 176, 13);
+        */
         }else if(IS_IPAD){
             pController.btnTemplateSeleccionado.frame = CGRectMake(134, 590, 60, 60);
             pController.etiquetaEstatica.frame = CGRectMake(134, 650, 70, 40);
@@ -205,11 +207,12 @@ BOOL actualizo;
         [self.scrollTemplate addSubview:pController.view];
     }
    
-    if(IS_STANDARD_IPHONE_6){
+    if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         self.scrollTemplate.frame = CGRectMake(0, 0, 375, 667);
-    }else if(IS_STANDARD_IPHONE_6_PLUS){
+  /*  }else if(IS_STANDARD_IPHONE_6_PLUS){
         self.scrollTemplate.frame = CGRectMake(0, 30, 414, 736);
-    }else if(IS_IPAD){
+   */
+   }else if(IS_IPAD){
         self.scrollTemplate.frame = CGRectMake(0, 30, 768, 1024 );
     }
     

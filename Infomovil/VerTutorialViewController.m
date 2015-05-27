@@ -51,12 +51,12 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     //MBC
-    if(IS_STANDARD_IPHONE_6){
+    if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         [self.webView setFrame:CGRectMake(0, 0, 375, 667)];
-    }
-    else if(IS_STANDARD_IPHONE_6_PLUS){
+    /*}else if(IS_STANDARD_IPHONE_6_PLUS){
         [self.webView setFrame:CGRectMake(0, 0, 414, 680)];
-    }else if(IS_IPAD){
+    */
+     }else if(IS_IPAD){
         [self.webView setFrame:CGRectMake(0, 0, 768, 1024)];
     }else{
         [self.webView setFrame:CGRectMake(0, 0, 320, 568)];

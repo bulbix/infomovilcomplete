@@ -107,14 +107,15 @@
 	}
     
 
-    if(IS_STANDARD_IPHONE_6_PLUS){
+    /*if(IS_STANDARD_IPHONE_6_PLUS){
         [self.labelAgregarTitulo setFrame:CGRectMake(50, 20, 314, 21)];
         [self.labelInformacionAdicional setFrame:CGRectMake(50, 95, 314, 21)];
         self.txtTitulo.frame = CGRectMake(50, 49, 314, 30 );
         self.txtInfo.frame = CGRectMake(50, 124, 314, 128);
         [self.btnEliminar setFrame:CGRectMake(334, 281, 29, 35)];
         [self.scroll setFrame:CGRectMake(0, 0, 414, 736)];
-    }else if(IS_STANDARD_IPHONE_6){
+    }else 
+     */if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         self.txtTitulo.frame = CGRectMake(20, 49, 335, 30 );
         self.txtInfo.frame = CGRectMake(20, 124, 335, 128);
     }else if(IS_IPAD){

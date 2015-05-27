@@ -20,14 +20,14 @@
     
     
     //MBC
-    if(IS_STANDARD_IPHONE_6){
+    if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         [self.view setFrame:CGRectMake(0, 0, 375, 667)];
         [self.webView setFrame:CGRectMake(0, 0, 375, 667)];
-    }
-    else if(IS_STANDARD_IPHONE_6_PLUS){
+    /*}else if(IS_STANDARD_IPHONE_6_PLUS){
         [self.view setFrame:CGRectMake(0, 0, 414, 736)];
         [self.webView setFrame:CGRectMake(0, 0, 414, 736)];
-    }else if(IS_IPAD){
+    */
+     }else if(IS_IPAD){
         [self.view setFrame:CGRectMake(0, 0, 768, 1024)];
         [self.webView setFrame:CGRectMake(0, 0, 768, 1024)];
     }else{
@@ -70,10 +70,15 @@
     
     NSString *htmlStringToLoad = [prefs stringForKey:@"urlMisitio"];
     
-    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:htmlStringToLoad]]];
-    [self.view addSubview:self.webView];
-    [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
+    if([CommonUtils hayConexion]){
+        [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:htmlStringToLoad]]];
+        [self.view addSubview:self.webView];
+        [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
+    }else{
+        AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+        [alert show];
     
+    }
     
     
     
@@ -94,7 +99,7 @@
 -(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
     if(!self.pagCargada){
         [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
-        AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+        AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"errorVerMiSitio", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
         [alert show];
     }
     

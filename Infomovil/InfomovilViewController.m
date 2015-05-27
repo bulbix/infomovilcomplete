@@ -85,10 +85,11 @@
     
     if (IS_IPHONE_5) {
         vistaInferior = [[UIView alloc] initWithFrame:CGRectMake(0, 440, 320, 68)];//458
-    }else if(IS_STANDARD_IPHONE_6){
+    }else if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         vistaInferior = [[UIView alloc] initWithFrame:CGRectMake(25, 538, 320, 88)];//458
-    }else if(IS_STANDARD_IPHONE_6_PLUS){
+   /* }else if(IS_STANDARD_IPHONE_6_PLUS){
         vistaInferior = [[UIView alloc] initWithFrame:CGRectMake(47, 607, 320, 88)];//458
+    */
     }else if(IS_IPAD){
         vistaInferior = [[UIView alloc] initWithFrame:CGRectMake(174, 875, 668, 88)];//458
     }else {
@@ -96,7 +97,7 @@
     }
     
     
-    if(IS_IPAD){
+     if(IS_IPAD){
         self.botonEstadisticas = [[UIButton alloc] initWithFrame:CGRectMake(0, 25, 88, 61)];
         self.botonNotificaciones = [[UIButton alloc] initWithFrame:CGRectMake(88, 25, 88, 61)];
         self.botonCuenta = [[UIButton alloc] initWithFrame:CGRectMake(176, 25, 88, 61)];
@@ -291,9 +292,11 @@
     [imagenBarra setImage:[UIImage imageNamed:@"sbarnuevo.png"]];
     [self.view addSubview:imagenBarra];
     */
+    /*
     if(IS_STANDARD_IPHONE_6_PLUS){
         [self.vistaCircular setFrame:CGRectMake(84, 58, 267, 49)];
-    }else if(IS_STANDARD_IPHONE_6){
+    }else
+     */if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
          [self.vistaCircular setFrame:CGRectMake(64, 58, 267, 49)];
     }else if(IS_IPAD){
         [self.vistaCircular setFrame:CGRectMake(174, 110, 420, 80)];

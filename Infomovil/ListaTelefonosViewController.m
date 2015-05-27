@@ -91,11 +91,11 @@
         [self.labelAgregaDatos setFrame:CGRectMake(0, 10, 600, 30)];
         [self.labelAgregaDatos setTextAlignment:NSTextAlignmentCenter];
         [self.labelAgregaDatos setFont:[UIFont fontWithName:@"Avenir-medium" size:18]];
-    }else if(IS_STANDARD_IPHONE_6_PLUS){
+   /* }else if(IS_STANDARD_IPHONE_6_PLUS){
         [self.tablaContactos setFrame:CGRectMake(30,84,354,650)];
         [self.vistaInfo setFrame:CGRectMake(50, 40, 314, 400)];
-    
-    }else if(IS_STANDARD_IPHONE_6){
+    */
+    }else if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         [self.tablaContactos setFrame:CGRectMake(20, 84, 335, 550)];
         [self.vistaInfo setFrame:CGRectMake(20, 40, 335, 400)];
     

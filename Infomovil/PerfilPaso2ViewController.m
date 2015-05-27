@@ -122,9 +122,8 @@
 	respaldo = [[NSMutableArray alloc] initWithArray:self.datosUsuario.arregloDatosPerfil copyItems:YES];
 
     
-    if(IS_STANDARD_IPHONE_6){
+    if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         [self.txtDescripcion setFrame:CGRectMake(50, 70, 275, 150)];
-        
         [self.btnEliminar2 setFrame:CGRectMake(325, 368, 29, 35)];// Horarios
         [self.labelInfo setFrame:CGRectMake(335, 290, 33, 21)];
         [self.fixed setWidth:280.0f];
@@ -133,7 +132,7 @@
         [self.vistaHorarios setFrame:CGRectMake(0, 0, 375, 667)];
         [self.tablaHorarios setFrame:CGRectMake(20, 60, 335, 350)];
         
-    }else if(IS_STANDARD_IPHONE_6_PLUS){
+   /* }else if(IS_STANDARD_IPHONE_6_PLUS){
         [self.txtDescripcion setFrame:CGRectMake(50, 70, 314, 170)];
         [self.btnEliminar setFrame:CGRectMake(335, 250, 29, 35)];
         [self.btnEliminar2 setFrame:CGRectMake(335, 425, 29, 35)];// Horarios
@@ -143,6 +142,7 @@
         [self.vistaPicker setFrame:CGRectMake(0, 736, 414, 206)];
         [self.vistaHorarios setFrame:CGRectMake(0, 0, 414, 736)];
         [self.tablaHorarios setFrame:CGRectMake(50, 60, 314, 350)];
+    */
     }else if(IS_IPAD){
         [self.txtDescripcion setFrame:CGRectMake(134, 70, 500, 200)];
         [self.btnEliminar setFrame:CGRectMake(550, 300, 29, 35)];
@@ -318,11 +318,12 @@
         framePicker = CGRectMake(0, 288, 320, 280);
     }else if(IS_IPAD){
         framePicker = CGRectMake(0, 724, 768, 300);
-    }else if(IS_STANDARD_IPHONE_6){
+    }else if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         framePicker = CGRectMake(0, 420, 375, 206);
-    }else if(IS_STANDARD_IPHONE_6_PLUS){
+    /*}else if(IS_STANDARD_IPHONE_6_PLUS){
         framePicker = CGRectMake(0, 486, 414, 250);
-    }else {
+    */
+     }else {
         framePicker = CGRectMake(0, 210, 320, 206);
     }
     modificoPickerC1 = modificoPickerC2 = NO;
@@ -359,9 +360,11 @@
         [horarioSeleccionado setCierre:[arrayHorarios objectAtIndex:anterior2]];
     }
     [UIView animateWithDuration:0.5f animations:^{
-        if(IS_STANDARD_IPHONE_6_PLUS){
+        /*if(IS_STANDARD_IPHONE_6_PLUS){
             [self.vistaPicker setFrame:CGRectMake(0, 736, 414, 206)];
-        }else if(IS_STANDARD_IPHONE_6){
+        }else 
+         */
+         if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
             [self.vistaPicker setFrame:CGRectMake(0, 667, 375, 206)];
         }else if(IS_IPAD){
             [self.vistaPicker setFrame:CGRectMake(0, 1024, 768, 300)];

@@ -15,6 +15,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblTexto2;
 @property (weak, nonatomic) IBOutlet UILabel *lblTexto3;
 @property (weak, nonatomic) IBOutlet UIButton *presionarAceptarBtn;
+@property (weak, nonatomic) IBOutlet UIButton *btnAceptar;
+
+@property (weak, nonatomic) IBOutlet UIView *viewContenido;
 
 
 +(id)initInstruccionesContacto;

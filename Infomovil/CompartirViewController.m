@@ -41,14 +41,16 @@
 - (void)viewDidLoad{
     
     [super viewDidLoad];
-    if(IS_STANDARD_IPHONE_6_PLUS){
+   /* if(IS_STANDARD_IPHONE_6_PLUS){
         [self.btnFacebook setFrame:CGRectMake(102, 243, 47, 47)];
         [self.btnGooglePlus setFrame:CGRectMake(185, 243, 47, 47)];
         [self.btnTwitter setFrame:CGRectMake(271, 243, 47, 47)];
         [self.btnMail setFrame:CGRectMake(102, 298, 47, 47)];
         [self.btnSMS setFrame:CGRectMake(185, 298, 47, 47)];
         [self.btnWhat setFrame:CGRectMake(271, 298, 47, 47)];
-    }else if(IS_STANDARD_IPHONE_6){
+    }else
+        */
+        if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         [self.btnFacebook setFrame:CGRectMake(80, 243, 47, 47)];
         [self.btnGooglePlus setFrame:CGRectMake(160, 243, 47, 47)];
         [self.btnTwitter setFrame:CGRectMake(250, 243, 47, 47)];
@@ -146,9 +148,11 @@
 	
 	if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
 		[self.botonNotificaciones setBackgroundImage:[UIImage imageNamed:@"shareEn.png"] forState:UIControlStateNormal];
-        if(IS_STANDARD_IPHONE_6_PLUS){
+       /* if(IS_STANDARD_IPHONE_6_PLUS){
             self.vistaContenidoCompartir.frame = CGRectMake(70, 80, 287, 130);
-        } else if(IS_STANDARD_IPHONE_6){
+        } else
+            */
+        if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
             self.vistaContenidoCompartir.frame = CGRectMake(50, 80, 287, 130);
         }else if(IS_IPAD){
             self.label1.frame = CGRectMake(134, 70, 500, 80);
@@ -161,9 +165,10 @@
         
 	}else{
 		[self.botonNotificaciones setBackgroundImage:[UIImage imageNamed:@"micompartiron.png"] forState:UIControlStateNormal];
-        if(IS_STANDARD_IPHONE_6_PLUS){
+       /* if(IS_STANDARD_IPHONE_6_PLUS){
             self.vistaContenidoCompartir.frame = CGRectMake(70, 80, 287, 130);
-        } else if(IS_STANDARD_IPHONE_6){
+        } else*/
+        if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
             self.vistaContenidoCompartir.frame = CGRectMake(50, 80, 287, 130);
         }else if(IS_IPAD){
             self.label1.frame = CGRectMake(184, 70, 400, 60);

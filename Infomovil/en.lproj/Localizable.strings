@@ -360,7 +360,7 @@
 
 "eliminaImagenAviso" = "You must first remove the picture";
 
-"errorPassword" = "Password must be 8 or more characters\n(letters and numbers)\nCan not contain the word Infomovil";
+"errorPassword" = "Password must be 8 or more characters (letters and numbers) Can not contain the word Info or Infomovil and should not be equal to email";
 "imagenPromoCorrecta" = "Your image is now ready to be uploaded";
 
 "registrarMensaje" =  "Please create an account with your e-mail and password.";
@@ -538,6 +538,7 @@
 "etiquetaRecursoNormal" ="www.infomovil.com/mysite";
 "tiempoAgotado" = "Request timed out. Try again" ;
 "errorCompra" = "Has not been able to make your purchase. Please try again." ;
+"errorVerMiSitio" = "Could not load the website." ;
 "errorPublicacion" = "Has not been able to register your website please try again.";
 "faltaImagenActualizar" = "You must select an image before upgrading";
 "cuentaTodavia"="Don't have an Account? Register"; // or You do not have an account yet?
@@ -553,3 +554,4 @@
 "necesitaEmail" = "You may change your password in Facebook!";
 "eligePlanCuenta" ="Choose your plan and purchase plan pro" ;
 "publicarNombrar" = "!Publish¡";
+"aceptarPop" = "Accept";

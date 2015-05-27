@@ -64,8 +64,7 @@
         [self.labelTel setFrame:CGRectMake(291, 178, 28, 24)];
         [self.labelDominio setFrame:CGRectMake(50, 223, 280, 24)];
         [self.boton setFrame:CGRectMake(93, 266, 200, 35)];
-    }
-    else if(IS_STANDARD_IPHONE_6_PLUS){
+    /*}else if(IS_STANDARD_IPHONE_6_PLUS){
         [self.scroll setFrame:CGRectMake(0, 0, 414, 736)];
         [self.label1 setFrame:CGRectMake(60, 47, 280, 97)];
         [self.label2 setFrame:CGRectMake(60, 60, 280, 101)];
@@ -74,7 +73,8 @@
         [self.labelTel setFrame:CGRectMake(311, 178, 28, 24)];
         [self.labelDominio setFrame:CGRectMake(70, 223, 280, 24)];
         [self.boton setFrame:CGRectMake(113, 266, 200, 35)];
-    }else if(IS_IPAD){
+    */
+     }else if(IS_IPAD){
         [self.scroll setFrame:CGRectMake(0, 0, 768, 1024)];
         [self.label2 setFrame:CGRectMake(84, 80, 600, 50)];
         [self.label2 setFont:[UIFont fontWithName:@"Avenir-medium" size:21]];
@@ -152,13 +152,14 @@
         if(IS_IPAD){
             [self.labelW setFrame:CGRectMake(124, 178, 200, 24)];
             [self.nombreDominio setFrame:CGRectMake(324, 175, 320, 30)];
-        }else if(IS_STANDARD_IPHONE_6){
+        }else if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
              [self.labelW setFrame:CGRectMake(10, 178, 170, 24)];
              [self.nombreDominio setFrame:CGRectMake(180, 175, 180, 30)];
-        }else if(IS_STANDARD_IPHONE_6_PLUS){
+     /*   }else if(IS_STANDARD_IPHONE_6_PLUS){
             [self.labelW setFrame:CGRectMake(10, 178, 170, 24)];
             [self.nombreDominio setFrame:CGRectMake(180, 175, 215, 30)];
-        }else{
+      */
+      }else{
             [self.labelW setFont:[UIFont fontWithName:@"Avenir-Book" size:15]];
             [self.nombreDominio setFont:[UIFont fontWithName:@"Avenir-Book" size:15]];
             [self.labelW setFrame:CGRectMake(5, 108, 150, 24)];
@@ -646,13 +647,14 @@
     [self navigationController].navigationBarHidden = YES;
     [self.popUpView setHidden:NO];
     [self.scroll setHidden:YES];
-    if(IS_STANDARD_IPHONE_6){
+    if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         [self.popUpView setFrame:CGRectMake(0, 0, 375, 667)];
         [self.popUpCenter setFrame:CGRectMake(47, 100, 280, 280)];
-    }else if(IS_STANDARD_IPHONE_6_PLUS){
+    /*}else if(IS_STANDARD_IPHONE_6_PLUS){
         [self.popUpView setFrame:CGRectMake(0, 0, 414, 736)];
         [self.popUpCenter setFrame:CGRectMake(67, 200, 280, 280)];
-    }else if(IS_IPAD){
+    */
+     }else if(IS_IPAD){
         [self.popUpView setFrame:CGRectMake(0, 0, 768, 1024)];
         [self.popUpCenter setFrame:CGRectMake(224, 200, 320, 320)];
         [self.etiquetaEstatica setFrame:CGRectMake(10, 62, 300, 24)];

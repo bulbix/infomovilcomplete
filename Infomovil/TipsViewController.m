@@ -71,7 +71,7 @@
     self.vistaTip2.layer.cornerRadius = 5.0f;
     self.vistaTip3.layer.cornerRadius = 5.0f;
     
-    if(IS_STANDARD_IPHONE_6_PLUS){
+    /*if(IS_STANDARD_IPHONE_6_PLUS){
         self.view.frame = CGRectMake(0, 0, 414, 736);
         self.scrollVistaTips.frame = CGRectMake(0, 50, 414, 300);
         [self.scrollVistaTips setContentSize:CGSizeMake(1242, 300)];
@@ -87,7 +87,9 @@
         [self.btnSms setFrame:CGRectMake(126, 230, 47, 47)];
         [self.btnWhats setFrame:CGRectMake(223, 230, 47, 47)];
         
-    }else if(IS_IPAD){
+    }else 
+     */
+     if(IS_IPAD){
         self.view.frame = CGRectMake(0, 0, 768, 1024);
         self.scrollVistaTips.frame = CGRectMake(0, 100, 768, 600);
         [self.scrollVistaTips setContentSize:CGSizeMake(2304, 600)];

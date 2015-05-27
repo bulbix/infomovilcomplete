@@ -114,12 +114,13 @@
         self.textEmpresa.frame = CGRectMake(84,65 , 600, 30);
         self.txtDescripcion.frame = CGRectMake(84, 83, 600, 109);
         self.botonEliminar.frame = CGRectMake(655,258 , 29, 35);
-    }else if(IS_STANDARD_IPHONE_6_PLUS){
+   /* }else if(IS_STANDARD_IPHONE_6_PLUS){
         self.labelInstruccion.frame = CGRectMake(0, 6, 414, 40);
         self.textEmpresa.frame = CGRectMake(50,65 , 314, 30);
         self.txtDescripcion.frame = CGRectMake(50, 60, 314, 109);
         self.botonEliminar.frame = CGRectMake(334,230 , 29, 35);
-    }else if(IS_STANDARD_IPHONE_6){
+    */
+    }else if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         self.labelInstruccion.frame = CGRectMake(0, 6, 375, 40);
         self.textEmpresa.frame = CGRectMake(50,65 , 275, 30);
         self.txtDescripcion.frame = CGRectMake(50, 60, 275, 109);

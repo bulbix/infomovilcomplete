@@ -17,7 +17,7 @@
 @property (nonatomic, strong) NSString *resultado;
 
 
--(void) compraPlanIntento:(NSString *)statusCompra;
+
 
 @end
 

@@ -23,8 +23,7 @@ typedef void (^RequestProductsCompletionHandler)(BOOL success, NSArray * product
 - (void)restoreCompletedTransactions;
 
 -(int)daysRemainingOnSubscription;
--(NSString *)getExpiryDateString;
--(NSDate *)getExpiryDateForMonths:(int)months;
+
 -(void)purchaseSubscriptionWithMonths:(int)months;
 
 @end

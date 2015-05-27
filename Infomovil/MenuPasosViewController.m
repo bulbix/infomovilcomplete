@@ -51,7 +51,7 @@ BOOL banderaRegresar;
 	
     [super viewDidLoad];
     
-    if(IS_STANDARD_IPHONE_6){
+    if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         self.botonFondo.frame = CGRectMake(45, 50, 270, 53);
         self.botonCrear.frame = CGRectMake(45, 140, 270, 53);
         self.botonPublicar.frame = CGRectMake(45, 230, 270, 53);
@@ -60,11 +60,10 @@ BOOL banderaRegresar;
         self.verTutorialbtn.frame = CGRectMake(50, 100, 137, 35);
         self.botonEjemplo.frame = CGRectMake(190, 100, 137, 35);
         self.dominio.frame = CGRectMake(0, 8, 375, 34);
-        self.line1.frame = CGRectMake(45, 120, 280, 3);
-        self.line2.frame = CGRectMake(45, 210, 280, 3);
-        self.line3.frame = CGRectMake(45, 300, 280, 3);
-    }
-    else if(IS_STANDARD_IPHONE_6_PLUS){
+        self.line1.frame = CGRectMake(45, 120, 280, 2);
+        self.line2.frame = CGRectMake(45, 210, 280, 2);
+        self.line3.frame = CGRectMake(45, 300, 280, 2);
+   /* }else if(IS_STANDARD_IPHONE_6_PLUS){
         self.botonFondo.frame = CGRectMake(67, 46, 280, 53);
         self.botonCrear.frame = CGRectMake(67, 130, 280, 53);
         self.botonPublicar.frame = CGRectMake(67, 214, 280, 53);
@@ -76,6 +75,7 @@ BOOL banderaRegresar;
         self.line2.frame = CGRectMake(67, 191, 280, 3);
         self.line3.frame = CGRectMake(67, 277, 280, 3);
         self.dominio.frame = CGRectMake(0, 4, 420, 34);
+    */
     }else if(IS_IPAD){
         self.botonFondo.frame = CGRectMake(184, 150, 400, 75);
         self.botonCrear.frame = CGRectMake(184, 270, 400, 75);
@@ -260,9 +260,10 @@ BOOL banderaRegresar;
        
             if(IS_IPHONE5){
                 self.viewDominioPublicado.frame = CGRectMake(0, 320, 320, 90);
-            }else if (IS_STANDARD_IPHONE_6_PLUS){
+           /* }else if (IS_STANDARD_IPHONE_6_PLUS){
                 self.viewDominioPublicado.frame = CGRectMake(0, 320, 414, 90);
-            }else if(IS_STANDARD_IPHONE_6){
+            */
+            }else if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
                 self.viewDominioPublicado.frame = CGRectMake(0, 320, 375, 90);
             }else if(IS_IPAD){
                 self.viewDominioPublicado.frame = CGRectMake(0, 320, 400, 400);
@@ -279,9 +280,10 @@ BOOL banderaRegresar;
             self.dominio.hidden = YES;
             if(IS_IPHONE5){
                 self.viewDominioNoPublicado.frame = CGRectMake(0, 310, 320, 90);
-            }else if (IS_STANDARD_IPHONE_6_PLUS){
+            /*}else if (IS_STANDARD_IPHONE_6_PLUS){
                 self.viewDominioNoPublicado.frame = CGRectMake(0, 320, 320, 120);
-            }else if(IS_STANDARD_IPHONE_6){
+            */
+             }else if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS) {
                 self.viewDominioNoPublicado.frame = CGRectMake(0, 320, 320, 140);
             }else if(IS_IPAD){
                 self.viewDominioNoPublicado.frame = CGRectMake(0, 570, 768, 350);

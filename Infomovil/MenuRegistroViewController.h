@@ -38,7 +38,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *leyenda5;
 
 
-
 - (IBAction)mostrarTerminos:(id)sender;
 - (IBAction)mostrarCondiciones:(id)sender;
 - (IBAction)verificarNombre:(UIButton *)sender;

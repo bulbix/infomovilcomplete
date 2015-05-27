@@ -109,7 +109,7 @@
         estaEditando = NO;
     }
     
-    
+    /*
     if(IS_STANDARD_IPHONE_6_PLUS){
         [self.vistaContenedorBoton setFrame:CGRectMake(70, 260, 280, 61)];
         [self.vistaTomar setFrame:CGRectMake(0, 0, 280, 30)];
@@ -118,7 +118,9 @@
         [self.labelTituloFoto setFrame:CGRectMake(70, 186 ,203, 21)];
         [self.pieFoto setFrame:CGRectMake(70,215 ,300 ,30 )];
         [self.scrollFoto setContentSize:CGSizeMake(414, 600)];
-    }else if(IS_STANDARD_IPHONE_6){
+    }else
+     */
+    if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         [self.vistaContenedorBoton setFrame:CGRectMake(40, 280, 280, 61)];
         [self.vistaTomar setFrame:CGRectMake(0, 0, 280, 30)];
         [self.vistaUsar setFrame:CGRectMake(0, 31, 280, 30)];

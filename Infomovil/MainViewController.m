@@ -59,7 +59,7 @@
     loginView.readPermissions = @[@"public_profile", @"email"];
 
     UIColor *color = [UIColor whiteColor];
-    if(IS_STANDARD_IPHONE_6){
+    if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         loginView.frame = CGRectMake(20, 160, 335, 50);
         self.raya1.frame = CGRectMake(20, 230, 155, 2);
         self.o.frame = CGRectMake(178, 222, 40, 20);
@@ -86,13 +86,15 @@
         [self.btnRegistrate setFrame:CGRectMake(20, 510, 335, 50)];
         [self.btnRegistrate.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:17]];
         
-    }else if(IS_STANDARD_IPHONE_6_PLUS){
+    /*}else if(IS_STANDARD_IPHONE_6_PLUS){
+        NSLog(@"ES UN IPHONE 6 PLUS");
         loginView.frame = CGRectMake(20, 180, 375, 50);
         self.raya1.frame = CGRectMake(20, 265, 175, 2);
         self.o.frame = CGRectMake(199, 257, 40, 20);
         self.raya2.frame = CGRectMake(215, 265, 175, 2);
         
-        [self.scrollLogin setContentSize:CGSizeMake(414, 500)];
+        [self.scrollLogin setContentSize:CGSizeMake(200, 500)];
+        self.scrollLogin.frame = CGRectMake(0, 0, 200, 736);
         self.txtEmail.frame = CGRectMake(20,300, 375, 50);
         self.txtPassword.frame = CGRectMake(20, 355, 375, 50);
         self.boton.frame = CGRectMake(25, 460, 365, 50);
@@ -116,9 +118,10 @@
         self.txtEmail.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"mainLabelCorreo", nil) attributes:@{NSForegroundColorAttributeName: color}];
         [self.txtEmail setFont: [UIFont fontWithName:@"Avenir-Book" size:16]];
          [self.editaTuSitio setFrame:CGRectMake(20, 120, 360,33 )];
-        self.scrollLogin.frame = CGRectMake(0, 0, 414, 736);
+        
         [self.btnRegistrate setFrame:CGRectMake(20, 550, 360, 50)];
         [self.btnRegistrate.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:18]];
+     */
     }else if(IS_IPAD){
         loginView.frame = CGRectMake(196, 300, 375, 50);
         self.scrollLogin.frame = CGRectMake(0, 0, 768, 1024);
@@ -213,12 +216,13 @@
         {
             UIButton * loginButton =  obj;
             UIImage *loginImage;
-            if(IS_STANDARD_IPHONE_6){
+            if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
                 loginButton.frame =CGRectMake(0,0, 335, 50);
                 loginImage = [UIImage imageNamed:@"btn_facebook_335_55.png"];
-            }else if (IS_STANDARD_IPHONE_6_PLUS){
+           /* }else if (IS_STANDARD_IPHONE_6_PLUS){
                 loginButton.frame =CGRectMake(0,0, 375, 50);
                 loginImage = [UIImage imageNamed:@"btn_facebook_375x55.png"];
+            */
             }else if(IS_IPAD){
                 loginButton.frame =CGRectMake(0, 0, 375, 50);
                 loginImage = [UIImage imageNamed:@"btn_facebook_375x55.png"];
@@ -246,13 +250,13 @@
             }
             loginLabel.textAlignment = NSTextAlignmentCenter;
             
-            if(IS_STANDARD_IPHONE_6){
+            if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
                 loginLabel.frame =CGRectMake(0,0, 335, 50);
                 [loginLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
-            }else if(IS_STANDARD_IPHONE_6_PLUS){
+/*            }else if(IS_STANDARD_IPHONE_6_PLUS){
                 loginLabel.frame =CGRectMake(0,0, 375, 50);
                 [loginLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
-            
+  */
             }else if(IS_IPAD){
                 loginLabel.frame =CGRectMake(0,0, 375, 50);
                 [loginLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:18]];
@@ -326,18 +330,19 @@
     
     if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
         
-        if(IS_STANDARD_IPHONE_6){
+        if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
             self.leyenda1.frame = CGRectMake(77, 600, 200, 21);
             self.leyenda3.frame = CGRectMake(75, 622, 28, 21);
             self.leyenda4.frame = CGRectMake(93, 623, 144, 21);
             self.leyenda2.frame = CGRectMake(245, 601, 80, 21);
             self.leyenda5.frame = CGRectMake(220,622, 83, 21);
-        }else if(IS_STANDARD_IPHONE_6_PLUS){
+      /*  }else if(IS_STANDARD_IPHONE_6_PLUS){
             self.leyenda1.frame = CGRectMake(77, 670, 200, 21);
             self.leyenda3.frame = CGRectMake(75, 692, 28, 21);
             self.leyenda4.frame = CGRectMake(93, 693, 144, 21);
             self.leyenda2.frame = CGRectMake(245, 671, 80, 21);
             self.leyenda5.frame = CGRectMake(220,692, 83, 21);
+       */
         }else if(IS_IPAD){
             [self.leyenda1 setFont: [UIFont fontWithName:@"Avenir-Book" size:18]];
             [self.leyenda2.titleLabel setFont: [UIFont fontWithName:@"Avenir-Book" size:18]];
@@ -368,12 +373,12 @@
         
     }else{
         
-        if(IS_STANDARD_IPHONE_6){
-            self.leyenda1.frame = CGRectMake(6, 600, 152, 21);
-            self.leyenda2.frame = CGRectMake(160, 601, 152, 21);
-            self.leyenda3.frame = CGRectMake(37, 622, 28, 21);
-            self.leyenda4.frame = CGRectMake(65, 622, 144, 21);
-            self.leyenda5.frame = CGRectMake(202,622, 83, 21);
+        if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS ){
+            self.leyenda1.frame = CGRectMake(30, 600, 152, 21);
+            self.leyenda2.frame = CGRectMake(184, 601, 152, 21);
+            self.leyenda3.frame = CGRectMake(61, 622, 28, 21);
+            self.leyenda4.frame = CGRectMake(89, 622, 144, 21);
+            self.leyenda5.frame = CGRectMake(226,622, 83, 21);
         }else if(IS_IPAD){
             [self.leyenda1 setFont: [UIFont fontWithName:@"Avenir-Book" size:18]];
             [self.leyenda2.titleLabel setFont: [UIFont fontWithName:@"Avenir-Book" size:18]];
@@ -393,13 +398,14 @@
             self.leyenda4.frame = CGRectMake(60, 458, 144, 21);
             self.leyenda2.frame = CGRectMake(160, 441, 170, 21);
             self.leyenda5.frame = CGRectMake(197,457, 83, 21);
-        }else if(IS_STANDARD_IPHONE_6_PLUS){ 
+      /*  }else if(IS_STANDARD_IPHONE_6_PLUS){
             self.leyenda1.frame = CGRectMake(60, 680, 270, 21);
             self.leyenda3.frame = CGRectMake(75, 702, 28, 21);
             self.leyenda4.frame = CGRectMake(100, 703, 144, 21);
             self.leyenda2.frame = CGRectMake(203, 681, 180, 21);
             self.leyenda5.frame = CGRectMake(240,702, 83, 21);
-        }else{
+       */ 
+       }else{
             self.leyenda1.frame = CGRectMake(6, 510, 152, 21);
             self.leyenda2.frame = CGRectMake(160, 511, 152, 21);
             self.leyenda3.frame = CGRectMake(37, 532, 28, 21);

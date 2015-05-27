@@ -113,10 +113,11 @@
 	}
     if(IS_IPAD){
         [self.scroll setContentSize:CGSizeMake(768, 1024)];
-    }else if (IS_STANDARD_IPHONE_6){
+    }else if (IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         [self.scroll setContentSize:CGSizeMake(375, 667)];
-    }else if(IS_STANDARD_IPHONE_6_PLUS){
+   /* }else if(IS_STANDARD_IPHONE_6_PLUS){
         [self.scroll setContentSize:CGSizeMake(414, 736)];
+    */
     }else{
         [self.scroll setContentSize:CGSizeMake(320, 250)];
     }
@@ -131,7 +132,7 @@
     [self.keyboardControls setDelegate:self];
     
     
-    if(IS_STANDARD_IPHONE_6){
+    if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         [self.label1 setFrame:CGRectMake(40, 35, 295, 65)];
         [self.labelNombre setFrame:CGRectMake(40, 120, 295, 30)];
         [self.txtNombre setFrame:CGRectMake(40, 150, 295, 30)];
@@ -143,7 +144,7 @@
         [self.vistaCombo setFrame:CGRectMake(40, 330, 295, 30)];
         [self.imgBull setFrame:CGRectMake(250, 330, 20, 20)];
         [self.boton setFrame:CGRectMake(97, 400, 220, 35)];
-    }else if(IS_STANDARD_IPHONE_6_PLUS){
+    /*}else if(IS_STANDARD_IPHONE_6_PLUS){
         [self.label1 setFrame:CGRectMake(40, 40, 295, 60)];
         [self.labelNombre setFrame:CGRectMake(40, 120, 295, 30)];
         [self.txtNombre setFrame:CGRectMake(40, 150, 295, 30)];
@@ -155,7 +156,8 @@
         [self.vistaCombo setFrame:CGRectMake(40, 330, 295, 30)];
         [self.imgBull setFrame:CGRectMake(250, 330, 20, 20)];
         [self.boton setFrame:CGRectMake(97, 500, 220, 35)];
-    }else if(IS_IPAD){
+    */
+     }else if(IS_IPAD){
         [self.label1 setFrame:CGRectMake(84, 40, 600, 60)];
         [self.label1 setFont:[UIFont fontWithName:@"Avenir-medium" size:20]];
         [self.labelNombre setFrame:CGRectMake(84, 120, 600, 35)];

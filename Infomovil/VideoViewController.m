@@ -72,20 +72,20 @@
         [self.imagenVistaPrevia setFrame:CGRectMake(184, 40, 400, 300)];
         [self.vistaDatosVideo setFrame:CGRectMake(84, 60, 600, 300)];
         [self.btnPlayer setFrame:CGRectMake(184, 40, 400, 300)];
-    }else if(IS_STANDARD_IPHONE_6_PLUS){
-        [self.vistaSeleccionaVideo setFrame:CGRectMake(0, 20, 414, 500 )];
-        [self.labelBuscaYoutube setFrame:CGRectMake(0, 20, 414, 30)];
-        [self.logoYoutube setFrame:CGRectMake(100, 80, 200,81 )];
-        [self.labelUrlVideo setFrame:CGRectMake(20, 180, 374, 80)];
-        [self.txtUrlVideo setFrame:CGRectMake(50, 260, 300, 35)];
-        [self.buscarBtn setFrame:CGRectMake(50, 330, 300, 40)];
-        [self.vistaVisualizaVideo setFrame:CGRectMake(0, 20, 414, 600)];
+    }else if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
+        [self.vistaSeleccionaVideo setFrame:CGRectMake(0, 20, 375, 500 )];
+        [self.labelBuscaYoutube setFrame:CGRectMake(0, 20, 375, 30)];
+        [self.logoYoutube setFrame:CGRectMake(87, 80, 200,81 )];
+        [self.labelUrlVideo setFrame:CGRectMake(27, 180, 320, 80)];
+        [self.txtUrlVideo setFrame:CGRectMake(37, 260, 300, 35)];
+        [self.buscarBtn setFrame:CGRectMake(67, 330, 240, 40)];
+        [self.vistaVisualizaVideo setFrame:CGRectMake(0, 20, 375, 600)];
         [self.btnEliminar setFrame:CGRectMake( 300, 380, 29, 38)];
-        [self.imagenVistaPrevia setFrame:CGRectMake(30, 40, 350, 300)];
-        [self.vistaDatosVideo setFrame:CGRectMake(0, 60, 414, 300)];
-        [self.btnPlayer setFrame:CGRectMake(0, 40, 414, 300)];
-        
+        [self.imagenVistaPrevia setFrame:CGRectMake(0, 40, 375, 300)];
+        [self.vistaDatosVideo setFrame:CGRectMake(0, 60, 375, 300)];
+        [self.btnPlayer setFrame:CGRectMake(0, 40, 375, 300)];
     }
+    
      [self.vistaInferior setHidden:NO];
 }
 

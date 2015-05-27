@@ -122,7 +122,7 @@ int opcionButton = 0 ;
         
     
     
-    if(IS_STANDARD_IPHONE_6){
+    if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         self.selector.frame = CGRectMake(20, 10, 335, 30);
          self.scrollContenido.frame = CGRectMake(0, 50, 375, 667);
         [self.scrollContenido setContentSize:CGSizeMake(750, 667)];
@@ -134,10 +134,10 @@ int opcionButton = 0 ;
         self.comprar1mes.frame = CGRectMake(30, 87, 109, 109);
         self.comprar6meses.frame = CGRectMake(135, 87, 109, 109);
         self.comprar12meses.frame = CGRectMake(240, 87, 109, 109);
+        [self.botonCuenta setFrame:CGRectMake(128, 12, 64, 54)];
         
         
-        
-    }else if(IS_STANDARD_IPHONE_6_PLUS){
+    /*}else if(IS_STANDARD_IPHONE_6_PLUS){
         self.selector.frame = CGRectMake(30, 10, 354, 30);
         self.scrollContenido.frame = CGRectMake(0, 50, 414, 736);
         [self.scrollContenido setContentSize:CGSizeMake(828, 1472)];
@@ -154,7 +154,8 @@ int opcionButton = 0 ;
         self.beneficiosPlanPro.frame = CGRectMake(45, 220, 324, 20);
         self.rayaLabel.frame = CGRectMake(45, 240, 324, 1);
         self.imgBeneficios.frame = CGRectMake(45, 265 ,324 , 161);
-        
+       [self.botonCuenta setFrame:CGRectMake(128, 12, 64, 54)];
+     */
     }else if(IS_IPAD){
         self.selector.frame = CGRectMake(134, 80, 500, 35);
         self.scrollContenido.frame = CGRectMake(0, 120, 768, 1024);
@@ -255,9 +256,10 @@ int opcionButton = 0 ;
         if([((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && ![self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]){
 	
             //MBC
-            if(IS_STANDARD_IPHONE_6_PLUS){
-                [self.MensajePlanProComprado setFrame:CGRectMake(70, 60, 414, 150)];
-            }else if(IS_STANDARD_IPHONE_6){
+          /*  if(IS_STANDARD_IPHONE_6_PLUS){
+                [self.MensajePlanProComprado setFrame:CGRectMake(0, 60, 414, 150)];
+            }else 
+           */if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
                 [self.MensajePlanProComprado setFrame:CGRectMake(70, 60, 220, 150)];
             }else if(IS_IPAD){
                 [self.MensajePlanProComprado setFrame:CGRectMake(184, 10, 400, 300)];
@@ -612,10 +614,11 @@ if(noSeRepiteOprimirElBoton){
             self.datosUsuario = [DatosUsuario sharedInstance];
             UIFont * customFont = [UIFont fontWithName:@"Avenir-Medium" size:16];
             UILabel *dominio;
-            if(IS_STANDARD_IPHONE_6){
+            if (IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
                 dominio = [[UILabel alloc]initWithFrame:CGRectMake(0, 40, 375, 100)];
-            }else if(IS_STANDARD_IPHONE_6_PLUS){
-                dominio = [[UILabel alloc]initWithFrame:CGRectMake(0, 40, 414, 100)];
+           /* }else if(IS_STANDARD_IPHONE_6_PLUS){
+                dominio = [[UILabel alloc]initWithFrame:CGRectMake(0, 75, 414, 100)];
+            */
             }else if(IS_IPAD){
                 dominio = [[UILabel alloc]initWithFrame:CGRectMake(0, 200, 768, 100)];
             }else{
@@ -625,20 +628,22 @@ if(noSeRepiteOprimirElBoton){
         
         UILabel *fechas;
         fechas.font = customFont;
-        if(IS_STANDARD_IPHONE_6){
+        if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
             fechas = [[UILabel alloc]initWithFrame:CGRectMake(0, 120,375, 100)];
             [fechas setFont: [UIFont fontWithName:@"Avenir-Book" size:16]];
             [dominio setFont: [UIFont fontWithName:@"Avenir-Book" size:18]];
-        }else if(IS_STANDARD_IPHONE_6_PLUS){
+     /*   }else if(IS_STANDARD_IPHONE_6_PLUS){
             fechas = [[UILabel alloc]initWithFrame:CGRectMake(0, 180,414, 100)];
-            [fechas setFont: [UIFont fontWithName:@"Avenir-Book" size:20]];
-            [dominio setFont: [UIFont fontWithName:@"Avenir-Book" size:20]];
-        }else if(IS_IPAD){
-            fechas = [[UILabel alloc]initWithFrame:CGRectMake(184, 180,400, 200)];
+            [fechas setFont: [UIFont fontWithName:@"Avenir-Medium" size:16]];
+            [dominio setFont: [UIFont fontWithName:@"Avenir-Medium" size:16]];
+      */
+      }else if(IS_IPAD){
+            fechas = [[UILabel alloc]initWithFrame:CGRectMake(184, 260,400, 200)];
             [fechas setFont: [UIFont fontWithName:@"Avenir-Book" size:24]];
             [dominio setFont: [UIFont fontWithName:@"Avenir-Book" size:24]];
         }else{
-            fechas = [[UILabel alloc]initWithFrame:CGRectMake(0, 120,320, 100)];
+            fechas = [[UILabel alloc]initWithFrame:CGRectMake(0, 150,320, 100)];
+            [fechas setFont: [UIFont fontWithName:@"Avenir-Medium" size:16]];
             dominio.font = customFont;
         }
         
@@ -652,9 +657,9 @@ if(noSeRepiteOprimirElBoton){
                         if([usuarioDom.vigente isEqualToString:@"SI"] || [usuarioDom.vigente isEqualToString:@"si"]){
                             dominio.text = [NSString stringWithFormat:@"My website\n\n www.%@.tel",self.datosUsuario.dominio] ;
                             if(self.datosUsuario.fechaDominioIni && ![self.datosUsuario.fechaDominioIni isEqualToString:@""] && ![self.datosUsuario.fechaDominioIni isEqualToString:@"(null)"] && self.datosUsuario.fechaDominioIni != nil){
-                                fechas.text = [NSString stringWithFormat: @"Fecha de inicio: %@\n Fecha de término: %@", self.datosUsuario.fechaDominioIni, self.datosUsuario.fechaDominioFin ];
+                                fechas.text = [NSString stringWithFormat: @"Start date: %@\n End date: %@", self.datosUsuario.fechaDominioIni, self.datosUsuario.fechaDominioFin ];
                             }else{
-                                fechas.text = [NSString stringWithFormat: @"Fecha de inicio: %@\n Fecha de término: %@", usuarioDom.fechaIni, usuarioDom.fechaFin ];
+                                fechas.text = [NSString stringWithFormat: @"Start date: %@\n End date: %@", usuarioDom.fechaIni, usuarioDom.fechaFin ];
                             
                             }
                             
@@ -732,10 +737,11 @@ if(noSeRepiteOprimirElBoton){
             fechas.textAlignment = NSTextAlignmentCenter;
             [self.vistaDominio addSubview:fechas];
             
-            if(IS_STANDARD_IPHONE_6){
+            if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
                 [self.scrollContenido scrollRectToVisible:CGRectMake(375, 0, self.scrollContenido.frame.size.width, self.scrollContenido.frame.size.height) animated:YES];
-            }else if(IS_STANDARD_IPHONE_6_PLUS){
+           /* }else if(IS_STANDARD_IPHONE_6_PLUS){
                 [self.scrollContenido scrollRectToVisible:CGRectMake(414, 0, self.scrollContenido.frame.size.width, self.scrollContenido.frame.size.height) animated:YES];
+            */
             }else if(IS_IPAD){
                 [self.scrollContenido scrollRectToVisible:CGRectMake(768, 0, self.scrollContenido.frame.size.width, self.scrollContenido.frame.size.height) animated:YES];
             }else{
@@ -765,9 +771,10 @@ if(noSeRepiteOprimirElBoton){
     
    
         //MBC
-        if(IS_STANDARD_IPHONE_6_PLUS){
-            [self.MensajePlanProComprado setFrame:CGRectMake(70, 60, 414, 150)];
-        }else if(IS_STANDARD_IPHONE_6){
+       /* if(IS_STANDARD_IPHONE_6_PLUS){
+            [self.MensajePlanProComprado setFrame:CGRectMake(0, 60, 414, 150)];
+        }else
+        */if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
             [self.MensajePlanProComprado setFrame:CGRectMake(70, 60, 220, 150)];
         }else if(IS_IPAD){
             [self.MensajePlanProComprado setFrame:CGRectMake(184, 10, 400, 400)];
