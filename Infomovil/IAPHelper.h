@@ -22,8 +22,8 @@ typedef void (^RequestProductsCompletionHandler)(BOOL success, NSArray * product
 - (BOOL)productPurchased:(NSString *)productIdentifier;
 - (void)restoreCompletedTransactions;
 
--(int)daysRemainingOnSubscription;
+//-(int)daysRemainingOnSubscription;
 
--(void)purchaseSubscriptionWithMonths:(int)months;
+//-(void)purchaseSubscriptionWithMonths:(int)months;
 
 @end

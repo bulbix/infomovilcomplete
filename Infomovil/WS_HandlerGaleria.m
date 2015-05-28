@@ -35,8 +35,8 @@
                      "<domainId>%@</domainId>" ,
                      [StringUtils encriptar:@"IOS" conToken:datos.token],
                      [StringUtils encriptar:versionDefault conToken:datos.token],
-                     [StringUtils encriptar:[NSString stringWithFormat:@"%i", datos.idDominio] conToken:datos.token]];
-        NSLog(@"LOS VALORES ENVIADOS SON: %i y de arreglogariea son %i", datos.idDominio, [self.arregloGaleria count]);
+                     [StringUtils encriptar:[NSString stringWithFormat:@"%li", (long)datos.idDominio] conToken:datos.token]];
+        NSLog(@"LOS VALORES ENVIADOS SON: %li y de arreglogariea son %lu", (long)datos.idDominio, (unsigned long)[self.arregloGaleria count]);
         for (int i = 0; i < [self.arregloGaleria count]; i++) {
             GaleriaImagenes *galeria = [self.arregloGaleria objectAtIndex:i];
             NSData *dataImage = [NSData dataWithContentsOfFile:galeria.rutaImagen];
@@ -48,7 +48,7 @@
              "</arg1>",
              [StringUtils encriptar:@"IMAGEN" conToken:datos.token],
              [StringUtils encriptar:galeria.pieFoto conToken:datos.token],
-             [StringUtils encriptar:[NSString stringWithFormat:@"%i", galeria.idImagen] conToken:datos.token],
+             [StringUtils encriptar:[NSString stringWithFormat:@"%li", (long)galeria.idImagen] conToken:datos.token],
              [Base64 encode:dataImage]];
             NSLog(@"LOS VALORES ENVIADOS SON: %@", galeria.pieFoto);
         }
@@ -67,8 +67,8 @@
             if (requiereEncriptar) {
                 datos = [DatosUsuario sharedInstance];
 				
-                    int aux=0;
-                    int idAux=0;
+                    NSUInteger aux=0;
+                    NSUInteger idAux=0;
                     for(int x = 0;x < ids.count;x++)
                     {
                         GaleriaImagenes *imagen = [self.arregloGaleria objectAtIndex:x];
@@ -78,7 +78,7 @@
                         idAux = imagen.idImagen;
                     }
                     if(aux==1){
-                        [self.galeriaDelegate resultadoConsultaDominio:[NSString stringWithFormat:@"%i",idAux]];
+                        [self.galeriaDelegate resultadoConsultaDominio:[NSString stringWithFormat:@"%lu",(unsigned long)idAux]];
                     } else if(self.resultado == nil){
                         [datos setArregloGaleriaImagenes:self.arregloGaleria];
                         NSLog(@"REGRESSO resultadoConsultaDominio DEL METODO ACTUALIZAR GALERIA");
@@ -121,8 +121,8 @@
                      "<domainId>%@</domainId>" ,
                      [StringUtils encriptar:@"IOS" conToken:datos.token],
                      [StringUtils encriptar:versionDefault conToken:datos.token],
-                     [StringUtils encriptar:[NSString stringWithFormat:@"%i", datos.idDominio] conToken:datos.token]];
-        NSLog(@"LOS VALORES ENVIADOS SON: %i y de arreglogariea son %i y el url Image es: %@", datos.idDominio, [self.arregloGaleria count], [datos.arregloUrlImagenesGaleria objectAtIndex:indexImage]);
+                     [StringUtils encriptar:[NSString stringWithFormat:@"%li", (long)datos.idDominio] conToken:datos.token]];
+        NSLog(@"LOS VALORES ENVIADOS SON: %li y de arreglogariea son %lu y el url Image es: %@", (long)datos.idDominio, (unsigned long)[self.arregloGaleria count], [datos.arregloUrlImagenesGaleria objectAtIndex:indexImage]);
         
             [stringXML appendFormat:@"<arg1>"
              "<typeImage>%@</typeImage>"
@@ -268,7 +268,7 @@
                      "<versionSistema>%@</versionSistema>"
                      "<domainId>%@</domainId>",[StringUtils encriptar:@"IOS" conToken:datos.token],
                      [StringUtils encriptar:versionDefault conToken:datos.token],
-                     [StringUtils encriptar:[NSString stringWithFormat:@"%i", datos.idDominio] conToken:datos.token]];
+                     [StringUtils encriptar:[NSString stringWithFormat:@"%li", (long)datos.idDominio] conToken:datos.token]];
         
         [stringXML appendFormat:@"<arg1>"
          "<typeImage>%@</typeImage>"
@@ -278,7 +278,7 @@
          "</arg1><token>%@</token>",
          [StringUtils encriptar:tipoInsertar conToken:datos.token],
          [StringUtils encriptar:imagenInsertar.pieFoto conToken:datos.token],
-         [StringUtils encriptar:[NSString stringWithFormat:@"%i", imagenInsertar.idImagen] conToken:datos.token],
+         [StringUtils encriptar:[NSString stringWithFormat:@"%li", (long)imagenInsertar.idImagen] conToken:datos.token],
          [Base64 encode:[NSData dataWithContentsOfFile:imagenInsertar.rutaImagen]],
          [StringUtils encriptar:datos.emailUsuario conToken:passwordEncriptar]];
         NSLog(@"EL PIE QUE SE INSERTA SERA: %@", imagenInsertar.pieFoto);

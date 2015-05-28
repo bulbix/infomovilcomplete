@@ -53,7 +53,7 @@
             [self.segmentedControl addTarget:self action:@selector(segmentedControlValueChanged:) forControlEvents:UIControlEventValueChanged];
             
             [self.segmentedControl setMomentary:YES];
-            [self.segmentedControl setSegmentedControlStyle:UISegmentedControlStyleBar];
+           // [self.segmentedControl setSegmentedControlStyle:UISegmentedControlSegmentCenter];
             [self.segmentedControl setEnabled:NO forSegmentAtIndex:BSKeyboardControlsDirectionPrevious];
             [self.segmentedControl setEnabled:NO forSegmentAtIndex:BSKeyboardControlsDirectionNext];
             [self setSegmentedControlItem:[[UIBarButtonItem alloc] initWithCustomView:self.segmentedControl]];

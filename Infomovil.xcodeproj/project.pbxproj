@@ -237,8 +237,6 @@
 		0F9E0E9518A594B800657EEA /* GaleriaImagenes.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9E0E9418A594B800657EEA /* GaleriaImagenes.m */; };
 		0F9E0E9818A5A05600657EEA /* GaleriaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9E0E9718A5A05600657EEA /* GaleriaCell.m */; };
 		0F9E0E9A18A5A06B00657EEA /* GaleriaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F9E0E9918A5A06B00657EEA /* GaleriaCell.xib */; };
-		0F9F526A189838EE000F9FA5 /* Circle.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F5267189838EE000F9FA5 /* Circle.m */; };
-		0F9F526B189838EE000F9FA5 /* ETActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F5269189838EE000F9FA5 /* ETActivityIndicatorView.m */; };
 		0F9F526D18983C0F000F9FA5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F9F526C18983C0F000F9FA5 /* QuartzCore.framework */; };
 		0F9F52A8189890C6000F9FA5 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F9F526E189890C5000F9FA5 /* 1.png */; };
 		0F9F52A9189890C6000F9FA5 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F9F526F189890C5000F9FA5 /* 2.png */; };
@@ -511,7 +509,6 @@
 		68B2200719E7636200E7FA7A /* RKTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B2200519E7636200E7FA7A /* RKTabView.m */; };
 		68C200CA19F9654E0062B2D3 /* TablaPlanProViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68C200C919F9654E0062B2D3 /* TablaPlanProViewController.m */; };
 		68C200CD19F965610062B2D3 /* TablaDominioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68C200CC19F965610062B2D3 /* TablaDominioViewController.m */; };
-		68C200D119F9D78B0062B2D3 /* CNPPopupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68C200D019F9D78B0062B2D3 /* CNPPopupController.m */; };
 		AB5280D919AE592A001AB735 /* TextAndGraphAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB5280D819AE592A001AB735 /* TextAndGraphAlertView.m */; };
 		AB60A849198065E300E1C476 /* logoRegistrado.png in Resources */ = {isa = PBXBuildFile; fileRef = AB60A848198065E300E1C476 /* logoRegistrado.png */; };
 		AB60A84B1980662000E1C476 /* logoRegistrado@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB60A84A1980661F00E1C476 /* logoRegistrado@2x.png */; };
@@ -636,7 +633,6 @@
 		BFCB96DA1AA610B800DDD753 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFCB96D91AA610B800DDD753 /* MobileCoreServices.framework */; };
 		BFCB96DC1AA610C100DDD753 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFCB96DB1AA610C100DDD753 /* QuickLook.framework */; };
 		BFCB96E81AA611B600DDD753 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFCB96E21AA611B600DDD753 /* HockeySDK.framework */; };
-		BFCB96E91AA611B600DDD753 /* HockeySDK.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = BFCB96E41AA611B600DDD753 /* HockeySDK.xcconfig */; };
 		BFCB96EA1AA611B600DDD753 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BFCB96E51AA611B600DDD753 /* HockeySDKResources.bundle */; };
 		BFCB96EB1AA611B600DDD753 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = BFCB96E61AA611B600DDD753 /* LICENSE */; };
 		BFCC3E6B1AF81A3F003791B8 /* btn_facebook_280x55.png in Resources */ = {isa = PBXBuildFile; fileRef = BFCC3E671AF81A3F003791B8 /* btn_facebook_280x55.png */; };
@@ -1068,10 +1064,6 @@
 		0F9E0E9618A5A05600657EEA /* GaleriaCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GaleriaCell.h; sourceTree = "<group>"; };
 		0F9E0E9718A5A05600657EEA /* GaleriaCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GaleriaCell.m; sourceTree = "<group>"; };
 		0F9E0E9918A5A06B00657EEA /* GaleriaCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GaleriaCell.xib; sourceTree = "<group>"; };
-		0F9F5266189838EE000F9FA5 /* Circle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Circle.h; sourceTree = "<group>"; };
-		0F9F5267189838EE000F9FA5 /* Circle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Circle.m; sourceTree = "<group>"; };
-		0F9F5268189838EE000F9FA5 /* ETActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ETActivityIndicatorView.h; path = ETActivityIndicatorView/ETActivityIndicatorView.h; sourceTree = "<group>"; };
-		0F9F5269189838EE000F9FA5 /* ETActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETActivityIndicatorView.m; sourceTree = "<group>"; };
 		0F9F526C18983C0F000F9FA5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		0F9F526E189890C5000F9FA5 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		0F9F526F189890C5000F9FA5 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
@@ -1431,8 +1423,6 @@
 		68C200C919F9654E0062B2D3 /* TablaPlanProViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TablaPlanProViewController.m; sourceTree = "<group>"; };
 		68C200CB19F965610062B2D3 /* TablaDominioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TablaDominioViewController.h; sourceTree = "<group>"; };
 		68C200CC19F965610062B2D3 /* TablaDominioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TablaDominioViewController.m; sourceTree = "<group>"; };
-		68C200CF19F9D78B0062B2D3 /* CNPPopupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNPPopupController.h; sourceTree = "<group>"; };
-		68C200D019F9D78B0062B2D3 /* CNPPopupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CNPPopupController.m; sourceTree = "<group>"; };
 		AB5280D719AE592A001AB735 /* TextAndGraphAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextAndGraphAlertView.h; sourceTree = "<group>"; };
 		AB5280D819AE592A001AB735 /* TextAndGraphAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextAndGraphAlertView.m; sourceTree = "<group>"; };
 		AB60A848198065E300E1C476 /* logoRegistrado.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoRegistrado.png; sourceTree = "<group>"; };
@@ -2179,16 +2169,6 @@
 			path = BSKeyboardControls;
 			sourceTree = "<group>";
 		};
-		0F9F5265189838EE000F9FA5 /* ETActivityIndicatorView */ = {
-			isa = PBXGroup;
-			children = (
-				0F9F5266189838EE000F9FA5 /* Circle.h */,
-				0F9F5267189838EE000F9FA5 /* Circle.m */,
-				0F9F5269189838EE000F9FA5 /* ETActivityIndicatorView.m */,
-			);
-			path = ETActivityIndicatorView;
-			sourceTree = "<group>";
-		};
 		0F9F52E218989413000F9FA5 /* iPhoneRet */ = {
 			isa = PBXGroup;
 			children = (
@@ -2624,16 +2604,13 @@
 				0F3C877D18B535D900F1B1CF /* Base64.m */,
 				0F4C7C2918B6575700891238 /* Reachability.h */,
 				0F4C7C2A18B6575700891238 /* Reachability.m */,
-				0F9F5268189838EE000F9FA5 /* ETActivityIndicatorView.h */,
 				0F9B36D118A1B65500B47E1D /* BSKeyboardControls */,
 				0F079C0A18722888007AFCC2 /* pickerView */,
 				0F011AD918903A7400E279A8 /* Alert */,
 				0F59472E1891F6700045EA85 /* Lib */,
-				0F9F5265189838EE000F9FA5 /* ETActivityIndicatorView */,
 				0F58C8A318FEE4D200F2C0A4 /* SABuble.h */,
 				0F58C8A418FEE4D200F2C0A4 /* SABuble.m */,
 				681A306D19FAAC5C00710167 /* LiveBlur */,
-				68C200CE19F9D78B0062B2D3 /* CNPPopupController */,
 				6850120319ED9CC000389185 /* iVersion */,
 				68B2200119E7636200E7FA7A /* RKTabView */,
 			);
@@ -2835,15 +2812,6 @@
 				68C200CC19F965610062B2D3 /* TablaDominioViewController.m */,
 			);
 			name = Widgets;
-			sourceTree = "<group>";
-		};
-		68C200CE19F9D78B0062B2D3 /* CNPPopupController */ = {
-			isa = PBXGroup;
-			children = (
-				68C200CF19F9D78B0062B2D3 /* CNPPopupController.h */,
-				68C200D019F9D78B0062B2D3 /* CNPPopupController.m */,
-			);
-			path = CNPPopupController;
 			sourceTree = "<group>";
 		};
 		BF069B561B0BCAEA00167EAF /* ImagenesParaWeb */ = {
@@ -3207,7 +3175,7 @@
 		0FE02804186E48FE007C27B0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Sergio Sánchez Flores";
 				TargetAttributes = {
 					0FE0280B186E48FF007C27B0 = {
@@ -3642,7 +3610,6 @@
 				0F11EDF1190712B300401686 /* whatsappcompartir.png in Resources */,
 				0FF421181899845B003EEBB1 /* fotoexistente@2x.png in Resources */,
 				0F7422D6187DB07C0053383E /* EditarPaso2ViewController.xib in Resources */,
-				BFCB96E91AA611B600DDD753 /* HockeySDK.xcconfig in Resources */,
 				0F9B36DC18A1B65600B47E1D /* BSKeyboardControls.strings in Resources */,
 				0F850DF81885B0820008A0CA /* InformacionPaso2ViewController.xib in Resources */,
 				0F9F52E1189890C6000F9FA5 /* usuario.png in Resources */,
@@ -3768,7 +3735,6 @@
 				6501151E191D4707004D90EA /* GTLQueryPlus.m in Sources */,
 				0F079C0D187228A5007AFCC2 /* UIColor+GetHSB.m in Sources */,
 				65011528191D4707004D90EA /* GTMHTTPFetchHistory.m in Sources */,
-				0F9F526B189838EE000F9FA5 /* ETActivityIndicatorView.m in Sources */,
 				68C200CD19F965610062B2D3 /* TablaDominioViewController.m in Sources */,
 				0F59473C1891F6700045EA85 /* PEResizeControl.m in Sources */,
 				0FFF9E01188DE99E00079A57 /* CompartirViewController.m in Sources */,
@@ -3781,7 +3747,6 @@
 				0F079C191872294B007AFCC2 /* ILSaturationBrightnessPickerView.m in Sources */,
 				0F850E061885F8D20008A0CA /* EstadisticasViewController.m in Sources */,
 				65011519191D4707004D90EA /* GTLPlusMoment.m in Sources */,
-				68C200D119F9D78B0062B2D3 /* CNPPopupController.m in Sources */,
 				6501151B191D4707004D90EA /* GTLPlusPeopleFeed.m in Sources */,
 				681A307219FAACC700710167 /* UIERealTimeBlurView.m in Sources */,
 				BFB69B5D1A83DB6B0022107C /* SDWebImagePrefetcher.m in Sources */,
@@ -3912,7 +3877,6 @@
 				6501150B191D4707004D90EA /* GTLBatchResult.m in Sources */,
 				68C200CA19F9654E0062B2D3 /* TablaPlanProViewController.m in Sources */,
 				6501150D191D4707004D90EA /* GTLErrorObject.m in Sources */,
-				0F9F526A189838EE000F9FA5 /* Circle.m in Sources */,
 				BFB69B621A83DB6B0022107C /* UIImageView+HighlightedWebCache.m in Sources */,
 				BF60DE921A89111F008D963E /* RageIAPHelper.m in Sources */,
 				0F5873A318F6E99900DA0CFD /* PNLineChart.m in Sources */,
@@ -4019,7 +3983,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -4050,7 +4013,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "077f4ded-74da-4bc9-802f-e9f6959bbcc2";
 				SDKROOT = iphoneos;
 				VALID_ARCHS = "armv7 armv7s arm64";
@@ -4061,7 +4024,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
 				"ARCHS[sdk=*]" = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -4098,7 +4060,6 @@
 		0FE0283F186E48FF007C27B0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Jose Reyes Calderon (N7Y2LLRE95)";
@@ -4121,7 +4082,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Infomovil/AppboyKit",
 				);
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -4135,7 +4096,6 @@
 		0FE02840186E48FF007C27B0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				"ARCHS[sdk=*]" = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

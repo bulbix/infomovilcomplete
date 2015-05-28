@@ -321,7 +321,7 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
 	return [strTemp dataUsingEncoding:codiNueva];
 }
 
-+ (NSData *)limpiaData:(NSData *)data
+/*+ (NSData *)limpiaData:(NSData *)data
 {
 	NSMutableData *dataDecode		= [[NSMutableData alloc] initWithData:data];
 	NSDictionary *dictDataChange	= [[NSDictionary alloc] initWithObjectsAndKeys:
@@ -346,5 +346,5 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
     [dictDataChange release];
 	return [dataDecode autorelease];
 }
-
+*/
 @end

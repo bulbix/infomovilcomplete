@@ -192,7 +192,7 @@
                 }
                 else {
                     NSInteger respuestaInt = [stringResult integerValue];
-                    NSLog(@"LA RESPUESTA ES : %i", respuestaInt);
+                    NSLog(@"LA RESPUESTA ES : %li", (long)respuestaInt);
                     if (respuestaInt > 0) {
                         self.datos.emailUsuario = email;
                         self.datos.passwordUsuario = pass;
@@ -275,7 +275,7 @@
                                "<token>%@</token>"
                                "</ws:getNumVisitas>"
                                "</soapenv:Body>"
-                               "</soapenv:Envelope>", [StringUtils encriptar:[NSString stringWithFormat:@"%i", self.datos.idDominio] conToken:self.datos.token],
+                               "</soapenv:Envelope>", [StringUtils encriptar:[NSString stringWithFormat:@"%li", (long)self.datos.idDominio] conToken:self.datos.token],
                                [StringUtils encriptar:self.datos.emailUsuario conToken:passwordEncriptar]];
     }
     else {
@@ -334,7 +334,7 @@
                                "<token>%@</token>"
                                "</ws:getFechaExpiracion>"
                                "</soapenv:Body>"
-                               "</soapenv:Envelope>", [StringUtils encriptar:[NSString stringWithFormat:@"%i", self.datos.idDominio] conToken:self.datos.token],
+                               "</soapenv:Envelope>", [StringUtils encriptar:[NSString stringWithFormat:@"%li", (long)self.datos.idDominio] conToken:self.datos.token],
                                [StringUtils encriptar:self.datos.emailUsuario conToken:passwordEncriptar]];
     }
     else {
@@ -516,11 +516,11 @@
                            "</ws:statusDominio>"
                            "</soapenv:Body>"
                            "</soapenv:Envelope>",
-                           [StringUtils encriptar:[NSString stringWithFormat:@"%i", self.datos.idDominio] conToken:self.datos.token],
+                           [StringUtils encriptar:[NSString stringWithFormat:@"%li", (long)self.datos.idDominio] conToken:self.datos.token],
                            [StringUtils encriptar:self.datos.emailUsuario conToken:passwordEncriptar]];
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
     
-    NSLog(@"LOS VALORES QUE ENVIO SON :%i   y   %@", self.datos.idDominio, self.datos.emailUsuario);
+    NSLog(@"LOS VALORES QUE ENVIO SON :%li   y   %@", (long)self.datos.idDominio, self.datos.emailUsuario);
     
     NSLog(@"La respuesta es en ws_handlerdominio consultaEstatusDominio %s", [dataResult bytes]);
     
@@ -533,7 +533,7 @@
                 self.datos = [DatosUsuario sharedInstance];
                 if ([self.arregloDominiosUsuario count] > 0) {
                     self.datos.dominiosUsuario = self.arregloDominiosUsuario;
-                    NSLog(@"SI AGREGO EL DOMINIOSUSUARIO EL ARREGLO DE DOMINIOSUSUARIO Y CONTIENE %i", [self.datos.dominiosUsuario count] );
+                    NSLog(@"SI AGREGO EL DOMINIOSUSUARIO EL ARREGLO DE DOMINIOSUSUARIO Y CONTIENE %lu", (unsigned long)[self.datos.dominiosUsuario count] );
                 }
                 NSString * stringResult = [StringUtils desEncriptar:self.resultadoDominio conToken:self.datos.token];
                 if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
@@ -560,7 +560,7 @@
 
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
 #if DEBUG
-    NSLog(@"Veamos que pone de error %@ y el code es: %i", parseError.userInfo, parseError.code);
+    NSLog(@"Veamos que pone de error %@ y el code es: %li", parseError.userInfo, (long)parseError.code);
 #endif
 }
 

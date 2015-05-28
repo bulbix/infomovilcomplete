@@ -215,7 +215,7 @@
 
 
 - (IBAction)cambiarPagina:(UIPageControl *)sender {
-    int page = self.myPageControl.currentPage;
+    NSUInteger page = self.myPageControl.currentPage;
     CGRect frame = self.scrollVistaTips.frame;
     frame.origin.x = frame.size.width * page;
     frame.origin.y = 0;

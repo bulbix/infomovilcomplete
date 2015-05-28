@@ -25,8 +25,8 @@
                                   "</ws:deleteOfferRecord>"
                                   "</soapenv:Body>"
                                   "</soapenv:Envelope>",
-                                  [StringUtils encriptar:[NSString stringWithFormat:@"%i", datos.idDominio] conToken:datos.token],
-                                  [StringUtils encriptar:[NSString stringWithFormat:@"%i", self.oferta.idOffer] conToken:datos.token],
+                                  [StringUtils encriptar:[NSString stringWithFormat:@"%li", (long)datos.idDominio] conToken:datos.token],
+                                  [StringUtils encriptar:[NSString stringWithFormat:@"%li", (long)self.oferta.idOffer] conToken:datos.token],
                                   [StringUtils encriptar:datos.emailUsuario conToken:passwordEncriptar]];
     
     NSLog(@"El string es %@", stringXML);
@@ -77,7 +77,7 @@
                  "<OffertRecordVO>"
                  "<descOffer>%@</descOffer>"
                  "<endDateOffer>%@</endDateOffer>" ,
-                 [StringUtils encriptar:[NSString stringWithFormat:@"%i", datos.idDominio] conToken:datos.token],
+                 [StringUtils encriptar:[NSString stringWithFormat:@"%li", (long)datos.idDominio] conToken:datos.token],
                  [StringUtils encriptar:[self.oferta descOffer] conToken:datos.token],
                  [StringUtils encriptar:endDate conToken:datos.token]];
     

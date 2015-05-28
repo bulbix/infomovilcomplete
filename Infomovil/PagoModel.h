@@ -16,7 +16,7 @@
 @property (nonatomic, strong) NSString *montoBruto;
 @property (nonatomic, strong) NSString *comision;
 @property (nonatomic, strong) NSString *montoReal;
-@property (nonatomic) int pagoId;
+@property (nonatomic) NSUInteger pagoId;
 @property (nonatomic, strong) NSString *statusPago;
 @property (nonatomic, strong) NSString *codigoCobro;
 @property (nonatomic, strong) NSString *referencia;

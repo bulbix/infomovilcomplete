@@ -7,7 +7,7 @@
 //
 
 #import "AlertView.h"
-#import "ETActivityIndicatorView.h"
+
 
 @interface AlertView () {
     NSInteger tipo;
@@ -161,7 +161,7 @@
             break;
         
         case AlertViewTypeActivity:
-            //MBC
+        {
             if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
                 [self.vistaAlert setFrame:CGRectMake(50, 150, 278, 182)];
             /*}else if(IS_STANDARD_IPHONE_6_PLUS){
@@ -172,13 +172,21 @@
             }else{
                 [self.vistaAlert setFrame:CGRectMake(21, 150, 278, 182)];
             }
-            
+            /*
             self.activityIndicator = [[ETActivityIndicatorView alloc] initWithFrame:CGRectMake(109, 40, 60, 60) andColor:colorMorado];
             [self.activityIndicator startAnimating];
-            [self.vistaAlert addSubview:self.activityIndicator];
+            */
+            UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+            activityIndicator.alpha = 1.0;
+            activityIndicator.color = [UIColor colorWithRed:(89/255.0f) green:(89/255.0f) blue:(89/255.0f) alpha:1.0];
+            activityIndicator.transform = CGAffineTransformMakeScale(2.0, 2.0);
+            activityIndicator.hidesWhenStopped = YES;
+            activityIndicator.frame = CGRectMake(90, 20, 100, 100);
+            [activityIndicator startAnimating];
+            [self.vistaAlert addSubview:activityIndicator];
             [self.labelTitulo setFrame:CGRectMake(10, 110, 258, 30)];
             break;
-            
+        }
         case AlertViewTypeInfo:
             //MBC
             if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){

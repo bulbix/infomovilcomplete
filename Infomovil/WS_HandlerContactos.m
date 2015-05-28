@@ -60,8 +60,8 @@
                      "<token>%@</token>"
                      "</ws:updateRecordNaptr>"
                      "</soapenv:Body>"
-                     "</soapenv:Envelope>", [StringUtils encriptar:[NSString stringWithFormat:@"%i", datos.idDominio] conToken:datos.token],
-                     [StringUtils encriptar:[NSString stringWithFormat:@"%i", contacto.idContacto] conToken:datos.token],
+                     "</soapenv:Envelope>", [StringUtils encriptar:[NSString stringWithFormat:@"%li", (long)datos.idDominio] conToken:datos.token],
+                     [StringUtils encriptar:[NSString stringWithFormat:@"%li", (long)contacto.idContacto] conToken:datos.token],
                      [StringUtils encriptar:contacto.descripcion conToken:datos.token],
                      [StringUtils encriptar:regExpresion conToken:datos.token],
                      [StringUtils encriptar:[diccionarioContacto objectForKey:@"servicio"] conToken:datos.token],
@@ -76,9 +76,9 @@
                      "<soapenv:Header/>"
                      "<soapenv:Body>"
                      "<ws:updateRecordNaptr>"
-                     "<domain_id>%i</domain_id>"
+                     "<domain_id>%li</domain_id>"
                      "<RecordNaptrVO>"
-                     "<claveContacto>%i</claveContacto>"
+                     "<claveContacto>%li</claveContacto>"
                      "<longLabelNaptr>%@</longLabelNaptr>"
                      "<regExp>%@</regExp>"
                      "<servicesNaptr>%@</servicesNaptr>"
@@ -87,7 +87,7 @@
                      "</RecordNaptrVO>"
                      "</ws:updateRecordNaptr>"
                      "</soapenv:Body>"
-                     "</soapenv:Envelope>", datos.idDominio, contacto.idContacto, contacto.descripcion, regExpresion, [diccionarioContacto objectForKey:@"servicio"], [diccionarioContacto objectForKey:@"subcategoria"], visible];
+                     "</soapenv:Envelope>", (long)datos.idDominio, (long)contacto.idContacto, contacto.descripcion, regExpresion, [diccionarioContacto objectForKey:@"servicio"], [diccionarioContacto objectForKey:@"subcategoria"], visible];
     }
     
     
@@ -169,8 +169,8 @@
                      "<token>%@</token>"
                      "</ws:updateRecordNaptr>"
                      "</soapenv:Body>"
-                     "</soapenv:Envelope>", [StringUtils encriptar:[NSString stringWithFormat:@"%i", datos.idDominio] conToken:datos.token],
-                     [StringUtils encriptar:[NSString stringWithFormat:@"%i", contacto.idContacto] conToken:datos.token],
+                     "</soapenv:Envelope>", [StringUtils encriptar:[NSString stringWithFormat:@"%li", (long)datos.idDominio] conToken:datos.token],
+                     [StringUtils encriptar:[NSString stringWithFormat:@"%li", (long)contacto.idContacto] conToken:datos.token],
                      [StringUtils encriptar:contacto.descripcion conToken:datos.token],
                      [StringUtils encriptar:regExpresion conToken:datos.token],
                      [StringUtils encriptar:[diccionarioContacto objectForKey:@"servicio"] conToken:datos.token],
@@ -183,9 +183,9 @@
                      "<soapenv:Header/>"
                      "<soapenv:Body>"
                      "<ws:updateRecordNaptr>"
-                     "<domain_id>%i</domain_id>"
+                     "<domain_id>%li</domain_id>"
                      "<RecordNaptrVO>"
-                     "<claveContacto>%i</claveContacto>"
+                     "<claveContacto>%li</claveContacto>"
                      "<longLabelNaptr>%@</longLabelNaptr>"
                      "<regExp>%@</regExp>"
                      "<servicesNaptr>%@</servicesNaptr>"
@@ -194,7 +194,7 @@
                      "</RecordNaptrVO>"
                      "</ws:updateRecordNaptr>"
                      "</soapenv:Body>"
-                     "</soapenv:Envelope>", datos.idDominio, contacto.idContacto, contacto.descripcion, regExpresion, [diccionarioContacto objectForKey:@"servicio"], [diccionarioContacto objectForKey:@"subcategoria"], visible];
+                     "</soapenv:Envelope>", (long)datos.idDominio, (long)contacto.idContacto, contacto.descripcion, regExpresion, [diccionarioContacto objectForKey:@"servicio"], [diccionarioContacto objectForKey:@"subcategoria"], visible];
     }
     
     
@@ -257,7 +257,7 @@
                      "<token>%@</token>"
                      "</ws:insertRecordNaptr>"
                      "</soapenv:Body>"
-                     "</soapenv:Envelope>", [StringUtils encriptar:[NSString stringWithFormat:@"%i", datos.idDominio] conToken:datos.token],
+                     "</soapenv:Envelope>", [StringUtils encriptar:[NSString stringWithFormat:@"%li", (long)datos.idDominio] conToken:datos.token],
                      [StringUtils encriptar:contacto.descripcion conToken:datos.token],
                      [StringUtils encriptar:regExpresion conToken:datos.token],
                      [StringUtils encriptar:[diccionarioContacto objectForKey:@"servicio"] conToken:datos.token],
@@ -270,7 +270,7 @@
                      "<soapenv:Header/>"
                      "<soapenv:Body>"
                      "<ws:insertRecordNaptr>"
-                     "<domain_id>%i</domain_id>"
+                     "<domain_id>%li</domain_id>"
                      "<RecordNaptrVO>"
                      "<longLabelNaptr>%@</longLabelNaptr>"
                      "<regExp>%@</regExp>"
@@ -280,7 +280,7 @@
                      "</RecordNaptrVO>"
                      "</ws:insertRecordNaptr>"
                      "</soapenv:Body>"
-                     "</soapenv:Envelope>", datos.idDominio, contacto.descripcion, regExpresion, [diccionarioContacto objectForKey:@"servicio"], [diccionarioContacto objectForKey:@"subcategoria"]];
+                     "</soapenv:Envelope>", (long)datos.idDominio, contacto.descripcion, regExpresion, [diccionarioContacto objectForKey:@"servicio"], [diccionarioContacto objectForKey:@"subcategoria"]];
     }
     
     
@@ -329,7 +329,7 @@
                      "<soapenv:Header/>"
                      "<soapenv:Body>"
                      "<ws:updateRecordNaptr>"
-                     "<domain_id>%@</domain_id>", [StringUtils encriptar:[NSString stringWithFormat:@"%i", datos.idDominio] conToken:datos.token]];
+                     "<domain_id>%@</domain_id>", [StringUtils encriptar:[NSString stringWithFormat:@"%li", (long)datos.idDominio] conToken:datos.token]];
         
         for (Contacto *contacto in arregloContactos) {
             NSString *visible;
@@ -355,7 +355,7 @@
              "<servicesNaptr>%@</servicesNaptr>"
              "<subCategory>%@</subCategory>"
              "<visible>%@</visible>"
-             "</RecordNaptrVO>", [StringUtils encriptar:[NSString stringWithFormat:@"%i", contacto.idContacto] conToken:datos.token],
+             "</RecordNaptrVO>", [StringUtils encriptar:[NSString stringWithFormat:@"%li", (long)contacto.idContacto] conToken:datos.token],
              [StringUtils encriptar:contacto.descripcion conToken:datos.token],
              [StringUtils encriptar:regExpresion conToken:datos.token],
              [StringUtils encriptar:[diccionarioContacto objectForKey:@"servicio"] conToken:datos.token],
@@ -369,7 +369,7 @@
                      "<soapenv:Header/>"
                      "<soapenv:Body>"
                      "<ws:updateRecordNaptr>"
-                     "<domain_id>%i</domain_id>", datos.idDominio ];
+                     "<domain_id>%li</domain_id>", (long)datos.idDominio ];
         
         for (Contacto *contacto in arregloContactos) {
             NSString *visible;
@@ -389,13 +389,13 @@
                 regExpresion = [NSString stringWithFormat:@"%@%@!", [diccionarioContacto objectForKey:@"expresion"], contacto.noContacto];
             }
             [stringXML appendFormat:@"<RecordNaptrVO>"
-             "<claveContacto>%i</claveContacto>"
+             "<claveContacto>%li</claveContacto>"
              "<longLabelNaptr>%@</longLabelNaptr>"
              "<regExp>%@</regExp>"
              "<servicesNaptr>%@</servicesNaptr>"
              "<subCategory>%@</subCategory>"
              "<visible>%@</visible>"
-             "</RecordNaptrVO>", contacto.idContacto, contacto.descripcion, regExpresion, [diccionarioContacto objectForKey:@"servicio"], [diccionarioContacto objectForKey:@"subcategoria"], visible];
+             "</RecordNaptrVO>", (long)contacto.idContacto, contacto.descripcion, regExpresion, [diccionarioContacto objectForKey:@"servicio"], [diccionarioContacto objectForKey:@"subcategoria"], visible];
         }
         [stringXML appendString:@"</ws:updateRecordNaptr></soapenv:Body></soapenv:Envelope>"];
     }
@@ -460,8 +460,8 @@
                      "<token>%@</token>"
                      "</ws:deleteRecordNaptr>"
                      "</soapenv:Body>"
-                     "</soapenv:Envelope>", [StringUtils encriptar:[NSString stringWithFormat:@"%i", usuarioDatos.idDominio] conToken:usuarioDatos.token],
-                     [StringUtils encriptar:[NSString stringWithFormat:@"%i", idContacto] conToken:usuarioDatos.token],
+                     "</soapenv:Envelope>", [StringUtils encriptar:[NSString stringWithFormat:@"%li", (long)usuarioDatos.idDominio] conToken:usuarioDatos.token],
+                     [StringUtils encriptar:[NSString stringWithFormat:@"%li", (long)idContacto] conToken:usuarioDatos.token],
                      [StringUtils encriptar:usuarioDatos.emailUsuario conToken:passwordEncriptar]];
     }
     else {
@@ -469,11 +469,11 @@
                      "<soapenv:Header/>"
                      "<soapenv:Body>"
                      "<ws:deleteRecordNaptr>"
-                     "<idDomain>%i</idDomain>"
-                     "<naptrId>%i</naptrId>"
+                     "<idDomain>%li</idDomain>"
+                     "<naptrId>%li</naptrId>"
                      "</ws:deleteRecordNaptr>"
                      "</soapenv:Body>"
-                     "</soapenv:Envelope>", usuarioDatos.idDominio, idContacto];
+                     "</soapenv:Envelope>", (long)usuarioDatos.idDominio, (long)idContacto];
     }
     
     NSLog(@"WS_HandlerContactos 4: El string es %@", stringXML);

@@ -35,7 +35,7 @@
                      [StringUtils encriptar:self.descripcion conToken:datos.token],
                      [StringUtils encriptar:datos.dominio conToken:datos.token],
                      [StringUtils encriptar:self.nombre conToken:datos.token],
-                     [StringUtils encriptar:[NSString stringWithFormat:@"%i", datos.idDominio] conToken:datos.token],
+                     [StringUtils encriptar:[NSString stringWithFormat:@"%li", (long)datos.idDominio] conToken:datos.token],
                      [StringUtils encriptar:datos.email conToken:passwordEncriptar],
                      metodo];
     

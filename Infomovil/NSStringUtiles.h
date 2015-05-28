@@ -22,7 +22,7 @@
 
 @interface NSString (NSStringUtiles)
 
-+ (NSString *)limpiaData:(NSData *)data;
+//+ (NSString *)limpiaData:(NSData *)data;
 + (NSString *)decodificaHtml:(NSString *)cadena;
 + (NSString *)codificaHtml:(NSString *)cadena;
 + (NSString *)seteaCadena:(NSString *)cadena;
@@ -33,8 +33,8 @@
 
 - (double)stringToDecimal;
 
-+ (NSString *)stringToRc2b64:(NSString *)string;
-+ (NSString *)rc2b64ToString:(NSString *)string;
+//+ (NSString *)stringToRc2b64:(NSString *)string;
+//+ (NSString *)rc2b64ToString:(NSString *)string;
 
 - (NSString *)stringTob64WithEncoding:(NSStringEncoding)encode;
 - (NSString *)b64ToStringWithEncoding:(NSStringEncoding)encode;

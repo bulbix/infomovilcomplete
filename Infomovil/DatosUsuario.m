@@ -112,7 +112,7 @@
     self.nombroSitio = NO;
     self.idDominio = NO;
     self.existeLogin = NO;
-    self.imagenLogo = NO;
+    self.imagenLogo = nil;
     self.editoPagina = NO;
 	self.tipoRegistro = NO;
 	self.nombreOrganizacion = Nil;

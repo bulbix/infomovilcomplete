@@ -93,7 +93,7 @@
 			if ( [strFecha rangeOfString:@"p.m." options:NSCaseInsensitiveSearch].location != NSNotFound )
 			{
 				NSInteger hora = [[[NSCalendar currentCalendar] components:NSHourCalendarUnit fromDate:date] hour];
-				NSString *strHora = [NSString stringWithFormat:@"%d",hora];
+				NSString *strHora = [NSString stringWithFormat:@"%ld",(long)hora];
 				strFecha = [strFecha stringByReplacingCharactersInRange:rango withString:strHora];
 				strFecha = [strFecha stringByReplacingOccurrencesOfString:@" p.m." withString:@"" options:NSCaseInsensitiveSearch range:ranStr];
 			} else if([strFecha rangeOfString:@"a.m." options:NSCaseInsensitiveSearch].location != NSNotFound)

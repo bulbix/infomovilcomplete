@@ -218,7 +218,7 @@
 	
 	if ( textoLength <= maxLength )
 	{
-		[self.labelInfo setText:[NSString stringWithFormat:@"%i/%li", textoLength, (long)maxLength]];
+		[self.labelInfo setText:[NSString stringWithFormat:@"%li/%li", (long)textoLength, (long)maxLength]];
 		self.modifico = YES;
 		return YES;
     }

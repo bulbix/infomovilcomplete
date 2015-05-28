@@ -306,9 +306,9 @@
     VisitasModel *visitaTotales = [arregloVisitas lastObject];
     [arregloVisitas removeLastObject];
     if ([arregloVisitas count] > 0) {
-        for (int i = [arregloVisitas count]-1; i >=0; i--) {
+        for (NSInteger i = [arregloVisitas count]-1; i >=0; i--) {
             visitaActual = [arregloVisitas objectAtIndex:i];
-            [arregloDatos addObject:[NSString stringWithFormat:@"%i", visitaActual.visitas]];
+            [arregloDatos addObject:[NSString stringWithFormat:@"%li", (long)visitaActual.visitas]];
             if (opcionConsulta == 6) {
                 NSArray *arrayAux = [visitaActual.fecha componentsSeparatedByString:@"/"];
                 [arregloTitulos addObject:[arrayAux objectAtIndex:0]];

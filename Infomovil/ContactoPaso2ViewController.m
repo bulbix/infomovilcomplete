@@ -453,7 +453,7 @@
 -(void) textFieldDidBeginEditing:(UITextField *)textField {
     textoPulsado = textField;
     NSInteger textoLength = [textField.text length];
-    [labelInfo setText:[NSString stringWithFormat:@"%i/%i", textoLength, 255]];
+    [labelInfo setText:[NSString stringWithFormat:@"%li/%i", (long)textoLength, 255]];
     [UIView animateWithDuration:0.4f animations:^{
         [labelInfo setFrame:CGRectMake(284, textField.frame.origin.y + textField.frame.size.height, 33, 21)];
     }];
@@ -480,13 +480,13 @@
             if ([string isEqualToString:@""]) {
             }
             else {
-                [labelInfo setText:[NSString stringWithFormat:@"%i/%i", textoLength+1, maxLength]];
+                [labelInfo setText:[NSString stringWithFormat:@"%li/%li", (long)textoLength+1, (long)maxLength]];
             }
             return YES;
         }
         else {
             if ([string isEqualToString:@""]) {
-                [labelInfo setText:[NSString stringWithFormat:@"%i/%i", textoLength-1, maxLength]];
+                [labelInfo setText:[NSString stringWithFormat:@"%ld/%li", (long)(textoLength-1), (long)maxLength]];
                 return YES;
             }
             return NO;
@@ -504,7 +504,7 @@
 	
 	if ( textoLength <= maxLength )
 	{
-		[self.labelInfo setText:[NSString stringWithFormat:@"%i/%li", textoLength, (long)maxLength]];
+		[self.labelInfo setText:[NSString stringWithFormat:@"%li/%li", (long)textoLength, (long)maxLength]];
 		self.modifico = YES;
 		return YES;
     }

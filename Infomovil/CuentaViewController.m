@@ -14,14 +14,14 @@
 #import "AppDelegate.h"
 #import "AppsFlyerTracker.h"
 #import "CompartirPublicacionViewController.h"
-#import "CNPPopupController.h"
+
 #import "RageIAPHelper.h"
 #import <StoreKit/StoreKit.h>
 #import "CommonUtils.h"
 #import "NombrarViewController.h"
 
 
-@interface CuentaViewController () <CNPPopupControllerDelegate> {
+@interface CuentaViewController () {
     NSInteger noVisitas;
     NSInteger tipoVista;
 	NSMutableArray * pro;
@@ -46,7 +46,7 @@
 
 @property (nonatomic, strong) NSMutableArray *arregloDominios;
 @property (nonatomic, strong) AlertView *alerta;
-@property (nonatomic, strong) CNPPopupController *popupController;
+//@property (nonatomic, strong) CNPPopupController *popupController;
 
 @end
 
@@ -314,7 +314,7 @@ int opcionButton = 0 ;
                 for(int i = 0 ; [_products count] > 0; i++){
                     SKProduct *product = _products[i];
                     if([product.productIdentifier isEqualToString:@"com.infomovil.infomovil.3_months"]){
-                        self.datosUsuario.datosPago.montoBruto = [NSString stringWithFormat:@"%i", product.price.integerValue ];
+                        self.datosUsuario.datosPago.montoBruto = [NSString stringWithFormat:@"%li", (long)product.price.integerValue ];
                         [[RageIAPHelper sharedInstance] buyProduct:product];
                         break;
                     }
@@ -347,7 +347,7 @@ int opcionButton = 0 ;
                 for(int i = 0 ; [_products count] > 0; i++){
                     SKProduct *product = _products[i];
                     if([product.productIdentifier isEqualToString:@"com.infomovil.infomovil.6_months"]){
-                        self.datosUsuario.datosPago.montoBruto = [NSString stringWithFormat:@"%i", product.price.integerValue ];
+                        self.datosUsuario.datosPago.montoBruto = [NSString stringWithFormat:@"%li", (long)product.price.integerValue ];
                         [[RageIAPHelper sharedInstance] buyProduct:product];
                         break;
                     }
@@ -380,7 +380,7 @@ int opcionButton = 0 ;
                 for(int i = 0 ; [_products count] > 0; i++){
                     SKProduct *product = _products[i];
                     if([product.productIdentifier isEqualToString:@"com.infomovil.infomovil.12_months"]){
-                        self.datosUsuario.datosPago.montoBruto = [NSString stringWithFormat:@"%i", product.price.integerValue ];
+                        self.datosUsuario.datosPago.montoBruto = [NSString stringWithFormat:@"%li", (long)product.price.integerValue ];
                         [[RageIAPHelper sharedInstance] buyProduct:product];
                         break;
                     }
@@ -442,7 +442,7 @@ if(noSeRepiteOprimirElBoton){
                         self.datosUsuario.datosPago.titulo = @"iOS";
                         self.datosUsuario.datosPago.codigoCobro = @" ";
                         self.datosUsuario.datosPago.pagoId = 0;
-                        self.datosUsuario.datosPago.montoBruto = [NSString stringWithFormat:@"%i", product.price.integerValue ];
+                        self.datosUsuario.datosPago.montoBruto = [NSString stringWithFormat:@"%li", (long)product.price.integerValue ];
                        
                         [self compra];
                         break;
@@ -497,7 +497,7 @@ if(noSeRepiteOprimirElBoton){
                             self.datosUsuario.datosPago.titulo = @"iOS";
                             self.datosUsuario.datosPago.codigoCobro = @" ";
                             self.datosUsuario.datosPago.pagoId = 0;
-                            self.datosUsuario.datosPago.montoBruto = [NSString stringWithFormat:@"%i", product.price.integerValue ];
+                            self.datosUsuario.datosPago.montoBruto = [NSString stringWithFormat:@"%li", (long)product.price.integerValue ];
                             
                             [self compra];
                             break;
@@ -541,7 +541,7 @@ if(noSeRepiteOprimirElBoton){
                             self.datosUsuario.datosPago.titulo = @"iOS";
                             self.datosUsuario.datosPago.codigoCobro = @" ";
                             self.datosUsuario.datosPago.pagoId = 0;
-                            self.datosUsuario.datosPago.montoBruto = [NSString stringWithFormat:@"%i", product.price.integerValue ];
+                            self.datosUsuario.datosPago.montoBruto = [NSString stringWithFormat:@"%li", (long)product.price.integerValue ];
                             [self compra];
                             break;
                         }

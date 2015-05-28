@@ -25,7 +25,7 @@
                      "</ws:deleteVideo>"
                      "</soapenv:Body>"
                      "</soapenv:Envelope>",
-                     [StringUtils encriptar:[NSString stringWithFormat:@"%i", usuario.idDominio] conToken:usuario.token],
+                     [StringUtils encriptar:[NSString stringWithFormat:@"%li", (long)usuario.idDominio] conToken:usuario.token],
                      [StringUtils encriptar:usuario.emailUsuario conToken:passwordEncriptar]];
     }
     else {
@@ -33,10 +33,10 @@
                      "<soapenv:Header/>"
                      "<soapenv:Body>"
                      "<ws:deleteVideo>"
-                     "<idDomain>%i</idDomain>"
+                     "<idDomain>%li</idDomain>"
                      "</ws:deleteVideo>"
                      "</soapenv:Body>"
-                     "</soapenv:Envelope>", usuario.idDominio];
+                     "</soapenv:Envelope>", (long)usuario.idDominio];
     }
     
     self.strSoapAction = @"WSInfomovilDomain";
@@ -78,7 +78,7 @@
                      "</ws:insertVideo>"
                      "</soapenv:Body>"
                      "</soapenv:Envelope>",
-                     [StringUtils encriptar:[NSString stringWithFormat:@"%i", datosUsuario.idDominio] conToken:datosUsuario.token],
+                     [StringUtils encriptar:[NSString stringWithFormat:@"%li", (long)datosUsuario.idDominio] conToken:datosUsuario.token],
                      [StringUtils encriptar:datosUsuario.urlVideo conToken:datosUsuario.token],
                      [StringUtils encriptar:datosUsuario.emailUsuario conToken:passwordEncriptar]];
     }
@@ -87,11 +87,11 @@
                      "<soapenv:Header/>"
                      "<soapenv:Body>"
                      "<ws:insertVideo>"
-                     "<idDomain>%i</idDomain>"
+                     "<idDomain>%li</idDomain>"
                      "<url>%@</url>"
                      "</ws:insertVideo>"
                      "</soapenv:Body>"
-                     "</soapenv:Envelope>", datosUsuario.idDominio, datosUsuario.urlVideo];
+                     "</soapenv:Envelope>", (long)datosUsuario.idDominio, datosUsuario.urlVideo];
     }
     
     NSLog(@"El string es %@", stringXML);

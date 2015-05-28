@@ -61,7 +61,7 @@
                      [StringUtils encriptar:pago.medioPago conToken:self.datosUsuario.token],
                      [StringUtils encriptar:pago.titulo conToken:self.datosUsuario.token],
                      [StringUtils encriptar:pago.comision conToken:self.datosUsuario.token],
-                     [StringUtils encriptar:[NSString stringWithFormat:@"%i", pago.pagoId] conToken:self.datosUsuario.token],
+                     [StringUtils encriptar:[NSString stringWithFormat:@"%lu", (unsigned long)pago.pagoId] conToken:self.datosUsuario.token],
                      [StringUtils encriptar:pago.statusPago conToken:self.datosUsuario.token],
                      [StringUtils encriptar:pago.codigoCobro conToken:self.datosUsuario.token],
                      [StringUtils encriptar:pago.tipoCompra conToken:self.datosUsuario.token],

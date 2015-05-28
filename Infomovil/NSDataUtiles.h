@@ -29,6 +29,6 @@
 //
 - (NSData *)dataByReplacingOccurrencesOfData:(NSData *)target withData:(NSData *)replacement;
 - (NSData *)dataByChangingEncoding:(NSStringEncoding)codifOriginal toEncoding:(NSStringEncoding)codiNueva;
-+ (NSData *)limpiaData:(NSData *)data;
+//+ (NSData *)limpiaData:(NSData *)data;
 
 @end

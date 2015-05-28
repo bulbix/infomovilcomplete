@@ -71,27 +71,6 @@
       "idiom" : "ipad",
       "filename" : "icono76x2.png",
       "scale" : "2x"
-    },
-    {
-      "size" : "29x29",
-      "idiom" : "iphone",
-      "filename" : "icono29-1.png",
-      "unassigned" : true,
-      "scale" : "1x"
-    },
-    {
-      "size" : "57x57",
-      "idiom" : "iphone",
-      "filename" : "icono57-1.png",
-      "unassigned" : true,
-      "scale" : "1x"
-    },
-    {
-      "size" : "57x57",
-      "idiom" : "iphone",
-      "filename" : "icono57x2-1.png",
-      "unassigned" : true,
-      "scale" : "2x"
     }
   ],
   "info" : {

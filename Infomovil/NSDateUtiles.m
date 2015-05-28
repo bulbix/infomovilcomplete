@@ -24,7 +24,7 @@
 	[date release];
     [calendar release];
 	
-	return compo.hour;
+	return (int)compo.hour;
 }
 
 /**
@@ -39,7 +39,7 @@
 	
     [calendar release];
 	
-	return compo.hour;
+	return (int)compo.hour;
 }
 
 #pragma mark -

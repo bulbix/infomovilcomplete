@@ -417,7 +417,7 @@
     
     if ( textoLength <= maxLength )
     {
-        [_labelInfo setText:[NSString stringWithFormat:@"%i/%li", textoLength, (long)maxLength]];
+        [_labelInfo setText:[NSString stringWithFormat:@"%li/%li", (long)textoLength, (long)maxLength]];
         modifico = YES;
         return YES;
     }
@@ -427,7 +427,7 @@
 
 - (void)muestraContadorTexto:(NSInteger)contador conLimite:(NSInteger)limite paraVista:(UIView *)view
 {
-    [self.labelInfo setText:[NSString stringWithFormat:@"%i/%i", contador, limite]];
+    [self.labelInfo setText:[NSString stringWithFormat:@"%li/%li", (long)contador, (long)limite]];
     [UIView animateWithDuration:0.4f animations:^{
         [self.labelInfo setFrame:CGRectMake(284, view.frame.origin.y + view.frame.size.height, 33, 21)];
         self.labelInfo.hidden = NO;

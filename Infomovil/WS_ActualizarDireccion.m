@@ -29,14 +29,14 @@
                      "<ws:updateKeyWordData>"];
         for (KeywordDataModel *keywordModel in self.arregloDireccion) {
             [stringXML appendFormat:@"<KeywordVO><idKeyword>%@</idKeyword><keywordField>%@</keywordField><keywordPos>%@</keywordPos><keywordValue>%@</keywordValue></KeywordVO>",
-             [StringUtils encriptar:[NSString stringWithFormat:@"%i", keywordModel.idKeyword] conToken:datos.token],
+             [StringUtils encriptar:[NSString stringWithFormat:@"%li", (long)keywordModel.idKeyword] conToken:datos.token],
              [StringUtils encriptar:keywordModel.keywordField conToken:datos.token],
 			 [StringUtils encriptar:keywordModel.KeywordPos conToken:datos.token],
              [StringUtils encriptar:keywordModel.keywordValue conToken:datos.token]];
         }
         
         [stringXML appendFormat:@"<domainId>%@</domainId><token>%@</token></ws:updateKeyWordData></soapenv:Body></soapenv:Envelope>",
-         [StringUtils encriptar:[NSString stringWithFormat:@"%i", datos.idDominio] conToken:datos.token],
+         [StringUtils encriptar:[NSString stringWithFormat:@"%li", (long)datos.idDominio] conToken:datos.token],
          [StringUtils encriptar:datos.emailUsuario conToken:passwordEncriptar]];
     }
     else {
@@ -45,10 +45,10 @@
                      "<soapenv:Body>"
                      "<ws:updateKeyWordData>"];
         for (KeywordDataModel *keywordModel in self.arregloDireccion) {
-            [stringXML appendFormat:@"<KeywordVO><idKeyword>%i</idKeyword><keywordField>%@</keywordField><keywordValue>%@</keywordValue></KeywordVO>", keywordModel.idKeyword, keywordModel.keywordField, [keywordModel.keywordValue length]>0?keywordModel.keywordValue:@" "];
+            [stringXML appendFormat:@"<KeywordVO><idKeyword>%li</idKeyword><keywordField>%@</keywordField><keywordValue>%@</keywordValue></KeywordVO>", (long)keywordModel.idKeyword, keywordModel.keywordField, [keywordModel.keywordValue length]>0?keywordModel.keywordValue:@" "];
         }
         
-        [stringXML appendFormat:@"<domainId>%i</domainId></ws:updateKeyWordData></soapenv:Body></soapenv:Envelope>", datos.idDominio];
+        [stringXML appendFormat:@"<domainId>%li</domainId></ws:updateKeyWordData></soapenv:Body></soapenv:Envelope>", (long)datos.idDominio];
     }
     
     //NSLog(@"El string es %@", stringXML);
@@ -102,7 +102,7 @@
         }
         
         [stringXML appendFormat:@"<idDomain>%@</idDomain><token>%@</token></ws:insertKeywordDataAddress></soapenv:Body></soapenv:Envelope>",
-         [StringUtils encriptar:[NSString stringWithFormat:@"%i", datos.idDominio] conToken:datos.token],
+         [StringUtils encriptar:[NSString stringWithFormat:@"%li", (long)datos.idDominio] conToken:datos.token],
          [StringUtils encriptar:datos.emailUsuario conToken:passwordEncriptar]];
     }
     else {
@@ -115,7 +115,7 @@
             [stringXML appendFormat:@"<ListKeyword><keywordField>%@</keywordField><keywordValue>%@</keywordValue></ListKeyword>", keywordModel.keywordField, [keywordModel.keywordValue length]>0?keywordModel.keywordValue:@" "];
         }
         
-        [stringXML appendFormat:@"<idDomain>%i</idDomain></ws:insertKeywordDataAddress></soapenv:Body></soapenv:Envelope>", datos.idDominio];
+        [stringXML appendFormat:@"<idDomain>%li</idDomain></ws:insertKeywordDataAddress></soapenv:Body></soapenv:Envelope>", (long)datos.idDominio];
     }
     
    // NSLog(@"El string es %@", stringXML);
@@ -166,13 +166,13 @@
                      "<ws:updateKeyWordData>"];
         //    for (KeywordDataModel *keywordModel in arregloDireccion) {
         [stringXML appendFormat:@"<KeywordVO><idKeyword>%@</idKeyword><keywordField>%@</keywordField><keywordPos>%@</keywordPos><keywordValue>%@</keywordValue></KeywordVO>",
-         [StringUtils encriptar:[NSString stringWithFormat:@"%i", keywordModel.idKeyword] conToken:datos.token],
+         [StringUtils encriptar:[NSString stringWithFormat:@"%li", (long)keywordModel.idKeyword] conToken:datos.token],
          [StringUtils encriptar:keywordModel.keywordField conToken:datos.token], [StringUtils encriptar:keywordModel.KeywordPos conToken:datos.token],
          [StringUtils encriptar:keywordModel.keywordValue conToken:datos.token]];
         //    }
         
         [stringXML appendFormat:@"<domainId>%@</domainId><token>%@</token></ws:updateKeyWordData></soapenv:Body></soapenv:Envelope>",
-         [StringUtils encriptar:[NSString stringWithFormat:@"%i", datos.idDominio] conToken:datos.token],
+         [StringUtils encriptar:[NSString stringWithFormat:@"%li", (long)datos.idDominio] conToken:datos.token],
          [StringUtils encriptar:datos.emailUsuario conToken:passwordEncriptar]];
     }
     else {
@@ -181,7 +181,7 @@
                      "<soapenv:Body>"
                      "<ws:updateKeyWordData>"];
         //    for (KeywordDataModel *keywordModel in arregloDireccion) {
-        [stringXML appendFormat:@"<KeywordVO><idKeyword>%i</idKeyword><keywordField>%@</keywordField><keywordValue>%@</keywordValue></KeywordVO><domainId>%i</domainId>", keywordModel.idKeyword, keywordModel.keywordField, keywordModel.keywordValue, datos.idDominio];
+        [stringXML appendFormat:@"<KeywordVO><idKeyword>%li</idKeyword><keywordField>%@</keywordField><keywordValue>%@</keywordValue></KeywordVO><domainId>%li</domainId>", (long)keywordModel.idKeyword, keywordModel.keywordField, keywordModel.keywordValue, (long)datos.idDominio];
         //    }
         
         [stringXML appendString:@"</ws:updateKeyWordData></soapenv:Body></soapenv:Envelope>"];
@@ -235,13 +235,13 @@
                      "<ws:updateKeyWordData>"];
         for (KeywordDataModel *keywordModel in arregloDireccion) {
             [stringXML appendFormat:@"<KeywordVO><idKeyword>%@</idKeyword><keywordField>%@</keywordField><keywordPos>%@</keywordPos><keywordValue>%@</keywordValue></KeywordVO>",
-             [StringUtils encriptar:[NSString stringWithFormat:@"%i", keywordModel.idKeyword] conToken:datos.token],
+             [StringUtils encriptar:[NSString stringWithFormat:@"%li", (long)keywordModel.idKeyword] conToken:datos.token],
              [StringUtils encriptar:keywordModel.keywordField conToken:datos.token],[StringUtils encriptar:@"0" conToken:datos.token],
              [StringUtils encriptar:keywordModel.keywordValue conToken:datos.token]];
         }
         
         [stringXML appendFormat:@"<domainId>%@</domainId><token>%@</token></ws:updateKeyWordData></soapenv:Body></soapenv:Envelope>",
-         [StringUtils encriptar:[NSString stringWithFormat:@"%i", datos.idDominio] conToken:datos.token],
+         [StringUtils encriptar:[NSString stringWithFormat:@"%li", (long)datos.idDominio] conToken:datos.token],
          [StringUtils encriptar:datos.emailUsuario conToken:passwordEncriptar]];
     }
     else {
@@ -250,10 +250,10 @@
                      "<soapenv:Body>"
                      "<ws:updateKeyWordData>"];
         for (KeywordDataModel *keywordModel in arregloDireccion) {
-            [stringXML appendFormat:@"<KeywordVO><idKeyword>%i</idKeyword><keywordField>%@</keywordField><keywordValue>%@</keywordValue></KeywordVO>", keywordModel.idKeyword, keywordModel.keywordField, keywordModel.keywordValue];
+            [stringXML appendFormat:@"<KeywordVO><idKeyword>%li</idKeyword><keywordField>%@</keywordField><keywordValue>%@</keywordValue></KeywordVO>", (long)keywordModel.idKeyword, keywordModel.keywordField, keywordModel.keywordValue];
         }
         
-        [stringXML appendFormat:@"<domainId>%i</domainId></ws:updateKeyWordData></soapenv:Body></soapenv:Envelope>", datos.idDominio];
+        [stringXML appendFormat:@"<domainId>%li</domainId></ws:updateKeyWordData></soapenv:Body></soapenv:Envelope>", (long)datos.idDominio];
     }
     
     //NSLog(@"El string es %@", stringXML);
@@ -311,11 +311,11 @@
 					 "</ws:updateKeyWordData>"
 					 "</soapenv:Body>"
 					 "</soapenv:Envelope>",
-					 [StringUtils encriptar:[NSString stringWithFormat:@"%i", keywordModel.idKeyword] conToken:datos.token],
+					 [StringUtils encriptar:[NSString stringWithFormat:@"%li", (long)keywordModel.idKeyword] conToken:datos.token],
 					 [StringUtils encriptar:keywordModel.keywordField conToken:datos.token],
                      [StringUtils encriptar:keywordModel.KeywordPos conToken:datos.token],
 					 [StringUtils encriptar:keywordModel.keywordValue conToken:datos.token],
-					 [StringUtils encriptar:[NSString stringWithFormat:@"%i", datos.idDominio] conToken:datos.token],
+					 [StringUtils encriptar:[NSString stringWithFormat:@"%li", (long)datos.idDominio] conToken:datos.token],
 					 [StringUtils encriptar:datos.emailUsuario conToken:passwordEncriptar]];
 
     }
@@ -325,18 +325,18 @@
                      "<soapenv:Body>"
                      "<ws:updateKeyWordData>"
 					 "<KeywordVO>"
-					 "<idKeyword>%i</idKeyword>"
+					 "<idKeyword>%li</idKeyword>"
 					 "<keywordField>%@</keywordField>"
 					 "<keywordValue>%@</keywordValue>"
 					 "</KeywordVO>"
-					 "<domainId>%i</domainId>"
+					 "<domainId>%li</domainId>"
 					 "</ws:updateKeyWordData>"
 					 "</soapenv:Body>"
 					 "</soapenv:Envelope>",
-					 keywordModel.idKeyword,
+					 (long)keywordModel.idKeyword,
 					 keywordModel.keywordField,
 					 keywordModel.keywordValue,
-					 datos.idDominio];
+					 (long)datos.idDominio];
 		
     }
     
@@ -399,7 +399,7 @@
                      "</soapenv:Envelope>",
                      [StringUtils encriptar:dataModel.keywordField conToken:datos.token],
                      [StringUtils encriptar:dataModel.keywordValue conToken:datos.token],
-                     [StringUtils encriptar:[NSString stringWithFormat:@"%i", datos.idDominio] conToken:datos.token],
+                     [StringUtils encriptar:[NSString stringWithFormat:@"%li", (long)datos.idDominio] conToken:datos.token],
                      [StringUtils encriptar:datos.emailUsuario conToken:passwordEncriptar]];
     }
     else {
@@ -411,10 +411,10 @@
                      "<keywordField>%@</keywordField>"
                      "<keywordValue>%@</keywordValue>"
                      "</KeywordVO>"
-                     "<domainId>%i</domainId>"
+                     "<domainId>%li</domainId>"
                      "</ws:insertKeyWordData>"
                      "</soapenv:Body>"
-                     "</soapenv:Envelope>", dataModel.keywordField, dataModel.keywordValue, datos.idDominio];
+                     "</soapenv:Envelope>", dataModel.keywordField, dataModel.keywordValue, (long)datos.idDominio];
     }
     
    // NSLog(@"El string es %@", stringXML);
@@ -481,7 +481,7 @@
                      "</soapenv:Envelope>",
                      [StringUtils encriptar:dataPerfil.keywordField conToken:datos.token],
                      [StringUtils encriptar:dataPerfil.keywordValue conToken:datos.token],
-                     [StringUtils encriptar:[NSString stringWithFormat:@"%i", datos.idDominio] conToken:datos.token],
+                     [StringUtils encriptar:[NSString stringWithFormat:@"%li", (long)datos.idDominio] conToken:datos.token],
                      [StringUtils encriptar:datos.emailUsuario conToken:passwordEncriptar]];
     }
     else {
@@ -493,10 +493,10 @@
                      "<keywordField>%@</keywordField>"
                      "<keywordValue>%@</keywordValue>"
                      "</KeywordVO>"
-                     "<domainId>%i</domainId>"
+                     "<domainId>%li</domainId>"
                      "</ws:insertKeyWordData>"
                      "</soapenv:Body>"
-                     "</soapenv:Envelope>", dataPerfil.keywordField, dataPerfil.keywordValue, datos.idDominio];
+                     "</soapenv:Envelope>", dataPerfil.keywordField, dataPerfil.keywordValue, (long)datos.idDominio];
     }
     
     //NSLog(@"El string es %@", stringXML);
@@ -556,8 +556,8 @@
                      "</ws:deleteKeyWordData>"
                      "</soapenv:Body>"
                      "</soapenv:Envelope>",
-                     [StringUtils encriptar:[NSString stringWithFormat:@"%i", datos.idDominio] conToken:datos.token],
-                     [StringUtils encriptar:[NSString stringWithFormat:@"%i", idKeyword] conToken:datos.token],
+                     [StringUtils encriptar:[NSString stringWithFormat:@"%li", (long)datos.idDominio] conToken:datos.token],
+                     [StringUtils encriptar:[NSString stringWithFormat:@"%li", (long)idKeyword] conToken:datos.token],
                      [StringUtils encriptar:datos.email conToken:passwordEncriptar]];
     }
     else {
@@ -565,11 +565,11 @@
                      "<soapenv:Header/>"
                      "<soapenv:Body>"
                      "<ws:deleteKeyWordData>"
-                     "<idDomain>%i</idDomain>"
-                     "<keywordId>%i</keywordId>"
+                     "<idDomain>%li</idDomain>"
+                     "<keywordId>%li</keywordId>"
                      "</ws:deleteKeyWordData>"
                      "</soapenv:Body>"
-                     "</soapenv:Envelope>", datos.idDominio, idKeyword];
+                     "</soapenv:Envelope>", (long)datos.idDominio, (long)idKeyword];
     }
     
     self.strSoapAction = @"WSInfomovilDomain";

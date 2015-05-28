@@ -26,7 +26,7 @@
                      "<soapenv:Body>"
                      "<ws:createDomain>"
                      "<arg0>" ];
-        [stringXML appendFormat:@"<idDomain>%@</idDomain>", [StringUtils encriptar:[NSString stringWithFormat:@"%i", datos.idDominio] conToken:passwordEncriptar]];
+        [stringXML appendFormat:@"<idDomain>%@</idDomain>", [StringUtils encriptar:[NSString stringWithFormat:@"%li", (long)datos.idDominio] conToken:passwordEncriptar]];
         [stringXML appendString:@"<listDominioVO>"];
         if (datos.colorSeleccionado != Nil) {
             [stringXML appendFormat:@"<colour>%@</colour>", [StringUtils encriptar:[StringUtils hexFromUIColor:datos.colorSeleccionado] conToken:passwordEncriptar]];
@@ -164,7 +164,7 @@
                      "<soapenv:Body>"
                      "<ws:createDomain>"
                      "<arg0>" ];
-        [stringXML appendFormat:@"<idDomain>%i</idDomain>", datos.idDominio];
+        [stringXML appendFormat:@"<idDomain>%li</idDomain>", (long)datos.idDominio];
         [stringXML appendString:@"<listDominioVO>"];
         if (datos.colorSeleccionado != Nil) {
             [stringXML appendFormat:@"<colour>%@</colour>", [StringUtils hexFromUIColor:datos.colorSeleccionado]];

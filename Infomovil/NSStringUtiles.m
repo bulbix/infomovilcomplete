@@ -27,12 +27,14 @@
  *	@return representacion del data corregido en NSString, nil en caso de que el data sea nulo
  *	@since 2010-01-22
  */
-+ (NSString *)limpiaData:(NSData *)data
+/*+ (NSString *)limpiaData:(NSData *)data
 {
 	if( data != nil )
 	{
 		NSMutableString *mstrLimpia = [[[NSMutableString alloc] initWithCString:[data bytes] length:[data length]] autorelease];
 		
+     //   [mstrLimpia setStringValue:[[NSMutableString alloc] initWithCString:[data bytes] length:[data length]  ]];
+        
 		[mstrLimpia replaceOccurrencesOfString:kaacute withString:@"á" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [mstrLimpia length])];
 		[mstrLimpia replaceOccurrencesOfString:keacute withString:@"é" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [mstrLimpia length])];
 		[mstrLimpia replaceOccurrencesOfString:kiacute withString:@"í" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [mstrLimpia length])];
@@ -55,7 +57,7 @@
 	}else
 		return nil;
 }
-
+*/
 /**
  *	Sobreescribe por caracteres especiales tags del xml en una cadena para que mantengan la longitud deseada
  *	@param cadena: informacion que se desea limpiar
@@ -226,14 +228,14 @@
  *	@return cadena tratada en base 64
  *	@since 2010-08-13
  */
-+ (NSString *)stringToRc2b64:(NSString *)string
+/*+ (NSString *)stringToRc2b64:(NSString *)string
 {
 	unsigned char _key[] = {"ABCDEFGHIJKLMNOP"};
 	unsigned char iv1[] = {"ABCDEFGH"};
-	int lon = [string lengthOfBytesUsingEncoding:EncodingActual];
+	NSUInteger lon = [string lengthOfBytesUsingEncoding:EncodingActual];
 	unsigned char *output = NULL;
 	unsigned char *input = NULL;
-	int lonTemp;
+	NSUInteger lonTemp;
 	
 	RC2_KEY key;
 	RC2_set_key(&key, strlen((char*)_key), _key, 128);
@@ -263,18 +265,18 @@
 		return nil;
 	}
 }
-
+*/
 /**
  *	Decodifica una cadena dada en base 64 y la desencripta con el metodo RC2
  *	@param string: cadena a convertir
  *	@return cadena tratada (resultado de la operacion)
  *	@since 2010-08-13
  */
-+ (NSString *)rc2b64ToString:(NSString *)string
+/*+ (NSString *)rc2b64ToString:(NSString *)string
 {
 	unsigned char _key[] = {"ABCDEFGHIJKLMNOP"};
 	unsigned char iv1[] = {"ABCDEFGH"};
-	int lon;
+	NSUInteger lon;
 	unsigned char *output = NULL;
 	const void *inp2;
 	NSData *data64;
@@ -313,7 +315,7 @@
 	}
 	return nil;
 }
-
+*/
 /**
  *  Convierte la informacion de una cadena a Base 64 con una codificacion especifica
  *  @param encode: tipo de encoding del NSString que lo invoca
@@ -321,7 +323,7 @@
  */
 - (NSString *)stringTob64WithEncoding:(NSStringEncoding)encode
 {
-	int lon = [self lengthOfBytesUsingEncoding:encode];
+	NSUInteger lon = [self lengthOfBytesUsingEncoding:encode];
 	char *buffer = malloc(lon+1 );
 	memset(buffer,0,lon+1);
 	memcpy(buffer, (unsigned char*)[self cStringUsingEncoding:encode], lon);

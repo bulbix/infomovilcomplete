@@ -357,13 +357,13 @@
     [urlRequest setTimeoutInterval:30];
 	
 	[urlRequest addValue:@"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-	[urlRequest addValue:[NSString stringWithFormat:@"%d",[dataPeticion length]] forHTTPHeaderField:@"Content-Length"];
+	[urlRequest addValue:[NSString stringWithFormat:@"%lu",(unsigned long)[dataPeticion length]] forHTTPHeaderField:@"Content-Length"];
 	[urlRequest setHTTPMethod:@"POST"];
     //Agrega los parametros de autenticacion
     if (autentica) {
         NSString *authStr = [NSString stringWithFormat:@"%@:%@", self.usuarioAut, self.passwordAut];
         NSData *authData = [authStr dataUsingEncoding:NSASCIIStringEncoding];
-        NSString *authValue = [authData base64Encoding];
+        NSString *authValue = [authData base64EncodedStringWithOptions:0];
         [urlRequest setValue:[NSString stringWithFormat:@"Basic %@", authValue] forHTTPHeaderField:@"Authorization"];
     }
 	[urlRequest setHTTPBody:dataPeticion];
@@ -464,7 +464,7 @@
 	[url release];
 	
 	[urlRequest addValue:@"application/x-www-form-urlencoded; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-	[urlRequest addValue:[NSString stringWithFormat:@"%d",[dataPeticion length]] forHTTPHeaderField:@"Content-Length"];
+	[urlRequest addValue:[NSString stringWithFormat:@"%lu",(unsigned long)[dataPeticion length]] forHTTPHeaderField:@"Content-Length"];
 	[urlRequest setHTTPMethod:@"POST"];
 	[urlRequest setHTTPBody:dataPeticion];
 	
@@ -588,7 +588,7 @@
 	if(dat == nil) //No data returned or reached timeout
 	{
 		
-		NSString *pMsg = [NSString stringWithFormat:@"No se pudo conectar al servidor\no terminó el tiempo de espera para esta solicitud.\nCódigo de error: %d", [err code]];
+		NSString *pMsg = [NSString stringWithFormat:@"No se pudo conectar al servidor\no terminó el tiempo de espera para esta solicitud.\nCódigo de error: %ld", (long)[err code]];
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:pMsg delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:nil];
 		[alert show];
 		[alert release];
@@ -608,7 +608,7 @@
 	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:strURL] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:TIMEOUTREQUEST]; //Tiempo de espera de un minuto.
 	
 	[request addValue:@"application/x-www-form-urlencoded; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-	[request addValue:[NSString stringWithFormat:@"%d",[postData length]] forHTTPHeaderField:@"Content-Length"];
+	[request addValue:[NSString stringWithFormat:@"%lu",(unsigned long)[postData length]] forHTTPHeaderField:@"Content-Length"];
 	
 	[request setHTTPMethod:@"POST"];	
 	
@@ -620,7 +620,7 @@
 	if(dat == nil) //No data returned or reached timeout
 	{
 		
-		NSString *pMsg = [NSString stringWithFormat:@"No se pudo conectar al servidor\no terminó el tiempo de espera para esta solicitud.\nCódigo de error: %d", [err code]];
+		NSString *pMsg = [NSString stringWithFormat:@"No se pudo conectar al servidor\no terminó el tiempo de espera para esta solicitud.\nCódigo de error: %ld", (long)[err code]];
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:pMsg delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:nil];
 		
 		[alert show];

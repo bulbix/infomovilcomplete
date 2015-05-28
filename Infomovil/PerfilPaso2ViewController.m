@@ -218,7 +218,7 @@
     }
     else {
         KeywordDataModel *dataModel = [self.datosUsuario.arregloDatosPerfil objectAtIndex:index];
-        NSLog(@"datamodel para eliminar!! : %i", dataModel.idKeyword);
+        NSLog(@"datamodel para eliminar!! : %li", (long)dataModel.idKeyword);
         [self.txtDescripcion setText:dataModel.keywordValue];
         if (dataModel.keywordValue.length > 0) {
             estaEditando = YES;
@@ -654,7 +654,7 @@
             [actualizarDireccion actualizarElementoPerfil:dataModel];
         }
         else if (estaEliminando) {
-            NSLog(@"ESTA ELIMINANDO WE con el idPerfil: %i", idPerfil);
+            NSLog(@"ESTA ELIMINANDO WE con el idPerfil: %li", (long)idPerfil);
             [actualizarDireccion eliminarKeywordConId:idPerfil];
         }
         else {

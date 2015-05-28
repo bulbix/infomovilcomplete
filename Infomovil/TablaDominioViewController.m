@@ -8,12 +8,12 @@
 
 #import "TablaDominioViewController.h"
 #import "DominiosUsuario.h"
-#import "CNPPopupController.h"
 
-@interface TablaDominioViewController () <CNPPopupControllerDelegate>
+
+@interface TablaDominioViewController ()
 
 @property (nonatomic, strong) NSMutableArray *arregloDominios;
-@property (nonatomic, strong) CNPPopupController *popupController;
+//@property (nonatomic, strong) CNPPopupController *popupController;
 
 @end
 
@@ -88,8 +88,6 @@
     return cell;
 }
 
-- (void)popupController:(CNPPopupController *)controller didDismissWithButtonTag:(NSInteger)tag {
-    
-}
+
 
 @end
