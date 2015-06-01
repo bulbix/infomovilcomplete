@@ -909,8 +909,11 @@
         if(self.datosUsuario.nombreTemplate  == nil || [self.datosUsuario.nombreTemplate isEqualToString:@""] || [self.datosUsuario.nombreTemplate isEqualToString:@"(null)"])
         {
             self.datosUsuario.nombreTemplate = @"Estandar1";
+             self.datosUsuario.eligioTemplate = NO;
+        }else{
+             self.datosUsuario.eligioTemplate = YES;
         }
-        self.datosUsuario.eligioTemplate = YES;
+       
         NSLog(@"EL TEMPLATE RECIBIDO EN LOGIN ES: %@", [StringUtils desEncriptar:self.currentElementString conToken:self.token]);
     }
     

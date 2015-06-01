@@ -357,7 +357,7 @@ BOOL banderaRegresar;
 
 - (IBAction)crearEditar:(UIButton *)sender {
     self.datosUsuario = [DatosUsuario sharedInstance];
-	self.datosUsuario.eligioTemplate = YES;
+	
     if (self.datosUsuario.eligioTemplate) {
         CrearPaso1ViewController *crear = [[CrearPaso1ViewController alloc] initWithNibName:@"CrearPaso1ViewController" bundle:nil];
         [self.navigationController pushViewController:crear animated:YES];

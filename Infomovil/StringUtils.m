@@ -183,9 +183,9 @@
 + (NSString *) randomStringWithLength: (int) len {
     NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     NSMutableString *randomString = [NSMutableString stringWithCapacity: len];
-    
+    int aux = (int)[letters length];
     for (int i=0; i<len; i++) {
-        [randomString appendFormat: @"%C", [letters characterAtIndex: arc4random_uniform([letters length]) % [letters length]]];
+        [randomString appendFormat: @"%C", [letters characterAtIndex: arc4random_uniform(aux) % [letters length]]];
     }
     
     return randomString;
