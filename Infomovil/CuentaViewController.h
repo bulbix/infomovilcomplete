@@ -16,7 +16,7 @@
 
 
 
-@interface CuentaViewController : InfomovilViewController <AlertViewDelegate, WS_HandlerProtocol, SKProductsRequestDelegate, UIScrollViewDelegate, UITextFieldDelegate>{
+@interface CuentaViewController : InfomovilViewController <AlertViewDelegate, WS_HandlerProtocol, UIScrollViewDelegate, UITextFieldDelegate>{
     NSArray *validProducts;
     TablaDominioViewController *tablaDominio;
    
@@ -64,11 +64,11 @@
 
 
 @property (weak, nonatomic) IBOutlet UIButton *comprar1mes;
-@property (weak, nonatomic) IBOutlet UIButton *comprar6meses;
+
 @property (weak, nonatomic) IBOutlet UIButton *comprar12meses;
 
 - (IBAction)comprar1mesBtn:(id)sender;
-- (IBAction)comprar6mesesBtn:(id)sender;
+
 - (IBAction)comprar12mesesBtn:(id)sender;
 
 

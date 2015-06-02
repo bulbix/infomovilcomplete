@@ -70,19 +70,7 @@
     self.navigationItem.rightBarButtonItem = Nil;
     exito = NO;
     self.datosUsuario = [DatosUsuario sharedInstance];
-   /* productTourView = [[CRProductTour alloc] initWithFrame:self.view.frame];
-    CRBubble *bubbleButton1;
    
-   // NSMutableArray *bubbleArray = [[NSMutableArray alloc] initWithObjects:bubbleButton1, nil];
-    [productTourView setBubbles:bubbleArray];
-    [self.view addSubview:productTourView];
-    
-    if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-        bubbleButton1 = [[CRBubble alloc] initWithAttachedView:_txtContrasena title:@" Password" description:@"Must be 8 or more characters\n(letters and numbers)\nCan not contain the word infomovil" arrowPosition:CRArrowPositionBottom andColor:[UIColor whiteColor]];
-    }else{
-        bubbleButton1 = [[CRBubble alloc] initWithAttachedView:_txtContrasena title:@"Contraseña" description:@"Debe tener de 8 a 15 caracteres\n(letras y números)\nNo puede contener la palabra infomovil\nNo puede ser igual al correo" arrowPosition:CRArrowPositionBottom andColor:[UIColor whiteColor]];
-    }
-    */
     NSArray *fields = @[self.txtNombre, self.txtContrasena, self.txtContrasenaConfirmar];
     self.keyboardControls = [[BSKeyboardControls alloc] initWithFields:fields];
     [self.keyboardControls setDelegate:self];
@@ -499,7 +487,7 @@
 
 
 -(void) desapareceElTeclado:(NSNotification *)aNotificacion {
-    NSLog(@"DESAPARECEELTECLADO");
+   
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.3];
     UIEdgeInsets edgeInsets = UIEdgeInsetsZero;
@@ -509,7 +497,7 @@
 }
 
 -(void) apareceElTeclado{
-    NSLog(@"APARECETECLADO");
+    
     CGSize tamanioTeclado = CGSizeMake(320, 260);
     UIEdgeInsets edgeInsets = UIEdgeInsetsMake(0, 0, tamanioTeclado.height+15, 0);
     [[self scrollView] setContentInset:edgeInsets];
@@ -540,7 +528,7 @@
 }
 
 -(void) checaNombre {
-    NSLog(@"ENTRO AL METODO CHECANOMBRE");
+  
     [((AppDelegate *)[[UIApplication sharedApplication] delegate]) restartDate];
     operacionWS = 1;
     WS_HandlerUsuario *handlerUsuario = [[WS_HandlerUsuario alloc] init];
@@ -552,7 +540,7 @@
 
 
 -(void) ocultarActivity {
-    NSLog(@"OCULTARACTIVITY");
+    
    self.datosUsuario = [DatosUsuario sharedInstance];
     if (self.alerta)
     {
@@ -697,12 +685,10 @@
 
 
 -(void) errorConsultaWS {
-     NSLog(@"ERRORCONSULTAWS");
     [self performSelectorOnMainThread:@selector(errorConsultaUsuario) withObject:Nil waitUntilDone:YES];
 }
 
 -(void) errorConsultaUsuario {
-    NSLog(@"REGRESO ERROR CONSULTAUSUARIO!!");
     loginFacebook = YES;
     if (self.alerta)
     {
@@ -719,7 +705,6 @@
 
 - (void)keyboardControlsDonePressed:(BSKeyboardControls *)keyboardControls
 {
-     NSLog(@"KEYBOARDCONTROLSDONE");
     [self.view endEditing:YES];
 }
 
@@ -735,7 +720,7 @@
 
 - (void)loginViewFetchedUserInfo:(FBLoginView *)loginView
                             user:(id<FBGraphUser>)user {
-     NSLog(@"LOGINVIEWFETCHED");
+  
     
     if([[user objectForKey:@"email"] isEqualToString:@""] || [user objectForKey:@"email"] == nil){
         self.datosUsuario.emailUsuario = [user objectForKey:@"id"];
@@ -768,7 +753,7 @@
 }
 
 -(void) consultaLogin {
-    NSLog(@"ENTRO A CONSULTA LOGIN");
+  
     if(loginFacebook == YES){
         WS_HandlerLogin *login = [[WS_HandlerLogin alloc] init];
         [login setLoginDelegate:self];
@@ -779,7 +764,7 @@
 
 
 - (void)fbDidlogout {
-     NSLog(@"LOGOUTFACEBOOK");
+    
     FBSession* session = [FBSession activeSession];
     [session closeAndClearTokenInformation];
     [session close];
@@ -794,7 +779,7 @@
 
 
 -(BOOL) validaCampos {
-     NSLog(@"VALIDACAMPOS");
+   
     if ((self.txtNombre.text.length) > 0 && (self.txtContrasena.text.length > 0) ){
         if (![CommonUtils validarEmail:self.txtNombre.text]) {
             AlertView *alert = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"error", @" ") message:NSLocalizedString(@"emailIncorrecto", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
@@ -824,7 +809,7 @@
 
 
 - (IBAction)verificarNombre:(UIButton *)sender {
-     NSLog(@"VERIFICARNOMBRE");
+   
     if ([self validaCampos]) {
         nombre = self.txtNombre.text;
         password = self.txtContrasena.text;
@@ -842,7 +827,7 @@
 
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-     NSLog(@"TEXTFIELSHOULDRETURN");
+   
     if(textField.tag < 3){
         NSInteger nextTag = textField.tag + 1;
         // Try to find next responder
@@ -876,14 +861,14 @@
 
 
 -(void) accionNo {
-     NSLog(@"ACCIONNO");
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 
 
 -(void) apareceElTeclado:(NSNotification*)aNotification {
-     NSLog(@"APARECEELTECLADO");
+    
     NSDictionary *infoNotificacion = [aNotification userInfo];
     CGSize tamanioTeclado = [[infoNotificacion objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     UIEdgeInsets edgeInsets = UIEdgeInsetsMake(0, 0, tamanioTeclado.height+15, 0);
@@ -896,7 +881,7 @@
 
 
 -(void) crearDominio {
-     NSLog(@"CREARDOMINIO");
+  
     [((AppDelegate *)[[UIApplication sharedApplication] delegate]) restartDate];
     operacionWS = 2;
     WS_HandlerDominio *dominioHandler = [[WS_HandlerDominio alloc] init];

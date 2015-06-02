@@ -11,7 +11,7 @@
 #import "WS_ItemsDominio.h"
 
 #import <GooglePlus/GooglePlus.h>
-#import "GTLPlusConstants.h"
+//#import "GTLPlusConstants.h"
 #import "AppsFlyerTracker.h"
 #import "GAI.h"
 #import "iVersion/iVersion.h"
@@ -20,7 +20,7 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import "iVersion.h"
 #import "SesionActivaViewController.h"
-#import <HockeySDK/HockeySDK.h>
+//#import <HockeySDK/HockeySDK.h>
 #import "MainViewController.h"
 #import "ElegirPlantillaViewController.h"
 

@@ -667,18 +667,8 @@
     }
     else if ([elementName isEqualToString:@"urlImage"]) {
         self.datosUsuario.urlPromocion = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
-        NSLog(@"LA URL DE LA IMAGEN PROMOCION ES: %@", self.datosUsuario.urlPromocion);
+       
     }
-   /* 
-    else if ([elementName isEqualToString:@"listImagenVO"]) { NSLog(@"ENTRO A listImagenVO");
-        if (esLogo) {
-         }
-        else {
-            [self.arregloImagenes addObject:self.galeria];
-            [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:8 withObject:@YES];
-        }
-    }
-    */
     
     else if ([elementName isEqualToString:@"typeImage"]) {
             NSString *typeImageAux = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
@@ -698,31 +688,31 @@
     else if ([elementName isEqualToString:@"url"]) {
        if(esLogo){
            [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:1 withObject:@YES];
-           NSLog(@"EL VALOR DE URL LOGO ES : %@", [StringUtils desEncriptar:self.currentElementString conToken:self.token]);
+          
            [self.datosUsuario.arregloUrlImagenes addObject:[StringUtils desEncriptar:self.currentElementString conToken:self.token]];
        }else{
            [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:8 withObject:@YES];
-           NSLog(@"EL VALOR DE URL DE LA GALERIA ES : %@", [StringUtils desEncriptar:self.currentElementString conToken:self.token]);
+           
            [self.datosUsuario.arregloUrlImagenesGaleria addObject:[StringUtils desEncriptar:self.currentElementString conToken:self.token]];
        }
         self.currentElementString = [[NSMutableString alloc] init];
     }
     else if ([elementName isEqualToString:@"descripcionImagen"]) {
         if(esLogo){
-            NSLog(@"EL VALOR DE descripcion DEL LOGO ES : %@", [StringUtils desEncriptar:self.currentElementString conToken:self.token]);
+           
             [self.datosUsuario.arregloDescripcionImagen addObject:[StringUtils desEncriptar:self.currentElementString conToken:self.token]];
         }else{
-            NSLog(@"EL VALOR DE descripcion DE LA GALERIA IMAGEN ES : %@", [StringUtils desEncriptar:self.currentElementString conToken:self.token]);
+            
             [self.datosUsuario.arregloDescripcionImagenGaleria addObject:[StringUtils desEncriptar:self.currentElementString conToken:self.token]];
         }
         self.currentElementString = [[NSMutableString alloc] init];
     }
     else if ([elementName isEqualToString:@"idImagen"]) {
       if(esLogo){
-        NSLog(@"EL VALOR DE idImagen DEL LOGO ES : %@", [StringUtils desEncriptar:self.currentElementString conToken:self.token]);
+       
         [self.datosUsuario.arregloIdImagen addObject:[StringUtils desEncriptar:self.currentElementString conToken:self.token]];
       }else{
-          NSLog(@"EL VALOR idImagen DE LA GALERIA IMAGEN ES : %@", [StringUtils desEncriptar:self.currentElementString conToken:self.token]);
+          
           [self.datosUsuario.arregloIdImagenGaleria addObject:[StringUtils desEncriptar:self.currentElementString conToken:self.token]];
       }
         self.currentElementString = [[NSMutableString alloc] init];

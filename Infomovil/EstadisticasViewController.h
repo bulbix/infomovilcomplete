@@ -8,10 +8,10 @@
 
 #import "InfomovilViewController.h"
 #import "WS_HandlerProtocol.h"
-#import "CRProductTour.h"
+//#import "CRProductTour.h"
 
 @interface EstadisticasViewController : InfomovilViewController <AlertViewDelegate, WS_HandlerProtocol, UINavigationBarDelegate, UINavigationControllerDelegate> {
-    CRProductTour *productTourView;
+ 
 }
 
 @property (weak, nonatomic) IBOutlet UIView *vistaEstadisticas;

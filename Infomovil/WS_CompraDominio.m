@@ -67,7 +67,7 @@
                      [StringUtils encriptar:pago.tipoCompra conToken:self.datosUsuario.token],
                      [StringUtils encriptar:pago.montoBruto conToken:self.datosUsuario.token]];
     self.strSoapAction = @"WSInfomovilDomain";
-
+    NSLog(@"LOS VALORES QUE LES ENVIO SON: %@ - %@ - %@ - %@ - %lu - %@ - %@ - %@ - %@", pago.plan, pago.medioPago,pago.titulo,pago.comision,(unsigned long)pago.pagoId,pago.statusPago,pago.codigoCobro,pago.tipoCompra,pago.montoBruto);
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
     NSLog(@"WS_CompraDominio La respuesta es %s", [dataResult bytes]);
     if (dataResult != nil && [dataResult length] > 0) {
@@ -83,7 +83,7 @@
 				}
 				
             self.datosUsuario.datosPago.pagoId = [[StringUtils desEncriptar:self.resultado conToken:self.datosUsuario.token] integerValue];
-           
+            NSLog(@"EL PAGO ID ES: %lu", (unsigned long)self.datosUsuario.datosPago.pagoId);
             if(self.datosUsuario.datosPago.pagoId > 0){
 				[self.compraDominioDelegate resultadoCompraDominio:YES];
             }else{

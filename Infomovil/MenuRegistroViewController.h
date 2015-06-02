@@ -9,17 +9,17 @@
 
 #import "InfomovilViewController.h"
 #import "WS_HandlerProtocol.h"
-#import "CRProductTour.h"
+//#import "CRProductTour.h"
 
 @interface MenuRegistroViewController : InfomovilViewController <UIScrollViewDelegate, UITextFieldDelegate, AlertViewDelegate, WS_HandlerProtocol> {
-    CRProductTour *productTourView;
+  
 }
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UILabel *raya1;
 @property (weak, nonatomic) IBOutlet UILabel *o;
 @property (weak, nonatomic) IBOutlet UILabel *raya2;
-@property (weak, nonatomic) IBOutlet UILabel *slogan;
+
 // Nuevo Registro //
 @property (weak, nonatomic) IBOutlet UIButton *btnRegistrar;
 @property (weak, nonatomic) IBOutlet UITextField *txtNombre;

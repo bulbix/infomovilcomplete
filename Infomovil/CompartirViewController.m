@@ -11,7 +11,7 @@
 #import <MessageUI/MessageUI.h>
 #import <GooglePlus/GooglePlus.h>
 #import "MenuPasosViewController.h"
-#import "GTLPlusConstants.h"
+//#import "GTLPlusConstants.h"
 #import "AppsFlyerTracker.h"
 #import "NombrarViewController.h"
 #import <FacebookSDK/FacebookSDK.h>
@@ -240,7 +240,7 @@
                                            @"www.infomovil.com", @"caption",
                                            mensaje, @"description",
                                            @"www.infomovil.com/", @"link",
-                                           @"http://info-movil.com:8080/templates/Index/images/icn_infomovil_200.png",@"picture",
+                                           @"http://infomovil.com/templates/Index/images/icn_infomovil_200.png",@"picture",
                                            nil];
                                           [FBWebDialogs presentFeedDialogModallyWithSession:nil
                                                                                  parameters:params

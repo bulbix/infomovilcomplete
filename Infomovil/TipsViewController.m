@@ -261,7 +261,7 @@ if ([CommonUtils hayConexion]) {
                                            @"www.infomovil.com", @"caption",
                                            mensaje, @"description",
                                            @"www.infomovil.com/", @"link",
-                                           @"http://info-movil.com:8080/templates/Index/images/icn_infomovil_200.png",@"picture",
+                                           @"http://infomovil.com/templates/Index/images/icn_infomovil_200.png",@"picture",
                                            nil];
                                           [FBWebDialogs presentFeedDialogModallyWithSession:nil
                                                                                  parameters:params

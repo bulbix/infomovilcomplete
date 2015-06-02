@@ -337,7 +337,7 @@
          
          // IRC TEMPORAL
 #if DEBUG
-         [prefs setObject:[NSString stringWithFormat:@"http://info-movil.com:8080/%@?vistaPrevia=true", self.datosUsuario.dominio] forKey:@"urlVistaPrevia"];
+         [prefs setObject:[NSString stringWithFormat:@"http://qa.mobileinfo.io:8080/%@?vistaPrevia=true", self.datosUsuario.dominio] forKey:@"urlVistaPrevia"];
 #else
          [prefs setObject:[NSString stringWithFormat:@"http://www.infomovil.com/%@?vistaPrevia=true", self.datosUsuario.dominio] forKey:@"urlVistaPrevia"];
          
@@ -350,7 +350,7 @@
          NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
       
 #if DEBUG
-      [prefs setObject:[NSString stringWithFormat:@"http://info-movil.com:8080/xxx?vistaPrevia=true&idDominio=%ld", (long)self.datosUsuario.idDominio] forKey:@"urlVistaPrevia"];
+      [prefs setObject:[NSString stringWithFormat:@"http://qa.mobileinfo.io:8080/xxx?vistaPrevia=true&idDominio=%ld", (long)self.datosUsuario.idDominio] forKey:@"urlVistaPrevia"];
 #else
          [prefs setObject:[NSString stringWithFormat:@"http://www.infomovil.com/xxx?vistaPrevia=true&idDominio=%ld", (long)self.datosUsuario.idDominio] forKey:@"urlVistaPrevia"];
 #endif

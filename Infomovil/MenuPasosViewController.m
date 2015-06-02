@@ -243,7 +243,7 @@ BOOL banderaRegresar;
                         }
                       
 #if DEBUG
-                         [self.dominio setTitle:[NSString stringWithFormat:@"www.info-movil.com:8080/%@", self.datosUsuario.dominio] forState:UIControlStateNormal];
+                         [self.dominio setTitle:[NSString stringWithFormat:@"www.qa.mobileinfo.io:8080/%@", self.datosUsuario.dominio] forState:UIControlStateNormal];
 #else
                          [self.dominio setTitle:[NSString stringWithFormat:@"www.infomovil.com/%@", self.datosUsuario.dominio] forState:UIControlStateNormal];
                         
@@ -443,7 +443,7 @@ BOOL banderaRegresar;
         NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
          self.datosUsuario = [DatosUsuario sharedInstance];
 #if DEBUG
-        NSString *dominioAux = [NSString stringWithFormat:@"http://info-movil.com:8080/%@", self.datosUsuario.dominio];
+        NSString *dominioAux = [NSString stringWithFormat:@"http://qa.mobileinfo.io:8080/%@", self.datosUsuario.dominio];
         [prefs setObject:dominioAux forKey:@"urlMisitio"];
 #else
         [prefs setObject:[NSString stringWithFormat:@"http://%@", self.dominio.titleLabel.text] forKey:@"urlMisitio"];

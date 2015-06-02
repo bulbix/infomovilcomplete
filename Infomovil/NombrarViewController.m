@@ -9,7 +9,7 @@
 #import "NombrarViewController.h"
 #import "WS_HandlerDominio.h"
 #import "PublicarViewController.h"
-#import "CompartirPublicacionViewController.h"
+//#import "CompartirPublicacionViewController.h"
 #import "MenuPasosViewController.h"
 #import "WS_HandlerPublicar.h"
 #import "MainViewController.h"
@@ -186,7 +186,7 @@
     [self.vistaInferior setHidden:YES];
     
 #if DEBUG
-    [self.labelDominio setText:[NSString stringWithFormat:@"www.info-movil.com/misitio"]];
+    [self.labelDominio setText:[NSString stringWithFormat:@"www.qa.mobileinfo.io/misitio"]];
 #endif
     
     self.popUpCenter.layer.cornerRadius = 10;
