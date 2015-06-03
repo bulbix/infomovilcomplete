@@ -516,6 +516,10 @@
         if([self.txtEmail.text isEqualToString:@""] || self.txtEmail.text == nil){
         [[Appboy sharedInstance] changeUser:self.datosUsuario.auxStrSesionUser];
         [Appboy sharedInstance].user.email = self.datosUsuario.auxStrSesionUser;
+            NSLocale *currentLocale = [NSLocale currentLocale];  // get the current locale.
+            NSString *countryCode = [currentLocale objectForKey:NSLocaleCountryCode];
+            NSLog(@"EL VALOR DE PAIS ES: %@", countryCode);
+           [[Appboy sharedInstance].user setCustomAttributeWithKey:@"pais" andStringValue:countryCode];
         if([self.datosUsuario.tipoDeUsuario isEqualToString:@"canal"]){
             [[Appboy sharedInstance].user setCustomAttributeWithKey:@"canal" andStringValue:self.datosUsuario.canal];
             [[Appboy sharedInstance].user setCustomAttributeWithKey:@"campania" andStringValue:self.datosUsuario.campania];
@@ -524,6 +528,10 @@
     }else{
         [[Appboy sharedInstance] changeUser:self.txtEmail.text];
         [Appboy sharedInstance].user.email = self.txtEmail.text;
+        NSLocale *currentLocale = [NSLocale currentLocale];  // get the current locale.
+        NSString *countryCode = [currentLocale objectForKey:NSLocaleCountryCode];
+        NSLog(@"EL VALOR DE PAIS ES: %@", countryCode);
+        [[Appboy sharedInstance].user setCustomAttributeWithKey:@"pais" andStringValue:countryCode];
         if([self.datosUsuario.tipoDeUsuario isEqualToString:@"canal"]){
             [[Appboy sharedInstance].user setCustomAttributeWithKey:@"canal" andStringValue:self.datosUsuario.canal];
             [[Appboy sharedInstance].user setCustomAttributeWithKey:@"campania" andStringValue:self.datosUsuario.campania];
@@ -546,6 +554,10 @@
         if([self.txtEmail.text isEqualToString:@""] || self.txtEmail.text == nil){
             [[Appboy sharedInstance] changeUser:self.datosUsuario.auxStrSesionUser];
             [Appboy sharedInstance].user.email = self.datosUsuario.auxStrSesionUser;
+            NSLocale *currentLocale = [NSLocale currentLocale];  // get the current locale.
+            NSString *countryCode = [currentLocale objectForKey:NSLocaleCountryCode];
+            NSLog(@"EL VALOR DE PAIS ES: %@", countryCode);
+            [[Appboy sharedInstance].user setCustomAttributeWithKey:@"pais" andStringValue:countryCode];
             if([self.datosUsuario.tipoDeUsuario isEqualToString:@"canal"]){
                 [[Appboy sharedInstance].user setCustomAttributeWithKey:@"canal" andStringValue:self.datosUsuario.canal];
                 [[Appboy sharedInstance].user setCustomAttributeWithKey:@"campania" andStringValue:self.datosUsuario.campania];
@@ -554,6 +566,10 @@
         }else{
             [[Appboy sharedInstance] changeUser:self.txtEmail.text];
             [Appboy sharedInstance].user.email = self.txtEmail.text;
+            NSLocale *currentLocale = [NSLocale currentLocale];  // get the current locale.
+            NSString *countryCode = [currentLocale objectForKey:NSLocaleCountryCode];
+            NSLog(@"EL VALOR DE PAIS ES: %@", countryCode);
+            [[Appboy sharedInstance].user setCustomAttributeWithKey:@"pais" andStringValue:countryCode];
             if([self.datosUsuario.tipoDeUsuario isEqualToString:@"canal"]){
                 [[Appboy sharedInstance].user setCustomAttributeWithKey:@"canal" andStringValue:self.datosUsuario.canal];
                 [[Appboy sharedInstance].user setCustomAttributeWithKey:@"campania" andStringValue:self.datosUsuario.campania];

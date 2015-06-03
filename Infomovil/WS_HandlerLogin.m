@@ -672,7 +672,7 @@
     
     else if ([elementName isEqualToString:@"typeImage"]) {
             NSString *typeImageAux = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
-            NSLog(@"EL TIPO DE IMAGEN ES: %@", typeImageAux);
+        
         if ([typeImageAux isEqualToString:@"LOGO"]) {
                 esLogo = YES;
                 [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:1 withObject:@YES];

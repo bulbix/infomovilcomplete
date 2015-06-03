@@ -328,7 +328,6 @@ BOOL banderaRegresar;
     }
      [self.vistaInferior setHidden:NO];
 	[self.navigationController.navigationBar setHidden:NO];
-     NSLog(@"EL DOMINIO DEL USUARIO ES2: %@",  self.datosUsuario.dominio);
 }
 
 - (void)didReceiveMemoryWarning
