@@ -756,13 +756,13 @@
 
 - (void)loginViewShowingLoggedInUser:(FBLoginView *)loginView {
 #if DEBUG
-    NSLog(@"Entrando a loginViewShowingLoggedInUser:");
+    NSLog(@"Entrando a loginViewShowingLoggedInUser MAINVIEWCONTROLLER:");
 #endif
 }
 
 - (void) loginViewShowingLoggedOutUser:(FBLoginView *)loginView {
 #if DEBUG
-    NSLog(@"Entrando a loginViewShowingLoggedOutUser:");
+    NSLog(@"Entrando a loginViewShowingLoggedOutUser MAINVIEWCONTROLLER:");
 #endif
 }
 

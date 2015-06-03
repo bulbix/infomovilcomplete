@@ -385,7 +385,7 @@
 }
 // Boton de regresar //
 -(IBAction)regresarMenu:(id)sender {
-    NSLog(@"REGRESARMENU");
+   
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -416,7 +416,7 @@
 }
 
 -(BOOL) textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    NSLog(@"TEXTFIELD");
+    
     self.modifico = YES;
     NSInteger maxLength = 255;
     NSInteger textoLength = [textField.text length];
@@ -456,7 +456,7 @@
 }
 
 -(void) accionAceptar {
-    NSLog(@"ACCIONACEPTAR");
+   
     if (exito) {
         NombrarViewController *nombrar = [[NombrarViewController alloc] initWithNibName:@"NombrarViewController" bundle:Nil];
         [self.navigationController pushViewController:nombrar animated:YES];
@@ -493,7 +493,7 @@
 }
 
 -(IBAction)regresar:(id)sender {
-    NSLog(@"REGRESAR ID SENDER");
+    
     [[self view] endEditing:YES];
     [self.navigationController popViewControllerAnimated:YES];
     
@@ -544,7 +544,7 @@
             [Appboy startWithApiKey:llaveAppboy
                       inApplication:[UIApplication sharedApplication]
                   withLaunchOptions:launch];
-            NSLog(@"EL APPBOY DE CHANGE USER 1");
+         
              [[Appboy sharedInstance] changeUser:self.datosUsuario.emailUsuario];
              [Appboy sharedInstance].user.email = self.datosUsuario.emailUsuario;
             if([self.datosUsuario.emailUsuario isEqualToString:@""] || self.datosUsuario.emailUsuario == nil){
@@ -556,6 +556,7 @@
             ((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio = @"Tramite";
             
             NSUserDefaults *prefSesion = [NSUserDefaults standardUserDefaults];
+            NSLog(@"LOS VALORES QUE GUARDARA SON: %@  %@   %li ", self.datosUsuario.auxStrSesionUser, self.datosUsuario.auxStrSesionPass,(long)self.datosUsuario.auxSesionFacebook);
             [prefSesion setObject:self.datosUsuario.auxStrSesionUser forKey:@"strSesionUser"];
             [prefSesion setObject:self.datosUsuario.auxStrSesionPass forKey:@"strSesionPass"];
             [prefSesion setInteger:(long)self.datosUsuario.auxSesionFacebook forKey:@"intSesionFacebook"];
@@ -583,7 +584,7 @@
 }
 
 -(void) resultadoConsultaDominio:(NSString *)resultado {
-    NSLog(@"EL RESULTADO QUE ME ENVIO EL REGISTRO ES: %@",resultado);
+ 
     if(operacionWS == 1 ){
         if ([resultado isEqualToString:@"No existe"]) {
             existeUsuario = YES;
@@ -623,12 +624,7 @@
         existeUsuario = YES;
         self.datosUsuario.redSocial = @"Facebook";
         // Se guarda la sesion //
-        NSUserDefaults *prefSesion = [NSUserDefaults standardUserDefaults];
-        [prefSesion setObject:self.datosUsuario.auxStrSesionUser forKey:@"strSesionUser"];
-        [prefSesion setObject:self.datosUsuario.auxStrSesionPass forKey:@"strSesionPass"];
-        [prefSesion setInteger:(long)self.datosUsuario.auxSesionFacebook forKey:@"intSesionFacebook"];
-        [prefSesion setInteger:1 forKey:@"intSesionActiva"];
-        [prefSesion synchronize];
+       
     }
     else {
         loginFacebook = YES;
@@ -639,7 +635,7 @@
 }
 
 -(void) errorToken {
-    NSLog(@"ERRORTOKEN");
+  
     loginFacebook = YES;
     if (self.alerta)
     {
@@ -705,6 +701,7 @@
 #endif
     self.datosUsuario.redSocial = @"Facebook";
     NSUserDefaults *prefSesion = [NSUserDefaults standardUserDefaults];
+     NSLog(@"El valor de sesion activa es: %ld", (long)[prefSesion integerForKey:@"intSesionActiva"]);
     if(loginFacebook == YES && [prefSesion integerForKey:@"intSesionActiva"] != 1) {
         loginFacebook = NO;
         [self performSelectorInBackground:@selector(consultaLogin) withObject:Nil];
@@ -714,13 +711,13 @@
 
 - (void)loginViewShowingLoggedInUser:(FBLoginView *)loginView {
 #if DEBUG
-    NSLog(@"Entrando a loginViewShowingLoggedInUser:");
+    NSLog(@"Entrando a loginViewShowingLoggedInUser MENUREGISTROVIEWCONTROLLER:");
 #endif
 }
 
 - (void) loginViewShowingLoggedOutUser:(FBLoginView *)loginView {
 #if DEBUG
-    NSLog(@"Entrando a loginViewShowingLoggedOutUser:");
+    NSLog(@"Entrando a loginViewShowingLoggedOutUser MENUREGISTROVIEWCONTROLLER: ");
 #endif
 }
 

@@ -246,7 +246,7 @@ int opcionButton = 0 ;
                 
             }
             if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-                self.MensajePlanProComprado.text = [NSString stringWithFormat:@"This site already has a Plan Pro\n\nStart date: %@ \nEnd date: %@",self.datosUsuario.fechaInicial, self.datosUsuario.fechaFinal];
+                self.MensajePlanProComprado.text = [NSString stringWithFormat:@"This site already has a PRO PLAN\n\nStart date: %@ \nEnd date: %@",self.datosUsuario.fechaInicial, self.datosUsuario.fechaFinal];
             }else{
                 self.MensajePlanProComprado.text = [NSString stringWithFormat:@"Este sitio ya cuenta con PLAN PRO disfruta sus beneficios.\n\nFecha de inicio: %@\nFecha de término: %@",self.datosUsuario.fechaInicial, self.datosUsuario.fechaFinal];
             }
@@ -565,6 +565,11 @@ if(noSeRepiteOprimirElBoton){
                             
                         }else{
                             dominio.text = [NSString stringWithFormat:@"My website\n\nwww.infomovil.com%@",self.datosUsuario.dominio] ;
+                       /*     [self.ComprarDominio setFrame:CGRectMake(110, 300, 100, 40)];
+                            self.ComprarDominio.titleLabel.text = NSLocalizedString(@"comprarDominioTel", Nil);
+                            self.ComprarDominio.backgroundColor = [UIColor greenColor];
+                            [self.ComprarDominio setHidden:NO];
+                        */
                         }
                     }
                 }

@@ -151,7 +151,7 @@
 
 - (void)loginViewShowingLoggedInUser:(FBLoginView *)loginView {
 #ifdef _DEBUG
-    NSLog(@"Entrando a loginViewShowingLoggedInUser:");
+    NSLog(@"Entrando a loginViewShowingLoggedInUser TIPS VIEWCONTROLLER:");
 #endif
 }
 
