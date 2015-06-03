@@ -14,7 +14,7 @@ UIKIT_EXTERN NSString *const IAPHelperProductPurchasedNotification;
 
 typedef void (^RequestProductsCompletionHandler)(BOOL success, NSArray * products);
 
-@interface IAPHelper : NSObject <AlertViewDelegate, WS_HandlerProtocol>
+@interface IAPHelper : InfomovilViewController <AlertViewDelegate, WS_HandlerProtocol>
 
 - (id)initWithProductIdentifiers:(NSSet *)productIdentifiers;
 - (void)requestProductsWithCompletionHandler:(RequestProductsCompletionHandler)completionHandler;

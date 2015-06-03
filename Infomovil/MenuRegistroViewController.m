@@ -444,9 +444,7 @@
 }
 
 -(IBAction)guardarInformacion:(id)sender {
-    NSLog(@"GUARDARINFORMACION");
     [[self view] endEditing:YES];
-        self.datosUsuario = [DatosUsuario sharedInstance];
         if ([CommonUtils hayConexion]) {
             [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
             [self performSelectorInBackground:@selector(checaNombre) withObject:Nil];
@@ -464,26 +462,7 @@
         [self.navigationController pushViewController:nombrar animated:YES];
     }
 }
-/*
--(void) accionSi {
 
-    if (self.modifico) {
-        if ((self.txtNombre.text.length) > 0  && (self.txtContrasena.text.length > 0)) {
-            exito = YES;
-            self.datosUsuario = [DatosUsuario sharedInstance];
-            self.datosUsuario.emailUsuario = [self.txtNombre text];
-            self.datosUsuario.passwordUsuario = [self.txtContrasena text];
-            AlertView *alert = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"felicidades", @" ") message:NSLocalizedString(@"nombrarSitio", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
-            [alert show];
-        }
-        else {
-            AlertView *alert = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"error", @" ") message:NSLocalizedString(@"llenarCampos", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
-            [alert show];
-        }
-    }
-}
-
-*/
 
 
 -(void) desapareceElTeclado:(NSNotification *)aNotificacion {
@@ -572,22 +551,21 @@
                 [[Appboy sharedInstance] changeUser:self.datosUsuario.auxStrSesionUser];
                 [Appboy sharedInstance].user.email = self.datosUsuario.auxStrSesionUser;
             }
-            
-            
-       /*     if([self.datosUsuario.redSocial isEqualToString:@"Facebook"]){
-                ABKFacebookUser *facebookUser = [[ABKFacebookUser alloc] initWithFacebookUserDictionary:nil numberOfFriends:-1 likes:Nil];
-                [Appboy sharedInstance].user.facebookUser = facebookUser;
-            }
-         */
+        
             [self enviarEventoGAconCategoria:@"Registrar" yEtiqueta:@"Usuario"];
-            // IRC Dominio
             ((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio = @"Tramite";
+            
+            NSUserDefaults *prefSesion = [NSUserDefaults standardUserDefaults];
+            [prefSesion setObject:self.datosUsuario.auxStrSesionUser forKey:@"strSesionUser"];
+            [prefSesion setObject:self.datosUsuario.auxStrSesionPass forKey:@"strSesionPass"];
+            [prefSesion setInteger:(long)self.datosUsuario.auxSesionFacebook forKey:@"intSesionFacebook"];
+            [prefSesion setInteger:1 forKey:@"intSesionActiva"];
+            [prefSesion synchronize];
+            
             
             MenuPasosViewController *menuPasos = [[MenuPasosViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:nil];
             [self.navigationController pushViewController:menuPasos animated:YES];
         }
-        
-        
     }
     else {
         loginFacebook = YES;
@@ -607,15 +585,11 @@
 -(void) resultadoConsultaDominio:(NSString *)resultado {
     NSLog(@"EL RESULTADO QUE ME ENVIO EL REGISTRO ES: %@",resultado);
     if(operacionWS == 1 ){
-        NSLog(@"ENTRO 1");
         if ([resultado isEqualToString:@"No existe"]) {
-            NSLog(@"ENTRO 2");
             existeUsuario = YES;
             loginFacebook = NO;
             [self crearDominio];
         }else {
-            NSLog(@"ENTRO 3");
-       //     loginFacebook = YES;
             existeUsuario = NO;
             if (self.alerta)
             {
@@ -627,7 +601,6 @@
             [alert show];
         }
     }else{
-        NSLog(@"ENTRO 4");
         loginFacebook = NO;
         DatosUsuario *datos = [DatosUsuario sharedInstance];
         idDominio = datos.idDominio;
@@ -662,7 +635,6 @@
         respuestaError = idDominioLogin;
         loginExitoso = NO;
     }
-    NSLog(@"ESTE ES EL OCULTAR ACTIVITY DE RESULTADO LOGIN");
     [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
 }
 
@@ -732,8 +704,8 @@
     NSLog(@"el email es %@", self.datosUsuario.emailUsuario);
 #endif
     self.datosUsuario.redSocial = @"Facebook";
-    if(loginFacebook == YES) {
-         NSLog(@"SOLO DEBE PASAR UNA VEZ ");
+    NSUserDefaults *prefSesion = [NSUserDefaults standardUserDefaults];
+    if(loginFacebook == YES && [prefSesion integerForKey:@"intSesionActiva"] != 1) {
         loginFacebook = NO;
         [self performSelectorInBackground:@selector(consultaLogin) withObject:Nil];
     }

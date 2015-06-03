@@ -15,6 +15,8 @@
                 <outlet property="imgBackgroundBotones" destination="P71-gT-vz2" id="QnS-9Y-dSL"/>
                 <outlet property="imgBeneficios" destination="ZgK-QH-lCK" id="8OY-je-Izv"/>
                 <outlet property="labelMisSitios" destination="mtM-MX-gZF" id="gkr-Rv-Xdf"/>
+                <outlet property="precioDoce" destination="pos-60-99h" id="Y7z-Fe-0Ew"/>
+                <outlet property="precioUno" destination="Qou-Zd-Lk2" id="ZkD-Nb-6Fb"/>
                 <outlet property="rayaLabel" destination="ZDX-Vl-jxv" id="5hB-6d-l88"/>
                 <outlet property="scrollContenido" destination="kQp-T6-2Np" id="W3C-0o-dgV"/>
                 <outlet property="selector" destination="spS-Fj-Wmc" id="Czm-dg-xsC"/>
@@ -72,7 +74,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgPro.png" id="P71-gT-vz2">
-                                            <rect key="frame" x="0.0" y="68" width="320" height="143"/>
+                                            <rect key="frame" x="0.0" y="68" width="320" height="150"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Elige tu plan y disfruta de los beneficios" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="acJ-J0-2xv">
@@ -102,7 +104,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                         </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="ZSa-km-kPq">
-                                            <rect key="frame" x="165" y="87" width="109" height="109"/>
+                                            <rect key="frame" x="180" y="74" width="109" height="109"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" red="0.92941176469999998" green="0.8980392157" blue="0.8862745098" alpha="0.0" colorSpace="calibratedRGB"/>
                                             <inset key="insetFor6xAndEarlier" minX="-60" minY="0.0" maxX="60" maxY="0.0"/>
@@ -111,7 +113,7 @@
                                                 <color key="titleColor" red="0.23529411759999999" green="0.2901960784" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="titleShadowColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                             </state>
-                                            <state key="selected" backgroundImage="3mInac.png"/>
+                                            <state key="selected" backgroundImage="12mAc-es.png"/>
                                             <connections>
                                                 <action selector="comprar12mesesBtn:" destination="-1" eventType="touchUpInside" id="whg-LH-oav"/>
                                             </connections>
@@ -124,7 +126,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="TfM-fF-9Se">
-                                            <rect key="frame" x="46" y="87" width="109" height="109"/>
+                                            <rect key="frame" x="30" y="74" width="109" height="109"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" red="0.92941176470588238" green="0.89803921568627454" blue="0.88627450980392153" alpha="0.0" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
@@ -137,6 +139,20 @@
                                                 <action selector="comprar1mesBtn:" destination="-1" eventType="touchUpInside" id="Dz0-VZ-n0g"/>
                                             </connections>
                                         </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Qou-Zd-Lk2">
+                                            <rect key="frame" x="0.0" y="191" width="160" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pos-60-99h">
+                                            <rect key="frame" x="160" y="190" width="160" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -185,15 +201,14 @@
                 </scrollView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <point key="canvasLocation" x="-387" y="-41"/>
+            <point key="canvasLocation" x="-421" y="-92"/>
         </view>
     </objects>
     <resources>
         <image name="12mAc-es.png" width="230" height="230"/>
         <image name="1mInac-es.png" width="230" height="230"/>
-        <image name="3mInac.png" width="320" height="131"/>
         <image name="beneficios-es.png" width="740" height="523"/>
-        <image name="bgPro.png" width="375" height="153"/>
+        <image name="bgPro.png" width="375" height="178"/>
         <image name="btnazulnuevo.png" width="263" height="57"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

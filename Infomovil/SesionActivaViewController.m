@@ -104,6 +104,7 @@
 -(void)viewDidAppear:(BOOL)animated{
     NSUserDefaults *prefSesion = [NSUserDefaults standardUserDefaults];
     if([prefSesion integerForKey:@"intSesionActiva"] == 1 && [[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0){
+        NSLog(@"A VER SI ENTRA AQUI CUANDO HACE ESO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         [self performSelectorOnMainThread:@selector(mostrarActividad) withObject:nil waitUntilDone:YES];
         [self performSelectorInBackground:@selector(consultaLogin) withObject:Nil];
         

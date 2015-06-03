@@ -55,7 +55,7 @@
 {
     [super viewDidLoad];
     //MBC
-    if(IS_STANDARD_IPHONE_6){
+    if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         [self.scroll setFrame:CGRectMake(0, 0, 375, 667)];
         [self.label1 setFrame:CGRectMake(40, 47, 280, 97)];
         [self.label2 setFrame:CGRectMake(40, 70, 280, 101)];

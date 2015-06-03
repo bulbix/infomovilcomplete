@@ -71,14 +71,13 @@
     self.vistaTip2.layer.cornerRadius = 5.0f;
     self.vistaTip3.layer.cornerRadius = 5.0f;
     
+    
+    
     /*if(IS_STANDARD_IPHONE_6_PLUS){
         self.view.frame = CGRectMake(0, 0, 414, 736);
         self.scrollVistaTips.frame = CGRectMake(0, 50, 414, 300);
         [self.scrollVistaTips setContentSize:CGSizeMake(1242, 300)];
-        self.vistaTip1.frame = CGRectMake( 57, 0, 300,300 );
-        self.vistaTip2.frame = CGRectMake( 471, 0, 300,300 );
-        self.vistaTip3.frame = CGRectMake( 885, 0, 300,300 );
-        self.myPageControl.frame = CGRectMake(157, 410, 100, 37);
+     
         
         [self.btnFace setFrame:CGRectMake(29, 150, 47, 47)];
         [self.btnGoogle setFrame:CGRectMake(126, 150, 47, 47)];
@@ -129,6 +128,20 @@
         [self.seccionCuatroTitulo setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
         self.seccionCuatroLabel1.frame = CGRectMake(40, 80, 520, 60);
         
+    }else if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
+        self.view.frame = CGRectMake(0, 0, 375, 667);
+        self.scrollVistaTips.frame = CGRectMake(0, 60, 375, 300);
+        [self.scrollVistaTips setContentSize:CGSizeMake(1125, 300)];
+        self.vistaTip1.frame = CGRectMake( 37, 0, 300,300 );
+        self.vistaTip2.frame = CGRectMake( 412, 0, 300,300 );
+        self.vistaTip3.frame = CGRectMake( 787, 0, 300,300 );
+        [self.btnFace setFrame:CGRectMake(29, 150, 47, 47)];
+        [self.btnGoogle setFrame:CGRectMake(126, 150, 47, 47)];
+        [self.btnTwit setFrame:CGRectMake(223, 150, 47, 47)];
+        [self.btnEmail setFrame:CGRectMake(29, 230, 47, 47)];
+        [self.btnSms setFrame:CGRectMake(126, 230, 47, 47)];
+        [self.btnWhats setFrame:CGRectMake(223, 230, 47, 47)];
+        self.myPageControl.frame = CGRectMake(139, 380, 100, 37);
     }else{
         [self.scrollVistaTips setContentSize:CGSizeMake(960, 312)];
         self.myPageControl.frame = CGRectMake(112, 300, 97, 37);
@@ -556,11 +569,7 @@ if ([CommonUtils hayConexion]) {
 }
 
 
-- (void)loginViewFetchedUserInfo:(FBLoginView *)loginView
-                            user:(id<FBGraphUser>)user {
 
-    
-}
 
 
 

@@ -70,19 +70,7 @@ int opcionButton = 0 ;
     [self obtenerProductos];
     noSeRepiteOprimirElBoton = YES;
     opcionButton = 0;
-   // IRC SE OCULTA LA TABLA PARA MOSTRAR EL DOMINIO Y LA DURACIÓN DEL MISMO //
-    // IRC CUANDOS SE QUIERA HACER DOMINIOS SE DEBE DESCOMENTAR LA TABLA //
-    /*
-    if (tablaDominio == nil) {
-        tablaDominio = [[TablaDominioViewController alloc] init];
-    }
-    [tablaSitios setDelegate:tablaDominio];
-    [tablaSitios setDataSource:tablaDominio];
-    tablaDominio.view = tablaDominio.tableView;
-    tablaSitios.layer.cornerRadius = 5.0f;
-     
-    self.labelMisSitios.text = NSLocalizedString(@"txtMisSitios", Nil);
-    */
+   
 	self.guardarVista = YES;
     self.datosUsuario = [DatosUsuario sharedInstance];
     if (self.datosUsuario.datosPago == nil) {
@@ -128,31 +116,12 @@ int opcionButton = 0 ;
         [self.vistaPlanPro setContentSize:CGSizeMake(375, 667)];
         self.vistaPlanPro.frame = CGRectMake(0, 0, 375, 667);
         self.vistaDominio.frame = CGRectMake(375, 0, 375, 667);
-        self.imgBackgroundBotones.frame = CGRectMake(0, 68, 375, 143);
-        self.comprar1mes.frame = CGRectMake(73, 87, 109, 109);
-        self.comprar12meses.frame = CGRectMake(193, 87, 109, 109);
+        self.imgBackgroundBotones.frame = CGRectMake(0, 68, 375, 150);
+        self.comprar1mes.frame = CGRectMake(40, 74, 109, 109);
+        self.comprar12meses.frame = CGRectMake(230, 74, 109, 109);
         [self.botonCuenta setFrame:CGRectMake(128, 12, 64, 54)];
-        
-        
-    /*}else if(IS_STANDARD_IPHONE_6_PLUS){
-        self.selector.frame = CGRectMake(30, 10, 354, 30);
-        self.scrollContenido.frame = CGRectMake(0, 50, 414, 736);
-        [self.scrollContenido setContentSize:CGSizeMake(828, 1472)];
-        self.viewCompraPlanPro.frame = CGRectMake(0, 0, 414, 736);
-        self.vistaPlanPro.frame = CGRectMake(0, 0, 414, 736);
-        [self.vistaPlanPro setContentSize:CGSizeMake(414, 736)];
-        self.vistaDominio.frame = CGRectMake(414, 0, 414, 736);
-        self.imgBackgroundBotones.frame = CGRectMake(0, 68, 414, 143);
-        self.comprar1mes.frame = CGRectMake(45, 87, 109, 109);
-     
-        self.comprar12meses.frame = CGRectMake(255, 87, 109, 109);
-        self.tituloPlanPro.frame = CGRectMake(45, 15, 324, 20 );
-        self.subtituloPlanPro.frame = CGRectMake(45, 35, 324,20 );
-        self.beneficiosPlanPro.frame = CGRectMake(45, 220, 324, 20);
-        self.rayaLabel.frame = CGRectMake(45, 240, 324, 1);
-        self.imgBeneficios.frame = CGRectMake(45, 265 ,324 , 161);
-       [self.botonCuenta setFrame:CGRectMake(128, 12, 64, 54)];
-     */
+        [self.precioUno setFrame:CGRectMake(0, 191,187 , 30)];
+        [self.precioDoce setFrame:CGRectMake(187, 191,187 , 30)];
     }else if(IS_IPAD){
         self.selector.frame = CGRectMake(134, 80, 500, 35);
         self.scrollContenido.frame = CGRectMake(0, 120, 768, 1024);
@@ -162,24 +131,27 @@ int opcionButton = 0 ;
         [self.vistaPlanPro setContentSize:CGSizeMake(768, 1024)];
         self.vistaDominio.frame = CGRectMake(768, 0, 768, 1024);
         [self.scrollContenido setContentSize:CGSizeMake(1536, 2048)];
-        self.tituloPlanPro.frame = CGRectMake(134, 60, 500, 35 );
+        self.tituloPlanPro.frame = CGRectMake(134, 15, 500, 35 );
         [self.tituloPlanPro setFont:[UIFont fontWithName:@"Avenir-Book" size:22]];
-        self.subtituloPlanPro.frame = CGRectMake(134, 100, 500,29 );
+        self.subtituloPlanPro.frame = CGRectMake(134, 55, 500,29 );
          [self.subtituloPlanPro setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
-        self.imgBackgroundBotones.frame = CGRectMake(0, 145, 768, 200);
-        self.comprar1mes.frame = CGRectMake(134, 175, 150, 150);
-      
-        self.comprar12meses.frame = CGRectMake(485, 175, 150, 150);
+        self.imgBackgroundBotones.frame = CGRectMake(0, 110, 768, 270);
+        self.comprar1mes.frame = CGRectMake(167, 147, 150, 150);
+        self.comprar12meses.frame = CGRectMake(451, 147, 150, 150);
         
-        self.beneficiosPlanPro.frame = CGRectMake(134, 360, 500, 30);
+        [self.precioUno setFrame:CGRectMake(100, 330,284 , 40)];
+        [self.precioDoce setFrame:CGRectMake(385, 330,284 , 40)];
+        [self.precioUno setFont:[UIFont fontWithName:@"Avenir-Medium" size:22]];
+        [self.precioDoce setFont:[UIFont fontWithName:@"Avenir-Medium" size:22]];
+        self.beneficiosPlanPro.frame = CGRectMake(134, 395, 500, 30);
         [self.beneficiosPlanPro setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
-        self.rayaLabel.frame = CGRectMake(134, 385, 500, 1);
-        self.imgBeneficios.frame = CGRectMake(134, 410 ,500 , 270);
+        self.rayaLabel.frame = CGRectMake(134, 420, 500, 1);
+        self.imgBeneficios.frame = CGRectMake(134, 440 ,500 , 360);
         [self.botonCuenta setFrame:CGRectMake(176, 10, 88, 80)];
         [self.viewPlanProComprado setFrame:CGRectMake(0, 120, 768, 250)];;
     }else{
-        [self.vistaPlanPro setContentSize:CGSizeMake(320, 568)];
-        [self.scrollContenido setContentSize:CGSizeMake(640, 568)];
+        [self.vistaPlanPro setContentSize:CGSizeMake(320, 655)];
+        [self.scrollContenido setContentSize:CGSizeMake(640, 655)];
         [self.botonCuenta setFrame:CGRectMake(128, 14, 64, 54)];
     }
   
@@ -226,11 +198,21 @@ int opcionButton = 0 ;
                                              selector:@selector(receiveTestNotification:)
                                                  name:@"FailedTransactionNotification"
                                                object:nil];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(guardarPreciosPlanPro:)
+                                                 name:@"PreciosPlanPro"
+                                               object:nil];
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    self.precioDoce.text = [prefs stringForKey:@"precioDoceMesesPlanPro"];
+    self.precioUno.text = [prefs stringForKey:@"precioUnMesPlanPro"];
 }
 
 
-
+-(void)guardarPreciosPlanPro:(id)sender{
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    self.precioDoce.text = [prefs stringForKey:@"precioDoceMesesPlanPro"];
+    self.precioUno.text = [prefs stringForKey:@"precioUnMesPlanPro"];
+}
 
 
 -(void) viewWillAppear:(BOOL)animated {
@@ -282,7 +264,15 @@ int opcionButton = 0 ;
     }
     self.beneficiosPlanPro.text = NSLocalizedString(@"BeneficiosCuentaPlanPro", Nil);
     self.subtituloPlanPro.text = NSLocalizedString(@"subtituloCuentaPlanPro", Nil);
+    
+    
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    self.precioDoce.text = [prefs stringForKey:@"precioDoceMesesPlanPro"];
+    self.precioUno.text = [prefs stringForKey:@"precioUnMesPlanPro"];
+  
 }
+
+
 
 
 // Este método es para cambiar el status en el server a INTENTO DE PAGO Y ME REGRESE UN FOLIO

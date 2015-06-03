@@ -78,14 +78,38 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
 - (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response {
     
     _productsRequest = nil;
-    
+    self.datosUsuario = [DatosUsuario sharedInstance];
     NSArray * skProducts = response.products;
+   
+    NSUserDefaults *prefSesion = [NSUserDefaults standardUserDefaults];
     for (SKProduct * skProduct in skProducts) {
         NSLog(@"Found product en IAPHelper: %@ %@ %0.2f",
               skProduct.productIdentifier,
               skProduct.localizedTitle,
               skProduct.price.floatValue);
+        NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+        [numberFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
+        [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+        [numberFormatter setLocale:skProduct.priceLocale];
+        NSLocale* storeLocale = skProduct.priceLocale;
+        NSString *storeCountry = (NSString*)CFLocaleGetValue((CFLocaleRef)storeLocale, kCFLocaleCountryCode);
+        NSLog(@"EL PAIS ES: %@", storeCountry);
+        if([skProduct.productIdentifier isEqualToString:@"com.infomovil.infomovil.12_months_new"]){
+            if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
+                [prefSesion setObject:[NSString stringWithFormat:@"%0.2f x month",  skProduct.price.floatValue] forKey:@"precioDoceMesesPlanPro"];
+            }else{
+                [prefSesion setObject:[NSString stringWithFormat:@"%0.2f x mes",  skProduct.price.floatValue] forKey:@"precioDoceMesesPlanPro"];
+            }
+        }else if([skProduct.productIdentifier isEqualToString:@"com.infomovil.infomovil.1_month"]){
+            if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
+                [prefSesion setObject:[NSString stringWithFormat:@"%0.2f x month",  skProduct.price.floatValue] forKey:@"precioUnMesPlanPro"];
+            }else{
+                [prefSesion setObject:[NSString stringWithFormat:@"%0.2f x mes",  skProduct.price.floatValue] forKey:@"precioUnMesPlanPro"];
+            }
+        }
+        [prefSesion synchronize];
     }
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"PreciosPlanPro" object:self];
     if ([CommonUtils hayConexion]) {
         if([skProducts count] > 0){
             if(_completionHandler)

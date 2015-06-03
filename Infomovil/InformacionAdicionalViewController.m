@@ -92,6 +92,7 @@
         [self.imgBull2 setFrame:CGRectMake(20, 160, 10, 10)];
         [self.tablaInformacion setFrame:CGRectMake(84, 40, 600, 800)];
     }else if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
+        [self.tablaInformacion setFrame:CGRectMake(20, 50, 335, 300)];
         [self.vistaInformacion setFrame:CGRectMake(20, 50, 335, 300)];
         [self.labelTexto1 setFrame:CGRectMake(40, 80, 300, 60)];
         [self.label setFrame:CGRectMake(40, 150, 300, 60)];

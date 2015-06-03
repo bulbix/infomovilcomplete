@@ -728,7 +728,9 @@
     NSLog(@"el email de facebook es: %@", self.datosUsuario.emailUsuario);
 #endif
     self.datosUsuario.redSocial = @"Facebook";
-     if(loginFacebook == YES) {
+    NSUserDefaults *prefSesion = [NSUserDefaults standardUserDefaults];
+    NSLog(@"El valor de sesion activa es: %ld", (long)[prefSesion integerForKey:@"intSesionActiva"]);
+     if(loginFacebook == YES && [prefSesion integerForKey:@"intSesionActiva"] != 1) {
         loginFacebook = NO;
         [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
         [self performSelectorInBackground:@selector(consultaLogin) withObject:Nil];

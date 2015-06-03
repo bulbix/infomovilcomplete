@@ -35,6 +35,8 @@
 
 @property (weak, nonatomic) IBOutlet UIView *viewPlanProComprado;
 
+@property (weak, nonatomic) IBOutlet UILabel *precioUno;
+@property (weak, nonatomic) IBOutlet UILabel *precioDoce;
 
 @property (weak, nonatomic) IBOutlet UIImageView *imgBackgroundBotones;
 
