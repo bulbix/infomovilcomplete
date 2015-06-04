@@ -175,9 +175,9 @@
                                 </tableView>
                                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="XOH-x8-sVn">
                                     <rect key="frame" x="30" y="253" width="260" height="40"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                                    <state key="normal" title="Comprar Dominio .tel" backgroundImage="btnazulnuevo.png">
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
+                                    <state key="normal" title="Comprar Dominio .tel">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <connections>
@@ -209,7 +209,6 @@
         <image name="1mInac-es.png" width="230" height="230"/>
         <image name="beneficios-es.png" width="740" height="523"/>
         <image name="bgPro.png" width="375" height="178"/>
-        <image name="btnazulnuevo.png" width="263" height="57"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

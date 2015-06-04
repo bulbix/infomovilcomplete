@@ -54,7 +54,7 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
     }else{
         NSLog(@"IRC app did not recieve notification");
     }
- 
+ /*
   
     //AppsFlyer
     [AppsFlyerTracker sharedTracker].appsFlyerDevKey = @"5KoF92vzAFbhSj9PRduNCn";
@@ -65,7 +65,7 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
     [[BITHockeyManager sharedHockeyManager] startManager];
     [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
     
-    
+   */ 
     //-- Set Notification
     [Appboy startWithApiKey:llaveAppboy
               inApplication:[UIApplication sharedApplication]
