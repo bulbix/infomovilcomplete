@@ -448,6 +448,8 @@
 		AB5280D919AE592A001AB735 /* TextAndGraphAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB5280D819AE592A001AB735 /* TextAndGraphAlertView.m */; };
 		AB60A849198065E300E1C476 /* logoRegistrado.png in Resources */ = {isa = PBXBuildFile; fileRef = AB60A848198065E300E1C476 /* logoRegistrado.png */; };
 		AB60A84B1980662000E1C476 /* logoRegistrado@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB60A84A1980661F00E1C476 /* logoRegistrado@2x.png */; };
+		BF0919B71B20D81B0067A4E6 /* NombraCompraDominio.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF0919B61B20D81B0067A4E6 /* NombraCompraDominio.xib */; };
+		BF0919BA1B20D8600067A4E6 /* NombraCompraDominio.m in Sources */ = {isa = PBXBuildFile; fileRef = BF0919B91B20D8600067A4E6 /* NombraCompraDominio.m */; };
 		BF3322281B1E7C67004FBF24 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF3322271B1E7C67004FBF24 /* HockeySDK.framework */; };
 		BF33222C1B1E7C87004FBF24 /* HockeySDK.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = BF33222A1B1E7C87004FBF24 /* HockeySDK.xcconfig */; };
 		BF33222D1B1E7C87004FBF24 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BF33222B1B1E7C87004FBF24 /* HockeySDKResources.bundle */; };
@@ -1226,6 +1228,9 @@
 		AB5280D819AE592A001AB735 /* TextAndGraphAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextAndGraphAlertView.m; sourceTree = "<group>"; };
 		AB60A848198065E300E1C476 /* logoRegistrado.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoRegistrado.png; sourceTree = "<group>"; };
 		AB60A84A1980661F00E1C476 /* logoRegistrado@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logoRegistrado@2x.png"; sourceTree = "<group>"; };
+		BF0919B61B20D81B0067A4E6 /* NombraCompraDominio.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NombraCompraDominio.xib; sourceTree = "<group>"; };
+		BF0919B81B20D8600067A4E6 /* NombraCompraDominio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NombraCompraDominio.h; sourceTree = "<group>"; };
+		BF0919B91B20D8600067A4E6 /* NombraCompraDominio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NombraCompraDominio.m; sourceTree = "<group>"; };
 		BF3322271B1E7C67004FBF24 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HockeySDK.framework; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDK.framework"; sourceTree = "<group>"; };
 		BF33222A1B1E7C87004FBF24 /* HockeySDK.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = HockeySDK.xcconfig; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDK.framework/Versions/A/Resources/HockeySDK.xcconfig"; sourceTree = "<group>"; };
 		BF33222B1B1E7C87004FBF24 /* HockeySDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = HockeySDKResources.bundle; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDK.framework/Versions/A/Resources/HockeySDKResources.bundle"; sourceTree = "<group>"; };
@@ -2173,6 +2178,9 @@
 				0F6CC4E818DC92A20066120E /* DominioRegistradoViewController.h */,
 				0F6CC4E918DC92A20066120E /* DominioRegistradoViewController.m */,
 				0F6CC4EA18DC92A20066120E /* DominioRegistradoViewController.xib */,
+				BF0919B81B20D8600067A4E6 /* NombraCompraDominio.h */,
+				BF0919B91B20D8600067A4E6 /* NombraCompraDominio.m */,
+				BF0919B61B20D81B0067A4E6 /* NombraCompraDominio.xib */,
 			);
 			name = Nombrar;
 			sourceTree = "<group>";
@@ -2986,6 +2994,7 @@
 				BFD29D621AC2139D008EADB9 /* input_semitrans@1x.png in Resources */,
 				BF66D7491B1D29AF001FA40F /* llamanos.png in Resources */,
 				0FF4211E1899845B003EEBB1 /* tomarfoto@2x.png in Resources */,
+				BF0919B71B20D81B0067A4E6 /* NombraCompraDominio.xib in Resources */,
 				0F9F532E18989413000F9FA5 /* camara@2x.png in Resources */,
 				0F9F52D6189890C6000F9FA5 /* mireporteson.png in Resources */,
 				0F11EDFA190712C700401686 /* twittercompartir@2x.png in Resources */,
@@ -3340,6 +3349,7 @@
 				0FFF9E01188DE99E00079A57 /* CompartirViewController.m in Sources */,
 				BF63786B1AA7718900AD052A /* IrAMiSitioViewController.m in Sources */,
 				0FA8C1FA18724FA300384F0E /* CrearPaso2ViewController.m in Sources */,
+				BF0919BA1B20D8600067A4E6 /* NombraCompraDominio.m in Sources */,
 				0F5EF9D618C955360013D37B /* WS_HandlerActualizarMapa.m in Sources */,
 				0FC0F3731888B6C9000ED438 /* SeleccionaVideoViewController.m in Sources */,
 				0F850E061885F8D20008A0CA /* EstadisticasViewController.m in Sources */,

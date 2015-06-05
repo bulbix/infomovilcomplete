@@ -9,7 +9,6 @@
 #import "NombrarViewController.h"
 #import "WS_HandlerDominio.h"
 #import "PublicarViewController.h"
-//#import "CompartirPublicacionViewController.h"
 #import "MenuPasosViewController.h"
 #import "WS_HandlerPublicar.h"
 #import "MainViewController.h"
@@ -18,7 +17,6 @@
 
 
 @interface NombrarViewController () {
-//    BOOL modifico;
     BOOL existeDominio;
     NSInteger operacionWS;//1 consulta dominio 2 creacion usuario y dominio
     NSInteger idDominio;
@@ -54,7 +52,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //MBC
+ 
     if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         [self.scroll setFrame:CGRectMake(0, 0, 375, 667)];
         [self.label1 setFrame:CGRectMake(40, 47, 280, 97)];
@@ -64,16 +62,6 @@
         [self.labelTel setFrame:CGRectMake(291, 178, 28, 24)];
         [self.labelDominio setFrame:CGRectMake(50, 223, 280, 24)];
         [self.boton setFrame:CGRectMake(93, 266, 200, 35)];
-    /*}else if(IS_STANDARD_IPHONE_6_PLUS){
-        [self.scroll setFrame:CGRectMake(0, 0, 414, 736)];
-        [self.label1 setFrame:CGRectMake(60, 47, 280, 97)];
-        [self.label2 setFrame:CGRectMake(60, 60, 280, 101)];
-        [self.labelW setFrame:CGRectMake(61, 178, 52, 24)];
-        [self.nombreDominio setFrame:CGRectMake(113, 175, 200, 30)];
-        [self.labelTel setFrame:CGRectMake(311, 178, 28, 24)];
-        [self.labelDominio setFrame:CGRectMake(70, 223, 280, 24)];
-        [self.boton setFrame:CGRectMake(113, 266, 200, 35)];
-    */
      }else if(IS_IPAD){
         [self.scroll setFrame:CGRectMake(0, 0, 768, 1024)];
         [self.label2 setFrame:CGRectMake(84, 80, 600, 50)];
@@ -155,10 +143,6 @@
         }else if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
              [self.labelW setFrame:CGRectMake(10, 178, 170, 24)];
              [self.nombreDominio setFrame:CGRectMake(180, 175, 180, 30)];
-     /*   }else if(IS_STANDARD_IPHONE_6_PLUS){
-            [self.labelW setFrame:CGRectMake(10, 178, 170, 24)];
-            [self.nombreDominio setFrame:CGRectMake(180, 175, 215, 30)];
-      */
       }else{
             [self.labelW setFont:[UIFont fontWithName:@"Avenir-Book" size:15]];
             [self.nombreDominio setFont:[UIFont fontWithName:@"Avenir-Book" size:15]];
@@ -227,26 +211,7 @@
         [alert show];
     }
 }
-/*
--(IBAction)guardarInformacion:(id)sender {
-    [self.view endEditing:YES];
-    if (existeDominio) {
-        if ([CommonUtils hayConexion]) {
-            [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
-            [self performSelectorInBackground:@selector(crearDominio) withObject:Nil];
-        }
-        else {
-			AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
-			[alert show];
-		}
 
-    }
-    else {
-        AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"comprobarDisponibilidad", @" ") andAlertViewType:AlertViewTypeInfo];
-        [alert show];
-    }
-}
-*/
 #pragma mark - AlertViewDelegate
 
 -(void) accionNo {

@@ -17,6 +17,7 @@
         NSSet * productIdentifiers = [NSSet setWithObjects:
                                       @"com.infomovil.infomovil.1_month",
                                       @"com.infomovil.infomovil.12_months_new",
+                                      @"com.infomovil.infomovil.dominiotel",
                                       nil];
         sharedInstance = [[self alloc] initWithProductIdentifiers:productIdentifiers];
     });

@@ -142,7 +142,8 @@
 @property (nonatomic, strong) NSString *consultaDomainName;
 @property (nonatomic, strong) NSString *consultaLista;
 
-
+// COMPRA .TEL
+@property (nonatomic, strong) NSString *voyAComprarTel;
 
 + (id)sharedInstance;
 

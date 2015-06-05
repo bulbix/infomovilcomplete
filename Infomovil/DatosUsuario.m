@@ -164,7 +164,7 @@
     self.arregloIdImagenGaleria = Nil;
     self.arregloDescripcionImagenGaleria = Nil;
     
-    
+    self.voyAComprarTel = Nil;
     
     
 }

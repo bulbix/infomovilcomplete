@@ -13,13 +13,11 @@
 #import "WS_HandlerDominio.h"
 #import "AppDelegate.h"
 #import "AppsFlyerTracker.h"
-//#import "CompartirPublicacionViewController.h"
-
 #import "RageIAPHelper.h"
 #import <StoreKit/StoreKit.h>
 #import "CommonUtils.h"
 #import "NombrarViewController.h"
-
+#import "NombraCompraDominio.h"
 
 @interface CuentaViewController () {
     NSInteger noVisitas;
@@ -73,6 +71,7 @@ int opcionButton = 0 ;
    
 	self.guardarVista = YES;
     self.datosUsuario = [DatosUsuario sharedInstance];
+    self.datosUsuario.voyAComprarTel = nil;
     if (self.datosUsuario.datosPago == nil) {
         self.datosUsuario.datosPago = [[PagoModel alloc] init];
     }
@@ -234,15 +233,11 @@ int opcionButton = 0 ;
         
         if([((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && ![self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]){
 	
-            //MBC
-          /*  if(IS_STANDARD_IPHONE_6_PLUS){
-                [self.MensajePlanProComprado setFrame:CGRectMake(0, 60, 414, 150)];
-            }else 
-           */if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
-                [self.MensajePlanProComprado setFrame:CGRectMake(70, 60, 220, 150)];
+          if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
+                [self.MensajePlanProComprado setFrame:CGRectMake(37, 60, 300, 150)];
             }else if(IS_IPAD){
                 [self.MensajePlanProComprado setFrame:CGRectMake(184, 10, 400, 300)];
-                [self.MensajePlanProComprado setFont:[UIFont fontWithName:@"Avenir-Book" size:22]];
+                [self.MensajePlanProComprado setFont:[UIFont fontWithName:@"Avenir-Book" size:24]];
                 
             }
             if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
@@ -512,7 +507,7 @@ if(noSeRepiteOprimirElBoton){
         }
         
             self.datosUsuario = [DatosUsuario sharedInstance];
-            UIFont * customFont = [UIFont fontWithName:@"Avenir-Medium" size:16];
+            UIFont * customFont = [UIFont fontWithName:@"Avenir-Book" size:16];
             UILabel *dominio;
             if (IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
                 dominio = [[UILabel alloc]initWithFrame:CGRectMake(0, 40, 375, 100)];
@@ -537,7 +532,7 @@ if(noSeRepiteOprimirElBoton){
             [dominio setFont: [UIFont fontWithName:@"Avenir-Book" size:24]];
         }else{
             fechas = [[UILabel alloc]initWithFrame:CGRectMake(0, 150,320, 100)];
-            [fechas setFont: [UIFont fontWithName:@"Avenir-Medium" size:16]];
+            [fechas setFont: [UIFont fontWithName:@"Avenir-Book" size:16]];
             dominio.font = customFont;
         }
         
@@ -563,29 +558,33 @@ if(noSeRepiteOprimirElBoton){
                             if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
                                 etiquetaCompraDominio.frame = CGRectMake(47, 250,280 ,40 );
                                 [btnCompraDominio setFrame:CGRectMake(87, 300, 200, 40)];
+                                etiquetaCompraDominio.font = [UIFont fontWithName:@"Avenir-Book" size:16];
+                                [btnCompraDominio.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
                             }else if(IS_IPAD){
                                 etiquetaCompraDominio.frame = CGRectMake(184, 250,400 ,40 );
                                 [btnCompraDominio setFrame:CGRectMake(259, 300, 250, 40)];
+                                etiquetaCompraDominio.font = [UIFont fontWithName:@"Avenir-Book" size:24];
+                                [btnCompraDominio.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:24]];
                             }else{
                                 etiquetaCompraDominio.frame = CGRectMake(20, 200,280 ,40 );
                                 [btnCompraDominio setFrame:CGRectMake(60, 250, 200, 40)];
+                                etiquetaCompraDominio.font = [UIFont fontWithName:@"Avenir-Book" size:16];
+                                [btnCompraDominio.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
                             }
                             
                             [etiquetaCompraDominio setText:NSLocalizedString(@"leyendaCompraDominio", Nil)];
-                            etiquetaCompraDominio.font = [UIFont fontWithName:@"Avenir-Book" size:18];
                             etiquetaCompraDominio.numberOfLines = 3;
                             etiquetaCompraDominio.adjustsFontSizeToFitWidth = YES;
                             etiquetaCompraDominio.backgroundColor = [UIColor clearColor];
-                            etiquetaCompraDominio.textColor = [UIColor colorWithRed:99.0f/255.0f
-                                                                  green:162.0f/255.0f
+                            etiquetaCompraDominio.textColor = [UIColor colorWithRed:47.0f/255.0f
+                                                                  green:163.0f/255.0f
                                                                    blue:152.0f/255.0f
                                                                   alpha:1.0f];
                             etiquetaCompraDominio.textAlignment = NSTextAlignmentCenter;
                             [self.vistaDominio addSubview:etiquetaCompraDominio];
                             
-                            
-                            [btnCompraDominio.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:18]];
                             [btnCompraDominio setTitle:NSLocalizedString(@"comprarDominioTel", Nil) forState:UIControlStateNormal];
+                            [btnCompraDominio addTarget:self action:@selector(comprarDominioBtn:)forControlEvents:UIControlEventTouchUpInside];
                             btnCompraDominio.backgroundColor = [UIColor colorWithRed:108.0f/255.0f
                                                                                green:185.0f/255.0f
                                                                                 blue:177.0f/255.0f
@@ -603,34 +602,37 @@ if(noSeRepiteOprimirElBoton){
                         if([usuarioDom.domainType isEqualToString:@"recurso"]){
                            
                             dominio.text = [NSString stringWithFormat:@"My website\n\nwww.infomovil.com/%@",self.datosUsuario.dominio] ;
-                            UILabel *fromLabel = [[UILabel alloc]init];
+                            UILabel *etiquetaCompraDominio = [[UILabel alloc]init];
                             UIButton *btnCompraDominio = [UIButton buttonWithType:(UIButtonTypeRoundedRect)];
                             if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
-                                fromLabel.frame = CGRectMake(47, 250,280 ,40 );
+                                etiquetaCompraDominio.frame = CGRectMake(47, 250,280 ,40 );
                                 [btnCompraDominio setFrame:CGRectMake(87, 300, 200, 40)];
+                                etiquetaCompraDominio.font = [UIFont fontWithName:@"Avenir-Book" size:16];
+                                [btnCompraDominio.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
                             }else if(IS_IPAD){
-                                fromLabel.frame = CGRectMake(184, 250,400 ,40 );
+                                etiquetaCompraDominio.frame = CGRectMake(184, 250,400 ,40 );
                                 [btnCompraDominio setFrame:CGRectMake(259, 300, 250, 40)];
+                                etiquetaCompraDominio.font = [UIFont fontWithName:@"Avenir-Book" size:20];
+                                [btnCompraDominio.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:24]];
                             }else{
-                                fromLabel.frame = CGRectMake(20, 200,280 ,40 );
+                                etiquetaCompraDominio.frame = CGRectMake(20, 200,280 ,40 );
                                 [btnCompraDominio setFrame:CGRectMake(60, 250, 200, 40)];
+                                etiquetaCompraDominio.font = [UIFont fontWithName:@"Avenir-Book" size:16];
+                                [btnCompraDominio.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
                             }
                             
-                            [fromLabel setText:NSLocalizedString(@"leyendaCompraDominio", Nil)];
-                            fromLabel.font = [UIFont fontWithName:@"Avenir-Book" size:18];
-                            fromLabel.numberOfLines = 3;
-                            fromLabel.adjustsFontSizeToFitWidth = YES;
-                            fromLabel.backgroundColor = [UIColor clearColor];
-                            fromLabel.textColor = [UIColor colorWithRed:99.0f/255.0f
-                                                                  green:162.0f/255.0f
-                                                                   blue:152.0f/255.0f
-                                                                  alpha:1.0f];
-                            fromLabel.textAlignment = NSTextAlignmentCenter;
-                            [self.vistaDominio addSubview:fromLabel];
-                            
-                            
-                            [btnCompraDominio.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:18]];
+                            [etiquetaCompraDominio setText:NSLocalizedString(@"leyendaCompraDominio", Nil)];
+                            etiquetaCompraDominio.numberOfLines = 3;
+                            etiquetaCompraDominio.adjustsFontSizeToFitWidth = YES;
+                            etiquetaCompraDominio.backgroundColor = [UIColor clearColor];
+                            etiquetaCompraDominio.textColor = [UIColor colorWithRed:47.0f/255.0f
+                                                                              green:163.0f/255.0f
+                                                                               blue:152.0f/255.0f
+                                                                              alpha:1.0f];
+                            etiquetaCompraDominio.textAlignment = NSTextAlignmentCenter;
+                            [self.vistaDominio addSubview:etiquetaCompraDominio];
                             [btnCompraDominio setTitle:NSLocalizedString(@"comprarDominioTel", Nil) forState:UIControlStateNormal];
+                            [btnCompraDominio addTarget:self action:@selector(comprarDominioBtn:)forControlEvents:UIControlEventTouchUpInside];
                             btnCompraDominio.backgroundColor = [UIColor colorWithRed:108.0f/255.0f
                                                                                green:185.0f/255.0f
                                                                                 blue:177.0f/255.0f
@@ -660,34 +662,37 @@ if(noSeRepiteOprimirElBoton){
                         }else{
                             dominio.text = [NSString stringWithFormat:@"Mi sitio web\n\nwww.infomovil.com/%@",self.datosUsuario.dominio] ;
                             
-                            UILabel *fromLabel = [[UILabel alloc]init];
+                            UILabel *etiquetaCompraDominio = [[UILabel alloc]init];
                             UIButton *btnCompraDominio = [UIButton buttonWithType:(UIButtonTypeRoundedRect)];
                             if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
-                                fromLabel.frame = CGRectMake(47, 250,280 ,40 );
+                                etiquetaCompraDominio.frame = CGRectMake(47, 250,280 ,40 );
                                 [btnCompraDominio setFrame:CGRectMake(87, 300, 200, 40)];
+                                etiquetaCompraDominio.font = [UIFont fontWithName:@"Avenir-Book" size:16];
+                                [btnCompraDominio.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
                             }else if(IS_IPAD){
-                                fromLabel.frame = CGRectMake(184, 250,400 ,40 );
+                                etiquetaCompraDominio.frame = CGRectMake(184, 250,400 ,40 );
                                 [btnCompraDominio setFrame:CGRectMake(259, 300, 250, 40)];
+                                etiquetaCompraDominio.font = [UIFont fontWithName:@"Avenir-Book" size:20];
+                                [btnCompraDominio.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:24]];
                             }else{
-                                fromLabel.frame = CGRectMake(20, 200,280 ,40 );
+                                etiquetaCompraDominio.frame = CGRectMake(20, 200,280 ,40 );
                                 [btnCompraDominio setFrame:CGRectMake(60, 250, 200, 40)];
+                                etiquetaCompraDominio.font = [UIFont fontWithName:@"Avenir-Book" size:16];
+                                [btnCompraDominio.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
                             }
                             
-                            [fromLabel setText:NSLocalizedString(@"leyendaCompraDominio", Nil)];
-                            fromLabel.font = [UIFont fontWithName:@"Avenir-Book" size:18];
-                            fromLabel.numberOfLines = 3;
-                            fromLabel.adjustsFontSizeToFitWidth = YES;
-                            fromLabel.backgroundColor = [UIColor clearColor];
-                            fromLabel.textColor = [UIColor colorWithRed:99.0f/255.0f
-                                                                  green:162.0f/255.0f
-                                                                   blue:152.0f/255.0f
-                                                                  alpha:1.0f];
-                            fromLabel.textAlignment = NSTextAlignmentCenter;
-                            [self.vistaDominio addSubview:fromLabel];
-                            
-                            
-                            [btnCompraDominio.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:18]];
+                            [etiquetaCompraDominio setText:NSLocalizedString(@"leyendaCompraDominio", Nil)];
+                            etiquetaCompraDominio.numberOfLines = 3;
+                            etiquetaCompraDominio.adjustsFontSizeToFitWidth = YES;
+                            etiquetaCompraDominio.backgroundColor = [UIColor clearColor];
+                            etiquetaCompraDominio.textColor = [UIColor colorWithRed:47.0f/255.0f
+                                                                              green:163.0f/255.0f
+                                                                               blue:152.0f/255.0f
+                                                                              alpha:1.0f];
+                            etiquetaCompraDominio.textAlignment = NSTextAlignmentCenter;
+                            [self.vistaDominio addSubview:etiquetaCompraDominio];
                             [btnCompraDominio setTitle:NSLocalizedString(@"comprarDominioTel", Nil) forState:UIControlStateNormal];
+                            [btnCompraDominio addTarget:self action:@selector(comprarDominioBtn:)forControlEvents:UIControlEventTouchUpInside];
                             btnCompraDominio.backgroundColor = [UIColor colorWithRed:108.0f/255.0f
                                                                                green:185.0f/255.0f
                                                                                 blue:177.0f/255.0f
@@ -704,34 +709,38 @@ if(noSeRepiteOprimirElBoton){
                         if([usuarioDom.domainType isEqualToString:@"recurso"]){
                           
                             dominio.text = [NSString stringWithFormat:@"Mi sitio web\n\nwww.infomovil.com/%@",self.datosUsuario.dominio] ;
-                            UILabel *fromLabel = [[UILabel alloc]init];
+                            UILabel *etiquetaCompraDominio = [[UILabel alloc]init];
                             UIButton *btnCompraDominio = [UIButton buttonWithType:(UIButtonTypeRoundedRect)];
                             if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
-                                fromLabel.frame = CGRectMake(47, 250,280 ,40 );
+                                etiquetaCompraDominio.frame = CGRectMake(47, 250,280 ,40 );
                                 [btnCompraDominio setFrame:CGRectMake(87, 300, 200, 40)];
+                                etiquetaCompraDominio.font = [UIFont fontWithName:@"Avenir-Book" size:16];
+                                [btnCompraDominio.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
                             }else if(IS_IPAD){
-                                fromLabel.frame = CGRectMake(184, 250,400 ,40 );
+                                etiquetaCompraDominio.frame = CGRectMake(184, 250,400 ,40 );
                                 [btnCompraDominio setFrame:CGRectMake(259, 300, 250, 40)];
+                                etiquetaCompraDominio.font = [UIFont fontWithName:@"Avenir-Book" size:24];
+                                [btnCompraDominio.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:24]];
                             }else{
-                                fromLabel.frame = CGRectMake(20, 200,280 ,40 );
+                                etiquetaCompraDominio.frame = CGRectMake(20, 200,280 ,40 );
                                 [btnCompraDominio setFrame:CGRectMake(60, 250, 200, 40)];
+                                etiquetaCompraDominio.font = [UIFont fontWithName:@"Avenir-Book" size:16];
+                                [btnCompraDominio.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
                             }
                             
-                            [fromLabel setText:NSLocalizedString(@"leyendaCompraDominio", Nil)];
-                            fromLabel.font = [UIFont fontWithName:@"Avenir-Book" size:18];
-                            fromLabel.numberOfLines = 3;
-                            fromLabel.adjustsFontSizeToFitWidth = YES;
-                            fromLabel.backgroundColor = [UIColor clearColor];
-                            fromLabel.textColor = [UIColor colorWithRed:99.0f/255.0f
-                                                                  green:162.0f/255.0f
-                                                                   blue:152.0f/255.0f
-                                                                  alpha:1.0f];
-                            fromLabel.textAlignment = NSTextAlignmentCenter;
-                            [self.vistaDominio addSubview:fromLabel];
-                            
-                            
-                            [btnCompraDominio.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:18]];
+                            [etiquetaCompraDominio setText:NSLocalizedString(@"leyendaCompraDominio", Nil)];
+                            etiquetaCompraDominio.numberOfLines = 3;
+                            etiquetaCompraDominio.adjustsFontSizeToFitWidth = YES;
+                            etiquetaCompraDominio.backgroundColor = [UIColor clearColor];
+                            etiquetaCompraDominio.textColor = [UIColor colorWithRed:47.0f/255.0f
+                                                                              green:163.0f/255.0f
+                                                                               blue:152.0f/255.0f
+                                                                              alpha:1.0f];
+                            etiquetaCompraDominio.textAlignment = NSTextAlignmentCenter;
+                            [self.vistaDominio addSubview:etiquetaCompraDominio];
+                           
                             [btnCompraDominio setTitle:NSLocalizedString(@"comprarDominioTel", Nil) forState:UIControlStateNormal];
+                            [btnCompraDominio addTarget:self action:@selector(comprarDominioBtn:)forControlEvents:UIControlEventTouchUpInside];
                             btnCompraDominio.backgroundColor = [UIColor colorWithRed:108.0f/255.0f
                                                                                green:185.0f/255.0f
                                                                                 blue:177.0f/255.0f
@@ -774,9 +783,7 @@ if(noSeRepiteOprimirElBoton){
             
             if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
                 [self.scrollContenido scrollRectToVisible:CGRectMake(375, 0, self.scrollContenido.frame.size.width, self.scrollContenido.frame.size.height) animated:YES];
-           /* }else if(IS_STANDARD_IPHONE_6_PLUS){
-                [self.scrollContenido scrollRectToVisible:CGRectMake(414, 0, self.scrollContenido.frame.size.width, self.scrollContenido.frame.size.height) animated:YES];
-            */
+          
             }else if(IS_IPAD){
                 [self.scrollContenido scrollRectToVisible:CGRectMake(768, 0, self.scrollContenido.frame.size.width, self.scrollContenido.frame.size.height) animated:YES];
             }else{
@@ -806,15 +813,11 @@ if(noSeRepiteOprimirElBoton){
     noSeRepiteOprimirElBoton = YES;
     
    
-        //MBC
-       /* if(IS_STANDARD_IPHONE_6_PLUS){
-            [self.MensajePlanProComprado setFrame:CGRectMake(0, 60, 414, 150)];
-        }else
-        */if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
-            [self.MensajePlanProComprado setFrame:CGRectMake(70, 60, 220, 150)];
+       if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
+            [self.MensajePlanProComprado setFrame:CGRectMake(37, 60, 300, 150)];
         }else if(IS_IPAD){
             [self.MensajePlanProComprado setFrame:CGRectMake(184, 10, 400, 400)];
-            [self.MensajePlanProComprado setFont:[UIFont fontWithName:@"Avenir-Book" size:22]];
+            [self.MensajePlanProComprado setFont:[UIFont fontWithName:@"Avenir-Book" size:24]];
             
         }
         if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
@@ -829,6 +832,10 @@ if(noSeRepiteOprimirElBoton){
 }
 
 - (IBAction)comprarDominioBtn:(id)sender {
+    self.datosUsuario.voyAComprarTel = @"si";
+    NombraCompraDominio *comparte = [[NombraCompraDominio alloc] initWithNibName:@"NombraCompraDominio" bundle:Nil];
+    [self.navigationController pushViewController:comparte animated:YES];
+    
 }
 
 -(void)accionAceptar2{
