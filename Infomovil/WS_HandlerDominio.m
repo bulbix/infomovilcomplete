@@ -84,6 +84,50 @@
         [self.wSHandlerDelegate errorConsultaWS];
     }
 }
+
+-(void) consultaDominioCompra:(NSString *) dominio {
+    self.datos = [DatosUsuario sharedInstance];
+ 
+    NSString *stringXML = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.webservice.infomovil.org/\">"
+                           "<soapenv:Header/>"
+                           "<soapenv:Body>"
+                           "<ws:getExistDomain>"
+                           "<domainName>%@</domainName>"
+                           "<domainType>%@</domainType>"
+                           "</ws:getExistDomain>"
+                           "</soapenv:Body>"
+                           "</soapenv:Envelope>",
+                           [StringUtils encriptar:dominio conToken:passwordEncriptar],
+                           [StringUtils encriptar:@"tel" conToken:passwordEncriptar]];
+    
+    NSLog(@"el string es %@", stringXML);
+    self.strSoapAction = @"WSInfomovilDomain";
+    NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
+    NSLog(@"La respuesta de WS_HandlerDominio consultaDominio es %s", [dataResult bytes]);
+    if (dataResult != nil) {
+        NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
+        [parser setDelegate:self];
+        if ([parser parse]) {
+                NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:passwordEncriptar];
+                if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
+                    [self.wSHandlerDelegate errorToken];
+                    NSLog(@"HUBO UN ERROR DE TOKEN EN CONSULTADOMINIO !");
+                }
+                else {
+                    NSLog(@"El resultado regresado es: %@", stringResult);
+                    [self.wSHandlerDelegate resultadoConsultaDominio:stringResult];
+                }
+        }
+        else {
+            [self.wSHandlerDelegate errorConsultaWS];
+        }
+    }
+    else {
+        [self.wSHandlerDelegate errorConsultaWS];
+    }
+}
+
+
 /*
 -(void) consultaDominio:(NSString *)dominio conTipo:(NSString *)tipo {
    
@@ -103,13 +147,6 @@
 
 -(void) crearUsuario:(NSString *)email conNombre:(NSString *)user password:(NSString *)pass status:(NSString *)s nombre:(NSString *)nom direccion1:(NSString *)dir1 direccion2:(NSString *)dir2 pais:(NSString *) nPais codigoPromocion:(NSString *)codProm tipoDominio:(NSString *)domainType idDominio:(NSString *)idDominio {
     self.datos = [DatosUsuario sharedInstance];
-   /*
-    NSUserDefaults *prefSesion = [NSUserDefaults standardUserDefaults];
-    if([prefSesion integerForKey:@"intSesionActiva"] == 1){
-        [prefSesion setInteger:0 forKey:@"intSesionActiva"];
-        [prefSesion synchronize];
-    }
-    */
     
     if ([self.datos.redSocial isEqualToString:@"Facebook"]) {
         // 2 = Inicio de sesion con Facebook

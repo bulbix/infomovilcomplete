@@ -55,7 +55,7 @@
     [self.labelAutorVideo setText:NSLocalizedString(@"autorVideo", Nil)];
     [self.labelCategoriaVideo setText:NSLocalizedString(@"categoriaVideo", Nil)];
     [self.labelUrlVideo setText:NSLocalizedString(@"labelURLVideo", Nil)];
-    self.buscarBtn.layer.cornerRadius = 12.0f;
+    self.buscarBtn.layer.cornerRadius = 10.0f;
     
     if(IS_IPAD){
         [self.vistaSeleccionaVideo setFrame:CGRectMake(0, 20, 768, 500 )];

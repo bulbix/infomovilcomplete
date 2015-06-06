@@ -115,9 +115,7 @@
         [self.scroll setContentSize:CGSizeMake(768, 1024)];
     }else if (IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         [self.scroll setContentSize:CGSizeMake(375, 667)];
-   /* }else if(IS_STANDARD_IPHONE_6_PLUS){
-        [self.scroll setContentSize:CGSizeMake(414, 736)];
-    */
+ 
     }else{
         [self.scroll setContentSize:CGSizeMake(320, 250)];
     }
@@ -144,19 +142,7 @@
         [self.vistaCombo setFrame:CGRectMake(40, 330, 295, 30)];
         [self.imgBull setFrame:CGRectMake(250, 330, 20, 20)];
         [self.boton setFrame:CGRectMake(97, 400, 220, 35)];
-    /*}else if(IS_STANDARD_IPHONE_6_PLUS){
-        [self.label1 setFrame:CGRectMake(40, 40, 295, 60)];
-        [self.labelNombre setFrame:CGRectMake(40, 120, 295, 30)];
-        [self.txtNombre setFrame:CGRectMake(40, 150, 295, 30)];
-        [self.labelDir1 setFrame:CGRectMake(40, 180, 295, 30)];
-        [self.txtDir1 setFrame:CGRectMake(40, 210, 295, 30)];
-        [self.labelDir2 setFrame:CGRectMake(40, 240, 295, 30)];
-        [self.txtDir2 setFrame:CGRectMake(40, 270, 295, 30)];
-        [self.labelPais setFrame:CGRectMake(40, 300, 295, 30)];
-        [self.vistaCombo setFrame:CGRectMake(40, 330, 295, 30)];
-        [self.imgBull setFrame:CGRectMake(250, 330, 20, 20)];
-        [self.boton setFrame:CGRectMake(97, 500, 220, 35)];
-    */
+   
      }else if(IS_IPAD){
         [self.label1 setFrame:CGRectMake(84, 40, 600, 60)];
         [self.label1 setFont:[UIFont fontWithName:@"Avenir-medium" size:20]];
@@ -271,7 +257,7 @@
         self.datosUsuario = [DatosUsuario sharedInstance];
         WS_HandlerDominio *dominioHandler = [[WS_HandlerDominio alloc] init];
         [dominioHandler setWSHandlerDelegate:self];
-        
+        // IRC AQUI DEBO PONER UNA VALIDACION QUE SI VIENE DE COMPRAR DE LA TIENDA QUE ENVIE EL DOMINIO QUE ELIGIO //
         [dominioHandler crearUsuario:self.datosUsuario.emailUsuario conNombre:self.datosUsuario.dominio password:self.datosUsuario.passwordUsuario status:@"1" nombre:self.txtNombre.text direccion1:self.txtDir1.text direccion2:self.txtDir2.text pais:self.nPais codigoPromocion:self.datosUsuario.codigoRedimir==nil?@" ":self.datosUsuario.codigoRedimir tipoDominio:dominioAux idDominio:[NSString stringWithFormat:@"%li", (long)self.datosUsuario.idDominio]];
 
 }

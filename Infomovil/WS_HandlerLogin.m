@@ -980,6 +980,7 @@
         else {
             esRecurso = NO;
         }
+        NSLog(@"EL TIPO DE DOMINIO ES: %@", typeAux);
         [dominioUsuario setDomainType:typeAux];
     }
     else if ([elementName isEqualToString:@"vigente"]) {

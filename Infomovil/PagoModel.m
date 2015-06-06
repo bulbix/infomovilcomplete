@@ -13,6 +13,7 @@
 -(id) init {
     self = [super init];
     if (self) {
+        _miDominio = @"";
         _plan = @"";
         _medioPago = @"APP STORE";
         _titulo = @"";

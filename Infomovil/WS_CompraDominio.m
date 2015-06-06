@@ -101,6 +101,10 @@
     
 }
 
+
+
+
+
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
     //[self.compraDominioDelegate errorConsultaWS];
 }

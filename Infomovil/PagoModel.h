@@ -10,6 +10,7 @@
 
 @interface PagoModel : NSObject
 
+@property (nonatomic, strong) NSString *miDominio;
 @property (nonatomic, strong) NSString *plan;
 @property (nonatomic, strong) NSString *medioPago;
 @property (nonatomic, strong) NSString *titulo;

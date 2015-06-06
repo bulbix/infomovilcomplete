@@ -52,30 +52,17 @@ BOOL banderaRegresar;
     [super viewDidLoad];
     
     if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
-        self.botonFondo.frame = CGRectMake(45, 50, 270, 53);
-        self.botonCrear.frame = CGRectMake(45, 140, 270, 53);
-        self.botonPublicar.frame = CGRectMake(45, 230, 270, 53);
-        self.botonEjemplo2.frame = CGRectMake(80, 10, 200, 50);
-        self.inicioRapidobtn.frame = CGRectMake(50, 44, 280, 35);
-        self.verTutorialbtn.frame = CGRectMake(50, 100, 137, 35);
-        self.botonEjemplo.frame = CGRectMake(190, 100, 137, 35);
-        self.dominio.frame = CGRectMake(0, 8, 375, 34);
-        self.line1.frame = CGRectMake(45, 120, 280, 2);
-        self.line2.frame = CGRectMake(45, 210, 280, 2);
-        self.line3.frame = CGRectMake(45, 300, 280, 2);
-   /* }else if(IS_STANDARD_IPHONE_6_PLUS){
-        self.botonFondo.frame = CGRectMake(67, 46, 280, 53);
-        self.botonCrear.frame = CGRectMake(67, 130, 280, 53);
-        self.botonPublicar.frame = CGRectMake(67, 214, 280, 53);
-        self.botonEjemplo2.frame = CGRectMake(67, 10, 280, 50);
-        self.inicioRapidobtn.frame = CGRectMake(67, 24, 280, 35);
-        self.verTutorialbtn.frame = CGRectMake(67, 72, 138, 35);
-        self.botonEjemplo.frame = CGRectMake(209, 72, 138, 35);
-        self.line1.frame = CGRectMake(67, 105, 280, 3);
-        self.line2.frame = CGRectMake(67, 191, 280, 3);
-        self.line3.frame = CGRectMake(67, 277, 280, 3);
-        self.dominio.frame = CGRectMake(0, 4, 420, 34);
-    */
+        self.botonFondo.frame = CGRectMake(45, 70, 270, 53);
+        self.botonCrear.frame = CGRectMake(45, 160, 270, 53);
+        self.botonPublicar.frame = CGRectMake(45, 250, 270, 53);
+        self.botonEjemplo2.frame = CGRectMake(80, 30, 200, 40);
+        self.inicioRapidobtn.frame = CGRectMake(50, 64, 280, 40);
+        self.verTutorialbtn.frame = CGRectMake(50, 120, 137, 40);
+        self.botonEjemplo.frame = CGRectMake(190, 120, 137, 40);
+        self.dominio.frame = CGRectMake(0, 18, 375, 34);
+        self.line1.frame = CGRectMake(45, 140, 280, 1);
+        self.line2.frame = CGRectMake(45, 230, 280, 1);
+        self.line3.frame = CGRectMake(45, 320, 280, 1);
     }else if(IS_IPAD){
         self.botonFondo.frame = CGRectMake(184, 150, 400, 75);
         self.botonCrear.frame = CGRectMake(184, 270, 400, 75);
@@ -94,7 +81,17 @@ BOOL banderaRegresar;
         self.dominio.frame = CGRectMake(0, 40, 768, 40);
         [self.dominio.titleLabel setFont: [UIFont fontWithName:@"Avenir-Book" size:22]];
     
+    }else if(IS_IPHONE_5){
+        self.dominio.frame = CGRectMake(0, 0, 320, 50);
+        self.botonFondo.frame = CGRectMake(25, 60, 270, 53);
+        self.line1.frame = CGRectMake(20,125,280,1);
+        self.botonCrear.frame = CGRectMake(25,143,270,53);
+        self.line2.frame = CGRectMake(20,211,280,1);
+        self.botonPublicar.frame = CGRectMake(25,229,270,53);
+        self.line3.frame = CGRectMake(20,297,280,1);
+        
     }else{
+         self.dominio.frame = CGRectMake(0, 0, 320, 35);
         self.line1.frame = CGRectMake(20, 105, 280, 1);
         self.line2.frame = CGRectMake(20, 191, 280, 1);
         self.line3.frame = CGRectMake(20, 273, 280, 1);
@@ -151,10 +148,10 @@ BOOL banderaRegresar;
         [[AlertView initWithDelegate:nil message:strMensaje andAlertViewType:AlertViewTypeInfo] show];
     }
 	
-    self.verTutorialbtn.layer.cornerRadius = 15.0f;
-    self.inicioRapidobtn.layer.cornerRadius = 15.0f;
-    self.botonEjemplo.layer.cornerRadius = 15.0f;
-	self.botonEjemplo2.layer.cornerRadius = 15.0f;
+    self.verTutorialbtn.layer.cornerRadius = 10.0f;
+    self.inicioRapidobtn.layer.cornerRadius = 10.0f;
+    self.botonEjemplo.layer.cornerRadius = 10.0f;
+	self.botonEjemplo2.layer.cornerRadius = 10.0f;
     
     if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
         [self.botonFondo setBackgroundImage:[UIImage imageNamed:@"elegirestilo-en.png"] forState:UIControlStateNormal];
@@ -259,10 +256,7 @@ BOOL banderaRegresar;
             
        
             if(IS_IPHONE5){
-                self.viewDominioPublicado.frame = CGRectMake(0, 320, 320, 90);
-           /* }else if (IS_STANDARD_IPHONE_6_PLUS){
-                self.viewDominioPublicado.frame = CGRectMake(0, 320, 414, 90);
-            */
+                self.viewDominioPublicado.frame = CGRectMake(0, 340, 320, 90);
             }else if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
                 self.viewDominioPublicado.frame = CGRectMake(0, 320, 375, 90);
             }else if(IS_IPAD){
@@ -279,10 +273,7 @@ BOOL banderaRegresar;
             [self.viewDominioNoPublicado setHidden:NO];
             self.dominio.hidden = YES;
             if(IS_IPHONE5){
-                self.viewDominioNoPublicado.frame = CGRectMake(0, 310, 320, 90);
-            /*}else if (IS_STANDARD_IPHONE_6_PLUS){
-                self.viewDominioNoPublicado.frame = CGRectMake(0, 320, 320, 120);
-            */
+                self.viewDominioNoPublicado.frame = CGRectMake(0, 330, 320, 90);
              }else if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS) {
                 self.viewDominioNoPublicado.frame = CGRectMake(0, 320, 320, 140);
             }else if(IS_IPAD){

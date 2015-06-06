@@ -123,6 +123,7 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
 }
 
 - (void)request:(SKRequest *)request didFailWithError:(NSError *)error {
+    NSLog(@"cancelo la transacción!!");
     _productsRequest = nil;
     _completionHandler(NO, nil);
     _completionHandler = nil;
@@ -140,12 +141,15 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
         {
             case SKPaymentTransactionStatePurchased:
                 [self completeTransaction:transaction];
+               
                 break;
             case SKPaymentTransactionStateFailed:
                 [self failedTransaction:transaction];
+                
                 break;
             case SKPaymentTransactionStateRestored:
                 [self restoreTransaction:transaction];
+              
             default:
                 break;
         }
@@ -166,20 +170,18 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
 }
 
 - (void)failedTransaction:(SKPaymentTransaction *)transaction {
-#if DEBUG
-    if (transaction.error.code != SKErrorPaymentCancelled)
-    {
-        NSLog(@"Transaction error: %@", transaction.error.localizedDescription);
-    }
-#endif
+
     if(transaction.error.localizedDescription == nil || [transaction.error.localizedDescription isEqualToString:@""] || [transaction.error.localizedDescription length] <= 0){
         AlertView *alertaError = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"sentimos", Nil) message:NSLocalizedString(@"errorCompra", Nil) dominio:Nil andAlertViewType:AlertViewTypeInfo];
         [alertaError show];
+    }else if((long)transaction.error.code == 2){
+#if DEBUG
+        NSLog(@"Transaction error: %@ con codigo %ld", transaction.error.localizedDescription, (long)transaction.error.code);
+#endif
     }else{
         AlertView *alertaError = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"sentimos", Nil) message:transaction.error.localizedDescription dominio:Nil andAlertViewType:AlertViewTypeInfo];
         [alertaError show];
     }
-    
     
     [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
     [[NSNotificationCenter defaultCenter]

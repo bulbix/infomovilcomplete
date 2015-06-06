@@ -8,22 +8,50 @@
 
 #import "NombraCompraDominio.h"
 #import "CuentaViewController.h"
+#import "WS_HandlerDominio.h"
+#import "PublicarViewController.h"
+#import <StoreKit/StoreKit.h>
+#import "RageIAPHelper.h"
+#import "WS_CompraDominio.h"
+
+
 @implementation NombraCompraDominio
 
-
+BOOL existeDominio;
+NSString *respuestaPublicar;
 -(void)viewDidLoad{
-
  [super viewDidLoad];
     
     if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
-       
+        self.scrollNombrar.frame = CGRectMake(0, 0, 375, 667);
+        self.etiquetaNombraSitio.frame = CGRectMake(30, 40, 315, 40);
+        self.etiqutawww.frame = CGRectMake(20, 110, 50, 40);
+        self.txtNombreSitio.frame = CGRectMake(71, 115, 235, 30);
+        self.etiquetatel.frame = CGRectMake(305, 110, 40, 40);
+        self.btnBuscar.frame = CGRectMake(87, 200, 200, 40);
     }else if(IS_IPAD){
-   
+        self.scrollNombrar.frame = CGRectMake(0, 0, 768, 1024);
+        self.etiquetaNombraSitio.frame = CGRectMake(84, 80, 600, 80);
+        self.etiqutawww.frame = CGRectMake(134, 180, 66, 40);
+        self.txtNombreSitio.frame = CGRectMake(200, 180, 368, 40);
+        self.etiquetatel.frame = CGRectMake(568, 180, 66, 40);
+        self.btnBuscar.frame = CGRectMake(234, 280, 300, 40);
+        [self.btnBuscar.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:24]];
+        [self.etiquetatel setFont:[UIFont fontWithName:@"Avenir-Book" size:24]];
+        [self.etiqutawww setFont:[UIFont fontWithName:@"Avenir-Book" size:24]];
+        [self.etiquetaNombraSitio setFont:[UIFont fontWithName:@"Avenir-Book" size:24]];
+    }else if(IS_IPHONE_4){
+        self.scrollNombrar.frame = CGRectMake(0, 0, 320, 480);
+        self.etiquetaNombraSitio.frame = CGRectMake(10, 20, 300, 40);
+        self.etiqutawww.frame = CGRectMake(10, 80, 40, 40);
+        self.txtNombreSitio.frame = CGRectMake(51, 80, 220, 30);
+        self.etiquetatel.frame = CGRectMake(270, 80, 40, 40);
+        self.btnBuscar.frame = CGRectMake(60, 150, 200, 40);
         
-    }else{
-      
     }
-    
+    existeDominio = NO;
+    self.operacionWS = 0;
+    self.btnBuscar.layer.cornerRadius = 10.0f;
     if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
         [self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"comprarDominioTelHeader", @" ") nombreImagen:@"roja.png"];
     }else{
@@ -37,13 +65,55 @@
     [backButton addTarget:self action:@selector(regresar:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *buttonBack = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     self.navigationItem.leftBarButtonItem = buttonBack;
-
+    self.navigationItem.rightBarButtonItem = nil;
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receiveTestNotification:)
+                                                 name:@"CompleteTransactionNotification"
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receiveTestNotification:)
+                                                 name:@"FailedTransactionNotification"
+                                               object:nil];
+    
 }
+
+- (void) receiveTestNotification:(NSNotification *) notification
+{
+    if (self.alertActivity)
+    {
+        [NSThread sleepForTimeInterval:1];
+        [self.alertActivity hide];
+    }
+    if ([[notification name] isEqualToString:@"FailedTransactionNotification"]){
+        self.datosUsuario.datosPago.statusPago = @"INTENTO PAGO";
+        self.datosUsuario.descripcionDominio = @"";
+        ((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio = @"Tramite";
+        
+    }
+    else if ([[notification name] isEqualToString:@"CompleteTransactionNotification"]){
+            [[AppsFlyerTracker sharedTracker] trackEvent:@"Dominio" withValue:@""];
+            [[Appboy sharedInstance] logPurchase:@"Tel"
+                                      inCurrency:@"MXN"
+                                         atPrice:[[NSDecimalNumber alloc] initWithString:@"199.00"]];
+        self.datosUsuario.datosPago.statusPago = @"PAGADO";
+        self.datosUsuario.descripcionDominio = @"";
+        [self compra];
+        ((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio = @"Pago";
+        PublicarViewController *cuenta = [[PublicarViewController alloc] initWithNibName:@"PublicarViewController" bundle:Nil];
+        [self.navigationController pushViewController:cuenta animated:YES];
+    }
+    
+   
+}
+
 
 
 -(void) viewWillAppear:(BOOL)animated {
     self.datosUsuario = [DatosUsuario sharedInstance];
-   
+     self.etiquetaNombraSitio.text = NSLocalizedString(@"nombrarLabel2", @" ");
+    [self.btnBuscar setTitle:NSLocalizedString(@"buscar", @" ") forState:UIControlStateNormal];
+    [self.txtNombreSitio becomeFirstResponder];
+    [self obtenerProductos];
 }
 
 -(IBAction)regresar:(id)sender {
@@ -51,24 +121,46 @@
     [self.navigationController pushViewController:cuenta animated:YES];
 
 }
-/*
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+
+// IRC OBTIENE LOS IDENTIFICADORES DE LOS PRODUCTOS EN APPSTORE  //
+- (void)obtenerProductos {
+    _products = nil;
+    [[RageIAPHelper sharedInstance] requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
+        if (success) {
+            _products = products;
+        }
+    }];
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self buscar:nil];
+    return YES;
+}
 
-- (IBAction)verificarDominio:(UIButton *)sender {
+-(BOOL) validarDominio {
+    BOOL dominioCorrecto;
+    if (self.txtNombreSitio.text.length > 0) {
+        if ([CommonUtils validarDominio:self.txtNombreSitio.text]) {
+            dominioCorrecto = YES;
+        }
+        else {
+            dominioCorrecto = NO;
+        }
+    }
+    else {
+        dominioCorrecto = NO;
+    }
+    return dominioCorrecto;
+}
+
+- (IBAction)buscar:(id)sender {
     
     [[self view] endEditing:YES];
     if ([self validarDominio]) {
-        
-        //self.nombreDelDominio.text = self.nombreDominio.text;
-        
         if ([CommonUtils hayConexion]) {
             [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
-            textoDominio = self.nombreDominio.text;
             [self performSelectorInBackground:@selector(checaDominio) withObject:Nil];
             
         }
@@ -83,51 +175,63 @@
     }
 }
 
-
-
--(BOOL) validarDominio {
-    BOOL dominioCorrecto;
-    if (self.nombreDominio.text.length > 0) {
-        if ([CommonUtils validarDominio:self.nombreDominio.text]) {
-            dominioCorrecto = YES;
-        }
-        else {
-            dominioCorrecto = NO;
-        }
-    }
-    else {
-        dominioCorrecto = NO;
-    }
-    return dominioCorrecto;
-}
-
-
-
 -(void) mostrarActivity {
-    alertActivity = [AlertView initWithDelegate:self message:NSLocalizedString(@"msgNombrarSitio", Nil) andAlertViewType:AlertViewTypeActivity];
-    [alertActivity show];
+    self.alertActivity = [AlertView initWithDelegate:self message:NSLocalizedString(@"msgNombrarSitio", Nil) andAlertViewType:AlertViewTypeActivity];
+    [self.alertActivity show];
 }
 
 -(void) ocultarActivity {
-    if (alertActivity)
+    self.datosUsuario = [DatosUsuario sharedInstance];
+    if (self.alertActivity)
     {
         [NSThread sleepForTimeInterval:1];
-        [alertActivity hide];
+        [self.alertActivity hide];
     }
     AlertView *alert;
-    if (operacionWS == 1) {
+    NSLog(@"EL VALOR DE OPERACIONWS ES: %d", self.operacionWS);
+    if (self.operacionWS == 1) {
         if (existeDominio) {
-            self.datosUsuario = [DatosUsuario sharedInstance];
-            self.modifico = YES;
-            self.datosUsuario.dominio = self.nombreDominio.text;
-            
-            if([self.datosUsuario.tipoDeUsuario isEqualToString:@"normal"]){
-                [self showAnimate];
-            }else if([self.datosUsuario.tipoDeUsuario isEqualToString:@"canal"]){
-                PublicarViewController *publicar = [[PublicarViewController alloc] initWithNibName:@"PublicarViewController" bundle:Nil];
+              /*  PublicarViewController *publicar = [[PublicarViewController alloc] initWithNibName:@"PublicarViewController" bundle:Nil];
                 [self.navigationController pushViewController:publicar animated:YES];
-            }else{
-                [self showAnimate];
+                */
+            if([CommonUtils hayConexion]){
+                @try {
+                    if([_products count] <= 0){
+                        [self obtenerProductos];
+                    }else{
+                        [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
+                        for(int i = 0 ; [_products count] > 0; i++){
+                            SKProduct *product = _products[i];
+                            if([product.productIdentifier isEqualToString:@"com.infomovil.infomovil.dominiotel"]){
+#if DEBUG
+                                NSLog(@"Comprando item 0: %@", product.productIdentifier);
+#endif
+                                self.datosUsuario.datosPago.plan =@"DOMINIO TEL";
+                                self.datosUsuario.datosPago.comision = @"27";
+                                self.datosUsuario.datosPago.statusPago = @"INTENTO PAGO";
+                                self.datosUsuario.datosPago.tipoCompra = @"tel";
+                                self.datosUsuario.datosPago.titulo = @"iOS";
+                                self.datosUsuario.datosPago.codigoCobro = @" ";
+                                self.datosUsuario.datosPago.pagoId = 0;
+                                self.datosUsuario.datosPago.montoBruto = [NSString stringWithFormat:@"%li", (long)product.price.integerValue ];
+                                
+                                [self compra];
+                                break;
+                            }
+                        }
+                        
+                    }
+                }
+                @catch (NSException *exception) {
+                    [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
+#if DEBUG
+                    NSLog(@"La NSException en comprar1mesBtn es: %@", exception.reason);
+#endif
+                }
+                
+            }else {
+                AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+                [alert show];
             }
         }
         else {
@@ -135,86 +239,78 @@
             
             [alert show];
         }
-    }else if(operacionWS == 12) {
-        NSLog(@"ENTRO A OCULTAR ACTIVITY CON OPERACION 12 Y statusRespuesta %d",RespuestaStatusExistente2);
-        self.datosUsuario = [DatosUsuario sharedInstance];
-        AlertView *alert;
-        if (statusRespuesta == RespuestaStatusExistente2) {
-            alert = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"error", Nil) message:NSLocalizedString(@"txtErrorDomainNombrar", Nil) dominio:Nil andAlertViewType:AlertViewTypeInfo];
-            [alert show];
-            
-            [self.navigationController popViewControllerAnimated:YES];
-        }else if (statusRespuesta == RespuestaStatusExito2) {
-            
-            
-            
-        }else if (statusRespuesta == RespuestaStatusPendiente2) {
-            self.datosUsuario.nombroSitio = YES;
-            creoDominio = YES;
-            
-            alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeProcesoPublicacion", Nil) andAlertViewType:AlertViewTypeInfo2];
-            [alert show];
-            
+    }
+}
+
+// Este método es para cambiar el status en el server a INTENTO DE PAGO Y ME REGRESE UN FOLIO
+-(void)compra{
+    WS_CompraDominio *compra = [[WS_CompraDominio alloc] init];
+    [compra setCompraDominioDelegate:self];
+    //plan
+    [compra compraDominio];
+    
+}
+
+-(void)resultadoCompraDominio:(BOOL)estado{
+    if(estado == YES && [self.datosUsuario.datosPago.statusPago isEqualToString: @"INTENTO PAGO"]){
+       
+            [self compraProductoTel];
+        
+    }else if([self.datosUsuario.datosPago.statusPago isEqualToString: @"PAGADO"]){
+        return;
+    }else{
+        [NSThread sleepForTimeInterval:1];
+        [self.alertActivity hide];
+        AlertView *alertaError = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"sentimos", Nil) message:NSLocalizedString(@"errorCompra", Nil) dominio:Nil andAlertViewType:AlertViewTypeInfo];
+        [alertaError show];
+    }
+}
+
+- (void) compraProductoTel{
+    
+    @try {
+        if([_products count] <= 0){
+            if([CommonUtils hayConexion]){
+                [self obtenerProductos];
+            }else {
+                [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
+                AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+                [alert show];
+            }
+        }else{
+            if([CommonUtils hayConexion]){
+                for(int i = 0 ; [_products count] > 0; i++){
+                    SKProduct *product = _products[i];
+                    if([product.productIdentifier isEqualToString:@"com.infomovil.infomovil.dominiotel"]){
+                        self.datosUsuario.datosPago.montoBruto = [NSString stringWithFormat:@"%li", (long)product.price.integerValue ];
+                        [[RageIAPHelper sharedInstance] buyProduct:product];
+                        break;
+                    }
+                }
+            }else{
+                [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
+            }
         }
-        else {
-            alert = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"error", Nil) message:NSLocalizedString(@"errorCrearDominio", Nil) dominio:Nil andAlertViewType:AlertViewTypeInfo];
-            [alert show];
-        }
+    }
+    @catch (NSException *exception) {
+        [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
         
     }
     
 }
-
-
-
 
 
 
 -(void) checaDominio {
-    operacionWS = 1;
+    self.operacionWS = 1;
     WS_HandlerDominio *dominioHandler = [[WS_HandlerDominio alloc] init];
     [dominioHandler setWSHandlerDelegate:self];
-    [dominioHandler consultaDominio:textoDominio];
-}
-
--(void) checaDominioPublicacion {
-    operacionWS = 11;
-    WS_HandlerDominio *dominioHandler = [[WS_HandlerDominio alloc] init];
-    [dominioHandler setWSHandlerDelegate:self];
-    [dominioHandler consultaDominio:textoDominio];
-}
-
--(void) crearDominio { NSLog(@"Mando a llamar a CREAR DOMINIO");
-    self.datosUsuario = [DatosUsuario sharedInstance];
-    NSString *dominioAux;
-    if([self.datosUsuario.tipoDeUsuario isEqualToString:@"canal"]){
-        dominioAux = @"tel";
-    }else if([self.datosUsuario.tipoDeUsuario isEqualToString:@"normal"]){
-        dominioAux = @"recurso";
-        
-    }
-    
-    
-    NSLog(@"VALORES: %@ - %@ - %@ - %@ - %@ - %li", self.datosUsuario.email, self.datosUsuario.emailUsuario ,self.nombreDominio.text,self.datosUsuario.passwordUsuario, dominioAux, (long)self.datosUsuario.idDominio);
-    operacionWS = 12;
-    WS_HandlerDominio *dominioHandler = [[WS_HandlerDominio alloc] init];
-    [dominioHandler setWSHandlerDelegate:self];
-    [dominioHandler crearUsuario:self.datosUsuario.emailUsuario conNombre:self.nombreDominio.text password:self.datosUsuario.passwordUsuario status:@"1" nombre:@"xxx" direccion1:@"xxx" direccion2:@"xxx" pais:@"0" codigoPromocion:@"" tipoDominio:dominioAux idDominio:[NSString stringWithFormat:@"%li", (long)self.datosUsuario.idDominio]];
-    
-    
-}
-
--(void) informacionDominio{
-    operacionWS = 3;
-    WS_HandlerPublicar *wsPublicar = [[WS_HandlerPublicar alloc] init];
-    [wsPublicar setWsHandlerDelegate:self];
-    [wsPublicar publicarDominio];
+    [dominioHandler consultaDominioCompra:self.txtNombreSitio.text];
 }
 
 -(void) resultadoConsultaDominio:(NSString *)resultado {
-    NSLog(@"EL RESULTADO REGRESADO Y QUE LLEGO A RESULTADOCONSULTADOMINIO ES: %@ y operacion: %li", resultado, (long)operacionWS);
     self.datosUsuario = [DatosUsuario sharedInstance];
-    if (operacionWS == 1) {
+    if (self.operacionWS == 1) {
         if ([resultado isEqualToString:@"No existe"]) {
             existeDominio = YES;
             [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
@@ -223,165 +319,41 @@
             existeDominio = NO;
             [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
         }
-    }
-    else if (operacionWS == 11){
-        if ([resultado isEqualToString:@"No existe"]) {
-            existeDominio = YES;
-            [self performSelectorOnMainThread:@selector(crearDominio2) withObject:Nil waitUntilDone:YES];
-        }
-        else {
-            existeDominio = NO;
-            [self checaPublicacion];
-            //[self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
-        }
-    }else if(operacionWS == 12){
-        NSLog(@"LA OPERACION ES 12 PARA PUBLICAR y el resultado es: %@", resultado);
-        if ([resultado isEqualToString:@"Exito"]) {
-            if (alertActivity)
-            {
-                [NSThread sleepForTimeInterval:1];
-                [alertActivity hide];
-            }
-            
-            statusRespuesta = RespuestaStatusExito2;
-            dominioUsuario = [[DominiosUsuario alloc] init];
-            if([self.datosUsuario.tipoDeUsuario isEqualToString:@"canal"]){
-                [dominioUsuario setDomainType:@"tel"];
-            }else{
-                [dominioUsuario setDomainType:@"recurso"];
-            }
-            [dominioUsuario setVigente:@"si"];
-            NSLog(@"LOS VALORES A GUARDAR SON: %@ Y %@ ", dominioUsuario.domainType, dominioUsuario.vigente);
-            self.arregloDominiosUsuario = [[NSMutableArray alloc] init];
-            [self.arregloDominiosUsuario addObject:dominioUsuario];
-            self.datosUsuario.dominiosUsuario = self.arregloDominiosUsuario;
-            NSLog(@"LA CANTIDAD QUE AGREGO DE DOMINIOSUSUARIOS SON  %lu y el arreglo %lu", (unsigned long)[self.datosUsuario.dominiosUsuario count] , (unsigned long)[self.arregloDominiosUsuario count]);
-            NSLog(@"ENTRO A RESPUESTA DE ESTATUS EXITO EN OCULTAR ACTIVITY");
-            [[AppsFlyerTracker sharedTracker] trackEvent:@"Publicar Dominio" withValue:@""];
-            [[Appboy sharedInstance] logCustomEvent:@"Publicar Dominio"];
-            if([self.datosUsuario.tipoDeUsuario isEqualToString:@"normal"]){
-                [[Appboy sharedInstance].user setCustomAttributeWithKey:@"tipoDominio" andStringValue:@"recurso"];
-            }else if([self.datosUsuario.tipoDeUsuario isEqualToString:@"canal"]){
-                [[Appboy sharedInstance].user setCustomAttributeWithKey:@"tipoDominio" andStringValue:@"tel"];
-            }else{
-                [[Appboy sharedInstance].user setCustomAttributeWithKey:@"tipoDominio" andStringValue:@"recurso"];
-            }
-            [[Appboy sharedInstance].user setCustomAttributeWithKey:@"nombreDominio" andStringValue:self.datosUsuario.dominio];
-            [self enviarEventoGAconCategoria:@"Publicar" yEtiqueta:@"Dominio"];
-            self.datosUsuario.nombroSitio = YES;
-            NSLog(@"self.datos usuario nombre de dominio %@", self.datosUsuario.dominio);
-            creoDominio = YES;
-            
-            AlertView *alert  = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"felicidades", @" ") message:NSLocalizedString(@"nombradoExitoso", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
-            [alert show];
-            [self navigationController].navigationBarHidden = NO;
-            MenuPasosViewController *comparte = [[MenuPasosViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
-            [self.navigationController pushViewController:comparte animated:YES];
-            
-        }
-        else if ([resultado isEqualToString:@"Error Publicar"]) {
-            statusRespuesta = RespuestaStatusPendiente2;
-            self.datosUsuario.dominio = nil;
-        }
-        else if ([resultado isEqualToString:@"Usuario Existe"] || [resultado isEqualToString:@"Existe"]) {
-            NSLog(@"EL USUARIO YA EXISTE!!!");
-            [self removeAnimate];
-            statusRespuesta = RespuestaStatusExistente2;
-            self.datosUsuario.dominio = nil;
-        }
-        else {
-            statusRespuesta = RespuestaStatusError2;
-            self.datosUsuario.dominio = nil;
-        }
-        
-        [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
-    }else if(operacionWS == 13 && [resultado isEqualToString:@"Exito"]){
-        NSLog(@"ENTRO A RESPUESTA DE ESTATUS EXITO EN OCULTAR ACTIVITY");
-        if (alertActivity)
-        {
-            [NSThread sleepForTimeInterval:1];
-            [alertActivity hide];
-        }
-        [[AppsFlyerTracker sharedTracker] trackEvent:@"Publicar Dominio" withValue:@""];
-        [[Appboy sharedInstance] logCustomEvent:@"Publicar Dominio"];
-        if([self.datosUsuario.tipoDeUsuario isEqualToString:@"normal"]){
-            [[Appboy sharedInstance].user setCustomAttributeWithKey:@"tipoDominio" andStringValue:@"recurso"];
-        }else if([self.datosUsuario.tipoDeUsuario isEqualToString:@"canal"]){
-            [[Appboy sharedInstance].user setCustomAttributeWithKey:@"tipoDominio" andStringValue:@"tel"];
-        }else{
-            [[Appboy sharedInstance].user setCustomAttributeWithKey:@"tipoDominio" andStringValue:@"recurso"];
-        }
-        [[Appboy sharedInstance].user setCustomAttributeWithKey:@"nombreDominio" andStringValue:self.datosUsuario.dominio];
-        [self enviarEventoGAconCategoria:@"Publicar" yEtiqueta:@"Dominio"];
-        self.datosUsuario.nombroSitio = YES;
-        creoDominio = YES;
-        
-        AlertView * alert = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"felicidades", @" ") message:NSLocalizedString(@"nombradoExitoso", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
-        [alert show];
-        [self navigationController].navigationBarHidden = NO;
-        MenuPasosViewController *comparte = [[MenuPasosViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
-        [self.navigationController pushViewController:comparte animated:YES];
-        
+    
     }else{
         [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
     }
+      
 }
-
-
--(void)crearDominio2{
-    [self performSelectorInBackground:@selector(crearDominio) withObject:Nil];
-}
-
-
 
 -(void) errorToken {
-    if (alertActivity)
+    if (self.alertActivity)
     {
         [NSThread sleepForTimeInterval:1];
-        [alertActivity hide];
+        [self.alertActivity hide];
     }
     AlertView *alertAct = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
     [alertAct show];
-    [StringUtils terminarSession];
-    
-    MainViewController *inicio = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:Nil];
-    [self.navigationController pushViewController:inicio animated:YES];
-    
 }
-
-
 
 -(void) errorConsultaWS {
     [self performSelectorOnMainThread:@selector(errorDominio) withObject:Nil waitUntilDone:YES];
 }
 
 -(void) errorDominio {
-    if (alertActivity)
+    if (self.alertActivity)
     {
         [NSThread sleepForTimeInterval:1];
-        [alertActivity hide];
+        [self.alertActivity hide];
     }
     [AlertView initWithDelegate:Nil message:NSLocalizedString(@"ocurrioError", Nil) andAlertViewType:AlertViewTypeInfo];
 }
 
--(BOOL) validarDominio {
-    BOOL dominioCorrecto;
-    if (self.nombreDominio.text.length > 0) {
-        if ([CommonUtils validarDominio:self.nombreDominio.text]) {
-            dominioCorrecto = YES;
-        }
-        else {
-            dominioCorrecto = NO;
-        }
-    }
-    else {
-        dominioCorrecto = NO;
-    }
-    return dominioCorrecto;
-}
 
 
-*/
+
+
+
 
 
 
