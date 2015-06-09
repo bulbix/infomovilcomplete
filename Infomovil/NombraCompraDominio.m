@@ -68,41 +68,40 @@ NSString *respuestaPublicar;
     self.navigationItem.rightBarButtonItem = nil;
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(receiveTestNotification:)
-                                                 name:@"CompleteTransactionNotification"
+                                                 name:@"CompleteTransactionNotificationDominio"
                                                object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(receiveTestNotification:)
-                                                 name:@"FailedTransactionNotification"
+                                                 name:@"FailedTransactionNotificationDominio"
                                                object:nil];
     
 }
 
 - (void) receiveTestNotification:(NSNotification *) notification
 {
-    if (self.alertActivity)
-    {
-        [NSThread sleepForTimeInterval:1];
-        [self.alertActivity hide];
-    }
-    if ([[notification name] isEqualToString:@"FailedTransactionNotification"]){
+    
+    if ([[notification name] isEqualToString:@"FailedTransactionNotificationDominio"]){
         self.datosUsuario.datosPago.statusPago = @"INTENTO PAGO";
         self.datosUsuario.descripcionDominio = @"";
         ((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio = @"Tramite";
-        
+            [NSThread sleepForTimeInterval:1];
+            [self.alertActivity hide];
     }
-    else if ([[notification name] isEqualToString:@"CompleteTransactionNotification"]){
-            [[AppsFlyerTracker sharedTracker] trackEvent:@"Dominio" withValue:@""];
-            [[Appboy sharedInstance] logPurchase:@"Tel"
+    else if ([[notification name] isEqualToString:@"CompleteTransactionNotificationDominio"]){
+            [[AppsFlyerTracker sharedTracker] trackEvent:@"Dominio Tel" withValue:@""];
+            [[Appboy sharedInstance] logPurchase:@"TEL"
                                       inCurrency:@"MXN"
                                          atPrice:[[NSDecimalNumber alloc] initWithString:@"199.00"]];
         self.datosUsuario.datosPago.statusPago = @"PAGADO";
         self.datosUsuario.descripcionDominio = @"";
-        [self compra];
         ((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio = @"Pago";
-        PublicarViewController *cuenta = [[PublicarViewController alloc] initWithNibName:@"PublicarViewController" bundle:Nil];
-        [self.navigationController pushViewController:cuenta animated:YES];
+        [self removeAnimate];
+        // IRC Validar la compra!!
+        [self compra];
+    }else if (self.alertActivity){
+            [NSThread sleepForTimeInterval:1];
+            [self.alertActivity hide];
     }
-    
    
 }
 
@@ -155,6 +154,23 @@ NSString *respuestaPublicar;
     return dominioCorrecto;
 }
 
+- (IBAction)comprarPopUpAct:(id)sender {
+    NSLog(@"SOLO DEBE OPRIMIRSE UNA VEZ!!!!");
+    if ([CommonUtils hayConexion]) {
+        [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
+        [self performSelectorInBackground:@selector(compraProductoTel) withObject:Nil];
+    }
+    else {
+        AlertView *alert = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+        [alert show];
+    }
+    
+}
+
+- (IBAction)cerrarPupUpAct:(id)sender {
+     [self removeAnimate];
+}
+
 - (IBAction)buscar:(id)sender {
     
     [[self view] endEditing:YES];
@@ -187,13 +203,10 @@ NSString *respuestaPublicar;
         [NSThread sleepForTimeInterval:1];
         [self.alertActivity hide];
     }
-    AlertView *alert;
+    
     NSLog(@"EL VALOR DE OPERACIONWS ES: %d", self.operacionWS);
     if (self.operacionWS == 1) {
         if (existeDominio) {
-              /*  PublicarViewController *publicar = [[PublicarViewController alloc] initWithNibName:@"PublicarViewController" bundle:Nil];
-                [self.navigationController pushViewController:publicar animated:YES];
-                */
             if([CommonUtils hayConexion]){
                 @try {
                     if([_products count] <= 0){
@@ -235,11 +248,12 @@ NSString *respuestaPublicar;
             }
         }
         else {
-            alert = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noDisponible", @" ") dominio:nil andAlertViewType:AlertViewTypeInfo];
+            AlertView *alert = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noDisponible", @" ") dominio:nil andAlertViewType:AlertViewTypeInfo];
             
             [alert show];
         }
     }
+   
 }
 
 // Este método es para cambiar el status en el server a INTENTO DE PAGO Y ME REGRESE UN FOLIO
@@ -247,17 +261,42 @@ NSString *respuestaPublicar;
     WS_CompraDominio *compra = [[WS_CompraDominio alloc] init];
     [compra setCompraDominioDelegate:self];
     //plan
-    [compra compraDominio];
+    [compra compraDominioTel];
     
 }
 
 -(void)resultadoCompraDominio:(BOOL)estado{
+    self.datosUsuario = [DatosUsuario sharedInstance];
     if(estado == YES && [self.datosUsuario.datosPago.statusPago isEqualToString: @"INTENTO PAGO"]){
-       
-            [self compraProductoTel];
+        self.arregloDominios = self.datosUsuario.dominiosUsuario;
+        int contador = 0;
+        for(int i= 0; i< [self.arregloDominios count]; i++){
+            DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:i];
+            if([usuarioDom.domainType isEqualToString:@"tel"]){
+               if( usuarioDom.fechaIni == nil || [usuarioDom.fechaIni length] <= 0){
+                    contador++;
+               }
+            }
+        }
+        if(contador == 0){
+            [self showAnimate];
+        }else{
+            self.datosUsuario.dominioTel = self.txtNombreSitio.text;
+            [NSThread sleepForTimeInterval:1];
+            [self.alertActivity hide];
+            [self removeAnimate];
+            PublicarViewController *cuenta = [[PublicarViewController alloc] initWithNibName:@"PublicarViewController" bundle:Nil];
+            [self.navigationController pushViewController:cuenta animated:YES];
+        
+        }
         
     }else if([self.datosUsuario.datosPago.statusPago isEqualToString: @"PAGADO"]){
-        return;
+        [NSThread sleepForTimeInterval:1];
+        [self.alertActivity hide];
+        [self removeAnimate];
+        self.datosUsuario.dominioTel = self.txtNombreSitio.text;
+        PublicarViewController *cuenta = [[PublicarViewController alloc] initWithNibName:@"PublicarViewController" bundle:Nil];
+        [self.navigationController pushViewController:cuenta animated:YES];
     }else{
         [NSThread sleepForTimeInterval:1];
         [self.alertActivity hide];
@@ -267,7 +306,7 @@ NSString *respuestaPublicar;
 }
 
 - (void) compraProductoTel{
-    
+    self.datosUsuario = [DatosUsuario sharedInstance];
     @try {
         if([_products count] <= 0){
             if([CommonUtils hayConexion]){
@@ -313,6 +352,7 @@ NSString *respuestaPublicar;
     if (self.operacionWS == 1) {
         if ([resultado isEqualToString:@"No existe"]) {
             existeDominio = YES;
+            
             [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
         }
         else {
@@ -351,7 +391,49 @@ NSString *respuestaPublicar;
 
 
 
+- (void)showAnimate
+{
+    if (self.alertActivity)
+    {
+        [NSThread sleepForTimeInterval:1];
+        [self.alertActivity hide];
+    }
+    [self navigationController].navigationBarHidden = YES;
+    [self.vistaInferior setHidden:YES];
+    self.viewCenterPopUp.layer.cornerRadius = 10;
+    self.comprarPopUp.layer.cornerRadius = 10;
+    self.viewCenterPopUp.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
+    self.dominioPopUp.text = [NSString stringWithFormat:@"www.%@.tel",self.txtNombreSitio.text];
+    self.msjPopUp.text = NSLocalizedString(@"estaDisponiblePublica", Nil);
+    if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
+        [self.viewPopUp setFrame:CGRectMake(0, 0, 375, 667)];
+        [self.viewCenterPopUp setFrame:CGRectMake(47, 100, 280, 280)];
+    }else if(IS_IPAD){
+        [self.viewPopUp setFrame:CGRectMake(0, 0, 768, 1024)];
+        [self.viewCenterPopUp setFrame:CGRectMake(224, 200, 320, 320)];
+        [self.dominioPopUp setFrame:CGRectMake(10, 62, 300, 24)];
+        [self.msjPopUp setFrame:CGRectMake(10, 98, 300, 85)];
+        [self.comprarPopUp setFrame:CGRectMake(30, 200, 260, 45)];
+        [self.cerrarPopUp setFrame:CGRectMake(240, 20, 46, 30)];
+    }else{
+        [self.viewPopUp setFrame:CGRectMake(0, 0, 320, 568)];
+    }
+    self.view.transform = CGAffineTransformMakeScale(1.3, 1.3);
+    [UIView animateWithDuration:.40 animations:^{
+        self.view.transform = CGAffineTransformMakeScale(1, 1);
+        [self.view addSubview:self.viewPopUp];
+    }];
+}
 
+- (void)removeAnimate
+{
+    [self navigationController].navigationBarHidden = NO;
+    [self.vistaInferior setHidden:NO];
+    [UIView animateWithDuration:.40 animations:^{
+        self.viewCenterPopUp.transform = CGAffineTransformMakeScale(1, 1);
+        [self.viewPopUp removeFromSuperview];
+    }];
+}
 
 
 

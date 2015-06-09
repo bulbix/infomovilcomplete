@@ -35,7 +35,23 @@
     if([self.datos.tipoDeUsuario isEqualToString:@"canal"]){
         dominioAux = @"tel";
     }else if([self.datos.tipoDeUsuario isEqualToString:@"normal"]){
-        dominioAux = @"recurso";
+        self.arregloDominios = self.datos.dominiosUsuario;
+        int contador = 0;
+        for(int i= 0; i< [self.arregloDominios count]; i++){
+            DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:i];
+            if([usuarioDom.domainType isEqualToString:@"tel"]){
+                if( usuarioDom.fechaIni == nil || [usuarioDom.fechaIni length] <= 0){
+                    contador++;
+                }
+            }
+        }
+        if(contador == 0){
+            dominioAux = @"recurso";
+        }else{
+            dominioAux = @"tel";
+        }
+        
+        
     
     }
     
@@ -128,22 +144,7 @@
 }
 
 
-/*
--(void) consultaDominio:(NSString *)dominio conTipo:(NSString *)tipo {
-   
-    NSString *stringXML = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.webservice.infomovil.org/\">"
-                           "<soapenv:Header/>"
-                           "<soapenv:Body>"
-                           "<ws:getExistDomain>"
-                           "<domainName>%@</domainName>"
-                           "<domainType>%@</domainType>"
-                           "</ws:getExistDomain>"
-                           "</soapenv:Body>"
-                           "</soapenv:Envelope>", dominio, tipo];
-    self.strSoapAction = @"wsInfomovildomain";
-    NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
-}
-*/
+
 
 -(void) crearUsuario:(NSString *)email conNombre:(NSString *)user password:(NSString *)pass status:(NSString *)s nombre:(NSString *)nom direccion1:(NSString *)dir1 direccion2:(NSString *)dir2 pais:(NSString *) nPais codigoPromocion:(NSString *)codProm tipoDominio:(NSString *)domainType idDominio:(NSString *)idDominio {
     self.datos = [DatosUsuario sharedInstance];
@@ -749,46 +750,7 @@
         codigoPromocional = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
     }
     
- 
-    
-    ////////////////// CONSULTA ESTATUS DOMINIO ///////////////////////
-    
-    // IRC ESTATUS DOMINIO //
-  /*  else if ([elementName isEqualToString:@"listUsuarioDominiosVO"]) {
-        self.datos.consultaLista = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
-    }
-    else if ([elementName isEqualToString:@"domainCtrlName"]) {
-        
-        self.datos.consultaDomainName =[StringUtils desEncriptar:self.currentElementString conToken:self.token];
-    }
-    else if ([elementName isEqualToString:@"domainType"]) {
-        
-        self.datos.consultaDomainType =[StringUtils desEncriptar:self.currentElementString conToken:self.token];
-    }
-    else if ([elementName isEqualToString:@"fechaCtrlFin"]) {
-     
-        self.datos.consultaFechaCtrlFin = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
-    }
-    else if ([elementName isEqualToString:@"fechaCtrlIni"]) {
-       
-       self.datos.consultaFechaCtrlIni = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
-    }
-    else if ([elementName isEqualToString:@"vigente"]) {
-       
-        self.datos.consultaVigente = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
-    }
-    else if ([elementName isEqualToString:@"idCtrlDomain"]) {
-      
-        self.datos.consultaidCtrlDomain = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
-    }
-    else if ([elementName isEqualToString:@"idDomain"]) {
-     
-        self.datos.consultaidDomain = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
-    }
-    else if ([elementName isEqualToString:@"statusCtrlDominio"]) {
-      
-        self.datos.consultaStatusCtrlDominio = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
-    }*/
+
     else if ([elementName isEqualToString:@"listUsuarioDominiosVO"]) {
         [dominioUsuario setVigente:@"SI"];
         [self.arregloDominiosUsuario addObject:dominioUsuario];

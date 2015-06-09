@@ -106,6 +106,7 @@
     self.passwordUsuario = Nil;
 	self.existeLogin = NO;
     self.dominio = Nil;
+    self.dominioTel = Nil;
     self.localizacion = Nil;
     self.videoSeleccionado = Nil;
     self.publicoSitio = NO;

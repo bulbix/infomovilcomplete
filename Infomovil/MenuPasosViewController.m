@@ -157,6 +157,7 @@ BOOL banderaRegresar;
         [self.botonFondo setBackgroundImage:[UIImage imageNamed:@"elegirestilo-en.png"] forState:UIControlStateNormal];
         [self.botonCrear setBackgroundImage:[UIImage imageNamed:@"btncreateeditEn.png"] forState:UIControlStateNormal];
         NSLog(@"EL DOMINIO DEL USUARIO ES: %@",  self.datosUsuario.dominio);
+        
         if ( self.datosUsuario.dominio && ![self.datosUsuario.dominio isEqualToString:@""] && ! (self.datosUsuario.dominio == (id)[NSNull null]) && ![CommonUtils validarEmail:self.datosUsuario.dominio] && ![self.datosUsuario.dominio isEqualToString:@"(null)"] ){
             [self.botonPublicar setBackgroundImage:[UIImage imageNamed:@"tips.png"] forState:UIControlStateNormal];
            
@@ -215,7 +216,7 @@ BOOL banderaRegresar;
            
             for(int i= 0; i< [self.arregloDominios count]; i++){
                 DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:i];
-               
+                NSLog(@"EL USUARIO DOMAIN TEL ES: %@ con domainType %@", usuarioDom.domainName, usuarioDom.domainType);
                
                 if([usuarioDom.domainType isEqualToString:@"tel"]){
                   
@@ -225,8 +226,11 @@ BOOL banderaRegresar;
                         if([self.datosUsuario.dominio length] > 12 && !IS_IPAD){
                             [self.dominio.titleLabel setFont: [UIFont fontWithName:@"Avenir-Book" size:16]];
                         }
-                        [self.dominio setTitle:[NSString stringWithFormat:@"www.%@.tel", self.datosUsuario.dominio] forState:UIControlStateNormal];
-                    }
+                        [self.dominio setTitle:[NSString stringWithFormat:@"www.%@.tel",usuarioDom.domainName] forState:UIControlStateNormal];
+                    }/*else if( usuarioDom.fechaIni == nil || [usuarioDom.fechaIni length] <= 0){
+                        [self.dominio setTitle:[NSString stringWithFormat:@"www.%@.tel", usuarioDom.domainName] forState:UIControlStateNormal];
+                    
+                    }*/
                 }
             }
            
@@ -240,7 +244,7 @@ BOOL banderaRegresar;
                         }
                       
 #if DEBUG
-                         [self.dominio setTitle:[NSString stringWithFormat:@"www.qa.mobileinfo.io:8080/%@", self.datosUsuario.dominio] forState:UIControlStateNormal];
+                         [self.dominio setTitle:[NSString stringWithFormat:@"qa.mobileinfo.io:8080/%@", self.datosUsuario.dominio] forState:UIControlStateNormal];
 #else
                          [self.dominio setTitle:[NSString stringWithFormat:@"www.infomovil.com/%@", self.datosUsuario.dominio] forState:UIControlStateNormal];
                         

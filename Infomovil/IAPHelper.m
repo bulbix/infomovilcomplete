@@ -14,6 +14,9 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
 
 // 2
 @interface IAPHelper () <SKProductsRequestDelegate, SKPaymentTransactionObserver>
+{
+    NSString *productoAComprar;
+}
 @end
 
 // 3
@@ -27,6 +30,7 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
 
 - (id)initWithProductIdentifiers:(NSSet *)productIdentifiers {
     if ((self = [super init])) {
+        productoAComprar = nil;
         _productIdentifiers = productIdentifiers;
         _purchasedProductIdentifiers = [NSMutableSet set];
         for (NSString * productIdentifier in _productIdentifiers) {
@@ -68,6 +72,7 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
 #if DEBUG
     NSLog(@"El producto que se envío a comprar es: %@...", product.productIdentifier);
 #endif
+    productoAComprar = product.productIdentifier;
     SKPayment * payment = [SKPayment paymentWithProduct:product];
     [[SKPaymentQueue defaultQueue] addPayment:payment];
     
@@ -127,9 +132,12 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
     _productsRequest = nil;
     _completionHandler(NO, nil);
     _completionHandler = nil;
-    [[NSNotificationCenter defaultCenter]
-     postNotificationName:@"FailedTransactionNotification"
-     object:self];
+    if([productoAComprar isEqualToString:@"com.infomovil.infomovil.dominiotel"]){
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"FailedTransactionNotificationDominio" object:self];
+    }else{
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"FailedTransactionNotification" object:self];
+    
+    }
 }
 
 #pragma mark SKPaymentTransactionOBserver
@@ -159,9 +167,11 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
 - (void)completeTransaction:(SKPaymentTransaction *)transaction {
      [self provideContentForProductIdentifier:transaction.payment.productIdentifier];
     [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
-    [[NSNotificationCenter defaultCenter]
-     postNotificationName:@"CompleteTransactionNotification"
-     object:self];
+    if([productoAComprar isEqualToString:@"com.infomovil.infomovil.dominiotel"]){
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"CompleteTransactionNotificationDominio" object:self];
+    }else{
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"CompleteTransactionNotification" object:self];
+    }
 }
 
 - (void)restoreTransaction:(SKPaymentTransaction *)transaction {
@@ -184,9 +194,11 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
     }
     
     [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
-    [[NSNotificationCenter defaultCenter]
-     postNotificationName:@"FailedTransactionNotification"
-     object:self];
+     if([productoAComprar isEqualToString:@"com.infomovil.infomovil.dominiotel"]){
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"FailedTransactionNotificationDominio" object:self];
+     }else{
+          [[NSNotificationCenter defaultCenter] postNotificationName:@"FailedTransactionNotification" object:self];
+     }
 }
 
 - (void)provideContentForProductIdentifier:(NSString *)productIdentifier {

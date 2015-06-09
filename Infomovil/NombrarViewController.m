@@ -615,10 +615,6 @@
     if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         [self.popUpView setFrame:CGRectMake(0, 0, 375, 667)];
         [self.popUpCenter setFrame:CGRectMake(47, 100, 280, 280)];
-    /*}else if(IS_STANDARD_IPHONE_6_PLUS){
-        [self.popUpView setFrame:CGRectMake(0, 0, 414, 736)];
-        [self.popUpCenter setFrame:CGRectMake(67, 200, 280, 280)];
-    */
      }else if(IS_IPAD){
         [self.popUpView setFrame:CGRectMake(0, 0, 768, 1024)];
         [self.popUpCenter setFrame:CGRectMake(224, 200, 320, 320)];

@@ -635,6 +635,7 @@
 		BFD29D7B1AC2139D008EADB9 /* verEjemplo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFD29D4C1AC2139D008EADB9 /* verEjemplo@2x.png */; };
 		BFD29D7C1AC2139D008EADB9 /* verTutorial@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFD29D4D1AC2139D008EADB9 /* verTutorial@1x.png */; };
 		BFD29D7D1AC2139D008EADB9 /* verTutorial@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFD29D4E1AC2139D008EADB9 /* verTutorial@2x.png */; };
+		BFE270311B2675AC007D4316 /* lineCompraDominio.png in Resources */ = {isa = PBXBuildFile; fileRef = BFE270301B2675AC007D4316 /* lineCompraDominio.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1498,6 +1499,7 @@
 		BFD29D4C1AC2139D008EADB9 /* verEjemplo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "verEjemplo@2x.png"; sourceTree = "<group>"; };
 		BFD29D4D1AC2139D008EADB9 /* verTutorial@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "verTutorial@1x.png"; sourceTree = "<group>"; };
 		BFD29D4E1AC2139D008EADB9 /* verTutorial@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "verTutorial@2x.png"; sourceTree = "<group>"; };
+		BFE270301B2675AC007D4316 /* lineCompraDominio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lineCompraDominio.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1699,6 +1701,7 @@
 		0F5CFA4A189733E100D27B2E /* iPhone */ = {
 			isa = PBXGroup;
 			children = (
+				BFE270301B2675AC007D4316 /* lineCompraDominio.png */,
 				BF35BAE21A9D5C0600E85F7A /* play.png */,
 				BFB69B6F1A8426BD0022107C /* miFeed.png */,
 				0F65559319CBAA5D00C90B80 /* logoyoutube.png */,
@@ -3273,6 +3276,7 @@
 				0F9F52D1189890C6000F9FA5 /* miconfiguracionon.png in Resources */,
 				BF66D7741B1D29C8001FA40F /* beneficios-es.png in Resources */,
 				0F9F52AA189890C6000F9FA5 /* 3.png in Resources */,
+				BFE270311B2675AC007D4316 /* lineCompraDominio.png in Resources */,
 				0F9F533A18989413000F9FA5 /* csms@2x.png in Resources */,
 				0F850DF31885AF550008A0CA /* InformacionAdicionalViewController.xib in Resources */,
 				BFD2929C1AB37A7B0066AF30 /* elegirestilo-en@2x.png in Resources */,

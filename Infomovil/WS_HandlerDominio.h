@@ -31,6 +31,8 @@
 
 -(void) crearUsuario:(NSString *)email conNombre:(NSString *)user password:(NSString *)pass status:(NSString *)s nombre:(NSString *)nom direccion1:(NSString *)dir1 direccion2:(NSString *)dir2 pais:(NSString *) nPais codigoPromocion:(NSString *)codProm tipoDominio:(NSString *)domainType idDominio:(NSString *)idDominio;
 
+@property (nonatomic, strong) NSMutableArray *arregloDominios;
+
 //-(void) redimirCodigo:(NSString *)codProm;
 
 	

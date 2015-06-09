@@ -19,7 +19,7 @@
 @property (nonatomic, strong) NSString *resultado;
 @property (nonatomic, strong) DatosUsuario *datosUsuario;
 @property (nonatomic, strong) SKPaymentTransaction *transaction;
-
+@property (nonatomic, strong) NSMutableArray *arregloDominiosUsuario;
 -(void) compraDominio;
-
+-(void) compraDominioTel;
 @end

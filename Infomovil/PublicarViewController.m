@@ -178,7 +178,24 @@
         self.label1.text = [NSString stringWithFormat:NSLocalizedString(@"disponibleTel", nil),[self.datosUsuario dominio]];
         
     }else if([self.datosUsuario.tipoDeUsuario isEqualToString:@"normal"] ){
-        self.label1.text = [NSString stringWithFormat:NSLocalizedString(@"disponibleRecurso", nil),[self.datosUsuario dominio]];
+        
+        self.arregloDominios = self.datosUsuario.dominiosUsuario;
+        int contador = 0;
+        for(int i= 0; i< [self.arregloDominios count]; i++){
+            DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:i];
+            if([usuarioDom.domainType isEqualToString:@"tel"]){
+                if( usuarioDom.fechaIni == nil || [usuarioDom.fechaIni length] <= 0){
+                    contador++;
+                }
+            }
+        }
+        if(contador == 0){
+            self.label1.text = [NSString stringWithFormat:NSLocalizedString(@"disponibleRecurso", nil),[self.datosUsuario dominio]];
+        }else{
+            self.label1.text = [NSString stringWithFormat:NSLocalizedString(@"disponibleTel", nil),self.datosUsuario.dominioTel];
+        }
+        
+        
     }
 
 	self.label2.text = NSLocalizedString(@"confirmalo", nil);
@@ -257,8 +274,23 @@
         self.datosUsuario = [DatosUsuario sharedInstance];
         WS_HandlerDominio *dominioHandler = [[WS_HandlerDominio alloc] init];
         [dominioHandler setWSHandlerDelegate:self];
-        // IRC AQUI DEBO PONER UNA VALIDACION QUE SI VIENE DE COMPRAR DE LA TIENDA QUE ENVIE EL DOMINIO QUE ELIGIO //
-        [dominioHandler crearUsuario:self.datosUsuario.emailUsuario conNombre:self.datosUsuario.dominio password:self.datosUsuario.passwordUsuario status:@"1" nombre:self.txtNombre.text direccion1:self.txtDir1.text direccion2:self.txtDir2.text pais:self.nPais codigoPromocion:self.datosUsuario.codigoRedimir==nil?@" ":self.datosUsuario.codigoRedimir tipoDominio:dominioAux idDominio:[NSString stringWithFormat:@"%li", (long)self.datosUsuario.idDominio]];
+    
+    self.arregloDominios = self.datosUsuario.dominiosUsuario;
+    int contador = 0;
+    for(int i= 0; i< [self.arregloDominios count]; i++){
+        DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:i];
+        if([usuarioDom.domainType isEqualToString:@"tel"]){
+            if( usuarioDom.fechaIni == nil || [usuarioDom.fechaIni length] <= 0){
+                contador++;
+            }
+        }
+    }
+    if(contador == 0){
+       [dominioHandler crearUsuario:self.datosUsuario.emailUsuario conNombre:self.datosUsuario.dominio password:self.datosUsuario.passwordUsuario status:@"1" nombre:self.txtNombre.text direccion1:self.txtDir1.text direccion2:self.txtDir2.text pais:self.nPais codigoPromocion:self.datosUsuario.codigoRedimir==nil?@" ":self.datosUsuario.codigoRedimir tipoDominio:dominioAux idDominio:[NSString stringWithFormat:@"%li", (long)self.datosUsuario.idDominio]];
+    }else{
+        [dominioHandler crearUsuario:self.datosUsuario.emailUsuario conNombre:self.datosUsuario.dominioTel password:self.datosUsuario.passwordUsuario status:@"1" nombre:self.txtNombre.text direccion1:self.txtDir1.text direccion2:self.txtDir2.text pais:self.nPais codigoPromocion:self.datosUsuario.codigoRedimir==nil?@" ":self.datosUsuario.codigoRedimir tipoDominio:@"tel" idDominio:[NSString stringWithFormat:@"%li", (long)self.datosUsuario.idDominio]];
+    }
+    
 
 }
 
@@ -295,10 +327,26 @@
             }else{
                 [[Appboy sharedInstance].user setCustomAttributeWithKey:@"tipoDominio" andStringValue:@"recurso"];
             }
-            [[Appboy sharedInstance].user setCustomAttributeWithKey:@"nombreDominio" andStringValue:self.datosUsuario.dominio];
+            self.arregloDominios = self.datosUsuario.dominiosUsuario;
+            int contador = 0;
+            for(int i= 0; i< [self.arregloDominios count]; i++){
+                DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:i];
+                if([usuarioDom.domainType isEqualToString:@"tel"]){
+                    if( usuarioDom.fechaIni == nil || [usuarioDom.fechaIni length] <= 0){
+                        contador++;
+                    }
+                }
+            }
+            if(contador == 0){
+                [[Appboy sharedInstance].user setCustomAttributeWithKey:@"nombreDominio" andStringValue:self.datosUsuario.dominio];
+            }else{
+                [[Appboy sharedInstance].user setCustomAttributeWithKey:@"nombreDominio" andStringValue:self.datosUsuario.dominioTel];
+            }
+            
+            
+           
             [self enviarEventoGAconCategoria:@"Publicar" yEtiqueta:@"Dominio"];
             self.datosUsuario.nombroSitio = YES;
-            NSLog(@"self.datos usuario nombre de dominio %@", self.datosUsuario.dominio);
             creoDominio = YES;
 
             alert = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"felicidades", @" ") message:NSLocalizedString(@"nombradoExitoso", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
@@ -344,10 +392,27 @@
             }else{
                 [[Appboy sharedInstance].user setCustomAttributeWithKey:@"tipoDominio" andStringValue:@"recurso"];
             }
-            [[Appboy sharedInstance].user setCustomAttributeWithKey:@"nombreDominio" andStringValue:self.datosUsuario.dominio];
+            
+            self.arregloDominios = self.datosUsuario.dominiosUsuario;
+            int contador = 0;
+            for(int i= 0; i< [self.arregloDominios count]; i++){
+                DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:i];
+                if([usuarioDom.domainType isEqualToString:@"tel"]){
+                    if( usuarioDom.fechaIni == nil || [usuarioDom.fechaIni length] <= 0){
+                        contador++;
+                    }
+                }
+            }
+            if(contador == 0){
+                [[Appboy sharedInstance].user setCustomAttributeWithKey:@"nombreDominio" andStringValue:self.datosUsuario.dominio];
+            }else{
+                [[Appboy sharedInstance].user setCustomAttributeWithKey:@"nombreDominio" andStringValue:self.datosUsuario.dominioTel];
+            }
+            
+            
             [self enviarEventoGAconCategoria:@"Publicar" yEtiqueta:@"Dominio"];
             self.datosUsuario.nombroSitio = YES;
-            NSLog(@"self.datos usuario nombre de dominio %@", self.datosUsuario.dominio);
+          
             creoDominio = YES;
             MenuPasosViewController *pasoView = [[MenuPasosViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
             [self.navigationController pushViewController:pasoView animated:YES];
@@ -366,6 +431,7 @@
         }
         else {
             existeDominio = NO;
+            [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
         }
 	}
 	else if(operacionWS2 == 2){
@@ -389,14 +455,17 @@
         else if ([resultado isEqualToString:@"Error Publicar"]) {
             statusRespuesta = RespuestaStatusPendiente;
             self.datosUsuario.dominio = nil;
+            self.datosUsuario.dominioTel = nil;
         }
         else if ([resultado isEqualToString:@"Usuario Existe"]) {
             statusRespuesta = RespuestaStatusExistente;
             self.datosUsuario.dominio = nil;
+            self.datosUsuario.dominioTel = nil;
         }
         else {
             statusRespuesta = RespuestaStatusError;
             self.datosUsuario.dominio = nil;
+            self.datosUsuario.dominioTel = nil;
         }
     
 		[self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
@@ -412,6 +481,7 @@
     }
         self.datosUsuario = [DatosUsuario sharedInstance];
         self.datosUsuario.dominio = nil;
+        self.datosUsuario.dominioTel = nil;
         AlertView *alertAct = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"errorPublicacion", Nil) andAlertViewType:AlertViewTypeInfo];
         [alertAct show];
     self.errorBandera = YES;
@@ -556,7 +626,22 @@
         operacionWS = 1;
         WS_HandlerDominio *dominioHandler = [[WS_HandlerDominio alloc] init];
         [dominioHandler setWSHandlerDelegate:self];
+    self.arregloDominios = self.datosUsuario.dominiosUsuario;
+    int contador = 0;
+    for(int i= 0; i< [self.arregloDominios count]; i++){
+        DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:i];
+        if([usuarioDom.domainType isEqualToString:@"tel"]){
+            if( usuarioDom.fechaIni == nil || [usuarioDom.fechaIni length] <= 0){
+                contador++;
+            }
+        }
+    }
+    if(contador == 0){
         [dominioHandler consultaDominio:self.datosUsuario.dominio];
+    }else{
+        [dominioHandler consultaDominio:self.datosUsuario.dominioTel];
+    }
+   
   
     
 }

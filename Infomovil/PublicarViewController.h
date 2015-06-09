@@ -46,6 +46,7 @@ typedef enum {
 
 @property (nonatomic, strong) DatosUsuario *datos;
 
+@property (nonatomic, strong) NSMutableArray *arregloDominios;
 
 - (IBAction)mostrarOpcion:(UIButton *)sender;
 

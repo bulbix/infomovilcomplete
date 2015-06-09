@@ -8,12 +8,18 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NombraCompraDominio">
             <connections>
                 <outlet property="btnBuscar" destination="eol-E2-74Q" id="EhL-0t-pli"/>
+                <outlet property="cerrarPopUp" destination="t0Q-LW-du3" id="0tc-60-7r5"/>
+                <outlet property="comprarPopUp" destination="Tam-C6-wry" id="4xg-DZ-GZc"/>
+                <outlet property="dominioPopUp" destination="mf5-Q1-2Kn" id="9mL-jC-uuY"/>
                 <outlet property="etiquetaNombraSitio" destination="kRR-QR-YOd" id="p8g-Ly-1jY"/>
                 <outlet property="etiquetatel" destination="CJY-gq-W9e" id="G03-ub-7Lk"/>
                 <outlet property="etiqutawww" destination="ObM-7e-zwS" id="9Wt-DR-v97"/>
+                <outlet property="msjPopUp" destination="TD2-Oe-RrK" id="EhE-m6-DIR"/>
                 <outlet property="scrollNombrar" destination="VW0-K3-oyF" id="aNf-vn-fp8"/>
                 <outlet property="txtNombreSitio" destination="59f-IG-Dqk" id="23r-s6-WZr"/>
                 <outlet property="view" destination="aMq-gw-Aqk" id="N4T-mk-HzG"/>
+                <outlet property="viewCenterPopUp" destination="MaH-dM-l9y" id="SY7-3g-oEf"/>
+                <outlet property="viewPopUp" destination="YUP-26-G3f" id="GwT-i2-YCM"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -74,6 +80,60 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <point key="canvasLocation" x="292" y="512"/>
+        </view>
+        <view contentMode="scaleToFill" id="YUP-26-G3f">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" id="MaH-dM-l9y">
+                    <rect key="frame" x="20" y="112" width="280" height="260"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="www.misitio.tel" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mf5-Q1-2Kn">
+                            <rect key="frame" x="8" y="51" width="264" height="58"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
+                            <color key="textColor" red="0.18431372549019609" green="0.63921568627450975" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Tam-C6-wry">
+                            <rect key="frame" x="30" y="189" width="220" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.18431372549019609" green="0.63921568627450975" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                            <state key="normal" title="Compralo">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="comprarPopUpAct:" destination="-1" eventType="touchUpInside" id="7UI-IS-lN7"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="t0Q-LW-du3">
+                            <rect key="frame" x="226" y="13" width="46" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
+                            <state key="normal" title="X">
+                                <color key="titleColor" red="0.38823529411764707" green="0.63529411764705879" blue="0.59607843137254901" alpha="0.70000000000000007" colorSpace="calibratedRGB"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="cerrarPupUpAct:" destination="-1" eventType="touchUpInside" id="qru-k6-etW"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¡El dominio está disponible!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TD2-Oe-RrK">
+                            <rect key="frame" x="8" y="112" width="264" height="55"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
+                            <color key="textColor" red="0.18431372549019609" green="0.63921568627450975" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="292" y="-125"/>
         </view>
     </objects>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
