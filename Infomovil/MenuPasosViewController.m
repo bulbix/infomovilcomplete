@@ -226,7 +226,7 @@ BOOL banderaRegresar;
                         if([self.datosUsuario.dominio length] > 12 && !IS_IPAD){
                             [self.dominio.titleLabel setFont: [UIFont fontWithName:@"Avenir-Book" size:16]];
                         }
-                        [self.dominio setTitle:[NSString stringWithFormat:@"www.%@.tel",usuarioDom.domainName] forState:UIControlStateNormal];
+                        [self.dominio setTitle:[NSString stringWithFormat:@"www.%@.tel",self.datosUsuario.dominio] forState:UIControlStateNormal];
                     }/*else if( usuarioDom.fechaIni == nil || [usuarioDom.fechaIni length] <= 0){
                         [self.dominio setTitle:[NSString stringWithFormat:@"www.%@.tel", usuarioDom.domainName] forState:UIControlStateNormal];
                     

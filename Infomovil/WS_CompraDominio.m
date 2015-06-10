@@ -276,6 +276,7 @@
           NSLog(@"LA FECHA DEL TEL FINAL ES: %@", auxOffer);
     }else if ([elementName isEqualToString:@"domainCtrlName"]){
        [dominioUsuario setDomainName:[StringUtils desEncriptar:self.currentElementString conToken:self.token]];
+        NSLog(@"ELL NOMBRE QUE TRAJO EN WS_COMPRADOMINIO ES: %@", [StringUtils desEncriptar:self.currentElementString conToken:self.token]);
     }else if ([elementName isEqualToString:@"domainType"]){
         NSString *typeAux = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
         if ([typeAux isEqualToString:@"recurso"]) {

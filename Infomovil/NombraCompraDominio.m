@@ -43,8 +43,8 @@ NSString *respuestaPublicar;
     }else if(IS_IPHONE_4){
         self.scrollNombrar.frame = CGRectMake(0, 0, 320, 480);
         self.etiquetaNombraSitio.frame = CGRectMake(10, 20, 300, 40);
-        self.etiqutawww.frame = CGRectMake(10, 80, 40, 40);
-        self.txtNombreSitio.frame = CGRectMake(51, 80, 220, 30);
+        self.etiqutawww.frame = CGRectMake(5, 80, 50, 40);
+        self.txtNombreSitio.frame = CGRectMake(55, 80, 215, 30);
         self.etiquetatel.frame = CGRectMake(270, 80, 40, 40);
         self.btnBuscar.frame = CGRectMake(60, 150, 200, 40);
         
@@ -192,7 +192,7 @@ NSString *respuestaPublicar;
 }
 
 -(void) mostrarActivity {
-    self.alertActivity = [AlertView initWithDelegate:self message:NSLocalizedString(@"msgNombrarSitio", Nil) andAlertViewType:AlertViewTypeActivity];
+    self.alertActivity = [AlertView initWithDelegate:self message:NSLocalizedString(@"cargando", Nil) andAlertViewType:AlertViewTypeActivity];
     [self.alertActivity show];
 }
 
@@ -268,6 +268,7 @@ NSString *respuestaPublicar;
 -(void)resultadoCompraDominio:(BOOL)estado{
     self.datosUsuario = [DatosUsuario sharedInstance];
     if(estado == YES && [self.datosUsuario.datosPago.statusPago isEqualToString: @"INTENTO PAGO"]){
+        NSLog(@"ENTRO A INTENTO DE PAGO");
         self.arregloDominios = self.datosUsuario.dominiosUsuario;
         int contador = 0;
         for(int i= 0; i< [self.arregloDominios count]; i++){
@@ -291,6 +292,7 @@ NSString *respuestaPublicar;
         }
         
     }else if([self.datosUsuario.datosPago.statusPago isEqualToString: @"PAGADO"]){
+        NSLog(@"ENTRO A PAGADO");
         [NSThread sleepForTimeInterval:1];
         [self.alertActivity hide];
         [self removeAnimate];
@@ -402,6 +404,7 @@ NSString *respuestaPublicar;
     [self.vistaInferior setHidden:YES];
     self.viewCenterPopUp.layer.cornerRadius = 10;
     self.comprarPopUp.layer.cornerRadius = 10;
+    [self.comprarPopUp setTitle:NSLocalizedString(@"comprarDominioTel", @" ") forState:UIControlStateNormal];
     self.viewCenterPopUp.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
     self.dominioPopUp.text = [NSString stringWithFormat:@"www.%@.tel",self.txtNombreSitio.text];
     self.msjPopUp.text = NSLocalizedString(@"estaDisponiblePublica", Nil);

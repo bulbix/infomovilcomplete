@@ -484,6 +484,7 @@ if(noSeRepiteOprimirElBoton){
 }
 
 - (IBAction)tipoCuenta:(id)sender {
+    NSLog(@"ENTRO A TIPO CUENTA!! EN CUENTAVIEWCONTROLLER");
 	/////////////////////////////////// COMPRAR PLAN PRO //////////////////////////////////
 	self.datosUsuario = [DatosUsuario sharedInstance];
     if(self.selector.selectedSegmentIndex == 0){
@@ -519,7 +520,7 @@ if(noSeRepiteOprimirElBoton){
                 dominio = [[UILabel alloc]initWithFrame:CGRectMake(0, 40, 375, 100)];
            
             }else if(IS_IPAD){
-                dominio = [[UILabel alloc]initWithFrame:CGRectMake(0, 200, 768, 100)];
+                dominio = [[UILabel alloc]initWithFrame:CGRectMake(0, 160, 768, 100)];
             }else{
                 dominio = [[UILabel alloc]initWithFrame:CGRectMake(0, 15, 320, 100)];
                 
@@ -548,42 +549,29 @@ if(noSeRepiteOprimirElBoton){
                 for(int i= 0; i< [self.arregloDominios count]; i++){
                     DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:i];
                     if([usuarioDom.domainType isEqualToString:@"tel"]){
-                  
                         if([usuarioDom.vigente isEqualToString:@"SI"] || [usuarioDom.vigente isEqualToString:@"si"]){
                             dominio.text = [NSString stringWithFormat:@"My website\n\n www.%@.tel",self.datosUsuario.dominio] ;
-                            if(self.datosUsuario.fechaDominioIni && ![self.datosUsuario.fechaDominioIni isEqualToString:@""] && ![self.datosUsuario.fechaDominioIni isEqualToString:@"(null)"] && self.datosUsuario.fechaDominioIni != nil){
-                                fechas.text = [NSString stringWithFormat: @"Start date: %@\n End date: %@", self.datosUsuario.fechaDominioIni, self.datosUsuario.fechaDominioFin ];
+                            if(usuarioDom.fechaIni && ![usuarioDom.fechaIni isEqualToString:@""] && ![usuarioDom.fechaIni isEqualToString:@"(null)"] && usuarioDom.fechaIni != nil){
+                                fechas.text = [NSString stringWithFormat: @"Period of validity\n From %@ to %@", usuarioDom.fechaIni, usuarioDom.fechaFin ];
                             }else{
-                                fechas.text = [NSString stringWithFormat: @"Start date: %@\n End date: %@", usuarioDom.fechaIni, usuarioDom.fechaFin ];
+                                fechas.text = [NSString stringWithFormat: @"Period of validity\n From %@ to %@", self.datosUsuario.fechaDominioIni, self.datosUsuario.fechaDominioFin ];
                             }
-                            
+                        }else if(usuarioDom.fechaIni == nil || [usuarioDom.fechaIni length] <= 0){
+                            [self etiquetasBotonesYaComprado];
                         }else{
-                            dominio.text = [NSString stringWithFormat:@"My website\n\nwww.infomovil.com/%@",self.datosUsuario.dominio] ;
-                            self.arregloDominios = self.datosUsuario.dominiosUsuario;
-                            int contador = 0;
-                            for(int i= 0; i< [self.arregloDominios count]; i++){
-                                DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:i];
-                                if([usuarioDom.domainType isEqualToString:@"tel"]){
-                                    if( usuarioDom.fechaIni == nil || [usuarioDom.fechaIni length] <= 0){
-                                        contador++;
-                                    }
-                                }
-                            }
-                            if(contador == 0){
-                                [self etiquetasBotonesDeCompra];
-                            }else{
-                                [self etiquetasBotonesYaComprado];
-                            }
-                        
+                            [self etiquetasBotonesDeCompra];
+                            dominio.text = [NSString stringWithFormat:@"My website\n\nwww.infomovil.com/%@",usuarioDom.domainName] ;
                         }
+                        
                     }
                 }
                 if([dominio.text isEqualToString:@""]){
+                    self.arregloDominios = self.datosUsuario.dominiosUsuario;
                     for(int i= 0; i< [self.arregloDominios count]; i++){
                         DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:i];
                         if([usuarioDom.domainType isEqualToString:@"recurso"]){
-                           
-                            dominio.text = [NSString stringWithFormat:@"My website\n\nwww.infomovil.com/%@",self.datosUsuario.dominio] ;
+                            if(usuarioDom.domainName == nil || [usuarioDom.domainName length] <= 0 || [usuarioDom.domainName isEqualToString:@""]){usuarioDom.domainName = self.datosUsuario.dominio;}
+                            dominio.text = [NSString stringWithFormat:@"My website\n\nwww.infomovil.com/%@",usuarioDom.domainName] ;
                             self.arregloDominios = self.datosUsuario.dominiosUsuario;
                             int contador = 0;
                             for(int i= 0; i< [self.arregloDominios count]; i++){
@@ -596,10 +584,8 @@ if(noSeRepiteOprimirElBoton){
                             }
                             if(contador == 0){
                                 [self etiquetasBotonesDeCompra];
-                            }else{
-                                [self etiquetasBotonesYaComprado];
                             }
-
+                            
                         }
                     }
                 }
@@ -610,42 +596,30 @@ if(noSeRepiteOprimirElBoton){
                 for(int i= 0; i< [self.arregloDominios count]; i++){
                     DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:i];
                     if([usuarioDom.domainType isEqualToString:@"tel"]){
-                    
                         if([usuarioDom.vigente isEqualToString:@"SI"] || [usuarioDom.vigente isEqualToString:@"si"]){
                             dominio.text = [NSString stringWithFormat:@"Mi sitio web\n\n www.%@.tel",self.datosUsuario.dominio] ;
-                           if(self.datosUsuario.fechaDominioIni && ![self.datosUsuario.fechaDominioIni isEqualToString:@""] && ![self.datosUsuario.fechaDominioIni isEqualToString:@"(null)"] && self.datosUsuario.fechaDominioIni != nil){
-                            
-                               fechas.text = [NSString stringWithFormat: @"Fecha de inicio: %@\n Fecha de término: %@", self.datosUsuario.fechaDominioIni, self.datosUsuario.fechaDominioFin ];
+                               if(usuarioDom.fechaIni && ![usuarioDom.fechaIni isEqualToString:@""] && ![usuarioDom.fechaIni isEqualToString:@"(null)"] && usuarioDom.fechaIni != nil){
+                               fechas.text = [NSString stringWithFormat: @"Vigencia del dominio\n Del %@ al %@", usuarioDom.fechaIni, usuarioDom.fechaFin ];
                            }else{
-                               fechas.text = [NSString stringWithFormat: @"Fecha de inicio: %@\n Fecha de término: %@", usuarioDom.fechaIni, usuarioDom.fechaFin ];
+                               fechas.text = [NSString stringWithFormat: @"Vigencia del dominio\n Del %@ al %@", self.datosUsuario.fechaDominioIni, self.datosUsuario.fechaDominioFin ];
                            }
-                        }else{
-                            dominio.text = [NSString stringWithFormat:@"Mi sitio web\n\nwww.infomovil.com/%@",self.datosUsuario.dominio] ;
-                            
-                            self.arregloDominios = self.datosUsuario.dominiosUsuario;
-                            int contador = 0;
-                            for(int i= 0; i< [self.arregloDominios count]; i++){
-                                DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:i];
-                                if([usuarioDom.domainType isEqualToString:@"tel"]){
-                                    if( usuarioDom.fechaIni == nil || [usuarioDom.fechaIni length] <= 0){
-                                        contador++;
-                                    }
-                                }
-                            }
-                            if(contador == 0){
-                                [self etiquetasBotonesDeCompra];
-                            }else{
-                                [self etiquetasBotonesYaComprado];
-                            }
-                        }
+                    }else if(usuarioDom.fechaIni == nil || [usuarioDom.fechaIni length] <= 0){
+                        [self etiquetasBotonesYaComprado];
+                    }else{
+                        [self etiquetasBotonesDeCompra];
+                        dominio.text = [NSString stringWithFormat:@"Mi sitio web\n\nwww.infomovil.com/%@",usuarioDom.domainName] ;
+                    }
+                    
                     }
                 }
                 if([dominio.text isEqualToString:@""]){
+                    self.arregloDominios = self.datosUsuario.dominiosUsuario;
                     for(int i= 0; i< [self.arregloDominios count]; i++){
                         DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:i];
                         if([usuarioDom.domainType isEqualToString:@"recurso"]){
-                          
-                            dominio.text = [NSString stringWithFormat:@"Mi sitio web\n\nwww.infomovil.com/%@",self.datosUsuario.dominio] ;
+                            if(usuarioDom.domainName == nil || [usuarioDom.domainName length] <= 0 || [usuarioDom.domainName isEqualToString:@""]){usuarioDom.domainName = self.datosUsuario.dominio;}
+                            dominio.text = [NSString stringWithFormat:@"Mi sitio web\n\nwww.infomovil.com/%@",usuarioDom.domainName] ;
+                             NSLog(@"EL SITIO WWEB ES3: %@", usuarioDom.domainName);
                             self.arregloDominios = self.datosUsuario.dominiosUsuario;
                             int contador = 0;
                             for(int i= 0; i< [self.arregloDominios count]; i++){
@@ -658,8 +632,6 @@ if(noSeRepiteOprimirElBoton){
                             }
                             if(contador == 0){
                                 [self etiquetasBotonesDeCompra];
-                            }else{
-                                [self etiquetasBotonesYaComprado];
                             }
     
                         }
@@ -826,19 +798,30 @@ if(noSeRepiteOprimirElBoton){
     UIImageView* imgLineDominio = [[UIImageView alloc] init];
 
     if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
+        imgLineDominio.frame = CGRectMake(47, 190, 280, 2);
         etiquetaCompraDominio.frame = CGRectMake(47, 250,280 ,40 );
-        etiquetaCompraDominioSub.frame = CGRectMake(47, 250,280 ,40 );
-        [btnCompraDominio setFrame:CGRectMake(87, 300, 200, 40)];
+        etiquetaCompraDominioSub.frame = CGRectMake(47, 300,280 ,40 );
+        [btnCompraDominio setFrame:CGRectMake(87, 360, 200, 40)];
         etiquetaCompraDominio.font = [UIFont fontWithName:@"Avenir-Medium" size:18];
         etiquetaCompraDominioSub.font = [UIFont fontWithName:@"Avenir-Book" size:16];
         [btnCompraDominio.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
     }else if(IS_IPAD){
+        imgLineDominio.frame = CGRectMake(184, 360, 400, 2);
         etiquetaCompraDominio.frame = CGRectMake(84, 450,600 ,80 );
-        etiquetaCompraDominioSub.frame = CGRectMake(84, 500, 600, 40);
+        etiquetaCompraDominioSub.frame = CGRectMake(84, 530, 600, 40);
         [btnCompraDominio setFrame:CGRectMake(259, 600, 250, 40)];
         etiquetaCompraDominio.font = [UIFont fontWithName:@"Avenir-Medium" size:24];
         etiquetaCompraDominioSub.font = [UIFont fontWithName:@"Avenir-Book" size:20];
         [btnCompraDominio.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:24]];
+    }else if(IS_IPHONE_4){
+        imgLineDominio.frame = CGRectMake(20, 135, 280, 2);
+        etiquetaCompraDominio.frame = CGRectMake(20, 170,280 ,40 );
+        etiquetaCompraDominioSub.frame = CGRectMake(20, 220,280 ,40 );
+        [btnCompraDominio setFrame:CGRectMake(60, 280, 200, 40)];
+        etiquetaCompraDominio.font = [UIFont fontWithName:@"Avenir-Medium" size:18];
+        etiquetaCompraDominioSub.font = [UIFont fontWithName:@"Avenir-Book" size:16];
+        [btnCompraDominio.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
+    
     }else{
         imgLineDominio.frame = CGRectMake(20, 160, 280, 2);
         etiquetaCompraDominio.frame = CGRectMake(20, 220,280 ,40 );

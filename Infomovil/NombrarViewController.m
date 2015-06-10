@@ -434,7 +434,7 @@
             [self.arregloDominiosUsuario addObject:dominioUsuario];
             self.datosUsuario.dominiosUsuario = self.arregloDominiosUsuario;
             NSLog(@"LA CANTIDAD QUE AGREGO DE DOMINIOSUSUARIOS SON  %lu y el arreglo %lu", (unsigned long)[self.datosUsuario.dominiosUsuario count] , (unsigned long)[self.arregloDominiosUsuario count]);
-            NSLog(@"ENTRO A RESPUESTA DE ESTATUS EXITO EN OCULTAR ACTIVITY");
+            NSLog(@"ENTRO A RESPUESTA DE ESTATUS EXITO EN OCULTAR ACTIVITY y valor %@", [[self.arregloDominiosUsuario objectAtIndex:0]domainName]);
             [[AppsFlyerTracker sharedTracker] trackEvent:@"Publicar Dominio" withValue:@""];
             [[Appboy sharedInstance] logCustomEvent:@"Publicar Dominio"];
             if([self.datosUsuario.tipoDeUsuario isEqualToString:@"normal"]){

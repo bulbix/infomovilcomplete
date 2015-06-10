@@ -481,7 +481,7 @@
 "sessionCaduco" = "Tu sesión caducó. Por favor, ingresa tus datos otra vez.";
 
 
-"sessionUsada" = "Tu sesión está siendo utilizada en otro dispositivo";
+"sessionUsada" = "Tu sesión puede estar siendo utilizada en otro dispositivo o hubo un error en la red.";
 "codigoRedimir" = "Campaña canal";
 "tituloCampania" = "Campaña";
 "txtSinCampania" = "Sin campaña dejar en blanco";
@@ -672,5 +672,5 @@
 
 "dominioComprado" = "Ya compraste tu dominio .tel";
 "registrarDominioComprado" = "Regístralo";
-
+"errorNombreDominio" = "El nombre de dominio se ha perdido por favor intentalo nuevamente.";
 

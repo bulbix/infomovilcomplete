@@ -366,7 +366,7 @@
 "registrarMensaje" =  "Please create an account with your e-mail and password.";
 
 "sessionCaduco" = "Your session has expired. Please log-in again";
-"sessionUsada" = "Your session is being used by another device.";
+"sessionUsada" = "Your session can be used in another device or was an error in the network.";
 "codigoRedimir" = "Channel campaing";
 "tituloCampania" = "Campaign";
 "txtSinCampania" = "Blanc if no campaing";
@@ -562,3 +562,4 @@
 
 "dominioComprado" = "Already you purchased your .tel domain";
 "registrarDominioComprado" = "Register it";
+"errorNombreDominio" = "The domain name has been lost, please try again.";

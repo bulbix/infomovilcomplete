@@ -141,7 +141,7 @@
         [self.labelPais setFrame:CGRectMake(40, 300, 295, 30)];
         [self.vistaCombo setFrame:CGRectMake(40, 330, 295, 30)];
         [self.imgBull setFrame:CGRectMake(250, 330, 20, 20)];
-        [self.boton setFrame:CGRectMake(97, 400, 220, 35)];
+        [self.boton setFrame:CGRectMake(77, 400, 220, 35)];
    
      }else if(IS_IPAD){
         [self.label1 setFrame:CGRectMake(84, 40, 600, 60)];
@@ -263,7 +263,7 @@
 -(void) crearDominio {
     self.datos = [DatosUsuario sharedInstance];
     NSString *dominioAux;
-    if([self.datos.tipoDeUsuario isEqualToString:@"canal"]){
+    if([self.datos.tipoDeUsuario isEqualToString:@"canal"] || [self.datos.dominioTel length] > 0){
         dominioAux = @"tel";
     }else if([self.datos.tipoDeUsuario isEqualToString:@"normal"] ){
         dominioAux = @"recurso";
@@ -285,12 +285,22 @@
             }
         }
     }
-    if(contador == 0){
+    
+    NSLog(@"LOS VALORES QUE ESTOY ENVIANDO SON : %@ - %@  - %@ - %@", self.datosUsuario.emailUsuario, self.datosUsuario.dominio, dominioAux, self.datosUsuario.dominioTel);
+    
+    
+    if(![CommonUtils validarEmail:self.datosUsuario.dominio] && ![CommonUtils validarEmail:self.datosUsuario.dominioTel]){
+    if(contador == 0 || [self.datos.tipoDeUsuario isEqualToString:@"canal"]){
+        NSLog(@"ENTRO ");
        [dominioHandler crearUsuario:self.datosUsuario.emailUsuario conNombre:self.datosUsuario.dominio password:self.datosUsuario.passwordUsuario status:@"1" nombre:self.txtNombre.text direccion1:self.txtDir1.text direccion2:self.txtDir2.text pais:self.nPais codigoPromocion:self.datosUsuario.codigoRedimir==nil?@" ":self.datosUsuario.codigoRedimir tipoDominio:dominioAux idDominio:[NSString stringWithFormat:@"%li", (long)self.datosUsuario.idDominio]];
     }else{
         [dominioHandler crearUsuario:self.datosUsuario.emailUsuario conNombre:self.datosUsuario.dominioTel password:self.datosUsuario.passwordUsuario status:@"1" nombre:self.txtNombre.text direccion1:self.txtDir1.text direccion2:self.txtDir2.text pais:self.nPais codigoPromocion:self.datosUsuario.codigoRedimir==nil?@" ":self.datosUsuario.codigoRedimir tipoDominio:@"tel" idDominio:[NSString stringWithFormat:@"%li", (long)self.datosUsuario.idDominio]];
     }
-    
+    }else{
+        AlertView *alert = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"errorNombreDominio", @" ") dominio:nil andAlertViewType:AlertViewTypeInfo];
+        [alert show];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 
 }
 
@@ -439,8 +449,11 @@
         if ([resultado isEqualToString:@"Exito"]) {
             statusRespuesta = RespuestaStatusExito;
             dominioUsuario = [[DominiosUsuario alloc] init];
-            if([self.datosUsuario.tipoDeUsuario isEqualToString:@"canal"]){
+            if([self.datosUsuario.tipoDeUsuario isEqualToString:@"canal"] || [self.datosUsuario.dominioTel length] > 0 ){
                 [dominioUsuario setDomainType:@"tel"];
+                if([self.datosUsuario.dominioTel length] > 0 ){
+                    [dominioUsuario setDomainName:self.datosUsuario.dominioTel];
+                }
             }else{
                 [dominioUsuario setDomainType:@"recurso"];
             }

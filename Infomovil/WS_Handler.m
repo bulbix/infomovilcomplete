@@ -385,7 +385,7 @@
         if(error.code == -1001) {
             AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"tiempoAgotado", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
             [alert show];
-        }else if(error.code == -1005) {
+        }else if(error.code == -1005 || error.code == -1009) {
             AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
             [alert show];
             NSHTTPCookieStorage* cookies = [NSHTTPCookieStorage sharedHTTPCookieStorage];
