@@ -13,6 +13,7 @@
                 <outlet property="label2" destination="EwR-l6-bwj" id="MRA-LP-xlz"/>
                 <outlet property="labelDir1" destination="ncv-3x-dCy" id="JCr-go-8wT"/>
                 <outlet property="labelDir2" destination="XAt-29-sXe" id="an0-mY-8Z7"/>
+                <outlet property="labelEmail" destination="ZmG-We-NTS" id="TS1-Qb-fbV"/>
                 <outlet property="labelInfo" destination="rXZ-RS-SPe" id="bAN-p7-4QK"/>
                 <outlet property="labelNombre" destination="H50-pp-NLU" id="1NR-HV-qX2"/>
                 <outlet property="labelPais" destination="mqo-RM-7zK" id="zOt-3O-snI"/>
@@ -20,6 +21,7 @@
                 <outlet property="scroll" destination="8tr-2F-lyK" id="mod-Ej-Veh"/>
                 <outlet property="txtDir1" destination="wik-wo-MvI" id="OnX-Na-c2m"/>
                 <outlet property="txtDir2" destination="DVg-FA-wPG" id="EVM-UI-z1b"/>
+                <outlet property="txtEmail" destination="Khi-0k-VYR" id="lRN-Hm-9BK"/>
                 <outlet property="txtNombre" destination="RxF-8F-HwI" id="T8o-1k-LCv"/>
                 <outlet property="view" destination="1" id="3"/>
                 <outlet property="vistaCombo" destination="VH6-B4-oHB" id="eC5-h4-dDK"/>
@@ -42,7 +44,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="RxF-8F-HwI">
-                            <rect key="frame" x="20" y="113" width="280" height="30"/>
+                            <rect key="frame" x="20" y="103" width="280" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             <color key="textColor" red="0.23529411759999999" green="0.2901960784" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -53,7 +55,7 @@
                             </connections>
                         </textField>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="wik-wo-MvI">
-                            <rect key="frame" x="20" y="180" width="280" height="30"/>
+                            <rect key="frame" x="20" y="162" width="280" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             <color key="textColor" red="0.23529411759999999" green="0.2901960784" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -64,7 +66,7 @@
                             </connections>
                         </textField>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="DVg-FA-wPG">
-                            <rect key="frame" x="20" y="247" width="280" height="30"/>
+                            <rect key="frame" x="20" y="220" width="280" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             <color key="textColor" red="0.23529411759999999" green="0.2901960784" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -75,21 +77,21 @@
                             </connections>
                         </textField>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="País" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mqo-RM-7zK">
-                            <rect key="frame" x="20" y="285" width="280" height="21"/>
+                            <rect key="frame" x="20" y="315" width="280" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                             <color key="textColor" red="0.1843137255" green="0.63921568630000003" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dirección 2" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XAt-29-sXe">
-                            <rect key="frame" x="20" y="218" width="280" height="21"/>
+                            <rect key="frame" x="20" y="200" width="280" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                             <color key="textColor" red="0.1843137255" green="0.63921568630000003" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dirección 1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ncv-3x-dCy">
-                            <rect key="frame" x="20" y="151" width="280" height="21"/>
+                            <rect key="frame" x="20" y="141" width="280" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                             <color key="textColor" red="0.1843137255" green="0.63921568630000003" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -103,7 +105,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" id="VH6-B4-oHB">
-                            <rect key="frame" x="20" y="314" width="280" height="30"/>
+                            <rect key="frame" x="20" y="336" width="280" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btnsiguiente.png" id="N3N-i6-Be7">
@@ -118,7 +120,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="x9p-Pb-0to">
-                                    <rect key="frame" x="0.0" y="0.0" width="280" height="30"/>
+                                    <rect key="frame" x="0.0" y="-5" width="280" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                     <state key="normal">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -137,8 +139,26 @@
                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZmG-We-NTS">
+                            <rect key="frame" x="20" y="258" width="280" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                            <color key="textColor" red="0.18431372549019609" green="0.63921568627450975" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="Khi-0k-VYR">
+                            <rect key="frame" x="20" y="277" width="280" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textColor" red="0.23529411764705882" green="0.29019607843137252" blue="0.59215686274509804" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="vPO-wo-TNv"/>
+                            </connections>
+                        </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="T55-7o-e83">
-                            <rect key="frame" x="60" y="371" width="200" height="35"/>
+                            <rect key="frame" x="60" y="392" width="200" height="35"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                             <state key="normal" title="¡Regístralo!" backgroundImage="botonaceptar.png">

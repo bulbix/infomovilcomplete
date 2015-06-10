@@ -89,10 +89,7 @@
     UIBarButtonItem *buttonBack = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     self.navigationItem.leftBarButtonItem = buttonBack;
 
-    
-    
-    
-    
+   
     operacionWS = WSOperacionNombrar;
     publicoDominio = NO;
 	creoDominio = NO;
@@ -125,7 +122,8 @@
 	self.labelDir1.text = NSLocalizedString(@"publicarDir1", nil);
 	self.labelDir2.text = NSLocalizedString(@"publicarDir2", nil);
 	self.labelPais.text = NSLocalizedString(@"publicarPais", nil);
-    NSArray *fields = @[self.txtNombre, self.txtDir1, self.txtDir2];
+    self.labelEmail.text = NSLocalizedString(@"emailPublicaTuSitio", nil);
+    NSArray *fields = @[self.txtNombre, self.txtDir1, self.txtDir2, self.txtEmail];
     self.keyboardControls = [[BSKeyboardControls alloc] initWithFields:fields];
     [self.keyboardControls setDelegate:self];
     
@@ -138,10 +136,12 @@
         [self.txtDir1 setFrame:CGRectMake(40, 210, 295, 30)];
         [self.labelDir2 setFrame:CGRectMake(40, 240, 295, 30)];
         [self.txtDir2 setFrame:CGRectMake(40, 270, 295, 30)];
-        [self.labelPais setFrame:CGRectMake(40, 300, 295, 30)];
-        [self.vistaCombo setFrame:CGRectMake(40, 330, 295, 30)];
-        [self.imgBull setFrame:CGRectMake(250, 330, 20, 20)];
-        [self.boton setFrame:CGRectMake(77, 400, 220, 35)];
+        [self.labelEmail setFrame:CGRectMake(40, 300, 295, 30)];
+        [self.txtEmail setFrame:CGRectMake(40, 330, 295, 30)];
+        [self.labelPais setFrame:CGRectMake(40, 360, 295, 30)];
+        [self.vistaCombo setFrame:CGRectMake(40, 390, 295, 30)];
+        [self.imgBull setFrame:CGRectMake(250, 390, 20, 20)];
+        [self.boton setFrame:CGRectMake(77, 460, 220, 35)];
    
      }else if(IS_IPAD){
         [self.label1 setFrame:CGRectMake(84, 40, 600, 60)];
@@ -158,11 +158,17 @@
         [self.labelDir2 setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
         [self.txtDir2 setFrame:CGRectMake(84, 330, 600, 40)];
         [self.txtDir2 setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
-        [self.labelPais setFrame:CGRectMake(84, 390, 400, 35)];
+         
+         [self.labelEmail setFrame:CGRectMake(84, 390, 600, 35)];
+         [self.labelEmail setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
+         [self.txtEmail setFrame:CGRectMake(84, 420, 600, 40)];
+         [self.txtEmail setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
+         
+        [self.labelPais setFrame:CGRectMake(84, 480, 400, 35)];
         [self.labelPais setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
-        [self.vistaCombo setFrame:CGRectMake(84, 420, 600, 40)];
+        [self.vistaCombo setFrame:CGRectMake(84, 510, 600, 40)];
         [self.imgBull setFrame:CGRectMake(540, 10, 20, 20)];
-        [self.boton setFrame:CGRectMake(274, 500, 220, 40)];
+        [self.boton setFrame:CGRectMake(274, 560, 220, 40)];
         [self.boton.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
         
         
@@ -206,7 +212,7 @@
 	self.txtNombre.layer.cornerRadius = 5.0f;
 	self.txtDir1.layer.cornerRadius = 5.0f;
 	self.txtDir2.layer.cornerRadius = 5.0f;
-	
+    self.txtEmail.layer.cornerRadius = 5.0f;
 	
 	selectOculto = YES;
 	existeDominio = NO;
@@ -677,6 +683,9 @@
 	}
     else if ([[NSString trim:self.txtDir1.text] isEqualToString:@""] || [[NSString trim:self.txtDir2.text] isEqualToString:@""]) {
         mensajeError = NSLocalizedString(@"txtLlenarDireccion", Nil);
+        return NO;
+    }else if ([[NSString trim:self.txtEmail.text] isEqualToString:@""] || [[NSString trim:self.txtEmail.text] isEqualToString:@""]) {
+        mensajeError = NSLocalizedString(@"txtLlenarEmail", Nil);
         return NO;
     }
     else{

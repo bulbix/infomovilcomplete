@@ -416,6 +416,7 @@
 
 "txtLlenarNombre" = "Please fill your name";
 "txtLlenarDireccion" = "Please fill your address";
+"txtLlenarEmail" = "Please fill your email";
 "txtPublicar" = "Publish";
 "txtInfoMapa" = "Press";
 "txtInfoMapa2" = "to select the location";
@@ -563,3 +564,4 @@
 "dominioComprado" = "Already you purchased your .tel domain";
 "registrarDominioComprado" = "Register it";
 "errorNombreDominio" = "The domain name has been lost, please try again.";
+"emailPublicaTuSitio" = "Email" ;

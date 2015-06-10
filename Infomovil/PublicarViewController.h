@@ -47,8 +47,11 @@ typedef enum {
 @property (nonatomic, strong) DatosUsuario *datos;
 
 @property (nonatomic, strong) NSMutableArray *arregloDominios;
+@property (weak, nonatomic) IBOutlet UITextField *txtEmail;
+@property (weak, nonatomic) IBOutlet UILabel *labelEmail;
 
 - (IBAction)mostrarOpcion:(UIButton *)sender;
 
 - (IBAction)confirmarDominio:(id)sender;
 @end
+  

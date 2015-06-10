@@ -532,6 +532,7 @@
 
 "txtLlenarNombre" = "Por favor llena tu nombre";
 "txtLlenarDireccion" = "Por favor llena tu dirección";
+"txtLlenarEmail" = "Por favor llena tu correo electrónico";
 "txtPublicar" = "Publicar";
 "txtInfoMapa" = "Presiona";
 "txtInfoMapa2" = "para seleccionar la ubicación";
@@ -673,4 +674,4 @@
 "dominioComprado" = "Ya compraste tu dominio .tel";
 "registrarDominioComprado" = "Regístralo";
 "errorNombreDominio" = "El nombre de dominio se ha perdido por favor intentalo nuevamente.";
-
+"emailPublicaTuSitio" = "Correo electrónico";
