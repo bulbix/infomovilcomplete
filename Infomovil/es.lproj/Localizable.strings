@@ -353,6 +353,7 @@
 //CuentaViewController
 "cuentaTituloSegment1" = "Plan Pro";
 "cuentaTituloSegment2" = "Dominio";
+"cuentaTituloSegment3" = "Promoción";
 
 "cuentaLabel1" = "¡Quiero mi plan Pro!";
 "cuentaLabel2" = "Seis meses";
@@ -533,6 +534,7 @@
 "txtLlenarNombre" = "Por favor llena tu nombre";
 "txtLlenarDireccion" = "Por favor llena tu dirección";
 "txtLlenarEmail" = "Por favor llena tu correo electrónico";
+"txtRevisaEmail" = "Dirección de email inválida";
 "txtPublicar" = "Publicar";
 "txtInfoMapa" = "Presiona";
 "txtInfoMapa2" = "para seleccionar la ubicación";
@@ -675,3 +677,8 @@
 "registrarDominioComprado" = "Regístralo";
 "errorNombreDominio" = "El nombre de dominio se ha perdido por favor intentalo nuevamente.";
 "emailPublicaTuSitio" = "Correo electrónico";
+
+// Enviar Codigo Promoción //
+"labelPromocion" = "Introduce tu codigo para compartir.";
+"txtPromocion" = "Codigo";
+"btnPromocion" = "Enviar";

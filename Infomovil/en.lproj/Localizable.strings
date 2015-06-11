@@ -270,6 +270,8 @@
 
 "cuentaTituloSegment1"="Pro Plan";
 "cuentaTituloSegment2"="Domain";
+"cuentaTituloSegment3" = "Promotion";
+
 "cuentaLabel1"="Sign me up!";
 "cuentaLabel2"="6 months";
 "cuentaLabel3"="12 months";
@@ -417,6 +419,7 @@
 "txtLlenarNombre" = "Please fill your name";
 "txtLlenarDireccion" = "Please fill your address";
 "txtLlenarEmail" = "Please fill your email";
+"txtRevisaEmail" = "Invalid Email Address";
 "txtPublicar" = "Publish";
 "txtInfoMapa" = "Press";
 "txtInfoMapa2" = "to select the location";
@@ -565,3 +568,8 @@
 "registrarDominioComprado" = "Register it";
 "errorNombreDominio" = "The domain name has been lost, please try again.";
 "emailPublicaTuSitio" = "Email" ;
+
+// Enviar codigo Promoción //
+"labelPromocion" = "Introduce tu codigo para compartir.";
+"txtPromocion" = "Codigo";
+"btnPromocion" = "Enviar";

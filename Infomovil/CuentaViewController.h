@@ -62,6 +62,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *ComprarDominio;
 - (IBAction)comprarDominioBtn:(id)sender;
 
+@property (strong, nonatomic) IBOutlet UIView *viewEnviarCodigo;
+@property (weak, nonatomic) IBOutlet UILabel *labelPromocion;
+@property (weak, nonatomic) IBOutlet UITextField *txtPromocion;
+@property (weak, nonatomic) IBOutlet UIButton *Enviar;
 
 
 

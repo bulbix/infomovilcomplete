@@ -111,7 +111,7 @@ int opcionButton = 0 ;
     if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         self.selector.frame = CGRectMake(20, 10, 335, 30);
          self.scrollContenido.frame = CGRectMake(0, 50, 375, 667);
-        [self.scrollContenido setContentSize:CGSizeMake(750, 667)];
+        [self.scrollContenido setContentSize:CGSizeMake(1125, 667)];
         self.viewCompraPlanPro.frame = CGRectMake(0, 0, 375, 667);
         [self.vistaPlanPro setContentSize:CGSizeMake(375, 667)];
         self.vistaPlanPro.frame = CGRectMake(0, 0, 375, 667);
@@ -125,12 +125,11 @@ int opcionButton = 0 ;
     }else if(IS_IPAD){
         self.selector.frame = CGRectMake(134, 80, 500, 35);
         self.scrollContenido.frame = CGRectMake(0, 120, 768, 1024);
-        [self.scrollContenido setContentSize:CGSizeMake(1536, 2048)];
+        [self.scrollContenido setContentSize:CGSizeMake(2304, 2048)];
         self.viewCompraPlanPro.frame = CGRectMake(0, 0, 768, 900);
         self.vistaPlanPro.frame = CGRectMake(0, 0, 768, 1024);
         [self.vistaPlanPro setContentSize:CGSizeMake(768, 1024)];
         self.vistaDominio.frame = CGRectMake(768, 0, 768, 1024);
-        [self.scrollContenido setContentSize:CGSizeMake(1536, 2048)];
         self.tituloPlanPro.frame = CGRectMake(134, 15, 500, 35 );
         [self.tituloPlanPro setFont:[UIFont fontWithName:@"Avenir-Book" size:22]];
         self.subtituloPlanPro.frame = CGRectMake(134, 55, 500,29 );
@@ -151,7 +150,7 @@ int opcionButton = 0 ;
         [self.viewPlanProComprado setFrame:CGRectMake(0, 120, 768, 250)];;
     }else{
         [self.vistaPlanPro setContentSize:CGSizeMake(320, 655)];
-        [self.scrollContenido setContentSize:CGSizeMake(640, 655)];
+        [self.scrollContenido setContentSize:CGSizeMake(960, 655)];
         [self.botonCuenta setFrame:CGRectMake(128, 14, 64, 54)];
     }
   
@@ -186,7 +185,7 @@ int opcionButton = 0 ;
 	
 	[self.selector setTitle:NSLocalizedString(@"cuentaTituloSegment1", nil) forSegmentAtIndex:0];
 	[self.selector setTitle:NSLocalizedString(@"cuentaTituloSegment2", nil) forSegmentAtIndex:1];
-	
+	[self.selector setTitle:NSLocalizedString(@"cuentaTituloSegment3", nil) forSegmentAtIndex:2];
 	
 	
     
@@ -270,7 +269,12 @@ int opcionButton = 0 ;
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     self.precioDoce.text = [prefs stringForKey:@"precioDoceMesesPlanPro"];
     self.precioUno.text = [prefs stringForKey:@"precioUnMesPlanPro"];
-  
+ 
+    [self.labelPromocion setText:NSLocalizedString(@"labelPromocion", Nil)];
+    [self.Enviar setTitle:NSLocalizedString(@"btnPromocion", Nil) forState:UIControlStateNormal];
+    self.Enviar.layer.cornerRadius = 5;
+    self.txtPromocion.layer.cornerRadius = 5;
+    
 }
 
 
@@ -484,7 +488,6 @@ if(noSeRepiteOprimirElBoton){
 }
 
 - (IBAction)tipoCuenta:(id)sender {
-    NSLog(@"ENTRO A TIPO CUENTA!! EN CUENTAVIEWCONTROLLER");
 	/////////////////////////////////// COMPRAR PLAN PRO //////////////////////////////////
 	self.datosUsuario = [DatosUsuario sharedInstance];
     if(self.selector.selectedSegmentIndex == 0){
@@ -506,8 +509,8 @@ if(noSeRepiteOprimirElBoton){
         [self.scrollContenido scrollRectToVisible:CGRectMake(0, 0, self.scrollContenido.frame.size.width, self.scrollContenido.frame.size.height) animated:YES];
 /////////////////////////////////// DOMINIOS  /////////////////////////////////
 	}else if(self.selector.selectedSegmentIndex == 1){
-        DatosUsuario *datosUsuario = [DatosUsuario sharedInstance];
-        if(datosUsuario.dominio == nil || [datosUsuario.dominio isEqualToString:@""] || (datosUsuario.dominio == (id)[NSNull null]) || [CommonUtils validarEmail:datosUsuario.dominio] || [datosUsuario.dominio isEqualToString:@"(null)"]){
+        
+        if(self.datosUsuario.dominio == nil || [self.datosUsuario.dominio isEqualToString:@""] || (self.datosUsuario.dominio == (id)[NSNull null]) || [CommonUtils validarEmail:self.datosUsuario.dominio] || [self.datosUsuario.dominio isEqualToString:@"(null)"]){
             AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"msjDominioPublicar", Nil) andAlertViewType:AlertViewTypeQuestion];
             [alert show];
             
@@ -674,14 +677,44 @@ if(noSeRepiteOprimirElBoton){
             }else{
                 [self.scrollContenido scrollRectToVisible:CGRectMake(320, 0, self.scrollContenido.frame.size.width, self.scrollContenido.frame.size.height) animated:YES];
             }
+    }else if(self.selector.selectedSegmentIndex == 2){
+       
+        
+        if(IS_IPAD){
+            self.labelPromocion.frame = CGRectMake(184, 140, 400, 60);
+            self.txtPromocion.frame = CGRectMake(184, 240, 400, 40);
+            self.Enviar.frame = CGRectMake(259, 340, 250, 40);
+            self.labelPromocion.font = [UIFont fontWithName:@"Avenir-Book" size:24];
+            self.txtPromocion.font = [UIFont fontWithName:@"Avenir-Book" size:24];
+            self.Enviar.titleLabel.font = [UIFont fontWithName:@"Avenir-Book" size:24];
+            [self.viewEnviarCodigo setFrame:CGRectMake(1536, 0, 768,600)];
+            [self.scrollContenido scrollRectToVisible:CGRectMake(1536, 0, self.scrollContenido.frame.size.width, self.scrollContenido.frame.size.height) animated:YES];
+         }else if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
+             self.labelPromocion.frame = CGRectMake(37, 80, 300, 40);
+             self.txtPromocion.frame = CGRectMake(37, 130, 300, 35);
+             self.Enviar.frame = CGRectMake(62, 200, 250, 35);
+             [self.viewEnviarCodigo setFrame:CGRectMake(750, 0, 375,450)];
+             [self.scrollContenido scrollRectToVisible:CGRectMake(750, 0, self.scrollContenido.frame.size.width, self.scrollContenido.frame.size.height) animated:YES];
+         }else{
+              [self.viewEnviarCodigo setFrame:CGRectMake(640, 0, 320,350)];
+             [self.scrollContenido scrollRectToVisible:CGRectMake(640, 0, self.scrollContenido.frame.size.width, self.scrollContenido.frame.size.height) animated:YES];
+         
+         }
+     
+        [self.scrollContenido addSubview:self.viewEnviarCodigo];
     }
-	
-            
-            
-            
-	
 }
 
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if([textField.text length] == 0) {
+        return NO;
+    }
+    [textField resignFirstResponder];
+    return YES;
+
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -733,7 +766,7 @@ if(noSeRepiteOprimirElBoton){
     if ([[notification name] isEqualToString:@"FailedTransactionNotification"]){
         self.datosUsuario.datosPago.statusPago = @"INTENTO PAGO";
         self.datosUsuario.descripcionDominio = @"";
-      
+        noSeRepiteOprimirElBoton = YES;
         ((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio = @"Tramite";
         [NSThread sleepForTimeInterval:1];
         [self.alerta hide];
@@ -875,6 +908,7 @@ if(noSeRepiteOprimirElBoton){
     UIImageView* imgLineDominio = [[UIImageView alloc] init];
     
     if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
+        imgLineDominio.frame = CGRectMake(37, 185, 300, 2);
         etiquetaCompraDominio.frame = CGRectMake(47, 250,280 ,40 );
         etiquetaCompraDominioSub.frame = CGRectMake(47, 250,280 ,40 );
         [btnCompraDominio setFrame:CGRectMake(87, 300, 200, 40)];
@@ -882,6 +916,7 @@ if(noSeRepiteOprimirElBoton){
         etiquetaCompraDominioSub.font = [UIFont fontWithName:@"Avenir-Book" size:16];
         [btnCompraDominio.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
     }else if(IS_IPAD){
+        imgLineDominio.frame = CGRectMake(184, 360, 400, 2);
         etiquetaCompraDominio.frame = CGRectMake(84, 450,600 ,80 );
         etiquetaCompraDominioSub.frame = CGRectMake(84, 500, 600, 40);
         [btnCompraDominio setFrame:CGRectMake(259, 600, 250, 40)];
@@ -910,18 +945,6 @@ if(noSeRepiteOprimirElBoton){
                                                       alpha:1.0f];
     etiquetaCompraDominio.textAlignment = NSTextAlignmentCenter;
     [self.vistaDominio addSubview:etiquetaCompraDominio];
-    
-   /* [etiquetaCompraDominioSub setText:NSLocalizedString(@"leyendaCompraDominioSub", Nil)];
-    etiquetaCompraDominioSub.numberOfLines = 3;
-    etiquetaCompraDominioSub.adjustsFontSizeToFitWidth = YES;
-    etiquetaCompraDominioSub.backgroundColor = [UIColor clearColor];
-    etiquetaCompraDominioSub.textColor = [UIColor colorWithRed:47.0f/255.0f
-                                                         green:163.0f/255.0f
-                                                          blue:152.0f/255.0f
-                                                         alpha:1.0f];
-    etiquetaCompraDominioSub.textAlignment = NSTextAlignmentCenter;
-    [self.vistaDominio addSubview:etiquetaCompraDominioSub];
-    */
     
     [btnCompraDominio setTitle:NSLocalizedString(@"registrarDominioComprado", Nil) forState:UIControlStateNormal];
     [btnCompraDominio addTarget:self action:@selector(comprarDominioBtn:)forControlEvents:UIControlEventTouchUpInside];

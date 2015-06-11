@@ -377,7 +377,7 @@
         operacionWS = 12;
         WS_HandlerDominio *dominioHandler = [[WS_HandlerDominio alloc] init];
         [dominioHandler setWSHandlerDelegate:self];
-        [dominioHandler crearUsuario:self.datosUsuario.emailUsuario conNombre:self.nombreDominio.text password:self.datosUsuario.passwordUsuario status:@"1" nombre:@"xxx" direccion1:@"xxx" direccion2:@"xxx" pais:@"0" codigoPromocion:@"" tipoDominio:dominioAux idDominio:[NSString stringWithFormat:@"%li", (long)self.datosUsuario.idDominio]];
+    [dominioHandler crearUsuario:self.datosUsuario.emailUsuario conNombre:self.nombreDominio.text password:self.datosUsuario.passwordUsuario status:@"1" nombre:@"xxx" direccion1:@"xxx" direccion2:@"xxx" pais:@"0" codigoPromocion:@"" tipoDominio:dominioAux idDominio:[NSString stringWithFormat:@"%li", (long)self.datosUsuario.idDominio]emailPubli:self.datosUsuario.emailUsuario];
     
 
 }

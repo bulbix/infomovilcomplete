@@ -109,7 +109,8 @@
 		[filteredArray addObject:[[_arregloPais objectAtIndex:i]objectForKey:@"countryName"]];
 	}
     if(IS_IPAD){
-        [self.scroll setContentSize:CGSizeMake(768, 1024)];
+        [self.scroll setFrame:CGRectMake(0, 0, 768, 900)];
+        [self.scroll setContentSize:CGSizeMake(768, 900)];
     }else if (IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         [self.scroll setContentSize:CGSizeMake(375, 667)];
  
@@ -168,7 +169,7 @@
         [self.labelPais setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
         [self.vistaCombo setFrame:CGRectMake(84, 510, 600, 40)];
         [self.imgBull setFrame:CGRectMake(540, 10, 20, 20)];
-        [self.boton setFrame:CGRectMake(274, 560, 220, 40)];
+        [self.boton setFrame:CGRectMake(274, 600, 220, 40)];
         [self.boton.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
         
         
@@ -206,7 +207,11 @@
 
 	self.label2.text = NSLocalizedString(@"confirmalo", nil);
 	[self.boton setTitle:NSLocalizedString(@"PublicarBoton", nil) forState:UIControlStateNormal];
-	
+    if(self.datosUsuario.email == nil || [self.datosUsuario.email length]<=0){
+        self.txtEmail.text = self.datosUsuario.emailUsuario;
+    }else{
+        self.txtEmail.text = self.datosUsuario.email;
+    }
 	self.vistaCombo.layer.cornerRadius = 5.0f;
 	
 	self.txtNombre.layer.cornerRadius = 5.0f;
@@ -298,9 +303,9 @@
     if(![CommonUtils validarEmail:self.datosUsuario.dominio] && ![CommonUtils validarEmail:self.datosUsuario.dominioTel]){
     if(contador == 0 || [self.datos.tipoDeUsuario isEqualToString:@"canal"]){
         NSLog(@"ENTRO ");
-       [dominioHandler crearUsuario:self.datosUsuario.emailUsuario conNombre:self.datosUsuario.dominio password:self.datosUsuario.passwordUsuario status:@"1" nombre:self.txtNombre.text direccion1:self.txtDir1.text direccion2:self.txtDir2.text pais:self.nPais codigoPromocion:self.datosUsuario.codigoRedimir==nil?@" ":self.datosUsuario.codigoRedimir tipoDominio:dominioAux idDominio:[NSString stringWithFormat:@"%li", (long)self.datosUsuario.idDominio]];
+        [dominioHandler crearUsuario:self.datosUsuario.emailUsuario conNombre:self.datosUsuario.dominio password:self.datosUsuario.passwordUsuario status:@"1" nombre:self.txtNombre.text direccion1:self.txtDir1.text direccion2:self.txtDir2.text pais:self.nPais codigoPromocion:self.datosUsuario.codigoRedimir==nil?@" ":self.datosUsuario.codigoRedimir tipoDominio:dominioAux idDominio:[NSString stringWithFormat:@"%li", (long)self.datosUsuario.idDominio] emailPubli:self.txtEmail.text];
     }else{
-        [dominioHandler crearUsuario:self.datosUsuario.emailUsuario conNombre:self.datosUsuario.dominioTel password:self.datosUsuario.passwordUsuario status:@"1" nombre:self.txtNombre.text direccion1:self.txtDir1.text direccion2:self.txtDir2.text pais:self.nPais codigoPromocion:self.datosUsuario.codigoRedimir==nil?@" ":self.datosUsuario.codigoRedimir tipoDominio:@"tel" idDominio:[NSString stringWithFormat:@"%li", (long)self.datosUsuario.idDominio]];
+        [dominioHandler crearUsuario:self.datosUsuario.emailUsuario conNombre:self.datosUsuario.dominioTel password:self.datosUsuario.passwordUsuario status:@"1" nombre:self.txtNombre.text direccion1:self.txtDir1.text direccion2:self.txtDir2.text pais:self.nPais codigoPromocion:self.datosUsuario.codigoRedimir==nil?@" ":self.datosUsuario.codigoRedimir tipoDominio:@"tel" idDominio:[NSString stringWithFormat:@"%li",(long)self.datosUsuario.idDominio] emailPubli : self.txtEmail.text];
     }
     }else{
         AlertView *alert = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"errorNombreDominio", @" ") dominio:nil andAlertViewType:AlertViewTypeInfo];
@@ -687,8 +692,10 @@
     }else if ([[NSString trim:self.txtEmail.text] isEqualToString:@""] || [[NSString trim:self.txtEmail.text] isEqualToString:@""]) {
         mensajeError = NSLocalizedString(@"txtLlenarEmail", Nil);
         return NO;
-    }
-    else{
+    }else if( ![CommonUtils validaMail:self.txtEmail.text] ){
+        mensajeError = NSLocalizedString(@"txtRevisaEmail", Nil);
+        return NO;
+    }else{
 		return YES;
 	}
 	

@@ -147,7 +147,7 @@
 
 
 
--(void) crearUsuario:(NSString *)email conNombre:(NSString *)user password:(NSString *)pass status:(NSString *)s nombre:(NSString *)nom direccion1:(NSString *)dir1 direccion2:(NSString *)dir2 pais:(NSString *) nPais codigoPromocion:(NSString *)codProm tipoDominio:(NSString *)domainType idDominio:(NSString *)idDominio {
+-(void) crearUsuario:(NSString *)email conNombre:(NSString *)user password:(NSString *)pass status:(NSString *)s nombre:(NSString *)nom direccion1:(NSString *)dir1 direccion2:(NSString *)dir2 pais:(NSString *) nPais codigoPromocion:(NSString *)codProm tipoDominio:(NSString *)domainType idDominio:(NSString *)idDominio emailPubli:(NSString *)emailPublicar{
     self.datos = [DatosUsuario sharedInstance];
     
     if ([self.datos.redSocial isEqualToString:@"Facebook"]) {
@@ -188,6 +188,7 @@
                      "<codigoCamp></codigoCamp>"
                      "<domainType>%@</domainType>"
                      "<idDominio>%@</idDominio>"
+                     "<emailTel>%@</emailTel>"
 					 "</UserDomainVO>"
 					 "</ws:insertUserDomain1>"
 					 "</soapenv:Body>"
@@ -210,7 +211,9 @@
 					 [StringUtils encriptar:dir2 conToken:self.datos.token != nil ? self.datos.token : passwordEncriptar],//dir2
 					 [StringUtils encriptar:nPais conToken:self.datos.token != nil ? self.datos.token : passwordEncriptar],//npais
                      [StringUtils encriptar:domainType conToken:self.datos.token != nil ? self.datos.token: passwordEncriptar],
-                     [StringUtils encriptar:idDominio conToken:self.datos.token != nil ? self.datos.token: passwordEncriptar]];
+                     [StringUtils encriptar:idDominio conToken:self.datos.token != nil ? self.datos.token: passwordEncriptar],
+                     [StringUtils encriptar:emailPublicar conToken:self.datos.token != nil ? self.datos.token: passwordEncriptar]];
+    
     
     NSLog(@"EL DOMINIO ENVIADO ES: %@", domainType);
     

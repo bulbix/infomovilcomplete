@@ -173,7 +173,6 @@
 		0F6CC4EB18DC92A20066120E /* DominioRegistradoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6CC4E918DC92A20066120E /* DominioRegistradoViewController.m */; };
 		0F6CC4EC18DC92A20066120E /* DominioRegistradoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F6CC4EA18DC92A20066120E /* DominioRegistradoViewController.xib */; };
 		0F6EDD111909E27D007F3480 /* logonuevo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F6EDD101909E27D007F3480 /* logonuevo@2x.png */; };
-		0F70613F188ED0BB00B3B7DB /* VistaContactos.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F70613E188ED0BB00B3B7DB /* VistaContactos.m */; };
 		0F706142188EDE6C00B3B7DB /* DatosUsuario.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F706141188EDE6C00B3B7DB /* DatosUsuario.m */; };
 		0F70B50B18AD4BA300049C47 /* VideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F70B50A18AD4BA300049C47 /* VideoCell.m */; };
 		0F70B50D18AD4BB700049C47 /* VideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F70B50C18AD4BB700049C47 /* VideoCell.xib */; };
@@ -835,8 +834,6 @@
 		0F6CC4EA18DC92A20066120E /* DominioRegistradoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DominioRegistradoViewController.xib; sourceTree = "<group>"; };
 		0F6EDD0C19097185007F3480 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		0F6EDD101909E27D007F3480 /* logonuevo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logonuevo@2x.png"; sourceTree = "<group>"; };
-		0F70613D188ED0BB00B3B7DB /* VistaContactos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VistaContactos.h; sourceTree = "<group>"; };
-		0F70613E188ED0BB00B3B7DB /* VistaContactos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VistaContactos.m; sourceTree = "<group>"; };
 		0F706140188EDE6C00B3B7DB /* DatosUsuario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatosUsuario.h; sourceTree = "<group>"; };
 		0F706141188EDE6C00B3B7DB /* DatosUsuario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatosUsuario.m; sourceTree = "<group>"; };
 		0F70B50918AD4BA300049C47 /* VideoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoCell.h; sourceTree = "<group>"; };
@@ -2212,8 +2209,6 @@
 				0FC0F3781888C1FF000ED438 /* Publicar */,
 				0FC0F3771888C1F2000ED438 /* Nombrar */,
 				0FC0F3761888C1DC000ED438 /* CrearEditar */,
-				0F70613D188ED0BB00B3B7DB /* VistaContactos.h */,
-				0F70613E188ED0BB00B3B7DB /* VistaContactos.m */,
 				6538C7ED197A57C5008D2AC8 /* UIViewDefs.h */,
 			);
 			name = ViewControllers;
@@ -3144,7 +3139,6 @@
 				0F706142188EDE6C00B3B7DB /* DatosUsuario.m in Sources */,
 				0FB4F38B18DBC83A0035363E /* NSMutableDataUtiles.m in Sources */,
 				0F3D87B018AD7E9B0006E5BC /* VistaVideoViewController.m in Sources */,
-				0F70613F188ED0BB00B3B7DB /* VistaContactos.m in Sources */,
 				0F4A16A0187B002B005F5786 /* ListaTelefonosViewController.m in Sources */,
 				0FFF9E06188DE9C200079A57 /* ConfiguracionViewController.m in Sources */,
 				0F76C60F18AD1F780094A103 /* VideoModel.m in Sources */,

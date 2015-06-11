@@ -8,7 +8,7 @@
 
 #import "ListaTelefonosViewController.h"
 #import "TipoContactoViewController.h"
-#import "VistaContactos.h"
+//#import "VistaContactos.h"
 #import "Contacto.h"
 #import "ContactosCell.h"
 #import "ContactoPaso2ViewController.h"
