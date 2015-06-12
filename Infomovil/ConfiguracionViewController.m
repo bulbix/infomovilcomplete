@@ -247,7 +247,7 @@
     });
     
     ((AppDelegate*)	[[UIApplication sharedApplication] delegate]).statusDominio = @"Gratuito";
-    
+    [self.datosUsuario eliminarDatos];
     
     MainViewController *Inicio = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:Nil];
     [self.navigationController pushViewController:Inicio animated:YES];

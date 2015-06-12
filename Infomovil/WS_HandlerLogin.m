@@ -896,6 +896,7 @@
     
     else if ([elementName isEqualToString:@"template"]) {
         self.datosUsuario.nombreTemplate  = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
+        NSLog(@"EL TEMPLATE QUE SELECCIONO ES: %@", self.datosUsuario.nombreTemplate);
         if(self.datosUsuario.nombreTemplate  == nil || [self.datosUsuario.nombreTemplate isEqualToString:@""] || [self.datosUsuario.nombreTemplate isEqualToString:@"(null)"])
         {
             self.datosUsuario.nombreTemplate = @"Estandar1";
@@ -904,7 +905,7 @@
              self.datosUsuario.eligioTemplate = YES;
         }
        
-        NSLog(@"EL TEMPLATE RECIBIDO EN LOGIN ES: %@", [StringUtils desEncriptar:self.currentElementString conToken:self.token]);
+        NSLog(@"EL TEMPLATE RECIBIDO EN LOGIN ES: %@ desencriptado de: %@", [StringUtils desEncriptar:self.currentElementString conToken:self.token],self.currentElementString);
     }
     
     else if ([elementName isEqualToString:@"descripcionItem"]) { 

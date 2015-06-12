@@ -550,7 +550,7 @@
 "redimirExito" = "El código ha sido activado";
 
 "txtBtnRedimir" = "Redimir Codigo";
-"txtErrorCodigo" = "El codigo a redimir sólo puede contener números y letras";
+"txtErrorCodigo" = "El código a redimir sólo puede contener números y letras";
 
 //CuentaViewController
 
@@ -656,7 +656,7 @@
 "errorPublicacion" = "No se ha podido registrar tu sitio web por favor inténtalo nuevamente.";
 "faltaImagenActualizar" = "Debes seleccionar una imagen antes de actualizar";
 "cuentaTodavia"="¿Aún no tienes cuenta? Regístrate";
-"editaTuSitio" = "Edita tu sitio web";
+
 "noSeHaPodido" = "No se ha podido cargar la vista previa.";
 "yaTienesCuenta" = "¿Ya tienes cuenta? Ingresa";
 "estaDisponiblePublica" = "¡El dominio está disponible!";
@@ -679,6 +679,6 @@
 "emailPublicaTuSitio" = "Correo electrónico";
 
 // Enviar Codigo Promoción //
-"labelPromocion" = "Introduce tu codigo para compartir.";
-"txtPromocion" = "Codigo";
-"btnPromocion" = "Enviar";
+"labelPromocion" = "Introduce tu código de promoción.";
+"txtPromocion" = "Código";
+"btnPromocion" = "Redimir";

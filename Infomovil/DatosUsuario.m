@@ -166,7 +166,12 @@
     self.arregloDescripcionImagenGaleria = Nil;
     
     self.voyAComprarTel = Nil;
-    
+    NSUserDefaults *prefSesion = [NSUserDefaults standardUserDefaults];
+    [prefSesion setInteger:0 forKey:@"intSesionActiva"];
+    [prefSesion setObject:nil forKey:@"strSesionUser"];
+    [prefSesion setObject:nil forKey:@"strSesionPass"];
+    [prefSesion setInteger:0 forKey:@"intSesionFacebook"];
+    [prefSesion synchronize];
     
 }
 

@@ -197,9 +197,9 @@ BOOL banderaRegresar;
         [self acomodarBarraNavegacionConTitulo:@"AMBIENTE DE QA" nombreImagen:@"barramorada.png"];
 #else
     if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
-        [self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"creaSitio", @" ") nombreImagen:@"barramorada.png"];
+        [self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"", @" ") nombreImagen:@"barramorada.png"];
     }else{
-        [self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"creaSitio", @" ") nombreImagen:@"NBlila.png"];
+        [self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"", @" ") nombreImagen:@"NBlila.png"];
     }
     
 #endif
@@ -216,21 +216,27 @@ BOOL banderaRegresar;
            
             for(int i= 0; i< [self.arregloDominios count]; i++){
                 DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:i];
-                NSLog(@"EL USUARIO DOMAIN TEL ES: %@ con domainType %@", usuarioDom.domainName, usuarioDom.domainType);
+                
                
                 if([usuarioDom.domainType isEqualToString:@"tel"]){
-                  
+                  NSLog(@"EL USUARIO DOMAIN TEL ES: %@ con domainType %@", usuarioDom.domainName, usuarioDom.domainType);
                     if([usuarioDom.vigente isEqualToString:@"SI"] || [usuarioDom.vigente isEqualToString:@"si"]){
                         
                         
-                        if([self.datosUsuario.dominio length] > 12 && !IS_IPAD){
-                            [self.dominio.titleLabel setFont: [UIFont fontWithName:@"Avenir-Book" size:16]];
-                        }
+                        
+                        if([usuarioDom.domainName isEqualToString:@""] || [usuarioDom.domainName length]<=0){
                         [self.dominio setTitle:[NSString stringWithFormat:@"www.%@.tel",self.datosUsuario.dominio] forState:UIControlStateNormal];
-                    }/*else if( usuarioDom.fechaIni == nil || [usuarioDom.fechaIni length] <= 0){
-                        [self.dominio setTitle:[NSString stringWithFormat:@"www.%@.tel", usuarioDom.domainName] forState:UIControlStateNormal];
-                    
-                    }*/
+                            if([self.datosUsuario.dominio length] > 12 && !IS_IPAD){
+                                [self.dominio.titleLabel setFont: [UIFont fontWithName:@"Avenir-Book" size:16]];
+                            }
+                        }else{
+                            [self.dominio setTitle:[NSString stringWithFormat:@"www.%@.tel",usuarioDom.domainName] forState:UIControlStateNormal];
+                            self.datosUsuario.dominio = usuarioDom.domainName;
+                            if([usuarioDom.domainName length] > 12 && !IS_IPAD){
+                                [self.dominio.titleLabel setFont: [UIFont fontWithName:@"Avenir-Book" size:16]];
+                            }
+                        }
+                    }
                 }
             }
            
@@ -419,6 +425,7 @@ BOOL banderaRegresar;
         [handlerDominio setWSHandlerDelegate:self];
         [handlerDominio cerrarSession:correo];
         [StringUtils deleteFile];
+        [self.datosUsuario eliminarDatos];
     });
     
         

@@ -14,7 +14,6 @@
                 <outlet property="leyenda3" destination="01r-pH-5B9" id="TIO-S5-v6u"/>
                 <outlet property="leyenda4" destination="SCF-3h-29D" id="rdC-QF-SRw"/>
                 <outlet property="leyenda5" destination="pON-2P-uil" id="rBc-9t-yNd"/>
-                <outlet property="msjCreaTuSitio" destination="4hX-MR-Lz2" id="5b0-e0-mpk"/>
                 <outlet property="msjRegistrarConFacebook" destination="0GC-QK-cV5" id="2ny-4F-uIz"/>
                 <outlet property="o" destination="c8L-gR-eck" id="z1i-3L-tbC"/>
                 <outlet property="raya1" destination="bXz-T9-6XU" id="uup-Ku-5Kv"/>
@@ -150,15 +149,8 @@
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoRegistrado.png" id="Cdc-b4-5I4">
                             <rect key="frame" x="50" y="24" width="219" height="40"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Crea tu sitio web" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4hX-MR-Lz2">
-                            <rect key="frame" x="55" y="68" width="208" height="39"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
-                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="97O-gl-QNk">
                             <rect key="frame" x="22" y="392" width="274" height="45"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

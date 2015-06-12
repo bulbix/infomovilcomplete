@@ -10,7 +10,6 @@
                 <outlet property="boton" destination="Juy-4m-fqk" id="1nv-5S-xn7"/>
                 <outlet property="btnOlvidePass" destination="SHM-Kn-1sb" id="ktS-tY-VuB"/>
                 <outlet property="btnRegistrate" destination="hzj-zB-fwt" id="ERK-8l-Oqo"/>
-                <outlet property="editaTuSitio" destination="iwV-f1-WQY" id="bFi-YJ-b4c"/>
                 <outlet property="imgLogo" destination="mLM-rE-S56" id="KIt-M2-nET"/>
                 <outlet property="label" destination="Yam-Dn-cMF" id="uuT-i3-GoM"/>
                 <outlet property="leyenda1" destination="EcP-70-Fao" id="0V1-2s-HEG"/>
@@ -81,10 +80,6 @@
                                 <outlet property="delegate" destination="-1" id="Jcn-k0-5hZ"/>
                             </connections>
                         </textField>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoRegistrado.png" id="mLM-rE-S56">
-                            <rect key="frame" x="50" y="24" width="219" height="40"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                        </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Juy-4m-fqk">
                             <rect key="frame" x="19" y="374" width="280" height="45"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
@@ -109,13 +104,6 @@
                                 <outlet property="delegate" destination="-1" id="1LL-wd-5pY"/>
                             </connections>
                         </textField>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edita tu sitio web" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iwV-f1-WQY">
-                            <rect key="frame" x="55" y="68" width="208" height="39"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
-                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hzj-zB-fwt">
                             <rect key="frame" x="20" y="447" width="279" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -184,6 +172,10 @@
                                 <action selector="cambiarPassword:" destination="-1" eventType="touchUpInside" id="XP1-uQ-VZc"/>
                             </connections>
                         </button>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoRegistrado.png" id="mLM-rE-S56">
+                            <rect key="frame" x="50" y="43" width="219" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                        </imageView>
                     </subviews>
                     <connections>
                         <outlet property="delegate" destination="-1" id="4wz-W4-x6z"/>

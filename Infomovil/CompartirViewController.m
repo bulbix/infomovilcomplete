@@ -481,8 +481,17 @@
 }
 
 -(void)accionSi{
-    NombrarViewController *comparte = [[NombrarViewController alloc] initWithNibName:@"NombrarViewController" bundle:Nil];
-    [self.navigationController pushViewController:comparte animated:YES];
+    self.datosUsuario = [DatosUsuario sharedInstance];
+        if(self.datosUsuario.eligioTemplate){
+            NombrarViewController *comparte = [[NombrarViewController alloc] initWithNibName:@"NombrarViewController" bundle:Nil];
+            [self.navigationController pushViewController:comparte animated:YES];
+        }else{
+            MenuPasosViewController *comparte = [[MenuPasosViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
+            [self.navigationController pushViewController:comparte animated:YES];
+            AlertView *vistaNotificacion = [AlertView initWithDelegate:self message:NSLocalizedString(@"eligeTemplate", Nil) andAlertViewType:AlertViewTypeInfo];
+            [vistaNotificacion show];
+        }
+   
 }
 -(void)accionNo{
     MenuPasosViewController *comparte = [[MenuPasosViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];

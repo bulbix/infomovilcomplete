@@ -25,7 +25,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *btnOlvidePass;
 // LOGIN nuevo//
-@property (weak, nonatomic) IBOutlet UILabel *editaTuSitio;
+
 @property (weak, nonatomic) IBOutlet UIButton *btnRegistrate;
 
 @property (weak, nonatomic) IBOutlet UIButton *recordarbtn;

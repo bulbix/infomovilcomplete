@@ -259,10 +259,22 @@
 }
 
 -(void) accionSi {
+    self.datosUsuario = [DatosUsuario sharedInstance];
     if(dominioNoPublicado == YES){
-        NombrarViewController *comparte = [[NombrarViewController alloc] initWithNibName:@"NombrarViewController" bundle:Nil];
-        [self.navigationController pushViewController:comparte animated:YES];
-        dominioNoPublicado = NO;
+        if(self.datosUsuario.eligioTemplate){
+            NombrarViewController *comparte = [[NombrarViewController alloc] initWithNibName:@"NombrarViewController" bundle:Nil];
+            [self.navigationController pushViewController:comparte animated:YES];
+            dominioNoPublicado = NO;
+        }else{
+            MenuPasosViewController *comparte = [[MenuPasosViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
+            [self.navigationController pushViewController:comparte animated:YES];
+            dominioNoPublicado = NO;
+            AlertView *vistaNotificacion = [AlertView initWithDelegate:self message:NSLocalizedString(@"eligeTemplate", Nil) andAlertViewType:AlertViewTypeInfo];
+            [vistaNotificacion show];
+        
+        }
+        
+        
     }else{
         CuentaViewController *cuenta = [[CuentaViewController alloc] initWithNibName:@"CuentaViewController" bundle:Nil];
         [cuenta setRegresarAnterior:YES];
