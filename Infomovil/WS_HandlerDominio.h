@@ -13,7 +13,7 @@
 
 @interface WS_HandlerDominio : WS_Handler <NSXMLParserDelegate>
 
-@property (nonatomic, strong) id<WS_HandlerProtocol> wSHandlerDelegate;
+@property (nonatomic, weak) id<WS_HandlerProtocol> wSHandlerDelegate;
 @property (nonatomic, strong) NSString *currentElementString;
 @property (nonatomic, strong) NSString *resultado;
 @property (nonatomic, strong) NSString *resultadoDominio;

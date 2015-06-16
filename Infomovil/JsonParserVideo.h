@@ -14,7 +14,7 @@
 @property(nonatomic, strong) NSString *criterioBusqueda;
 @property(nonatomic) NSInteger tipoBusqueda;
 @property(nonatomic, strong) NSMutableArray *arregloVideos;
-@property (nonatomic, strong) id<WS_HandlerProtocol> delegate;
+@property (nonatomic, weak) id<WS_HandlerProtocol> delegate;
 
 -(void)buscarVideo:(NSString *)criterioBusqueda conTipo:(NSInteger) tipoBusqueda;
 

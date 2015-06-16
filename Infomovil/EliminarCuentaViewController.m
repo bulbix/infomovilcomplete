@@ -280,6 +280,7 @@
 		[StringUtils deleteResourcesWithExtension:@"jpg"];
 		[StringUtils deleteFile];
 		[self.datosUsuario eliminarDatos];
+        [self.datosUsuario eliminarSesion];
 		((AppDelegate*)	[[UIApplication sharedApplication] delegate]).statusDominio = @"Gratuito";
 	
     }

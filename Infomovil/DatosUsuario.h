@@ -152,5 +152,6 @@
 
 - (void)copiaPropiedades:(DatosUsuario *) datosOrigen;
 -(void) eliminarDatos;
+-(void) eliminarSesion;
 
 @end

@@ -545,23 +545,12 @@
                            [StringUtils encriptar:self.datos.token conToken:passwordEncriptar]];
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
     NSLog(@"La respuesta es en ws_handlerdominio cerrar sesion %s", [dataResult bytes]);
-    if (dataResult != nil) {
-        NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
-        [parser setDelegate:self];
-        if ([parser parse]) {
-
-            [StringUtils deleteResourcesWithExtension:@"jpg"];
-            [StringUtils deleteFile];
-            [self.datos eliminarDatos];
-        }
-    }
-    // Se cierra la sesion //
-    NSUserDefaults *prefSesion = [NSUserDefaults standardUserDefaults];
-    [prefSesion setObject:nil forKey:@"strSesionUser"];
-    [prefSesion setObject:nil forKey:@"strSesionPass"];
-    [prefSesion setInteger:0 forKey:@"intSesionFacebook"];
-    [prefSesion setInteger:0 forKey:@"intSesionActiva"];
-    [prefSesion synchronize];
+    [StringUtils deleteResourcesWithExtension:@"jpg"];
+    [StringUtils deleteFile];
+    [self.datos eliminarDatos];
+    [self.datos eliminarSesion];
+   
+    
 }
 
 -(void) consultaEstatusDominio {

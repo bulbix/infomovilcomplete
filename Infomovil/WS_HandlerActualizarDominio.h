@@ -17,7 +17,7 @@
 
 @interface WS_HandlerActualizarDominio : WS_Handler <WS_HandlerProtocol, NSXMLParserDelegate>
 
-@property (nonatomic, strong) id<WS_HandlerProtocol> actualizarDominioDelegate;
+@property (nonatomic, weak) id<WS_HandlerProtocol> actualizarDominioDelegate;
 @property (nonatomic, strong) NSString *currentElementString;
 @property (nonatomic, strong) NSString *token;
 @property (nonatomic, strong) NSString *resultado;

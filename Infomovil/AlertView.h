@@ -25,16 +25,16 @@ typedef enum {
 
 @interface AlertView : UIView
 
-@property (nonatomic,retain) id<AlertViewDelegate> delegado;
+@property (nonatomic,weak) id<AlertViewDelegate> delegado;
 @property (nonatomic) AlertViewType type;
 
-@property (nonatomic, retain) UIView *vistaAlert;
+@property (nonatomic, strong) UIView *vistaAlert;
 
-@property (nonatomic, retain) UIImageView *imagenEncabezado;
+@property (nonatomic, strong) UIImageView *imagenEncabezado;
 
-@property (nonatomic, retain) UIButton *botonSi;
-@property (nonatomic, retain) UIButton *botonNo;
-@property (nonatomic, retain) UIButton *botonAceptar;
+@property (nonatomic, strong) UIButton *botonSi;
+@property (nonatomic, strong) UIButton *botonNo;
+@property (nonatomic, strong) UIButton *botonAceptar;
 
 @property (nonatomic, strong) UILabel *labelTitulo;
 @property (nonatomic, strong) UILabel *labelPregunta;
@@ -44,7 +44,7 @@ typedef enum {
 @property (nonatomic, strong) UILabel *labelMensaje2;
 @property (nonatomic, strong) UIImageView *imagenLogo;
 
-@property (nonatomic, strong) ETActivityIndicatorView *activityIndicator;
+@property (nonatomic, weak) ETActivityIndicatorView *activityIndicator;
 
 +(id)initWithDelegate:(id<AlertViewDelegate>)delegate message:(NSString*)mensaje andAlertViewType:(AlertViewType)type;
 +(id)initWithDelegate:(id<AlertViewDelegate>)delegate titulo:(NSString *)titulo message:(NSString*)mensaje dominio:(NSString*)dominio andAlertViewType:(AlertViewType)type;

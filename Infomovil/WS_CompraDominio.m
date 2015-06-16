@@ -264,7 +264,7 @@
         }else{
             self.datosUsuario.fechaInicial = self.currentElementString;
         }
-        ///////////////////////////////////////////////////////////////////////////////
+   
     }else if ([elementName isEqualToString:@"fechaCtrlIni"]){
         NSString *auxOffer = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
         [dominioUsuario setFechaIni:auxOffer];

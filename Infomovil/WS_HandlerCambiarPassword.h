@@ -11,7 +11,7 @@
 
 @interface WS_HandlerCambiarPassword : WS_Handler <WS_HandlerProtocol, NSXMLParserDelegate>
 
-@property (nonatomic, strong) id<WS_HandlerProtocol> cambiarPasswordDelegate;
+@property (nonatomic, weak) id<WS_HandlerProtocol> cambiarPasswordDelegate;
 @property (nonatomic, strong) NSString *currentElementString;
 @property (nonatomic, strong) NSString *token;
 @property (nonatomic, strong) NSString *resultado;

@@ -20,7 +20,7 @@
 @interface WS_HandlerVisitas : WS_Handler <NSXMLParserDelegate>
 
 @property (nonatomic) NSInteger opcionSeleccionada;
-@property (nonatomic, strong) id<WS_HandlerProtocol> wSHandlerDelegate;
+@property (nonatomic, weak) id<WS_HandlerProtocol> wSHandlerDelegate;
 @property (nonatomic, strong) NSMutableString *currentElemenString;
 @property (nonatomic, strong) VisitasModel *visitaActual;
 @property (nonatomic, strong) NSMutableArray *arregloVisitas;

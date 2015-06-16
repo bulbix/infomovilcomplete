@@ -208,14 +208,17 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1KN-qO-PbL">
-                    <rect key="frame" x="60" y="146" width="200" height="30"/>
+                    <rect key="frame" x="60" y="146" width="200" height="35"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.16470588235294117" green="0.63529411764705879" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                    <state key="normal" title="Enviar">
+                    <state key="normal" title="Redimir">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="redimirCodigo:" destination="-1" eventType="touchUpInside" id="RUu-Ma-pmp"/>
+                    </connections>
                 </button>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="VS8-Ez-YmQ">
                     <rect key="frame" x="20" y="84" width="280" height="30"/>

@@ -20,7 +20,7 @@
 @property (nonatomic, strong) NSMutableArray *arregloContactos;
 @property (nonatomic, strong) GaleriaImagenes *galeria;
 @property (nonatomic, strong) NSMutableArray *arregloImagenes;
-@property (nonatomic, strong) id<WS_HandlerProtocol> loginDelegate;
+@property (nonatomic, weak) id<WS_HandlerProtocol> loginDelegate;
 @property (nonatomic) NSInteger idDominio;
 @property (nonatomic, strong) NSString *token;
 @property (nonatomic, strong) OffertRecord *promocionElegida;

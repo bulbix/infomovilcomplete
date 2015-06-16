@@ -262,9 +262,17 @@
     self.datosUsuario = [DatosUsuario sharedInstance];
     if(dominioNoPublicado == YES){
         if(self.datosUsuario.eligioTemplate){
-            NombrarViewController *comparte = [[NombrarViewController alloc] initWithNibName:@"NombrarViewController" bundle:Nil];
-            [self.navigationController pushViewController:comparte animated:YES];
-            dominioNoPublicado = NO;
+            if( [self perfilEditado]) {
+                NombrarViewController *comparte = [[NombrarViewController alloc] initWithNibName:@"NombrarViewController" bundle:Nil];
+                [self.navigationController pushViewController:comparte animated:YES];
+                dominioNoPublicado = NO;
+            }else{
+                MenuPasosViewController *comparte = [[MenuPasosViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
+                [self.navigationController pushViewController:comparte animated:YES];
+                dominioNoPublicado = NO;
+                AlertView *vistaNotificacion = [AlertView initWithDelegate:self message:NSLocalizedString(@"editaPagina", Nil) andAlertViewType:AlertViewTypeInfo];
+                [vistaNotificacion show];
+            }
         }else{
             MenuPasosViewController *comparte = [[MenuPasosViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
             [self.navigationController pushViewController:comparte animated:YES];
@@ -273,8 +281,6 @@
             [vistaNotificacion show];
         
         }
-        
-        
     }else{
         CuentaViewController *cuenta = [[CuentaViewController alloc] initWithNibName:@"CuentaViewController" bundle:Nil];
         [cuenta setRegresarAnterior:YES];
@@ -488,15 +494,21 @@
         [NSThread sleepForTimeInterval:1];
         [self.alertActivity hide];
     }
-   /* AlertView *alertAct = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
-    [alertAct show];
-    [StringUtils terminarSession];
-    
-    MainViewController *inicio = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:Nil];
-    [self.navigationController pushViewController:inicio animated:YES];
-    */
+   
 }
 
-
+-(BOOL) perfilEditado {
+    BOOL fueEditado = NO;
+    self.datosUsuario = [DatosUsuario sharedInstance];
+    if ([self.datosUsuario.arregloEstatusEdicion count] > 0) {
+        for (int i = 0; i < [self.datosUsuario.arregloEstatusEdicion count]; i++) {
+            if ([[self.datosUsuario.arregloEstatusEdicion objectAtIndex:i]  isEqual: @YES]) {
+                fueEditado = YES;
+                break;
+            }
+        }
+    }
+    return fueEditado;
+}
 
 @end

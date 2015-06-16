@@ -347,7 +347,7 @@
 
 "mensajeEliminarPerfil" = "Delete this data?";
 
-"publicarNombre" = "Name:";
+"publicarNombre" = "Name of the administrative contact:";
 "publicarDir1" = "Address 1:";
 "publicarDir2" = "Address 2:";
 "publicarPais" = "Country:";
@@ -362,7 +362,7 @@
 
 "eliminaImagenAviso" = "You must first remove the picture";
 
-"errorPassword" = "Password must be 8 or more characters (letters and numbers) Can not contain the word Info or Infomovil and should not be equal to email";
+"errorPassword" = "Password must be 8 or more characters (letters and numbers) Cannot contain the word Info or Infomovil and should not be equal to email";
 "imagenPromoCorrecta" = "Your image is now ready to be uploaded";
 
 "registrarMensaje" =  "Please create an account with your e-mail and password.";
@@ -559,8 +559,8 @@
 "eligePlanCuenta" ="Choose your plan and purchase plan pro" ;
 "publicarNombrar" = "!Publish¡";
 "aceptarPop" = "Accept";
-"comprarDominioTel" = "Buy it!";
-"leyendaCompraDominio" = "Buy your .tel domain";
+"comprarDominioTel" = "Search";
+"leyendaCompraDominio" = "Buy your own domain for a more professional image and a more memorable address.";
 "leyendaCompraDominioSub"="Give more presence to your business.";
 "comprarDominioTelHeader"= "Naming | Publish";
 
@@ -573,3 +573,5 @@
 "labelPromocion" = "Enter your promotion code.";
 "txtPromocion" = "Code";
 "btnPromocion" = "Redeem";
+"letrasNumeros" = "Only numbers and letters without empty spaces are allowed.";
+

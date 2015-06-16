@@ -10,7 +10,7 @@
 #import "WS_HandlerProtocol.h"
 @interface WS_HandlerUsuario : WS_Handler <NSXMLParserDelegate>
 
-@property (nonatomic, strong) id<WS_HandlerProtocol> wsHandlerDelegate;
+@property (nonatomic, weak) id<WS_HandlerProtocol> wsHandlerDelegate;
 @property (nonatomic, strong) NSString *currentElementString;
 @property (nonatomic, strong) NSString *resultado;
 @property (nonatomic, strong) NSString *token;

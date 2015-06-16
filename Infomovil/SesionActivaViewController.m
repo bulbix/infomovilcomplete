@@ -33,6 +33,7 @@
         [StringUtils deleteResourcesWithExtension:@"jpg"];
         [StringUtils deleteFile];
         [self.datosUsuario eliminarDatos];
+        NSLog(@"Antes de iniciar sesión borro los datos guardados anteriores.");
     }
     
     if([[self.datosUsuario.itemsDominio objectAtIndex:0] descripcionIdioma] == nil){

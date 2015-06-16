@@ -13,7 +13,7 @@
 
 @interface WS_CompraDominio : WS_Handler <WS_HandlerProtocol, NSXMLParserDelegate>
 
-@property (nonatomic, strong) id<WS_HandlerProtocol> compraDominioDelegate;
+@property (nonatomic, weak) id<WS_HandlerProtocol> compraDominioDelegate;
 @property (nonatomic, strong) NSString *currentElementString;
 @property (nonatomic, strong) NSString *token;
 @property (nonatomic, strong) NSString *resultado;

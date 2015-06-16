@@ -418,6 +418,7 @@
 		AB60A84B1980662000E1C476 /* logoRegistrado@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB60A84A1980661F00E1C476 /* logoRegistrado@2x.png */; };
 		BF0919B71B20D81B0067A4E6 /* NombraCompraDominio.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF0919B61B20D81B0067A4E6 /* NombraCompraDominio.xib */; };
 		BF0919BA1B20D8600067A4E6 /* NombraCompraDominio.m in Sources */ = {isa = PBXBuildFile; fileRef = BF0919B91B20D8600067A4E6 /* NombraCompraDominio.m */; };
+		BF2B5D931B2F54BD00947D0F /* WS_RedimirCodigo.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2B5D921B2F54BD00947D0F /* WS_RedimirCodigo.m */; };
 		BF3322281B1E7C67004FBF24 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF3322271B1E7C67004FBF24 /* HockeySDK.framework */; };
 		BF33222C1B1E7C87004FBF24 /* HockeySDK.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = BF33222A1B1E7C87004FBF24 /* HockeySDK.xcconfig */; };
 		BF33222D1B1E7C87004FBF24 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BF33222B1B1E7C87004FBF24 /* HockeySDKResources.bundle */; };
@@ -1143,6 +1144,8 @@
 		BF0919B61B20D81B0067A4E6 /* NombraCompraDominio.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NombraCompraDominio.xib; sourceTree = "<group>"; };
 		BF0919B81B20D8600067A4E6 /* NombraCompraDominio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NombraCompraDominio.h; sourceTree = "<group>"; };
 		BF0919B91B20D8600067A4E6 /* NombraCompraDominio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NombraCompraDominio.m; sourceTree = "<group>"; };
+		BF2B5D911B2F54BD00947D0F /* WS_RedimirCodigo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WS_RedimirCodigo.h; sourceTree = "<group>"; };
+		BF2B5D921B2F54BD00947D0F /* WS_RedimirCodigo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WS_RedimirCodigo.m; sourceTree = "<group>"; };
 		BF3322271B1E7C67004FBF24 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HockeySDK.framework; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDK.framework"; sourceTree = "<group>"; };
 		BF33222A1B1E7C87004FBF24 /* HockeySDK.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = HockeySDK.xcconfig; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDK.framework/Versions/A/Resources/HockeySDK.xcconfig"; sourceTree = "<group>"; };
 		BF33222B1B1E7C87004FBF24 /* HockeySDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = HockeySDKResources.bundle; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDK.framework/Versions/A/Resources/HockeySDKResources.bundle"; sourceTree = "<group>"; };
@@ -1748,6 +1751,8 @@
 				6512ABCD190AC9E400AEA2CE /* WS_CompraDominio.m */,
 				0FCB32C319B922C40042322E /* JsonParserVideo.h */,
 				0FCB32C419B922C40042322E /* JsonParserVideo.m */,
+				BF2B5D911B2F54BD00947D0F /* WS_RedimirCodigo.h */,
+				BF2B5D921B2F54BD00947D0F /* WS_RedimirCodigo.m */,
 			);
 			name = ws;
 			sourceTree = "<group>";
@@ -3229,6 +3234,7 @@
 				65085BAA18F440BA00478DAD /* WS_ItemsDominio.m in Sources */,
 				BF66D6F01B1CD491001FA40F /* GTLUtilities.m in Sources */,
 				BF66D6BB1B1CD466001FA40F /* GTMHTTPFetchHistory.m in Sources */,
+				BF2B5D931B2F54BD00947D0F /* WS_RedimirCodigo.m in Sources */,
 				0F5873A118F6E99900DA0CFD /* PNCircleChart.m in Sources */,
 				0F7422DA187DC10B0053383E /* PromocionesViewController.m in Sources */,
 				0F8B214E1884A4E600F016B3 /* PerfilViewController.m in Sources */,

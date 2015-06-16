@@ -19,7 +19,7 @@
 
 @interface WS_HandlerContactos : WS_Handler
 
-@property (nonatomic, strong) id<WS_HandlerProtocol> contactosDelegate;
+@property (nonatomic, weak) id<WS_HandlerProtocol> contactosDelegate;
 @property (nonatomic) ContactosOperacion idOperacion;
 @property (nonatomic, strong) NSString *currentElementString;
 @property (nonatomic, strong) NSString *resultado;

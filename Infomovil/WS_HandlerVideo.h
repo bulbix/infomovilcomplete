@@ -11,7 +11,7 @@
 
 @interface WS_HandlerVideo : WS_Handler <WS_HandlerProtocol>
 
-@property (nonatomic, strong) id<WS_HandlerProtocol> videoDelegate;
+@property (nonatomic, weak) id<WS_HandlerProtocol> videoDelegate;
 @property (nonatomic, strong) NSString *currentElementString;
 @property (nonatomic, strong) NSString *resultado;
 @property (nonatomic, strong) NSString *token;

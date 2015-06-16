@@ -12,7 +12,7 @@
 
 @interface WS_ActualizarDireccion : WS_Handler
 
-@property (nonatomic, strong) id<WS_HandlerProtocol> direccionDelegate;
+@property (nonatomic, weak) id<WS_HandlerProtocol> direccionDelegate;
 @property (nonatomic, strong) NSString *currentElementString;
 @property (nonatomic, strong) NSString *token;
 @property (nonatomic, strong) NSString *resultado;

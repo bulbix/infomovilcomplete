@@ -465,7 +465,7 @@
 
 "mensajeEliminarPerfil" = "¿Deseas eliminar los datos?";
 
-"publicarNombre" = "Nombre";
+"publicarNombre" = "Nombre del contacto administrativo";
 "publicarDir1" = "Dirección 1";
 "publicarDir2" = "Dirección 2";
 "publicarPais" = "País";
@@ -668,8 +668,8 @@
 "eligePlanCuenta" ="" ;
 "publicarNombrar" = "!Publicar¡";
 "aceptarPop" = "Aceptar";
-"comprarDominioTel" = "¡Compralo!";
-"leyendaCompraDominio" = "Adquiere tu dominio .tel";
+"comprarDominioTel" = "Busca un nombre";
+"leyendaCompraDominio" = "Compra un dominio propio para tener una imagen más profesional y una dirección más memorable.";
 "leyendaCompraDominioSub"= "Dale más presencia a tu negocio.";
 "comprarDominioTelHeader"= "Nombrar | Publicar";
 
@@ -682,3 +682,4 @@
 "labelPromocion" = "Introduce tu código de promoción.";
 "txtPromocion" = "Código";
 "btnPromocion" = "Redimir";
+"letrasNumeros" = "Solo se permiten números y letras sin espacios vacios.";

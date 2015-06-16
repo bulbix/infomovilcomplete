@@ -78,6 +78,7 @@
 - (IBAction)comprar12mesesBtn:(id)sender;
 
 
+- (IBAction)redimirCodigo:(id)sender;
 
 - (IBAction)tipoCuenta:(id)sender;
 

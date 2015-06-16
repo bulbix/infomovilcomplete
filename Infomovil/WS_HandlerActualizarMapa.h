@@ -11,7 +11,7 @@
 
 @interface WS_HandlerActualizarMapa : WS_Handler
 
-@property (nonatomic, strong) id<WS_HandlerProtocol> mapaDelegate;
+@property (nonatomic, weak) id<WS_HandlerProtocol> mapaDelegate;
 @property (nonatomic, strong) NSString *currentElementString;
 @property (nonatomic, strong) NSString *resultado;
 @property (nonatomic, strong) NSString *token;

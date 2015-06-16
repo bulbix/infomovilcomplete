@@ -19,7 +19,7 @@
 #import "NombrarViewController.h"
 #import "NombraCompraDominio.h"
 #import "MenuPasosViewController.h"
-
+#import "WS_RedimirCodigo.h"
 
 @interface CuentaViewController () {
     NSInteger noVisitas;
@@ -272,7 +272,7 @@ int opcionButton = 0 ;
  
     [self.labelPromocion setText:NSLocalizedString(@"labelPromocion", Nil)];
     [self.Enviar setTitle:NSLocalizedString(@"btnPromocion", Nil) forState:UIControlStateNormal];
-    self.Enviar.layer.cornerRadius = 5;
+    self.Enviar.layer.cornerRadius = 10;
     self.txtPromocion.layer.cornerRadius = 5;
     
 }
@@ -284,7 +284,6 @@ int opcionButton = 0 ;
 -(void)compra{
     WS_CompraDominio *compra = [[WS_CompraDominio alloc] init];
     [compra setCompraDominioDelegate:self];
-    //plan
     [compra compraDominio];
     
 }
@@ -477,6 +476,27 @@ if(noSeRepiteOprimirElBoton){
 }
 }
 
+- (IBAction)redimirCodigo:(id)sender {
+    
+    if([self validaCodigo]){
+        WS_RedimirCodigo *redimir = [[WS_RedimirCodigo alloc] init];
+        [redimir setRedimirCodigoDelegate:self];
+        [redimir redimeElCodigo: self.txtPromocion.text ];
+    
+
+    }else{
+        AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"letrasNumeros", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+        [alert show];
+    
+    
+    
+    }
+  
+}
+
+
+
+
 // IRC OBTIENE LOS IDENTIFICADORES DE LOS PRODUCTOS EN APPSTORE  //
 - (void)obtenerProductos {
     _products = nil;
@@ -553,7 +573,7 @@ if(noSeRepiteOprimirElBoton){
                     DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:i];
                     if([usuarioDom.domainType isEqualToString:@"tel"]){
                         if([usuarioDom.vigente isEqualToString:@"SI"] || [usuarioDom.vigente isEqualToString:@"si"]){
-                            dominio.text = [NSString stringWithFormat:@"My website\n\n www.%@.tel",self.datosUsuario.dominio] ;
+                            dominio.text = [NSString stringWithFormat:@"Your website\n\n www.%@.tel",self.datosUsuario.dominio] ;
                             if(usuarioDom.fechaIni && ![usuarioDom.fechaIni isEqualToString:@""] && ![usuarioDom.fechaIni isEqualToString:@"(null)"] && usuarioDom.fechaIni != nil){
                                 fechas.text = [NSString stringWithFormat: @"Period of validity\n From %@ to %@", usuarioDom.fechaIni, usuarioDom.fechaFin ];
                             }else{
@@ -563,7 +583,7 @@ if(noSeRepiteOprimirElBoton){
                             [self etiquetasBotonesYaComprado];
                         }else{
                             [self etiquetasBotonesDeCompra];
-                            dominio.text = [NSString stringWithFormat:@"My website\n\nwww.infomovil.com/%@",usuarioDom.domainName] ;
+                            dominio.text = [NSString stringWithFormat:@"Your website\n\nwww.infomovil.com/%@",usuarioDom.domainName] ;
                         }
                         
                     }
@@ -574,7 +594,7 @@ if(noSeRepiteOprimirElBoton){
                         DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:i];
                         if([usuarioDom.domainType isEqualToString:@"recurso"]){
                             if(usuarioDom.domainName == nil || [usuarioDom.domainName length] <= 0 || [usuarioDom.domainName isEqualToString:@""]){usuarioDom.domainName = self.datosUsuario.dominio;}
-                            dominio.text = [NSString stringWithFormat:@"My website\n\nwww.infomovil.com/%@",usuarioDom.domainName] ;
+                            dominio.text = [NSString stringWithFormat:@"Your website\n\nwww.infomovil.com/%@",usuarioDom.domainName] ;
                             self.arregloDominios = self.datosUsuario.dominiosUsuario;
                             int contador = 0;
                             for(int i= 0; i< [self.arregloDominios count]; i++){
@@ -600,7 +620,7 @@ if(noSeRepiteOprimirElBoton){
                     DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:i];
                     if([usuarioDom.domainType isEqualToString:@"tel"]){
                         if([usuarioDom.vigente isEqualToString:@"SI"] || [usuarioDom.vigente isEqualToString:@"si"]){
-                            dominio.text = [NSString stringWithFormat:@"Mi sitio web\n\n www.%@.tel",self.datosUsuario.dominio] ;
+                            dominio.text = [NSString stringWithFormat:@"Tu sitio web\n\n www.%@.tel",self.datosUsuario.dominio] ;
                                if(usuarioDom.fechaIni && ![usuarioDom.fechaIni isEqualToString:@""] && ![usuarioDom.fechaIni isEqualToString:@"(null)"] && usuarioDom.fechaIni != nil){
                                fechas.text = [NSString stringWithFormat: @"Vigencia del dominio\n Del %@ al %@", usuarioDom.fechaIni, usuarioDom.fechaFin ];
                            }else{
@@ -610,7 +630,7 @@ if(noSeRepiteOprimirElBoton){
                         [self etiquetasBotonesYaComprado];
                     }else{
                         [self etiquetasBotonesDeCompra];
-                        dominio.text = [NSString stringWithFormat:@"Mi sitio web\n\nwww.infomovil.com/%@",usuarioDom.domainName] ;
+                        dominio.text = [NSString stringWithFormat:@"Tu sitio web\n\nwww.infomovil.com/%@",usuarioDom.domainName] ;
                     }
                     
                     }
@@ -621,8 +641,7 @@ if(noSeRepiteOprimirElBoton){
                         DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:i];
                         if([usuarioDom.domainType isEqualToString:@"recurso"]){
                             if(usuarioDom.domainName == nil || [usuarioDom.domainName length] <= 0 || [usuarioDom.domainName isEqualToString:@""]){usuarioDom.domainName = self.datosUsuario.dominio;}
-                            dominio.text = [NSString stringWithFormat:@"Mi sitio web\n\nwww.infomovil.com/%@",usuarioDom.domainName] ;
-                             NSLog(@"EL SITIO WWEB ES3: %@", usuarioDom.domainName);
+                            dominio.text = [NSString stringWithFormat:@"Tu sitio web\n\nwww.infomovil.com/%@",usuarioDom.domainName] ;
                             self.arregloDominios = self.datosUsuario.dominiosUsuario;
                             int contador = 0;
                             for(int i= 0; i< [self.arregloDominios count]; i++){
@@ -807,8 +826,15 @@ if(noSeRepiteOprimirElBoton){
 
 -(void)accionSi{
     if(self.datosUsuario.eligioTemplate){
-        NombrarViewController *comparte = [[NombrarViewController alloc] initWithNibName:@"NombrarViewController" bundle:Nil];
-        [self.navigationController pushViewController:comparte animated:YES];
+        if( [self perfilEditado]) {
+            NombrarViewController *comparte = [[NombrarViewController alloc] initWithNibName:@"NombrarViewController" bundle:Nil];
+            [self.navigationController pushViewController:comparte animated:YES];
+        }else{
+            MenuPasosViewController *comparte = [[MenuPasosViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
+            [self.navigationController pushViewController:comparte animated:YES];
+            AlertView *vistaNotificacion = [AlertView initWithDelegate:self message:NSLocalizedString(@"editaPagina", Nil) andAlertViewType:AlertViewTypeInfo];
+            [vistaNotificacion show];
+        }
        
     }else{
         MenuPasosViewController *comparte = [[MenuPasosViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:Nil];
@@ -835,49 +861,49 @@ if(noSeRepiteOprimirElBoton){
 
 -(void)etiquetasBotonesDeCompra{
     UILabel *etiquetaCompraDominio = [[UILabel alloc]init];
-    UILabel *etiquetaCompraDominioSub = [[UILabel alloc]init];
+   // UILabel *etiquetaCompraDominioSub = [[UILabel alloc]init];
     UIButton *btnCompraDominio = [UIButton buttonWithType:(UIButtonTypeRoundedRect)];
     UIImageView* imgLineDominio = [[UIImageView alloc] init];
 
     if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         imgLineDominio.frame = CGRectMake(47, 190, 280, 2);
         etiquetaCompraDominio.frame = CGRectMake(47, 250,280 ,40 );
-        etiquetaCompraDominioSub.frame = CGRectMake(47, 300,280 ,40 );
-        [btnCompraDominio setFrame:CGRectMake(87, 360, 200, 40)];
+        //etiquetaCompraDominioSub.frame = CGRectMake(47, 300,280 ,40 );
+        [btnCompraDominio setFrame:CGRectMake(87, 360, 200, 35)];
         etiquetaCompraDominio.font = [UIFont fontWithName:@"Avenir-Medium" size:18];
-        etiquetaCompraDominioSub.font = [UIFont fontWithName:@"Avenir-Book" size:16];
+        //etiquetaCompraDominioSub.font = [UIFont fontWithName:@"Avenir-Book" size:16];
         [btnCompraDominio.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
     }else if(IS_IPAD){
         imgLineDominio.frame = CGRectMake(184, 360, 400, 2);
-        etiquetaCompraDominio.frame = CGRectMake(84, 450,600 ,80 );
-        etiquetaCompraDominioSub.frame = CGRectMake(84, 530, 600, 40);
+        etiquetaCompraDominio.frame = CGRectMake(84, 450,600 ,140 );
+       // etiquetaCompraDominioSub.frame = CGRectMake(84, 530, 600, 40);
         [btnCompraDominio setFrame:CGRectMake(259, 600, 250, 40)];
         etiquetaCompraDominio.font = [UIFont fontWithName:@"Avenir-Medium" size:24];
-        etiquetaCompraDominioSub.font = [UIFont fontWithName:@"Avenir-Book" size:20];
+       // etiquetaCompraDominioSub.font = [UIFont fontWithName:@"Avenir-Book" size:20];
         [btnCompraDominio.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:24]];
     }else if(IS_IPHONE_4){
         imgLineDominio.frame = CGRectMake(20, 135, 280, 2);
-        etiquetaCompraDominio.frame = CGRectMake(20, 170,280 ,40 );
-        etiquetaCompraDominioSub.frame = CGRectMake(20, 220,280 ,40 );
-        [btnCompraDominio setFrame:CGRectMake(60, 280, 200, 40)];
+        etiquetaCompraDominio.frame = CGRectMake(20, 170,280 ,80 );
+       // etiquetaCompraDominioSub.frame = CGRectMake(20, 220,280 ,40 );
+        [btnCompraDominio setFrame:CGRectMake(60, 280, 200, 35)];
         etiquetaCompraDominio.font = [UIFont fontWithName:@"Avenir-Medium" size:18];
-        etiquetaCompraDominioSub.font = [UIFont fontWithName:@"Avenir-Book" size:16];
+       // etiquetaCompraDominioSub.font = [UIFont fontWithName:@"Avenir-Book" size:16];
         [btnCompraDominio.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
-    
+        
     }else{
         imgLineDominio.frame = CGRectMake(20, 160, 280, 2);
-        etiquetaCompraDominio.frame = CGRectMake(20, 220,280 ,40 );
-        etiquetaCompraDominioSub.frame = CGRectMake(20, 260,280 ,40 );
-        [btnCompraDominio setFrame:CGRectMake(60, 320, 200, 40)];
+        etiquetaCompraDominio.frame = CGRectMake(20, 220,280 ,80 );
+        //etiquetaCompraDominioSub.frame = CGRectMake(20, 260,280 ,40 );
+        [btnCompraDominio setFrame:CGRectMake(60, 320, 200, 35)];
         etiquetaCompraDominio.font = [UIFont fontWithName:@"Avenir-Medium" size:18];
-        etiquetaCompraDominioSub.font = [UIFont fontWithName:@"Avenir-Book" size:16];
+        //etiquetaCompraDominioSub.font = [UIFont fontWithName:@"Avenir-Book" size:16];
         [btnCompraDominio.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
     }
     [imgLineDominio setImage:[UIImage imageNamed:@"lineCompraDominio"]];
     [self.vistaDominio addSubview:imgLineDominio];
     
     [etiquetaCompraDominio setText:NSLocalizedString(@"leyendaCompraDominio", Nil)];
-    etiquetaCompraDominio.numberOfLines = 3;
+    etiquetaCompraDominio.numberOfLines = 6;
     etiquetaCompraDominio.adjustsFontSizeToFitWidth = YES;
     etiquetaCompraDominio.backgroundColor = [UIColor clearColor];
     etiquetaCompraDominio.textColor = [UIColor colorWithRed:47.0f/255.0f
@@ -887,7 +913,7 @@ if(noSeRepiteOprimirElBoton){
     etiquetaCompraDominio.textAlignment = NSTextAlignmentCenter;
     [self.vistaDominio addSubview:etiquetaCompraDominio];
     
-    [etiquetaCompraDominioSub setText:NSLocalizedString(@"leyendaCompraDominioSub", Nil)];
+  /*[etiquetaCompraDominioSub setText:NSLocalizedString(@"leyendaCompraDominioSub", Nil)];
     etiquetaCompraDominioSub.numberOfLines = 3;
     etiquetaCompraDominioSub.adjustsFontSizeToFitWidth = YES;
     etiquetaCompraDominioSub.backgroundColor = [UIColor clearColor];
@@ -897,7 +923,7 @@ if(noSeRepiteOprimirElBoton){
                                                          alpha:1.0f];
     etiquetaCompraDominioSub.textAlignment = NSTextAlignmentCenter;
     [self.vistaDominio addSubview:etiquetaCompraDominioSub];
-    
+    */
     
     [btnCompraDominio setTitle:NSLocalizedString(@"comprarDominioTel", Nil) forState:UIControlStateNormal];
     [btnCompraDominio addTarget:self action:@selector(comprarDominioBtn:)forControlEvents:UIControlEventTouchUpInside];
@@ -912,33 +938,33 @@ if(noSeRepiteOprimirElBoton){
 }
 -(void)etiquetasBotonesYaComprado{
     UILabel *etiquetaCompraDominio = [[UILabel alloc]init];
-    UILabel *etiquetaCompraDominioSub = [[UILabel alloc]init];
+   // UILabel *etiquetaCompraDominioSub = [[UILabel alloc]init];
     UIButton *btnCompraDominio = [UIButton buttonWithType:(UIButtonTypeRoundedRect)];
     UIImageView* imgLineDominio = [[UIImageView alloc] init];
     
     if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         imgLineDominio.frame = CGRectMake(37, 185, 300, 2);
         etiquetaCompraDominio.frame = CGRectMake(47, 250,280 ,40 );
-        etiquetaCompraDominioSub.frame = CGRectMake(47, 250,280 ,40 );
-        [btnCompraDominio setFrame:CGRectMake(87, 300, 200, 40)];
+      //  etiquetaCompraDominioSub.frame = CGRectMake(47, 250,280 ,40 );
+        [btnCompraDominio setFrame:CGRectMake(87, 300, 200, 35)];
         etiquetaCompraDominio.font = [UIFont fontWithName:@"Avenir-Medium" size:18];
-        etiquetaCompraDominioSub.font = [UIFont fontWithName:@"Avenir-Book" size:16];
+     //   etiquetaCompraDominioSub.font = [UIFont fontWithName:@"Avenir-Book" size:16];
         [btnCompraDominio.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
     }else if(IS_IPAD){
         imgLineDominio.frame = CGRectMake(184, 360, 400, 2);
         etiquetaCompraDominio.frame = CGRectMake(84, 450,600 ,80 );
-        etiquetaCompraDominioSub.frame = CGRectMake(84, 500, 600, 40);
+      //  etiquetaCompraDominioSub.frame = CGRectMake(84, 500, 600, 40);
         [btnCompraDominio setFrame:CGRectMake(259, 600, 250, 40)];
         etiquetaCompraDominio.font = [UIFont fontWithName:@"Avenir-Medium" size:24];
-        etiquetaCompraDominioSub.font = [UIFont fontWithName:@"Avenir-Book" size:20];
+      //  etiquetaCompraDominioSub.font = [UIFont fontWithName:@"Avenir-Book" size:20];
         [btnCompraDominio.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:24]];
     }else{
         imgLineDominio.frame = CGRectMake(20, 160, 280, 2);
         etiquetaCompraDominio.frame = CGRectMake(20, 220,280 ,40 );
        // etiquetaCompraDominioSub.frame = CGRectMake(20, 260,280 ,40 );
-        [btnCompraDominio setFrame:CGRectMake(60, 270, 200, 40)];
+        [btnCompraDominio setFrame:CGRectMake(60, 270, 200, 35)];
         etiquetaCompraDominio.font = [UIFont fontWithName:@"Avenir-Medium" size:18];
-        etiquetaCompraDominioSub.font = [UIFont fontWithName:@"Avenir-Book" size:16];
+      //  etiquetaCompraDominioSub.font = [UIFont fontWithName:@"Avenir-Book" size:16];
         [btnCompraDominio.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
     }
     [imgLineDominio setImage:[UIImage imageNamed:@"lineCompraDominio"]];
@@ -966,6 +992,36 @@ if(noSeRepiteOprimirElBoton){
     [self.vistaDominio addSubview:btnCompraDominio];
     
 }
+
+
+-(BOOL)validaCodigo{
+    NSString *myRegex = @"[A-Z0-9a-z]*";
+    NSPredicate *myTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", myRegex];
+    NSString *string = self.txtPromocion.text;
+    BOOL valid = [myTest evaluateWithObject:string];
+    if(valid){
+        return YES;
+    }else{
+        return NO;
+    }
+    return NO;
+
+}
+
+-(BOOL) perfilEditado {
+    BOOL fueEditado = NO;
+    self.datosUsuario = [DatosUsuario sharedInstance];
+    if ([self.datosUsuario.arregloEstatusEdicion count] > 0) {
+        for (int i = 0; i < [self.datosUsuario.arregloEstatusEdicion count]; i++) {
+            if ([[self.datosUsuario.arregloEstatusEdicion objectAtIndex:i]  isEqual: @YES]) {
+                fueEditado = YES;
+                break;
+            }
+        }
+    }
+    return fueEditado;
+}
+
 
 @end
 

@@ -11,7 +11,7 @@
 
 @interface WS_HandlerInformacionRegistro : WS_Handler <WS_HandlerProtocol, NSXMLParserDelegate>
 
-@property (nonatomic, strong) id<WS_HandlerProtocol> informacionRegistroDelegate;
+@property (nonatomic, weak) id<WS_HandlerProtocol> informacionRegistroDelegate;
 @property (nonatomic, strong) NSString *currentElementString;
 @property (nonatomic, strong) NSString *token;
 @property (nonatomic, strong) NSString *resultado;

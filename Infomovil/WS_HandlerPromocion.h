@@ -12,7 +12,7 @@
 
 @interface WS_HandlerPromocion : WS_Handler
 
-@property (nonatomic, strong) id<WS_HandlerProtocol> promocionDelegate;
+@property (nonatomic, weak) id<WS_HandlerProtocol> promocionDelegate;
 @property (nonatomic, strong) NSString *currentElementString;
 @property (nonatomic, strong) NSString *resultado;
 @property (nonatomic, strong) NSString *urlPromocion;

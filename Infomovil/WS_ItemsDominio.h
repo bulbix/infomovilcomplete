@@ -11,7 +11,7 @@
 
 @interface WS_ItemsDominio : WS_Handler <WS_HandlerProtocol, NSXMLParserDelegate>
 
-@property (nonatomic, strong) id<WS_HandlerProtocol> itemsDominioDelegate;
+@property (nonatomic, weak) id<WS_HandlerProtocol> itemsDominioDelegate;
 @property (nonatomic, strong) NSString *currentElementString;
 
 -(void)actualizarItemsDominio;

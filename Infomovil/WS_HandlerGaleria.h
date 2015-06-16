@@ -14,7 +14,7 @@
 
 @interface WS_HandlerGaleria : WS_Handler <WS_HandlerProtocol>
 
-@property (nonatomic, strong) id<WS_HandlerProtocol> galeriaDelegate;
+@property (nonatomic, weak) id<WS_HandlerProtocol> galeriaDelegate;
 @property (nonatomic, strong) NSString *currentElementString;
 @property (nonatomic, strong) NSString *resultado;
 @property (nonatomic, strong) NSString *resultadoLista;

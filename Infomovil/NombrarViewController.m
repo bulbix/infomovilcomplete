@@ -222,12 +222,13 @@
 	
 }
 
--(void) accionSi {NSLog(@"ENTRO EN ACCION ACEPTAR");
+-(void) accionSi {
 	if(saliendo){
 		self.datosUsuario = [DatosUsuario sharedInstance];
 		[StringUtils deleteResourcesWithExtension:@"jpg"];
 		[StringUtils deleteFile];
 		[self.datosUsuario eliminarDatos];
+        [self.datosUsuario eliminarSesion];
 		((AppDelegate*)	[[UIApplication sharedApplication] delegate]).statusDominio = @"Gratuito";
 		
         MainViewController *inicio = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:Nil];
@@ -250,10 +251,7 @@
     }
 }
 -(void) accionAceptar {
-    if (creoDominio) {
-       // NSArray *arrayControllers = [self.navigationController viewControllers];
-        //[self.navigationController popToViewController:[arrayControllers objectAtIndex:arrayControllers.count-3] animated:YES];
-    }
+   
 }
 
 -(IBAction)regresar:(id)sender {
