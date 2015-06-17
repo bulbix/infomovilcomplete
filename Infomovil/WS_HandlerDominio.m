@@ -167,6 +167,7 @@
 					 "<soapenv:Header/>"
 					 "<soapenv:Body>"
 					 "<ws:insertUserDomain1>"
+                     
 					 "<UserDomainVO>"
 					 "<email>%@</email>"
 					 "<phone>%@</phone>"
@@ -191,6 +192,8 @@
                      "<emailTel>%@</emailTel>"
 					 "</UserDomainVO>"
 					 "</ws:insertUserDomain1>"
+                     
+                     
 					 "</soapenv:Body>"
 					 "</soapenv:Envelope>",
                      [StringUtils encriptar:email conToken:passwordEncriptar],

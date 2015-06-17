@@ -35,6 +35,7 @@
 - (IBAction)cambiarPassword:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UIButton *recordarLogin1;
 
+@property (weak, nonatomic) IBOutlet UILabel *registrateLabel;
 
 
 @property (weak, nonatomic) IBOutlet UILabel *leyenda1;

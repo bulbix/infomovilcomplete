@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="btnRegistrar" destination="97O-gl-QNk" id="HNQ-Dg-fdl"/>
                 <outlet property="imgLogoInfo" destination="Cdc-b4-5I4" id="c9X-u7-KOV"/>
+                <outlet property="ingresaLabel" destination="8ez-LY-MoY" id="LLu-uM-11q"/>
                 <outlet property="leyenda1" destination="RIg-uk-06O" id="kgc-eX-5zi"/>
                 <outlet property="leyenda2" destination="vmS-Ng-PQz" id="gd8-Bd-fzw"/>
                 <outlet property="leyenda3" destination="01r-pH-5B9" id="TIO-S5-v6u"/>
@@ -148,7 +149,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoRegistrado.png" id="Cdc-b4-5I4">
-                            <rect key="frame" x="50" y="24" width="219" height="40"/>
+                            <rect key="frame" x="50" y="20" width="219" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="97O-gl-QNk">
@@ -164,6 +165,13 @@
                                 <action selector="verificarNombre:" destination="-1" eventType="touchUpInside" id="gw1-Ed-R9N"/>
                             </connections>
                         </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingresa" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8ez-LY-MoY">
+                            <rect key="frame" x="202" y="459" width="94" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
+                            <color key="textColor" red="0.61960784313725492" green="1" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                 </scrollView>
             </subviews>

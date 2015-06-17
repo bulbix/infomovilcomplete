@@ -9,13 +9,16 @@
             <connections>
                 <outlet property="Enviar" destination="1KN-qO-PbL" id="bee-RI-g3w"/>
                 <outlet property="MensajePlanProComprado" destination="Wps-xS-Tyi" id="yyK-y6-DkQ"/>
+                <outlet property="aceptarAct" destination="unQ-Hw-Sgr" id="zh1-NQ-SCU"/>
                 <outlet property="beneficiosPlanPro" destination="ADO-CL-PZg" id="EUR-Qy-G8v"/>
+                <outlet property="btnAceptar" destination="unQ-Hw-Sgr" id="2hl-5b-yNF"/>
                 <outlet property="comprar12meses" destination="ZSa-km-kPq" id="Y0A-EO-VRZ"/>
                 <outlet property="comprar1mes" destination="TfM-fF-9Se" id="vDi-p9-tsK"/>
                 <outlet property="imgBackgroundBotones" destination="P71-gT-vz2" id="QnS-9Y-dSL"/>
                 <outlet property="imgBeneficios" destination="ZgK-QH-lCK" id="8OY-je-Izv"/>
                 <outlet property="labelMisSitios" destination="mtM-MX-gZF" id="gkr-Rv-Xdf"/>
                 <outlet property="labelPromocion" destination="5cg-q4-9fp" id="g5X-FZ-qBW"/>
+                <outlet property="msjCodigoRedimido" destination="5B6-ku-EHX" id="LyB-Ou-BB6"/>
                 <outlet property="precioDoce" destination="pos-60-99h" id="Y7z-Fe-0Ew"/>
                 <outlet property="precioUno" destination="Qou-Zd-Lk2" id="ZkD-Nb-6Fb"/>
                 <outlet property="rayaLabel" destination="ZDX-Vl-jxv" id="5hB-6d-l88"/>
@@ -23,11 +26,14 @@
                 <outlet property="selector" destination="spS-Fj-Wmc" id="Czm-dg-xsC"/>
                 <outlet property="subtituloPlanPro" destination="acJ-J0-2xv" id="rDR-Vh-YLb"/>
                 <outlet property="tablaSitios" destination="Mhg-L4-tvS" id="ZSC-mF-0UM"/>
+                <outlet property="tituloCodigoRedimido" destination="auE-Fs-nhU" id="8YZ-ii-BGp"/>
                 <outlet property="tituloPlanPro" destination="6QW-0q-gTU" id="vot-WB-4r9"/>
                 <outlet property="txtPromocion" destination="VS8-Ez-YmQ" id="4dQ-vw-8dl"/>
                 <outlet property="view" destination="1" id="Hx2-0m-mGg"/>
                 <outlet property="viewCompraPlanPro" destination="Ofc-np-WUp" id="mEy-jY-T9C"/>
+                <outlet property="viewContenidoRedimir" destination="tgE-lR-2qp" id="UfP-WB-hac"/>
                 <outlet property="viewEnviarCodigo" destination="bar-Yz-b3S" id="mAJ-Cm-tzi"/>
+                <outlet property="viewFelicidadesRedimir" destination="lhx-W7-ech" id="q3t-hi-VcS"/>
                 <outlet property="viewPlanProComprado" destination="Oyf-Ke-4u6" id="tXW-hV-Fpx"/>
                 <outlet property="vistaDominio" destination="jqP-df-nvr" id="dpA-zJ-kFf"/>
                 <outlet property="vistaPlanPro" destination="ScC-Fz-B8Q" id="DR4-6h-jFm"/>
@@ -235,6 +241,45 @@
             <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="-421" y="543"/>
+        </view>
+        <view contentMode="scaleToFill" id="tgE-lR-2qp">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" id="lhx-W7-ech">
+                    <rect key="frame" x="20" y="90" width="280" height="280"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="unQ-Hw-Sgr">
+                            <rect key="frame" x="40" y="228" width="200" height="35"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.36078431372549019" green="0.63921568627450975" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                            <state key="normal" title="Aceptar">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¡Tu código ha sido redimido exitosamente!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5B6-ku-EHX">
+                            <rect key="frame" x="8" y="75" width="264" height="110"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                            <color key="textColor" red="0.36078431372549019" green="0.63921568627450975" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¡Felicidades!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="auE-Fs-nhU">
+                            <rect key="frame" x="40" y="28" width="200" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
+                            <color key="textColor" red="0.16470588235294117" green="0.63921568627450975" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-421" y="1024"/>
         </view>
     </objects>
     <resources>

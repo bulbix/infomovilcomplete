@@ -172,7 +172,7 @@
     loginView.delegate = self;
     loginView.readPermissions = @[@"public_profile", @"email"];
     if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
-        loginView.frame = CGRectMake(20, 160, 335, 50);
+        loginView.frame = CGRectMake(20, 150, 335, 50);
         self.raya1.frame = CGRectMake(20, 264, 155, 2);
         self.o.frame = CGRectMake(178, 256, 155, 20);
         self.raya2.frame = CGRectMake(195, 264, 155, 2);
@@ -224,7 +224,7 @@
         }
        
     }else{
-        [self.imgLogoInfo setFrame:CGRectMake(50, 40, 220,40 )];
+        [self.imgLogoInfo setFrame:CGRectMake(50, 35, 220,40 )];
         loginView.frame = CGRectMake(20, 110, 280, 45);
     }
     
@@ -288,19 +288,51 @@
     self.msjRegistrarConFacebook.text = NSLocalizedString(@"msjRegistrarUsuarioFB", nil);
     [self.navigationController.navigationBar setHidden:YES];
     UIButton *botonRegresar = [UIButton buttonWithType:UIButtonTypeCustom];
-     [botonRegresar setTitle:NSLocalizedString(@"yaTienesCuenta", nil) forState:UIControlStateNormal] ;
+    
+     [botonRegresar setTitle:NSLocalizedString(@"tienesCuenta", nil) forState:UIControlStateNormal] ;
+    self.ingresaLabel.text = NSLocalizedString(@"tienesCuentaVerde", nil);
     if(IS_IPAD){
-        [botonRegresar setFrame:CGRectMake(196, 800, 375, 50)];
+        if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
+            [botonRegresar setFrame:CGRectMake(160, 800, 375, 50)];
+            self.ingresaLabel.frame = CGRectMake(470, 800, 200, 50);
+        }else{
+            [botonRegresar setFrame:CGRectMake(140, 800, 375, 50)];
+            self.ingresaLabel.frame = CGRectMake(420, 800, 200, 50);
+        }
+        [self.ingresaLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
         [botonRegresar.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
     }else if(IS_IPHONE_4){
-        [botonRegresar setFrame:CGRectMake(10, 390, 300, 40)];
+       
+        if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
+            [botonRegresar setFrame:CGRectMake(30, 390, 200, 40)];
+            self.ingresaLabel.frame = CGRectMake(225, 390, 100, 40);
+        }else{
+            [botonRegresar setFrame:CGRectMake(30, 390, 200, 40)];
+            self.ingresaLabel.frame = CGRectMake(200, 390, 100, 40);
+        }
         [botonRegresar.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
+         [self.ingresaLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
     }else if(IS_IPHONE_5){
-        [botonRegresar setFrame:CGRectMake(0, 450, 320, 45)];
+        if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
+            self.ingresaLabel.frame = CGRectMake(240, 450, 150, 45);
+            [botonRegresar setFrame:CGRectMake(5, 450, 250, 45)];
+        }else{
+            [botonRegresar setFrame:CGRectMake(0, 450, 250, 45)];
+            self.ingresaLabel.frame = CGRectMake(200, 450, 150, 45);
+            
+        }
         [botonRegresar.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:18]];
+        [self.ingresaLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:18]];
     }else if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
-        [botonRegresar setFrame:CGRectMake(20, 525, 335, 50)];
+       if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
+           [botonRegresar setFrame:CGRectMake(50, 525, 220, 50)];
+           self.ingresaLabel.frame = CGRectMake(265, 525, 130, 50);
+       }else{
+           [botonRegresar setFrame:CGRectMake(25, 525, 250, 50)];
+           self.ingresaLabel.frame = CGRectMake(230, 525, 130, 50);
+       }
         [botonRegresar.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:17]];
+        [self.ingresaLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:17]];
     }
    
     
@@ -651,11 +683,7 @@
                             user:(id<FBGraphUser>)user {
   
     
-    if([[user objectForKey:@"email"] isEqualToString:@""] || [user objectForKey:@"email"] == nil){
-        self.datosUsuario.emailUsuario = [user objectForKey:@"id"];
-    }else{
-        self.datosUsuario.emailUsuario = [user objectForKey:@"email"];
-    }
+    
 #if DEBUG
     NSLog(@"Entrando a loginViewFetchedUserInfo:user:");
     NSLog(@"el email es %@", self.datosUsuario.emailUsuario);
@@ -664,6 +692,11 @@
     NSUserDefaults *prefSesion = [NSUserDefaults standardUserDefaults];
      NSLog(@"El valor de sesion activa es: %ld", (long)[prefSesion integerForKey:@"intSesionActiva"]);
     if(loginFacebook == YES && [prefSesion integerForKey:@"intSesionActiva"] != 1) {
+        if([[user objectForKey:@"email"] isEqualToString:@""] || [user objectForKey:@"email"] == nil){
+            self.datosUsuario.emailUsuario = [user objectForKey:@"id"];
+        }else{
+            self.datosUsuario.emailUsuario = [user objectForKey:@"email"];
+        }
         loginFacebook = NO;
         [self performSelectorInBackground:@selector(consultaLogin) withObject:Nil];
     }

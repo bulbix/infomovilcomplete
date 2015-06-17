@@ -197,9 +197,9 @@ BOOL banderaRegresar;
         [self acomodarBarraNavegacionConTitulo:@"AMBIENTE DE QA" nombreImagen:@"barramorada.png"];
 #else
     if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
-        [self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"", @" ") nombreImagen:@"barramorada.png"];
+        [self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"creaSitio", @" ") nombreImagen:@"barramorada.png"];
     }else{
-        [self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"", @" ") nombreImagen:@"NBlila.png"];
+        [self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"creaSitio", @" ") nombreImagen:@"NBlila.png"];
     }
     
 #endif

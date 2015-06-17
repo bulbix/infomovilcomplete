@@ -275,6 +275,20 @@ int opcionButton = 0 ;
     self.Enviar.layer.cornerRadius = 10;
     self.txtPromocion.layer.cornerRadius = 5;
     
+    self.btnAceptar.layer.cornerRadius = 5;
+    self.viewFelicidadesRedimir.layer.cornerRadius = 5;
+    
+    if(IS_IPAD){
+        self.viewContenidoRedimir.frame = CGRectMake(0, 0, 768, 1024);
+        self.viewFelicidadesRedimir.frame = CGRectMake(234, 300, 300, 300);
+    }else if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
+        self.viewContenidoRedimir.frame = CGRectMake(0, 0, 375, 768);
+        self.viewFelicidadesRedimir.frame = CGRectMake(47, 200, 280, 280);
+    }else{
+        self.viewContenidoRedimir.frame = CGRectMake(0, 0, 768, 1024);
+        self.viewFelicidadesRedimir.frame = CGRectMake(20, 90, 280, 280);
+    }
+    
 }
 
 
@@ -479,22 +493,56 @@ if(noSeRepiteOprimirElBoton){
 - (IBAction)redimirCodigo:(id)sender {
     
     if([self validaCodigo]){
-        WS_RedimirCodigo *redimir = [[WS_RedimirCodigo alloc] init];
-        [redimir setRedimirCodigoDelegate:self];
-        [redimir redimeElCodigo: self.txtPromocion.text ];
-    
-
+        [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
+        [self performSelectorOnMainThread:@selector(redimirWS) withObject:Nil waitUntilDone:YES];
     }else{
         AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"letrasNumeros", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
         [alert show];
-    
-    
-    
     }
   
 }
 
+-(void)resultadoRedimirCodigo:(NSString *)resultado{
+    NSLog(@"El valor regresado es: %@", resultado);
+    NSString * mensaje;
+    if([resultado isEqualToString:@"Error"]){
+        mensaje = NSLocalizedString(@"sentimos", @" ");
+    }else if([resultado isEqualToString:@"0"]){
+        mensaje = NSLocalizedString(@"paCodeError1", @" ");
+        [self.view addSubview:self.viewContenidoRedimir];
+    }else if([resultado isEqualToString:@"-1"]){
+        mensaje = NSLocalizedString(@"paCodeError1", @" ");
+    }else if([resultado isEqualToString:@"-2"]){
+        mensaje = NSLocalizedString(@"paCodeError2", @" ");
+    }else if([resultado isEqualToString:@"-3"]){
+        mensaje = NSLocalizedString(@"paCodeError3", @" ");
+    }else if([resultado isEqualToString:@"-4"]){
+        mensaje = NSLocalizedString(@"paCodeError4", @" ");
+    }else if([resultado isEqualToString:@"-5"]){
+        mensaje = NSLocalizedString(@"paCodeError5", @" ");
+    }else if([resultado isEqualToString:@"-6"]){
+        mensaje = NSLocalizedString(@"paCodeError6", @" ");
+    }else if([resultado isEqualToString:@"-9"]){
+        mensaje = NSLocalizedString(@"paCodeError9", @" ");
+    }else if([resultado isEqualToString:@"-10"]){
+        mensaje = NSLocalizedString(@"paCodeError10", @" ");
+    }else if([resultado isEqualToString:@"-11"]){
+        mensaje = NSLocalizedString(@"paCodeError11", @" ");
+    }else if([resultado isEqualToString:@"-12"]){
+        mensaje = NSLocalizedString(@"paCodeError12", @" ");
+    }else if([resultado isEqualToString:@"-13"]){
+        mensaje = NSLocalizedString(@"paCodeError13", @" ");
+    }
+    
+     [self performSelectorOnMainThread:@selector(ocultarActivityRedimir) withObject:Nil waitUntilDone:YES];
+    
+}
 
+-(void)redimirWS{
+    WS_RedimirCodigo *redimir = [[WS_RedimirCodigo alloc] init];
+    [redimir setRedimirCodigoDelegate:self];
+    [redimir redimeElCodigo: self.txtPromocion.text ];
+}
 
 
 // IRC OBTIENE LOS IDENTIFICADORES DE LOS PRODUCTOS EN APPSTORE  //
@@ -511,7 +559,7 @@ if(noSeRepiteOprimirElBoton){
 	/////////////////////////////////// COMPRAR PLAN PRO //////////////////////////////////
 	self.datosUsuario = [DatosUsuario sharedInstance];
     if(self.selector.selectedSegmentIndex == 0){
-	
+	[self.txtPromocion resignFirstResponder];
         if(  ![((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] ){
 			arreglo = pro;
 			tipo = NO;
@@ -529,7 +577,7 @@ if(noSeRepiteOprimirElBoton){
         [self.scrollContenido scrollRectToVisible:CGRectMake(0, 0, self.scrollContenido.frame.size.width, self.scrollContenido.frame.size.height) animated:YES];
 /////////////////////////////////// DOMINIOS  /////////////////////////////////
 	}else if(self.selector.selectedSegmentIndex == 1){
-        
+       [self.txtPromocion resignFirstResponder];
         if(self.datosUsuario.dominio == nil || [self.datosUsuario.dominio isEqualToString:@""] || (self.datosUsuario.dominio == (id)[NSNull null]) || [CommonUtils validarEmail:self.datosUsuario.dominio] || [self.datosUsuario.dominio isEqualToString:@"(null)"]){
             AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"msjDominioPublicar", Nil) andAlertViewType:AlertViewTypeQuestion];
             [alert show];
@@ -697,7 +745,7 @@ if(noSeRepiteOprimirElBoton){
                 [self.scrollContenido scrollRectToVisible:CGRectMake(320, 0, self.scrollContenido.frame.size.width, self.scrollContenido.frame.size.height) animated:YES];
             }
     }else if(self.selector.selectedSegmentIndex == 2){
-       
+       [self.txtPromocion becomeFirstResponder];
         
         if(IS_IPAD){
             self.labelPromocion.frame = CGRectMake(184, 140, 400, 60);
@@ -746,6 +794,13 @@ if(noSeRepiteOprimirElBoton){
     self.alerta = [AlertView initWithDelegate:self message:NSLocalizedString(@"cargando", Nil) andAlertViewType:AlertViewTypeActivity];
     [self.alerta show];
 }
+
+-(void)ocultarActivityRedimir{
+    [NSThread sleepForTimeInterval:1];
+    [self.alerta hide];
+
+}
+
 -(void) ocultarActivity {
     noSeRepiteOprimirElBoton = YES;
     
@@ -912,18 +967,7 @@ if(noSeRepiteOprimirElBoton){
                                                       alpha:1.0f];
     etiquetaCompraDominio.textAlignment = NSTextAlignmentCenter;
     [self.vistaDominio addSubview:etiquetaCompraDominio];
-    
-  /*[etiquetaCompraDominioSub setText:NSLocalizedString(@"leyendaCompraDominioSub", Nil)];
-    etiquetaCompraDominioSub.numberOfLines = 3;
-    etiquetaCompraDominioSub.adjustsFontSizeToFitWidth = YES;
-    etiquetaCompraDominioSub.backgroundColor = [UIColor clearColor];
-    etiquetaCompraDominioSub.textColor = [UIColor colorWithRed:47.0f/255.0f
-                                                         green:163.0f/255.0f
-                                                          blue:152.0f/255.0f
-                                                         alpha:1.0f];
-    etiquetaCompraDominioSub.textAlignment = NSTextAlignmentCenter;
-    [self.vistaDominio addSubview:etiquetaCompraDominioSub];
-    */
+  
     
     [btnCompraDominio setTitle:NSLocalizedString(@"comprarDominioTel", Nil) forState:UIControlStateNormal];
     [btnCompraDominio addTarget:self action:@selector(comprarDominioBtn:)forControlEvents:UIControlEventTouchUpInside];
@@ -1021,6 +1065,8 @@ if(noSeRepiteOprimirElBoton){
     }
     return fueEditado;
 }
+
+
 
 
 @end

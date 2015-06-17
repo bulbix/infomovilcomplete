@@ -53,6 +53,8 @@
     [super viewDidLoad];
     [self.vistaInferior setHidden:YES];
     self.datosUsuario = [DatosUsuario sharedInstance];
+    [self.datosUsuario eliminarDatos];
+    [self.datosUsuario eliminarSesion];
     [self fbDidlogout];
     FBLoginView *loginView = [[FBLoginView alloc] init];
     loginView.delegate = self;
@@ -84,9 +86,15 @@
         [self.txtEmail setBackgroundColor:[UIColor clearColor]];
         self.txtEmail.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"mainLabelCorreo", nil) attributes:@{NSForegroundColorAttributeName: color}];
          [self.txtEmail setFont: [UIFont fontWithName:@"Avenir-Book" size:16]];
-        [self.btnRegistrate setFrame:CGRectMake(20, 510, 335, 50)];
-        [self.btnRegistrate.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:17]];
         
+        [self.btnRegistrate.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:17]];
+       if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
+           [self.btnRegistrate setFrame:CGRectMake(50, 510, 335, 50)];
+           self.registrateLabel.frame = CGRectMake(240, 510, 335, 50);
+       }else{
+           [self.btnRegistrate setFrame:CGRectMake(40, 510, 335, 50)];
+           self.registrateLabel.frame = CGRectMake(230, 510, 335, 50);
+       }
    
     }else if(IS_IPAD){
         loginView.frame = CGRectMake(196, 300, 375, 50);
@@ -127,13 +135,20 @@
         [self.raya1 setHidden:YES];
         [self.raya2 setHidden:YES];
         [self.o setHidden:YES];
-        [self.btnRegistrate setFrame:CGRectMake(196, 800, 375, 50)];
+        
          [self.btnRegistrate.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
         [self.imgLogo setFrame:CGRectMake(250, 150, 267,50 )];
-      
+         if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
+             self.registrateLabel.frame = CGRectMake(460, 800, 375, 50);
+             [self.btnRegistrate setFrame:CGRectMake(240, 800, 375, 50)];
+         }else{
+             [self.btnRegistrate setFrame:CGRectMake(220, 800, 375, 50)];
+               self.registrateLabel.frame = CGRectMake(440, 800, 375, 50);
+         }
         
     }else if(IS_IPHONE_4){
-        
+        self.registrateLabel.frame = CGRectMake(210, 390, 200, 30);
+        self.imgLogo.frame = CGRectMake(50, 20, 219, 40);
         self.txtEmail.frame = CGRectMake(16,170, 288, 45);
         self.txtPassword.frame = CGRectMake(16, 220, 288, 45);
         [self.scrollLogin setContentSize:CGSizeMake(320, 420)];
@@ -145,7 +160,7 @@
         [self.txtEmail setBackground:[UIImage imageNamed:@"input_semitrans@1x" ]];
         [self.txtEmail setBackgroundColor:[UIColor clearColor]];
         self.txtEmail.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"mainLabelCorreo", nil) attributes:@{NSForegroundColorAttributeName: color}];
-        [self.btnRegistrate setFrame:CGRectMake(20, 390, 280, 30)];
+        [self.btnRegistrate setFrame:CGRectMake(30, 390, 280, 30)];
         [self.btnRegistrate.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
         [self.boton setFrame:CGRectMake(20, 320, 280, 40)];
         self.raya1.frame = CGRectMake(20, 145, 122, 2);
@@ -274,6 +289,7 @@
 	self.txtEmail.placeholder = NSLocalizedString(@"mainLabelCorreo", nil);
 	self.txtPassword.placeholder = NSLocalizedString(@"contrasena", nil);
 	self.label.text = NSLocalizedString(@"mainLabel", nil);
+    self.registrateLabel.text = NSLocalizedString(@"cuentaTodaviaVerde", nil);
 #if DEBUG
     [self.boton setTitle:@"LOGIN QA" forState:UIControlStateNormal]  ;
 #else
@@ -687,11 +703,7 @@
 
 - (void)loginViewFetchedUserInfo:(FBLoginView *)loginView
                             user:(id<FBGraphUser>)user {
-    if([[user objectForKey:@"email"] isEqualToString:@""] || [user objectForKey:@"email"] == nil){
-        self.datosUsuario.emailUsuario = [user objectForKey:@"id"];
-    }else{
-        self.datosUsuario.emailUsuario = [user objectForKey:@"email"];
-    }
+    
     
 #if DEBUG
     NSLog(@"Entrando a loginViewFetchedUserInfo:user:");
@@ -701,6 +713,11 @@
     NSUserDefaults *prefSesion = [NSUserDefaults standardUserDefaults];
     NSLog(@"El valor de sesion activa es: %ld", (long)[prefSesion integerForKey:@"intSesionActiva"]);
      if(loginFacebook == YES && [prefSesion integerForKey:@"intSesionActiva"] != 1) {
+         if([[user objectForKey:@"email"] isEqualToString:@""] || [user objectForKey:@"email"] == nil){
+             self.datosUsuario.emailUsuario = [user objectForKey:@"id"];
+         }else{
+             self.datosUsuario.emailUsuario = [user objectForKey:@"email"];
+         }
         loginFacebook = NO;
         [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
         [self performSelectorInBackground:@selector(consultaLogin) withObject:Nil];

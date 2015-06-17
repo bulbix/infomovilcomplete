@@ -20,6 +20,7 @@
                 <outlet property="o" destination="8Hn-Y8-rMi" id="k4O-hH-blI"/>
                 <outlet property="raya1" destination="zeC-2d-wsB" id="sg9-gT-6a3"/>
                 <outlet property="raya2" destination="Zhf-AC-7LB" id="EbL-8J-zvP"/>
+                <outlet property="registrateLabel" destination="N6g-5r-Rce" id="R4X-uL-Oij"/>
                 <outlet property="scrollLogin" destination="C8b-Ww-Q7b" id="Z2U-J4-GxD"/>
                 <outlet property="txtEmail" destination="YYV-iB-sOb" id="TEc-ey-gDJ"/>
                 <outlet property="txtPassword" destination="sI3-Z4-eOe" id="Hc2-0s-WLE"/>
@@ -104,11 +105,11 @@
                                 <outlet property="delegate" destination="-1" id="1LL-wd-5pY"/>
                             </connections>
                         </textField>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hzj-zB-fwt">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hzj-zB-fwt">
                             <rect key="frame" x="20" y="447" width="279" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
-                            <state key="normal" title="¿Aún no tienes cuenta? Regístrate">
+                            <state key="normal" title="¿Aún no tienes cuenta?">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -176,6 +177,13 @@
                             <rect key="frame" x="50" y="43" width="219" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                         </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Regístrate" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="N6g-5r-Rce">
+                            <rect key="frame" x="216" y="451" width="84" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
+                            <color key="textColor" red="0.61960784313725492" green="1" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <connections>
                         <outlet property="delegate" destination="-1" id="4wz-W4-x6z"/>

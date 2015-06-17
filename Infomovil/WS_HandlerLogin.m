@@ -1023,8 +1023,6 @@
         self.datosUsuario.canal = strAux;
         NSLog(@"EL CANAL ES: %@", strAux);
     }
-    
-    
 }
 
 -(void) acomodaContactos {

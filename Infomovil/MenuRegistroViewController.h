@@ -28,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *msjRegistrarConFacebook;
 @property (weak, nonatomic) IBOutlet UIImageView *imgLogoInfo;
 
+@property (weak, nonatomic) IBOutlet UILabel *ingresaLabel;
 
 
 

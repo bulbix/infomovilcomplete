@@ -655,10 +655,12 @@
 "errorVerMiSitio" = "No se ha podido cargar el sitio web." ;
 "errorPublicacion" = "No se ha podido registrar tu sitio web por favor inténtalo nuevamente.";
 "faltaImagenActualizar" = "Debes seleccionar una imagen antes de actualizar";
-"cuentaTodavia"="¿Aún no tienes cuenta? Regístrate";
+"cuentaTodavia"="¿Aún no tienes cuenta?";
+"cuentaTodaviaVerde"="Regístrate";
 
 "noSeHaPodido" = "No se ha podido cargar la vista previa.";
 "yaTienesCuenta" = "¿Ya tienes cuenta? Ingresa";
+"tienesCuentaVerde" = "Ingresa";
 "estaDisponiblePublica" = "¡El dominio está disponible!";
 "publicaTuSitioWeb" = "Publica tu sitio web.";
 "publicaTuSitioWebAccion" = "¡Publicar!";
@@ -683,3 +685,25 @@
 "txtPromocion" = "Código";
 "btnPromocion" = "Redimir";
 "letrasNumeros" = "Solo se permiten números y letras sin espacios vacios.";
+// Codigos de error de promociones//
+"paCodeError1" =  "El código ingresado no está asociado a ninguna campaña. Favor de verificar.";
+
+"paCodeError2" = "El código ingresado ya caducó. La fecha límite para su activación fue: %@";
+
+"paCodeError3" = "La campaña que utiliza el código %@ no se encuentra activa. Favor de verificar.";
+
+"paCodeError4" = "El código proporcionado está disponible a partir de la fecha %@";
+
+"paCodeError5" = "Esta cuenta ya ha sido asociada a una campaña.";
+
+"paCodeError6" =  "El número de cuentas que pueden ser activados por el código de promoción están agotadas.";
+
+"paCodeError9" = "El código ingresado ya lo activaron. Intenta con otro.";
+
+"paCodeError10" =  "El código está vencido.";
+
+"paCodeError11" = "El código ingresado no existe. Favor de verificar.";
+
+"paCodeError12" = "Se encontró el código ingresado más de una vez.";
+
+"paCodeError13" = "La cuenta ya tiene Plan Pro.";

@@ -17,12 +17,13 @@
     DominiosUsuario *dominioUsuario;
     BOOL esRecurso;
     ItemsDominio *itemDominio;
-
 }
 @property (nonatomic, weak) id<WS_HandlerProtocol> redimirCodigoDelegate;
 @property (nonatomic, strong) DatosUsuario *datosUsuario;
 @property (nonatomic, strong) NSString *currentElementString;
 @property (nonatomic, strong) NSString *token;
+@property (nonatomic, strong) NSString * result;
+@property (nonatomic, strong) NSString * codeCampania;
 @property (nonatomic, strong) NSMutableArray *arregloDominiosUsuario;
 -(void) redimeElCodigo:(NSString *)codigo;
 

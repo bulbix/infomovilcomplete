@@ -545,11 +545,13 @@
 "errorVerMiSitio" = "Could not load the website." ;
 "errorPublicacion" = "Has not been able to register your website please try again.";
 "faltaImagenActualizar" = "You must select an image before upgrading";
-"cuentaTodavia"="Don't have an Account? Register"; // or You do not have an account yet?
+"cuentaTodavia"="Don't have an Account?"; // or You do not have an account yet?
+"cuentaTodaviaVerde"="Register";
 
 "noSeHaPodido" = "Could not load the preview.";
 "msgGuardarTemplate" = "Updating style";
 "yaTienesCuenta" = "Already have an account? Log in";
+"tienesCuentaVerde" = "Log in";
 "estaDisponiblePublica" = "The domain is Available!";
 "publicaTuSitioWeb" = "Publish your website.";
 "publicaTuSitioWebAccion" = "Publish!";
@@ -575,3 +577,27 @@
 "btnPromocion" = "Redeem";
 "letrasNumeros" = "Only numbers and letters without empty spaces are allowed.";
 
+// Codigos de error de promociones//
+
+"paCodeError1" = "The code entered is not associated with any promotion. Please verify.";
+
+"paCodeError2" = "The promotion code has expired. The expiry date was: 00/00/0000";
+
+"paCodeError3" = "The promotion code AAAAA is inactive. Please verify and retry.";
+
+"paCodeError4" = "The code provided is available from 00/00/0000";
+
+"paCodeError5" =  "This account has been associated with a promotion code.";
+
+"paCodeError6" = "The number of accounts which can be activated by this promotion code has reached its limit.";
+
+"paCodeError9" = "The entered code has been activated already. Please try another one.";
+
+"paCodeError10" = "The promotion code has expired.";
+
+"paCodeError11" = "The promotion code does not exist. Please retry.";
+
+"paCodeError12" = "The promotion code has been used more than once.";
+
+"paCodeError13" = "The account is already Pro Plan.";
+"exitoCodigoRedimido"= "El código ha sido activado";
