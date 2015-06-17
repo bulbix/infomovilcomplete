@@ -55,9 +55,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *msjCodigoRedimido;
 @property (weak, nonatomic) IBOutlet UILabel *tituloCodigoRedimido;
 @property (weak, nonatomic) IBOutlet UIButton *btnAceptar;
-@property (weak, nonatomic) IBOutlet UIButton *aceptarAct;
 @property (weak, nonatomic) IBOutlet UIView *viewFelicidadesRedimir;
 @property (strong, nonatomic) IBOutlet UIView *viewContenidoRedimir;
+- (IBAction)aceptarAct:(id)sender;
 
 
 ///////////////////////

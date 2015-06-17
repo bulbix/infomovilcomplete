@@ -101,13 +101,19 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
         NSLog(@"EL PAIS ES: %@", storeCountry);
         if([skProduct.productIdentifier isEqualToString:@"com.infomovil.infomovil.12_months_new"]){
             if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-                [prefSesion setObject:[NSString stringWithFormat:@"%0.2f x month",  skProduct.price.floatValue/12] forKey:@"precioDoceMesesPlanPro"];
+                [prefSesion setObject:[NSString stringWithFormat:@"%0.2f / month",  skProduct.price.floatValue/12] forKey:@"precioDoceMesesPlanPro"];
             }else{
-                [prefSesion setObject:[NSString stringWithFormat:@"%0.2f x mes",  skProduct.price.floatValue] forKey:@"precioDoceMesesPlanPro"];
+                [prefSesion setObject:[NSString stringWithFormat:@"%0.2f x mes",  skProduct.price.floatValue/12] forKey:@"precioDoceMesesPlanPro"];
             }
         }else if([skProduct.productIdentifier isEqualToString:@"com.infomovil.infomovil.1_month"]){
             if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-                [prefSesion setObject:[NSString stringWithFormat:@"%0.2f x month",  skProduct.price.floatValue/12] forKey:@"precioUnMesPlanPro"];
+                [prefSesion setObject:[NSString stringWithFormat:@"%0.2f / month",  skProduct.price.floatValue] forKey:@"precioUnMesPlanPro"];
+            }else{
+                [prefSesion setObject:[NSString stringWithFormat:@"%0.2f x mes",  skProduct.price.floatValue] forKey:@"precioUnMesPlanPro"];
+            }
+        }else if([skProduct.productIdentifier isEqualToString:@"com.infomovil.infomovil.dominiotel"]){
+            if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
+                [prefSesion setObject:[NSString stringWithFormat:@"%0.2f / month",  skProduct.price.floatValue] forKey:@"precioUnMesPlanPro"];
             }else{
                 [prefSesion setObject:[NSString stringWithFormat:@"%0.2f x mes",  skProduct.price.floatValue] forKey:@"precioUnMesPlanPro"];
             }

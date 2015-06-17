@@ -70,6 +70,13 @@ if (dataResult != nil) {
     dominioUsuario = [[DominiosUsuario alloc] init];
     self.arregloDominiosUsuario = [[NSMutableArray alloc] init];
     if ([parser parse]) {
+        if ([self.arregloDominiosUsuario count] > 0) {
+            self.datosUsuario.dominiosUsuario = self.arregloDominiosUsuario;
+        }
+        else {
+            dominioUsuario = [[DominiosUsuario alloc] init];
+        }
+        
         if([self.result isEqualToString:@""] || [self.result length] <= 0 || self.result == nil ){
             [self.redimirCodigoDelegate resultadoRedimirCodigo:@"Error"];
         }else{

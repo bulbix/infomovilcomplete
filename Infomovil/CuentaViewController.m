@@ -508,6 +508,8 @@ if(noSeRepiteOprimirElBoton){
     if([resultado isEqualToString:@"Error"]){
         mensaje = NSLocalizedString(@"sentimos", @" ");
     }else if([resultado isEqualToString:@"0"]){
+        self.datosUsuario.datosPago.statusPago = @"PAGADO";
+        ((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio = @"Pago";
         mensaje = NSLocalizedString(@"paCodeError1", @" ");
         [self.view addSubview:self.viewContenidoRedimir];
     }else if([resultado isEqualToString:@"-1"]){
@@ -1069,6 +1071,10 @@ if(noSeRepiteOprimirElBoton){
 
 
 
+- (IBAction)aceptarAct:(id)sender {
+    [self.viewContenidoRedimir removeFromSuperview];
+    
+}
 @end
 
 
