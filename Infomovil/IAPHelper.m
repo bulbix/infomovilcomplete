@@ -113,9 +113,9 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
             }
         }else if([skProduct.productIdentifier isEqualToString:@"com.infomovil.infomovil.dominiotel"]){
             if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-                [prefSesion setObject:[NSString stringWithFormat:@"%0.2f / month",  skProduct.price.floatValue] forKey:@"precioUnMesPlanPro"];
+                [prefSesion setObject:[NSString stringWithFormat:@"%0.2f Annual",  skProduct.price.floatValue] forKey:@"precioDominioTel"];
             }else{
-                [prefSesion setObject:[NSString stringWithFormat:@"%0.2f x mes",  skProduct.price.floatValue] forKey:@"precioUnMesPlanPro"];
+                [prefSesion setObject:[NSString stringWithFormat:@"%0.2f Anual",  skProduct.price.floatValue] forKey:@"precioDominioTel"];
             }
         }
         [prefSesion synchronize];

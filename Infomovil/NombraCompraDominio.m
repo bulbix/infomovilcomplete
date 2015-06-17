@@ -404,7 +404,7 @@ NSString *respuestaPublicar;
     [self.vistaInferior setHidden:YES];
     self.viewCenterPopUp.layer.cornerRadius = 10;
     self.comprarPopUp.layer.cornerRadius = 10;
-    [self.comprarPopUp setTitle:NSLocalizedString(@"comprarDominioTel", @" ") forState:UIControlStateNormal];
+    [self.comprarPopUp setTitle:NSLocalizedString(@"compraElDominio", @" ") forState:UIControlStateNormal];
     self.viewCenterPopUp.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
     self.dominioPopUp.text = [NSString stringWithFormat:@"www.%@.tel",self.txtNombreSitio.text];
     self.msjPopUp.text = NSLocalizedString(@"estaDisponiblePublica", Nil);

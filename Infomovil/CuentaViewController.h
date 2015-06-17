@@ -40,7 +40,12 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *imgBackgroundBotones;
 
+// Mensaje de Pedacito de código //
+@property (weak, nonatomic) IBOutlet UILabel *msjPedacitoCodigo;
+@property (weak, nonatomic) IBOutlet UIButton *btnPedacitoCodigo;
+@property (weak, nonatomic) IBOutlet UIButton *pedacitoCodigoAct;
 
+//////////////////////////////////////////////////////
 
 @property (strong, nonatomic) NSArray *arregloProductos;
 @property (strong, nonatomic) PagoModel *pago;

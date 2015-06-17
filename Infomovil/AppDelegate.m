@@ -59,18 +59,18 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
     //AppsFlyer
     [AppsFlyerTracker sharedTracker].appsFlyerDevKey = @"5KoF92vzAFbhSj9PRduNCn";
     [AppsFlyerTracker sharedTracker].appleAppID = @"898313250";
-  */
+  
     //HOCKEYAPP  //
     [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"6d7f6a5334d44a52f5fb2761f6666f31"];
     [[BITHockeyManager sharedHockeyManager] startManager];
     [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
-  
+  */
 
     //-- Set Notification
     [Appboy startWithApiKey:llaveAppboy
               inApplication:[UIApplication sharedApplication]
           withLaunchOptions:launchOptions];
-    
+  
     
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.000000) {
         UIUserNotificationSettings * settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];

@@ -16,12 +16,18 @@
 
     self.datosUsuario = [DatosUsuario sharedInstance];
     NSString * aux = nil;
+    NSString * aux2 = nil;
     if([self.datosUsuario.email length]>0 && ![self.datosUsuario.email isEqualToString:@""] && self.datosUsuario.email != nil){
         self.datosUsuario.emailUsuario = self.datosUsuario.email;
         aux = self.datosUsuario.email;
     }else{
         self.datosUsuario.email = self.datosUsuario.emailUsuario;
         aux = self.datosUsuario.emailUsuario;
+    }
+    if([self.datosUsuario.dominio isEqualToString:@""] || [self.datosUsuario.dominio length] <= 0 || self.datosUsuario.dominio == nil){
+        aux2 = aux;
+    }else{
+        aux2 = self.datosUsuario.dominio;
     }
     
     NSString *  stringXML = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.webservice.infomovil.org/\">"
@@ -56,7 +62,7 @@
                              "</soapenv:Envelope>",
                  [StringUtils encriptar:aux conToken:passwordEncriptar],
                            [StringUtils encriptar:@"" conToken:self.datosUsuario.token],
-                 [StringUtils encriptar:self.datosUsuario.dominio conToken:self.datosUsuario.token],
+                 [StringUtils encriptar:aux2 conToken:self.datosUsuario.token],
                 
                 [StringUtils encriptar:codigo conToken:self.datosUsuario.token]
                  ];
@@ -194,10 +200,16 @@ if (dataResult != nil) {
     }else if ([elementName isEqualToString:@"fechaCtrlFin"]) {
         NSString *auxOffer = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
         [dominioUsuario setFechaFin:auxOffer];
+        if (!esRecurso) {
+            self.datosUsuario.fechaFinal = auxOffer;
+        }
          NSLog(@"5.- fechaCtrlFin: %@", [StringUtils desEncriptar:self.currentElementString conToken:self.token]);
     }else if ([elementName isEqualToString:@"fechaCtrlIni"]) {
         NSString *auxOffer = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
         [dominioUsuario setFechaIni:auxOffer];
+        if (!esRecurso) {
+            self.datosUsuario.fechaFinal = auxOffer;
+        }
         NSLog(@"6.- fechaCtrlIni: %@", [StringUtils desEncriptar:self.currentElementString conToken:self.token]);
     }else if ([elementName isEqualToString:@"idCtrlDomain"]) {
         NSString *strAux = [StringUtils desEncriptar:self.currentElementString conToken:self.token];

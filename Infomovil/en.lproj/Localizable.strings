@@ -65,6 +65,7 @@
 "llenarCampos"="You need to fill in all the fields";
 "nombradoExitoso"="Congratulations! You've successfully named your website.";
 "sentimos"="Sorry!";
+"sentimosRedimirCodigo" = "Sorry could not redeem your promotional code. Try again late.";
 "comprobarDisponibilidad"="Check availability first";
 "noDisponible"="The selected name is not available. Please try again";
 "intentaOtro"="Try another one";
@@ -562,6 +563,8 @@
 "publicarNombrar" = "!Publish¡";
 "aceptarPop" = "Accept";
 "comprarDominioTel" = "Search";
+"compraElDominio" = "Buy it!";
+
 "leyendaCompraDominio" = "Buy your own domain for a more professional image and a more memorable address.";
 "leyendaCompraDominioSub"="Give more presence to your business.";
 "comprarDominioTelHeader"= "Naming | Publish";
@@ -578,7 +581,7 @@
 "letrasNumeros" = "Only numbers and letters without empty spaces are allowed.";
 
 // Codigos de error de promociones//
-
+"exitoCodRedimir" = "Promotional code successfully redeemed";
 "paCodeError1" = "The code entered is not associated with any promotion. Please verify.";
 
 "paCodeError2" = "The promotion code has expired. The expiry date was: 00/00/0000";
@@ -601,3 +604,7 @@
 
 "paCodeError13" = "The account is already Pro Plan.";
 "exitoCodigoRedimido"= "El código ha sido activado";
+"felizCodigoRedim" = "¡Congratulations!";
+"enviarPedacito" = "Yes, mobilizes my current site";
+"msjCompartePedacito" = "Make a current mobile version of your website.";
+"cuentaConPlanPro" = "This site already has a PRO PLAN\n\nPeriod of validity\n From %@ to %@";

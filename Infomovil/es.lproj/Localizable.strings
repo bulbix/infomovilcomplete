@@ -88,6 +88,7 @@
 "llenarCampos" = "Debes llenar todos los campos";
 "nombradoExitoso" = "Se ha nombrado exitosamente tu sitio web";
 "sentimos" = "¡Lo sentimos!";
+"sentimosRedimirCodigo" = "Lo sentimos no se ha podido redimir tu código de promoción. Intentalo más tarde.";
 "comprobarDisponibilidad" = "Debes comprobar primero la disponibilidad";
 "noDisponible" = "El nombre seleccionado no está disponible. Por favor, intenta de nuevo";
 "intentaOtro" = "Intenta con otro";
@@ -671,6 +672,7 @@
 "publicarNombrar" = "!Publicar¡";
 "aceptarPop" = "Aceptar";
 "comprarDominioTel" = "Busca un nombre";
+"compraElDominio" = "¡Cómpralo!";
 "leyendaCompraDominio" = "Compra un dominio propio para tener una imagen más profesional y una dirección más memorable.";
 "leyendaCompraDominioSub"= "Dale más presencia a tu negocio.";
 "comprarDominioTelHeader"= "Nombrar | Publicar";
@@ -686,14 +688,15 @@
 "btnPromocion" = "Redimir";
 "letrasNumeros" = "Solo se permiten números y letras sin espacios vacios.";
 // Codigos de error de promociones//
+"exitoCodRedimir"="Codigo redimido exitosamente.";
 "paCodeError1" =  "El código ingresado no está asociado a ninguna campaña. Favor de verificar.";
 
-"paCodeError2" = "El código ingresado ya caducó. La fecha límite para su activación fue: %@";
+"paCodeError2" = "El código ingresado ya caducó."; //La fecha límite para su activación fue: %@";
 
-"paCodeError3" = "La campaña que utiliza el código %@ no se encuentra activa. Favor de verificar.";
-
-"paCodeError4" = "El código proporcionado está disponible a partir de la fecha %@";
-
+//"paCodeError3" = "La campaña que utiliza el código %@ no se encuentra activa. Favor de verificar.";
+"paCodeError3" = "Este código no se encuentra activo. Favor de verificar.";
+//"paCodeError4" = "El código proporcionado está disponible a partir de la fecha %@";
+"paCodeError4" = "El código proporcionado aún no esta disponible";
 "paCodeError5" = "Esta cuenta ya ha sido asociada a una campaña.";
 
 "paCodeError6" =  "El número de cuentas que pueden ser activados por el código de promoción están agotadas.";
@@ -707,3 +710,7 @@
 "paCodeError12" = "Se encontró el código ingresado más de una vez.";
 
 "paCodeError13" = "La cuenta ya tiene Plan Pro.";
+"felizCodigoRedim" = "¡Felicidades!";
+"enviarPedacito" = "Si, moviliza mi sitio actual";
+"msjCompartePedacito" = "Haz una versión móvil de tu sitio web actual.";
+"cuentaConPlanPro" = "Este sitio ya cuenta con PLAN PRO disfruta sus beneficios.\n\nVigencia del dominio\n Del %@ al %@";
