@@ -272,6 +272,7 @@
                                                                                 from:@"yyyy-MM-dd"
                                                                                   to:@"dd-MM-yyy"];
                         self.datos.idDominio = respuestaInt;
+                        self.datos.dominioRecurso = self.datos.dominio;
                         self.datos.dominio = user;
                         AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
                         if ([statusDominio hasSuffix:@"PRO"]) {
@@ -300,6 +301,7 @@
                         self.datos.idDominio = [stringResult intValue];
                      
                         self.datos.idDominio = respuestaInt;
+                        self.datos.dominioRecurso = self.datos.dominio;
                         self.datos.dominio = user;
                         ((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio = @"Pendiente";
                         [self.wSHandlerDelegate resultadoConsultaDominio:@"Error Publicar"];
@@ -764,9 +766,7 @@
     else if ([elementName isEqualToString:@"domainCtrlName"]) {
         [dominioUsuario setDomainName:[StringUtils desEncriptar:self.currentElementString conToken:self.token]];
         NSLog(@"EL NOMBRE DE DOMINIO ES ws_ handlerDominio %@", [StringUtils desEncriptar:self.currentElementString conToken:self.token]);
-        if (!esRecurso && [[StringUtils desEncriptar:self.currentElementString conToken:self.token] length] >0) {
-            self.datos.dominio = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
-        }
+        if(esRecurso){NSLog(@"RECONOCIO QUE ERA NOMBRE DE DOMINIO!!! domainCtrlName ");}
     }
     else if ([elementName isEqualToString:@"domainType"]) {
         NSString *typeAux = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
@@ -784,7 +784,7 @@
             NSString *auxOffer = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
             [dominioUsuario setFechaFin:auxOffer];
             NSLog(@"LA FECHA DE CONTROL ES FIN ws_ handlerDominio: %@",auxOffer);
-            self.telIni= self.currentElementString;
+            self.telFin= self.currentElementString;
         }
     }
     else if ([elementName isEqualToString:@"fechaCtrlIni"]) {
@@ -792,7 +792,7 @@
             NSString *auxOffer = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
             [dominioUsuario setFechaIni:auxOffer];
             NSLog(@"LA FECHA DE CONTROL ES INI ws_ handlerDominio: %@",auxOffer);
-            self.telFin= self.currentElementString;
+            self.telIni= self.currentElementString;
         }
         
         

@@ -581,6 +581,11 @@
 		BFD29D7B1AC2139D008EADB9 /* verEjemplo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFD29D4C1AC2139D008EADB9 /* verEjemplo@2x.png */; };
 		BFD29D7D1AC2139D008EADB9 /* verTutorial@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFD29D4E1AC2139D008EADB9 /* verTutorial@2x.png */; };
 		BFE270311B2675AC007D4316 /* lineCompraDominio.png in Resources */ = {isa = PBXBuildFile; fileRef = BFE270301B2675AC007D4316 /* lineCompraDominio.png */; };
+		BFFB04961B33811E001A9777 /* WS_Moviliza.m in Sources */ = {isa = PBXBuildFile; fileRef = BFFB04951B33811E001A9777 /* WS_Moviliza.m */; };
+		BFFB049B1B338FD1001A9777 /* EnviarPedacitoCodigoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFFB04991B338FD1001A9777 /* EnviarPedacitoCodigoViewController.m */; };
+		BFFB049C1B338FD1001A9777 /* EnviarPedacitoCodigoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFFB049A1B338FD1001A9777 /* EnviarPedacitoCodigoViewController.xib */; };
+		BFFB049F1B3392C8001A9777 /* ico_info_moviliza.png in Resources */ = {isa = PBXBuildFile; fileRef = BFFB049D1B3392C8001A9777 /* ico_info_moviliza.png */; };
+		BFFB04A01B3392C8001A9777 /* ico_mail_moviliza.png in Resources */ = {isa = PBXBuildFile; fileRef = BFFB049E1B3392C8001A9777 /* ico_mail_moviliza.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1390,6 +1395,13 @@
 		BFD29D4C1AC2139D008EADB9 /* verEjemplo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "verEjemplo@2x.png"; sourceTree = "<group>"; };
 		BFD29D4E1AC2139D008EADB9 /* verTutorial@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "verTutorial@2x.png"; sourceTree = "<group>"; };
 		BFE270301B2675AC007D4316 /* lineCompraDominio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lineCompraDominio.png; sourceTree = "<group>"; };
+		BFFB04941B33811E001A9777 /* WS_Moviliza.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WS_Moviliza.h; sourceTree = "<group>"; };
+		BFFB04951B33811E001A9777 /* WS_Moviliza.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WS_Moviliza.m; sourceTree = "<group>"; };
+		BFFB04981B338FD1001A9777 /* EnviarPedacitoCodigoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnviarPedacitoCodigoViewController.h; sourceTree = "<group>"; };
+		BFFB04991B338FD1001A9777 /* EnviarPedacitoCodigoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnviarPedacitoCodigoViewController.m; sourceTree = "<group>"; };
+		BFFB049A1B338FD1001A9777 /* EnviarPedacitoCodigoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EnviarPedacitoCodigoViewController.xib; sourceTree = "<group>"; };
+		BFFB049D1B3392C8001A9777 /* ico_info_moviliza.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ico_info_moviliza.png; path = imagenesWeb/ico_info_moviliza.png; sourceTree = "<group>"; };
+		BFFB049E1B3392C8001A9777 /* ico_mail_moviliza.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ico_mail_moviliza.png; path = imagenesWeb/ico_mail_moviliza.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1753,6 +1765,8 @@
 				0FCB32C419B922C40042322E /* JsonParserVideo.m */,
 				BF2B5D911B2F54BD00947D0F /* WS_RedimirCodigo.h */,
 				BF2B5D921B2F54BD00947D0F /* WS_RedimirCodigo.m */,
+				BFFB04941B33811E001A9777 /* WS_Moviliza.h */,
+				BFFB04951B33811E001A9777 /* WS_Moviliza.m */,
 			);
 			name = ws;
 			sourceTree = "<group>";
@@ -2206,6 +2220,7 @@
 		0FE02844186E4992007C27B0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				BFFB04971B338F8E001A9777 /* PedacitoDeCodigo */,
 				BF4963BE1AB0C78A008E6DD7 /* ElegirPlantilla */,
 				68C200C119F964D90062B2D3 /* Widgets */,
 				0F6CBD2319081F430077B065 /* Tips */,
@@ -2308,6 +2323,8 @@
 		BF069B561B0BCAEA00167EAF /* ImagenesParaWeb */ = {
 			isa = PBXGroup;
 			children = (
+				BFFB049D1B3392C8001A9777 /* ico_info_moviliza.png */,
+				BFFB049E1B3392C8001A9777 /* ico_mail_moviliza.png */,
 				BF66D73E1B1D29AF001FA40F /* contactanos.png */,
 				BF66D73F1B1D29AF001FA40F /* contacto.png */,
 				BF66D7411B1D29AF001FA40F /* informacion.png */,
@@ -2628,6 +2645,16 @@
 			path = LoginFacebook;
 			sourceTree = "<group>";
 		};
+		BFFB04971B338F8E001A9777 /* PedacitoDeCodigo */ = {
+			isa = PBXGroup;
+			children = (
+				BFFB04981B338FD1001A9777 /* EnviarPedacitoCodigoViewController.h */,
+				BFFB04991B338FD1001A9777 /* EnviarPedacitoCodigoViewController.m */,
+				BFFB049A1B338FD1001A9777 /* EnviarPedacitoCodigoViewController.xib */,
+			);
+			name = PedacitoDeCodigo;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2775,6 +2802,7 @@
 				0F578E4C18BC356A00888C87 /* btnsiguiente2@2x.png in Resources */,
 				0F9F532C18989413000F9FA5 /* btnsiguiente@2x.png in Resources */,
 				BF63A1901AB3C24A0077A5C2 /* slider3.png in Resources */,
+				BFFB049F1B3392C8001A9777 /* ico_info_moviliza.png in Resources */,
 				65581B1519350C8000B5D4ED /* btncreateeditEn@2x.png in Resources */,
 				0F578E4A18BC355F00888C87 /* btnsiguiente2.png in Resources */,
 				0F4C66F018F5E1D100CC6DA8 /* btnaceptarmensajes@2x.png in Resources */,
@@ -2803,6 +2831,7 @@
 				65581B2C19350C9300B5D4ED /* settingsEn.png in Resources */,
 				BFA858931AA018AE00A9CB6F /* splash-1242x2208@2x.png in Resources */,
 				BFD292A81AB3A5520066AF30 /* verEjemplo-es.png in Resources */,
+				BFFB049C1B338FD1001A9777 /* EnviarPedacitoCodigoViewController.xib in Resources */,
 				0F5C546F1892D21D000028CA /* PEPhotoCropEditor.bundle in Resources */,
 				0F6CBD1D190801D70077B065 /* NBrosa@2x.png in Resources */,
 				BFD29D791AC2139D008EADB9 /* temp_verEjemplo@2x.png in Resources */,
@@ -2951,6 +2980,7 @@
 				0F4A16A1187B002B005F5786 /* ListaTelefonosViewController.xib in Resources */,
 				65065DE4190FEB8000189316 /* tips1@2x.png in Resources */,
 				0F5CFA421896C30700D27B2E /* ContactosCell.xib in Resources */,
+				BFFB04A01B3392C8001A9777 /* ico_mail_moviliza.png in Resources */,
 				BFD292891AB36A140066AF30 /* template3@2x.png in Resources */,
 				BFB69B721A8427360022107C /* miFeed@2x.png in Resources */,
 				0FCB0F6718E2139600C37A37 /* compartiremail@2x.png in Resources */,
@@ -3224,6 +3254,7 @@
 				0F079BFC1871D2BD007AFCC2 /* InfomovilViewController.m in Sources */,
 				BF66D71F1B1CD4A9001FA40F /* GTLServicePlus.m in Sources */,
 				BF66D7141B1CD4A9001FA40F /* GTLPlusActivityFeed.m in Sources */,
+				BFFB04961B33811E001A9777 /* WS_Moviliza.m in Sources */,
 				BF4963C71AB0D681008E6DD7 /* VerEjemploPlantillaViewController.m in Sources */,
 				BF648FAB1A94FC5900AFDEAD /* InicioRapidoViewController.m in Sources */,
 				0F408BCF18E1166E0010FFC5 /* NSData+Base64.m in Sources */,
@@ -3281,6 +3312,7 @@
 				BF66D7191B1CD4A9001FA40F /* GTLPlusMoment.m in Sources */,
 				0F5CFA401896C2E200D27B2E /* ContactosCell.m in Sources */,
 				0FB4F38918DBC83A0035363E /* NSDateFormatterUtiles.m in Sources */,
+				BFFB049B1B338FD1001A9777 /* EnviarPedacitoCodigoViewController.m in Sources */,
 				6850120819ED9CC000389185 /* iVersion.m in Sources */,
 				0F8B214918849EDB00F016B3 /* GaleriaPaso2ViewController.m in Sources */,
 			);

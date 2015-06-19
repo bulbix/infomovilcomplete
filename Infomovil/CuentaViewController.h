@@ -43,7 +43,10 @@
 // Mensaje de Pedacito de código //
 @property (weak, nonatomic) IBOutlet UILabel *msjPedacitoCodigo;
 @property (weak, nonatomic) IBOutlet UIButton *btnPedacitoCodigo;
-@property (weak, nonatomic) IBOutlet UIButton *pedacitoCodigoAct;
+- (IBAction)pedacitoCodigoAct:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *conoceMasAct;
+
+@property (weak, nonatomic) IBOutlet UILabel *conoceMasCodigo;
 
 //////////////////////////////////////////////////////
 

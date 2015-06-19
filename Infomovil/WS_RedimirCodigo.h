@@ -25,6 +25,8 @@
 @property (nonatomic, strong) NSString * result;
 @property (nonatomic, strong) NSString * codeCampania;
 @property (nonatomic, strong) NSMutableArray *arregloDominiosUsuario;
+@property (nonatomic, strong) NSMutableArray *arregloDominio;
+
 -(void) redimeElCodigo:(NSString *)codigo;
 
 @end

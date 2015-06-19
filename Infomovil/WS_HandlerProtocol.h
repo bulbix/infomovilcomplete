@@ -24,4 +24,5 @@
 -(void) resultadoVideo:(NSMutableArray*)arregloVideos;
 -(void) errorBusqueda;
 -(void) resultadoRedimirCodigo:(NSString *)idDominio;
+-(void) resultadoMovilizaSitio:(NSString *)resultado;
 @end

@@ -528,6 +528,7 @@
 "msgGuardarPerfil" = "Actualizando Perfil";
 "msgGuardarPromocion" = "Actualizando Promoción";
 "msgNombrarSitio" = "Nombrando Sitio";
+"msgPublicarSitio" = "Publicando Sitio";
 "msgBuscandoUsuario" = "Verificando Usuario";
 "msgPublicando" = "Registrando sitio";
 "msgValidandoUsuario" = "Validando Credenciales";
@@ -714,3 +715,9 @@
 "enviarPedacito" = "Si, moviliza mi sitio actual";
 "msjCompartePedacito" = "Haz una versión móvil de tu sitio web actual.";
 "cuentaConPlanPro" = "Este sitio ya cuenta con PLAN PRO disfruta sus beneficios.\n\nVigencia del dominio\n Del %@ al %@";
+"errorMoviliza" = "No se ha podido generar el código para enviar. Intentalo nuevamente.";
+"movilizaActual"= "Moviliza tu sitio web";
+"movilizaTituloWeb" = "Moviliza tu sitio web actual";
+"movilizaTextoWeb" = "Para habilitar el servicio, tu webmaster necesita hacer unos cambios a la configuración de tu sitio web actual.\n\nHaz clic para enviarle el correo con las instrucciones necesarias.  Ya redactamos el correo, así que no necesitas escribir nada. Simplemente ¡envíale el mensaje!";
+"movilizaBotonEnviar" = "Enviar código";
+"conoceMasCodigo" = "Conoce más";

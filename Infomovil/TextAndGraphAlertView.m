@@ -46,12 +46,7 @@
         alerta.frame = CGRectMake(0, 0, 375,667);
         alerta.viewContenido.frame = CGRectMake(40,100,295,381);
     }
-    /*else if(IS_STANDARD_IPHONE_6_PLUS){
-        alerta.frame = CGRectMake(0, 0, 414, 736);
-        alerta.viewContenido.frame = CGRectMake(59,100,295,381);
-       
-    }
-    */
+
     
     [alerta setUpContacto];
     [alerta setAlpha:0];

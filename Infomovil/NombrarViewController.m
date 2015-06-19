@@ -288,6 +288,10 @@
     alertActivity = [AlertView initWithDelegate:self message:NSLocalizedString(@"msgNombrarSitio", Nil) andAlertViewType:AlertViewTypeActivity];
     [alertActivity show];
 }
+-(void) mostrarActivity2 {
+    alertActivity = [AlertView initWithDelegate:self message:NSLocalizedString(@"msgPublicarSitio", Nil) andAlertViewType:AlertViewTypeActivity];
+    [alertActivity show];
+}
 
 -(void) ocultarActivity {
     if (alertActivity)
@@ -663,7 +667,7 @@
 - (IBAction)publicarAction:(id)sender {
     RevisarSaliendo = YES;
     if( [CommonUtils hayConexion]){
-        [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
+        [self performSelectorOnMainThread:@selector(mostrarActivity2) withObject:Nil waitUntilDone:YES];
         [self performSelectorInBackground:@selector(checaDominioPublicacion) withObject:Nil];
     }else{
         AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];

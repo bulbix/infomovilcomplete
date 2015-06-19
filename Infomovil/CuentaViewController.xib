@@ -14,13 +14,14 @@
                 <outlet property="btnPedacitoCodigo" destination="Dcp-L3-wI6" id="kJw-Yx-JQe"/>
                 <outlet property="comprar12meses" destination="ZSa-km-kPq" id="Y0A-EO-VRZ"/>
                 <outlet property="comprar1mes" destination="TfM-fF-9Se" id="vDi-p9-tsK"/>
+                <outlet property="conoceMasAct" destination="VEh-2x-WqB" id="cRd-KO-tLK"/>
+                <outlet property="conoceMasCodigo" destination="GdW-oS-Ldo" id="5nj-Nt-prO"/>
                 <outlet property="imgBackgroundBotones" destination="P71-gT-vz2" id="QnS-9Y-dSL"/>
                 <outlet property="imgBeneficios" destination="ZgK-QH-lCK" id="8OY-je-Izv"/>
                 <outlet property="labelMisSitios" destination="mtM-MX-gZF" id="gkr-Rv-Xdf"/>
                 <outlet property="labelPromocion" destination="5cg-q4-9fp" id="g5X-FZ-qBW"/>
                 <outlet property="msjCodigoRedimido" destination="5B6-ku-EHX" id="LyB-Ou-BB6"/>
                 <outlet property="msjPedacitoCodigo" destination="8em-22-PsI" id="mMc-7m-GiW"/>
-                <outlet property="pedacitoCodigoAct" destination="Dcp-L3-wI6" id="Um9-SN-PDw"/>
                 <outlet property="precioDoce" destination="pos-60-99h" id="Y7z-Fe-0Ew"/>
                 <outlet property="precioUno" destination="Qou-Zd-Lk2" id="ZkD-Nb-6Fb"/>
                 <outlet property="rayaLabel" destination="ZDX-Vl-jxv" id="5hB-6d-l88"/>
@@ -72,26 +73,49 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plan Pro Adquirido" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Wps-xS-Tyi">
-                                            <rect key="frame" x="20" y="60" width="280" height="150"/>
+                                            <rect key="frame" x="20" y="17" width="280" height="150"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                             <color key="textColor" red="0.18431372549019609" green="0.63921568627450975" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Haz una versión móvil de tu sitio web actual" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8em-22-PsI">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Haz una versión móvil de tu sitio web actual" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8em-22-PsI">
+                                            <rect key="frame" x="10" y="182" width="300" height="60"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
                                             <color key="textColor" red="0.36078431372549019" green="0.63529411764705879" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Dcp-L3-wI6">
+                                            <rect key="frame" x="30" y="310" width="260" height="35"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" red="0.36078431372549019" green="0.63529411764705879" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
                                             <state key="normal" title="Si, moviliza mi sitio actual">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="pedacitoCodigoAct:" destination="-1" eventType="touchUpInside" id="aWG-ZS-sCi"/>
+                                            </connections>
                                         </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="VEh-2x-WqB">
+                                            <rect key="frame" x="100" y="253" width="30" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" backgroundImage="ico_info_moviliza.png">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Conoce más" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GdW-oS-Ldo">
+                                            <rect key="frame" x="139" y="260" width="200" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
+                                            <color key="textColor" red="0.36078431372549019" green="0.63529411764705879" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lineCompraDominio.png" id="8ie-gs-g7t">
+                                            <rect key="frame" x="20" y="160" width="280" height="2"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -266,18 +290,6 @@
                     <rect key="frame" x="20" y="90" width="280" height="280"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="unQ-Hw-Sgr">
-                            <rect key="frame" x="40" y="228" width="200" height="35"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.36078431372549019" green="0.63921568627450975" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
-                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                            <state key="normal" title="Aceptar">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="aceptarAct:" destination="-1" eventType="touchUpInside" id="QUc-5H-Ykp"/>
-                            </connections>
-                        </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¡Tu código ha sido redimido exitosamente!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5B6-ku-EHX">
                             <rect key="frame" x="8" y="75" width="264" height="110"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -292,6 +304,18 @@
                             <color key="textColor" red="0.16470588235294117" green="0.63921568627450975" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="unQ-Hw-Sgr">
+                            <rect key="frame" x="40" y="222" width="200" height="35"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.36078431372549019" green="0.63921568627450975" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                            <state key="normal" title="Aceptar">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="aceptarAct:" destination="-1" eventType="touchUpInside" id="QUc-5H-Ykp"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
@@ -306,6 +330,8 @@
         <image name="1mInac-es.png" width="230" height="230"/>
         <image name="beneficios-es.png" width="740" height="523"/>
         <image name="bgPro.png" width="375" height="178"/>
+        <image name="ico_info_moviliza.png" width="150" height="150"/>
+        <image name="lineCompraDominio.png" width="740" height="4"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

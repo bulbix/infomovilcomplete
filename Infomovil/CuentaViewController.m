@@ -20,6 +20,8 @@
 #import "NombraCompraDominio.h"
 #import "MenuPasosViewController.h"
 #import "WS_RedimirCodigo.h"
+#import "WS_Moviliza.h"
+#import "EnviarPedacitoCodigoViewController.h"
 
 @interface CuentaViewController () {
     NSInteger noVisitas;
@@ -249,7 +251,8 @@ int opcionButton = 0 ;
 
             self.MensajePlanProComprado.text = [NSString stringWithFormat:NSLocalizedString(@"cuentaConPlanPro", nil),self.datosUsuario.fechaInicial, self.datosUsuario.fechaFinal];
             self.msjPedacitoCodigo.text = NSLocalizedString(@"msjCompartePedacito", Nil);
-            [self.btnPedacitoCodigo.titleLabel setText: NSLocalizedString(@"enviarPedacito", Nil)];
+           [self.btnPedacitoCodigo setTitle:NSLocalizedString(@"enviarPedacito", Nil) forState:UIControlStateNormal];
+            self.conoceMasCodigo.text = NSLocalizedString(@"conoceMasCodigo", Nil);
             self.viewCompraPlanPro.hidden = YES;
             self.viewPlanProComprado.hidden = NO;
             [self.vistaInferior setHidden:NO];
@@ -269,6 +272,7 @@ int opcionButton = 0 ;
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     self.precioDoce.text = [prefs stringForKey:@"precioDoceMesesPlanPro"];
     self.precioUno.text = [prefs stringForKey:@"precioUnMesPlanPro"];
+    
  
     [self.labelPromocion setText:NSLocalizedString(@"labelPromocion", Nil)];
     [self.Enviar setTitle:NSLocalizedString(@"btnPromocion", Nil) forState:UIControlStateNormal];
@@ -279,15 +283,19 @@ int opcionButton = 0 ;
     self.btnAceptar.layer.cornerRadius = 5;
     self.btnAceptar.titleLabel.text = NSLocalizedString(@"aceptarPop", Nil);
     self.viewFelicidadesRedimir.layer.cornerRadius = 5;
-    
+    self.btnPedacitoCodigo.layer.cornerRadius = 10;
     if(IS_IPAD){
         self.viewContenidoRedimir.frame = CGRectMake(0, 0, 768, 1024);
         self.viewFelicidadesRedimir.frame = CGRectMake(234, 300, 300, 300);
     }else if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         self.viewContenidoRedimir.frame = CGRectMake(0, 0, 375, 768);
         self.viewFelicidadesRedimir.frame = CGRectMake(47, 200, 280, 280);
+    }else if(IS_IPHONE_4){
+        
     }
     
+    
+   
 }
 
 
@@ -490,10 +498,14 @@ if(noSeRepiteOprimirElBoton){
 }
 
 - (IBAction)redimirCodigo:(id)sender {
-    
     if([self validaCodigo]){
+      if([CommonUtils hayConexion]) {
         [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
         [self performSelectorInBackground:@selector(redimirWS) withObject:Nil];
+      }else{
+          AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+          [alert show];
+      }
     }else{
         AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"letrasNumeros", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
         [alert show];
@@ -549,7 +561,7 @@ if(noSeRepiteOprimirElBoton){
          [self alertMensajeError:mensaje];
     }
     
-     [self performSelectorOnMainThread:@selector(ocultarActivityRedimir) withObject:Nil waitUntilDone:YES];
+     [self performSelectorOnMainThread:@selector(ocultarActivitySimple) withObject:Nil waitUntilDone:YES];
     
 }
 
@@ -587,15 +599,11 @@ if(noSeRepiteOprimirElBoton){
 			arreglo = pro;
 			tipo = NO;
             self.tituloPlanPro.text = NSLocalizedString(@"mensajeCuenta", @" ");
-            
 			self.vistaPlanPro.hidden = NO;
-		
 		}else{
 			arreglo = pro;
 			tipo = NO;
             self.tituloPlanPro.text = NSLocalizedString(@"mensajeCuenta", @" ");
-			
-		
 		}
         [self.scrollContenido scrollRectToVisible:CGRectMake(0, 0, self.scrollContenido.frame.size.width, self.scrollContenido.frame.size.height) animated:YES];
 /////////////////////////////////// DOMINIOS  /////////////////////////////////
@@ -818,11 +826,12 @@ if(noSeRepiteOprimirElBoton){
     [self.alerta show];
 }
 
--(void)ocultarActivityRedimir{
+-(void)ocultarActivitySimple{
     [NSThread sleepForTimeInterval:1];
     [self.alerta hide];
 
 }
+
 
 -(void) ocultarActivity {
     noSeRepiteOprimirElBoton = YES;
@@ -1101,6 +1110,44 @@ if(noSeRepiteOprimirElBoton){
     [self.viewContenidoRedimir removeFromSuperview];
     
 }
+- (IBAction)pedacitoCodigoAct:(id)sender {
+    if ([CommonUtils hayConexion]) {
+     [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
+     [self performSelectorInBackground:@selector(movilizaSitio) withObject:Nil];
+    }else{
+        AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+        [alert show];
+    }
+}
+    
+-(void)movilizaSitio{
+    self.datosUsuario = [DatosUsuario sharedInstance];
+    if([self.datosUsuario.emailUsuario isEqualToString:@""] || self.datosUsuario.emailUsuario == nil || [self.datosUsuario.emailUsuario length]<=0){
+        self.datosUsuario.emailUsuario = self.datosUsuario.email;
+    }
+    WS_Moviliza *movilizar = [[WS_Moviliza alloc] init];
+    [movilizar setMovilizaSitioDelegate:self];
+    [movilizar moviliza:self.datosUsuario.emailUsuario ];
+}
+
+-(void)resultadoMovilizaSitio:(NSString *)resultado{
+    [self performSelectorOnMainThread:@selector(ocultarActivitySimple)withObject:Nil waitUntilDone:YES];
+    NSLog(@"EL RESULTADO REGRESADO ES_ %@", resultado);
+    if([resultado isEqualToString:@"Error"]){
+        NSLog(@"Hay un error en el servicio");
+        AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"errorMoviliza", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+        [alert show];
+    }else{
+         self.datosUsuario = [DatosUsuario sharedInstance];
+         self.datosUsuario.pedacito = [NSString stringWithFormat:@"<script id=\"mobileVersion\" type=\"text/javascript\" src=\"http://infomovil.com/PreReg/resources/js/redireccionamiento/mobilesite.js?xU9ukGGeIi5hPJQj=%@\"></script>", resultado];
+          NSLog(@"EL CODIGO A ENVIAR SERA %@", self.datosUsuario.pedacito);
+        EnviarPedacitoCodigoViewController *pedCodigo = [[EnviarPedacitoCodigoViewController alloc] initWithNibName:@"EnviarPedacitoCodigoViewController" bundle:Nil];
+        [self.navigationController pushViewController:pedCodigo animated:YES];
+    }
+    
+  
+}
+
 @end
 
 

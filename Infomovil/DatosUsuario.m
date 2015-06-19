@@ -107,6 +107,7 @@
 	self.existeLogin = NO;
     self.dominio = Nil;
     self.dominioTel = Nil;
+    self.dominioRecurso = Nil;
     self.localizacion = Nil;
     self.videoSeleccionado = Nil;
     self.publicoSitio = NO;
@@ -166,7 +167,7 @@
     self.arregloDescripcionImagenGaleria = Nil;
     
     self.voyAComprarTel = Nil;
-    
+    self.pedacito = Nil;
     
 }
 

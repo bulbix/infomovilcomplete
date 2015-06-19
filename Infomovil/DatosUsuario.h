@@ -55,7 +55,7 @@
 @property (nonatomic, strong) NSString *passwordUsuario;
 
 @property (nonatomic, strong) NSString *dominio;
-@property (nonatomic, strong) NSString *dominioTel;
+
 @property (nonatomic, strong) CLLocation *localizacion;
 
 @property (nonatomic, strong) VideoModel *videoSeleccionado;
@@ -142,8 +142,14 @@
 @property (nonatomic, strong) NSString *consultaDomainName;
 @property (nonatomic, strong) NSString *consultaLista;
 
+@property (nonatomic, strong) NSString *pedacito;
+
 // COMPRA .TEL
 @property (nonatomic, strong) NSString *voyAComprarTel;
+
+// Dominio Recurso y tel
+@property (nonatomic, strong) NSString *dominioTel;
+@property (nonatomic, strong) NSString *dominioRecurso;
 
 + (id)sharedInstance;
 

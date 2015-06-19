@@ -173,6 +173,7 @@
                       self.datosUsuario.dominio =[StringUtils desEncriptar:self.datosUsuario.dominio conToken:self.datosUsuario.token];
                     }
                     NSLog(@"LOS DOMINIOS QUE ME ESTA ENVIANDO SON: %@", self.datosUsuario.dominio);
+                    self.datosUsuario.dominioRecurso = self.datosUsuario.dominio;
                 }
                 if (self.nombreEmpresaAux.length > 0 && self.nombreEmpresaAux != Nil) {
                     self.nombreEmpresaAux = [StringUtils desEncriptar:self.nombreEmpresaAux conToken:self.datosUsuario.token];
@@ -443,10 +444,11 @@
     else if ([elementName isEqualToString:@"listUsuarioDominiosVO"]) {
         dominioUsuario = [[DominiosUsuario alloc] init];
     }
-    else if ([elementName isEqualToString:@"domainCtrlName"]) {
+    
+    else if ([elementName isEqualToString:@"domainType"]) {
         self.currentElementString = [[NSMutableString alloc] init];
     }
-    else if ([elementName isEqualToString:@"domainType"]) {
+    else if ([elementName isEqualToString:@"domainCtrlName"]) {
         self.currentElementString = [[NSMutableString alloc] init];
     }
     else if ([elementName isEqualToString:@"fechaCtrlFin"]) {
@@ -969,11 +971,7 @@
         else {
             [self.arregloDominiosUsuario addObject:dominioUsuario];
         }
-    }
-    else if ([elementName isEqualToString:@"domainCtrlName"]) {
-        [dominioUsuario setDomainName:[StringUtils desEncriptar:self.currentElementString conToken:self.token]];
-    }
-    else if ([elementName isEqualToString:@"domainType"]) {
+    }else if ([elementName isEqualToString:@"domainType"]) {
         NSString *typeAux = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
         if ([typeAux isEqualToString:@"recurso"]) {
             esRecurso = YES;
@@ -983,6 +981,8 @@
         }
         NSLog(@"EL TIPO DE DOMINIO ES: %@", typeAux);
         [dominioUsuario setDomainType:typeAux];
+    }else if ([elementName isEqualToString:@"domainCtrlName"]) {
+        [dominioUsuario setDomainName:[StringUtils desEncriptar:self.currentElementString conToken:self.token]];
     }
     else if ([elementName isEqualToString:@"vigente"]) {
         NSString *typeAux = [StringUtils desEncriptar:self.currentElementString conToken:self.token];

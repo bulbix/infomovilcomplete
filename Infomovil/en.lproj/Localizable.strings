@@ -413,6 +413,7 @@
 "msgGuardarPerfil" = "Updating Profile";
 "msgGuardarPromocion" = "Updating Offer";
 "msgNombrarSitio" = "Naming Site";
+"msgPublicarSitio" = "Publishing Site";
 "msgBuscandoUsuario" = "Verifing User";
 "msgPublicando" = "Registering your site";
 "msgValidandoUsuario" = "Validating credentials";
@@ -608,3 +609,11 @@
 "enviarPedacito" = "Yes, mobilizes my current site";
 "msjCompartePedacito" = "Make a current mobile version of your website.";
 "cuentaConPlanPro" = "This site already has a PRO PLAN\n\nPeriod of validity\n From %@ to %@";
+"errorMoviliza" = "It has not been able to generate the code to send. Please try again.";
+"movilizaActual"= "Mobilize your website";
+"movilizaTituloWeb" = "Mobilize your current website";
+"movilizaTextoWeb" = "To enable the service, your webmaster needs to make some changes to the settings of your current website. \n\nClick to send mail with instructions. And we wrote the mail, so you do not need to write anything. Just send him the message!";
+"movilizaBotonEnviar" = "Post code";
+"conoceMasCodigo" = "Know more";
+
+
