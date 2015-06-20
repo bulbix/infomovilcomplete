@@ -511,7 +511,6 @@
 		BF9DF2AD1B1E8269007E5310 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF9DF2AC1B1E8269007E5310 /* CoreText.framework */; };
 		BF9DF2AF1B1E8281007E5310 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF9DF2AE1B1E8281007E5310 /* QuickLook.framework */; };
 		BFA7018A1A817A3B00F685C3 /* libAdIdAccess.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFA701861A817A3B00F685C3 /* libAdIdAccess.a */; };
-		BFA7018B1A817A3B00F685C3 /* libAppsFlyerLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFA701871A817A3B00F685C3 /* libAppsFlyerLib.a */; };
 		BFA7018C1A817A3B00F685C3 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFA701881A817A3B00F685C3 /* libGoogleAnalyticsServices.a */; };
 		BFA7018F1A817ADA00F685C3 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFA7018E1A817ADA00F685C3 /* libcrypto.a */; };
 		BFA858901AA018AE00A9CB6F /* Default-568h@2x-iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = BFA8588B1AA018AE00A9CB6F /* Default-568h@2x-iphone.png */; };
@@ -1076,7 +1075,6 @@
 		65065DE1190FEB8000189316 /* tipsSms@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tipsSms@2x.png"; sourceTree = "<group>"; };
 		65065DE2190FEB8000189316 /* tipsTwit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tipsTwit@2x.png"; sourceTree = "<group>"; };
 		65065DE3190FEB8000189316 /* tipsWhats@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tipsWhats@2x.png"; sourceTree = "<group>"; };
-		65065DEE1910564500189316 /* AppsFlyerTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppsFlyerTracker.h; path = Infomovil/AppFlyer/AppsFlyerTracker.h; sourceTree = "<group>"; };
 		65065DF1191057AB00189316 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		65085BA818F440BA00478DAD /* WS_ItemsDominio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WS_ItemsDominio.h; sourceTree = "<group>"; };
 		65085BA918F440BA00478DAD /* WS_ItemsDominio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WS_ItemsDominio.m; sourceTree = "<group>"; };
@@ -1300,7 +1298,6 @@
 		BF9DF2AC1B1E8269007E5310 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		BF9DF2AE1B1E8281007E5310 /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
 		BFA701861A817A3B00F685C3 /* libAdIdAccess.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAdIdAccess.a; sourceTree = "<group>"; };
-		BFA701871A817A3B00F685C3 /* libAppsFlyerLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAppsFlyerLib.a; sourceTree = "<group>"; };
 		BFA701881A817A3B00F685C3 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		BFA7018E1A817ADA00F685C3 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
 		BFA8588B1AA018AE00A9CB6F /* Default-568h@2x-iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x-iphone.png"; sourceTree = "<group>"; };
@@ -1422,7 +1419,6 @@
 				0F6586F619D1DAF100AA7B0D /* libsqlite3.0.dylib in Frameworks */,
 				0F6586F219D1D74300AA7B0D /* libz.dylib in Frameworks */,
 				6523BDEC190810B0009F7008 /* StoreKit.framework in Frameworks */,
-				BFA7018B1A817A3B00F685C3 /* libAppsFlyerLib.a in Frameworks */,
 				654C523E191D4C13002551FF /* CoreMotion.framework in Frameworks */,
 				BFA7018F1A817ADA00F685C3 /* libcrypto.a in Frameworks */,
 				654C523C191D4BF7002551FF /* AssetsLibrary.framework in Frameworks */,
@@ -2106,7 +2102,6 @@
 		0FE02803186E48FE007C27B0 = {
 			isa = PBXGroup;
 			children = (
-				65065DEE1910564500189316 /* AppsFlyerTracker.h */,
 				0FE02817186E48FF007C27B0 /* Infomovil */,
 				0FE02834186E48FF007C27B0 /* InfomovilTests */,
 				0FE0280E186E48FF007C27B0 /* Frameworks */,
@@ -2240,7 +2235,6 @@
 				BF66D6971B1CD449001FA40F /* OpenSource */,
 				BFC14EB01A83086600EBA7A8 /* AppboyKit */,
 				BFA701861A817A3B00F685C3 /* libAdIdAccess.a */,
-				BFA701871A817A3B00F685C3 /* libAppsFlyerLib.a */,
 				BFA701881A817A3B00F685C3 /* libGoogleAnalyticsServices.a */,
 				0F6586E219D1CF2000AA7B0D /* LibraryAnalytics */,
 				0F58738918F6E99900DA0CFD /* PNChart */,

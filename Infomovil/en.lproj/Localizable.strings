@@ -186,10 +186,10 @@
 "nombrePromocion"="Promotion name";
 "descripcionPromocion"="Promotion description";
 "vigencia"="Valid until";
-"5Imagenes"="Basic Plan: Add up to 2 images. \nPlan Pro: Adds up to 12 images.
+"5Imagenes"="Basic Plan: Add up to 5 images. \nPlan Pro: Add more images.
 
 ";
-"galeriaVertical"="These images will be displayed vertically";
+"galeriaVertical"="These images will be displayed in a gallery";
 "redimensionaImagen"="Images will be resized automatically";
 "noGuardoImagen"="Image not saved";
 "defineHorario"="For each day, select your opening hours.";
@@ -584,36 +584,28 @@
 // Codigos de error de promociones//
 "exitoCodRedimir" = "Promotional code successfully redeemed";
 "paCodeError1" = "The code entered is not associated with any promotion. Please verify.";
-
-"paCodeError2" = "The promotion code has expired. The expiry date was: 00/00/0000";
-
-"paCodeError3" = "The promotion code AAAAA is inactive. Please verify and retry.";
-
-"paCodeError4" = "The code provided is available from 00/00/0000";
-
+"paCodeError2" = "The promotion code has expired.";
+"paCodeError3" = "The promotion code is inactive. Please verify and retry.";
+"paCodeError4" = "The code provided is not available ";
 "paCodeError5" =  "This account has been associated with a promotion code.";
-
 "paCodeError6" = "The number of accounts which can be activated by this promotion code has reached its limit.";
-
 "paCodeError9" = "The entered code has been activated already. Please try another one.";
-
 "paCodeError10" = "The promotion code has expired.";
-
 "paCodeError11" = "The promotion code does not exist. Please retry.";
-
 "paCodeError12" = "The promotion code has been used more than once.";
-
 "paCodeError13" = "The account is already Pro Plan.";
 "exitoCodigoRedimido"= "El código ha sido activado";
 "felizCodigoRedim" = "¡Congratulations!";
-"enviarPedacito" = "Yes, mobilizes my current site";
-"msjCompartePedacito" = "Make a current mobile version of your website.";
-"cuentaConPlanPro" = "This site already has a PRO PLAN\n\nPeriod of validity\n From %@ to %@";
+"enviarPedacito" = "Yes, mobilize my existing website";
+"msjCompartePedacito" = "Create a mobile-friendly version of your existing website.";
+"cuentaConPlanPro" = "This site already has a PRO PLAN\n\nValid from\n %@ to %@";
 "errorMoviliza" = "It has not been able to generate the code to send. Please try again.";
 "movilizaActual"= "Mobilize your website";
-"movilizaTituloWeb" = "Mobilize your current website";
-"movilizaTextoWeb" = "To enable the service, your webmaster needs to make some changes to the settings of your current website. \n\nClick to send mail with instructions. And we wrote the mail, so you do not need to write anything. Just send him the message!";
-"movilizaBotonEnviar" = "Post code";
-"conoceMasCodigo" = "Know more";
+"subjectMoviliza" = "Link code: mobile friendly version";
+"movilizaTituloWeb" = "Mobilize my existing website!";
+"movilizaTextoWeb" = "To activate the service, your webmaster needs to make a small change to the configuration of your existing website.\n\nClick the link below to send an email with the necessary instructions. We've already written the email for you, so all you need to do is hit Send!";
+"movilizaBotonEnviar" = "Send email";
+"conoceMasCodigo" = "Learn more";
+"codigoCompletoMoviliza" = "Hi there!\n\nIt's really important for my business that my website looks great on smartphones. For this reason, I want to link my current domain with the new mobile-friendly site I've just built with the Infomovil app.\n\nPlease help me by pasting the following snippet of code between the <header></header> tags in the principal index file.\n\n%@\n\nMany thanks!";
 
 

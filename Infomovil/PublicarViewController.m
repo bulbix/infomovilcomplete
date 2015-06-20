@@ -9,8 +9,7 @@
 #import "PublicarViewController.h"
 #import "WS_HandlerPublicar.h"
 #import "WS_HandlerDominio.h"
-//#import "CompartirPublicacionViewController.h"
-#import "AppsFlyerTracker.h"
+
 #import "CommonUtils.h"
 #import "SelectorPaisViewController.h"
 #import "UIViewDefs.h"
@@ -112,6 +111,7 @@
         [self.scroll setFrame:CGRectMake(0, 0, 768, 900)];
         [self.scroll setContentSize:CGSizeMake(768, 900)];
     }else if (IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
+        [self.scroll setFrame:CGRectMake(0, 0, 375, 667)];
         [self.scroll setContentSize:CGSizeMake(375, 667)];
  
     }else{
@@ -339,7 +339,7 @@
 			[self.navigationController popViewControllerAnimated:YES];
         }
         else if (statusRespuesta == RespuestaStatusExito) {
-            [[AppsFlyerTracker sharedTracker] trackEvent:@"Publicar Dominio" withValue:@""];
+         
             [[Appboy sharedInstance] logCustomEvent:@"Publicar Dominio"];
             if([self.datosUsuario.tipoDeUsuario isEqualToString:@"normal"]){
                 [[Appboy sharedInstance].user setCustomAttributeWithKey:@"tipoDominio" andStringValue:@"recurso"];
@@ -404,7 +404,7 @@
                 [NSThread sleepForTimeInterval:1];
                 [self.alertView hide];
             }
-            [[AppsFlyerTracker sharedTracker] trackEvent:@"Publicar Dominio" withValue:@""];
+         
             [[Appboy sharedInstance] logCustomEvent:@"Publicar Dominio"];
             if([self.datosUsuario.tipoDeUsuario isEqualToString:@"normal"]){
                 [[Appboy sharedInstance].user setCustomAttributeWithKey:@"tipoDominio" andStringValue:@"recurso"];

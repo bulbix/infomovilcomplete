@@ -34,6 +34,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *MensajePlanProComprado;
 
 @property (weak, nonatomic) IBOutlet UIView *viewPlanProComprado;
+@property (weak, nonatomic) IBOutlet UIButton *conocerMasBeneficios;
 
 @property (weak, nonatomic) IBOutlet UILabel *precioUno;
 @property (weak, nonatomic) IBOutlet UILabel *precioDoce;
@@ -44,7 +45,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *msjPedacitoCodigo;
 @property (weak, nonatomic) IBOutlet UIButton *btnPedacitoCodigo;
 - (IBAction)pedacitoCodigoAct:(id)sender;
-@property (weak, nonatomic) IBOutlet UIButton *conoceMasAct;
+@property (weak, nonatomic) IBOutlet UIButton *btnConoceMas;
+- (IBAction)conoceMasAct:(id)sender;
+@property (weak, nonatomic) IBOutlet UIImageView *lineMoviliza;
 
 @property (weak, nonatomic) IBOutlet UILabel *conoceMasCodigo;
 

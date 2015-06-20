@@ -190,7 +190,7 @@
 
 -(void) resultadoConsultaDominio:(NSString *)resultado {
     if ([resultado isEqualToString:@"Exito"]) {
-       // [[AppsFlyerTracker sharedTracker] trackEvent:@"Edito Video" withValue:@""];
+    
         [self enviarEventoGAconCategoria:@"Edito" yEtiqueta:@"Video"];
         exito = YES;
     }

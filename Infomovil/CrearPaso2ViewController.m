@@ -14,7 +14,7 @@
 #import "GaleriaImagenes.h"
 #import "WS_HandlerGaleria.h"
 #import "UIViewDefs.h"
-#import "AppsFlyerTracker.h"
+
 #import "AppDelegate.h"
 #import "MainViewController.h"
 
@@ -359,11 +359,11 @@
         actualizoDominio = YES;
 		[arrayAux replaceObjectAtIndex:index withObject:@YES];
         if (index == 0) {
-        //    [[AppsFlyerTracker sharedTracker] trackEvent:@"Edito Nombre" withValue:@""];
+      
             [self enviarEventoGAconCategoria:@"Edito" yEtiqueta:@"Nombre"];
         }
         else {
-       //     [[AppsFlyerTracker sharedTracker] trackEvent:@"Edito Descripcion" withValue:@""];
+     
             [self enviarEventoGAconCategoria:@"Edito" yEtiqueta:@"Descripcion"];
         }
     }
@@ -372,11 +372,11 @@
 			actualizoDominio = YES;
             if (index == 0) {
                 self.datosUsuario.nombreEmpresa = nil;
-            //    [[AppsFlyerTracker sharedTracker] trackEvent:@"Borro Nombre" withValue:@""];
+           
                 [self enviarEventoGAconCategoria:@"Borro" yEtiqueta:@"Nombre"];
             } else{
                 self.datosUsuario.descripcion = nil;
-            //    [[AppsFlyerTracker sharedTracker] trackEvent:@"Borro Descripcion" withValue:@""];
+           
                 [self enviarEventoGAconCategoria:@"Borro" yEtiqueta:@"Descripcion"];
             }
             [arrayAux replaceObjectAtIndex:index withObject:@NO];

@@ -236,9 +236,9 @@
 "descripcionPromocion" = "Descripción de la promoción";
 "vigencia" = "Vigencia al:";
 
-"5Imagenes" = "Plan Básico: agrega hasta 2 imágenes.\nPlan Pro: agrega hasta 12 imágenes.";
-"5ImagenesPro" = "Actualiza tus 10 imágenes y destaca de la competencia.";
-"galeriaVertical" = "Estas imágenes se mostrarán en una galería vertical";
+"5Imagenes" = "Plan Básico: agrega hasta 5 imágenes.\nPlan Pro: agrega hasta más imágenes.";
+"5ImagenesPro" = "Actualiza tus 12 imágenes y destaca de la competencia.";
+"galeriaVertical" = "Estas imágenes se mostrarán en una galería";
 "redimensionaImagen" = "Las imágenes serán redimensionadas para adaptarse";
 "noGuardoImagen" = "La imagen no se guardó";
 
@@ -691,25 +691,15 @@
 // Codigos de error de promociones//
 "exitoCodRedimir"="Codigo redimido exitosamente.";
 "paCodeError1" =  "El código ingresado no está asociado a ninguna campaña. Favor de verificar.";
-
-"paCodeError2" = "El código ingresado ya caducó."; //La fecha límite para su activación fue: %@";
-
-//"paCodeError3" = "La campaña que utiliza el código %@ no se encuentra activa. Favor de verificar.";
+"paCodeError2" = "El código ingresado ya caducó.";
 "paCodeError3" = "Este código no se encuentra activo. Favor de verificar.";
-//"paCodeError4" = "El código proporcionado está disponible a partir de la fecha %@";
 "paCodeError4" = "El código proporcionado aún no esta disponible";
 "paCodeError5" = "Esta cuenta ya ha sido asociada a una campaña.";
-
 "paCodeError6" =  "El número de cuentas que pueden ser activados por el código de promoción están agotadas.";
-
 "paCodeError9" = "El código ingresado ya lo activaron. Intenta con otro.";
-
 "paCodeError10" =  "El código está vencido.";
-
 "paCodeError11" = "El código ingresado no existe. Favor de verificar.";
-
 "paCodeError12" = "Se encontró el código ingresado más de una vez.";
-
 "paCodeError13" = "La cuenta ya tiene Plan Pro.";
 "felizCodigoRedim" = "¡Felicidades!";
 "enviarPedacito" = "Si, moviliza mi sitio actual";
@@ -717,7 +707,10 @@
 "cuentaConPlanPro" = "Este sitio ya cuenta con PLAN PRO disfruta sus beneficios.\n\nVigencia del dominio\n Del %@ al %@";
 "errorMoviliza" = "No se ha podido generar el código para enviar. Intentalo nuevamente.";
 "movilizaActual"= "Moviliza tu sitio web";
-"movilizaTituloWeb" = "Moviliza tu sitio web actual";
+"subjectMoviliza" = "Código de enlace: versión optimizada para móviles";
+"movilizaTituloWeb" = "¡Moviliza tu sitio web actual!";
 "movilizaTextoWeb" = "Para habilitar el servicio, tu webmaster necesita hacer unos cambios a la configuración de tu sitio web actual.\n\nHaz clic para enviarle el correo con las instrucciones necesarias.  Ya redactamos el correo, así que no necesitas escribir nada. Simplemente ¡envíale el mensaje!";
 "movilizaBotonEnviar" = "Enviar código";
 "conoceMasCodigo" = "Conoce más";
+"codigoCompletoMoviliza" = "¡Hola!\n\nEs muy importante para mi negocio que mi sitio web se vea bien en smartphones.\nPor ello, quiero ligar mi dominio actual con el nuevo sitio móvil que acabo de crear con la app de Infomovil.\n\nPor favor ayúdame con estos pasos:\nColoca el siguiente código entre las etiquetas <header></header> del archivo principal (index)\n\n%@\n\nMuchas gracias!";
+

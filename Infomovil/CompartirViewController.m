@@ -11,8 +11,6 @@
 #import <MessageUI/MessageUI.h>
 #import <GooglePlus/GooglePlus.h>
 #import "MenuPasosViewController.h"
-//#import "GTLPlusConstants.h"
-#import "AppsFlyerTracker.h"
 #import "NombrarViewController.h"
 #import <FacebookSDK/FacebookSDK.h>
 
@@ -376,7 +374,7 @@
 		[alert show];
 	}
 	
-	//[[AppsFlyerTracker sharedTracker] trackEvent:@"Compartir Email" withValue:@""];
+
     [self enviarEventoGAconCategoria:@"Compartir" yEtiqueta:@"E-mail"];
 }
 
@@ -400,8 +398,7 @@
     [messageController setBody:message];
     
     [self presentViewController:messageController animated:YES completion:nil];
-	
-	//[[AppsFlyerTracker sharedTracker] trackEvent:@"Compartir SMS" withValue:@""];
+
     [self enviarEventoGAconCategoria:@"Compartir" yEtiqueta:@"SMS"];
 }
 
@@ -420,7 +417,7 @@
         [[AlertView initWithDelegate:nil message:NSLocalizedString(@"noWhatsapp", Nil) andAlertViewType:AlertViewTypeInfo] show];
     }
 	
-	//[[AppsFlyerTracker sharedTracker] trackEvent:@"Compartir WhatsApp" withValue:@""];
+
     [self enviarEventoGAconCategoria:@"Compartir" yEtiqueta:@"WhatsApp"];
 }
 

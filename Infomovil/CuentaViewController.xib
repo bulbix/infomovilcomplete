@@ -11,15 +11,17 @@
                 <outlet property="MensajePlanProComprado" destination="Wps-xS-Tyi" id="yyK-y6-DkQ"/>
                 <outlet property="beneficiosPlanPro" destination="ADO-CL-PZg" id="EUR-Qy-G8v"/>
                 <outlet property="btnAceptar" destination="unQ-Hw-Sgr" id="2hl-5b-yNF"/>
+                <outlet property="btnConoceMas" destination="VEh-2x-WqB" id="lc6-lI-DBD"/>
                 <outlet property="btnPedacitoCodigo" destination="Dcp-L3-wI6" id="kJw-Yx-JQe"/>
                 <outlet property="comprar12meses" destination="ZSa-km-kPq" id="Y0A-EO-VRZ"/>
                 <outlet property="comprar1mes" destination="TfM-fF-9Se" id="vDi-p9-tsK"/>
-                <outlet property="conoceMasAct" destination="VEh-2x-WqB" id="cRd-KO-tLK"/>
                 <outlet property="conoceMasCodigo" destination="GdW-oS-Ldo" id="5nj-Nt-prO"/>
+                <outlet property="conocerMasBeneficios" destination="mED-wl-dxo" id="730-uo-elG"/>
                 <outlet property="imgBackgroundBotones" destination="P71-gT-vz2" id="QnS-9Y-dSL"/>
                 <outlet property="imgBeneficios" destination="ZgK-QH-lCK" id="8OY-je-Izv"/>
                 <outlet property="labelMisSitios" destination="mtM-MX-gZF" id="gkr-Rv-Xdf"/>
                 <outlet property="labelPromocion" destination="5cg-q4-9fp" id="g5X-FZ-qBW"/>
+                <outlet property="lineMoviliza" destination="8ie-gs-g7t" id="iDL-v7-9TP"/>
                 <outlet property="msjCodigoRedimido" destination="5B6-ku-EHX" id="LyB-Ou-BB6"/>
                 <outlet property="msjPedacitoCodigo" destination="8em-22-PsI" id="mMc-7m-GiW"/>
                 <outlet property="precioDoce" destination="pos-60-99h" id="Y7z-Fe-0Ew"/>
@@ -79,6 +81,10 @@
                                             <color key="textColor" red="0.18431372549019609" green="0.63921568627450975" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lineCompraDominio.png" id="8ie-gs-g7t">
+                                            <rect key="frame" x="20" y="160" width="280" height="2"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Haz una versión móvil de tu sitio web actual" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8em-22-PsI">
                                             <rect key="frame" x="10" y="182" width="300" height="60"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -86,24 +92,15 @@
                                             <color key="textColor" red="0.36078431372549019" green="0.63529411764705879" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Dcp-L3-wI6">
-                                            <rect key="frame" x="30" y="310" width="260" height="35"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" red="0.36078431372549019" green="0.63529411764705879" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
-                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
-                                            <state key="normal" title="Si, moviliza mi sitio actual">
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="pedacitoCodigoAct:" destination="-1" eventType="touchUpInside" id="aWG-ZS-sCi"/>
-                                            </connections>
-                                        </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="VEh-2x-WqB">
                                             <rect key="frame" x="100" y="253" width="30" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" backgroundImage="ico_info_moviliza.png">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="conoceMasAct:" destination="-1" eventType="touchUpInside" id="4Gw-r3-QZe"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Conoce más" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GdW-oS-Ldo">
                                             <rect key="frame" x="139" y="260" width="200" height="21"/>
@@ -112,10 +109,18 @@
                                             <color key="textColor" red="0.36078431372549019" green="0.63529411764705879" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lineCompraDominio.png" id="8ie-gs-g7t">
-                                            <rect key="frame" x="20" y="160" width="280" height="2"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Dcp-L3-wI6">
+                                            <rect key="frame" x="30" y="310" width="260" height="35"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </imageView>
+                                            <color key="backgroundColor" red="0.18823529411764706" green="0.64313725490196072" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                                            <state key="normal" title="Si, moviliza mi sitio actual">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="pedacitoCodigoAct:" destination="-1" eventType="touchUpInside" id="aWG-ZS-sCi"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -125,6 +130,10 @@
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgPro.png" id="P71-gT-vz2">
                                             <rect key="frame" x="0.0" y="68" width="320" height="150"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="beneficios-es.png" id="ZgK-QH-lCK">
+                                            <rect key="frame" x="0.0" y="254" width="320" height="260"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Elige tu plan y disfruta de los beneficios" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="acJ-J0-2xv">
@@ -149,10 +158,6 @@
                                             <color key="textColor" red="0.84705882352941175" green="0.81960784313725488" blue="0.81568627450980391" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="beneficios-es.png" id="ZgK-QH-lCK">
-                                            <rect key="frame" x="0.0" y="254" width="320" height="260"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                                        </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="ZSa-km-kPq">
                                             <rect key="frame" x="180" y="74" width="109" height="109"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
@@ -203,6 +208,17 @@
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mED-wl-dxo">
+                                            <rect key="frame" x="154" y="281" width="73" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                            <state key="normal">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="conoceMasAct:" destination="-1" eventType="touchUpInside" id="C7I-OQ-cvZ"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -242,9 +258,9 @@
             <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <point key="canvasLocation" x="-421" y="-92"/>
         </view>
-        <view contentMode="scaleToFill" id="bar-Yz-b3S">
+        <view opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" id="bar-Yz-b3S">
             <rect key="frame" x="0.0" y="0.0" width="320" height="279"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Introduce tu código de promoción" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5cg-q4-9fp">
                     <rect key="frame" x="10" y="25" width="300" height="60"/>
@@ -278,7 +294,7 @@
                     </connections>
                 </textField>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="-421" y="543"/>
         </view>

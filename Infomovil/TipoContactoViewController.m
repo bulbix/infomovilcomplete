@@ -9,7 +9,7 @@
 #import "TipoContactoViewController.h"
 #import "ContactoPaso2ViewController.h"
 #import "TipoContactoCell.h"
-#import "AppsFlyerTracker.h"
+
 #import "AppDelegate.h"
 
 @interface TipoContactoViewController ()
@@ -48,17 +48,13 @@
         self.tablaContacto.frame = CGRectMake(84, 33, 600, 800);
     }else if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         self.tablaContacto.frame = CGRectMake(20, 33, 335, 515);
-   /* }else if(IS_STANDARD_IPHONE_6_PLUS){
-        self.tablaContacto.frame = CGRectMake(30, 33, 354, 550);
-    */
+ 
     }else if(IS_IPHONE_5){
         self.tablaContacto.frame = CGRectMake(20, 33, 280, 420);
     }else{
         self.tablaContacto.frame = CGRectMake(20, 33, 280, 330);
     }
-	
-	
-	
+
     
 }
 -(void) viewWillAppear:(BOOL)animated {
@@ -101,8 +97,7 @@
     }
     [cell.imageView setImage:imagenTipo];
     [cell.textLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:17]];
-//    [cell.textLabel setTextColor:colorFuenteAzul];
-//    [cell.textLabel setFrame:CGRectMake(250, cell.textLabel.frame.origin.y, cell.textLabel.frame.size.width, cell.textLabel.frame.size.height)];
+
     return cell;
 }
 

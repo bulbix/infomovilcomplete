@@ -11,7 +11,7 @@
 #import "SelectorPaisViewController.h"
 #import "WS_HandlerDominio.h"
 #import "MenuPasosViewController.h"
-#import "AppsFlyerTracker.h"
+
 #import "WS_HandlerLogin.h"
 #import <FacebookSDK/FacebookSDK.h>
 #import "MenuRegistroViewController.h"
@@ -527,8 +527,7 @@
             [alert show];
         }else{
             loginFacebook = NO;
-            [[AppsFlyerTracker sharedTracker] setCustomerUserID:self.datosUsuario.emailUsuario];
-            [[AppsFlyerTracker sharedTracker] trackEvent:@"Registro Usuario" withValue:@""];
+         
            
             // IRC APPBOY //
             NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];

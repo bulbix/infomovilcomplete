@@ -606,12 +606,12 @@
     {
         self.datosUsuario = [DatosUsuario sharedInstance];
         if (estaBorrando) {
-        //    [[AppsFlyerTracker sharedTracker] trackEvent:@"Edito Promocion" withValue:@""];
+      
             [self enviarEventoGAconCategoria:@"Edito" yEtiqueta:@"Promocion"];
             [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:7 withObject:@NO];
         }
         else {
-        //    [[AppsFlyerTracker sharedTracker] trackEvent:@"Borro Promocion" withValue:@""];
+      
             [self enviarEventoGAconCategoria:@"Borro" yEtiqueta:@"Promocion"];
             if ( _promocionActual.titleOffer.length > 0 && _promocionActual.descOffer.length > 0 )
             {

@@ -35,6 +35,28 @@
     self.tituloMoviliza.text = NSLocalizedString(@"movilizaTituloWeb", @" ");
     self.textoMoviliza.text = NSLocalizedString(@"movilizaTextoWeb", @" ");
     [self.btnMovilizaText setTitle:NSLocalizedString(@"movilizaBotonEnviar", Nil) forState:UIControlStateNormal];
+
+
+    if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
+        [self.tituloMoviliza setFrame:CGRectMake(37, 70, 300, 30)];
+        [self.textoMoviliza setFrame:CGRectMake(37, 100, 300, 300)];
+        [self.btnMovilizaImg setFrame:CGRectMake(100, 400, 50, 40)];
+        [self.btnMovilizaText setFrame:CGRectMake(160, 400, 150, 40)];
+    
+    }else if(IS_IPAD){
+        [self.tituloMoviliza setFrame:CGRectMake(134, 140, 500, 50)];
+        [self.textoMoviliza setFrame:CGRectMake(134, 160, 500, 400)];
+        [self.btnMovilizaImg setFrame:CGRectMake(264, 560, 66, 45)];
+        [self.btnMovilizaText setFrame:CGRectMake(340, 560, 300, 40)];
+        
+       [self.tituloMoviliza setFont:[UIFont fontWithName:@"Avenir-Medium" size:24]];
+        [self.textoMoviliza setFont:[UIFont fontWithName:@"Avenir-Book" size:24]];
+        [self.btnMovilizaText.titleLabel setFont:[UIFont fontWithName:@"Avenir-Medium" size:24]];
+        
+    
+    }
+
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,33 +64,21 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (IBAction)movilizaImgAct:(id)sender {
+    self.datosUsuario = [DatosUsuario sharedInstance];
     if ([MFMailComposeViewController canSendMail]){
         MFMailComposeViewController *controller = [[MFMailComposeViewController alloc] init];
         controller.mailComposeDelegate = self;
-        
+        NSArray *usersTo = [NSArray arrayWithObject:[NSString stringWithFormat:@"%@", self.datosUsuario.emailUsuario]];
+        [controller setToRecipients:usersTo];
         NSString *message;
-        if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-            [controller setSubject:@"Check our website"];
-            message = self.datosUsuario.pedacito;
-        }else{
-            [controller setSubject:@"Checa nuestro sitio web"];
-            message = self.datosUsuario.pedacito;
-        }
-        
-        [controller setMessageBody:message isHTML:YES];
-        
+        [controller setSubject:NSLocalizedString(@"subjectMoviliza", @" ")];
+        message = [NSString stringWithFormat:NSLocalizedString(@"codigoCompletoMoviliza", nil),self.datosUsuario.pedacito];
+        [controller setMessageBody:message isHTML:NO];
         [self presentViewController:controller animated:YES completion:NULL];
+        NSLog(@"EL PEDACITO DE CODIGO ES: %@    ", self.datosUsuario.pedacito);
     }else{
         AlertView * alert = [AlertView initWithDelegate:nil message:NSLocalizedString(@"configuracionCorreo", nil) andAlertViewType:AlertViewTypeInfo];
         [alert show];
@@ -83,11 +93,11 @@
             NSArray *usersTo = [NSArray arrayWithObject:[NSString stringWithFormat:@"%@", self.datosUsuario.emailUsuario]];
             [controller setToRecipients:usersTo];
             NSString *message;
-            [controller setSubject:NSLocalizedString(@"movilizaActual", @" ")];
-            message = [NSString stringWithFormat:@"Código de enlace para versión optimizada para móviles.\n\n Pasos a seguir:\n 1.- Coloca el código entre las etiquetas siguientes \n<header></header>\n del archivo principal (index).\n 2.- El siguiente código que deberas copiar y pegar dentro de las etiquetas anteriormente mencionadas es: \n\n %@ \n\n3.- Una vez colocado el código accede a través de tu smartphone al sitio y podrás ver la versión optimizada de este.\n\n Saludos", self.datosUsuario.pedacito ];
+            [controller setSubject:NSLocalizedString(@"subjectMoviliza", @" ")];
+            message = [NSString stringWithFormat:NSLocalizedString(@"codigoCompletoMoviliza", nil),self.datosUsuario.pedacito];
             [controller setMessageBody:message isHTML:NO];
-            NSLog(@"EL PEDACITO DE CODIGO ES: %@    ", self.datosUsuario.pedacito);
             [self presentViewController:controller animated:YES completion:NULL];
+             NSLog(@"EL PEDACITO DE CODIGO ES: %@    ", self.datosUsuario.pedacito);
         }else{
             AlertView * alert = [AlertView initWithDelegate:nil message:NSLocalizedString(@"configuracionCorreo", nil) andAlertViewType:AlertViewTypeInfo];
             [alert show];

@@ -88,7 +88,7 @@ NSString *respuestaPublicar;
             [self.alertActivity hide];
     }
     else if ([[notification name] isEqualToString:@"CompleteTransactionNotificationDominio"]){
-            [[AppsFlyerTracker sharedTracker] trackEvent:@"Dominio Tel" withValue:@""];
+            
             [[Appboy sharedInstance] logPurchase:@"TEL"
                                       inCurrency:@"MXN"
                                          atPrice:[[NSDecimalNumber alloc] initWithString:@"199.00"]];

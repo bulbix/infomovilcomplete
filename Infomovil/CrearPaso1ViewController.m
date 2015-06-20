@@ -24,7 +24,7 @@
 #import "GaleriaPaso2ViewController.h"
 #import "PerfilPaso2ViewController.h"
 #import "NombrarViewController.h"
-#import "AppsFlyerTracker.h"
+
 #import "AppDelegate.h"
 #import "MenuPasosViewController.h"
 

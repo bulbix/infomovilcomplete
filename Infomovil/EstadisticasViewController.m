@@ -17,7 +17,7 @@
 #import "UIView+LayerShot.h"
 #import "PNChartDelegate.h"
 #import "MenuPasosViewController.h"
-#import "AppsFlyerTracker.h"
+
 #import "MainViewController.h"
 #import "NombrarViewController.h"
 

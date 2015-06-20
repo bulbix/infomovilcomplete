@@ -17,7 +17,7 @@
 #import "ItemsDominio.h"
 #import "CuentaViewController.h"
 #import "TextAndGraphAlertView.h"
-#import "AppsFlyerTracker.h"
+
 #import "AppDelegate.h"
 #import "MainViewController.h"
 
@@ -320,26 +320,7 @@
 
 #pragma mark - UITableViewDelegate 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-   /* if(indexPath.row <= 1){
-        ContactoPaso2ViewController *contactoPaso2 = [[ContactoPaso2ViewController alloc] initWithNibName:@"ContactoPaso2ViewController" bundle:Nil];
-        Contacto *contactoSeleccionado = [arregloContactos objectAtIndex:indexPath.row];
-        [contactoPaso2 setContactoSeleccionado:contactoSeleccionado];
-        [contactoPaso2 setIndexContacto:indexPath.row];
-        [contactoPaso2 setContactosOperacion:ContactosOperacionEditar];
-        [self.navigationController pushViewController:contactoPaso2 animated:YES];
-        [self.tablaContactos deselectRowAtIndexPath:indexPath animated:NO];
-    }else if( [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && [self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"] && indexPath.row > 1){
-       
-   }else if([((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && ![self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"] && indexPath.row > 1){
-    ContactoPaso2ViewController *contactoPaso2 = [[ContactoPaso2ViewController alloc] initWithNibName:@"ContactoPaso2ViewController" bundle:Nil];
-    Contacto *contactoSeleccionado = [arregloContactos objectAtIndex:indexPath.row];
-    [contactoPaso2 setContactoSeleccionado:contactoSeleccionado];
-    [contactoPaso2 setIndexContacto:indexPath.row];
-    [contactoPaso2 setContactosOperacion:ContactosOperacionEditar];
-    [self.navigationController pushViewController:contactoPaso2 animated:YES];
-    [self.tablaContactos deselectRowAtIndexPath:indexPath animated:NO];
-   }
-    */
+   
     ContactoPaso2ViewController *contactoPaso2 = [[ContactoPaso2ViewController alloc] initWithNibName:@"ContactoPaso2ViewController" bundle:Nil];
     Contacto *contactoSeleccionado = [arregloContactos objectAtIndex:indexPath.row];
     [contactoPaso2 setContactoSeleccionado:contactoSeleccionado];
@@ -424,7 +405,6 @@
 
 -(void) resultadoConsultaDominio:(NSString *)resultado {
     if ([resultado isEqualToString:@"Exito"]) {
-     //   [[AppsFlyerTracker sharedTracker] trackEvent:@"Edito Contacto" withValue:@""];
         [self enviarEventoGAconCategoria:@"Edito" yEtiqueta:@"Contacto"];
         actualizoContactos = YES;
     }
@@ -463,7 +443,7 @@
         [NSThread sleepForTimeInterval:1];
         [self.alertaLista hide];
     }
- //   [[AlertView initWithDelegate:Nil message:NSLocalizedString(@"ocurrioError", Nil) andAlertViewType:AlertViewTypeInfo] show];
+
     [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     [prefs setInteger:0 forKey:@"ActualizandoEstatus1SolaVez"];
@@ -474,5 +454,14 @@
 {
     TextAndGraphAlertView *alert = [TextAndGraphAlertView initInstruccionesContacto];
     [alert show];
+}
+- (IBAction)llamanosAct:(id)sender {
+    TipoContactoViewController *tipoContacto = [[TipoContactoViewController alloc] initWithNibName:@"TipoContactoViewController" bundle:Nil];
+    [self.navigationController pushViewController:tipoContacto animated:YES];
+}
+
+- (IBAction)ContactanosAct:(id)sender {
+    TipoContactoViewController *tipoContacto = [[TipoContactoViewController alloc] initWithNibName:@"TipoContactoViewController" bundle:Nil];
+    [self.navigationController pushViewController:tipoContacto animated:YES];
 }
 @end

@@ -10,7 +10,7 @@
 #import <Social/Social.h>
 #import <MessageUI/MessageUI.h>
 #import <GooglePlus/GooglePlus.h>
-#import "AppsFlyerTracker.h"
+
 #import <Social/Social.h>
 #import <FacebookSDK/FacebookSDK.h>
 #import <Twitter/Twitter.h>
@@ -477,7 +477,7 @@ if ([CommonUtils hayConexion]) {
 		[alert show];
 	}
 	
-	//[[AppsFlyerTracker sharedTracker] trackEvent:@"Compartir Email" withValue:@""];
+
     [self enviarEventoGAconCategoria:@"Compartir" yEtiqueta:@"E-mail"];
 }
 
@@ -505,7 +505,7 @@ if ([CommonUtils hayConexion]) {
     // Present message view controller on screen
     [self presentViewController:messageController animated:YES completion:nil];
 	
-	//[[AppsFlyerTracker sharedTracker] trackEvent:@"Compartir SMS" withValue:@""];
+	
     [self enviarEventoGAconCategoria:@"Compartir" yEtiqueta:@"SMS"];
 }
 

@@ -10,7 +10,7 @@
 #import "Contacto.h"
 #import "WS_HandlerContactos.h"
 #import "StringUtils.h"
-#import "AppsFlyerTracker.h"
+
 #import "MainViewController.h"
 
 @interface ContactoPaso2ViewController () {
@@ -865,24 +865,24 @@
     }
     if (actualizoCorrecto) {
         if (self.contactosOperacion == ContactosOperacionEliminar) {
-         //   [[AppsFlyerTracker sharedTracker] trackEvent:@"Borro Contacto" withValue:@""];
+      
             [self enviarEventoGAconCategoria:@"Borro" yEtiqueta:@"Contacto"];
             [self.navigationController popViewControllerAnimated:YES];
         }
         else if (self.contactosOperacion == ContactosOperacionAgregar) {
-        //    [[AppsFlyerTracker sharedTracker] trackEvent:@"Edito Contacto" withValue:@""];
+    
             [self enviarEventoGAconCategoria:@"Edito" yEtiqueta:@"Contacto"];
             self.datosUsuario = [DatosUsuario sharedInstance];
             NSMutableArray *arrayAux = self.datosUsuario.arregloContacto;
             Contacto *contactoFinal = [arrayAux lastObject];
             [contactoFinal setIdContacto:idContacto];
             [arrayAux replaceObjectAtIndex:[arrayAux count]-1 withObject:contactoFinal];
-            //self.datosUsuario.arregloContacto = arrayAux;
+          
             AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"actualizacionCorrecta", Nil) andAlertViewType:AlertViewTypeInfo];
             [alert show];
         }
         else {
-         //   [[AppsFlyerTracker sharedTracker] trackEvent:@"Edito contacto" withValue:@""];
+         
             [self enviarEventoGAconCategoria:@"Edito" yEtiqueta:@"Contacto"];
             AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"actualizacionCorrecta", Nil) andAlertViewType:AlertViewTypeInfo];
             [alert show];

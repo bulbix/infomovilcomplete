@@ -416,11 +416,11 @@
     NSMutableArray *arrayAux = self.datosUsuario.arregloEstatusEdicion;
     if ( (!borrar) && (self.txtCalle.text.length > 0 || self.txtColonia.text.length > 0 || self.txtPoblacion.text.length > 0 || self.txtCiudad.text.length > 0 || self.txtEstado.text.length > 0 || self.txtPais.text.length > 0 || self.txtCodigoPostal.text.length > 0)) {
         [arrayAux replaceObjectAtIndex:index withObject:@YES];
-      //  [[AppsFlyerTracker sharedTracker] trackEvent:@"Edito Direccion" withValue:@""];
+   
         [self enviarEventoGAconCategoria:@"Edito" yEtiqueta:@"Direccion"];
     }
     else {
-     //   [[AppsFlyerTracker sharedTracker] trackEvent:@"Borro Direccion" withValue:@""];
+  
         [self enviarEventoGAconCategoria:@"Borro" yEtiqueta:@"Direccion"];
         [arrayAux replaceObjectAtIndex:index withObject:@NO];
     }

@@ -13,7 +13,7 @@
 #import "WS_HandlerGaleria.h"
 #import "ItemsDominio.h"
 #import "CuentaViewController.h"
-#import "AppsFlyerTracker.h"
+
 #import "AppDelegate.h"
 #import "MainViewController.h"
 
@@ -99,25 +99,7 @@
         self.navigationItem.rightBarButtonItem = botonAceptar;
     }
 	[self mostrarBotones];
-    
-   /* if(IS_STANDARD_IPHONE_6_PLUS){
-        [self.vistaInfo setFrame:CGRectMake(50, 40, 314, 350)];
-        if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-            [self.labelNumeroImagenes setText:[NSString stringWithFormat:NSLocalizedString(@"5Imagenes", Nil),maxNumeroImagenes]];
-            self.labelNumeroImagenes.frame = CGRectMake(34, 35, 256, 100);
-            self.labelImagenesMensaje.frame = CGRectMake(34, 90, 256, 47);
-            self.labelImagenesMensaje2.frame = CGRectMake(34, 156, 256, 47);
-            self.vineta3.frame = CGRectMake(10, 39, 14, 21);
-            self.vineta1.frame = CGRectMake(10, 92, 14, 21);
-            self.vineta2.frame = CGRectMake(10, 155, 14, 21);
-        }else{
-            [self.labelNumeroImagenes setText:NSLocalizedString(@"5Imagenes", Nil)];
-            self.vineta1.frame = CGRectMake(10, 120, 14, 21);
-            self.vineta2.frame = CGRectMake(10, 177, 14, 21);
-        }
-    }else
-
-    */if(IS_IPAD){
+ if(IS_IPAD){
         [self.vistaInfo setFrame:CGRectMake(84, 40, 600, 500)];
         [self.labelNumeroImagenes setFrame: CGRectMake(40, 60, 550, 60)];
         [self.labelImagenesMensaje setFrame:CGRectMake(40, 150, 550, 30)];
@@ -203,24 +185,24 @@
 
 -(IBAction)agregarImagen:(id)sender {
 
-    if ([self.arregloImagenes count] < 2) {
+    if ([self.arregloImagenes count] < 5) {
         GaleriaPaso2ViewController *galeria = [[GaleriaPaso2ViewController alloc] initWithNibName:@"GaleriaPaso2ViewController" bundle:nil];
         [galeria setOperacion:GaleriaImagenesAgregar];
         [galeria setGaleryType:PhotoGaleryTypeImage];
         [galeria setTituloPaso:NSLocalizedString(@"anadirImagen", @" ")];
         [self.navigationController pushViewController:galeria animated:YES];
         
-    }else if([self.arregloImagenes count] >= 2 && [self.arregloImagenes count] < 12 && [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && ![self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]){
+    }else if([self.arregloImagenes count] >= 5 && [self.arregloImagenes count] < 12 && [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && ![self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]){
         GaleriaPaso2ViewController *galeria = [[GaleriaPaso2ViewController alloc] initWithNibName:@"GaleriaPaso2ViewController" bundle:nil];
         [galeria setOperacion:GaleriaImagenesAgregar];
         [galeria setGaleryType:PhotoGaleryTypeImage];
         [galeria setTituloPaso:NSLocalizedString(@"anadirImagen", @" ")];
         [self.navigationController pushViewController:galeria animated:YES];
     
-    }else if([self.arregloImagenes count] >= 2 && [self.arregloImagenes count] < 12 && [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && [self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]){
+    }else if([self.arregloImagenes count] >= 5 && [self.arregloImagenes count] < 12 && [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && [self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]){
         AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeImagenesPrueba", Nil) andAlertViewType:AlertViewTypeQuestion];
         [alert show];
-    }else if([self.arregloImagenes count] >= 2 && [self.arregloImagenes count] < 12 && ![((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] ){
+    }else if([self.arregloImagenes count] >= 5 && [self.arregloImagenes count] < 12 && ![((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] ){
         AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeImagenesPrueba", Nil) andAlertViewType:AlertViewTypeQuestion];
         [alert show];
         

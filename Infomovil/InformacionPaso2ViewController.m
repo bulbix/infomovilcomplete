@@ -320,11 +320,11 @@
         if (exito) {
             KeywordDataModel *dataModel = [self.datosUsuario.arregloInformacionAdicional lastObject];
             [dataModel setIdKeyword:idKeyword];
-         //   [[AppsFlyerTracker sharedTracker] trackEvent:@"Edito Informacion adicional" withValue:@""];
+        
             [self enviarEventoGAconCategoria:@"Edito" yEtiqueta:@"Informacion adicional"];
         }
         else {
-       //     [[AppsFlyerTracker sharedTracker] trackEvent:@"Borro Informacion adicional" withValue:@""];
+     
             [self enviarEventoGAconCategoria:@"Borro" yEtiqueta:@"Informacion adicional"];
             [self.datosUsuario.arregloInformacionAdicional removeLastObject];
         }

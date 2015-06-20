@@ -347,11 +347,11 @@
         exito = YES;
 		
 		if(!borrar){
-         //   [[AppsFlyerTracker sharedTracker] trackEvent:@"Edito Mapa" withValue:@""];
+      
             [self enviarEventoGAconCategoria:@"Edito" yEtiqueta:@"Mapa"];
 				[self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:5 withObject:@YES];
 		}else{
-        //    [[AppsFlyerTracker sharedTracker] trackEvent:@"Borro Mapa" withValue:@""];
+       
             [self enviarEventoGAconCategoria:@"Borro" yEtiqueta:@"Mapa"];
 			[self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:5 withObject:@NO];
 			borrar = NO;

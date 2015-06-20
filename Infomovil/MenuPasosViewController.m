@@ -17,7 +17,7 @@
 #import "InicioRapidoViewController.h"
 #import "VerTutorialViewController.h"
 #import "VerEjemploViewController.h"
-#import "AppsFlyerTracker.h"
+
 #import "AppDelegate.h"
 #import "AppboyKit.h"
 #import "ElegirPlantillaViewController.h"
@@ -50,7 +50,7 @@ BOOL banderaRegresar;
 - (void)viewDidLoad{
 	
     [super viewDidLoad];
-    
+   
     if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         self.botonFondo.frame = CGRectMake(45, 70, 270, 53);
         self.botonCrear.frame = CGRectMake(45, 160, 270, 53);
@@ -79,7 +79,7 @@ BOOL banderaRegresar;
         self.line2.frame = CGRectMake(184, 370, 400, 2);
         self.line3.frame = CGRectMake(184, 485, 400, 2);
         self.dominio.frame = CGRectMake(0, 40, 768, 40);
-        [self.dominio.titleLabel setFont: [UIFont fontWithName:@"Avenir-Book" size:22]];
+        [self.dominio.titleLabel setFont: [UIFont fontWithName:@"Avenir-Book" size:23]];
     
     }else if(IS_IPHONE_5){
         self.dominio.frame = CGRectMake(0, 0, 320, 50);
@@ -226,15 +226,11 @@ BOOL banderaRegresar;
                         
                         if([usuarioDom.domainName isEqualToString:@""] || [usuarioDom.domainName length]<=0){
                         [self.dominio setTitle:[NSString stringWithFormat:@"www.%@.tel",self.datosUsuario.dominio] forState:UIControlStateNormal];
-                            if([self.datosUsuario.dominio length] > 12 && !IS_IPAD){
-                                [self.dominio.titleLabel setFont: [UIFont fontWithName:@"Avenir-Book" size:16]];
-                            }
+                            
                         }else{
                             [self.dominio setTitle:[NSString stringWithFormat:@"www.%@.tel",usuarioDom.domainName] forState:UIControlStateNormal];
                             self.datosUsuario.dominio = usuarioDom.domainName;
-                            if([usuarioDom.domainName length] > 12 && !IS_IPAD){
-                                [self.dominio.titleLabel setFont: [UIFont fontWithName:@"Avenir-Book" size:16]];
-                            }
+                            
                         }
                     }
                 }
@@ -244,10 +240,10 @@ BOOL banderaRegresar;
                 for(int i= 0; i< [self.arregloDominios count]; i++){
                     DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:i];
                     if([usuarioDom.domainType isEqualToString:@"recurso"]){
-                    
-                        if([self.datosUsuario.dominio length] > 12 && !IS_IPAD){
-                            [self.dominio.titleLabel setFont: [UIFont fontWithName:@"Avenir-Book" size:16]];
+                        if([self.dominio.titleLabel.text length] > 40){
+                        [self.dominio.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
                         }
+                        
                       
 #if DEBUG
                          [self.dominio setTitle:[NSString stringWithFormat:@"qa.mobileinfo.io:8080/%@", self.datosUsuario.dominio] forState:UIControlStateNormal];
@@ -272,7 +268,7 @@ BOOL banderaRegresar;
             }else if(IS_IPAD){
                 self.viewDominioPublicado.frame = CGRectMake(0, 320, 400, 400);
                 self.dominio.frame =CGRectMake(0, 70, 768, 40);
-                [self.dominio.titleLabel setFont:[UIFont fontWithName:@"Avenir-medium" size:21]];
+                [self.dominio.titleLabel setFont:[UIFont fontWithName:@"Avenir-medium" size:23]];
             }else{
                 self.viewDominioPublicado.frame = CGRectMake(0, 300, 320, 90);
             }
@@ -289,7 +285,7 @@ BOOL banderaRegresar;
             }else if(IS_IPAD){
                 self.viewDominioNoPublicado.frame = CGRectMake(0, 570, 768, 350);
                 self.dominio.frame =CGRectMake(0, 60, 768, 40);
-                [self.dominio.titleLabel setFont:[UIFont fontWithName:@"Avenir-medium" size:21]];
+                [self.dominio.titleLabel setFont:[UIFont fontWithName:@"Avenir-medium" size:23]];
             }else{
                 self.viewDominioNoPublicado.frame = CGRectMake(0, 280, 320, 90);
             }

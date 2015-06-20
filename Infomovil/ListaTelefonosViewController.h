@@ -25,6 +25,8 @@ typedef enum {
 @property (weak, nonatomic) IBOutlet UILabel *labelBotonesGrandes;
 @property (nonatomic, assign) NSInteger indiceSeleccionado;
 
+- (IBAction)llamanosAct:(id)sender;
+- (IBAction)ContactanosAct:(id)sender;
 
 @property (strong, nonatomic) IBOutlet UILabel *label;
 @property (weak, nonatomic) IBOutlet UIButton *btnInstrucciones;

@@ -11,8 +11,8 @@
 #import "WS_ItemsDominio.h"
 
 #import <GooglePlus/GooglePlus.h>
-//#import "GTLPlusConstants.h"
-#import "AppsFlyerTracker.h"
+
+
 #import "GAI.h"
 #import "iVersion/iVersion.h"
 #import "AppboyKit.h"
@@ -55,11 +55,7 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
         NSLog(@"IRC app did not recieve notification");
     }
  
- /*
-    //AppsFlyer
-    [AppsFlyerTracker sharedTracker].appsFlyerDevKey = @"5KoF92vzAFbhSj9PRduNCn";
-    [AppsFlyerTracker sharedTracker].appleAppID = @"898313250";
-  */
+
     //HOCKEYAPP  //
     [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"6d7f6a5334d44a52f5fb2761f6666f31"];
     [[BITHockeyManager sharedHockeyManager] startManager];
@@ -138,7 +134,7 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-	[[AppsFlyerTracker sharedTracker] trackAppLaunch];
+	
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

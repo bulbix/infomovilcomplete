@@ -574,23 +574,23 @@
                     [self enviarEventoGAconCategoria:@"Borro" yEtiqueta:@"(Perfil)Areas de servicio"];
                     break;
                 case 2:
-               //     [[AppsFlyerTracker sharedTracker] trackEvent:@"Borro (Perfil)Horario" withValue:@""];
+             
                     [self enviarEventoGAconCategoria:@"Borro" yEtiqueta:@"(Perfil)Horario"];
                     break;
                 case 3:
-               //     [[AppsFlyerTracker sharedTracker] trackEvent:@"Borro (Perfil)Medios de pago" withValue:@""];
+              
                     [self enviarEventoGAconCategoria:@"Borro" yEtiqueta:@"(Perfil)Medios de pago"];
                     break;
                 case 4:
-                 //   [[AppsFlyerTracker sharedTracker] trackEvent:@"Borro (Perfil)Asociaciones" withValue:@""];
+               
                     [self enviarEventoGAconCategoria:@"Compartir" yEtiqueta:@"(Perfil)Asociaciones"];
                     break;
                 case 5:
-                //    [[AppsFlyerTracker sharedTracker] trackEvent:@"Borro (Perfil)Biografia" withValue:@""];
+               
                     [self enviarEventoGAconCategoria:@"Borro" yEtiqueta:@"(Perfil)Biografia"];
                     break;
                 case 6:
-                 //   [[AppsFlyerTracker sharedTracker] trackEvent:@"Borro (Perfil)Negocio|Profesion" withValue:@""];
+             
                     [self enviarEventoGAconCategoria:@"Borro" yEtiqueta:@"(Perfil)Negocio|Profesion"];
                     break;
                     
@@ -601,31 +601,31 @@
         else {
             switch (index) {
                 case 0:
-                //    [[AppsFlyerTracker sharedTracker] trackEvent:@"Edito (Perfil)Productos|Servicios" withValue:@""];
+               
                     [self enviarEventoGAconCategoria:@"Edito" yEtiqueta:@"(Perfil)Productos|Servicios"];
                     break;
                 case 1:
-                //    [[AppsFlyerTracker sharedTracker] trackEvent:@"Edito (Perfil)Areas de servicio" withValue:@""];
+               
                     [self enviarEventoGAconCategoria:@"Edito" yEtiqueta:@"(Perfil)Areas de servicio"];
                     break;
                 case 2:
-                //    [[AppsFlyerTracker sharedTracker] trackEvent:@"Edito (Perfil)Horario" withValue:@""];
+               
                     [self enviarEventoGAconCategoria:@"Edito" yEtiqueta:@"(Perfil)Horario"];
                     break;
                 case 3:
-                //    [[AppsFlyerTracker sharedTracker] trackEvent:@"Edito (Perfil)Medios de pago" withValue:@""];
+               
                     [self enviarEventoGAconCategoria:@"Edito" yEtiqueta:@"(Perfil)Medios de pago"];
                     break;
                 case 4:
-                //    [[AppsFlyerTracker sharedTracker] trackEvent:@"Edito (Perfil)Asociaciones" withValue:@""];
+                
                     [self enviarEventoGAconCategoria:@"Edito" yEtiqueta:@"(Perfil)Asociaciones"];
                     break;
                 case 5:
-                //    [[AppsFlyerTracker sharedTracker] trackEvent:@"Edito (Perfil)Biografia" withValue:@""];
+               
                     [self enviarEventoGAconCategoria:@"Edito" yEtiqueta:@"(Perfil)Biografia"];
                     break;
                 case 6:
-                //    [[AppsFlyerTracker sharedTracker] trackEvent:@"Edito (Perfil)Negocio|Profesion" withValue:@""];
+              
                     [self enviarEventoGAconCategoria:@"Edito" yEtiqueta:@"(Perfil)Negocio|Profesion"];
                     break;
                     

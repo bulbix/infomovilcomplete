@@ -12,7 +12,7 @@
 #import "WS_CompraDominio.h"
 #import "WS_HandlerDominio.h"
 #import "AppDelegate.h"
-#import "AppsFlyerTracker.h"
+
 #import "RageIAPHelper.h"
 #import <StoreKit/StoreKit.h>
 #import "CommonUtils.h"
@@ -110,51 +110,7 @@ int opcionButton = 0 ;
         
     
     
-    if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
-        self.selector.frame = CGRectMake(20, 10, 335, 30);
-         self.scrollContenido.frame = CGRectMake(0, 50, 375, 667);
-        [self.scrollContenido setContentSize:CGSizeMake(1125, 667)];
-        self.viewCompraPlanPro.frame = CGRectMake(0, 0, 375, 667);
-        [self.vistaPlanPro setContentSize:CGSizeMake(375, 667)];
-        self.vistaPlanPro.frame = CGRectMake(0, 0, 375, 667);
-        self.vistaDominio.frame = CGRectMake(375, 0, 375, 667);
-        self.imgBackgroundBotones.frame = CGRectMake(0, 68, 375, 150);
-        self.comprar1mes.frame = CGRectMake(40, 74, 109, 109);
-        self.comprar12meses.frame = CGRectMake(230, 74, 109, 109);
-        [self.botonCuenta setFrame:CGRectMake(128, 12, 64, 54)];
-        [self.precioUno setFrame:CGRectMake(0, 191,187 , 30)];
-        [self.precioDoce setFrame:CGRectMake(187, 191,187 , 30)];
-    }else if(IS_IPAD){
-        self.selector.frame = CGRectMake(134, 80, 500, 35);
-        self.scrollContenido.frame = CGRectMake(0, 120, 768, 1024);
-        [self.scrollContenido setContentSize:CGSizeMake(2304, 2048)];
-        self.viewCompraPlanPro.frame = CGRectMake(0, 0, 768, 900);
-        self.vistaPlanPro.frame = CGRectMake(0, 0, 768, 1024);
-        [self.vistaPlanPro setContentSize:CGSizeMake(768, 1024)];
-        self.vistaDominio.frame = CGRectMake(768, 0, 768, 1024);
-        self.tituloPlanPro.frame = CGRectMake(134, 15, 500, 35 );
-        [self.tituloPlanPro setFont:[UIFont fontWithName:@"Avenir-Book" size:22]];
-        self.subtituloPlanPro.frame = CGRectMake(134, 55, 500,29 );
-         [self.subtituloPlanPro setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
-        self.imgBackgroundBotones.frame = CGRectMake(0, 110, 768, 270);
-        self.comprar1mes.frame = CGRectMake(167, 147, 150, 150);
-        self.comprar12meses.frame = CGRectMake(451, 147, 150, 150);
-        
-        [self.precioUno setFrame:CGRectMake(100, 330,284 , 40)];
-        [self.precioDoce setFrame:CGRectMake(385, 330,284 , 40)];
-        [self.precioUno setFont:[UIFont fontWithName:@"Avenir-Medium" size:22]];
-        [self.precioDoce setFont:[UIFont fontWithName:@"Avenir-Medium" size:22]];
-        self.beneficiosPlanPro.frame = CGRectMake(134, 395, 500, 30);
-        [self.beneficiosPlanPro setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
-        self.rayaLabel.frame = CGRectMake(134, 420, 500, 1);
-        self.imgBeneficios.frame = CGRectMake(134, 440 ,500 , 360);
-        [self.botonCuenta setFrame:CGRectMake(176, 10, 88, 80)];
-        [self.viewPlanProComprado setFrame:CGRectMake(0, 120, 768, 250)];;
-    }else{
-        [self.vistaPlanPro setContentSize:CGSizeMake(320, 655)];
-        [self.scrollContenido setContentSize:CGSizeMake(960, 655)];
-        [self.botonCuenta setFrame:CGRectMake(128, 14, 64, 54)];
-    }
+   
   
 	pro = [NSMutableArray arrayWithObjects:
 		   NSLocalizedString(@"numeroImagenes", @" "),
@@ -164,8 +120,6 @@ int opcionButton = 0 ;
 		   nil];
 	arreglo = pro;
 	tipo = NO;
-	// IRC PARA PLAN PRO
-    //self.tituloPlanPro.text = NSLocalizedString(@"mensajeCuenta", nil);//@"Características de Cuenta Pro";
     self.tituloPlanPro.text = NSLocalizedString(@"mensajeCuenta", @" ");
     self.navigationItem.rightBarButtonItem = Nil;
 	
@@ -178,12 +132,7 @@ int opcionButton = 0 ;
 #ifdef _DEBUG
 	NSLog(@"En CuentaViewController statusDominio del appdelegate 2 es: %@",((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio);
 #endif
-	if([((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] ){
-        [self.vistaInferior setHidden:NO];
-	}else{
-        [self.vistaInferior setHidden:YES];
-		
-	}
+	
 	
 	[self.selector setTitle:NSLocalizedString(@"cuentaTituloSegment1", nil) forSegmentAtIndex:0];
 	[self.selector setTitle:NSLocalizedString(@"cuentaTituloSegment2", nil) forSegmentAtIndex:1];
@@ -231,6 +180,63 @@ int opcionButton = 0 ;
         
         }
     }
+    if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
+        self.selector.frame = CGRectMake(20, 10, 335, 30);
+        self.scrollContenido.frame = CGRectMake(0, 50, 375, 667);
+        [self.scrollContenido setContentSize:CGSizeMake(1125, 667)];
+        self.viewCompraPlanPro.frame = CGRectMake(0, 0, 375, 667);
+        [self.vistaPlanPro setContentSize:CGSizeMake(375, 667)];
+        self.vistaPlanPro.frame = CGRectMake(0, 0, 375, 667);
+        self.vistaDominio.frame = CGRectMake(375, 0, 375, 667);
+        self.imgBackgroundBotones.frame = CGRectMake(0, 68, 375, 150);
+        self.comprar1mes.frame = CGRectMake(40, 74, 109, 109);
+        self.comprar12meses.frame = CGRectMake(230, 74, 109, 109);
+        [self.botonCuenta setFrame:CGRectMake(128, 12, 64, 54)];
+        [self.precioUno setFrame:CGRectMake(0, 191,187 , 30)];
+        [self.precioDoce setFrame:CGRectMake(187, 191,187 , 30)];
+        [self.viewPlanProComprado setFrame:CGRectMake(0, 0, 768, 600)];
+        
+    }else if(IS_IPAD){
+        self.selector.frame = CGRectMake(134, 80, 500, 35);
+        self.scrollContenido.frame = CGRectMake(0, 120, 768, 1024);
+        [self.scrollContenido setContentSize:CGSizeMake(2304, 2048)];
+        self.viewCompraPlanPro.frame = CGRectMake(0, 0, 768, 900);
+        self.vistaPlanPro.frame = CGRectMake(0, 0, 768, 1024);
+        [self.vistaPlanPro setContentSize:CGSizeMake(768, 1024)];
+        self.vistaDominio.frame = CGRectMake(768, 0, 768, 1024);
+        self.tituloPlanPro.frame = CGRectMake(134, 15, 500, 35 );
+        [self.tituloPlanPro setFont:[UIFont fontWithName:@"Avenir-Book" size:22]];
+        self.subtituloPlanPro.frame = CGRectMake(134, 55, 500,29 );
+        [self.subtituloPlanPro setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
+        self.imgBackgroundBotones.frame = CGRectMake(0, 110, 768, 270);
+        self.comprar1mes.frame = CGRectMake(167, 147, 150, 150);
+        self.comprar12meses.frame = CGRectMake(451, 147, 150, 150);
+        [self.precioUno setFrame:CGRectMake(100, 330,284 , 40)];
+        [self.precioDoce setFrame:CGRectMake(385, 330,284 , 40)];
+        [self.precioUno setFont:[UIFont fontWithName:@"Avenir-Medium" size:22]];
+        [self.precioDoce setFont:[UIFont fontWithName:@"Avenir-Medium" size:22]];
+        self.beneficiosPlanPro.frame = CGRectMake(134, 395, 500, 30);
+        [self.beneficiosPlanPro setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
+        self.rayaLabel.frame = CGRectMake(134, 420, 500, 1);
+        self.imgBeneficios.frame = CGRectMake(134, 440 ,500 , 360);
+        [self.botonCuenta setFrame:CGRectMake(176, 10, 88, 80)];
+        [self.viewPlanProComprado setFrame:CGRectMake(0, 120, 768, 700)];
+        [self.conocerMasBeneficios setFrame:CGRectMake(400, 470,120,40)];
+    }else if(IS_IPHONE_4){
+        [self.vistaPlanPro setContentSize:CGSizeMake(320, 660)];
+        self.scrollContenido.frame = CGRectMake(0, 50, 320, 480);
+        [self.scrollContenido setContentSize:CGSizeMake(960, 1000)];
+        [self.botonCuenta setFrame:CGRectMake(128, 14, 64, 54)];
+        
+        
+    }else{
+        [self.vistaPlanPro setContentSize:CGSizeMake(320, 568)];
+        self.scrollContenido.frame = CGRectMake(0, 50, 320, 568);
+        [self.scrollContenido setContentSize:CGSizeMake(960, 800)];
+        [self.botonCuenta setFrame:CGRectMake(128, 14, 64, 54)];
+    }
+    
+    
     
     noSeRepiteOprimirElBoton = YES;
     if (tipoVista != 1) {
@@ -243,9 +249,22 @@ int opcionButton = 0 ;
 	
           if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
                 [self.MensajePlanProComprado setFrame:CGRectMake(37, 60, 300, 150)];
+                [self.lineMoviliza setFrame:CGRectMake(37, 230, 300, 2)];
+                [self.msjPedacitoCodigo setFrame:CGRectMake(37, 260, 300, 60)];
+                [self.btnConoceMas setFrame:CGRectMake(100, 350, 30, 30)];
+                [self.conoceMasCodigo setFrame:CGRectMake(140, 350, 150, 30)];
+                [self.btnPedacitoCodigo setFrame:CGRectMake(37, 410, 300, 35)];
             }else if(IS_IPAD){
-                [self.MensajePlanProComprado setFrame:CGRectMake(184, 10, 400, 300)];
+                [self.MensajePlanProComprado setFrame:CGRectMake(134, 0, 500, 200)];
                 [self.MensajePlanProComprado setFont:[UIFont fontWithName:@"Avenir-Book" size:24]];
+                [self.lineMoviliza setFrame:CGRectMake(134, 230, 500, 2)];
+                [self.msjPedacitoCodigo setFrame:CGRectMake(134, 270, 500, 100)];
+                [self.msjPedacitoCodigo setFont:[UIFont fontWithName:@"Avenir-Medium" size:24]];
+                [self.btnConoceMas setFrame:CGRectMake(320, 390, 30, 30)];
+                [self.conoceMasCodigo setFrame:CGRectMake(370, 390, 150, 30)];
+                [self.conoceMasCodigo setFont:[UIFont fontWithName:@"Avenir-Book" size:24]];
+                [self.btnPedacitoCodigo setFrame:CGRectMake(184, 450, 400, 40)];
+                [self.btnPedacitoCodigo.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:24]];
                 
             }
 
@@ -255,7 +274,7 @@ int opcionButton = 0 ;
             self.conoceMasCodigo.text = NSLocalizedString(@"conoceMasCodigo", Nil);
             self.viewCompraPlanPro.hidden = YES;
             self.viewPlanProComprado.hidden = NO;
-            [self.vistaInferior setHidden:NO];
+            
 		
         }else{
             self.viewCompraPlanPro.hidden = NO;
@@ -291,10 +310,10 @@ int opcionButton = 0 ;
         self.viewContenidoRedimir.frame = CGRectMake(0, 0, 375, 768);
         self.viewFelicidadesRedimir.frame = CGRectMake(47, 200, 280, 280);
     }else if(IS_IPHONE_4){
-        
+    
     }
     
-    
+    [self.vistaInferior setHidden:YES];
    
 }
 
@@ -654,9 +673,9 @@ if(noSeRepiteOprimirElBoton){
                         if([usuarioDom.vigente isEqualToString:@"SI"] || [usuarioDom.vigente isEqualToString:@"si"]){
                             dominio.text = [NSString stringWithFormat:@"Your website\n\n www.%@.tel",self.datosUsuario.dominio] ;
                             if(usuarioDom.fechaIni && ![usuarioDom.fechaIni isEqualToString:@""] && ![usuarioDom.fechaIni isEqualToString:@"(null)"] && usuarioDom.fechaIni != nil){
-                                fechas.text = [NSString stringWithFormat: @"Period of validity\n From %@ to %@", usuarioDom.fechaIni, usuarioDom.fechaFin ];
+                                fechas.text = [NSString stringWithFormat: @"Valid from\n %@ to %@", usuarioDom.fechaIni, usuarioDom.fechaFin ];
                             }else{
-                                fechas.text = [NSString stringWithFormat: @"Period of validity\n From %@ to %@", self.datosUsuario.fechaDominioIni, self.datosUsuario.fechaDominioFin ];
+                                fechas.text = [NSString stringWithFormat: @"Valid\n From %@ to %@", self.datosUsuario.fechaDominioIni, self.datosUsuario.fechaDominioFin ];
                             }
                         }else if(usuarioDom.fechaIni == nil || [usuarioDom.fechaIni length] <= 0){
                             [self etiquetasBotonesYaComprado];
@@ -776,7 +795,9 @@ if(noSeRepiteOprimirElBoton){
                 [self.scrollContenido scrollRectToVisible:CGRectMake(320, 0, self.scrollContenido.frame.size.width, self.scrollContenido.frame.size.height) animated:YES];
             }
     }else if(self.selector.selectedSegmentIndex == 2){
-       [self.txtPromocion becomeFirstResponder];
+        if(!IS_IPHONE_4){
+            [self.txtPromocion becomeFirstResponder];
+        }
         
         if(IS_IPAD){
             self.labelPromocion.frame = CGRectMake(184, 140, 400, 60);
@@ -796,10 +817,10 @@ if(noSeRepiteOprimirElBoton){
          }else{
               [self.viewEnviarCodigo setFrame:CGRectMake(640, 0, 320,350)];
              [self.scrollContenido scrollRectToVisible:CGRectMake(640, 0, self.scrollContenido.frame.size.width, self.scrollContenido.frame.size.height) animated:YES];
-         
+             
          }
-     
         [self.scrollContenido addSubview:self.viewEnviarCodigo];
+        
     }
 }
 
@@ -877,20 +898,22 @@ if(noSeRepiteOprimirElBoton){
     else if ([[notification name] isEqualToString:@"CompleteTransactionNotification"]){
        
         if([self.datosUsuario.datosPago.plan isEqualToString:@"PLAN PRO 1 MES"]){
-            [[AppsFlyerTracker sharedTracker] trackEvent:@"Plan Pro 1 Mes" withValue:@""];
+       
             [[Appboy sharedInstance] logPurchase:@"PP1"
                                       inCurrency:@"MXN"
                                          atPrice:[[NSDecimalNumber alloc] initWithString:@"65.00"]];
         }else if([self.datosUsuario.datosPago.plan isEqualToString:@"PLAN PRO 12 MESES"]){
-            [[AppsFlyerTracker sharedTracker] trackEvent:@"Plan Pro 12 Meses" withValue:@""];
+        
             [[Appboy sharedInstance] logPurchase:@"PP12"
                                       inCurrency:@"MXN"
                                          atPrice:[[NSDecimalNumber alloc] initWithString:@"599.00"]];
         }
         
         self.MensajePlanProComprado.text = [NSString stringWithFormat:NSLocalizedString(@"cuentaConPlanPro", nil),self.datosUsuario.fechaInicial, self.datosUsuario.fechaFinal];
-        self.viewCompraPlanPro.hidden = YES;
+      /*  self.viewCompraPlanPro.hidden = YES;
         self.viewPlanProComprado.hidden = NO;
+       */
+        [self viewWillAppear:YES];  
         self.datosUsuario.datosPago.statusPago = @"PAGADO";
         self.datosUsuario.descripcionDominio = @"";
         [self compra];
@@ -1147,6 +1170,43 @@ if(noSeRepiteOprimirElBoton){
     
   
 }
+
+- (IBAction)conoceMasAct:(id)sender {
+    
+    ABKFeedViewControllerNavigationContext *feedNavigationContext = [[ABKFeedViewControllerNavigationContext alloc] init];
+    
+    UIImage *image = [UIImage imageNamed:@"btnregresar.png"];
+    
+    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [backButton setFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
+    [backButton setImage:image forState:UIControlStateNormal];
+    [backButton addTarget:self action:@selector(closeModalNaviagationView:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *buttonBack = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+    
+    feedNavigationContext.navigationItem.leftBarButtonItem = buttonBack;
+    
+    
+    [feedNavigationContext.navigationItem setTitle:NSLocalizedString(@"noticiasFeed", Nil)];
+    UIFont *fuente = [UIFont fontWithName:@"Avenir-Heavy" size:19];
+    UIColor *colorTexto = [UIColor whiteColor];
+    NSDictionary *atributos = @{
+                                NSFontAttributeName: fuente,
+                                NSForegroundColorAttributeName: colorTexto,
+                                };
+    
+    [feedNavigationContext.navigationController.navigationBar setTitleTextAttributes:atributos];
+    [self.navigationController pushViewController:feedNavigationContext animated:YES];
+    
+}
+-(IBAction)openFeedbackFromModalFeed:(id)sender {
+    
+}
+
+-(IBAction)closeModalNaviagationView:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 
 @end
 

@@ -87,9 +87,6 @@
         vistaInferior = [[UIView alloc] initWithFrame:CGRectMake(0, 440, 320, 68)];//458
     }else if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         vistaInferior = [[UIView alloc] initWithFrame:CGRectMake(25, 538, 320, 88)];//458
-   /* }else if(IS_STANDARD_IPHONE_6_PLUS){
-        vistaInferior = [[UIView alloc] initWithFrame:CGRectMake(47, 607, 320, 88)];//458
-    */
     }else if(IS_IPAD){
         vistaInferior = [[UIView alloc] initWithFrame:CGRectMake(174, 875, 668, 88)];//458
     }else {
@@ -288,15 +285,7 @@
 }
 
 -(void) mostrarLogo {
-   /* UIImageView *imagenBarra = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 20)];
-    [imagenBarra setImage:[UIImage imageNamed:@"sbarnuevo.png"]];
-    [self.view addSubview:imagenBarra];
-    */
-    /*
-    if(IS_STANDARD_IPHONE_6_PLUS){
-        [self.vistaCircular setFrame:CGRectMake(84, 58, 267, 49)];
-    }else
-     */if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
+  if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
          [self.vistaCircular setFrame:CGRectMake(64, 58, 267, 49)];
     }else if(IS_IPAD){
         [self.vistaCircular setFrame:CGRectMake(174, 110, 420, 80)];
@@ -316,7 +305,6 @@
 
 -(void) mostrarLogoBarraNavegacion {
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"barramorada.png"] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
-    //    [self.navigationController.navigationItem setTitle:titulo];
     [self.navigationItem setTitle:@"Ingresa a tu cuenta"];
     UIFont *fuente = [UIFont fontWithName:@"Avenir-Book" size:19];
     

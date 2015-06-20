@@ -13,7 +13,7 @@
 #import "CambiarPasswordViewController.h"
 
 #import "NombrarViewController.h"
-#import "AppsFlyerTracker.h"
+
 #import <FacebookSDK/FacebookSDK.h>
 #import "AppboyKit.h"
 #import "MenuRegistroViewController.h"
@@ -507,7 +507,7 @@
             [[Appboy sharedInstance].user setCustomAttributeWithKey:@"campania" andStringValue:self.datosUsuario.campania];
         }
     }
-    [[AppsFlyerTracker sharedTracker] setCustomerUserID:self.txtEmail.text];
+
         MenuPasosViewController *menuPasos = [[MenuPasosViewController alloc] initWithNibName:@"MenuPasosViewController" bundle:nil];
         [self.navigationController pushViewController:menuPasos animated:YES];
     }else {
@@ -545,7 +545,7 @@
                 [[Appboy sharedInstance].user setCustomAttributeWithKey:@"campania" andStringValue:self.datosUsuario.campania];
             }
         }
-        [[AppsFlyerTracker sharedTracker] setCustomerUserID:self.txtEmail.text];
+      
         
         self.datosUsuario.existeLogin = YES;
         if (![self.datosUsuario.redSocial isEqualToString:@"Facebook"]) {
