@@ -343,20 +343,16 @@
 
 
 ////////////////////////////////// IRC //////////////////////
-
 // Pantalla Cuenta Plan Pro //
 "subtituloCuentaPlanPro" = "Flexible payments options:";
 "BeneficiosCuentaPlanPro" = "PRO PLAN BENEFITS";
 // Mensaje pantalla Registrar Usuario //
 "msjRegistrarUsuarioFB" = "We'll never post to your wall\n without your permission";
-
 //Pantalla Crear Editar //
 "inicioRapido" = "Quick start";
 "verTutorial" = "See tutorial";
 "verTutorialInicio" = "Tutorial";
 "verEjemplo" = "See example";
-
-
 //IRC inicio //
 "recordarCuenta" = "Remember my account";
 "crearCuentaRegistrar" = "Create account";
@@ -367,19 +363,15 @@
 "sesionFaceCerrada" = "Could not connect to facebook";
 "mensajePost" = "Your message has been successfully posted to your Wall";
 
-"conoceMasInicio" = "Learn more";
-
 "verEjemploInicio" = "Example";
 
-"proximamentePlanPro" = "COMING SOON!";
-
 "vistaPreviaPlanPro" = "preview";
-
 "elegirEstilo" = "Choose style";
 "etiquetaEstilo" = "STYLE";
 "noticiasFeed" = "News";
-
 "misitioURL"="mysite";
+
+
 "publicarTwitter" = "Your latest Tweets are posted on your site.";
 "msjCompartirPublicar" = "In order to share your website you must publish it first. Would you like to publish it now?";
 "msjEstadisticasPublicar" = "To see statistics on your website you must publish it first. Would you like to publish it now?";
@@ -391,7 +383,7 @@
 "errorVerMiSitio" = "Could not load the website." ;
 "errorPublicacion" = "Has not been able to register your website please try again.";
 "faltaImagenActualizar" = "You must select an image before upgrading";
-"cuentaTodavia"="Don't have an Account?"; // or You do not have an account yet?
+"cuentaTodavia"="Don't have an Account?";
 "cuentaTodaviaVerde"="Register";
 
 "noSeHaPodido" = "Could not load the preview.";
@@ -404,21 +396,16 @@
 "videoDesconocido"="We found no results check your words or use different";
 "errorCambioPassword" = "Could not upgrade, try again";
 "necesitaEmail" = "You may change your password in Facebook!";
-"eligePlanCuenta" ="Choose your plan and purchase plan pro" ;
-"publicarNombrar" = "Publish¡";
 "aceptarPop" = "Accept";
 "comprarDominioTel" = "Search";
 "compraElDominio" = "Buy it!";
-
 "leyendaCompraDominio" = "Buy your own domain for a more professional image and a more memorable address.";
-"leyendaCompraDominioSub"="Give more presence to your business.";
 "comprarDominioTelHeader"= "Naming | Publish";
 
 "dominioComprado" = "Already you purchased your .tel domain";
 "registrarDominioComprado" = "Register it";
 "errorNombreDominio" = "The domain name has been lost, please try again.";
 "emailPublicaTuSitio" = "Email" ;
-
 // Enviar codigo Promoción //
 "labelPromocion" = "Enter your promotion code.";
 "txtPromocion" = "Code";
@@ -430,7 +417,7 @@
 "paCodeError1" = "The code entered is not associated with any promotion. Please verify.";
 "paCodeError2" = "The promotion code has expired.";
 "paCodeError3" = "The promotion code is inactive. Please verify and retry.";
-"paCodeError4" = "The code provided is not available ";
+"paCodeError4" = "The code provided is not available.";
 "paCodeError5" =  "This account has been associated with a promotion code.";
 "paCodeError6" = "The number of accounts which can be activated by this promotion code has reached its limit.";
 "paCodeError9" = "The entered code has been activated already. Please try another one.";
@@ -438,8 +425,8 @@
 "paCodeError11" = "The promotion code does not exist. Please retry.";
 "paCodeError12" = "The promotion code has been used more than once.";
 "paCodeError13" = "The account is already Pro Plan.";
-"exitoCodigoRedimido"= "El código ha sido activado";
-"felizCodigoRedim" = "¡Congratulations!";
+
+
 "enviarPedacito" = "Yes, mobilize my existing website";
 "msjCompartePedacito" = "Create a mobile-friendly version of your existing website.";
 "cuentaConPlanPro" = "This site already has a PRO PLAN\n\nValid from\n %@ to %@";

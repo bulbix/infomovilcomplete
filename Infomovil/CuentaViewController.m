@@ -911,11 +911,12 @@ if(noSeRepiteOprimirElBoton){
         
         self.MensajePlanProComprado.text = [NSString stringWithFormat:NSLocalizedString(@"cuentaConPlanPro", nil),self.datosUsuario.fechaInicial, self.datosUsuario.fechaFinal];
       /*  self.viewCompraPlanPro.hidden = YES;
-        self.viewPlanProComprado.hidden = NO;
+          self.viewPlanProComprado.hidden = NO;
        */
-        [self viewWillAppear:YES];  
+        
         self.datosUsuario.datosPago.statusPago = @"PAGADO";
         self.datosUsuario.descripcionDominio = @"";
+        [self viewWillAppear:YES];
         [self compra];
         
         ((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio = @"Pago";

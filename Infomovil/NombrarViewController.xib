@@ -13,7 +13,6 @@
                 <outlet property="cerrarBtn" destination="uKF-fY-MM8" id="UkQ-um-nfw"/>
                 <outlet property="cerrarPopUp" destination="uKF-fY-MM8" id="X1h-FQ-aQh"/>
                 <outlet property="etiquetaEstatica" destination="O8a-s0-1q4" id="eY1-Z9-MAp"/>
-                <outlet property="label1" destination="hyv-hx-8GE" id="PLK-Io-T8m"/>
                 <outlet property="label2" destination="k1x-hr-Dhm" id="hc7-6O-dvF"/>
                 <outlet property="labelDominio" destination="D1h-Tr-yBA" id="gSV-d8-K9D"/>
                 <outlet property="labelTel" destination="Tkv-8Y-brU" id="nHx-kj-lOI"/>
@@ -125,13 +124,6 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                             <color key="textColor" red="0.23529411759999999" green="0.2901960784" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nombra tu sitio para continuar:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hyv-hx-8GE">
-                            <rect key="frame" x="20" y="47" width="280" height="47"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                            <color key="textColor" red="0.1843137255" green="0.63921568630000003" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=".tel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Tkv-8Y-brU">

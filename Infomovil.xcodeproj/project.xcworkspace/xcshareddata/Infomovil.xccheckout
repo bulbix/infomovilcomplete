@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>816FCD34-5F23-48D3-BB5B-0BC008F10F74</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>Infomovil</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>79C16B85CF208892E379FC4119DB6AB25D10476D</key>
 		<string>https://bitbucket.org/infomovil_team/infomovilcomplete.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Infomovil.xcodeproj/project.xcworkspace</string>
+	<string>Infomovil.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>79C16B85CF208892E379FC4119DB6AB25D10476D</key>

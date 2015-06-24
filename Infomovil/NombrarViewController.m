@@ -55,7 +55,7 @@
  
     if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         [self.scroll setFrame:CGRectMake(0, 0, 375, 667)];
-        [self.label1 setFrame:CGRectMake(40, 47, 280, 97)];
+       
         [self.label2 setFrame:CGRectMake(40, 70, 280, 101)];
         [self.labelW setFrame:CGRectMake(41, 178, 52, 24)];
         [self.nombreDominio setFrame:CGRectMake(93, 175, 200, 30)];
@@ -80,7 +80,7 @@
     
     }else{
         [self.scroll setFrame:CGRectMake(0, 0, 768, 1024)];
-        [self.label1 setFrame:CGRectMake(20, 47, 280, 47)];
+      
         [self.label2 setFrame:CGRectMake(20, 40, 280, 61)];
         [self.labelW setFrame:CGRectMake(11, 108, 52, 24)];
         [self.nombreDominio setFrame:CGRectMake(63, 105, 200, 30)];
