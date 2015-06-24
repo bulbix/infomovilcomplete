@@ -152,7 +152,7 @@
         
     }
 	
-	self.label1.text = NSLocalizedString(@"nombrarLabel1", nil);
+	
 	self.label2.text = NSLocalizedString(@"nombrarLabel2", nil);
 	[self.boton setTitle:NSLocalizedString(@"nombrarBoton", nil) forState:UIControlStateNormal] ;
 	

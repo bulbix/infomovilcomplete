@@ -55,6 +55,7 @@
     [self.labelAutorVideo setText:NSLocalizedString(@"autorVideo", Nil)];
     [self.labelCategoriaVideo setText:NSLocalizedString(@"categoriaVideo", Nil)];
     [self.labelUrlVideo setText:NSLocalizedString(@"labelURLVideo", Nil)];
+    [self.buscarBtn setTitle:NSLocalizedString(@"buscar", Nil) forState:UIControlStateNormal];
     self.buscarBtn.layer.cornerRadius = 10.0f;
     
     if(IS_IPAD){

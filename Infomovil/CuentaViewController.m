@@ -1041,33 +1041,33 @@ if(noSeRepiteOprimirElBoton){
 -(void)etiquetasBotonesYaComprado{
     UILabel *etiquetaCompraDominio = [[UILabel alloc]init];
    // UILabel *etiquetaCompraDominioSub = [[UILabel alloc]init];
-    UIButton *btnCompraDominio = [UIButton buttonWithType:(UIButtonTypeRoundedRect)];
+    UIButton *btnCompraDominio2 = [UIButton buttonWithType:(UIButtonTypeRoundedRect)];
     UIImageView* imgLineDominio = [[UIImageView alloc] init];
     
     if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         imgLineDominio.frame = CGRectMake(37, 185, 300, 2);
         etiquetaCompraDominio.frame = CGRectMake(47, 250,280 ,40 );
       //  etiquetaCompraDominioSub.frame = CGRectMake(47, 250,280 ,40 );
-        [btnCompraDominio setFrame:CGRectMake(87, 300, 200, 35)];
+        [btnCompraDominio2 setFrame:CGRectMake(87, 300, 200, 35)];
         etiquetaCompraDominio.font = [UIFont fontWithName:@"Avenir-Medium" size:18];
      //   etiquetaCompraDominioSub.font = [UIFont fontWithName:@"Avenir-Book" size:16];
-        [btnCompraDominio.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
+        [btnCompraDominio2.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
     }else if(IS_IPAD){
         imgLineDominio.frame = CGRectMake(184, 360, 400, 2);
         etiquetaCompraDominio.frame = CGRectMake(84, 450,600 ,80 );
       //  etiquetaCompraDominioSub.frame = CGRectMake(84, 500, 600, 40);
-        [btnCompraDominio setFrame:CGRectMake(259, 600, 250, 40)];
+        [btnCompraDominio2 setFrame:CGRectMake(259, 600, 250, 40)];
         etiquetaCompraDominio.font = [UIFont fontWithName:@"Avenir-Medium" size:24];
       //  etiquetaCompraDominioSub.font = [UIFont fontWithName:@"Avenir-Book" size:20];
-        [btnCompraDominio.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:24]];
+        [btnCompraDominio2.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:24]];
     }else{
         imgLineDominio.frame = CGRectMake(20, 160, 280, 2);
         etiquetaCompraDominio.frame = CGRectMake(20, 220,280 ,40 );
        // etiquetaCompraDominioSub.frame = CGRectMake(20, 260,280 ,40 );
-        [btnCompraDominio setFrame:CGRectMake(60, 270, 200, 35)];
+        [btnCompraDominio2 setFrame:CGRectMake(60, 270, 200, 35)];
         etiquetaCompraDominio.font = [UIFont fontWithName:@"Avenir-Medium" size:18];
       //  etiquetaCompraDominioSub.font = [UIFont fontWithName:@"Avenir-Book" size:16];
-        [btnCompraDominio.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
+        [btnCompraDominio2.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
     }
     [imgLineDominio setImage:[UIImage imageNamed:@"lineCompraDominio"]];
     [self.vistaDominio addSubview:imgLineDominio];
@@ -1083,15 +1083,16 @@ if(noSeRepiteOprimirElBoton){
     etiquetaCompraDominio.textAlignment = NSTextAlignmentCenter;
     [self.vistaDominio addSubview:etiquetaCompraDominio];
     
-    [btnCompraDominio setTitle:NSLocalizedString(@"registrarDominioComprado", Nil) forState:UIControlStateNormal];
-    [btnCompraDominio addTarget:self action:@selector(comprarDominioBtn:)forControlEvents:UIControlEventTouchUpInside];
-    btnCompraDominio.backgroundColor = [UIColor colorWithRed:47.0f/255.0f
+   
+    [btnCompraDominio2 setTitle:NSLocalizedString(@"registrarDominioComprado", Nil) forState:UIControlStateNormal];
+    [btnCompraDominio2 addTarget:self action:@selector(comprarDominioBtn:)forControlEvents:UIControlEventTouchUpInside];
+    btnCompraDominio2.backgroundColor = [UIColor colorWithRed:47.0f/255.0f
                                                        green:163.0f/255.0f
                                                         blue:153.0f/255.0f
                                                        alpha:1.0f];
-    [btnCompraDominio setTitleColor:[UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1.0] forState:UIControlStateNormal];
-    btnCompraDominio.layer.cornerRadius = 10;
-    [self.vistaDominio addSubview:btnCompraDominio];
+    [btnCompraDominio2 setTitleColor:[UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1.0] forState:UIControlStateNormal];
+    btnCompraDominio2.layer.cornerRadius = 10;
+    [self.vistaDominio addSubview:btnCompraDominio2];
     
 }
 

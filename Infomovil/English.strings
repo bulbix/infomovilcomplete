@@ -29,7 +29,7 @@
 "eliminarImagen"="Delete this image?";
 "anadirImagen"="Add images";
 "imagenes"="Images";
-"solo5Imagenes"="You can only add %i images";
+
 "paraAgregarImagen"="To add another image, delete an existing one first.";
 "video"="Video";
 "noConexion"="There seems to be a problem with your internet connection";
@@ -178,7 +178,7 @@
 "nombrePromocion"="Promotion name";
 "descripcionPromocion"="Promotion description";
 "vigencia"="Valid until";
-"5Imagenes"="You can add up to %i images";
+
 "galeriaVertical"="These images will be displayed vertically";
 "redimensionaImagen"="Images will be resized automatically";
 "noGuardoImagen"="Image not saved";

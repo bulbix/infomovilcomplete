@@ -139,7 +139,7 @@
     }
     else {
         if (!mostroCambiar && contador == 0) {
-           // [[AlertView initWithDelegate:self message:NSLocalizedString(@"nuevaLocalizacion",nil) andAlertViewType:AlertViewTypeInfo3] show];
+         
 			[self accionAceptar2];
             contador = 1;
 			

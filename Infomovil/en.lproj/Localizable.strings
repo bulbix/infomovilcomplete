@@ -1,7 +1,10 @@
+/*
+ Localizable.strings
+ Infomovil
+ English
+ */
 "preguntaGuardar"="Save changes before exiting?";
 "cargando"="Loading";
-"tituloFondo"="Select a background";
-"tituloColorfondo"="Background colour";
 "pais"="Country";
 "buscar"="Search";
 "cargandoUbicacion"="Loading location";
@@ -29,11 +32,9 @@
 "eliminarImagen"="Delete this image?";
 "anadirImagen"="Add images";
 "imagenes"="Images";
-"solo5Imagenes"="You can only add %i images";
 "paraAgregarImagen"="To add another image, delete an existing one first.";
 "video"="Video";
 "noConexion"="There is a problem with your internet. Check it and try again.";
-"noEspeciales" = "No special characters are allowed";
 "promociones"="Promotions";
 "sinFoto"="No photo";
 "tomarFoto"="Take a photo";
@@ -42,7 +43,6 @@
 "llamanos"="Call us";
 "enviaEmail"="E-mail us";
 "visitanos"="Visit us";
-"clickAqui"="Click here";
 "direccion"="Address";
 "mapa"="Map";
 "eliminarUbicacion"="Are you sure you want to delete your address?";
@@ -52,6 +52,7 @@
 "tipoContacto"="Contact type";
 "agregaNombreEmpresa"="Add your company name";
 "agregaDescripcion"="Add a short description of your company";
+
 "crearEditar"="Create and Edit";
 "nombreEmpresa"="Name or Company";
 "logo"="Logo";
@@ -68,30 +69,24 @@
 "sentimosRedimirCodigo" = "Sorry could not redeem your promotional code. Try again late.";
 "comprobarDisponibilidad"="Check availability first";
 "noDisponible"="The selected name is not available. Please try again";
-"intentaOtro"="Try another one";
 "nombrar"="Name your site";
 "publicar"="Publish your site!";
 "creaSitio"="Create your website";
-"primeroNombrar"="First you need to name your website";
 "compartir"="Share with everyone!";
 "reportes"="Reports";
 "cuenta"="Account";
 "configuracion"="Settings";
 "cambioPassword"="Change password";
-"cambioPassword2"="Change password";
-"cambioPasswordMensaje"="We've sent you an e-mail with instructions to change your password";
 "errorDominio"="Check your domain";
 "emailIncorrecto"="Please enter a valid e-mail address\nExample info@infomovil.com";
-"numeroIncorrecto"="Please enter a valid phone number";
 "passwordIncorrcto"="Check your password";
 "errorCrearDominio"="Sorry, there was a problem creating your domain";
-"mensajePublico"="Great news! Your site has been published.";
-"errorPublico"="Sorry, there was an error publishing your site";
-"errorLogin"="The e-mail or password is not correct.";// !!!: traduccion debe revisarse
+"errorLogin"="The e-mail or password is not correct.";
 "actualizacionCorrecta"="The update was successful";
 "errorActualizacion" = "No change has been published, try again";
 "seleccionaPais"="Select your country code";
 "infoDeRegistro"="Account information";
+
 "nombreOrganizacion"="Name of organizastion";
 "servicioCliente"="Contact name";
 "numeroMovil"="Mobile number";
@@ -113,17 +108,8 @@
 "estadoCheck"="State";
 "cpCheck"="Postcode / Zip code";
 "paisCheck"="Country";
-"visitaPagina"="%i pageviews";
-"visitaUltimos"="%i  pageviews since %i";
-"estoyLinea"="I'm online with Infomovil.com Visit my new website at:";
-"noFacebook"="You haven't set up a Facebook account";
-"notwitter"="You haven''t set up a Twitter account";
-"visitaSitio"="Visit my site";
 "noSMS"="We can't send an SMS from this device.";
 "noWhatsapp"="We can't send a Whatsapp message from this device.";
-"visitaApp"="Visit my new website created with the Infomovil app!";
-"comparteSitio"="Share it with your friends and contacts!";
-"infoRegistro"="Account information";
 "cambiaPass"="Change password";
 "eliminaCuenta"="Delete account";
 "salirCuenta"="Sign out from account";
@@ -132,8 +118,6 @@
 "emailAsunto"="Infomovil iOS v%@";
 "diasPrueba" = "";
 "empresa"="Company";
-"individual"="Person";
-"errorSMS"="Error sending SMS";
 "noGusto"="I don't like the service";
 "complicada"="It's too complicated";
 "noNecesito"="I don't need the service";
@@ -141,43 +125,23 @@
 "otro"="Other";
 "eliminar"="Delete account";
 "errorEliminar"="Sorry, there's an error deleting your account";
-"motivoEliminacion"="Why do you want to delete your account?";
-"elige"="Select an option";
 "verificaEmail"="Check your e-mail";
 "ocurrioError"="Please try again.";
-"ingresaEmail"="Add your e-mail";
 "hola"="Hello!";
-"eligeColor"="You must first choose a background colour";
 "eligeTemplate" = "You must first choose a style";
 "editaPagina"="You must first edit your page";
-"yaNombro"="Congratulations! You've successfully named your website!";
-"3Pasos"="Join this digital world and mobile!";
 "tienesCuenta"="Already have an account?";
 "aceptaCondiciones"="By continuing, you accept the Terms and Privacy Conditions of Infomovil";
 "disponible"="www.%@.tel is available\nRegister it to publish your website.";
 "disponibleTel"="www.%@.tel is available. Register it to publish your website.";
 "disponibleRecurso"="www.infomovil.com/%@ is available. Register it to publish your website.";
-
-"confirmalo"="";//"Publish your site and get on line!";
-
-"enLinea"="Your mobile site is now online!";
-
-"usuarioNombrado"="Success! Your account name has been created!";
-"seleccionaNombre"="To complete the registration process, choose a name for your website.";
 "errorEmail"="Invalid e-mail";
 "emailAsociado"="This e-mail address is already associated with another account";
-"requiereDueno"="You're almost ready to get online.";
-"registrate"="Just create an account, choose a name and publish your site!";
 "contrasena"="Password";
-"yaNombraste"="You've just named and published your website!";
-"cambiarNombre" = "";
 "noVideo"="No matching results were found.";
 "buscaVideo"="Add a Youtube video";
 "labelURLVideo" = "Search by keyword or add the exact address here:";
-"formasContacto"="You can define up to 10 contact types";
 "descripcion"="Description";
-"solo10"="You can only add %i contacts.";
-"botonVerde"="Enter a telephone number";
 "direccion1"="Address 1";
 "direccion2"="Address 2";
 "direccion3"="Address 3";
@@ -198,226 +162,130 @@
 "noDireccion"="The address wasn't found.";
 "buscaDireccion"="Search for an address";
 "moverEscalar"="Move and resize";
-"solo3campos"="You can only add %i data fields";
 "incompletos"="Incomplete data";
 "mensajeInformacionAdicional"="You can add %i paragraphs of 400 characters each																														";
-"mensajeContactos"="You can define up to %i forms of contact.";
+"mensajeContactos" = "Basic plan: You can add up to 3 contacts.\n Pro Plan: You can add up to 10 contacts.";
 "mensajeContactosPrueba"="Upgrade to our Pro Plan to add more contacts. Would you like to learn more?";
 "mensajeImagenesPrueba"="Upgrade to our Pro Plan to add more images. Would you like to learn more?";
 "mensajeInformacionAdicionalPrueba"="Upgrade to our Pro Plan and to add more content. Would you like to learn more?";
 "mensajeContactoTelefono"="Add a phone number";
 "mensajeContactoMail"="Add an e-mail";
-"videoLigado"="Include a YouTube video";
-"numeroImagenes"="Add up to 10 images";
+"numeroImagenes"="Add up to 15 images";
 "datosBasicos"="Add up to 10 contacts";
 "numeroContactos"="Enhanced statistics";
-"brand"="Remove Infomovil branding";
 "ads"="Professional support";
-
 "mensajeCuenta"="Create a professional image with Pro Plan";
 "mensajeNoVideo"="Add a YouTube video to your website.  This is Pro Plan feature.   Would you like to learn more?";
 "mensajeNoPrueba"="This is a Pro Plan feature.  Would you like to learn more?";
-"mensajeDominio"="When you publish your website, we offer you a unique and memorable domain:\n\nwww.mysite.tel";//"Coming soon!  Purchase your own .tel domain.\n\n\n\n";
-
 "tituloTips"="Tips";
-"inicioLabel"="Join the digital and mobile world!";
-"inicioBotonPruebalo"="Create a free site!";//"Try it";
-"inicioBotonSesion"="Log in";
 "inicioLeyenda1"="By continuing, you accept the";
 "inicioLeyenda2" = "Terms";
 "inicioLeyenda3" = "and";
 "inicioLeyenda4" = "Privacy Conditions";
 "inicioLeyenda5" = "of Infomovil";
-
 "mainLabelCorreo"=" E-mail";
 "mainLabelPassword"=" Password";
 "mainLabel"="Forgot password?";
 "mainBoton"="Log in";
-
-"compartirLabel1"="Congratulations!\n\n";
-"compartirEtiqueta1"="Share your website with your contacts and friends to get more benefits.";
-"compartirlaben2"="You're now online";
-"compartirLabel3"="Share your website with your friends and contacts";
-
-"publicarLabel1"="Available";
-"PublicarLabel2"="Confirm";
 "PublicarBoton"="Register!";
-
 "tipsTitulo1"="Take care with the details and test your site";
 "tipsLabel11"="1. Be careful to avoid making typos\n2. Test your site:\nwww.%@.tel";
 "tipsLabel111"="1. Be careful to avoid making typos\n2. Test your site:\nwww.infomovil.com/%@";
 "tipsLabel12"="Open a browser";
 "tipsLabel13"="Test the contact buttons (call, e-mail)";
 "tipsLabel14"="Check all your text";
-"tipsTitulo2"="Use video!";
-"tipsLabel21"="Most people love watching videos";
-"tipsLabel22"="Record a short video with your smartphone to describe your products and services";
-"tipsLabel23"="Upload it to YouTube";
-"tipsLabel24" = "Link it with your website mobile";
 "tipsTitulo3"="Refresh your content";
 "tipsLabel31"="Update your promotions and delete outdated information											";
 "tipsLabel32"="Upload new images every few weeks";
 "tipsLabel33"="Fill out all content fields";
 "tipsTitulo4"="Share your site with everyone you know!";
 "tipsLabel41"="Share your site with all your friends and contacts";
-
 "estadisticasLabel1"="1W";
 "estadisticasLabel2"="1M";
 "estadisticasLabel3"="3M";
 "estadisticasLabel4"="6M";
 "estadisticasLabel5"="1Y";
-
+"compartirEtiqueta1" = "Share your website with your contacts and friends to get more out.";
 "compartirLabel2"="I'm online with Infomovil.com \nVisit my new website at:";
-
 "cuentaTituloSegment1"="Pro Plan";
 "cuentaTituloSegment2"="Domain";
 "cuentaTituloSegment3" = "Promotion";
-
-"cuentaLabel1"="Sign me up!";
-"cuentaLabel2"="6 months";
-"cuentaLabel3"="12 months";
-
 "eliminarLabel1"="Why do you want to delete your account?";
 "eliminarLabel2"="Enter your password";
 "eliminarLabel3"="Specify";
 "eliminarLabel4"="Select an option";
-
 "cambiarLabel1"="Enter your e-mail and we will send you a link to reset your password";
 "cambiarAlerta"="We've sent you an e-mail with instructions to change your password";
-
-"nombrarLabel1"="";//"Choose a name for your mobile website to continue:";
-"nombrarLabel2"="Choose a name for your website";//"You must publish your site to create your account. If you exit without publishing, you will have to create you account again.";
+"nombrarLabel2"="Choose a name for your website";
 "nombrarBoton"="Search";
-
 "instrucciones" = "Instructions";
 "pulsaContacto"="Click on a contact to edit the data.";
 "mostrarContacto" = "Hide or show the contact information on your website.";
 "moverContacto" = "To reorder a contact, select     and move the contact up or down.";
 "agregaDatos"="Add your contact information";
 "datosBotonesGrandes"="These data are used in the large contact buttons on your website.\n \nWith a Plan Pro, you can add additional contacts.";
-
 "tituloVideo"="Title";
 "categoriaVideo"="Category";
 "autorVideo"="Description";
 "datosVideo"="Video data";
 "tituloFoto"="Image name";
 "agregaTitulo"="Add a title";
-"alto"="Height";
-"ancho"="Width";
-"tamano"="Size";
 "mensajeContactosPro"="You've reached the maximum number of contacts";
 "mensajeImagenesPro"="You've reached the maximum number of images";
 "mensajeInformacionPro"="You've added the maximum amount of additional information";
-"salirTitulo"="Exit account";
 "salirMensaje"="Are you sure you want to exit? You will need to re-enter your username and password";
-"formularioLabel"="Password";
-"formularioLabel6"="Confirm password";
 "formularioPassword"="The passwords don't match";
+
 "configuracionCorreo"="No e-mail account associated";
-
 "formularioBoton" = "Register!";
-
 "perfinNegocioProfesion" = "Business | Profession";
-
 "noExisteUsuario" = "User not found";
-
 "urlInvalida" = "Wrong URL";
 "numeroInvalido" = "Wrong Number";
 "cuentaInvalida" = "Wrong Account";
 "emailInvalido" = "Wrong e-mail";
-
 "mensajeContrasenia" = "This process will send an e-mail with the steps to change the password";
 "mensajeCompra" = "Succesful Purchase";
-
 "mensajeComprando" = "You are about to make the purchase of a Plan Pro!";
-
-"labelProximamente" = "COMING SOON!";
-
 "cuentaEliminada" = "Account deleted successfully";
-
 "noGeolocalizacion" = "The geolocation services are disabled";
-
-"felicidades2" = "Your website has been registered!";
-"tiempoPublica" = "It might take a few minutes before you can see it online.";
-"fechas" = "Renewal Date:% @";
-"valido" = "This domain is valid for 1 year.\nWe will contact you to renew in 11 months.";
-"promueve" = "Once it's online, share it with your friends and contacts.";
-"seguir" = "Continue";
-
-"verificaDatos" = "Check your data";
-
-"mensajeEliminarPerfil" = "Delete this data?";
-
-"publicarNombre" = "Name of the administrative contact:";
-"publicarDir1" = "Address 1:";
-"publicarDir2" = "Address 2:";
-"publicarPais" = "Country:";
-
-"paso2Eliminar" = "Are you sure you want to delete the data?";
-
-"mensajePromocion1" = "No changes have been made in information yet";
 "mensajePromocion2" = "Please enter a title";
 "mensajePromocion3" = "Please enter a description";
 "mensajePromocion4" = "Please enter until when is valid";
 "mensajePromocion5" = "Please enter how to redeem";
-
+"mensajeEliminarPerfil" = "Do you want to delete the data?";
+"publicarNombre" = "Name of the administrative contact";
+"publicarDir1" = "Address 1";
+"publicarDir2" = "Address 2";
+"publicarPais" = "Country";
 "eliminaImagenAviso" = "You must first remove the picture";
-
+"paso2Eliminar" = "Are you sure you want to delete the data?";
 "errorPassword" = "Password must be 8 or more characters (letters and numbers) Cannot contain the word Info or Infomovil and should not be equal to email";
 "imagenPromoCorrecta" = "Your image is now ready to be uploaded";
-
-"registrarMensaje" =  "Please create an account with your e-mail and password.";
-
-"sessionCaduco" = "Your session has expired. Please log-in again";
 "sessionUsada" = "Your session can be used in another device or was an error in the network.";
-"codigoRedimir" = "Channel campaing";
-"tituloCampania" = "Campaign";
-"txtSinCampania" = "Blanc if no campaing";
-
-"ubicacionVista" = "Location";
-"galeriaVista" = "Gallery";
-
-"ubicacionVista2" = "Find Us";
-"contactoVista" = "Contact Us";
 "movilMexico" = "Remember that to receive international calls the format is (1) XXX-XXX-XXXX (10 digits)";
-"nuevaLocalizacion" = "This will remove the old location and mark a new";
+
 "elijeUbicacion" = "Choose a location";
 "imagenRedimension" = "This image can be resized";
 "ingresaHorario" = "Enter opening hours";
 "ingresaTexto" = "Enter desired text";
 "condicionesServicio" = "Terms of Service";
 "politicaPrivacidad" = "Privacy Policy";
-"checaMiSitio" = "Check our website";
-"creeMiSitio" = "I just created a website with Infomovil.com.\nCheck it out and help us grow!\nwww.%@.tel";
-
-"txtMsjSessionActiva" = "You already have a session open. To open a new one on this device, we need to close it.";
-"txtCerrarBackground" = "Your session has been closed for your security, log in again";
-"txtProcesoPub" = "Tu sitio se encuentra en proceso de publicación";
 "mensajeProcesoPublicacion" = "This domain is in process of publication, enter to the account screen in the domain tab to check the status";
 "txtErrorDomainNombrar" = "This domain is not available, please try another one";
-
-"txtErrorPassword" = "Wrong Password";
-"txtCuentaCancelada" = "The account has been canceled";
-"txtNoExisteUsuario" = "The user doesn't exist";
-
-"msgGuardarColor" = "Updating Color";
+"actualizandoDatos"= "Updating data";
 "msgGuardarContacto" = "Updating Contact";
-"msgGuardarDescripcion" = "Updating Description";
 "msgGuardarDireccion" = "Updating Address";
 "msgGuardarImagen" = "Updating Image";
+"msgGuardarTemplate" = "Updating style";
 "msgGuardarInfoAd" = "Updating Aditional Information";
-"msgGuardarLogo" = "Updating Logo";
 "msgGuardarMapa" = "Updating Map";
-"msgGuardarVideo" = "Updating Video";
-"msgGuardarNombre" = "Updating Name";
 "msgGuardarPerfil" = "Updating Profile";
 "msgGuardarPromocion" = "Updating Offer";
 "msgNombrarSitio" = "Naming Site";
 "msgPublicarSitio" = "Publishing Site";
-"msgBuscandoUsuario" = "Verifing User";
 "msgPublicando" = "Registering your site";
 "msgValidandoUsuario" = "Validating credentials";
-
 "txtLlenarNombre" = "Please fill your name";
 "txtLlenarDireccion" = "Please fill your address";
 "txtLlenarEmail" = "Please fill your email";
@@ -425,7 +293,6 @@
 "txtPublicar" = "Publish";
 "txtInfoMapa" = "Press";
 "txtInfoMapa2" = "to select the location";
-
 "error555" = "The code is not associated with any campaign";
 "error999" = "The campaign is not active";
 "error666" = "The code is out of date";
@@ -434,18 +301,6 @@
 "error55" = "The account was already enabled";
 "errorCampanaGen" = "An error occured when redeeming the code";
 "error66" = "The code already spent";
-"redimirExito" = "The code has been activated";
-
-"txtBtnRedimir" = "Redeem Code";
-"txtErrorCodigo" = "The redeem code can only contain numbers and letters";
-
-//CuentaViewController
-
-"txtMisSitios" = "My site";
-"txtComprar" = "Buy";
-"txtDominioDisponible" = "Available";
-
-
 /*General Appboy Alarm Messages*/
 "Appboy.alert.connect-facebook.title" = "Enable Facebook Connection";
 "Appboy.alert.connect-facebook.message" = "To re-enable Facebook, go to Settings -> Privacy -> Facebook.";
@@ -481,22 +336,11 @@
 "Appboy.feed.no-connection.message" = "Cannot establish network connection.\nPlease try again later.";
 /*Web View Default Button Labels*/
 "Appboy.slideup.webview.done-button.title" = "Done";
-
 "labelInicioRapidoTexto" = "Fill these key data, select a name and your public website.\n Estimated time: 5 minutes.";
-"labelVerEjemplo" = "See example";
 "labelInicioRapido" = "Quick start";
 "mensajeInicioRapido" = "Please fill the sections";
 
 
-
-"FBLV:LogOutButton" = "Log Out";
-"FBLV:LogInButton" = "Lalala";
-"FBLV:LoggedInAs" = "Logged in as: %@";
-"FBLV:LoggedInUsingFacebook" = "Logged in using Facebook";
-"FBLV:LogOutAction" = "Log Out";
-"FBLV:CancelAction" = "Cancel";
-
-"errorFacebookLogin" = "Inicia sesion con facebook";
 
 ////////////////////////////////// IRC //////////////////////
 
@@ -551,7 +395,7 @@
 "cuentaTodaviaVerde"="Register";
 
 "noSeHaPodido" = "Could not load the preview.";
-"msgGuardarTemplate" = "Updating style";
+
 "yaTienesCuenta" = "Already have an account? Log in";
 "tienesCuentaVerde" = "Log in";
 "estaDisponiblePublica" = "The domain is Available!";
@@ -561,7 +405,7 @@
 "errorCambioPassword" = "Could not upgrade, try again";
 "necesitaEmail" = "You may change your password in Facebook!";
 "eligePlanCuenta" ="Choose your plan and purchase plan pro" ;
-"publicarNombrar" = "!Publish¡";
+"publicarNombrar" = "Publish¡";
 "aceptarPop" = "Accept";
 "comprarDominioTel" = "Search";
 "compraElDominio" = "Buy it!";

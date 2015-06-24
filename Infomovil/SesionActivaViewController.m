@@ -253,7 +253,7 @@
 
 
 -(void)mostrarActividad{
-    self.alerta = [AlertView initWithDelegate:self message:@"Actualizando datos" andAlertViewType:AlertViewTypeActivity];
+    self.alerta = [AlertView initWithDelegate:self message:NSLocalizedString(@"actualizandoDatos", @" ") andAlertViewType:AlertViewTypeActivity];
     [self.alerta show];
     
 }
