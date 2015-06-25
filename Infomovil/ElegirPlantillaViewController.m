@@ -79,14 +79,14 @@ BOOL actualizo;
     nombrePlantilla = @[@"DIVERTIDO", @"CLÁSICO", @"CREATIVO",
                         @"MODERNO", @"ESTÁNDAR"];
     
-    nombrePlantillaEn = @[@"FUNNY", @"CLASSIC", @"CREATIVE",
+    nombrePlantillaEn = @[@"FUN", @"CLASSIC", @"CREATIVE",
                          @"MODERN", @"STANDARD"];
     
     nombreWebServiceTemplate = @[@"Divertido", @"Clasico", @"Creativo",@"Moderno", @"Estandar1"];
     
     descripcionPlantilla = @[@"Estilo popular para Restaurantes, Pizzerías, Taquerías, Antros, Bares, etc.", @"Estilo popular para eventos formales, bodas, quinceaños, abogados, despachos, profesionistas, etc.", @"Estilo popular para creativos, músicos, estudiantes, fotógrafos, agencias, diseñadores, artistas,etc.",@"Estilo popular para empresas de tecnología, freelancers, distribuidoras de productos electrónicos, etc.", @"Estilo popular para todo tipo de productos y servicios."];
     
-    descripcionPlantillaEn = @[@"Popular style for Restaurants, Pizzerías, Taquerías, Nightclubs, Bars, etc.", @"Popular style for formal events, weddings, quinceanera, lawyers, law firms, professionals, etc.", @"Popular style for creatives, musicians, students, photographers, agencies, designers, artists, etc.", @"Popular style for technology companies, freelancers, distributors of electronic products, etc.", @"Popular style for all kinds of products and services"];
+    descripcionPlantillaEn = @[@"Popular style for Restaurants, Pizzerías, Taquerías, Nightclubs, Bars.", @"Popular style for formal events, weddings, professionals.", @"Popular style for creatives, musicians, students, photographers, agencies, designers, artists.", @"Popular style for technology companies, freelancers, distributors of electronic products.", @"Popular style for general products and services."];
     
     
     self.scrollTemplate.tag = 1;
@@ -100,10 +100,7 @@ BOOL actualizo;
         if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
             image = [UIImage imageNamed:[NSString stringWithFormat:@"template%i",i+1]];
             pController.view.frame = CGRectMake(375*i, 40, 375, 667);
-      /*  }else if(IS_STANDARD_IPHONE_6_PLUS){
-            image = [UIImage imageNamed:[NSString stringWithFormat:@"template%i",i+1]];
-            pController.view.frame = CGRectMake(414*i, 0, 414, 736);
-       */
+     
        }else if(IS_IPAD){
             pController.view.frame = CGRectMake(768*i, 0, 768, 1024);
             image = [UIImage imageNamed:[NSString stringWithFormat:@"template%i@3x",i+1]];

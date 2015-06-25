@@ -11,69 +11,18 @@
 
 @implementation WS_HandlerCambiarPassword
 
--(void) actualizaPassword {
-    DatosUsuario *datos = [DatosUsuario sharedInstance];
-	NSString *stringXML;
-	
-		stringXML = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.webservice.infomovil.org/\">"
-					 "<soapenv:Header/>"
-					 "<soapenv:Body>"
-					 "<ws:cambioPassword>"
-					 "<Usuario>%@</Usuario>"
-					 "<token>%@</token>"
-					 "</ws:cambioPassword>"
-					 "</soapenv:Body>"
-					 "</soapenv:Envelope>",[StringUtils encriptar:datos.emailUsuario conToken:passwordEncriptar],
-					 [StringUtils encriptar:datos.emailUsuario conToken:passwordEncriptar]];
 
-    self.strSoapAction = @"WSInfomovilDomain";
-	NSLog(@"La peticion es %@", stringXML);
-    NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
-    NSLog(@"La respuesta es %s", [dataResult bytes]);
-    if (dataResult != nil) {
-        NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
-        [parser setDelegate:self];
-        if ([parser parse]) {
-            if(self.token != nil && datos.token == nil){
-                datos.token = self.token;
-            }
-			if(requiereEncriptar){
-              
-                NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
-                NSLog(@"EL TOKEN DE DATOS ES: %@ y EL SELF TOKEN ES: %@ y stringresult: %@", datos.token, self.token , stringResult);
-                if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
-                    [self.cambiarPasswordDelegate errorToken];
-                }
-                else {
-                    [self.cambiarPasswordDelegate resultadoPassword:stringResult];
-                }
-			}else{
-				[self.cambiarPasswordDelegate resultadoPassword:self.currentElementString];
-			}
-        }
-        else {
-            [self.cambiarPasswordDelegate errorConsultaWS];
-        }
-    }
-    else {
-        [self.cambiarPasswordDelegate errorConsultaWS];
-    }
-    
-}
 
 -(void) actualizaPasswordConEmail:(NSString *) email {
-   DatosUsuario *datos = [DatosUsuario sharedInstance];
 	NSString *stringXML;
     stringXML = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.webservice.infomovil.org/\">"
                  "<soapenv:Header/>"
                  "<soapenv:Body>"
-                 "<ws:cambioPassword>"
-                 "<Usuario>%@</Usuario>"
-                 "<token>%@</token>"
-                 "</ws:cambioPassword>"
+                 "<ws:generaHashCambioPassword>"
+                 "<email>%@</email>"
+                 "</ws:generaHashCambioPassword>"
                  "</soapenv:Body>"
-                 "</soapenv:Envelope>",[StringUtils encriptar:email conToken:passwordEncriptar],
-                 [StringUtils encriptar:email conToken:passwordEncriptar]];
+                 "</soapenv:Envelope>",email];
 
     self.strSoapAction = @"WSInfomovilDomain";
 	NSLog(@"La peticion es %@", stringXML);
@@ -84,17 +33,14 @@
         [parser setDelegate:self];
         if ([parser parse])
         {
-            if(self.token != nil && datos.token == nil){
-                datos.token = self.token;
+            
+            if([self.code isEqualToString: @"0"]){
+                [self.cambiarPasswordDelegate resultadoPassword:self.resultado];
+            }else{
+                [self.cambiarPasswordDelegate resultadoPassword:self.code];
             }
-            NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
-             NSLog(@"EL TOKEN DE DATOS ES: %@ y EL SELF TOKEN ES: %@ y stringresult: %@", datos.token, self.token , stringResult);
-            if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
-                [self.cambiarPasswordDelegate errorToken];
-            } 
-            else {
-                [self.cambiarPasswordDelegate resultadoPassword:stringResult];
-            }
+            
+            
         }
         else {
             [self.cambiarPasswordDelegate errorConsultaWS];
@@ -117,7 +63,7 @@
     if ([elementName isEqualToString:@"resultado"]) {
         self.currentElementString = [[NSMutableString alloc] init];
     }
-    else if ([elementName isEqualToString:@"token"]) {
+    else if ([elementName isEqualToString:@"codeError"]) {
        self.currentElementString = [[NSMutableString alloc] init];
     }
 }
@@ -127,8 +73,9 @@
         self.resultado = self.currentElementString;
         NSLog(@"EL RESULTADO ES: %@", self.resultado);
     }
-    else if ([elementName isEqualToString:@"token"]) {
-        self.token = [StringUtils desEncriptar:self.currentElementString conToken:passwordEncriptar];
+    else if ([elementName isEqualToString:@"codeError"]) {
+        self.code = self.currentElementString;
+        NSLog(@"EL CODIGO ES: %@", self.code);
     }
 }
 

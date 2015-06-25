@@ -180,17 +180,8 @@
                 [alerta show];
                 
             }
-			
-			
-            
         }
-      /*  else if(indexPath.row == 1) {
-            EliminarCuentaViewController *eliminarCuenta = [[EliminarCuentaViewController alloc] initWithNibName:@"EliminarCuentaViewController" bundle:Nil];
-            [self.navigationController pushViewController:eliminarCuenta animated:YES];
-        }
-       */
         else if (indexPath.row == 1) {
-            
             [[AlertView initWithDelegate:self message:NSLocalizedString(@"salirMensaje", nil)
 						andAlertViewType:AlertViewTypeQuestion] show];
         }
@@ -215,6 +206,7 @@
 }
 
 -(void)accionAceptar2{
+    
 	if ([CommonUtils hayConexion]) {
 		[self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
 		[self performSelectorInBackground:@selector(actualizarPassword) withObject:Nil];
@@ -253,11 +245,10 @@
     [self.navigationController pushViewController:Inicio animated:YES];
 }
 -(void) actualizarPassword {
-   
+        self.datosUsuario = [DatosUsuario sharedInstance];
         WS_HandlerCambiarPassword *handlerPass = [[WS_HandlerCambiarPassword alloc] init];
         [handlerPass setCambiarPasswordDelegate:self];
-	
-        [handlerPass actualizaPassword];
+        [handlerPass actualizaPasswordConEmail:self.datosUsuario.emailUsuario];
      
 }
 
@@ -277,7 +268,7 @@
 		[alert show];
     }
     else {
-        AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"errorActualizacion", Nil) andAlertViewType:AlertViewTypeInfo];
+        AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"errorCambiarPassword1", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
         [alert show];
     }
 
@@ -310,12 +301,20 @@
     [self.navigationController pushViewController:inicio animated:YES];
 }
 -(void) resultadoPassword:(NSString *)resultado {
-    if ([resultado isEqualToString:@"Exito"]) {
-        actualizoCorrecto = YES;
-    }
-    else {
+    if ([resultado isEqualToString:@"-1"]) {
         actualizoCorrecto = NO;
     }
+    else if([resultado isEqualToString:@"-2"]){
+        actualizoCorrecto = NO;
+    }else{
+         actualizoCorrecto = YES;
+        [[Appboy sharedInstance].user setCustomAttributeWithKey:@"hashCambioPassword" andStringValue:resultado];
+        [[Appboy sharedInstance] logCustomEvent:@"ChangePassword"];
+    
+    
+    }
+    
+    
     [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
 }
 

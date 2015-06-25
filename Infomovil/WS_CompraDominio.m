@@ -79,10 +79,10 @@
             if(self.token != nil && [self.token length] > 0 && ![self.token isEqualToString:@" "]){
                 self.datosUsuario.token = self.token;
             }
-				if(requiereEncriptar){
+			/*	if(requiereEncriptar){
 					((AppDelegate*)	[[UIApplication sharedApplication] delegate]).statusDominio = [StringUtils desEncriptar:((AppDelegate*)[[UIApplication sharedApplication]delegate]).statusDominio conToken: self.datosUsuario.token ];
 				}
-				
+			*/
             self.datosUsuario.datosPago.pagoId = [[StringUtils desEncriptar:self.resultado conToken:self.datosUsuario.token] integerValue];
             NSLog(@"EL PAGO ID ES: %lu", (unsigned long)self.datosUsuario.datosPago.pagoId);
             if(self.datosUsuario.datosPago.pagoId > 0){
@@ -155,10 +155,10 @@
             if(self.token != nil && [self.token length] > 0 && ![self.token isEqualToString:@" "]){
                 self.datosUsuario.token = self.token;
             }
-            if(requiereEncriptar){
+         /*   if(requiereEncriptar){
                 ((AppDelegate*)	[[UIApplication sharedApplication] delegate]).statusDominio = [StringUtils desEncriptar:((AppDelegate*)[[UIApplication sharedApplication]delegate]).statusDominio conToken: self.datosUsuario.token ];
             }
-            
+           */
             if ([self.arregloDominiosUsuario count] > 0) {
                 self.datosUsuario.dominiosUsuario = self.arregloDominiosUsuario;
             }else {
@@ -249,7 +249,15 @@
         self.resultado = self.currentElementString;
  
     }else if([elementName isEqualToString:@"statusDominio"]){
-        ((AppDelegate*)	[[UIApplication sharedApplication] delegate]).statusDominio = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
+            NSString *valor = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
+            if ([valor isEqualToString:@"Mes PRO"] || [valor isEqualToString:@"Anual PRO"] || [valor isEqualToString:@"Tramite PRO"] ) {
+                ((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio = @"Pago";
+            }
+            else {
+                ((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio = valor;
+            }
+            NSLog(@"EL ESTATUS DOMINIO ES: %@", valor);
+        
         
     }else if ([elementName isEqualToString:@"fechaFin"]){
         if(requiereEncriptar){

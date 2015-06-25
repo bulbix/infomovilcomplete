@@ -75,16 +75,8 @@
         self.label.frame = CGRectMake(0, 40, 375, 80);
         self.txtEmail.frame = CGRectMake(47, 80, 280, 40);
     }
-    /*else if(IS_STANDARD_IPHONE_6_PLUS){
-        self.label.frame = CGRectMake(0, 40, 414, 80);
-        self.txtEmail.frame = CGRectMake(47, 120, 320, 40);
-    }
-*/
+
 }
-
-
-
-
 
 
 
@@ -96,8 +88,13 @@
 
 -(IBAction)guardarInformacion:(id)sender {
     [self.view endEditing:YES];
+    
+    
+    
+    
     if ([CommonUtils validarEmail:self.txtEmail.text]) {
 		if ([CommonUtils hayConexion]) {
+            [[Appboy sharedInstance] changeUser:self.txtEmail.text];
 			[self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
 			[self performSelectorInBackground:@selector(actualizarPassword) withObject:Nil];
 		}
@@ -146,14 +143,17 @@
 }
 
 -(void) resultadoPassword:(NSString *)resultado {
-    if ([resultado isEqualToString:@"Exito"]) {
-        actualizoCorrecto = YES;
-    }
-	else if([resultado isEqualToString:@"No existe usuario"]){
-		noExixte = YES;
-	}
-    else {
+    if ([resultado isEqualToString:@"-1"]) {
         actualizoCorrecto = NO;
+    }
+    else if([resultado isEqualToString:@"-2"]){
+        actualizoCorrecto = NO;
+    }else{
+        actualizoCorrecto = YES;
+        [[Appboy sharedInstance].user setCustomAttributeWithKey:@"hashCambioPassword" andStringValue:resultado];
+        [[Appboy sharedInstance] logCustomEvent:@"ChangePassword"];
+        
+        
     }
     [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
 }
@@ -170,14 +170,10 @@
         [NSThread sleepForTimeInterval:1];
         [self.alertaContacto hide];
     }
-   // AlertView *alertAct = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
-   // [alertAct show];
+ 
     AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"cambiarAlerta", Nil) andAlertViewType:AlertViewTypeInfo];
     [alert show];
-    
-    //[StringUtils terminarSession];
-    //MainViewController *inicio = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:Nil];
-    //[self.navigationController pushViewController:inicio animated:YES];
+   
 }
 
 -(void) errorContacto {

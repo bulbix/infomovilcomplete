@@ -244,7 +244,11 @@ int opcionButton = 0 ;
 #ifdef _DEBUG
 	NSLog(@"En CuentaViewController statusDominio del appdelegate 1 es: %@",((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio);
 #endif
-        
+        NSLog(@"EL ESDTATUS EN CUENTA VIEWCONTROOLER ES: %@", ((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio);
+       NSString *stDomAux = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio;
+        if([stDomAux isEqualToString:@"Mes PRO"] || [stDomAux isEqualToString:@"Anual PRO"] || [stDomAux isEqualToString:@"Tramite PRO"]){
+        ((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio = @"Pago";
+        }
         if([((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && ![self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]){
 	
           if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
@@ -913,13 +917,13 @@ if(noSeRepiteOprimirElBoton){
       /*  self.viewCompraPlanPro.hidden = YES;
           self.viewPlanProComprado.hidden = NO;
        */
-        
+        ((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio = @"Pago";
         self.datosUsuario.datosPago.statusPago = @"PAGADO";
         self.datosUsuario.descripcionDominio = @"";
         [self viewWillAppear:YES];
         [self compra];
         
-        ((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio = @"Pago";
+        
       [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
     }
     

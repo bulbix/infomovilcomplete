@@ -274,7 +274,7 @@
                         self.datos.idDominio = respuestaInt;
                         self.datos.dominioRecurso = self.datos.dominio;
                         self.datos.dominio = user;
-                        AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+                       /* AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
                         if ([statusDominio hasSuffix:@"PRO"]) {
                             NSArray *arrayAux = [statusDominio componentsSeparatedByString:@" "];
                             if ([arrayAux count] ==2) {
@@ -289,7 +289,8 @@
                         else {
                             appDelegate.statusDominio = statusDominio;
                         }
-                      
+                      */
+                        ((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio = @"Pago";
                         NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
                         [prefs setObject:user forKey:@"dominioPublicado"];
                         [prefs synchronize];
@@ -593,8 +594,8 @@
                     [self.wSHandlerDelegate errorToken];
                 }
                 else {
-                
-                    ((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio = stringResult;
+                    
+                    ((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio = @"Pago";
                     [self.wSHandlerDelegate resultadoConsultaDominio:@"Exito"];
                 }
 				
@@ -708,15 +709,7 @@
         self.token = [StringUtils desEncriptar:self.currentElementString conToken:passwordEncriptar];
         NSLog(@"EL SELF TOKEN ES: %@", self.token);
     }
-	/*else if ([elementName isEqualToString:@"fTelNamesIni"]){
-		self.telIni= self.currentElementString;
-        NSLog(@"EL VALOR DE LAS FECHAS INICIALES: %@",  [StringUtils desEncriptar:self.telIni conToken:self.token]);
-	}
-	else if ([elementName isEqualToString:@"fTelNamesFin"]){
-		self.telFin = self.currentElementString;
-        NSLog(@"EL VALOR DE LAS FECHAS INICIALES: %@",  [StringUtils desEncriptar:self.telFin conToken:self.token]);
-	}
-     */
+	
     else if ([elementName isEqualToString:@"fechaIni"]){
         self.fechaInicio = self.currentElementString;
 	}
@@ -724,8 +717,17 @@
         self.fechaFinal = self.currentElementString;
 	}
     else if ([elementName isEqualToString:@"statusDominio"]) {
-        statusDominio = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
-
+       
+            NSString *valor = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
+        
+            if ([valor isEqualToString:@"Mes PRO"] || [valor isEqualToString:@"Anual PRO"] || [valor isEqualToString:@"Tramite PRO"] ) {
+                ((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio = @"Pago";
+            }
+            else {
+                ((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio = valor;
+            }
+            NSLog(@"EL ESTATUS DOMINIO ES: %@", valor);
+        
     }
     else if ([elementName isEqualToString:@"listStatusDomainVO"]) {
         [self.arregloItems addObject:itemDominio];
