@@ -438,7 +438,7 @@ if(noSeRepiteOprimirElBoton){
                         NSLog(@"Comprando item 0: %@", product.productIdentifier);
 #endif
                         self.datosUsuario.datosPago.plan =@"PLAN PRO 1 MES";
-                        self.datosUsuario.datosPago.comision = @"27";
+                        self.datosUsuario.datosPago.comision = @"30";
                         self.datosUsuario.datosPago.statusPago = @"INTENTO PAGO";
                         self.datosUsuario.datosPago.tipoCompra = @"PP";
                         self.datosUsuario.datosPago.titulo = @"iOS";
@@ -492,7 +492,7 @@ if(noSeRepiteOprimirElBoton){
                         SKProduct *product = _products[i];
                         if([product.productIdentifier isEqualToString:@"com.infomovil.infomovil.12_months_new"]){
                             self.datosUsuario.datosPago.plan =@"PLAN PRO 12 MESES";
-                            self.datosUsuario.datosPago.comision = @"23";
+                            self.datosUsuario.datosPago.comision = @"30";
                             self.datosUsuario.datosPago.statusPago = @"INTENTO PAGO";
                             self.datosUsuario.datosPago.tipoCompra = @"PP";
                             self.datosUsuario.datosPago.titulo = @"iOS";

@@ -220,7 +220,7 @@ NSString *respuestaPublicar;
                                 NSLog(@"Comprando item 0: %@", product.productIdentifier);
 #endif
                                 self.datosUsuario.datosPago.plan =@"DOMINIO TEL";
-                                self.datosUsuario.datosPago.comision = @"27";
+                                self.datosUsuario.datosPago.comision = @"30";
                                 self.datosUsuario.datosPago.statusPago = @"INTENTO PAGO";
                                 self.datosUsuario.datosPago.tipoCompra = @"tel";
                                 self.datosUsuario.datosPago.titulo = @"iOS";
