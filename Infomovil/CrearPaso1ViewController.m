@@ -52,7 +52,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
+   
     self.datosUsuario = [DatosUsuario sharedInstance];
 	if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
 		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"crearEditar", Nil) nombreImagen:@"barraverde.png"];
@@ -63,11 +63,11 @@
     
     if (existeItems) {
         arregloCampos = self.datosUsuario.itemsDominio;
+       
       
     }
     else {
-      
-        NSArray *arregloAux = @[[[ItemsDominio alloc] initWithDescripcion:NSLocalizedString(@"nombreEmpresa", @" ") andStatus:1],
+      NSArray *arregloAux = @[[[ItemsDominio alloc] initWithDescripcion:NSLocalizedString(@"nombreEmpresa", @" ") andStatus:1],
                                 [[ItemsDominio alloc] initWithDescripcion:NSLocalizedString(@"logo", @" ") andStatus:1],
                                 [[ItemsDominio alloc] initWithDescripcion:NSLocalizedString(@"descripcionCorta", @" ") andStatus:1],
                                 [[ItemsDominio alloc] initWithDescripcion:NSLocalizedString(@"contacto", @" ") andStatus:2],
@@ -146,9 +146,7 @@
     }else if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         [self.tablaEditar setFrame:CGRectMake(20, 15, 335, 540)];
     }
-    /*else if(IS_STANDARD_IPHONE_6_PLUS){
-         [self.tablaEditar setFrame:CGRectMake(20, 15, 374, 600)];
-    }*/
+   
     [self.vistaInferior setHidden:NO];
 }
 
@@ -264,7 +262,7 @@
         
         
         if (existeItems) {
-            
+           
             if ( [((AppDelegate *)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && ![self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]) {
                 VideoViewController *video = [[VideoViewController alloc] initWithNibName:@"VideoViewController" bundle:nil];
                 [self.navigationController pushViewController:video animated:YES];

@@ -138,6 +138,13 @@
         NSLocalizedStringFromTable(@"direccion", @"Spanish",@" "),
         NSLocalizedStringFromTable(@"informacionAdicional", @"Spanish",@" ")];
     
+  
+    
+    
+    
+    
+    
+    
     NSArray *arregloIdioma = @[NSLocalizedString(@"nombreEmpresa", @" "),
         NSLocalizedString(@"logo", @" "),
         NSLocalizedString(@"descripcionCorta", @" "),
