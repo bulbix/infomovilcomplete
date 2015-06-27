@@ -754,7 +754,7 @@
     if(indexPath.row == 0){
         self.dominioCompleto.text = [NSString stringWithFormat:@"www.infomovil.com/%@",self.nombreDominio.text ];
     }else if(indexPath.row == 1){
-        self.dominioCompleto.text = [NSString stringWithFormat:@"wwww.mobileinfo.io/%@",self.nombreDominio.text ];
+        self.dominioCompleto.text = [NSString stringWithFormat:@"www.mobileinfo.io/%@",self.nombreDominio.text ];
     }
 }
 
