@@ -18,7 +18,7 @@ typedef enum {
     RespuestaStatusError2
 }RespuestaEstatus2;
 
-@interface NombrarViewController : InfomovilViewController <AlertViewDelegate, UITextFieldDelegate, WS_HandlerProtocol>
+@interface NombrarViewController : InfomovilViewController <AlertViewDelegate, UITextFieldDelegate, WS_HandlerProtocol,UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) IBOutlet UIScrollView *scroll;
 
 //MBC
@@ -45,6 +45,15 @@ typedef enum {
 @property (weak, nonatomic) IBOutlet UILabel *MensajeDisponible;
 @property (weak, nonatomic) IBOutlet UIButton *publicarBtn;
 @property (weak, nonatomic) IBOutlet UIButton *cerrarBtn;
+
+//////////// POPUPDOMINIOS //////////
+@property (strong, nonatomic) IBOutlet UIView *viewContenidoDominios;
+@property (weak, nonatomic) IBOutlet UITableView *tableDominios;
+@property (weak, nonatomic) IBOutlet UIView *viewDominiosTable;
+@property (weak, nonatomic) IBOutlet UILabel *dominioCompleto;
+
+- (IBAction)AceptarAct:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *btnAceptarDom;
 
 
 

@@ -798,6 +798,7 @@ if(noSeRepiteOprimirElBoton){
             }else{
                 [self.scrollContenido scrollRectToVisible:CGRectMake(320, 0, self.scrollContenido.frame.size.width, self.scrollContenido.frame.size.height) animated:YES];
             }
+     /////////////////////////////////////////////// PROMOCIONES //////////////////////////////////////
     }else if(self.selector.selectedSegmentIndex == 2){
         if(!IS_IPHONE_4){
             [self.txtPromocion becomeFirstResponder];

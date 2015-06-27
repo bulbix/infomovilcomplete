@@ -70,7 +70,7 @@ typedef enum {
 #define dominioTipo @"recurso"
 //#define rutaWS @"http://infomovil.com"
 /* test */
-  #define rutaWS @"http://qa.mobileinfo.io"
+#define rutaWS @"http://qa.mobileinfo.io"
 
 
 // APPBOY // IRC //

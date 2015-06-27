@@ -31,6 +31,7 @@
 @synthesize datos;
 
 -(void) consultaDominio:(NSString *) dominio {
+    NSLog(@"CONSULTA DOMINIO WS_HANDLERDOMINIO: SERA QUIEN ME DE LOS DOMINIOS LIBRES!!");
     self.datos = [DatosUsuario sharedInstance];
     NSString *dominioAux;
     if([self.datos.tipoDeUsuario isEqualToString:@"canal"]){

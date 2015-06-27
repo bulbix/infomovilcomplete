@@ -418,6 +418,9 @@
 		BF0919BA1B20D8600067A4E6 /* NombraCompraDominio.m in Sources */ = {isa = PBXBuildFile; fileRef = BF0919B91B20D8600067A4E6 /* NombraCompraDominio.m */; };
 		BF1D50DE1B3C594200910E7A /* Spanish.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF1D50DD1B3C594200910E7A /* Spanish.strings */; };
 		BF1D50E01B3C594C00910E7A /* English.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF1D50DF1B3C594C00910E7A /* English.strings */; };
+		BF1D50E41B3CB7CB00910E7A /* LMDefaultMenuItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1D50E21B3CB7CB00910E7A /* LMDefaultMenuItemCell.m */; };
+		BF1D50E51B3CB7CB00910E7A /* LMDefaultMenuItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF1D50E31B3CB7CB00910E7A /* LMDefaultMenuItemCell.xib */; };
+		BF1D50E71B3CB94000910E7A /* btn_done.png in Resources */ = {isa = PBXBuildFile; fileRef = BF1D50E61B3CB94000910E7A /* btn_done.png */; };
 		BF2B5D931B2F54BD00947D0F /* WS_RedimirCodigo.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2B5D921B2F54BD00947D0F /* WS_RedimirCodigo.m */; };
 		BF3322281B1E7C67004FBF24 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF3322271B1E7C67004FBF24 /* HockeySDK.framework */; };
 		BF33222C1B1E7C87004FBF24 /* HockeySDK.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = BF33222A1B1E7C87004FBF24 /* HockeySDK.xcconfig */; };
@@ -1147,6 +1150,10 @@
 		BF0919B91B20D8600067A4E6 /* NombraCompraDominio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NombraCompraDominio.m; sourceTree = "<group>"; };
 		BF1D50DD1B3C594200910E7A /* Spanish.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Spanish.strings; sourceTree = "<group>"; };
 		BF1D50DF1B3C594C00910E7A /* English.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = English.strings; sourceTree = "<group>"; };
+		BF1D50E11B3CB7CB00910E7A /* LMDefaultMenuItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMDefaultMenuItemCell.h; sourceTree = "<group>"; };
+		BF1D50E21B3CB7CB00910E7A /* LMDefaultMenuItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMDefaultMenuItemCell.m; sourceTree = "<group>"; };
+		BF1D50E31B3CB7CB00910E7A /* LMDefaultMenuItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMDefaultMenuItemCell.xib; sourceTree = "<group>"; };
+		BF1D50E61B3CB94000910E7A /* btn_done.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = btn_done.png; path = imagenesWeb/btn_done.png; sourceTree = "<group>"; };
 		BF2B5D911B2F54BD00947D0F /* WS_RedimirCodigo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WS_RedimirCodigo.h; sourceTree = "<group>"; };
 		BF2B5D921B2F54BD00947D0F /* WS_RedimirCodigo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WS_RedimirCodigo.m; sourceTree = "<group>"; };
 		BF3322271B1E7C67004FBF24 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HockeySDK.framework; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDK.framework"; sourceTree = "<group>"; };
@@ -2049,6 +2056,9 @@
 				0F850DF91885B36E0008A0CA /* NombrarViewController.h */,
 				0F850DFA1885B36E0008A0CA /* NombrarViewController.m */,
 				0F850DFB1885B36E0008A0CA /* NombrarViewController.xib */,
+				BF1D50E11B3CB7CB00910E7A /* LMDefaultMenuItemCell.h */,
+				BF1D50E21B3CB7CB00910E7A /* LMDefaultMenuItemCell.m */,
+				BF1D50E31B3CB7CB00910E7A /* LMDefaultMenuItemCell.xib */,
 				0F6CC4E818DC92A20066120E /* DominioRegistradoViewController.h */,
 				0F6CC4E918DC92A20066120E /* DominioRegistradoViewController.m */,
 				0F6CC4EA18DC92A20066120E /* DominioRegistradoViewController.xib */,
@@ -2317,6 +2327,7 @@
 		BF069B561B0BCAEA00167EAF /* ImagenesParaWeb */ = {
 			isa = PBXGroup;
 			children = (
+				BF1D50E61B3CB94000910E7A /* btn_done.png */,
 				BFFB049D1B3392C8001A9777 /* ico_info_moviliza.png */,
 				BFFB049E1B3392C8001A9777 /* ico_mail_moviliza.png */,
 				BF66D73E1B1D29AF001FA40F /* contactanos.png */,
@@ -2805,6 +2816,7 @@
 				65C153791933EED400C426B3 /* plecaroja.png in Resources */,
 				0F56BE6118B28AA600497F99 /* Puntodemira.png in Resources */,
 				0F9F52C1189890C6000F9FA5 /* contrasena.png in Resources */,
+				BF1D50E51B3CB7CB00910E7A /* LMDefaultMenuItemCell.xib in Resources */,
 				0F43B2AD18E5FB3900E2AAE7 /* checkInactivo.png in Resources */,
 				65065DEB190FEB8000189316 /* tipsSms@2x.png in Resources */,
 				0F850E071885F8D20008A0CA /* EstadisticasViewController.xib in Resources */,
@@ -2862,6 +2874,7 @@
 				0F9F52CD189890C6000F9FA5 /* mibuscar.png in Resources */,
 				0F43B2AB18E5FB3100E2AAE7 /* checkActivo.png in Resources */,
 				0FC6C6A718DD0BFD009E69A2 /* btnorganizar@2x.png in Resources */,
+				BF1D50E71B3CB94000910E7A /* btn_done.png in Resources */,
 				BF6378681AA7716C00AD052A /* IrAMisitio.xib in Resources */,
 				0FC6C69D18DD0AEA009E69A2 /* btnadelante@2x.png in Resources */,
 				65065DE7190FEB8000189316 /* tips4@2x.png in Resources */,
@@ -3249,6 +3262,7 @@
 				BF66D71F1B1CD4A9001FA40F /* GTLServicePlus.m in Sources */,
 				BF66D7141B1CD4A9001FA40F /* GTLPlusActivityFeed.m in Sources */,
 				BFFB04961B33811E001A9777 /* WS_Moviliza.m in Sources */,
+				BF1D50E41B3CB7CB00910E7A /* LMDefaultMenuItemCell.m in Sources */,
 				BF4963C71AB0D681008E6DD7 /* VerEjemploPlantillaViewController.m in Sources */,
 				BF648FAB1A94FC5900AFDEAD /* InicioRapidoViewController.m in Sources */,
 				0F408BCF18E1166E0010FFC5 /* NSData+Base64.m in Sources */,
