@@ -782,6 +782,7 @@
     else if ([elementName isEqualToString:@"idKeyword"]) {
         self.keywordData.idAuxKeyword = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
         self.keywordData.idKeyword = [[StringUtils desEncriptar:self.currentElementString conToken:self.token]integerValue];
+        
     }
     else if ([elementName isEqualToString:@"keywordField"]) {
         self.keywordData.keywordField = self.currentElementString;

@@ -54,6 +54,8 @@ typedef enum {
 
 - (IBAction)AceptarAct:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *btnAceptarDom;
+@property (weak, nonatomic) IBOutlet UIButton *SalirSelectDomain;
+- (IBAction)SalirSelectDomainAct:(id)sender;
 
 
 

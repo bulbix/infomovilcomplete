@@ -55,10 +55,7 @@
  
     if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         [self.scroll setFrame:CGRectMake(0, 0, 375, 667)];
-       
         [self.label2 setFrame:CGRectMake(40, 70, 280, 101)];
-        //[self.labelW setFrame:CGRectMake(41, 178, 52, 24)];
-        //[self.nombreDominio setFrame:CGRectMake(93, 175, 200, 30)];
         [self.labelTel setFrame:CGRectMake(291, 178, 28, 24)];
         [self.labelDominio setFrame:CGRectMake(50, 223, 280, 24)];
         [self.boton setFrame:CGRectMake(93, 266, 200, 35)];
@@ -66,23 +63,11 @@
         [self.scroll setFrame:CGRectMake(0, 0, 768, 1024)];
         [self.label2 setFrame:CGRectMake(84, 80, 600, 50)];
         [self.label2 setFont:[UIFont fontWithName:@"Avenir-medium" size:21]];
-        //[self.labelW setFrame:CGRectMake(0, 187, 209, 24)];
-        //[self.labelW setFont:[UIFont fontWithName:@"Avenir-Book" size:21]];
-       // [self.nombreDominio setFrame:CGRectMake(209, 180, 350, 40)];
-       // [self.nombreDominio setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
-        [self.labelTel setFrame:CGRectMake(559, 187, 209, 24)];
-        [self.labelTel setFont:[UIFont fontWithName:@"Avenir-Book" size:21]];
-        [self.labelDominio setFrame:CGRectMake(0, 270, 768, 24)];
-        [self.labelDominio setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
         [self.boton setFrame:CGRectMake(284, 350, 200, 40)];
         [self.boton.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
-        
-    
     }else{
         [self.scroll setFrame:CGRectMake(0, 0, 768, 1024)];
         [self.label2 setFrame:CGRectMake(20, 40, 280, 61)];
-       // [self.labelW setFrame:CGRectMake(11, 108, 52, 24)];
-       // [self.nombreDominio setFrame:CGRectMake(20, 105, 280, 30)];
         [self.labelTel setFrame:CGRectMake(261, 108, 28, 24)];
         [self.labelDominio setFrame:CGRectMake(20, 158, 280, 24)];
         [self.boton setFrame:CGRectMake(50, 200, 220, 40)];
@@ -134,18 +119,22 @@
     if([self.datosUsuario.tipoDeUsuario isEqualToString:@"canal"]){
         [self.labelTel setHidden:NO];
     }else if([self.datosUsuario.tipoDeUsuario isEqualToString:@"normal"]  ){
-        self.labelW.text = @"www.infomovil.com/";
         [self.labelTel setHidden:YES];
         if(IS_IPAD){
-            [self.labelW setFrame:CGRectMake(124, 178, 200, 24)];
-            [self.nombreDominio setFrame:CGRectMake(324, 175, 320, 30)];
+            [self.nombreDominio setFrame:CGRectMake(84, 180, 600, 40)];
+            [self.nombreDominio setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
+            [self.viewContenidoDominios setFrame:CGRectMake(0, 0, 768, 1024)];
+             [self.viewDominiosTable setFrame:CGRectMake(184, 250, 400, 400)];
+            [self.SalirSelectDomain setFrame:CGRectMake(340, 20, 46, 30)];
+            [self.tableDominios setFrame:CGRectMake(0, 60, 400, 250)];
+            [self.btnAceptarDom setFrame:CGRectMake(100, 340, 200, 40)];
+            
         }else if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
-             [self.labelW setFrame:CGRectMake(10, 178, 170, 24)];
-             [self.nombreDominio setFrame:CGRectMake(180, 175, 180, 30)];
+             [self.nombreDominio setFrame:CGRectMake(37, 175, 300, 30)];
+            [self.viewContenidoDominios setFrame:CGRectMake(0, 0, 375, 667)];
+            [self.viewDominiosTable setFrame:CGRectMake(47, 100, 280, 320)];
       }else{
-            [self.labelW setFont:[UIFont fontWithName:@"Avenir-Book" size:15]];
             [self.nombreDominio setFont:[UIFont fontWithName:@"Avenir-Book" size:15]];
-            [self.labelW setFrame:CGRectMake(5, 108, 150, 24)];
             [self.nombreDominio setFrame:CGRectMake(20, 105, 280, 30)];
         }
         
@@ -180,8 +169,14 @@
     
     self.btnAceptarDom.layer.cornerRadius = 10;
     self.viewDominiosTable.layer.cornerRadius = 10;
-    self.tableDominios.layer.cornerRadius = 10;
     self.boton.layer.cornerRadius = 10;
+    [self.btnAceptarDom setTitle:NSLocalizedString(@"aceptarPop", nil) forState:UIControlStateNormal];
+  
+    
+}
+-(void)viewDidAppear:(BOOL)animated{
+    [self.nombreDominio becomeFirstResponder];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -191,7 +186,7 @@
 }
 
 - (IBAction)verificarDominio:(UIButton *)sender {
-    NSLog(@"ENTRO A VERIFICAR DOMINIO!!!!!!!!!!");
+   
     
     [self navigationController].navigationBarHidden = YES;
     [self.view addSubview:self.viewContenidoDominios];
@@ -761,19 +756,27 @@
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 280, 110)];
+    UILabel *label;  UIView *headerView;
+    if(IS_IPAD){
+        headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 400, 110)];
+        label = [[UILabel alloc] initWithFrame: CGRectMake(0,0, 400, 40)];
+         self.dominioCompleto.frame = CGRectMake(0, 40, 400, 60);
+    }else{
+        headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 280, 110)];
+        label = [[UILabel alloc] initWithFrame: CGRectMake(0,0, 280, 40)];
+         self.dominioCompleto.frame = CGRectMake(0, 40, 280, 60);
+    }
     headerView.backgroundColor = [UIColor clearColor];
     
-    UILabel *label = [[UILabel alloc] initWithFrame: CGRectMake(0,0, 280, 40)];
     label.backgroundColor = [UIColor whiteColor];
     label.textColor = colorFuenteVerde;
     label.autoresizingMask = UIViewAutoresizingFlexibleRightMargin;
-    label.text = @"DOMINIOS DISPONIBLES";
+    label.text = NSLocalizedString(@"tituloDominiosDisponibles", @" ");
     label.numberOfLines = 2;
     label.adjustsFontSizeToFitWidth = YES;
     label.textAlignment = NSTextAlignmentCenter;
-    label.font = [UIFont fontWithName:@"Avenir-Medium" size:17];
-    self.dominioCompleto.frame = CGRectMake(0, 40, 280, 60);
+    label.font = [UIFont fontWithName:@"Avenir-Medium" size:16];
+   
     [headerView addSubview:self.dominioCompleto];
     [headerView addSubview:label];
     return headerView;
@@ -794,4 +797,10 @@
 
 
 
+- (IBAction)SalirSelectDomainAct:(id)sender {
+    [self navigationController].navigationBarHidden = NO;
+    [self.viewContenidoDominios removeFromSuperview];
+   
+    
+}
 @end

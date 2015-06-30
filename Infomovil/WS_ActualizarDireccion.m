@@ -640,8 +640,8 @@
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
     if ([elementName isEqualToString:@"resultado"]) {
-//        [self.direccionDelegate resultadoConsultaDominio:self.currentElementString];
         self.resultado = self.currentElementString;
+        
     }
     else if ([elementName isEqualToString:@"idKeyword"]) {
         self.resultado = self.currentElementString;
