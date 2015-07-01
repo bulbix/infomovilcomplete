@@ -691,6 +691,8 @@
     }
     else if ([elementName isEqualToString:@"statusCtrlDominio"]) {
         self.currentElementString = [[NSMutableString alloc] init];
+    }else if ([elementName isEqualToString:@"urlSitio"]) {
+        self.currentElementString = [[NSMutableString alloc] init];
     }
     
 }
@@ -813,6 +815,9 @@
         NSString *typeAux = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
         [dominioUsuario setVigente:typeAux];
         NSLog(@"EL DOMINIO ES VIGENTE HandlerDominio : %@", typeAux);
+    }else if ([elementName isEqualToString:@"urlSitio"]) {
+        NSString *strAux = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
+        [dominioUsuario setUrlSitio:strAux];
     }
     
     

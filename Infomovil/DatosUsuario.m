@@ -108,6 +108,8 @@
     self.dominio = Nil;
     self.dominioTel = Nil;
     self.dominioRecurso = Nil;
+    self.urlTel = Nil;
+    self.urlRecurso = Nil;
     self.localizacion = Nil;
     self.videoSeleccionado = Nil;
     self.publicoSitio = NO;

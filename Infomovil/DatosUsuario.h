@@ -94,6 +94,9 @@
 
 @property (nonatomic, strong) NSMutableArray *arregloVisitas;
 @property (nonatomic, strong) NSMutableArray *arregloVisitantes;
+
+@property (nonatomic, strong) NSMutableArray *arregloDominiosGratuitos;
+
 // FECHAS PARA EL DOMINIO TEL Y RECURSO //
 @property (nonatomic, strong) NSString *fechaDominioIni;
 @property (nonatomic, strong) NSString *fechaDominioFin;
@@ -150,6 +153,12 @@
 // Dominio Recurso y tel
 @property (nonatomic, strong) NSString *dominioTel;
 @property (nonatomic, strong) NSString *dominioRecurso;
+@property (nonatomic, strong) NSString *urlTel;
+@property (nonatomic, strong) NSString *urlRecurso;
+
+
+
+
 
 + (id)sharedInstance;
 

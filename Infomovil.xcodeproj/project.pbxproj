@@ -583,6 +583,8 @@
 		BFD29D7B1AC2139D008EADB9 /* verEjemplo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFD29D4C1AC2139D008EADB9 /* verEjemplo@2x.png */; };
 		BFD29D7D1AC2139D008EADB9 /* verTutorial@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFD29D4E1AC2139D008EADB9 /* verTutorial@2x.png */; };
 		BFE270311B2675AC007D4316 /* lineCompraDominio.png in Resources */ = {isa = PBXBuildFile; fileRef = BFE270301B2675AC007D4316 /* lineCompraDominio.png */; };
+		BFF116C91B433E0600824123 /* WS_getDominioGratuito.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF116C81B433E0600824123 /* WS_getDominioGratuito.m */; };
+		BFF116CC1B4348F600824123 /* catalogoDominiosGratuitos.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF116CB1B4348F600824123 /* catalogoDominiosGratuitos.m */; };
 		BFFB04961B33811E001A9777 /* WS_Moviliza.m in Sources */ = {isa = PBXBuildFile; fileRef = BFFB04951B33811E001A9777 /* WS_Moviliza.m */; };
 		BFFB049B1B338FD1001A9777 /* EnviarPedacitoCodigoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFFB04991B338FD1001A9777 /* EnviarPedacitoCodigoViewController.m */; };
 		BFFB049C1B338FD1001A9777 /* EnviarPedacitoCodigoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFFB049A1B338FD1001A9777 /* EnviarPedacitoCodigoViewController.xib */; };
@@ -1399,6 +1401,10 @@
 		BFD29D4C1AC2139D008EADB9 /* verEjemplo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "verEjemplo@2x.png"; sourceTree = "<group>"; };
 		BFD29D4E1AC2139D008EADB9 /* verTutorial@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "verTutorial@2x.png"; sourceTree = "<group>"; };
 		BFE270301B2675AC007D4316 /* lineCompraDominio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lineCompraDominio.png; sourceTree = "<group>"; };
+		BFF116C71B433E0600824123 /* WS_getDominioGratuito.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WS_getDominioGratuito.h; sourceTree = "<group>"; };
+		BFF116C81B433E0600824123 /* WS_getDominioGratuito.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WS_getDominioGratuito.m; sourceTree = "<group>"; };
+		BFF116CA1B4348F600824123 /* catalogoDominiosGratuitos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = catalogoDominiosGratuitos.h; sourceTree = "<group>"; };
+		BFF116CB1B4348F600824123 /* catalogoDominiosGratuitos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = catalogoDominiosGratuitos.m; sourceTree = "<group>"; };
 		BFFB04941B33811E001A9777 /* WS_Moviliza.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WS_Moviliza.h; sourceTree = "<group>"; };
 		BFFB04951B33811E001A9777 /* WS_Moviliza.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WS_Moviliza.m; sourceTree = "<group>"; };
 		BFFB04981B338FD1001A9777 /* EnviarPedacitoCodigoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnviarPedacitoCodigoViewController.h; sourceTree = "<group>"; };
@@ -1553,6 +1559,8 @@
 		0F5CFA431896CA1500D27B2E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BFF116CA1B4348F600824123 /* catalogoDominiosGratuitos.h */,
+				BFF116CB1B4348F600824123 /* catalogoDominiosGratuitos.m */,
 				BF60DE8D1A89111F008D963E /* IAPHelper.h */,
 				BF60DE8E1A89111F008D963E /* IAPHelper.m */,
 				BF60DE8F1A89111F008D963E /* RageIAPHelper.h */,
@@ -1770,6 +1778,8 @@
 				BF2B5D921B2F54BD00947D0F /* WS_RedimirCodigo.m */,
 				BFFB04941B33811E001A9777 /* WS_Moviliza.h */,
 				BFFB04951B33811E001A9777 /* WS_Moviliza.m */,
+				BFF116C71B433E0600824123 /* WS_getDominioGratuito.h */,
+				BFF116C81B433E0600824123 /* WS_getDominioGratuito.m */,
 			);
 			name = ws;
 			sourceTree = "<group>";
@@ -3297,6 +3307,7 @@
 				0F5873A418F6E99900DA0CFD /* PNLineChartData.m in Sources */,
 				BF66D6E41B1CD491001FA40F /* GTLBase64.m in Sources */,
 				0F73163618F84FED008DBA22 /* VisitasModel.m in Sources */,
+				BFF116CC1B4348F600824123 /* catalogoDominiosGratuitos.m in Sources */,
 				BF66D6B91B1CD466001FA40F /* GTMHTTPFetcherLogging.m in Sources */,
 				0F65E93C187620A70009EC3F /* TipoContactoViewController.m in Sources */,
 				BFD0AB981A9E44FF00D5FF63 /* VerEjemploViewController.m in Sources */,
@@ -3317,6 +3328,7 @@
 				BF66D71C1B1CD4A9001FA40F /* GTLPlusPerson.m in Sources */,
 				0FD4240818C7F3FB00E64F24 /* KeywordDataModel.m in Sources */,
 				BF66D6BC1B1CD466001FA40F /* GTMHTTPUploadFetcher.m in Sources */,
+				BFF116C91B433E0600824123 /* WS_getDominioGratuito.m in Sources */,
 				BF66D7191B1CD4A9001FA40F /* GTLPlusMoment.m in Sources */,
 				0F5CFA401896C2E200D27B2E /* ContactosCell.m in Sources */,
 				0FB4F38918DBC83A0035363E /* NSDateFormatterUtiles.m in Sources */,

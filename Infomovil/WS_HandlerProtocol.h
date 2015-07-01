@@ -25,4 +25,5 @@
 -(void) errorBusqueda;
 -(void) resultadoRedimirCodigo:(NSString *)idDominio;
 -(void) resultadoMovilizaSitio:(NSString *)resultado;
+-(void) resultadoDominioGratuito:(NSString *)resultado;
 @end

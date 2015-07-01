@@ -130,6 +130,8 @@ if (dataResult != nil) {
     }
     else if ([elementName isEqualToString:@"vigente"]) {
         self.currentElementString = [[NSMutableString alloc] init];
+    }else if ([elementName isEqualToString:@"urlSitio"]) {
+        self.currentElementString = [[NSMutableString alloc] init];
     }
     else if ([elementName isEqualToString:@"idCtrlDomain"]) {
         self.currentElementString = [[NSMutableString alloc] init];
@@ -167,24 +169,19 @@ if (dataResult != nil) {
     //[self.direccionDelegate errorConsultaWS];
 }
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
-    /*
-    if ([elementName isEqualToString:@"resultado"]) {
-       // self.result = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
-       // NSLog(@"1.- resultado: %@", [StringUtils desEncriptar:self.currentElementString conToken:self.token]);
-    }else
-        */
+  
     if ([elementName isEqualToString:@"codeError"]) {
             self.result = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
         if([self.result isEqualToString:@""] || [self.result length] <= 0 || self.result == nil ){
             self.result = [StringUtils desEncriptar:self.currentElementString conToken:self.datosUsuario.token];
         }
-            NSLog(@"13.- codeError es: %@ y token: %@", [StringUtils desEncriptar:self.currentElementString conToken:self.token], self.token);
+        
     }else if ([elementName isEqualToString:@"token"]) {
         self.token = [StringUtils desEncriptar:self.currentElementString conToken:passwordEncriptar];
         if([self.token length]>0 && ![self.token isEqualToString:@""] && self.token != nil){
             self.datosUsuario.token = self.token;
         }
-        NSLog(@"11.- token es: %@ y desencriptado es: %@ el string es: %@", self.token, [StringUtils desEncriptar:self.currentElementString conToken:passwordEncriptar], self.currentElementString);
+       
     }else if ([elementName isEqualToString:@"listUsuarioDominiosVO"]) {
         if (esRecurso) {
             [self.arregloDominiosUsuario insertObject:dominioUsuario atIndex:0];
@@ -199,11 +196,11 @@ if (dataResult != nil) {
         if (esRecurso) {
             if([auxName length]>0)
             self.datosUsuario.dominioRecurso = auxName;
-            NSLog(@"EL VALOR DE DOMINIORECURSO redimircodigo ES: %@", self.datosUsuario.dominioRecurso);
+           
         }else {
             self.datosUsuario.dominioTel = auxName;
         }
-         NSLog(@"2.- domainCtrlName: %@", [StringUtils desEncriptar:self.currentElementString conToken:self.token]);
+        
     }else if ([elementName isEqualToString:@"domainType"]) {
         NSString *typeAux = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
         if ([typeAux isEqualToString:@"recurso"]) {
@@ -212,40 +209,44 @@ if (dataResult != nil) {
         else {
             esRecurso = NO;
         }
-        NSLog(@"3.- domainType: %@", typeAux);
+       
         [dominioUsuario setDomainType:typeAux];
     }else if ([elementName isEqualToString:@"vigente"]) {
         NSString *typeAux = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
         [dominioUsuario setVigente:typeAux];
-         NSLog(@"4.- vigente: %@", [StringUtils desEncriptar:self.currentElementString conToken:self.token]);
-    }else if ([elementName isEqualToString:@"fechaCtrlFin"]) {
+        
+    }else if ([elementName isEqualToString:@"urlSitio"]) {
+        NSString *strAux = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
+        [dominioUsuario setUrlSitio:strAux];
+    }
+    else if ([elementName isEqualToString:@"fechaCtrlFin"]) {
         NSString *auxOffer = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
         [dominioUsuario setFechaFin:auxOffer];
-         NSLog(@"5.- fechaCtrlFin: %@", [StringUtils desEncriptar:self.currentElementString conToken:self.token]);
+        
     }else if ([elementName isEqualToString:@"fechaCtrlIni"]) {
         NSString *auxOffer = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
         [dominioUsuario setFechaIni:auxOffer];
-        NSLog(@"6.- fechaCtrlIni: %@", [StringUtils desEncriptar:self.currentElementString conToken:self.token]);
+        
     }else if ([elementName isEqualToString:@"idCtrlDomain"]) {
         NSString *strAux = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
         [dominioUsuario setIdCtrlDomain:[strAux integerValue]];
-          NSLog(@"7.- idCtrlDomain: %@", [StringUtils desEncriptar:self.currentElementString conToken:self.token]);
+        
     }else if ([elementName isEqualToString:@"statusCtrlDominio"]) {
         [dominioUsuario setStatusDominio:[StringUtils desEncriptar:self.currentElementString conToken:self.token]];
-         NSLog(@"8.- statusCtrlDominio: %@", [StringUtils desEncriptar:self.currentElementString conToken:self.token]);
+        
     }else if ([elementName isEqualToString:@"status"]) {
             itemDominio.estatus = [[StringUtils desEncriptar:self.currentElementString conToken:self.token] integerValue];
-        NSLog(@"9.- status: %@", [StringUtils desEncriptar:self.currentElementString conToken:self.token]);
+        
     } else if ([elementName isEqualToString:@"descripcionItem"]) {
             itemDominio.descripcionItem = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
-        NSLog(@"10.- descripcionItem: %@", [StringUtils desEncriptar:self.currentElementString conToken:self.token]);
+      
     }else if ([elementName isEqualToString:@"fechaIni"]){
             self.datosUsuario.fechaInicial = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
-        NSLog(@"LA FECHA DEL DOMINIO ES fechaIni: %@", self.datosUsuario.fechaInicial);
+       
     }
     else if ([elementName isEqualToString:@"fechaFin"]){
             self.datosUsuario.fechaFinal = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
-        NSLog(@"LA FECHA DEL DOMINIO ES fechaFin: %@", self.datosUsuario.fechaFinal);
+        
     }
     
 }

@@ -34,8 +34,7 @@
                              "</soapenv:Envelope>",
                              aux
                              ];
-    NSLog(@"Los valores enviados para moviliza es: %@",aux);
-    self.strSoapAction = @"WSInfomovilDomain";
+   
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
     NSLog(@"La respuesta es en redimirCodigo WS_RedimirCodigo %s", [dataResult bytes]);
     if (dataResult != nil) {

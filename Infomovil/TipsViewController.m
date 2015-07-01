@@ -182,7 +182,7 @@
                 DominiosUsuario *usuarioDom = [self.arregloDominio objectAtIndex:i];
                 if([usuarioDom.domainType isEqualToString:@"recurso"]){
                     NSLog(@"EL DOMINIO FUE RECURSO ");
-                    self.dominioParaCompartir = [NSString stringWithFormat:@"www.infomovil.com/%@", self.datosUsuario.dominio];
+                    self.dominioParaCompartir = [NSString stringWithFormat:@"%@", usuarioDom.urlSitio];
                 }
             }
         }

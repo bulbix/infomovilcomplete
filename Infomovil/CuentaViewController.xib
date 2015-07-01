@@ -55,7 +55,6 @@
                     <segments>
                         <segment title="Plan Pro"/>
                         <segment title="Dominio"/>
-                        <segment title="Promoción"/>
                     </segments>
                     <color key="tintColor" red="0.23529411759999999" green="0.2901960784" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>

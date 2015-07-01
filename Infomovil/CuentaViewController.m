@@ -106,11 +106,6 @@ int opcionButton = 0 ;
         [self.comprar12meses setBackgroundImage:[UIImage imageNamed:@"12mAc-es.png" ] forState:UIControlStateNormal];
         _imgBeneficios.image = [UIImage imageNamed:@"beneficios-es.png"];
 	}
-    
-        
-    
-    
-   
   
 	pro = [NSMutableArray arrayWithObjects:
 		   NSLocalizedString(@"numeroImagenes", @" "),
@@ -136,7 +131,7 @@ int opcionButton = 0 ;
 	
 	[self.selector setTitle:NSLocalizedString(@"cuentaTituloSegment1", nil) forSegmentAtIndex:0];
 	[self.selector setTitle:NSLocalizedString(@"cuentaTituloSegment2", nil) forSegmentAtIndex:1];
-	[self.selector setTitle:NSLocalizedString(@"cuentaTituloSegment3", nil) forSegmentAtIndex:2];
+//	[self.selector setTitle:NSLocalizedString(@"cuentaTituloSegment3", nil) forSegmentAtIndex:2];
 	
 	
     
@@ -685,7 +680,7 @@ if(noSeRepiteOprimirElBoton){
                             [self etiquetasBotonesYaComprado];
                         }else{
                             [self etiquetasBotonesDeCompra];
-                            dominio.text = [NSString stringWithFormat:@"Your website\n\nwww.infomovil.com/%@",usuarioDom.domainName] ;
+                            //dominio.text = [NSString stringWithFormat:@"Your website\n\nwww.infomovil.com/%@",usuarioDom.urlSitio] ;
                         }
                         
                     }
@@ -696,7 +691,8 @@ if(noSeRepiteOprimirElBoton){
                         DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:i];
                         if([usuarioDom.domainType isEqualToString:@"recurso"]){
                             if(usuarioDom.domainName == nil || [usuarioDom.domainName length] <= 0 || [usuarioDom.domainName isEqualToString:@""]){usuarioDom.domainName = self.datosUsuario.dominio;}
-                            dominio.text = [NSString stringWithFormat:@"Your website\n\nwww.infomovil.com/%@",usuarioDom.domainName] ;
+                            dominio.text = [NSString stringWithFormat:@"Your website\n\n%@",usuarioDom.urlSitio] ;
+                            
                             self.arregloDominios = self.datosUsuario.dominiosUsuario;
                             int contador = 0;
                             for(int i= 0; i< [self.arregloDominios count]; i++){
@@ -732,7 +728,7 @@ if(noSeRepiteOprimirElBoton){
                         [self etiquetasBotonesYaComprado];
                     }else{
                         [self etiquetasBotonesDeCompra];
-                        dominio.text = [NSString stringWithFormat:@"Tu sitio web\n\nwww.infomovil.com/%@",usuarioDom.domainName] ;
+                        //dominio.text = [NSString stringWithFormat:@"Tu sitio web\n\nwww.infomovil.com/%@",usuarioDom.domainName] ;
                     }
                     
                     }
@@ -742,18 +738,19 @@ if(noSeRepiteOprimirElBoton){
                     for(int i= 0; i< [self.arregloDominios count]; i++){
                         DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:i];
                         if([usuarioDom.domainType isEqualToString:@"recurso"]){
-                            if(usuarioDom.domainName == nil || [usuarioDom.domainName length] <= 0 || [usuarioDom.domainName isEqualToString:@""]){usuarioDom.domainName = self.datosUsuario.dominio;}
-                            dominio.text = [NSString stringWithFormat:@"Tu sitio web\n\nwww.infomovil.com/%@",usuarioDom.domainName] ;
-                            self.arregloDominios = self.datosUsuario.dominiosUsuario;
-                            int contador = 0;
-                            for(int i= 0; i< [self.arregloDominios count]; i++){
-                                DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:i];
-                                if([usuarioDom.domainType isEqualToString:@"tel"]){
-                                    if( usuarioDom.fechaIni == nil || [usuarioDom.fechaIni length] <= 0){
+                            if(usuarioDom.domainName == nil || [usuarioDom.domainName length] <= 0 || [usuarioDom.domainName isEqualToString:@""]){
+                                usuarioDom.domainName = self.datosUsuario.dominio;}
+                                dominio.text = [NSString stringWithFormat:@"Tu sitio web\n\n%@",usuarioDom.urlSitio] ;
+                                self.arregloDominios = self.datosUsuario.dominiosUsuario;
+                                int contador = 0;
+                                for(int i= 0; i< [self.arregloDominios count]; i++){
+                                    DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:i];
+                                    if([usuarioDom.domainType isEqualToString:@"tel"]){
+                                        if( usuarioDom.fechaIni == nil || [usuarioDom.fechaIni length] <= 0){
                                         contador++;
+                                        }
                                     }
                                 }
-                            }
                             if(contador == 0){
                                 [self etiquetasBotonesDeCompra];
                             }
@@ -799,7 +796,8 @@ if(noSeRepiteOprimirElBoton){
                 [self.scrollContenido scrollRectToVisible:CGRectMake(320, 0, self.scrollContenido.frame.size.width, self.scrollContenido.frame.size.height) animated:YES];
             }
      /////////////////////////////////////////////// PROMOCIONES //////////////////////////////////////
-    }else if(self.selector.selectedSegmentIndex == 2){
+    }
+    /*else if(self.selector.selectedSegmentIndex == 2){
         if(!IS_IPHONE_4){
             [self.txtPromocion becomeFirstResponder];
         }
@@ -827,6 +825,7 @@ if(noSeRepiteOprimirElBoton){
         [self.scrollContenido addSubview:self.viewEnviarCodigo];
         
     }
+     */
 }
 
 
@@ -898,7 +897,7 @@ if(noSeRepiteOprimirElBoton){
         ((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio = @"Tramite";
         [NSThread sleepForTimeInterval:1];
         [self.alerta hide];
-      
+        NSLog(@"LA NOTIFICACIÓN FUE DE CANCELACION DE LA COMPRA");
     }
     else if ([[notification name] isEqualToString:@"CompleteTransactionNotification"]){
        

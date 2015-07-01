@@ -78,14 +78,12 @@ NSString *respuestaPublicar;
 }
 
 - (void) receiveTestNotification:(NSNotification *) notification
-{
+{   self.datosUsuario = [DatosUsuario sharedInstance];
     
     if ([[notification name] isEqualToString:@"FailedTransactionNotificationDominio"]){
-        self.datosUsuario.datosPago.statusPago = @"INTENTO PAGO";
-        self.datosUsuario.descripcionDominio = @"";
-        ((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio = @"Tramite";
             [NSThread sleepForTimeInterval:1];
             [self.alertActivity hide];
+        
     }
     else if ([[notification name] isEqualToString:@"CompleteTransactionNotificationDominio"]){
             

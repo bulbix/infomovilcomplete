@@ -19,5 +19,7 @@
 @property (nonatomic, assign) NSInteger idDomain;
 @property (nonatomic, strong) NSString *statusDominio;
 @property (nonatomic, assign) NSInteger statusVisible;
+@property (nonatomic, strong) NSString *urlSitio;
+
 
 @end

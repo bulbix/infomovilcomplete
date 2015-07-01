@@ -241,26 +241,16 @@ BOOL banderaRegresar;
                     DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:i];
                     if([usuarioDom.domainType isEqualToString:@"recurso"]){
                         if([self.dominio.titleLabel.text length] > 40){
-                        [self.dominio.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
+                            [self.dominio.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
                         }
                         
-                      
-#if DEBUG
-                         [self.dominio setTitle:[NSString stringWithFormat:@"qa.mobileinfo.io:8080/%@", self.datosUsuario.dominio] forState:UIControlStateNormal];
-#else
-                         [self.dominio setTitle:[NSString stringWithFormat:@"www.infomovil.com/%@", self.datosUsuario.dominio] forState:UIControlStateNormal];
-                        
-#endif
+                        [self.dominio setTitle:usuarioDom.urlSitio forState:UIControlStateNormal];
                         
                         
                     }
                 }
             }
             
-            
-            
-            
-       
             if(IS_IPHONE5){
                 self.viewDominioPublicado.frame = CGRectMake(0, 340, 320, 90);
             }else if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){

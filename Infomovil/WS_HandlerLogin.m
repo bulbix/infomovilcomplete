@@ -271,7 +271,7 @@
                     for (NSInteger i = 0; i < [self.arregloAdicional count]; i++) {
                         KeywordDataModel *keyAux = [self.arregloAdicional objectAtIndex:i];
                         if (keyAux.idAuxKeyword != Nil && keyAux.idAuxKeyword.length > 0) {
-                            NSString *idAux = [StringUtils desEncriptar:keyAux.idAuxKeyword conToken:self.datosUsuario.token];
+                            NSString *idAux = keyAux.idAuxKeyword;
                             [keyAux setIdKeyword:[idAux integerValue]];
                         }
                         if (keyAux.keywordField != Nil && keyAux.keywordField.length > 0) {
@@ -458,6 +458,11 @@
         self.currentElementString = [[NSMutableString alloc] init];
     }
     else if ([elementName isEqualToString:@"vigente"]) {
+        self.currentElementString = [[NSMutableString alloc] init];
+    }else if ([elementName isEqualToString:@"urlSitio"]) {
+        self.currentElementString = [[NSMutableString alloc] init];
+    }
+    else if ([elementName isEqualToString:@"urlSitio"]) {
         self.currentElementString = [[NSMutableString alloc] init];
     }
     else if ([elementName isEqualToString:@"idCtrlDomain"]) {
@@ -782,7 +787,7 @@
     else if ([elementName isEqualToString:@"idKeyword"]) {
         self.keywordData.idAuxKeyword = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
         self.keywordData.idKeyword = [[StringUtils desEncriptar:self.currentElementString conToken:self.token]integerValue];
-        
+        NSLog(@"LOS IDKEYWORD SON: %@", self.currentElementString);
     }
     else if ([elementName isEqualToString:@"keywordField"]) {
         self.keywordData.keywordField = self.currentElementString;
@@ -988,6 +993,9 @@
     else if ([elementName isEqualToString:@"vigente"]) {
         NSString *typeAux = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
         [dominioUsuario setVigente:typeAux];
+    }else if ([elementName isEqualToString:@"urlSitio"]) {
+        NSString *strAux = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
+        [dominioUsuario setUrlSitio:strAux];
     }
     else if ([elementName isEqualToString:@"fechaCtrlFin"]) {
         NSString *auxOffer = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
@@ -1003,7 +1011,10 @@
         NSString *strAux = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
         [dominioUsuario setIdCtrlDomain:[strAux integerValue]];
     }
-
+    else if ([elementName isEqualToString:@"urlSitio"]) {
+        NSString *strAux = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
+        [dominioUsuario setUrlSitio:strAux];
+    }
     else if ([elementName isEqualToString:@"statusCtrlDominio"]) {
         [dominioUsuario setStatusDominio:[StringUtils desEncriptar:self.currentElementString conToken:self.token]];
     }

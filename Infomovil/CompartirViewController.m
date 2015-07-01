@@ -125,9 +125,9 @@
             for(int i= 0; i< [self.arregloDominio count]; i++){
                 DominiosUsuario *usuarioDom = [self.arregloDominio objectAtIndex:i];
                 if([usuarioDom.domainType isEqualToString:@"recurso"]){
-                   
-                    [self.labelNombreDominio setText:[NSString stringWithFormat:@"www.infomovil.com/%@", self.datosUsuario.dominio]];
-                    self.dominioParaCompartir = self.labelNombreDominio.text;
+                    [self.labelNombreDominio setText:usuarioDom.urlSitio];
+                    self.dominioParaCompartir = usuarioDom.urlSitio;
+                 
                 }
             }
         }

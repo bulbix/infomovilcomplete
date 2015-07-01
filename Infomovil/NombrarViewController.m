@@ -186,20 +186,8 @@
 }
 
 - (IBAction)verificarDominio:(UIButton *)sender {
-   
-    
-    [self navigationController].navigationBarHidden = YES;
-    [self.view addSubview:self.viewContenidoDominios];
-    self.view.transform = CGAffineTransformMakeScale(1.3, 1.3);
-    [UIView animateWithDuration:.40 animations:^{
-        self.view.transform = CGAffineTransformMakeScale(1, 1);
-    }];
-    self.dominioCompleto.text = [NSString stringWithFormat:@"www.infomovil.com/%@", self.nombreDominio.text];
-    
-  /*
     [[self view] endEditing:YES];
     if ([self validarDominio]) {
-        
         self.nombreDelDominio.text = self.nombreDominio.text;
         
         if ([CommonUtils hayConexion]) {
@@ -217,7 +205,7 @@
         AlertView *alert = [AlertView initWithDelegate:self titulo:NSLocalizedString(@"error", Nil) message:NSLocalizedString(@"errorDominio", Nil) dominio:Nil andAlertViewType:AlertViewTypeInfo];
         [alert show];
     }
-   */
+   
 }
 
 #pragma mark - AlertViewDelegate
@@ -315,7 +303,8 @@
 			self.datosUsuario.dominio = self.nombreDominio.text;
            
             if([self.datosUsuario.tipoDeUsuario isEqualToString:@"normal"]){
-                [self showAnimate];
+                //[self showAnimate];
+                [self seleccionaDominioGratuito];
             }else if([self.datosUsuario.tipoDeUsuario isEqualToString:@"canal"]){
                 PublicarViewController *publicar = [[PublicarViewController alloc] initWithNibName:@"PublicarViewController" bundle:Nil];
                 [self.navigationController pushViewController:publicar animated:YES];
@@ -616,6 +605,17 @@
     return YES;
 }
 
+-(void)seleccionaDominioGratuito{
+    [self navigationController].navigationBarHidden = YES;
+    [self.view addSubview:self.viewContenidoDominios];
+    self.view.transform = CGAffineTransformMakeScale(1.3, 1.3);
+    [UIView animateWithDuration:.40 animations:^{
+        self.view.transform = CGAffineTransformMakeScale(1, 1);
+    }];
+    //self.dominioCompleto.text = [NSString stringWithFormat:@"www.infomovil.com/%@", self.nombreDominio.text];
+
+}
+
 
 - (void)showAnimate
 {
@@ -648,9 +648,10 @@
     [self navigationController].navigationBarHidden = NO;
     [self.popUpView setHidden:YES];
     [self.scroll setHidden:NO];
-    [UIView animateWithDuration:.40 animations:^{
+   /* [UIView animateWithDuration:.40 animations:^{
        self.popUpView.transform = CGAffineTransformMakeScale(1, 1);
     }];
+    */
 }
 
 
@@ -707,7 +708,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -717,25 +718,21 @@
         NSArray *xibs = [[NSBundle mainBundle] loadNibNamed:@"LMDefaultMenuItemCell" owner:self options:nil];
         cell = [xibs firstObject];
     }
-    
-  
     if(indexPath.row == 0){
-
         cell.menuItemLabel.text = @"www.infomovil.com/";
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
-   
      }else if(indexPath.row == 1){
         cell.menuItemLabel.text = @"wwww.mobileinfo.io/";
          cell.accessoryType = UITableViewCellAccessoryNone;
-     
+     }else if(indexPath.row == 2){
+         cell.menuItemLabel.text = @"wwww.mobileinfo.io222/";
+         cell.accessoryType = UITableViewCellAccessoryNone;
      }
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    
     cell.accessoryType = UITableViewCellAccessoryCheckmark;
     for(int i= 0; i < 2; i++){
         if(indexPath.row != i){
@@ -789,10 +786,10 @@
 - (IBAction)AceptarAct:(id)sender {
      [self navigationController].navigationBarHidden = NO;
     [self.viewContenidoDominios removeFromSuperview];
-    [UIView animateWithDuration:.40 animations:^{
+   /* [UIView animateWithDuration:.40 animations:^{
         self.view.transform = CGAffineTransformMakeScale(1, 1);
     }];
-    
+    */
 }
 
 
