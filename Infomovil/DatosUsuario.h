@@ -155,7 +155,7 @@
 @property (nonatomic, strong) NSString *dominioRecurso;
 @property (nonatomic, strong) NSString *urlTel;
 @property (nonatomic, strong) NSString *urlRecurso;
-
+@property (nonatomic, strong) NSString *idSeleccionadoGratuito;
 
 
 

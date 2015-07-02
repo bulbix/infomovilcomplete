@@ -11,7 +11,7 @@
 @interface catalogoDominiosGratuitos : NSObject
 
 
-@property (nonatomic, strong) NSString *id;
+@property (nonatomic, strong) NSString *idCatalogo;
 @property (nonatomic, strong) NSString *descripcion;
 
 

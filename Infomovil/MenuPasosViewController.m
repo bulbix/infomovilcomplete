@@ -17,7 +17,7 @@
 #import "InicioRapidoViewController.h"
 #import "VerTutorialViewController.h"
 #import "VerEjemploViewController.h"
-
+#import "WS_getDominioGratuito.h"
 #import "AppDelegate.h"
 #import "AppboyKit.h"
 #import "ElegirPlantillaViewController.h"
@@ -240,10 +240,11 @@ BOOL banderaRegresar;
                 for(int i= 0; i< [self.arregloDominios count]; i++){
                     DominiosUsuario *usuarioDom = [self.arregloDominios objectAtIndex:i];
                     if([usuarioDom.domainType isEqualToString:@"recurso"]){
-                        if([self.dominio.titleLabel.text length] > 40){
+                      /*  if([self.dominio.titleLabel.text length] > 40){
                             [self.dominio.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
                         }
-                        
+                       */
+                        NSLog(@"DICE QUE EL DOMINIO ES: URLSITIO %@", usuarioDom.urlSitio);
                         [self.dominio setTitle:usuarioDom.urlSitio forState:UIControlStateNormal];
                         
                         
@@ -316,6 +317,21 @@ BOOL banderaRegresar;
      [self.vistaInferior setHidden:NO];
 	[self.navigationController.navigationBar setHidden:NO];
 }
+
+-(void)viewDidAppear:(BOOL)animated{
+    self.datosUsuario = [DatosUsuario sharedInstance];
+    if( [self.datosUsuario.arregloDominiosGratuitos count] <= 0){
+        [self performSelectorInBackground:@selector(descargarDominios) withObject:Nil];
+    }
+}
+
+-(void) descargarDominios {
+    NSLog(@"ENTRO A DESCARGAR DOMINIOS!!!");
+    getDominioGratuito *catalogo = [[getDominioGratuito alloc] init];
+    [catalogo setDominioGratuitoDelegate:self];
+    [catalogo getDominiosGratuitos];
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -429,12 +445,13 @@ BOOL banderaRegresar;
     if([self.dominio.titleLabel.text length] > 0){
         NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
          self.datosUsuario = [DatosUsuario sharedInstance];
-#if DEBUG
+/*#if DEBUG
         NSString *dominioAux = [NSString stringWithFormat:@"http://qa.mobileinfo.io:8080/%@", self.datosUsuario.dominio];
         [prefs setObject:dominioAux forKey:@"urlMisitio"];
 #else
+ */
         [prefs setObject:[NSString stringWithFormat:@"http://%@", self.dominio.titleLabel.text] forKey:@"urlMisitio"];
-#endif
+//#endif
         
         
         [prefs synchronize];

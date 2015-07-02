@@ -15,17 +15,19 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 #import "LMDefaultMenuItemCell.h"
+#import "WS_getDominioGratuito.h"
+
 
 @interface NombrarViewController () {
     BOOL existeDominio;
     NSInteger operacionWS;//1 consulta dominio 2 creacion usuario y dominio
-    NSInteger idDominio;
 	NSString *nameDominio;
     BOOL creoDominio;
 	BOOL saliendo;
     BOOL RevisarSaliendo;
     RespuestaEstatus2 statusRespuesta;
     DominiosUsuario *dominioUsuario;
+   
 }
 @property (nonatomic, strong) NSMutableArray *arregloDominiosUsuario;
 @property (nonatomic, strong) AlertView *alertActivity;
@@ -49,16 +51,15 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad{
+    
     [super viewDidLoad];
- 
     if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         [self.scroll setFrame:CGRectMake(0, 0, 375, 667)];
         [self.label2 setFrame:CGRectMake(40, 70, 280, 101)];
         [self.labelTel setFrame:CGRectMake(291, 178, 28, 24)];
         [self.labelDominio setFrame:CGRectMake(50, 223, 280, 24)];
-        [self.boton setFrame:CGRectMake(93, 266, 200, 35)];
+        [self.boton setFrame:CGRectMake(93, 266, 200, 40)];
      }else if(IS_IPAD){
         [self.scroll setFrame:CGRectMake(0, 0, 768, 1024)];
         [self.label2 setFrame:CGRectMake(84, 80, 600, 50)];
@@ -103,6 +104,10 @@
     
     UIBarButtonItem *buttonBack = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     self.navigationItem.leftBarButtonItem = buttonBack;
+    
+    
+    
+    
 }
 
 -(void) viewWillAppear:(BOOL)animated {
@@ -130,9 +135,9 @@
             [self.btnAceptarDom setFrame:CGRectMake(100, 340, 200, 40)];
             
         }else if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
-             [self.nombreDominio setFrame:CGRectMake(37, 175, 300, 30)];
+             [self.nombreDominio setFrame:CGRectMake(37, 175, 300, 35)];
             [self.viewContenidoDominios setFrame:CGRectMake(0, 0, 375, 667)];
-            [self.viewDominiosTable setFrame:CGRectMake(47, 100, 280, 320)];
+            [self.viewDominiosTable setFrame:CGRectMake(37, 100, 300, 320)];
       }else{
             [self.nombreDominio setFont:[UIFont fontWithName:@"Avenir-Book" size:15]];
             [self.nombreDominio setFrame:CGRectMake(20, 105, 280, 30)];
@@ -176,6 +181,7 @@
 }
 -(void)viewDidAppear:(BOOL)animated{
     [self.nombreDominio becomeFirstResponder];
+    [self performSelectorInBackground:@selector(descargarDominios) withObject:Nil];
 
 }
 
@@ -192,6 +198,10 @@
         
         if ([CommonUtils hayConexion]) {
             [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
+            self.datosUsuario = [DatosUsuario sharedInstance];
+            if( [self.datosUsuario.arregloDominiosGratuitos count] <= 0){
+                [self performSelectorInBackground:@selector(descargarDominios) withObject:Nil];
+            }
             textoDominio = self.nombreDominio.text;
             [self performSelectorInBackground:@selector(checaDominio) withObject:Nil];
         
@@ -354,6 +364,13 @@
         [dominioHandler consultaDominio:textoDominio];
 }
 
+-(void) descargarDominios {
+    getDominioGratuito *catalogo = [[getDominioGratuito alloc] init];
+    [catalogo setDominioGratuitoDelegate:self];
+    [catalogo getDominiosGratuitos];
+}
+
+
 -(void) checaDominioPublicacion {
     operacionWS = 11;
     WS_HandlerDominio *dominioHandler = [[WS_HandlerDominio alloc] init];
@@ -409,7 +426,7 @@
         else {
             existeDominio = NO;
             [self checaPublicacion];
-            //[self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
+           
         }
     }else if(operacionWS == 12){
         NSLog(@"LA OPERACION ES 12 PARA PUBLICAR y el resultado es: %@", resultado);
@@ -431,9 +448,8 @@
             NSLog(@"LOS VALORES A GUARDAR SON: %@ Y %@ ", dominioUsuario.domainType, dominioUsuario.vigente);
             self.arregloDominiosUsuario = [[NSMutableArray alloc] init];
             [self.arregloDominiosUsuario addObject:dominioUsuario];
-            self.datosUsuario.dominiosUsuario = self.arregloDominiosUsuario;
-            NSLog(@"LA CANTIDAD QUE AGREGO DE DOMINIOSUSUARIOS SON  %lu y el arreglo %lu", (unsigned long)[self.datosUsuario.dominiosUsuario count] , (unsigned long)[self.arregloDominiosUsuario count]);
-            NSLog(@"ENTRO A RESPUESTA DE ESTATUS EXITO EN OCULTAR ACTIVITY y valor %@", [[self.arregloDominiosUsuario objectAtIndex:0]domainName]);
+            //self.datosUsuario.dominiosUsuario = self.arregloDominiosUsuario;
+           
          
             [[Appboy sharedInstance] logCustomEvent:@"Publicar Dominio"];
             if([self.datosUsuario.tipoDeUsuario isEqualToString:@"normal"]){
@@ -607,12 +623,13 @@
 
 -(void)seleccionaDominioGratuito{
     [self navigationController].navigationBarHidden = YES;
+    //[self.tableDominios reloadData];
     [self.view addSubview:self.viewContenidoDominios];
     self.view.transform = CGAffineTransformMakeScale(1.3, 1.3);
     [UIView animateWithDuration:.40 animations:^{
         self.view.transform = CGAffineTransformMakeScale(1, 1);
     }];
-    //self.dominioCompleto.text = [NSString stringWithFormat:@"www.infomovil.com/%@", self.nombreDominio.text];
+
 
 }
 
@@ -648,10 +665,6 @@
     [self navigationController].navigationBarHidden = NO;
     [self.popUpView setHidden:YES];
     [self.scroll setHidden:NO];
-   /* [UIView animateWithDuration:.40 animations:^{
-       self.popUpView.transform = CGAffineTransformMakeScale(1, 1);
-    }];
-    */
 }
 
 
@@ -707,8 +720,8 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return 3;
+{   self.datosUsuario = [DatosUsuario sharedInstance];
+    return [self.datosUsuario.arregloDominiosGratuitos count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -718,36 +731,42 @@
         NSArray *xibs = [[NSBundle mainBundle] loadNibNamed:@"LMDefaultMenuItemCell" owner:self options:nil];
         cell = [xibs firstObject];
     }
-    if(indexPath.row == 0){
-        cell.menuItemLabel.text = @"www.infomovil.com/";
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-     }else if(indexPath.row == 1){
-        cell.menuItemLabel.text = @"wwww.mobileinfo.io/";
-         cell.accessoryType = UITableViewCellAccessoryNone;
-     }else if(indexPath.row == 2){
-         cell.menuItemLabel.text = @"wwww.mobileinfo.io222/";
-         cell.accessoryType = UITableViewCellAccessoryNone;
-     }
+    self.datosUsuario = [DatosUsuario sharedInstance];
+    NSInteger cuantos = [self.datosUsuario.arregloDominiosGratuitos count];
+    for(int i = 0; i < cuantos; i++){
+        if(indexPath.row == i){
+            cell.menuItemLabel.text = [[self.datosUsuario.arregloDominiosGratuitos objectAtIndex:i]descripcion];
+            if(indexPath.row == 0){
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                self.dominioCompleto.text = [NSString stringWithFormat:@"%@/%@",[[self.datosUsuario.arregloDominiosGratuitos objectAtIndex:i]descripcion],self.nombreDominio.text ];
+                self.datosUsuario.idSeleccionadoGratuito = [[self.datosUsuario.arregloDominiosGratuitos objectAtIndex:i]idCatalogo];
+            }
+        }
+    
+    }
+  
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    for(int i= 0; i < 2; i++){
+    self.datosUsuario = [DatosUsuario sharedInstance];
+    NSInteger cuantos = [self.datosUsuario.arregloDominiosGratuitos count];
+    for(int i = 0; i < cuantos; i++){
         if(indexPath.row != i){
             NSIndexPath *myIP = [NSIndexPath indexPathForRow:i inSection:0];
             [tableView deselectRowAtIndexPath:myIP animated:YES];
             UITableViewCell *cells = [tableView cellForRowAtIndexPath:myIP];
              cells.accessoryType = UITableViewCellAccessoryNone;
+        }else{
+           
+            self.dominioCompleto.text = [NSString stringWithFormat:@"%@/%@",[[self.datosUsuario.arregloDominiosGratuitos objectAtIndex:i]descripcion],self.nombreDominio.text ];
+            self.datosUsuario.idSeleccionadoGratuito = [[self.datosUsuario.arregloDominiosGratuitos objectAtIndex:i]idCatalogo];
         }
         
     }
-    if(indexPath.row == 0){
-        self.dominioCompleto.text = [NSString stringWithFormat:@"www.infomovil.com/%@",self.nombreDominio.text ];
-    }else if(indexPath.row == 1){
-        self.dominioCompleto.text = [NSString stringWithFormat:@"www.mobileinfo.io/%@",self.nombreDominio.text ];
-    }
+   
 }
 
 
@@ -758,13 +777,15 @@
         headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 400, 110)];
         label = [[UILabel alloc] initWithFrame: CGRectMake(0,0, 400, 40)];
          self.dominioCompleto.frame = CGRectMake(0, 40, 400, 60);
+        [self.dominioCompleto setFont:[UIFont fontWithName:@"Avenir-Medium" size:18]];
+        label.font = [UIFont fontWithName:@"Avenir-Medium" size:18];
     }else{
-        headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 280, 110)];
-        label = [[UILabel alloc] initWithFrame: CGRectMake(0,0, 280, 40)];
-         self.dominioCompleto.frame = CGRectMake(0, 40, 280, 60);
+        headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 110)];
+        label = [[UILabel alloc] initWithFrame: CGRectMake(0,0, 300, 40)];
+         self.dominioCompleto.frame = CGRectMake(0, 40, 300, 60);
+        label.font = [UIFont fontWithName:@"Avenir-Medium" size:15];
     }
     headerView.backgroundColor = [UIColor clearColor];
-    
     label.backgroundColor = [UIColor whiteColor];
     label.textColor = colorFuenteVerde;
     label.autoresizingMask = UIViewAutoresizingFlexibleRightMargin;
@@ -772,8 +793,6 @@
     label.numberOfLines = 2;
     label.adjustsFontSizeToFitWidth = YES;
     label.textAlignment = NSTextAlignmentCenter;
-    label.font = [UIFont fontWithName:@"Avenir-Medium" size:16];
-   
     [headerView addSubview:self.dominioCompleto];
     [headerView addSubview:label];
     return headerView;
@@ -782,16 +801,13 @@
 -(CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 100.0f;
 }
-
+/*
 - (IBAction)AceptarAct:(id)sender {
      [self navigationController].navigationBarHidden = NO;
     [self.viewContenidoDominios removeFromSuperview];
-   /* [UIView animateWithDuration:.40 animations:^{
-        self.view.transform = CGAffineTransformMakeScale(1, 1);
-    }];
-    */
+  
 }
-
+*/
 
 
 - (IBAction)SalirSelectDomainAct:(id)sender {

@@ -437,7 +437,7 @@
 
 "enviarPedacito" = "Si, moviliza mi sitio actual";
 "msjCompartePedacito" = "Haz una versión móvil de tu sitio web actual.";
-"cuentaConPlanPro" = "Este sitio ya cuenta con PLAN PRO disfruta sus beneficios.\n\nVigencia del dominio\n Del %@ al %@";
+"cuentaConPlanPro" = "Este sitio ya cuenta con PLAN PRO disfruta sus beneficios.\n\nVigencia del Plan Pro\n Del %@ al %@";
 "errorMoviliza" = "No se ha podido generar el código para enviar. Intentalo nuevamente.";
 "movilizaActual"= "Moviliza tu sitio web";
 "subjectMoviliza" = "Código de enlace: versión optimizada para móviles";

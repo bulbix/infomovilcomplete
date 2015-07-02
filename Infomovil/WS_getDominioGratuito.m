@@ -12,41 +12,36 @@
 @implementation getDominioGratuito
 
 
-
-
-
 -(void) getDominiosGratuitos{
     self.datosUsuario = [DatosUsuario sharedInstance];
-   
-    
     NSString *  stringXML = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.webservice.infomovil.org/\">"
                              "<soapenv:Header/>"
                              "<soapenv:Body>"
-                             "<ws:catalogoDominiosResponse>"
-                             "</ws:catalogoDominiosResponse>"
+                             "<ws:catalogoDominios>"
+                             "</ws:catalogoDominios>"
                              "</soapenv:Body>"
                              "</soapenv:Envelope>"
                              ];
    
    
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
-    NSLog(@"La respuesta es en redimirCodigo WS_RedimirCodigo %s", [dataResult bytes]);
+    NSLog(@"La respuesta es en WS_GETDOMINIOS GRATUITOS ES:  %s", [dataResult bytes]);
     if (dataResult != nil) {
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
+         self.arrayAuxDominios = [[NSMutableArray alloc] init];
         [parser setDelegate:self];
         if ([parser parse]) {
-            
-            if([self.result isEqualToString:@""] || [self.result length] <= 0 || self.result == nil ){
-                [self.dominioGratuitoDelegate resultadoDominioGratuito:@"Error"];
-            }else{
-                [self.dominioGratuitoDelegate resultadoDominioGratuito:@"Exito"];
-            }
-            
+                if([self.arrayAuxDominios count] > 0){
+                    self.datosUsuario.arregloDominiosGratuitos = self.arrayAuxDominios;
+                   // [self.dominioGratuitoDelegate resultadoDominioGratuito:@"Exito"];
+                }
         }else{
-            [self.dominioGratuitoDelegate errorConsultaWS];
+           // [self.dominioGratuitoDelegate errorConsultaWS];
+            NSLog(@"NO PARSEO CORRECTAMENTE EL XML DE CATALOGO DE DOMINIOS");
         }
     }else{
-        [self.dominioGratuitoDelegate errorConsultaWS];
+        //[self.dominioGratuitoDelegate errorConsultaWS];
+        NSLog(@"EL RESULTADO DEL WEB SERVICE VENIA VACIO!!!!");
     }
 }
 
@@ -54,6 +49,7 @@
     
     if ([elementName isEqualToString:@"CatalogoDominios"]) {
        self.dominiosGratuitosCatalogo = [[catalogoDominiosGratuitos alloc] init];
+        self.currentElementString = [[NSMutableString alloc] init];
     }else if ([elementName isEqualToString:@"id"]) {
         self.currentElementString = [[NSMutableString alloc] init];
     }else if ([elementName isEqualToString:@"descripcion"]) {
@@ -78,7 +74,7 @@
     }else if ([elementName isEqualToString:@"id"]) {
         self.result = self.currentElementString;
         NSLog(@"ENTRO A id Y ES: %@", self.currentElementString);
-        [self.dominiosGratuitosCatalogo setId:self.result];
+        [self.dominiosGratuitosCatalogo setIdCatalogo:self.result];
     }
     else if ([elementName isEqualToString:@"descripcion"]) {
         self.result = self.currentElementString;

@@ -170,7 +170,7 @@
     
     self.voyAComprarTel = Nil;
     self.pedacito = Nil;
-    
+    self.idSeleccionadoGratuito = Nil;
 }
 
 -(void) eliminarSesion{

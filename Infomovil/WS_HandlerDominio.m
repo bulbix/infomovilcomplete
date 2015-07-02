@@ -150,7 +150,7 @@
 
 -(void) crearUsuario:(NSString *)email conNombre:(NSString *)user password:(NSString *)pass status:(NSString *)s nombre:(NSString *)nom direccion1:(NSString *)dir1 direccion2:(NSString *)dir2 pais:(NSString *) nPais codigoPromocion:(NSString *)codProm tipoDominio:(NSString *)domainType idDominio:(NSString *)idDominio emailPubli:(NSString *)emailPublicar{
     self.datos = [DatosUsuario sharedInstance];
-    
+    NSLog(@"CUANTAS VECES MANDA A LLMAR CREAR USUARIO CHALE!!!");
     if ([self.datos.redSocial isEqualToString:@"Facebook"]) {
         // 2 = Inicio de sesion con Facebook
         self.datos.auxSesionFacebook = 1;
@@ -191,6 +191,7 @@
                      "<domainType>%@</domainType>"
                      "<idDominio>%@</idDominio>"
                      "<emailTel>%@</emailTel>"
+                     "<idCatDominio>%@</idCatDominio>"
 					 "</UserDomainVO>"
 					 "</ws:insertUserDomain1>"
                      
@@ -216,7 +217,8 @@
 					 [StringUtils encriptar:nPais conToken:self.datos.token != nil ? self.datos.token : passwordEncriptar],//npais
                      [StringUtils encriptar:domainType conToken:self.datos.token != nil ? self.datos.token: passwordEncriptar],
                      [StringUtils encriptar:idDominio conToken:self.datos.token != nil ? self.datos.token: passwordEncriptar],
-                     [StringUtils encriptar:emailPublicar conToken:self.datos.token != nil ? self.datos.token: passwordEncriptar]];
+                     [StringUtils encriptar:emailPublicar conToken:self.datos.token != nil ? self.datos.token: passwordEncriptar],
+                     [StringUtils encriptar:self.datos.idSeleccionadoGratuito conToken:self.datos.token != nil ? self.datos.token: passwordEncriptar]];
     
     
     NSLog(@"EL DOMINIO ENVIADO ES: %@", domainType);
@@ -229,7 +231,7 @@
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
         [parser setDelegate:self];
         self.arregloDominiosUsuario = [[NSMutableArray alloc] init];
-        dominioUsuario = [[DominiosUsuario alloc] init];
+        //dominioUsuario = [[DominiosUsuario alloc] init];
         self.arregloItems = [[NSMutableArray alloc] init];
         if ([parser parse]) {
             if (requiereEncriptar) {
@@ -275,22 +277,7 @@
                         self.datos.idDominio = respuestaInt;
                         self.datos.dominioRecurso = self.datos.dominio;
                         self.datos.dominio = user;
-                       /* AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-                        if ([statusDominio hasSuffix:@"PRO"]) {
-                            NSArray *arrayAux = [statusDominio componentsSeparatedByString:@" "];
-                            if ([arrayAux count] ==2) {
-                                if ([[arrayAux objectAtIndex:0] isEqualToString:@"Tramite"]) {
-                                    appDelegate.statusDominio = statusDominio;
-                                }
-                                else {
-                                    appDelegate.statusDominio = @"Pago";
-                                }
-                            }
-                        }
-                        else {
-                            appDelegate.statusDominio = statusDominio;
-                        }
-                      */
+                      
                         ((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio = @"Pago";
                         NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
                         [prefs setObject:user forKey:@"dominioPublicado"];
@@ -306,6 +293,7 @@
                         self.datos.dominioRecurso = self.datos.dominio;
                         self.datos.dominio = user;
                         ((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio = @"Pendiente";
+                      
                         [self.wSHandlerDelegate resultadoConsultaDominio:@"Error Publicar"];
                     }
                     else if (respuestaInt == -4) {
@@ -581,7 +569,7 @@
     
     if (dataResult != nil) {
         self.arregloDominiosUsuario = [[NSMutableArray alloc] init];
-        dominioUsuario = [[DominiosUsuario alloc] init];
+        //dominioUsuario = [[DominiosUsuario alloc] init];
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
         [parser setDelegate:self];
         if ([parser parse]) {
@@ -667,6 +655,7 @@
     // IRC ESTATUS DOMINIO //
     else if ([elementName isEqualToString:@"listUsuarioDominiosVO"]) {
         dominioUsuario = [[DominiosUsuario alloc] init];
+        self.currentElementString = [[NSMutableString alloc] init];
     }
     else if ([elementName isEqualToString:@"domainCtrlName"]) {
         self.currentElementString = [[NSMutableString alloc] init];
@@ -761,12 +750,18 @@
     
 
     else if ([elementName isEqualToString:@"listUsuarioDominiosVO"]) {
-        if (esRecurso) {
+        /*if (esRecurso) {
             [self.arregloDominiosUsuario insertObject:dominioUsuario atIndex:0];
         }
         else {
             [self.arregloDominiosUsuario addObject:dominioUsuario];
         }
+        */
+         [self.arregloDominiosUsuario addObject:dominioUsuario];
+         NSLog(@"EL URL SITIO ES: %@", dominioUsuario.urlSitio);
+        NSLog(@"EL NOMBRE DE DOMINIO ES: %@", dominioUsuario.domainName);
+        NSLog(@"EL TIPO DE DOMINIO ES: %@", dominioUsuario.domainType);
+        NSLog(@"EL TIPO DE DOMINIO ES: %@", dominioUsuario.vigente);
     }
     else if ([elementName isEqualToString:@"domainCtrlName"]) {
         [dominioUsuario setDomainName:[StringUtils desEncriptar:self.currentElementString conToken:self.token]];
@@ -818,6 +813,7 @@
     }else if ([elementName isEqualToString:@"urlSitio"]) {
         NSString *strAux = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
         [dominioUsuario setUrlSitio:strAux];
+        NSLog(@"El urlSitio que me envío es: %@",strAux);
     }
     
     

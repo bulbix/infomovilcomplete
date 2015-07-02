@@ -52,7 +52,9 @@ typedef enum {
 @property (weak, nonatomic) IBOutlet UIView *viewDominiosTable;
 @property (weak, nonatomic) IBOutlet UILabel *dominioCompleto;
 
-- (IBAction)AceptarAct:(id)sender;
+@property (nonatomic, strong) NSString *idDominio;
+
+
 @property (weak, nonatomic) IBOutlet UIButton *btnAceptarDom;
 @property (weak, nonatomic) IBOutlet UIButton *SalirSelectDomain;
 - (IBAction)SalirSelectDomainAct:(id)sender;
