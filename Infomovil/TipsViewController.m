@@ -10,7 +10,7 @@
 #import <Social/Social.h>
 #import <MessageUI/MessageUI.h>
 #import <GooglePlus/GooglePlus.h>
-
+#import "IrAMiSitioViewController.h"
 #import <Social/Social.h>
 #import <FacebookSDK/FacebookSDK.h>
 #import <Twitter/Twitter.h>
@@ -70,24 +70,7 @@
     self.vistaTip1.layer.cornerRadius = 5.0f;
     self.vistaTip2.layer.cornerRadius = 5.0f;
     self.vistaTip3.layer.cornerRadius = 5.0f;
-    
-    
-    
-    /*if(IS_STANDARD_IPHONE_6_PLUS){
-        self.view.frame = CGRectMake(0, 0, 414, 736);
-        self.scrollVistaTips.frame = CGRectMake(0, 50, 414, 300);
-        [self.scrollVistaTips setContentSize:CGSizeMake(1242, 300)];
-     
-        
-        [self.btnFace setFrame:CGRectMake(29, 150, 47, 47)];
-        [self.btnGoogle setFrame:CGRectMake(126, 150, 47, 47)];
-        [self.btnTwit setFrame:CGRectMake(223, 150, 47, 47)];
-        [self.btnEmail setFrame:CGRectMake(29, 230, 47, 47)];
-        [self.btnSms setFrame:CGRectMake(126, 230, 47, 47)];
-        [self.btnWhats setFrame:CGRectMake(223, 230, 47, 47)];
-        
-    }else 
-     */
+  
      if(IS_IPAD){
         self.view.frame = CGRectMake(0, 0, 768, 1024);
         self.scrollVistaTips.frame = CGRectMake(0, 100, 768, 600);
@@ -127,7 +110,8 @@
         self.seccionCuatroTitulo.frame = CGRectMake(40, 10, 520, 60);
         [self.seccionCuatroTitulo setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
         self.seccionCuatroLabel1.frame = CGRectMake(40, 80, 520, 60);
-        
+         [self.irMiSitio setFrame: CGRectMake(300, 120, 22, 22)];
+         
     }else if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         self.view.frame = CGRectMake(0, 0, 375, 667);
         self.scrollVistaTips.frame = CGRectMake(0, 60, 375, 300);
@@ -199,13 +183,7 @@
     }
 	
 	self.seccionUnoTItulo.text = NSLocalizedString(@"tipsTitulo1", nil);
-    if([self.datosUsuario.tipoDeUsuario isEqualToString:@"canal"]){
-        self.seccionUnoLabel1.text = [NSString stringWithFormat:NSLocalizedString(@"tipsLabel11", nil), self.datosUsuario.dominio];
-    }else if([self.datosUsuario.tipoDeUsuario isEqualToString:@"normal"]){
-        self.seccionUnoLabel1.text = [NSString stringWithFormat:NSLocalizedString(@"tipsLabel111", nil), self.datosUsuario.dominio];
-    }else{
-        self.seccionUnoLabel1.text = [NSString stringWithFormat:NSLocalizedString(@"tipsLabel11", nil), self.datosUsuario.dominio];
-    }
+    self.seccionUnoLabel1.text = [NSString stringWithFormat:NSLocalizedString(@"tipsLabelDom", nil), self.dominioParaCompartir];
     
 	self.seccionUnoLabel2.text = NSLocalizedString(@"tipsLabel12", nil);
 	self.seccionUnoLabel3.text = NSLocalizedString(@"tipsLabel13", nil);
@@ -226,6 +204,21 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+- (IBAction)irMiSitioAct:(id)sender {
+    if([self.self.dominioParaCompartir length] > 0){
+        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+        self.datosUsuario = [DatosUsuario sharedInstance];
+        [prefs setObject:[NSString stringWithFormat:@"http://%@", self.dominioParaCompartir] forKey:@"urlMisitio"];
+        [prefs synchronize];
+        IrAMiSitioViewController *verMiSitio = [[IrAMiSitioViewController alloc] initWithNibName:@"IrAMisitio" bundle:Nil];
+        [self.navigationController pushViewController:verMiSitio animated:YES];
+        
+    }
+    
+    
+    
+}
 
 - (IBAction)cambiarPagina:(UIPageControl *)sender {
     NSUInteger page = self.myPageControl.currentPage;

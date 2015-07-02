@@ -58,6 +58,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *b5;
 @property (weak, nonatomic) IBOutlet UILabel *b6;
 
+@property (weak, nonatomic) IBOutlet UIButton *irMiSitio;
+- (IBAction)irMiSitioAct:(id)sender;
 
 
 - (IBAction)cambiarPagina:(UIPageControl *)sender;

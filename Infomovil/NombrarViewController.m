@@ -161,11 +161,11 @@
     }
     
     [self.vistaInferior setHidden:YES];
-    
+  /*
 #if DEBUG
     [self.labelDominio setText:[NSString stringWithFormat:@"www.qa.mobileinfo.io/misitio"]];
 #endif
-    
+    */
     self.popUpCenter.layer.cornerRadius = 10;
     self.popUpCenter.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
     self.btnPublicar.layer.cornerRadius = 10;

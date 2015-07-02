@@ -22,22 +22,18 @@
     //MBC
     if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         [self.view setFrame:CGRectMake(0, 0, 375, 667)];
-        [self.webView setFrame:CGRectMake(0, 0, 375, 667)];
-    /*}else if(IS_STANDARD_IPHONE_6_PLUS){
-        [self.view setFrame:CGRectMake(0, 0, 414, 736)];
-        [self.webView setFrame:CGRectMake(0, 0, 414, 736)];
-    */
+        [self.webView setFrame:CGRectMake(0, 0, 375, 604)];
+   
      }else if(IS_IPAD){
         [self.view setFrame:CGRectMake(0, 0, 768, 1024)];
-        [self.webView setFrame:CGRectMake(0, 0, 768, 1024)];
-    }else{
-        [self.webView setFrame:CGRectMake(0, 0, 320, 568)];
+        [self.webView setFrame:CGRectMake(0, 0, 768, 960)];
+     }else if(IS_IPHONE_4){
+         [self.webView setFrame:CGRectMake(0, 0, 320, 416)];
+     }else{
+        [self.webView setFrame:CGRectMake(0, 0, 320, 504)];
     }
 
-    
-    
     self.pagCargada = NO;
-    // Do any additional setup after loading the view.
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     self.webView.delegate = self;
     self.navigationItem.rightBarButtonItem = Nil;
@@ -51,14 +47,8 @@
                                 };
     
     [self.navigationController.navigationBar setTitleTextAttributes:atributos];
-    
-    
-    
-    
-    
-    
+
     UIImage *image = [UIImage imageNamed:@"btnregresar.png"];
-    
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [backButton setFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
     [backButton setImage:image forState:UIControlStateNormal];
@@ -84,6 +74,10 @@
     
     
 }
+-(void)viewWillAppear:(BOOL)animated{
+    [self.vistaInferior setHidden:YES];
+
+}
 
 -(IBAction)regresar:(id)sender {
     self.pagCargada = NO;
@@ -91,17 +85,17 @@
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-    self.pagCargada = YES;
+    //self.pagCargada = YES;
     [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
 }
 
 
 -(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
-    if(!self.pagCargada){
+   // if(!self.pagCargada){
         [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
         AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"errorVerMiSitio", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
         [alert show];
-    }
+    //}
     
 }
 

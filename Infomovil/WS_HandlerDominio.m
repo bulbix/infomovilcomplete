@@ -231,7 +231,7 @@
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
         [parser setDelegate:self];
         self.arregloDominiosUsuario = [[NSMutableArray alloc] init];
-        //dominioUsuario = [[DominiosUsuario alloc] init];
+        dominioUsuario = [[DominiosUsuario alloc] init];
         self.arregloItems = [[NSMutableArray alloc] init];
         if ([parser parse]) {
             if (requiereEncriptar) {
@@ -265,7 +265,7 @@
                         self.datos.idDominio = [stringResult intValue];
                         self.datos.codigoError = codigoError.length > 0 ? codigoError.intValue : 0;
                      
-                       
+                     /*
                         self.datos.fechaInicial = [NSDateFormatter changeDateFormatOfString:[StringUtils desEncriptar:self.fechaInicio conToken:self.datos.token]
                                                                                   from:@"yyyy-MM-dd"
                                                                                     to:@"dd-MM-yyy"];
@@ -274,11 +274,17 @@
                                                                                                       conToken:self.datos.token]
                                                                                 from:@"yyyy-MM-dd"
                                                                                   to:@"dd-MM-yyy"];
+                       */
+                        self.datos.fechaInicial = [StringUtils desEncriptar:self.fechaInicio conToken:self.datos.token];
+                        self.datos.fechaFinal = [StringUtils desEncriptar:self.fechaFinal conToken:self.datos.token];
+                        
                         self.datos.idDominio = respuestaInt;
                         self.datos.dominioRecurso = self.datos.dominio;
                         self.datos.dominio = user;
-                      
-                        ((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio = @"Pago";
+                        NSString * valor = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio;
+                        if ([valor isEqualToString:@"Mes PRO"] || [valor isEqualToString:@"Anual PRO"] || [valor isEqualToString:@"Tramite PRO"] ) {
+                            ((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio = @"Pago";
+                        }
                         NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
                         [prefs setObject:user forKey:@"dominioPublicado"];
                         [prefs synchronize];
@@ -584,7 +590,10 @@
                 }
                 else {
                     
-                    ((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio = @"Pago";
+                    NSString * valor = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio;
+                    if ([valor isEqualToString:@"Mes PRO"] || [valor isEqualToString:@"Anual PRO"] || [valor isEqualToString:@"Tramite PRO"] ) {
+                        ((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio = @"Pago";
+                    }
                     [self.wSHandlerDelegate resultadoConsultaDominio:@"Exito"];
                 }
 				

@@ -590,6 +590,7 @@
 		BFFB049C1B338FD1001A9777 /* EnviarPedacitoCodigoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFFB049A1B338FD1001A9777 /* EnviarPedacitoCodigoViewController.xib */; };
 		BFFB049F1B3392C8001A9777 /* ico_info_moviliza.png in Resources */ = {isa = PBXBuildFile; fileRef = BFFB049D1B3392C8001A9777 /* ico_info_moviliza.png */; };
 		BFFB04A01B3392C8001A9777 /* ico_mail_moviliza.png in Resources */ = {isa = PBXBuildFile; fileRef = BFFB049E1B3392C8001A9777 /* ico_mail_moviliza.png */; };
+		BFFBD4361B45AA490091372D /* ir.png in Resources */ = {isa = PBXBuildFile; fileRef = BFFBD4351B45AA490091372D /* ir.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1412,6 +1413,7 @@
 		BFFB049A1B338FD1001A9777 /* EnviarPedacitoCodigoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EnviarPedacitoCodigoViewController.xib; sourceTree = "<group>"; };
 		BFFB049D1B3392C8001A9777 /* ico_info_moviliza.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ico_info_moviliza.png; path = imagenesWeb/ico_info_moviliza.png; sourceTree = "<group>"; };
 		BFFB049E1B3392C8001A9777 /* ico_mail_moviliza.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ico_mail_moviliza.png; path = imagenesWeb/ico_mail_moviliza.png; sourceTree = "<group>"; };
+		BFFBD4351B45AA490091372D /* ir.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ir.png; path = imagenesWeb/ir.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2337,6 +2339,7 @@
 		BF069B561B0BCAEA00167EAF /* ImagenesParaWeb */ = {
 			isa = PBXGroup;
 			children = (
+				BFFBD4351B45AA490091372D /* ir.png */,
 				BF1D50E61B3CB94000910E7A /* btn_done.png */,
 				BFFB049D1B3392C8001A9777 /* ico_info_moviliza.png */,
 				BFFB049E1B3392C8001A9777 /* ico_mail_moviliza.png */,
@@ -2881,6 +2884,7 @@
 				0F850DFD1885B36E0008A0CA /* NombrarViewController.xib in Resources */,
 				0F680EF018ECD76000A02347 /* micuenta@2x.png in Resources */,
 				BFB69B701A8426BD0022107C /* miFeed.png in Resources */,
+				BFFBD4361B45AA490091372D /* ir.png in Resources */,
 				0F9F52CD189890C6000F9FA5 /* mibuscar.png in Resources */,
 				0F43B2AB18E5FB3100E2AAE7 /* checkActivo.png in Resources */,
 				0FC6C6A718DD0BFD009E69A2 /* btnorganizar@2x.png in Resources */,

@@ -189,8 +189,7 @@
 "mainBoton"="Log in";
 "PublicarBoton"="Register!";
 "tipsTitulo1"="Take care with the details and test your site";
-"tipsLabel11"="1. Be careful to avoid making typos\n2. Test your site:\nwww.%@.tel";
-"tipsLabel111"="1. Be careful to avoid making typos\n2. Test your site:\nwww.infomovil.com/%@";
+"tipsLabelDom" = "1. Be careful to avoid making typos\n2. Test your site:\n%@";
 "tipsLabel12"="Open a browser";
 "tipsLabel13"="Test the contact buttons (call, e-mail)";
 "tipsLabel14"="Check all your text";

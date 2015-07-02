@@ -81,7 +81,6 @@ int opcionButton = 0 ;
  
 	
     UIImage *image = [UIImage imageNamed:@"btnregresar.png"];
-    
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [backButton setFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
     [backButton setImage:image forState:UIControlStateNormal];
@@ -90,11 +89,8 @@ int opcionButton = 0 ;
     UIBarButtonItem *buttonBack = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     self.navigationItem.leftBarButtonItem = buttonBack;
 	
-	if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
-		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"cuenta", @" ") nombreImagen:@"barramorada.png"];
-	}else{
-		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"cuenta", @" ") nombreImagen:@"NBlila.png"];
-	}
+    [self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"cuenta", @" ") nombreImagen:@"barramorada.png"];
+	
 	if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
 		[self.botonCuenta setBackgroundImage:[UIImage imageNamed:@"acountEn.png"] forState:UIControlStateNormal];
         [self.comprar1mes setBackgroundImage:[UIImage imageNamed:@"1mInac-en.png" ] forState:UIControlStateNormal];
@@ -117,23 +113,20 @@ int opcionButton = 0 ;
 	tipo = NO;
     self.tituloPlanPro.text = NSLocalizedString(@"mensajeCuenta", @" ");
     self.navigationItem.rightBarButtonItem = Nil;
-	
 	medio = NO;
 	uno = NO;
 	
 	
 	
 
-#ifdef _DEBUG
+#ifdef DEBUG
 	NSLog(@"En CuentaViewController statusDominio del appdelegate 2 es: %@",((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio);
 #endif
 	
 	
 	[self.selector setTitle:NSLocalizedString(@"cuentaTituloSegment1", nil) forSegmentAtIndex:0];
 	[self.selector setTitle:NSLocalizedString(@"cuentaTituloSegment2", nil) forSegmentAtIndex:1];
-//	[self.selector setTitle:NSLocalizedString(@"cuentaTituloSegment3", nil) forSegmentAtIndex:2];
-	
-	
+
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(receiveTestNotification:)
@@ -231,15 +224,13 @@ int opcionButton = 0 ;
         [self.botonCuenta setFrame:CGRectMake(128, 14, 64, 54)];
     }
     
-    
-    
     noSeRepiteOprimirElBoton = YES;
     if (tipoVista != 1) {
 	
-#ifdef _DEBUG
-	NSLog(@"En CuentaViewController statusDominio del appdelegate 1 es: %@",((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio);
+#ifdef DEBUG
+	NSLog(@"En CuentaViewController statusDominio del appdelegate en viewwillappear 1 es: %@",((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio);
 #endif
-        NSLog(@"EL ESDTATUS EN CUENTA VIEWCONTROOLER ES: %@", ((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio);
+    
        NSString *stDomAux = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio;
         if([stDomAux isEqualToString:@"Mes PRO"] || [stDomAux isEqualToString:@"Anual PRO"] || [stDomAux isEqualToString:@"Tramite PRO"]){
         ((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio = @"Pago";
@@ -469,9 +460,6 @@ if(noSeRepiteOprimirElBoton){
 }
 
 
-
-
-
 - (IBAction)comprar12mesesBtn:(id)sender {
 if(noSeRepiteOprimirElBoton){
    if([CommonUtils hayConexion]){
@@ -680,7 +668,7 @@ if(noSeRepiteOprimirElBoton){
                             [self etiquetasBotonesYaComprado];
                         }else{
                             [self etiquetasBotonesDeCompra];
-                            //dominio.text = [NSString stringWithFormat:@"Your website\n\nwww.infomovil.com/%@",usuarioDom.urlSitio] ;
+                           
                         }
                         
                     }
@@ -728,7 +716,7 @@ if(noSeRepiteOprimirElBoton){
                         [self etiquetasBotonesYaComprado];
                     }else{
                         [self etiquetasBotonesDeCompra];
-                        //dominio.text = [NSString stringWithFormat:@"Tu sitio web\n\nwww.infomovil.com/%@",usuarioDom.domainName] ;
+                     
                     }
                     
                     }
@@ -795,37 +783,9 @@ if(noSeRepiteOprimirElBoton){
             }else{
                 [self.scrollContenido scrollRectToVisible:CGRectMake(320, 0, self.scrollContenido.frame.size.width, self.scrollContenido.frame.size.height) animated:YES];
             }
-     /////////////////////////////////////////////// PROMOCIONES //////////////////////////////////////
+    
     }
-    /*else if(self.selector.selectedSegmentIndex == 2){
-        if(!IS_IPHONE_4){
-            [self.txtPromocion becomeFirstResponder];
-        }
-        
-        if(IS_IPAD){
-            self.labelPromocion.frame = CGRectMake(184, 140, 400, 60);
-            self.txtPromocion.frame = CGRectMake(184, 240, 400, 40);
-            self.Enviar.frame = CGRectMake(259, 340, 250, 40);
-            self.labelPromocion.font = [UIFont fontWithName:@"Avenir-Book" size:24];
-            self.txtPromocion.font = [UIFont fontWithName:@"Avenir-Book" size:24];
-            self.Enviar.titleLabel.font = [UIFont fontWithName:@"Avenir-Book" size:24];
-            [self.viewEnviarCodigo setFrame:CGRectMake(1536, 0, 768,600)];
-            [self.scrollContenido scrollRectToVisible:CGRectMake(1536, 0, self.scrollContenido.frame.size.width, self.scrollContenido.frame.size.height) animated:YES];
-         }else if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
-             self.labelPromocion.frame = CGRectMake(37, 80, 300, 40);
-             self.txtPromocion.frame = CGRectMake(37, 130, 300, 35);
-             self.Enviar.frame = CGRectMake(62, 200, 250, 35);
-             [self.viewEnviarCodigo setFrame:CGRectMake(750, 0, 375,450)];
-             [self.scrollContenido scrollRectToVisible:CGRectMake(750, 0, self.scrollContenido.frame.size.width, self.scrollContenido.frame.size.height) animated:YES];
-         }else{
-              [self.viewEnviarCodigo setFrame:CGRectMake(640, 0, 320,350)];
-             [self.scrollContenido scrollRectToVisible:CGRectMake(640, 0, self.scrollContenido.frame.size.width, self.scrollContenido.frame.size.height) animated:YES];
-             
-         }
-        [self.scrollContenido addSubview:self.viewEnviarCodigo];
-        
-    }
-     */
+   
 }
 
 
@@ -865,7 +825,7 @@ if(noSeRepiteOprimirElBoton){
        if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
             [self.MensajePlanProComprado setFrame:CGRectMake(37, 60, 300, 150)];
         }else if(IS_IPAD){
-            [self.MensajePlanProComprado setFrame:CGRectMake(184, 10, 400, 400)];
+            [self.MensajePlanProComprado setFrame:CGRectMake(134, 0, 500, 200)];
             [self.MensajePlanProComprado setFont:[UIFont fontWithName:@"Avenir-Book" size:24]];
             
         }
@@ -914,9 +874,7 @@ if(noSeRepiteOprimirElBoton){
         }
         
         self.MensajePlanProComprado.text = [NSString stringWithFormat:NSLocalizedString(@"cuentaConPlanPro", nil),self.datosUsuario.fechaInicial, self.datosUsuario.fechaFinal];
-      /*  self.viewCompraPlanPro.hidden = YES;
-          self.viewPlanProComprado.hidden = NO;
-       */
+     
         ((AppDelegate*) [[UIApplication sharedApplication] delegate]).statusDominio = @"Pago";
         self.datosUsuario.datosPago.statusPago = @"PAGADO";
         self.datosUsuario.descripcionDominio = @"";
@@ -1052,26 +1010,26 @@ if(noSeRepiteOprimirElBoton){
     if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         imgLineDominio.frame = CGRectMake(37, 185, 300, 2);
         etiquetaCompraDominio.frame = CGRectMake(47, 250,280 ,40 );
-      //  etiquetaCompraDominioSub.frame = CGRectMake(47, 250,280 ,40 );
+
         [btnCompraDominio2 setFrame:CGRectMake(87, 300, 200, 35)];
         etiquetaCompraDominio.font = [UIFont fontWithName:@"Avenir-Medium" size:18];
-     //   etiquetaCompraDominioSub.font = [UIFont fontWithName:@"Avenir-Book" size:16];
+  
         [btnCompraDominio2.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
     }else if(IS_IPAD){
         imgLineDominio.frame = CGRectMake(184, 360, 400, 2);
         etiquetaCompraDominio.frame = CGRectMake(84, 450,600 ,80 );
-      //  etiquetaCompraDominioSub.frame = CGRectMake(84, 500, 600, 40);
+   
         [btnCompraDominio2 setFrame:CGRectMake(259, 600, 250, 40)];
         etiquetaCompraDominio.font = [UIFont fontWithName:@"Avenir-Medium" size:24];
-      //  etiquetaCompraDominioSub.font = [UIFont fontWithName:@"Avenir-Book" size:20];
+  
         [btnCompraDominio2.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:24]];
     }else{
         imgLineDominio.frame = CGRectMake(20, 160, 280, 2);
         etiquetaCompraDominio.frame = CGRectMake(20, 220,280 ,40 );
-       // etiquetaCompraDominioSub.frame = CGRectMake(20, 260,280 ,40 );
+      
         [btnCompraDominio2 setFrame:CGRectMake(60, 270, 200, 35)];
         etiquetaCompraDominio.font = [UIFont fontWithName:@"Avenir-Medium" size:18];
-      //  etiquetaCompraDominioSub.font = [UIFont fontWithName:@"Avenir-Book" size:16];
+    
         [btnCompraDominio2.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
     }
     [imgLineDominio setImage:[UIImage imageNamed:@"lineCompraDominio"]];
