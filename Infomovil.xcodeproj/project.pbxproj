@@ -591,6 +591,7 @@
 		BFFB049F1B3392C8001A9777 /* ico_info_moviliza.png in Resources */ = {isa = PBXBuildFile; fileRef = BFFB049D1B3392C8001A9777 /* ico_info_moviliza.png */; };
 		BFFB04A01B3392C8001A9777 /* ico_mail_moviliza.png in Resources */ = {isa = PBXBuildFile; fileRef = BFFB049E1B3392C8001A9777 /* ico_mail_moviliza.png */; };
 		BFFBD4361B45AA490091372D /* ir.png in Resources */ = {isa = PBXBuildFile; fileRef = BFFBD4351B45AA490091372D /* ir.png */; };
+		BFFBD4381B45F25C0091372D /* slider2.png in Resources */ = {isa = PBXBuildFile; fileRef = BFFBD4371B45F25C0091372D /* slider2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1414,6 +1415,7 @@
 		BFFB049D1B3392C8001A9777 /* ico_info_moviliza.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ico_info_moviliza.png; path = imagenesWeb/ico_info_moviliza.png; sourceTree = "<group>"; };
 		BFFB049E1B3392C8001A9777 /* ico_mail_moviliza.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ico_mail_moviliza.png; path = imagenesWeb/ico_mail_moviliza.png; sourceTree = "<group>"; };
 		BFFBD4351B45AA490091372D /* ir.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ir.png; path = imagenesWeb/ir.png; sourceTree = "<group>"; };
+		BFFBD4371B45F25C0091372D /* slider2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slider2.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2411,6 +2413,7 @@
 		BF63A1881AB3C24A0077A5C2 /* bullets */ = {
 			isa = PBXGroup;
 			children = (
+				BFFBD4371B45F25C0091372D /* slider2.png */,
 				BF63A1891AB3C24A0077A5C2 /* slider1.png */,
 				BF63A18B1AB3C24A0077A5C2 /* slider3.png */,
 				BF63A18C1AB3C24A0077A5C2 /* slider4.png */,
@@ -2862,6 +2865,7 @@
 				BF63A1911AB3C24A0077A5C2 /* slider4.png in Resources */,
 				BFD29D771AC2139D008EADB9 /* temp_moderno@2x.png in Resources */,
 				0F578E3318BBB13700888C87 /* TerminosCondicionesViewController.xib in Resources */,
+				BFFBD4381B45F25C0091372D /* slider2.png in Resources */,
 				0F9F534B18989413000F9FA5 /* mireporteson@2x.png in Resources */,
 				BFD292861AB36A140066AF30 /* template2@2x.png in Resources */,
 				BFD292A71AB3A5520066AF30 /* verEjemplo-en@3x.png in Resources */,

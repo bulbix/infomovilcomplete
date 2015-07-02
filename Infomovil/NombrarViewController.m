@@ -57,7 +57,7 @@
     if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         [self.scroll setFrame:CGRectMake(0, 0, 375, 667)];
         [self.label2 setFrame:CGRectMake(40, 70, 280, 101)];
-        [self.labelTel setFrame:CGRectMake(291, 178, 28, 24)];
+        //[self.labelTel setFrame:CGRectMake(291, 178, 28, 24)];
         [self.labelDominio setFrame:CGRectMake(50, 223, 280, 24)];
         [self.boton setFrame:CGRectMake(93, 266, 200, 40)];
      }else if(IS_IPAD){
@@ -69,16 +69,14 @@
     }else{
         [self.scroll setFrame:CGRectMake(0, 0, 768, 1024)];
         [self.label2 setFrame:CGRectMake(20, 40, 280, 61)];
-        [self.labelTel setFrame:CGRectMake(261, 108, 28, 24)];
+       // [self.labelTel setFrame:CGRectMake(261, 108, 28, 24)];
         [self.labelDominio setFrame:CGRectMake(20, 158, 280, 24)];
         [self.boton setFrame:CGRectMake(50, 200, 220, 40)];
     }
     
-    if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
-        [self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"nombrar", @" ") nombreImagen:@"roja.png"];
-    }else{
-        [self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"nombrar", @" ") nombreImagen:@"plecaroja.png"];
-    }
+ 
+    [self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"nombrar", @" ") nombreImagen:@"roja.png"];
+    
 
     self.navigationItem.rightBarButtonItem = Nil;
     creoDominio = NO;
@@ -123,8 +121,32 @@
     NSLog(@"EL TIPO DE USUARIO EN NOMBRAR ES: %@", self.datosUsuario.tipoDeUsuario);
     if([self.datosUsuario.tipoDeUsuario isEqualToString:@"canal"]){
         [self.labelTel setHidden:NO];
+        [self.labelW setHidden:NO];
+        if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
+            
+            [self.nombreDominio setFrame:CGRectMake(60,160 , 265, 35)];
+            [self.labelTel setFrame:CGRectMake(325, 160, 28, 35)];
+            [self.labelW setFrame:CGRectMake(10, 160, 50, 35)];
+          
+        }else if(IS_IPAD){
+             [self.nombreDominio setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
+             [self.labelTel setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
+             [self.labelW setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
+            [self.nombreDominio setFrame:CGRectMake(134,180 , 466, 40)];
+            [self.labelTel setFrame:CGRectMake(600, 180, 30, 40)];
+            [self.labelW setFrame:CGRectMake(84, 180, 50, 40)];
+        }else{
+            [self.nombreDominio setFrame:CGRectMake(50,130 , 235, 35)];
+            [self.labelTel setFrame:CGRectMake(285, 130, 28, 35)];
+            [self.labelW setFrame:CGRectMake(0, 130, 50, 35)];
+        }
+        
+        
+        
+        
     }else if([self.datosUsuario.tipoDeUsuario isEqualToString:@"normal"]  ){
         [self.labelTel setHidden:YES];
+        [self.labelW setHidden:YES];
         if(IS_IPAD){
             [self.nombreDominio setFrame:CGRectMake(84, 180, 600, 40)];
             [self.nombreDominio setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];

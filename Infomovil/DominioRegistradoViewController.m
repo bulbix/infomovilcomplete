@@ -26,17 +26,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
- 
-	if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
-		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"nombrar", @" ") nombreImagen:@"roja.png"];
-	}else{
-		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"nombrar", @" ") nombreImagen:@"plecaroja.png"];
-	}
+	
     self.datosUsuario = [DatosUsuario sharedInstance];
     [self.labelDominio setText:[NSString stringWithFormat:@"www.%@.tel", self.datosUsuario.dominio]];
-#if DEBUG
-   // [self.labelDominio setText:[NSString stringWithFormat:@"http://infomovil.com/%@", self.datosUsuario.dominio]];
-#endif
+
 	
     self.navigationItem.rightBarButtonItem = Nil;
 	self.btnComprar.hidden = YES;
@@ -44,12 +37,9 @@
 
 -(void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
-		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"nombrar", @" ") nombreImagen:@"roja.png"];
-	}else{
-		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"nombrar", @" ") nombreImagen:@"NBbermellon.png"];
-	}
-    self.datosUsuario = [DatosUsuario sharedInstance];
+  
+    [self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"nombrar", @" ") nombreImagen:@"roja.png"];
+	
 }
 
 - (void)didReceiveMemoryWarning
