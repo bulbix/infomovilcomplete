@@ -294,6 +294,7 @@
 "msgGuardarPromocion" = "Actualizando Promoción";
 "msgNombrarSitio" = "Nombrando Sitio";
 "msgPublicarSitio" = "Publicando Sitio";
+"msgBuscarDisponible" = "Buscando";
 "msgPublicando" = "Registrando sitio";
 "msgValidandoUsuario" = "Validando Credenciales";
 "txtLlenarNombre" = "Por favor, agrega tu nombre";

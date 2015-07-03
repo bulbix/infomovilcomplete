@@ -283,6 +283,7 @@
 "msgGuardarPromocion" = "Updating Offer";
 "msgNombrarSitio" = "Naming Website";
 "msgPublicarSitio" = "Publishing Site";
+"msgBuscarDisponible" = "Searching";
 "msgPublicando" = "Registering site";
 "msgValidandoUsuario" = "Validating Credentials";
 "txtLlenarNombre" = "Please add your name";

@@ -183,11 +183,7 @@
     }
     
     [self.vistaInferior setHidden:YES];
-  /*
-#if DEBUG
-    [self.labelDominio setText:[NSString stringWithFormat:@"www.qa.mobileinfo.io/misitio"]];
-#endif
-    */
+
     self.popUpCenter.layer.cornerRadius = 10;
     self.popUpCenter.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
     self.btnPublicar.layer.cornerRadius = 10;
@@ -219,7 +215,7 @@
         self.nombreDelDominio.text = self.nombreDominio.text;
         
         if ([CommonUtils hayConexion]) {
-            [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
+            [self performSelectorOnMainThread:@selector(mostrarActivityBuscar) withObject:Nil waitUntilDone:YES];
             self.datosUsuario = [DatosUsuario sharedInstance];
             if( [self.datosUsuario.arregloDominiosGratuitos count] <= 0){
                 [self performSelectorInBackground:@selector(descargarDominios) withObject:Nil];
@@ -320,6 +316,11 @@
     alertActivity = [AlertView initWithDelegate:self message:NSLocalizedString(@"msgPublicarSitio", Nil) andAlertViewType:AlertViewTypeActivity];
     [alertActivity show];
 }
+-(void) mostrarActivityBuscar{
+    alertActivity = [AlertView initWithDelegate:self message:NSLocalizedString(@"msgBuscarDisponible", Nil) andAlertViewType:AlertViewTypeActivity];
+    [alertActivity show];
+}
+
 
 -(void) ocultarActivity {
     if (alertActivity)
