@@ -18,13 +18,12 @@ typedef enum {
 
 @property (weak, nonatomic) IBOutlet UITextField *txtTitulo;
 @property (weak, nonatomic) IBOutlet UITextView *txtInfo;
-//@property (weak, nonatomic) IBOutlet UILabel *labelInfo;
 @property (nonatomic) InfoAdicionalOperacion operacionInformacion;
 @property (nonatomic) NSInteger index;
 @property (weak, nonatomic) IBOutlet UIButton *btnEliminar;
 @property (weak, nonatomic) IBOutlet UILabel *labelAgregarTitulo;
 @property (weak, nonatomic) IBOutlet UILabel *labelInformacionAdicional;
-@property (strong, nonatomic) IBOutlet UIScrollView *scroll;
+@property (weak, nonatomic) IBOutlet UIScrollView *scroll;
 
 
 - (IBAction)eliminarAdicional:(UIButton *)sender;

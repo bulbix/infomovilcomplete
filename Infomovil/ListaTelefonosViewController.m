@@ -151,7 +151,7 @@
     
     if (self.editing) {
         self.navigationItem.rightBarButtonItems = Nil;
-        UIImage *imageAceptar = [UIImage imageNamed:@"btnaceptar.png"];
+        UIImage *imageAceptar = defAceptar;
         UIButton *btAceptar = [UIButton buttonWithType:UIButtonTypeCustom];
         [btAceptar setFrame:CGRectMake(0, 0, imageAceptar.size.width, imageAceptar.size.height)];
         [btAceptar setImage:imageAceptar forState:UIControlStateNormal];
@@ -161,13 +161,13 @@
     }
     else {
         self.navigationItem.rightBarButtonItem = Nil;
-        UIImage *imageAdd = [UIImage imageNamed:@"btnagregar.png"];
+        UIImage *imageAdd = defAgregar;
         UIButton *btAdd = [UIButton buttonWithType:UIButtonTypeCustom];
         [btAdd setFrame:CGRectMake(0, 0, imageAdd.size.width, imageAdd.size.height)];
         [btAdd setImage:imageAdd forState:UIControlStateNormal];
         [btAdd addTarget:self action:@selector(agregarContacto:) forControlEvents:UIControlEventTouchUpInside];
         UIBarButtonItem *botonAdd = [[UIBarButtonItem alloc] initWithCustomView:btAdd];
-        UIImage *imagenEdit = [UIImage imageNamed:@"btnorganizar.png"];
+        UIImage *imagenEdit = [UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"btnorganizar.png"] ofType:nil]]];
         UIButton *btEdit = [UIButton buttonWithType:UIButtonTypeCustom];
         [btEdit setFrame:CGRectMake(0, 0, imagenEdit.size.width, imagenEdit.size.height)];
         [btEdit setImage:imagenEdit forState:UIControlStateNormal];

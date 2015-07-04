@@ -19,22 +19,17 @@ typedef enum {
 }RespuestaEstatus2;
 
 @interface NombrarViewController : InfomovilViewController <AlertViewDelegate, UITextFieldDelegate, WS_HandlerProtocol,UITableViewDelegate, UITableViewDataSource>
-@property (strong, nonatomic) IBOutlet UIScrollView *scroll;
-
-//MBC
+@property (weak, nonatomic) IBOutlet UIScrollView *scroll;
 @property (weak, nonatomic) IBOutlet UILabel *labelW;
 @property (weak, nonatomic) IBOutlet UITextField *nombreDominio;
 @property (weak, nonatomic) IBOutlet UILabel *labelTel;
 @property (weak, nonatomic) IBOutlet UILabel *labelEstatusDominio;
 @property (weak, nonatomic) IBOutlet UILabel *labelDominio;
-@property (strong, nonatomic) IBOutlet UILabel *label1;
-@property (strong, nonatomic) IBOutlet UILabel *label2;
-@property (strong, nonatomic) IBOutlet UIButton *boton;
+@property (weak, nonatomic) IBOutlet UILabel *label1;
+@property (weak, nonatomic) IBOutlet UILabel *label2;
+@property (weak, nonatomic) IBOutlet UIButton *boton;
 @property (weak, nonatomic) IBOutlet UIView *popUpCenter;
-
 @property (weak, nonatomic) IBOutlet UIButton *btnPublicar;
-
-
 @property (weak, nonatomic) IBOutlet UIView *popUpView;
 @property (weak, nonatomic) IBOutlet UILabel *estaDisponibleBtn;
 
@@ -47,7 +42,7 @@ typedef enum {
 @property (weak, nonatomic) IBOutlet UIButton *cerrarBtn;
 
 //////////// POPUPDOMINIOS //////////
-@property (strong, nonatomic) IBOutlet UIView *viewContenidoDominios;
+@property (weak, nonatomic) IBOutlet UIView *viewContenidoDominios;
 @property (weak, nonatomic) IBOutlet UITableView *tableDominios;
 @property (weak, nonatomic) IBOutlet UIView *viewDominiosTable;
 @property (weak, nonatomic) IBOutlet UILabel *dominioCompleto;
@@ -58,10 +53,6 @@ typedef enum {
 @property (weak, nonatomic) IBOutlet UIButton *btnAceptarDom;
 @property (weak, nonatomic) IBOutlet UIButton *SalirSelectDomain;
 - (IBAction)SalirSelectDomainAct:(id)sender;
-
-
-
-
 
 
 @property (weak, nonatomic) IBOutlet UIButton *cerrarPopUp;

@@ -80,7 +80,7 @@
 		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"compartir", @" ") nombreImagen:@"NBlila.png"];
 	}
 	
-    UIImage *image = [UIImage imageNamed:@"btnregresar.png"];
+    UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"btnregresar.png"] ofType:nil]]];
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [backButton setFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
     [backButton setImage:image forState:UIControlStateNormal];
@@ -145,11 +145,8 @@
 	}
 	
 	if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-		[self.botonNotificaciones setBackgroundImage:[UIImage imageNamed:@"shareEn.png"] forState:UIControlStateNormal];
-       /* if(IS_STANDARD_IPHONE_6_PLUS){
-            self.vistaContenidoCompartir.frame = CGRectMake(70, 80, 287, 130);
-        } else
-            */
+		[self.botonNotificaciones setBackgroundImage:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"shareEn.png"] ofType:nil]]]   forState:UIControlStateNormal];
+      
         if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
             self.vistaContenidoCompartir.frame = CGRectMake(50, 80, 287, 130);
         }else if(IS_IPAD){
@@ -162,10 +159,7 @@
         }
         
 	}else{
-		[self.botonNotificaciones setBackgroundImage:[UIImage imageNamed:@"micompartiron.png"] forState:UIControlStateNormal];
-       /* if(IS_STANDARD_IPHONE_6_PLUS){
-            self.vistaContenidoCompartir.frame = CGRectMake(70, 80, 287, 130);
-        } else*/
+		[self.botonNotificaciones setBackgroundImage:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"micompartiron.png"] ofType:nil]]] forState:UIControlStateNormal];
         if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
             self.vistaContenidoCompartir.frame = CGRectMake(50, 80, 287, 130);
         }else if(IS_IPAD){

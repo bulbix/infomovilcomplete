@@ -152,6 +152,7 @@
                 </scrollView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <point key="canvasLocation" x="236" y="503"/>
         </view>
         <view contentMode="scaleToFill" id="Mui-lZ-nw5">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>

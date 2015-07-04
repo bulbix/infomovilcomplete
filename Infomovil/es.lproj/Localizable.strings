@@ -220,7 +220,7 @@
 "cambiarLabel1" = "Ingresa tu e-mail y te enviaremos una liga para re-establecer tu contraseña";
 "cambiarAlerta" = "Te hemos enviado una liga para re-establecer tu contraseña.";
 //NombrarViewController
-"nombrarLabel2" = "Selecciona un nombre para tu sitio web";
+"nombrarLabel2" = "Pon tu nombre o tu negocio aquí";
 "nombrarBoton" = "Buscar";
 //ListaTelefonosViewController
 "instrucciones" = "Instrucciones";

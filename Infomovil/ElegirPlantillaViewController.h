@@ -12,14 +12,30 @@
 @interface ElegirPlantillaViewController : InfomovilViewController<UIScrollViewDelegate, AlertViewDelegate, WS_HandlerProtocol>
 {
 
-    NSArray * nombrePlantilla;
-    NSArray * nombrePlantillaEn;
-    NSArray * nombreWebServiceTemplate;
-    NSArray * descripcionPlantilla;
-    NSArray * descripcionPlantillaEn;
+   
+  
+   
+    
+   
 }
 
+
+@property (nonatomic, strong) NSArray * nombrePlantilla;
+@property (nonatomic, strong) NSArray * nombrePlantillaEn;
+@property (nonatomic, strong) NSArray * nombreWebServiceTemplate;
+@property (nonatomic, strong) NSArray * descripcionPlantilla;
+@property (nonatomic, strong) NSArray * descripcionPlantillaEn;
+
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollTemplate;
-@property(weak, weak) NSString * plantillaSeccionada;
-@property(nonatomic) NSInteger plantillaAPublicar;
+@property(nonatomic, strong) NSString * plantillaSeccionada;
+@property(nonatomic, assign) NSInteger plantillaAPublicar;
+
+@property (weak, nonatomic) IBOutlet UIView *viewExtra;
+
+
+
+
+
+
+
 @end

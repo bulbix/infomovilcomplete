@@ -65,7 +65,7 @@
     [self.labelAgregarTitulo setText:NSLocalizedString(@"agregaTitulo", Nil)];
     [self.labelInformacionAdicional setText:NSLocalizedString(@"informacionAdicional", Nil)];
     
-    UIImage *image = [UIImage imageNamed:@"btnregresar.png"];
+    UIImage *image = defRegresar;
     
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [backButton setFrame:CGRectMake(0, 0, image.size.width, image.size.height)];

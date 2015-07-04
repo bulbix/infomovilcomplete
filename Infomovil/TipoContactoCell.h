@@ -10,7 +10,5 @@
 
 @interface TipoContactoCell : UITableViewCell
 
-//@property (weak, nonatomic) IBOutlet UIImageView *imageView;
-//@property (weak, nonatomic) IBOutlet UILabel *textLabel;
 
 @end

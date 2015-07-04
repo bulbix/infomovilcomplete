@@ -10,10 +10,10 @@
 
 @interface DominioRegistradoViewController : InfomovilViewController
 
-@property (strong, nonatomic) IBOutlet UIButton *btnComprar;
+@property (weak, nonatomic) IBOutlet UIButton *btnComprar;
 @property (weak, nonatomic) IBOutlet UILabel *labelDominio;
 
-@property (strong, nonatomic) IBOutlet UILabel *label1;
-@property (strong, nonatomic) IBOutlet UILabel *label2;
+@property (weak, nonatomic) IBOutlet UILabel *label1;
+@property (weak, nonatomic) IBOutlet UILabel *label2;
 
 @end

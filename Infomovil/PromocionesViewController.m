@@ -366,10 +366,10 @@
 	
     if (datosPromocion.estatus)
     {
-        [cell.imagenEstatus setImage:[UIImage imageNamed:@"editado.png"]];
+        [cell.imagenEstatus setImage:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"editado.png"] ofType:nil]]]];
 		cell.labelConcepto.textColor = colorFuenteAzul;
     } else {
-        [cell.imagenEstatus setImage:[UIImage imageNamed:@"noeditado.png"]];
+        [cell.imagenEstatus setImage:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"noeditado.png"] ofType:nil]]]];
         cell.labelConcepto.textColor = colorFuenteVerde;
     }
 	

@@ -40,9 +40,6 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *btnEliminar;
 @property (weak, nonatomic) IBOutlet UIButton *btnPlayer;
-
-
-
 @property (weak, nonatomic) IBOutlet UIImageView *logoYoutube;
 
 

@@ -19,7 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelPassword;
 @property (weak, nonatomic) IBOutlet UITextField *txtPassword;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollEliminarCuenta;
-@property (strong, nonatomic) IBOutlet UILabel *label;
+@property (weak, nonatomic) IBOutlet UILabel *label;
 
 
 
@@ -28,7 +28,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnEligeOpcion;
 
 
-@property (strong, nonatomic) IBOutlet UILabel *label2;
+@property (weak, nonatomic) IBOutlet UILabel *label2;
 // Si se logueo con facebook y quiere eliminar su cuenta //
 @property (weak, nonatomic) IBOutlet UIButton *olvidasteContrasena;
 - (IBAction)olvidasteContraseñaAct:(id)sender;

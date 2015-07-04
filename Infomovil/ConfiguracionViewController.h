@@ -12,6 +12,6 @@
 @interface ConfiguracionViewController : InfomovilViewController <UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate, AlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tablaConfiguracion;
-@property (strong, nonatomic) IBOutlet UILabel *label;
+@property (weak, nonatomic) IBOutlet UILabel *label;
 
 @end

@@ -16,8 +16,7 @@
 
 @property (nonatomic, strong) CLGeocoder *geocoder;
 @property (weak, nonatomic) IBOutlet UITextField *cajaBusqueda;
-
-@property(nonatomic, assign) id<BuscaDireccionProtocol> delegate;
+@property (weak, nonatomic) id<BuscaDireccionProtocol> delegate;
 @property (weak, nonatomic) IBOutlet UILabel *labelBuscaDireccion;
 
 @end

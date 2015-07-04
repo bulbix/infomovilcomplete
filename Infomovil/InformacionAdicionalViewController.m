@@ -60,7 +60,7 @@
 	self.labelTexto1.text = NSLocalizedString(@"infoAdicionalTexto", Nil);
 	
     
-    UIImage *imagenAgregar = [UIImage imageNamed:@"btnagregar.png"];
+    UIImage *imagenAgregar = [UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"btnagregar.png"] ofType:nil]]];
     UIButton *botonAgregar = [UIButton buttonWithType:UIButtonTypeCustom];
     [botonAgregar setFrame:CGRectMake(0, 0, imagenAgregar.size.width, imagenAgregar.size.height)];
     [botonAgregar setBackgroundImage:imagenAgregar forState:UIControlStateNormal];

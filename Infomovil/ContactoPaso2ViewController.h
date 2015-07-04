@@ -21,7 +21,6 @@
 @property (nonatomic, strong) NSDictionary *tipoContacto;
 @property (weak, nonatomic) IBOutlet UITextView *txtDescripcion;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollVista;
-//@property (weak, nonatomic) IBOutlet UILabel *labelInfo;
 @property (weak, nonatomic) IBOutlet UITextField *txtLada;
 @property (weak, nonatomic) IBOutlet UILabel *labelNumeroTelefonico;
 @property (weak, nonatomic) IBOutlet UITextField *txtTelefono;
@@ -40,7 +39,7 @@
 
 @property NSInteger opcionSeleccionada;
 
-@property (strong, nonatomic) IBOutlet UITextField *casillaMovil;
+@property (weak, nonatomic) IBOutlet UITextField *casillaMovil;
 
 - (IBAction)eliminarContacto:(UIButton *)sender;
 - (IBAction)seleccionarCodigoPais:(UIButton *)sender;

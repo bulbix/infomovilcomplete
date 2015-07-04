@@ -10,9 +10,8 @@
 
 @interface SeleccionaVideoViewController : InfomovilViewController <UITextFieldDelegate, AlertViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 
-//@property (weak, nonatomic) IBOutlet UITextField *txtBuscar;
+
 @property (weak, nonatomic) IBOutlet UICollectionView *videoCollection;
-//@property (weak, nonatomic) IBOutlet UILabel *labelBuscarVideo;
 @property (nonatomic, strong) NSMutableArray *arregloVideos;
 
 @end

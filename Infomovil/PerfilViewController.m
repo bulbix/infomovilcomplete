@@ -31,15 +31,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-//    [self.vistaCircular setImage:[UIImage imageNamed:@"plecaverde.png"]];
-//    [self.vistaCircular setImage:[UIImage imageNamed:@"plecacreasitio.png"]];
-//    [self.tituloVista setText:NSLocalizedString(@"perfil", @" ")];
-	if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
-		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"perfil", @" ") nombreImagen:@"barraverde.png"];
-	}else{
-		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"perfil", @" ") nombreImagen:@"NBverde.png"];
-	}
+
+    [self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"perfil", @" ") nombreImagen:@"barraverde.png"];
+	
     titulosTabla = @[NSLocalizedString(@"productoServicio", @" "), NSLocalizedString(@"areaServicio", @" "), NSLocalizedString(@"horario", @" "), NSLocalizedString(@"metodosPago", @" "), NSLocalizedString(@"asociaciones", @" "), NSLocalizedString(@"biografia", @" "), NSLocalizedString(@"perfinNegocioProfesion", @"")];
     self.tablaPerfil.layer.cornerRadius = 5;
     self.datosUsuario = [DatosUsuario sharedInstance];
@@ -85,17 +79,17 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"perfilCell"];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"perfilCell"];
-        UIImageView *imagenAccesory = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"btnsiguiente.png"]];
+        UIImageView *imagenAccesory = [[UIImageView alloc] initWithImage:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"btnsiguiente.png"] ofType:nil]]]];
         [cell setAccessoryView:imagenAccesory];
     }
     [cell.textLabel setText:[titulosTabla objectAtIndex:indexPath.row]];
     [cell.textLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:17]];
     if ([[self.datosUsuario.arregloEstatusPerfil objectAtIndex:indexPath.row]  isEqual: @NO]) {
-        [cell.imageView setImage:[UIImage imageNamed:@"noeditado.png"]];
+        [cell.imageView setImage:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"noeditado.png"] ofType:nil]]]];
         [cell.textLabel setTextColor:colorFuenteVerde];
     }
     else {
-        [cell.imageView setImage:[UIImage imageNamed:@"editado.png"]];
+        [cell.imageView setImage:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"editado.png"] ofType:nil]]]];
         [cell.textLabel setTextColor:colorFuenteAzul];
     }
     return cell;

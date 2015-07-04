@@ -44,13 +44,10 @@
     }
     self.txtEmail.layer.cornerRadius = 5.0f;
 
-	if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
-		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"cambioPassword", @" ") nombreImagen:@"barramorada.png"];
-	}else{
-		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"cambioPassword", @" ") nombreImagen:@"NBlila.png"];
-	}
+    [self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"cambioPassword", @" ") nombreImagen:@"barramorada.png"];
+	
   
-    UIImage *image = [UIImage imageNamed:@"btncancelar.png"];
+    UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"btncancelar.png"] ofType:nil]]];
 	
 	self.guardarVista = YES;
     

@@ -13,10 +13,7 @@
 
 @interface MapaUbicacionViewController : InfomovilViewController <BuscaDireccionProtocol, MKMapViewDelegate, MKAnnotation, CLLocationManagerDelegate, AlertViewDelegate, WS_HandlerProtocol>
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
-
 @property (nonatomic, strong) CLLocationManager *locationManager;
-
-//MBC
 @property (weak, nonatomic) IBOutlet UIButton *btnBuscar;
 @property (weak, nonatomic) IBOutlet UIButton *btnUbicar;
 @property (weak, nonatomic) IBOutlet UIButton *btnEliminar;

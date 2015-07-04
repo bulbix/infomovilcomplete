@@ -16,10 +16,10 @@
 @property (weak, nonatomic) IBOutlet UITableView *tablaPais;
 @property (nonatomic, strong) ContactoPaso2ViewController *contactoController;
 @property (nonatomic, strong) PublicarViewController *publicarController;
-@property (nonatomic, strong) id<SeleccionaPaisProtocol> seleccionaDelegate;
+@property (weak, nonatomic) id<SeleccionaPaisProtocol> seleccionaDelegate;
 @property (nonatomic, strong) NSString *nombreTituloVista;
 
 
-@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @end

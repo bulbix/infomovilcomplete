@@ -19,7 +19,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *txtEstado;
 @property (weak, nonatomic) IBOutlet UITextField *txtPais;
 @property (weak, nonatomic) IBOutlet UITextField *txtCodigoPostal;
-//@property (weak, nonatomic) IBOutlet UILabel *labelInfo;
 @property (nonatomic) NSInteger index;
 
 @property (weak, nonatomic) IBOutlet UILabel *labelDireccion1;
@@ -31,8 +30,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelCodigoPostal;
 @property (weak, nonatomic) IBOutlet UIButton *btnBorra;
 
-
-//@property (nonatomic, strong) NSDictionary *diccionarioDireccion;
 @property (nonatomic, strong) NSMutableArray *diccionarioDireccion;
 - (IBAction)borrarDireccion:(id)sender;
 

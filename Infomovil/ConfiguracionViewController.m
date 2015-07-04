@@ -49,7 +49,7 @@
 
     self.arregloConfiguracion = @[arregloSecc1, arregloSecc2];
     
-    UIImage *image = [UIImage imageNamed:@"btnregresar.png"];
+    UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"btnregresar.png"] ofType:nil]]] ;
     
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [backButton setFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
@@ -67,9 +67,9 @@
     
     self.tablaConfiguracion.layer.cornerRadius = 5.0f;
 	if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-		[self.botonConfiguracion setBackgroundImage:[UIImage imageNamed:@"settingsEn.png"] forState:UIControlStateNormal];
+		[self.botonConfiguracion setBackgroundImage:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"settingsEn.png"] ofType:nil]]] forState:UIControlStateNormal];
 	}else{
-		[self.botonConfiguracion setBackgroundImage:[UIImage imageNamed:@"miconfiguracionon.png"] forState:UIControlStateNormal];
+		[self.botonConfiguracion setBackgroundImage:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"miconfiguracionon.png"] ofType:nil]]] forState:UIControlStateNormal];
 	}
     
    
@@ -138,7 +138,7 @@
         [cell.textLabel setTextColor:colorFuenteAzul];
         [cell.textLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:17]];
         if ([[self.arregloConfiguracion objectAtIndex:indexPath.section] count] != indexPath.row+1) {
-            UIImageView *imagenAccesory = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"btnsiguiente.png"]];
+            UIImageView *imagenAccesory = [[UIImageView alloc] initWithImage:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"btnsiguiente.png"] ofType:nil]]]];
             [cell setAccessoryView:imagenAccesory];
         }
         

@@ -15,7 +15,7 @@
   
 }
 
-@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UILabel *raya1;
 @property (weak, nonatomic) IBOutlet UILabel *o;
 @property (weak, nonatomic) IBOutlet UILabel *raya2;
@@ -27,11 +27,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *txtContrasenaConfirmar;
 @property (weak, nonatomic) IBOutlet UILabel *msjRegistrarConFacebook;
 @property (weak, nonatomic) IBOutlet UIImageView *imgLogoInfo;
-
 @property (weak, nonatomic) IBOutlet UILabel *ingresaLabel;
-
-
-
 @property (weak, nonatomic) IBOutlet UILabel *leyenda1;
 @property (weak, nonatomic) IBOutlet UIButton *leyenda2;
 @property (weak, nonatomic) IBOutlet UILabel *leyenda3;

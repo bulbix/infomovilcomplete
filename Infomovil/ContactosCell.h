@@ -18,7 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelTipo;
 @property (weak, nonatomic) IBOutlet UISwitch *switchActivo;
 @property (weak, nonatomic) IBOutlet UIView *vistaContenedora;
-@property (nonatomic, assign) id<ContactosCellDelegate> delegate;
+@property (weak, nonatomic) id<ContactosCellDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UIButton *btnTipo;
 @property (weak, nonatomic) IBOutlet UILabel *opacarContacto;
 

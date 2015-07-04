@@ -60,7 +60,7 @@
 	
     arregloTitulos = [[NSArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"tipoContacto" ofType:@"plist"]];
     
-    UIImage *image = [UIImage imageNamed:@"btnregresar.png"];
+    UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"btnregresar.png"] ofType:nil]]];
     
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [backButton setFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
@@ -264,7 +264,7 @@
         }
         
         NSDictionary *dictAux = [arregloTitulos objectAtIndex:self.opcionSeleccionada];
-        [self.imagenTipoContacto setImage:[UIImage imageNamed:[dictAux objectForKey:@"image"]]];
+        [self.imagenTipoContacto setImage: [UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"image.png"] ofType:nil]]]];
         [self.labelNumeroTelefonico setText:[dictAux objectForKey:@"mensaje"]];
         if (self.txtTelefono.text.length == 0) {
             [self.txtTelefono setPlaceholder:[dictAux objectForKey:@"ejemplo"]];
@@ -418,7 +418,7 @@
         }
         NSDictionary *dictAux = [arregloTitulos objectAtIndex:self.contactoSeleccionado.indice];
         [self.labelTipoContacto setText:[dictAux objectForKey:@"text"]];
-        [self.imagenTipoContacto setImage:[UIImage imageNamed:[dictAux objectForKey:@"image"]]];
+        [self.imagenTipoContacto setImage:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"image.png"] ofType:nil]]]];
         [self.labelNumeroTelefonico setText:[dictAux objectForKey:@"mensaje"]];
         if (self.txtTelefono.text.length == 0) {
             [self.txtTelefono setPlaceholder:[dictAux objectForKey:@"ejemplo"]];

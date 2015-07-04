@@ -15,7 +15,6 @@
 @property (nonatomic, strong) NSString *tituloPerfil;
 @property (weak, nonatomic) IBOutlet UIScrollView *vistaPerfil;
 @property (weak, nonatomic) IBOutlet UITextView *txtDescripcion;
-//@property (weak, nonatomic) IBOutlet UILabel *labelInfo;
 @property (weak, nonatomic) IBOutlet UILabel *labelComentario;
 @property (weak, nonatomic) IBOutlet UIScrollView *vistaHorarios;
 @property (weak, nonatomic) IBOutlet UITableView *tablaHorarios;
@@ -26,7 +25,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelInformacion;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *fixed;
 
-@property (strong, nonatomic) IBOutlet UIButton *btnEliminar2;
+@property (weak, nonatomic) IBOutlet UIButton *btnEliminar2;
 
 - (IBAction)seleccionarHorario:(UIBarButtonItem *)sender;
 - (IBAction)eliminarPerfil:(UIButton *)sender;

@@ -11,7 +11,7 @@
 
 @interface CambiarPasswordViewController : InfomovilViewController <AlertViewDelegate,WS_HandlerProtocol>
 
-@property (strong, nonatomic) IBOutlet UILabel *label;
+@property (weak, nonatomic) IBOutlet UILabel *label;
 @property (weak, nonatomic) IBOutlet UITextField *txtEmail;
 
 @end

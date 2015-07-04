@@ -15,10 +15,10 @@
 //@property (nonatomic) BOOL modifico;
 @property (nonatomic) BOOL seleccionoPais;
 
-@property (strong, nonatomic) IBOutlet UITableView *tabla;
+@property (weak, nonatomic) IBOutlet UITableView *tabla;
 
-@property (strong, nonatomic) IBOutlet UIButton *botonEmpresa;
-@property (strong, nonatomic) IBOutlet UIButton *botonIndividual;
+@property (weak, nonatomic) IBOutlet UIButton *botonEmpresa;
+@property (weak, nonatomic) IBOutlet UIButton *botonIndividual;
 
 - (IBAction)esEmpresa:(id)sender;
 - (IBAction)esIndividual:(id)sender;

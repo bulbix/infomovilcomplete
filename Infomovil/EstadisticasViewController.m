@@ -89,7 +89,7 @@
 	}else{
 		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"reportes", @" ") nombreImagen:@"NBlila.png"];
 	}
-    UIImage *image = [UIImage imageNamed:@"btnregresar.png"];
+    UIImage *image = defRegresar;
     self.navigationItem.hidesBackButton = YES;
     
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];

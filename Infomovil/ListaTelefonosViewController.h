@@ -28,7 +28,7 @@ typedef enum {
 - (IBAction)llamanosAct:(id)sender;
 - (IBAction)ContactanosAct:(id)sender;
 
-@property (strong, nonatomic) IBOutlet UILabel *label;
+@property (weak, nonatomic) IBOutlet UILabel *label;
 @property (weak, nonatomic) IBOutlet UIButton *btnInstrucciones;
 - (IBAction)muestraInstrucciones:(id)sender;
 

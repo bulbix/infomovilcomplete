@@ -82,7 +82,7 @@
 			}
             
             [self.botonSi setTitleColor:colorFuenteAzul forState:UIControlStateNormal];
-            [self.botonSi setBackgroundImage:[UIImage imageNamed:@"btnsino.png"] forState:UIControlStateNormal];
+            [self.botonSi setBackgroundImage:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"btnsino.png"] ofType:nil]]] forState:UIControlStateNormal];
             [self.botonSi.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:17]];
             [self.botonSi addTarget:self action:@selector(presionarSi:) forControlEvents:UIControlEventTouchUpInside];
             [self.vistaAlert addSubview:self.botonSi];
@@ -91,7 +91,7 @@
             [self.botonNo setFrame:CGRectMake(145, 150, 108, 41)];
             [self.botonNo setTitle:@"No" forState:UIControlStateNormal];
             [self.botonNo setTitleColor:colorFuenteAzul forState:UIControlStateNormal];
-            [self.botonNo setBackgroundImage:[UIImage imageNamed:@"btnsino"] forState:UIControlStateNormal];
+            [self.botonNo setBackgroundImage:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"btnsino.png"] ofType:nil]]] forState:UIControlStateNormal];
             [self.botonNo.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:17]];
             [self.botonNo addTarget:self action:@selector(presionarNo:) forControlEvents:UIControlEventTouchUpInside];
             [self.vistaAlert addSubview:self.botonNo];
@@ -99,9 +99,6 @@
                 //MBC
                 if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
                     [self.vistaAlert setFrame:CGRectMake(50, 150, 278, 182)];
-                /*}else if(IS_STANDARD_IPHONE_6_PLUS){
-                    [self.vistaAlert setFrame:CGRectMake(68, 150, 278, 182)];
-                */
                 }else if(IS_IPAD){
                     [self.vistaAlert setFrame:CGRectMake(245, 400, 278, 182)];
                 }else{
@@ -124,7 +121,7 @@
 			}
             
             [self.botonSi setTitleColor:colorFuenteAzul forState:UIControlStateNormal];
-            [self.botonSi setBackgroundImage:[UIImage imageNamed:@"btnsino.png"] forState:UIControlStateNormal];
+            [self.botonSi setBackgroundImage:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"btnsino.png"] ofType:nil]]] forState:UIControlStateNormal];
             [self.botonSi.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:17]];
             [self.botonSi addTarget:self action:@selector(presionarAceptar2:) forControlEvents:UIControlEventTouchUpInside];
             [self.vistaAlert addSubview:self.botonSi];
@@ -138,7 +135,7 @@
 			}
             
             [self.botonNo setTitleColor:colorFuenteAzul forState:UIControlStateNormal];
-            [self.botonNo setBackgroundImage:[UIImage imageNamed:@"btnsino"] forState:UIControlStateNormal];
+            [self.botonNo setBackgroundImage:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"btnsino.png"] ofType:nil]]] forState:UIControlStateNormal];
             [self.botonNo.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:17]];
             [self.botonNo addTarget:self action:@selector(presionarCancelar:) forControlEvents:UIControlEventTouchUpInside];
             [self.vistaAlert addSubview:self.botonNo];
@@ -146,9 +143,6 @@
                 //MBC
                 if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
                     [self.vistaAlert setFrame:CGRectMake(50, 150, 278, 182)];
-               /* }else if(IS_STANDARD_IPHONE_6_PLUS){
-                    [self.vistaAlert setFrame:CGRectMake(65, 150, 278, 182)];
-                */
                 }else if(IS_IPAD){
                     [self.vistaAlert setFrame:CGRectMake(245, 400, 278, 182)];
                 
@@ -164,18 +158,13 @@
         {
             if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
                 [self.vistaAlert setFrame:CGRectMake(50, 150, 278, 182)];
-            /*}else if(IS_STANDARD_IPHONE_6_PLUS){
-                [self.vistaAlert setFrame:CGRectMake(80, 150, 278, 182)];
-            */
+           
              }else if(IS_IPAD){
                 [self.vistaAlert setFrame:CGRectMake(245, 400, 278, 182)];
             }else{
                 [self.vistaAlert setFrame:CGRectMake(21, 150, 278, 182)];
             }
-            /*
-            self.activityIndicator = [[ETActivityIndicatorView alloc] initWithFrame:CGRectMake(109, 40, 60, 60) andColor:colorMorado];
-            [self.activityIndicator startAnimating];
-            */
+         
             UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
             activityIndicator.alpha = 1.0;
             activityIndicator.color = [UIColor colorWithRed:(89/255.0f) green:(89/255.0f) blue:(89/255.0f) alpha:1.0];
@@ -191,9 +180,7 @@
             //MBC
             if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
                 [self.vistaAlert setFrame:CGRectMake(50, 150, 278, 200)];
-            /*}else if(IS_STANDARD_IPHONE_6_PLUS){
-                [self.vistaAlert setFrame:CGRectMake(80, 150, 278, 200)];
-            */
+           
              }else if(IS_IPAD){
                 [self.vistaAlert setFrame:CGRectMake(245, 400, 278, 182)];
             }else{
@@ -216,7 +203,7 @@
             
             self.botonAceptar = [UIButton buttonWithType:UIButtonTypeCustom];
             [self.botonAceptar setFrame:CGRectMake(0, 146, 278, 54)];
-            [self.botonAceptar setBackgroundImage:[UIImage imageNamed:@"btnaceptarmensajes.png"] forState:UIControlStateNormal];
+            [self.botonAceptar setBackgroundImage:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"btnaceptarmensajes.png"] ofType:nil]]] forState:UIControlStateNormal];
             if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
 				[self.botonAceptar setTitle:@"Accept" forState:UIControlStateNormal];
 			}else{
@@ -230,21 +217,17 @@
                 //MBC
                 if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
                     [self.vistaAlert setFrame:CGRectMake(50, 150, 278, 200)];
-                /*}else if(IS_STANDARD_IPHONE_6_PLUS){
-                    [self.vistaAlert setFrame:CGRectMake(80, 150, 278, 200)];
-                */
+               
                  }else if(IS_IPAD){
                     [self.vistaAlert setFrame:CGRectMake(245, 400, 278, 182)];
                 }else{
                     [self.vistaAlert setFrame:CGRectMake(21, 150, 278, 182)];
                 }
                 self.labelDominio.hidden = YES;
-                //MBC
+            
                 if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
                     [self.botonAceptar setFrame:CGRectMake(0, 150, 278, 54)];
-                /*}else if(IS_STANDARD_IPHONE_6_PLUS){
-                    [self.botonAceptar setFrame:CGRectMake(0, 170, 278, 54)];
-                */
+               
                  }else if(IS_IPAD){
                     [self.vistaAlert setFrame:CGRectMake(245, 400, 278, 182)];
                 }else{
@@ -256,7 +239,7 @@
             else {
                 [self.labelTitulo setFont:[UIFont fontWithName:@"Avenir-Book" size:17]];
                 [self.labelTitulo setFrame:CGRectMake(10, 45, 258, 21)];
-                //[self.labelMensaje setFrame:CGRectMake(10, 70, 263, 40)];
+             
                 [self.labelDominio setFrame:CGRectMake(10, 110, 263, 21)];
             }
             break;
@@ -291,7 +274,7 @@
             
             self.botonAceptar = [UIButton buttonWithType:UIButtonTypeCustom];
             [self.botonAceptar setFrame:CGRectMake(0, 166, 278, 54)];
-            [self.botonAceptar setBackgroundImage:[UIImage imageNamed:@"btnaceptarmensajes.png"] forState:UIControlStateNormal];
+            [self.botonAceptar setBackgroundImage:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"btnaceptarmensajes.png"] ofType:nil]]] forState:UIControlStateNormal];
             if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
 				[self.botonAceptar setTitle:@"Accept" forState:UIControlStateNormal];
 			}else{
@@ -303,14 +286,10 @@
             
             break;
         case AlertViewInfoMapa:
-            //MBC
             if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
                 [self.vistaAlert setFrame:CGRectMake(50, 150, 278, 200)];
             }else if(IS_IPAD){
                 [self.vistaAlert setFrame:CGRectMake(245, 400, 278, 182)];
-            /*}else if(IS_STANDARD_IPHONE_6_PLUS){
-                [self.vistaAlert setFrame:CGRectMake(80, 150, 278, 200)];
-            */
              }else{
                 [self.vistaAlert setFrame:CGRectMake(21, 150, 278, 182)];
             }
@@ -331,13 +310,13 @@
             [self.labelMensaje2 setText:NSLocalizedString(@"txtInfoMapa2", Nil)];
             [self.vistaAlert addSubview:self.labelMensaje2];
             
-            self.imagenLogo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"milocalizar.png"]];
+            self.imagenLogo = [[UIImageView alloc] initWithImage:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"milocalizar.png"] ofType:nil]]]];
             [self.imagenLogo setFrame:CGRectMake(100, 45, 78, 52)];
             [self.vistaAlert addSubview:self.imagenLogo];
             
             self.botonAceptar = [UIButton buttonWithType:UIButtonTypeCustom];
             [self.botonAceptar setFrame:CGRectMake(0, 140, 278, 54)];
-            [self.botonAceptar setBackgroundImage:[UIImage imageNamed:@"btnaceptarmensajes.png"] forState:UIControlStateNormal];
+            [self.botonAceptar setBackgroundImage:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"btnaceptarmensajes.png"] ofType:nil]]] forState:UIControlStateNormal];
             if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
 				[self.botonAceptar setTitle:@"Accept" forState:UIControlStateNormal];
 			}else{
@@ -358,7 +337,7 @@
             
             self.botonAceptar = [UIButton buttonWithType:UIButtonTypeCustom];
             [self.botonAceptar setFrame:CGRectMake(0, 146, 278, 54)];
-            [self.botonAceptar setBackgroundImage:[UIImage imageNamed:@"btnaceptarmensajes.png"] forState:UIControlStateNormal];
+            [self.botonAceptar setBackgroundImage:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"btnaceptarmensajes.png"] ofType:nil]]] forState:UIControlStateNormal];
             if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
                 [self.botonAceptar setTitle:@"Accept" forState:UIControlStateNormal];
             }else{
@@ -412,19 +391,15 @@
 }
 
 -(void) hide {
-    //[UIView animateWithDuration:0.3f animations:^{
+  
         [self setAlpha:0];
-    //} completion:^(BOOL finished) {
-	//	NSLog(@"Super vista %@",self.superview);
+   
         [self removeFromSuperview];
-    //}];
+   
 }
 
 -(IBAction)presionarSi:(id)sender {
-//    if ([self.delegado respondsToSelector:@selector(accionSi)]) {
-//        [self.delegado accionSi];
-//		
-//    }
+
 	[self performSelectorInBackground:@selector(ejecutaSelector) withObject:NULL];
 	[self hide];
     
@@ -465,14 +440,5 @@
 	
 }
 
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 @end

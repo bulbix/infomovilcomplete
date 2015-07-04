@@ -93,7 +93,7 @@
                                                object:nil];
 	
 	self.navigationItem.hidesBackButton = YES;
-    UIImage *image = [UIImage imageNamed:@"btnregresar.png"];
+    UIImage *image = defRegresar;
     
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [backButton setFrame:CGRectMake(0, 0, image.size.width, image.size.height)];

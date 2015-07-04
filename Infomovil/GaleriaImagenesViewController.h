@@ -23,9 +23,9 @@ typedef enum {
 @property (weak, nonatomic) IBOutlet UILabel *labelNumeroImagenes;
 @property (weak, nonatomic) IBOutlet UILabel *labelImagenesMensaje;
 @property (weak, nonatomic) IBOutlet UILabel *labelImagenesMensaje2;
-@property (strong, nonatomic) IBOutlet UILabel *vineta1;
-@property (strong, nonatomic) IBOutlet UILabel *vineta2;
-@property (strong, nonatomic) IBOutlet UILabel *vineta3;
+@property (weak, nonatomic) IBOutlet UILabel *vineta1;
+@property (weak, nonatomic) IBOutlet UILabel *vineta2;
+@property (weak, nonatomic) IBOutlet UILabel *vineta3;
 
 @property (nonatomic, strong) NSString *urlImagen;
 

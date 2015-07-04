@@ -27,7 +27,7 @@
     if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
         [self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"vistaPreviaPlanPro", @" ") nombreImagen:@"barramorada.png"];
     }
-    UIImage *image = [UIImage imageNamed:@"btnregresar.png"];
+    UIImage *image = defRegresar;
     
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [backButton setFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
@@ -44,12 +44,7 @@
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:htmlStringToLoad]]];
     [self.view addSubview:self.webView];
     [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
-    
-    
-   /* if(IS_STANDARD_IPHONE_6_PLUS){
-        [self.webView setFrame:CGRectMake(0, 0, 415, 680)];
-    }else 
-    */
+  
     if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         [self.webView setFrame:CGRectMake(0, 0, 375, 620)];
     }else if(IS_IPAD){

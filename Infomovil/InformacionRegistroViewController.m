@@ -165,7 +165,7 @@
 					   NSLocalizedString(@"cpCheck", @" "),
 					   NSLocalizedString(@"paisCheck", @" "),nil];
 	
-	[self.vistaCircular setImage:[UIImage imageNamed:@"plecamorada.png"]];
+	[self.vistaCircular setImage:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"plecamorada.png"] ofType:nil]]]];
 
     arregloEmpresa = @[NSLocalizedString(@"nombreOrganizacion", @" "),
 					   NSLocalizedString(@"servicioCliente", @" "),
@@ -229,7 +229,7 @@
 	
 	
     paisText = self.datosUsuario.pais;
-    UIImage *image = [UIImage imageNamed:@"btnregresar.png"];
+    UIImage *image = defRegresar;
     
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [backButton setFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
@@ -238,9 +238,6 @@
     
     UIBarButtonItem *buttonBack = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     self.navigationItem.leftBarButtonItem = buttonBack;
-    
-//    [self.vistaCircular setImage:[UIImage imageNamed:@"plecamorada.png"]];
-//    [self.tituloVista setText:NSLocalizedString(@"infoDeRegistro", @" ")];
 	if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
 		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"infoDeRegistro", @" ") nombreImagen:@"barramorada.png"];
 	}else{
@@ -249,9 +246,9 @@
     
     self.tabla.layer.cornerRadius = 5.0f;
 	if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-		[self.botonConfiguracion setBackgroundImage:[UIImage imageNamed:@"settingsEn.png"] forState:UIControlStateNormal];
+		[self.botonConfiguracion setBackgroundImage:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"settingsEn.png"] ofType:nil]]] forState:UIControlStateNormal];
 	}else{
-		[self.botonConfiguracion setBackgroundImage:[UIImage imageNamed:@"miconfiguracionon.png"] forState:UIControlStateNormal];
+		[self.botonConfiguracion setBackgroundImage:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"miconfiguracionon.png"] ofType:nil]]] forState:UIControlStateNormal];
 	}
     
     if(IS_IPAD){
@@ -526,7 +523,7 @@
 			[cell.textLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
 			
 			//textField.placeholder = [[self.arregloConfiguracion objectAtIndex:indexPath.section] objectAtIndex:indexPath.row+2];
-			UIImageView *imagenAccesory = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"btnsiguiente.png"]];
+			UIImageView *imagenAccesory = [[UIImageView alloc] initWithImage:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"btnsiguiente.png"] ofType:nil]]]];
 			[cell setAccessoryView:imagenAccesory];
 			if(bPais){
 				[cell.textLabel setText:[[self.arregloConfiguracion objectAtIndex:indexPath.section] objectAtIndex:indexPath.row+2]];

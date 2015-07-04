@@ -63,12 +63,19 @@ typedef enum {
 #define colorFuenteAzul [UIColor colorWithRed:(60/255.0f) green:(74/255.0f) blue:(151/255.0f) alpha:1.0]
 #define colorFuenteVerde [UIColor colorWithRed:(47/255.0f) green:(163/255.0f) blue:(153/255.0f) alpha:1.0]
 
+#define defPrevisualizador [UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"previsualizador.png"] ofType:nil]]]
+#define defAceptar [UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"btnaceptar.png"] ofType:nil]]]
+#define defRegresar [UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"btnregresar.png"] ofType:nil]]]
+#define defRegistrado [UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"logoRegistrado.png"] ofType:nil]]]
+#define defAgregar [UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"btnagregar.png"] ofType:nil]]]
+
+
 /* desarrollo */
-//#define rutaWS @"http://172.17.4.214:8080"
+#define rutaWS @"http://172.17.4.214:8080"
 //#define rutaWS @"http://172.17.3.181:9090"
 /* productivo */
 #define dominioTipo @"recurso"
-#define rutaWS @"http://infomovil.com"
+//#define rutaWS @"http://infomovil.com"
 /* test */
 //#define rutaWS @"http://qa.mobileinfo.io"
 
@@ -77,9 +84,9 @@ typedef enum {
 // PRE-PRODUCCION
 //#define llaveAppboy @"ce1afa14-800b-4b45-8e8b-3a7696c3ef26"
 // PRODUCCION
-#define llaveAppboy @"90ff8582-5bf7-450b-ace5-d2191d0b9fe6"
+//#define llaveAppboy @"90ff8582-5bf7-450b-ace5-d2191d0b9fe6"
 // ios_app_qa
-//#define llaveAppboy @"96559b65-0520-4c33-84b1-94dab248653e"
+#define llaveAppboy @"96559b65-0520-4c33-84b1-94dab248653e"
 
 #define versionDefault @"3.0.5"
 

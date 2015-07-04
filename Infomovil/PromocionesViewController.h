@@ -15,7 +15,6 @@
 
 @interface PromocionesViewController : InfomovilViewController <UITextFieldDelegate, UITextViewDelegate, UIScrollViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate ,UITableViewDataSource, UITableViewDelegate, AlertViewDelegate, WS_HandlerProtocol, /*PECropViewControllerDelegate,*/GaleriaPaso2Delegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollPromocion;
-
 @property (weak, nonatomic) IBOutlet UITextField *txtTituloPromocion;
 @property (weak, nonatomic) IBOutlet UITextView *textDescripcion;
 @property (weak, nonatomic) IBOutlet UITextView *textInformacion;
@@ -29,7 +28,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelVigenciaAl;
 @property (weak, nonatomic) IBOutlet UILabel *labelInformacionAdicional;
 @property (weak, nonatomic) IBOutlet UIButton *btnBorrar;
-
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *fixed;
 
 - (IBAction)mostrarFecha:(id)sender;

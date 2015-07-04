@@ -24,12 +24,12 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnBuscar;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollNombrar;
 @property (nonatomic, strong) AlertView *alertActivity;
-@property (nonatomic, nonatomic) int operacionWS;
+@property (nonatomic, assign) int operacionWS;
 
 @property (nonatomic, strong) NSMutableArray *arregloDominios;
 
 // POPUP //
-@property (strong, nonatomic) IBOutlet UIView *viewPopUp;
+@property (weak, nonatomic) IBOutlet UIView *viewPopUp;
 @property (weak, nonatomic) IBOutlet UIView *viewCenterPopUp;
 @property (weak, nonatomic) IBOutlet UILabel *dominioPopUp;
 @property (weak, nonatomic) IBOutlet UILabel *msjPopUp;
@@ -37,6 +37,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *cerrarPopUp;
 - (IBAction)comprarPopUpAct:(id)sender;
 - (IBAction)cerrarPupUpAct:(id)sender;
+
 
 
 

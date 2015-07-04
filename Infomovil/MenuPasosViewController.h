@@ -15,8 +15,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *botonCrear;
 @property (weak, nonatomic) IBOutlet UIButton *botonPublicar;
 
-@property (strong, nonatomic) IBOutlet UIButton *botonEjemplo;
-@property (strong, nonatomic) IBOutlet UIButton *botonEjemplo2;
+@property (weak, nonatomic) IBOutlet UIButton *botonEjemplo;
+@property (weak, nonatomic) IBOutlet UIButton *botonEjemplo2;
 @property (weak, nonatomic) IBOutlet UIButton *inicioRapidobtn;
 @property (weak, nonatomic) IBOutlet UIButton *dominio;
 
@@ -25,7 +25,7 @@
 - (IBAction)verTutorialAct:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UIView *viewDominioNoPublicado;
-@property (strong, nonatomic) IBOutlet UIView *viewDominioPublicado;
+@property (weak, nonatomic) IBOutlet UIView *viewDominioPublicado;
 @property (weak, nonatomic) IBOutlet UIImageView *line1;
 @property (weak, nonatomic) IBOutlet UIImageView *line2;
 @property (weak, nonatomic) IBOutlet UIImageView *line3;

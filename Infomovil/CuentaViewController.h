@@ -19,15 +19,14 @@
 @interface CuentaViewController : InfomovilViewController <AlertViewDelegate, WS_HandlerProtocol, UIScrollViewDelegate, UITextFieldDelegate>{
     NSArray *validProducts;
     TablaDominioViewController *tablaDominio;
-   
-    __weak IBOutlet UITableView *tablaSitios;
-    
 }
 
+
+@property (weak, nonatomic) IBOutlet UITableView *tablaSitios;
 @property (nonatomic) BOOL regresarAnterior;
-@property (strong, nonatomic) IBOutlet UISegmentedControl *selector;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *selector;
 // IRC Etiquitas: titulo, subtitulo, beneficios de la pantalla cuenta //
-@property (strong, nonatomic) IBOutlet UILabel *tituloPlanPro;
+@property (weak, nonatomic) IBOutlet UILabel *tituloPlanPro;
 @property (weak, nonatomic) IBOutlet UILabel *subtituloPlanPro;
 @property (weak, nonatomic) IBOutlet UILabel *beneficiosPlanPro;
 @property (weak, nonatomic) IBOutlet UIImageView *imgBeneficios;
@@ -67,12 +66,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *tituloCodigoRedimido;
 @property (weak, nonatomic) IBOutlet UIButton *btnAceptar;
 @property (weak, nonatomic) IBOutlet UIView *viewFelicidadesRedimir;
-@property (strong, nonatomic) IBOutlet UIView *viewContenidoRedimir;
+@property (weak, nonatomic) IBOutlet UIView *viewContenidoRedimir;
 - (IBAction)aceptarAct:(id)sender;
 
 
 ///////////////////////
-@property (strong, nonatomic) IBOutlet UIScrollView *scrollContenido;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollContenido;
 @property (weak, nonatomic) IBOutlet UILabel *labelMisSitios;
 
 
@@ -80,7 +79,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *ComprarDominio;
 - (IBAction)comprarDominioBtn:(id)sender;
 
-@property (strong, nonatomic) IBOutlet UIView *viewEnviarCodigo;
+@property (weak, nonatomic) IBOutlet UIView *viewEnviarCodigo;
 @property (weak, nonatomic) IBOutlet UILabel *labelPromocion;
 @property (weak, nonatomic) IBOutlet UITextField *txtPromocion;
 @property (weak, nonatomic) IBOutlet UIButton *Enviar;

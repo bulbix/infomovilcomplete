@@ -82,7 +82,7 @@
     [self.navigationController.navigationBar setTitleTextAttributes:atributos];
   
     // BOTON DE REGRESAR //
-    UIImage *image = [UIImage imageNamed:@"btnregresar.png"];
+    UIImage *image = defRegresar;
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [backButton setFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
     [backButton setImage:image forState:UIControlStateNormal];
@@ -98,10 +98,6 @@
 
     self.vistaInferior.hidden=YES;
     
-   /* if(IS_STANDARD_IPHONE_6_PLUS){
-        [self.webView setFrame:CGRectMake(0, 0, 414, 736)];
-    }else
-    */
     if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         [self.webView setFrame:CGRectMake(0, 0, 375, 667)];
     }else if(IS_IPAD){

@@ -109,27 +109,27 @@
     }
     
         
-    [self.botonEstadisticas setBackgroundImage:[UIImage imageNamed:@"mireportes.png"] forState:UIControlStateNormal];
+    [self.botonEstadisticas setBackgroundImage:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"mireportes.png"] ofType:nil]]] forState:UIControlStateNormal];
     [self.botonEstadisticas addTarget:self action:@selector(mostrarEstadisticas:) forControlEvents:UIControlEventTouchUpInside];
     [vistaInferior addSubview:self.botonEstadisticas];
     
     
-    [self.botonNotificaciones setBackgroundImage:[UIImage imageNamed:@"micompartir.png"] forState:UIControlStateNormal];
+    [self.botonNotificaciones setBackgroundImage:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"micompartir.png"] ofType:nil]]] forState:UIControlStateNormal];
     [self.botonNotificaciones addTarget:self action:@selector(compartir:) forControlEvents:UIControlEventTouchUpInside];
     [vistaInferior addSubview:self.botonNotificaciones];
     
     
-    [self.botonCuenta setBackgroundImage:[UIImage imageNamed:@"micuenta.png"] forState:UIControlStateNormal];
+    [self.botonCuenta setBackgroundImage:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"micuenta.png"] ofType:nil]]] forState:UIControlStateNormal];
     [self.botonCuenta addTarget:self action:@selector(comprarCuenta:) forControlEvents:UIControlEventTouchUpInside];
     [vistaInferior addSubview:self.botonCuenta];
     
     
-    [self.botonConfiguracion setBackgroundImage:[UIImage imageNamed:@"miconfiguracion.png"] forState:UIControlStateNormal];
+    [self.botonConfiguracion setBackgroundImage:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"miconfiguracion.png"] ofType:nil]]] forState:UIControlStateNormal];
     [self.botonConfiguracion addTarget:self action:@selector(configurar:) forControlEvents:UIControlEventTouchUpInside];
     [vistaInferior addSubview:self.botonConfiguracion];
     
     
-    [self.botonFeeds setBackgroundImage:[UIImage imageNamed:@"miFeed.png"] forState:UIControlStateNormal];
+    [self.botonFeeds setBackgroundImage:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"miFeed.png"] ofType:nil]]] forState:UIControlStateNormal];
     [self.botonFeeds addTarget:self action:@selector(mostrarFeed:) forControlEvents:UIControlEventTouchUpInside];
     [vistaInferior addSubview:self.botonFeeds];
     
@@ -210,7 +210,7 @@
     [labelHola setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
     [labelHola setTextColor:[UIColor whiteColor]];
     [labelHola setTextAlignment:NSTextAlignmentCenter];
-    [vistaCircular setImage:[UIImage imageNamed:@"plecasesion.png"]];
+    [vistaCircular setImage:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"plecasesion.png"] ofType:nil]]]];
     [self.tituloVista setFrame:CGRectMake(50, 30, 220, 21)];
     [self.view addSubview:labelHola];
 }
@@ -219,7 +219,7 @@
 - (void)setBotonRegresar
 {
     self.navigationItem.hidesBackButton = YES;
-    UIImage *image						= [UIImage imageNamed:@"btnregresar.png"];
+    UIImage *image						= defRegresar;
     UIButton *backButton				= [UIButton buttonWithType:UIButtonTypeCustom];
     
     [backButton setFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
@@ -248,7 +248,7 @@
 -(IBAction)mostrarFeed:(id)sender {
     ABKFeedViewControllerNavigationContext *feedNavigationContext = [[ABKFeedViewControllerNavigationContext alloc] init];
    
-    UIImage *image = [UIImage imageNamed:@"btnregresar.png"];
+    UIImage *image = defRegresar;
     
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [backButton setFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
@@ -292,7 +292,7 @@
     }else{
          [self.vistaCircular setFrame:CGRectMake(27, 58, 267, 49)];
     }
-    [self.vistaCircular setImage:[UIImage imageNamed:@"logoRegistrado.png"]];
+    [self.vistaCircular setImage:defRegistrado];
    
 }
 
@@ -300,30 +300,26 @@
     [self.navigationController.navigationBar setTintColor:[UIColor redColor]];
     
     [self.vistaCircular setFrame:CGRectMake(27, 52, 267, 49)];
-    [self.vistaCircular setImage:[UIImage imageNamed:@"logoRegistrado.png"]];
+    [self.vistaCircular setImage:defRegistrado];
 }
 
 -(void) mostrarLogoBarraNavegacion {
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"barramorada.png"] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"barramorada.png"] ofType:nil]]] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
     [self.navigationItem setTitle:@"Ingresa a tu cuenta"];
     UIFont *fuente = [UIFont fontWithName:@"Avenir-Book" size:19];
-    
     UIColor *colorTexto = [UIColor whiteColor];
     UIColor *colorSombra = [UIColor whiteColor];
-    
     NSDictionary *atributos = @{
                                 NSFontAttributeName: fuente,
                                 NSForegroundColorAttributeName: colorTexto,
                                 NSShadowAttributeName: colorSombra,
                                 };
-    
     [self.navigationController.navigationBar setTitleTextAttributes:atributos];
-    
     [self.vistaCircular removeFromSuperview];
 }
 
 -(void) mostrarLogoBarraNavegacion6 {
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"NBlila.png"] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"NBlila.png"] ofType:nil]]] forBarMetrics:UIBarMetricsDefault];
     
     [self.navigationItem setTitle:@"Ingresa a tu cuenta"];
     UIFont *fuente = [UIFont fontWithName:@"Avenir-Book" size:19];

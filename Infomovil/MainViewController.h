@@ -16,8 +16,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *txtEmail;
 @property (weak, nonatomic) IBOutlet UITextField *txtPassword;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollLogin;
-@property (strong, nonatomic) IBOutlet UILabel *label;
-@property (strong, nonatomic) IBOutlet UIButton *boton;
+@property (weak, nonatomic) IBOutlet UILabel *label;
+@property (weak, nonatomic) IBOutlet UIButton *boton;
 
 @property (weak, nonatomic) IBOutlet UILabel *raya1;
 @property (weak, nonatomic) IBOutlet UILabel *o;

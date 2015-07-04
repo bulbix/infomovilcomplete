@@ -318,7 +318,7 @@
     NSArray *arregloTitulos = @[NSLocalizedStringFromTable(@"nombreEmpresa", @"Spanish",@" "), NSLocalizedStringFromTable(@"logo",@"Spanish", @" "), NSLocalizedStringFromTable(@"descripcionCorta", @"Spanish",@" "), NSLocalizedStringFromTable(@"contacto", @"Spanish",@" "), NSLocalizedStringFromTable(@"mapa",@"Spanish", @" "),
         NSLocalizedStringFromTable(@"video", @"Spanish",@" "),
         NSLocalizedStringFromTable(@"promociones", @"Spanish",@" "), NSLocalizedStringFromTable(@"galeriaImagenes",@"Spanish", @" "), NSLocalizedStringFromTable(@"perfil",@"Spanish", @" "), NSLocalizedStringFromTable(@"direccion", @"Spanish",@" "),  NSLocalizedStringFromTable(@"informacionAdicional", @"Spanish",@" ")];
-    DatosUsuario *datosUsuario = self.datosUsuario;//[DatosUsuario sharedInstance];
+    DatosUsuario *datosUsuario = self.datosUsuario;
     
     NSArray *arregloIdioma = @[NSLocalizedString(@"nombreEmpresa", @" "),
         NSLocalizedString(@"logo", @" "),

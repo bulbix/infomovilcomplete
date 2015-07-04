@@ -51,7 +51,7 @@
                                                                 pathForResource:@"CallingCodes"
                                                                 ofType:@"plist"]];
 	
-	[self.botonConfiguracion setBackgroundImage:[UIImage imageNamed:@"miconfiguracionon.png"] forState:UIControlStateNormal];
+	[self.botonConfiguracion setBackgroundImage:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"miconfiguracionon.png"] ofType:nil]]] forState:UIControlStateNormal];
     
     if(IS_IPAD){
         [self.botonConfiguracion setFrame:CGRectMake(264, 10, 88, 80)];

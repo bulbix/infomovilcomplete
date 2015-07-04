@@ -93,7 +93,7 @@
     
     self.tablaEditar.layer.cornerRadius = 5;
     
-    UIImage *imagenBoton = [UIImage imageNamed:@"btnprevisualizar.png"];
+    UIImage *imagenBoton =[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"btnprevisualizar.png"] ofType:nil]]];
     UIButton *botonPrevisualizar = [UIButton buttonWithType:UIButtonTypeCustom];
     [botonPrevisualizar setFrame:CGRectMake(0, 0, imagenBoton.size.width, imagenBoton.size.height)];
     [botonPrevisualizar setImage:imagenBoton forState:UIControlStateNormal];
@@ -108,7 +108,7 @@
 			editados++;
 		}
 	}
-    UIImage *image = [UIImage imageNamed:@"btnregresar.png"];
+    UIImage *image =[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"btnregresar.png"] ofType:nil]]];
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [backButton setFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
     [backButton setImage:image forState:UIControlStateNormal];

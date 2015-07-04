@@ -19,27 +19,27 @@
 @property (weak, nonatomic) IBOutlet UIView *vistaTip3;
 @property (weak, nonatomic) IBOutlet UIView *vistaTip4;
 
-@property (strong, nonatomic) IBOutlet UILabel *seccionUnoTItulo;
-@property (strong, nonatomic) IBOutlet UILabel *seccionUnoLabel1;
-@property (strong, nonatomic) IBOutlet UILabel *seccionUnoLabel2;
-@property (strong, nonatomic) IBOutlet UILabel *seccionUnoLabel3;
-@property (strong, nonatomic) IBOutlet UILabel *seccionUnoLabel4;
+@property (weak, nonatomic) IBOutlet UILabel *seccionUnoTItulo;
+@property (weak, nonatomic) IBOutlet UILabel *seccionUnoLabel1;
+@property (weak, nonatomic) IBOutlet UILabel *seccionUnoLabel2;
+@property (weak, nonatomic) IBOutlet UILabel *seccionUnoLabel3;
+@property (weak, nonatomic) IBOutlet UILabel *seccionUnoLabel4;
 
-@property (strong, nonatomic) IBOutlet UILabel *seccionDosTitulo;
-@property (strong, nonatomic) IBOutlet UILabel *seccionDosLabel1;
-@property (strong, nonatomic) IBOutlet UILabel *seccionDosLabel2;
-@property (strong, nonatomic) IBOutlet UILabel *seccionDosLabel3;
-@property (strong, nonatomic) IBOutlet UILabel *seccionDosLabel4;
+@property (weak, nonatomic) IBOutlet UILabel *seccionDosTitulo;
+@property (weak, nonatomic) IBOutlet UILabel *seccionDosLabel1;
+@property (weak, nonatomic) IBOutlet UILabel *seccionDosLabel2;
+@property (weak, nonatomic) IBOutlet UILabel *seccionDosLabel3;
+@property (weak, nonatomic) IBOutlet UILabel *seccionDosLabel4;
 
-@property (strong, nonatomic) IBOutlet UILabel *seccionTresTitulo;
-@property (strong, nonatomic) IBOutlet UILabel *seccionTresLabel1;
-@property (strong, nonatomic) IBOutlet UILabel *seccionTresLabel2;
-@property (strong, nonatomic) IBOutlet UILabel *seccionTresLabel3;
+@property (weak, nonatomic) IBOutlet UILabel *seccionTresTitulo;
+@property (weak, nonatomic) IBOutlet UILabel *seccionTresLabel1;
+@property (weak, nonatomic) IBOutlet UILabel *seccionTresLabel2;
+@property (weak, nonatomic) IBOutlet UILabel *seccionTresLabel3;
 
-@property (strong, nonatomic) IBOutlet UILabel *seccionCuatroTitulo;
-@property (strong, nonatomic) IBOutlet UILabel *seccionCuatroLabel1;
+@property (weak, nonatomic) IBOutlet UILabel *seccionCuatroTitulo;
+@property (weak, nonatomic) IBOutlet UILabel *seccionCuatroLabel1;
 
-@property (strong, nonatomic) IBOutlet UILabel *vineta32;
+@property (weak, nonatomic) IBOutlet UILabel *vineta32;
 
 @property (nonatomic, retain) UIAlertView *dialogoFacebook;
 @property (nonatomic, retain) UIAlertView *dialogoTwitter;

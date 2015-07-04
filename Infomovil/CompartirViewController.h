@@ -13,20 +13,20 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelNombreDominio;
 @property (weak, nonatomic) IBOutlet UIView *vistaContenidoCompartir;
 
-@property (strong, nonatomic) IBOutlet UILabel *label1;
-@property (strong, nonatomic) IBOutlet UILabel *label2;
+@property (weak, nonatomic) IBOutlet UILabel *label1;
+@property (weak, nonatomic) IBOutlet UILabel *label2;
 
 @property BOOL flujoregistro;
 
-@property (retain, nonatomic) IBOutlet GPPSignInButton *signInButton;
+@property (weak, nonatomic) IBOutlet GPPSignInButton *signInButton;
 
 //MBC
-@property (retain, nonatomic) IBOutlet UIButton *btnFacebook;
-@property (retain, nonatomic) IBOutlet UIButton *btnGooglePlus;
-@property (retain, nonatomic) IBOutlet UIButton *btnTwitter;
-@property (retain, nonatomic) IBOutlet UIButton *btnMail;
-@property (retain, nonatomic) IBOutlet UIButton *btnSMS;
-@property (retain, nonatomic) IBOutlet UIButton *btnWhat;
+@property (weak, nonatomic) IBOutlet UIButton *btnFacebook;
+@property (weak, nonatomic) IBOutlet UIButton *btnGooglePlus;
+@property (weak, nonatomic) IBOutlet UIButton *btnTwitter;
+@property (weak, nonatomic) IBOutlet UIButton *btnMail;
+@property (weak, nonatomic) IBOutlet UIButton *btnSMS;
+@property (weak, nonatomic) IBOutlet UIButton *btnWhat;
 
 
 - (IBAction)compartirFacebook:(UIButton *)sender;

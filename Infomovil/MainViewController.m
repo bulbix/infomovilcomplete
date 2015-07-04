@@ -79,10 +79,10 @@
         self.label.frame = CGRectMake(30,360 ,165, 31);
         self.btnOlvidePass.frame = CGRectMake(190, 364, 170, 31);
         [self.txtPassword setBackgroundColor:[UIColor clearColor]];
-        [self.txtPassword setBackground:[UIImage imageNamed:@"input_semitrans@1x" ]];
+        [self.txtPassword setBackground:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"input_semitrans@1x.png"] ofType:nil]]]];
         self.txtPassword.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"contrasena", nil) attributes:@{NSForegroundColorAttributeName: color}];
         [self.txtPassword setFont: [UIFont fontWithName:@"Avenir-Book" size:16]];
-        [self.txtEmail setBackground:[UIImage imageNamed:@"input_semitrans@1x" ]];
+        [self.txtEmail setBackground:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"input_semitrans@1x.png"] ofType:nil]]]];
         [self.txtEmail setBackgroundColor:[UIColor clearColor]];
         self.txtEmail.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"mainLabelCorreo", nil) attributes:@{NSForegroundColorAttributeName: color}];
          [self.txtEmail setFont: [UIFont fontWithName:@"Avenir-Book" size:16]];
@@ -101,7 +101,7 @@
         self.scrollLogin.frame = CGRectMake(0, 0, 768, 1024);
         [self.scrollLogin setContentSize:CGSizeMake(768, 500)];
         self.txtEmail.frame = CGRectMake(190,430, 385, 61);
-        [self.txtEmail setBackground:[UIImage imageNamed:@"input_semitrans@1x" ]];
+        [self.txtEmail setBackground:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"input_semitrans@1x.png"] ofType:nil]]]];
         [self.txtEmail setBackgroundColor:[UIColor clearColor]];
         self.txtEmail.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"mainLabelCorreo", nil) attributes:@{NSForegroundColorAttributeName: color}];
         [self.txtEmail setFont: [UIFont fontWithName:@"Avenir-Book" size:18]];
@@ -112,7 +112,7 @@
         [self.scrollLogin addSubview:myImageView];
         self.txtPassword.frame = CGRectMake(190, 500, 385, 61);
         [self.txtPassword setBackgroundColor:[UIColor clearColor]];
-        [self.txtPassword setBackground:[UIImage imageNamed:@"input_semitrans@1x" ]];
+        [self.txtPassword setBackground:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"input_semitrans@1x.png"] ofType:nil]]]];
         self.txtPassword.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"contrasena", nil) attributes:@{NSForegroundColorAttributeName: color}];
         [self.txtPassword setFont: [UIFont fontWithName:@"Avenir-Book" size:18]];
         self.label.frame = CGRectMake(190,568 ,200, 31);
@@ -155,9 +155,9 @@
          loginView.frame = CGRectMake(20, 80, 280, 50);
         UIColor *color = [UIColor whiteColor];
         [self.txtPassword setBackgroundColor:[UIColor clearColor]];
-        [self.txtPassword setBackground:[UIImage imageNamed:@"input_semitrans@1x" ]];
+        [self.txtPassword setBackground:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"input_semitrans@1x.png"] ofType:nil]]]];
         self.txtPassword.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"contrasena", nil) attributes:@{NSForegroundColorAttributeName: color}];
-        [self.txtEmail setBackground:[UIImage imageNamed:@"input_semitrans@1x" ]];
+        [self.txtEmail setBackground:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"input_semitrans@1x.png"] ofType:nil]]]];
         [self.txtEmail setBackgroundColor:[UIColor clearColor]];
         self.txtEmail.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"mainLabelCorreo", nil) attributes:@{NSForegroundColorAttributeName: color}];
         [self.btnRegistrate setFrame:CGRectMake(30, 390, 280, 30)];
@@ -175,9 +175,9 @@
         self.txtEmail.frame = CGRectMake(16,211, 288, 55);
         self.txtPassword.frame = CGRectMake(16, 266, 288, 55);
         [self.txtPassword setBackgroundColor:[UIColor clearColor]];
-        [self.txtPassword setBackground:[UIImage imageNamed:@"input_semitrans@1x" ]];
+        [self.txtPassword setBackground:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"input_semitrans@1x.png"] ofType:nil]]]];
         self.txtPassword.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"contrasena", nil) attributes:@{NSForegroundColorAttributeName: color}];
-        [self.txtEmail setBackground:[UIImage imageNamed:@"input_semitrans@1x" ]];
+        [self.txtEmail setBackground:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"input_semitrans@1x.png"] ofType:nil]]]];
         [self.txtEmail setBackgroundColor:[UIColor clearColor]];
         self.txtEmail.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"mainLabelCorreo", nil) attributes:@{NSForegroundColorAttributeName: color}];
         if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){

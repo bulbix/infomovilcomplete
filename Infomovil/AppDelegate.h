@@ -13,7 +13,6 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, strong) UINavigationController *navigationController;
-
 @property (nonatomic, strong) DatosUsuario *datosUsuario;
 
 

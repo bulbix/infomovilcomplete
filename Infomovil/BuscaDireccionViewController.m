@@ -29,16 +29,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    [self.tituloVista setText:NSLocalizedString(@"buscar", @" ")];
-//    [self.vistaCircular setImage:[UIImage imageNamed:@"plecaverde.png"]];
-//    [self.vistaCircular setImage:[UIImage imageNamed:@"plecacreasitio.png"]];
-    
-    //MBC
+
     if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         [self.cajaBusqueda setFrame:CGRectMake(50, 83, 280, 30)];
-    /*}else if(IS_STANDARD_IPHONE_6_PLUS){
-        [self.cajaBusqueda setFrame:CGRectMake(70, 83, 280, 30)];
-    */
      }else if(IS_IPAD){
         [self.labelBuscaDireccion setFrame: CGRectMake(84, 20, 600, 30 )];
         [self.cajaBusqueda setFrame:CGRectMake(84, 60, 600, 30)];
@@ -56,11 +49,8 @@
     
     
     [self.labelBuscaDireccion setText:NSLocalizedString(@"buscaDireccion", Nil)];
-    
     cajaBusqueda.layer.cornerRadius = 5;
-    
     self.navigationItem.rightBarButtonItem = nil;
-    
     geocoder = [[CLGeocoder alloc] init];
 }
 
@@ -74,6 +64,12 @@
 	[super viewWillAppear:YES];
     [self.vistaInferior setHidden:YES];
 }
+
+-(void)viewDidAppear:(BOOL)animated{
+    [self.cajaBusqueda becomeFirstResponder];
+
+}
+
 
 - (void)didReceiveMemoryWarning
 {

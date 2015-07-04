@@ -39,16 +39,11 @@ BOOL actualizo;
    
     [self setupScrollView];
     UIPageControl *pgCtr = [[UIPageControl alloc] initWithFrame:CGRectMake(0, 450, 320, 20)];
-    [pgCtr setTag:5];
-    pgCtr.numberOfPages=5;
+    [pgCtr setTag:6];
+    pgCtr.numberOfPages=6;
     pgCtr.autoresizingMask=UIViewAutoresizingNone;
-   // [self.view addSubview:pgCtr];
     
-    if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
-        [self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"elegirEstilo", nil) nombreImagen:@"barraturquesa.png"];
-    }else{
-        [self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"elegirEstilo", nil) nombreImagen:@"NBturquesa.png"];
-    }
+    [self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"elegirEstilo", nil) nombreImagen:@"barraturquesa.png"];
     
     self.navigationItem.rightBarButtonItems = Nil;
     UIImage *imageAceptar = [UIImage imageNamed:@"btnaceptar.png"];
@@ -59,7 +54,7 @@ BOOL actualizo;
     UIBarButtonItem *botonAceptar = [[UIBarButtonItem alloc] initWithCustomView:btAceptar];
     self.navigationItem.rightBarButtonItem = botonAceptar;
     
-    UIImage *image = [UIImage imageNamed:@"btnregresar.png"];
+    UIImage *image = defRegresar;
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [backButton setFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
     [backButton setImage:image forState:UIControlStateNormal];
@@ -76,17 +71,17 @@ BOOL actualizo;
 }
 
 - (void)setupScrollView {
-    nombrePlantilla = @[@"DIVERTIDO", @"CLÁSICO", @"CREATIVO",
+    self.nombrePlantilla = @[@"DIVERTIDO", @"CLÁSICO", @"CREATIVO",
                         @"MODERNO", @"ESTÁNDAR"];
     
-    nombrePlantillaEn = @[@"FUN", @"CLASSIC", @"CREATIVE",
+    self.nombrePlantillaEn = @[@"FUN", @"CLASSIC", @"CREATIVE",
                          @"MODERN", @"STANDARD"];
     
-    nombreWebServiceTemplate = @[@"Divertido", @"Clasico", @"Creativo",@"Moderno", @"Estandar1"];
+    self.nombreWebServiceTemplate = @[@"Divertido", @"Clasico", @"Creativo",@"Moderno", @"Estandar1"];
     
-    descripcionPlantilla = @[@"Estilo popular para Restaurantes, Pizzerías, Taquerías, Antros, Bares, etc.", @"Estilo popular para eventos formales, bodas, quinceaños, abogados, despachos, profesionistas, etc.", @"Estilo popular para creativos, músicos, estudiantes, fotógrafos, agencias, diseñadores, artistas,etc.",@"Estilo popular para empresas de tecnología, freelancers, distribuidoras de productos electrónicos, etc.", @"Estilo popular para todo tipo de productos y servicios."];
+    self.descripcionPlantilla = @[@"Estilo popular para Restaurantes, Pizzerías, Taquerías, Antros, Bares, etc.", @"Estilo popular para eventos formales, bodas, quinceaños, abogados, despachos, profesionistas, etc.", @"Estilo popular para creativos, músicos, estudiantes, fotógrafos, agencias, diseñadores, artistas,etc.",@"Estilo popular para empresas de tecnología, freelancers, distribuidoras de productos electrónicos, etc.", @"Estilo popular para todo tipo de productos y servicios."];
     
-    descripcionPlantillaEn = @[@"Popular style for Restaurants, Pizzerías, Taquerías, Nightclubs, Bars.", @"Popular style for formal events, weddings, professionals.", @"Popular style for creatives, musicians, students, photographers, agencies, designers, artists.", @"Popular style for technology companies, freelancers, distributors of electronic products.", @"Popular style for general products and services."];
+    self.descripcionPlantillaEn = @[@"Popular style for Restaurants, Pizzerías, Taquerías, Nightclubs, Bars.", @"Popular style for formal events, weddings, professionals.", @"Popular style for creatives, musicians, students, photographers, agencies, designers, artists.", @"Popular style for technology companies, freelancers, distributors of electronic products.", @"Popular style for general products and services."];
     
     
     self.scrollTemplate.tag = 1;
@@ -98,17 +93,16 @@ BOOL actualizo;
         UIImage *image;
         
         if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
-            image = [UIImage imageNamed:[NSString stringWithFormat:@"template%i",i+1]];
+           image = [UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"template%i.png", i+1] ofType:nil]]];
             pController.view.frame = CGRectMake(375*i, 40, 375, 667);
-     
        }else if(IS_IPAD){
             pController.view.frame = CGRectMake(768*i, 0, 768, 1024);
-            image = [UIImage imageNamed:[NSString stringWithFormat:@"template%i@3x",i+1]];
+           image = [UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"template%i@3x.png", i+1] ofType:nil]]];
         }else if(IS_IPHONE_5){
-            image = [UIImage imageNamed:[NSString stringWithFormat:@"template%i",i+1]];
+            image = [UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"template%i.png", i+1] ofType:nil]]];
             pController.view.frame = CGRectMake(320*i, 10, 320, 480);
         }else{
-            image = [UIImage imageNamed:[NSString stringWithFormat:@"template%i",i+1]];
+            image = [UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"template%i.png", i+1] ofType:nil]]];
             pController.view.frame = CGRectMake(320*i, 0, 320, 480);
         }
         
@@ -117,8 +111,8 @@ BOOL actualizo;
         [pController.imgTemplate setImage:image];
        
         if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-            pController.nombrePlantilla.text = [nombrePlantillaEn objectAtIndex:i];
-            pController.descripcionPlantilla.text = [descripcionPlantillaEn objectAtIndex:i];
+            pController.nombrePlantilla.text = [self.nombrePlantillaEn objectAtIndex:i];
+            pController.descripcionPlantilla.text = [self.descripcionPlantillaEn objectAtIndex:i];
             if(IS_IPAD){
             [pController.btnVerEjemploPlantilla setBackgroundImage:[UIImage imageNamed:@"verEjemplo-en@3x.png"] forState:UIControlStateNormal];
             }else{
@@ -126,8 +120,8 @@ BOOL actualizo;
             }
             
         }else{
-            pController.nombrePlantilla.text = [nombrePlantilla objectAtIndex:i];
-            pController.descripcionPlantilla.text = [descripcionPlantilla objectAtIndex:i];
+            pController.nombrePlantilla.text = [self.nombrePlantilla objectAtIndex:i];
+            pController.descripcionPlantilla.text = [self.descripcionPlantilla objectAtIndex:i];
             if(IS_IPAD){
             [pController.btnVerEjemploPlantilla setBackgroundImage:[UIImage imageNamed:@"verEjemplo-es@3x.png"] forState:UIControlStateNormal];
             }else{
@@ -140,7 +134,7 @@ BOOL actualizo;
         
         pController.etiquetaEstatica.text = NSLocalizedString(@"etiquetaEstilo", nil);
         
-        if([[nombreWebServiceTemplate objectAtIndex:i] isEqualToString:self.datosUsuario.nombreTemplate]){
+        if([[self.nombreWebServiceTemplate objectAtIndex:i] isEqualToString:self.datosUsuario.nombreTemplate]){
             if(IS_IPAD){
             [pController.btnTemplateSeleccionado setImage:[UIImage imageNamed:@"tempOn-"] forState:UIControlStateNormal];
             }else{
@@ -154,8 +148,7 @@ BOOL actualizo;
             }
         }
         
-        
-        //[pController.btnTemplateSeleccionado addTarget:self action:@selector(estiloSeccionado:) forControlEvents:UIControlEventTouchUpInside];
+       
         if(IS_IPHONE_5){
             pController.btnTemplateSeleccionado.frame = CGRectMake(20, 320, 36, 37);
             pController.etiquetaEstatica.frame = CGRectMake(20, 365, 52, 21);
@@ -170,15 +163,7 @@ BOOL actualizo;
             pController.descripcionPlantilla.frame = CGRectMake(40, 386, 280, 67);
             pController.imgTemplate.frame = CGRectMake(25, 0, 315, 315);
             pController.imgBullets.frame = CGRectMake(100, 480, 176, 13);
-       /* }else if(IS_STANDARD_IPHONE_6_PLUS){
-            pController.btnTemplateSeleccionado.frame = CGRectMake(70, 320, 36, 37);
-            pController.etiquetaEstatica.frame = CGRectMake(70, 365, 52, 21);
-            pController.nombrePlantilla.frame = CGRectMake(127, 365, 84, 21);
-            pController.btnVerEjemploPlantilla.frame = CGRectMake(241, 361, 97, 25);
-            pController.descripcionPlantilla.frame = CGRectMake(70, 386, 280, 67);
-            pController.imgTemplate.frame = CGRectMake(60, 0, 320, 320);
-            pController.imgBullets.frame = CGRectMake(122, 480, 176, 13);
-        */
+     
         }else if(IS_IPAD){
             pController.btnTemplateSeleccionado.frame = CGRectMake(134, 590, 60, 60);
             pController.etiquetaEstatica.frame = CGRectMake(134, 650, 70, 40);
@@ -207,18 +192,23 @@ BOOL actualizo;
         [self.scrollTemplate addSubview:pController.view];
     }
    
+
+    [self.viewExtra setFrame: CGRectMake(768*5, 0, 320, 480)];
+    [self.scrollTemplate addSubview:self.viewExtra];
+    
+    
+    
+    
+    
     if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         self.scrollTemplate.frame = CGRectMake(0, 0, 375, 667);
-  /*  }else if(IS_STANDARD_IPHONE_6_PLUS){
-        self.scrollTemplate.frame = CGRectMake(0, 30, 414, 736);
-   */
-   }else if(IS_IPAD){
+    }else if(IS_IPAD){
         self.scrollTemplate.frame = CGRectMake(0, 30, 768, 1024 );
     }
     
     
-     [self.scrollTemplate setContentSize:CGSizeMake(self.scrollTemplate.frame.size.width*5, self.scrollTemplate.frame.size.height)];
-  //  [NSTimer scheduledTimerWithTimeInterval:6000 target:self selector:@selector(scrollingTimer) userInfo:nil repeats:YES];
+     [self.scrollTemplate setContentSize:CGSizeMake(self.scrollTemplate.frame.size.width*6, self.scrollTemplate.frame.size.height)];
+
 }
 
 -(void)irVerEjemplo:(UIButton*)sender{
@@ -399,9 +389,6 @@ BOOL actualizo;
         [actualizarDominio actualizarDominio:k_UPDATE_TEMPLATE ];
    
 }
-
-
-
 
 
 

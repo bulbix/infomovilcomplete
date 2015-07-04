@@ -37,7 +37,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    UIImage *image = [UIImage imageNamed:@"btnregresar.png"];
+    UIImage *image = defRegresar;
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [backButton setFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
     [backButton setImage:image forState:UIControlStateNormal];
@@ -68,15 +68,7 @@
         frameborder=\"0\"/>\
         </body></html>";
     
-   /* }else if(IS_STANDARD_IPHONE_6_PLUS){
-        htmlString = @"<html><head>\
-        <meta name = \"viewport\" content = \"initial-scale = 1.0, user-scalable = no, width = 414\"/></head>\
-        <body style=\"background:#000;margin-top:0px;margin-left:0px\">\
-        <iframe id=\"ytplayer\" type=\"text/html\" width=\"414\" height=\"400\"\
-        src=\"%@?autoplay=0\"\
-        frameborder=\"0\"/>\
-        </body></html>";
-    */
+  
     }else if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         htmlString = @"<html><head>\
         <meta name = \"viewport\" content = \"initial-scale = 1.0, user-scalable = no, width = 414\"/></head>\

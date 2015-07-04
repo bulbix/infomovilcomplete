@@ -78,7 +78,7 @@
     // IRC Se quita boton derecho para plan pro //
    // self.navigationItem.rightBarButtonItem = nil;
     
-    UIImage *imagenBoton = [UIImage imageNamed:@"btnprevisualizar.png"];
+    UIImage *imagenBoton = [UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"btnprevisualizar.png"] ofType:nil]]];
     UIButton *botonPrevisualizar = [UIButton buttonWithType:UIButtonTypeCustom];
     [botonPrevisualizar setFrame:CGRectMake(0, 0, imagenBoton.size.width, imagenBoton.size.height)];
     [botonPrevisualizar setImage:imagenBoton forState:UIControlStateNormal];
@@ -117,15 +117,15 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cellInfo"];
     }
-    UIImageView *imagenAccesory = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"btnsiguiente.png"]];
+    UIImageView *imagenAccesory = [[UIImageView alloc] initWithImage:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"btnsiguiente.png"] ofType:nil]]]];
     [cell setAccessoryView:imagenAccesory];
     
     if ([[self.arregloStatusInicio objectAtIndex:indexPath.row] isEqual:@NO]) {
-        [cell.imageView setImage:[UIImage imageNamed:@"noeditado.png"]];
+        [cell.imageView setImage:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"noeditado.png"] ofType:nil]]]];
         [cell.textLabel setTextColor:colorFuenteVerde];
     }
     else {
-        [cell.imageView setImage:[UIImage imageNamed:@"editado.png"]];
+        [cell.imageView setImage:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"editado.png"] ofType:nil]]]];
         [cell.textLabel setTextColor:colorFuenteAzul];
     }
     

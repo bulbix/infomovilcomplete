@@ -56,16 +56,9 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
         self.edgesForExtendedLayout = UIRectEdgeNone;
     }
 #endif
-    
-//    self.tituloVista.text = @"Mover y escalar";
-//    [self.vistaCircular setImage:[UIImage imageNamed:@"plecaverde.png"]];
-//    [self.vistaCircular setImage:[UIImage imageNamed:@"plecacreasitio.png"]];
+
     UILabel *labelMensaje = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 300, 21)];
-//	if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
-//		[labelMensaje setText:@"This image can be resized"];
-//	}else{
-//		[labelMensaje setText:@"Esta imagen puede ser redimensionada"];
-//	}
+
     [labelMensaje setText:NSLocalizedString(@"imagenRedimension",nil)];
     
     [labelMensaje setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
@@ -79,7 +72,7 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
 	}
     [self.vistaInferior setHidden:YES];
     
-    UIImage *image = [UIImage imageNamed:@"btncancelar.png"];
+    UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"btncancelar.png"] ofType:nil]]];
     
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [backButton setFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
@@ -89,7 +82,7 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
     UIBarButtonItem *buttonBack = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     self.navigationItem.leftBarButtonItem = buttonBack;
     
-    image = [UIImage imageNamed:@"btnaceptar.png"];
+    image = defAceptar;
     UIButton *okButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [okButton setFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
     [okButton setImage:image forState:UIControlStateNormal];
@@ -97,12 +90,7 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
     
     UIBarButtonItem *buttonOk = [[UIBarButtonItem alloc] initWithCustomView:okButton];
     self.navigationItem.rightBarButtonItem = buttonOk;
-//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
-//                                                                                          target:self
-//                                                                                          action:@selector(cancel:)];
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-//                                                                                           target:self
-//                                                                                           action:@selector(done:)];
+    
     
     UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
                                                                                    target:nil
