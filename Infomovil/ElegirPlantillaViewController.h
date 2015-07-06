@@ -31,11 +31,19 @@
 @property(nonatomic, assign) NSInteger plantillaAPublicar;
 
 @property (weak, nonatomic) IBOutlet UIView *viewExtra;
+@property (weak, nonatomic) IBOutlet UILabel *labelDelViewExtra1;
+@property (weak, nonatomic) IBOutlet UILabel *labelDelViewExtra2;
+
+@property (strong, nonatomic) IBOutlet UIView *viewVerMas;
+
+@property (weak, nonatomic) IBOutlet UIButton *verMasTemplates;
+@property (weak, nonatomic) IBOutlet UIImageView *imgVerMasAzul;
+@property (weak, nonatomic) IBOutlet UIImageView *imgVerMasTemplates;
+
+- (IBAction)verMasTemplatesAct:(id)sender;
 
 
-
-
-
-
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *btnAceptar;
+- (IBAction)btnAceptarAct:(id)sender;
 
 @end

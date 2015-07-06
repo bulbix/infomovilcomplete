@@ -30,38 +30,52 @@
     switch (index) {
         case 0:
             htmlStringToLoad = @"http://infomovil.com/divertido?vistaPrevia=true";
+            /*
 #if DEBUG
       htmlStringToLoad = @"http://qa.mobileinfo.io:8080/divertido?vistaPrevia=true";
 #endif
+             */
             [self.navigationItem setTitle:@"Divertido"];
             break;
         case 1:
             htmlStringToLoad = @"http://infomovil.com/clasico?vistaPrevia=true";
+            /*
 #if DEBUG
             htmlStringToLoad = @"http://qa.mobileinfo.io:8080/clasico?vistaPrevia=true";
 #endif
+             */
             [self.navigationItem setTitle:@"Clásico"];
             break;
         case 2:
             htmlStringToLoad = @"http://infomovil.com/creativo?vistaPrevia=true";
+            /*
 #if DEBUG
             htmlStringToLoad = @"http://qa.mobileinfo.io:8080/creativo?vistaPrevia=true";
 #endif
+            */
             [self.navigationItem setTitle:@"Creativo"];
             break;
         case 3:
             htmlStringToLoad = @"http://infomovil.com/moderno?vistaPrevia=true";
+            /*
 #if DEBUG
             htmlStringToLoad = @"http://qa.mobileinfo.io:8080/moderno?vistaPrevia=true";
 #endif
+            */
             [self.navigationItem setTitle:@"Moderno"];
             break;
         case 4:
             htmlStringToLoad = @"http://infomovil.com/estandar1?vistaPrevia=true";
+            /*
 #if DEBUG
             htmlStringToLoad = @"http://qa.mobileinfo.io:8080/estandar1?vistaPrevia=true";
 #endif
+             */
             
+            [self.navigationItem setTitle:@"Estandar"];
+            break;
+            case 5:
+            htmlStringToLoad = @"http://landing.infomovil.com/";
             [self.navigationItem setTitle:@"Estandar"];
             break;
         default:

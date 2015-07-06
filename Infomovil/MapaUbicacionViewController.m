@@ -71,7 +71,7 @@
     self.navigationItem.leftBarButtonItem = buttonBack;
     self.modifico = NO;
     borrar = NO;
-    self.datosUsuario = [DatosUsuario sharedInstance];
+    /*self.datosUsuario = [DatosUsuario sharedInstance];
     if (self.datosUsuario.localizacion == Nil || (self.datosUsuario.localizacion.coordinate.latitude == 0.0 && self.datosUsuario.localizacion.coordinate.longitude == 0.0)) {
         self.locationManager = [[CLLocationManager alloc] init];
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
@@ -93,15 +93,12 @@
             [self.mapView setRegion:region];
             [self.mapView addAnnotation:self];
         }
-    }
+    }*/
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-	if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
 		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"mapa", @" ") nombreImagen:@"barraverde.png"];
-	}else{
-		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"mapa", @" ") nombreImagen:@"NBverde.png"];
-	}
+	
 	[super viewWillAppear:YES];
 	[self.vistaInferior setHidden:YES];
 	contador = 0;
@@ -243,10 +240,11 @@
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-    self.location = newLocation;
+  /*  self.location = newLocation;
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.location.coordinate, 500, 500);
     [self.mapView setRegion:region animated:YES];
     [self.locationManager stopUpdatingLocation];
+   */
 }
 
 -(IBAction)regresar:(id)sender {
@@ -365,10 +363,7 @@
     }
     AlertView *alertAct = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
     [alertAct show];
-    [StringUtils terminarSession];
-    
-    MainViewController *inicio = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:Nil];
-    [self.navigationController pushViewController:inicio animated:YES];
+   
 }
 
 

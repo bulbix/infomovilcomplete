@@ -7,9 +7,16 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ElegirPlantillaViewController">
             <connections>
+                <outlet property="btnAceptar" destination="P4R-UG-khy" id="d9v-bB-jhd"/>
+                <outlet property="imgVerMasAzul" destination="rtt-c4-Ebl" id="9n1-yj-QGy"/>
+                <outlet property="imgVerMasTemplates" destination="Psg-Ty-yaa" id="haW-zy-AlC"/>
+                <outlet property="labelDelViewExtra1" destination="ig9-QQ-afa" id="xaJ-tv-Wsc"/>
+                <outlet property="labelDelViewExtra2" destination="YbI-vY-sBW" id="dwH-v5-eWo"/>
                 <outlet property="scrollTemplate" destination="R7z-Wo-uQ1" id="egK-3Z-vGz"/>
+                <outlet property="verMasTemplates" destination="ZOj-Qs-cx8" id="8qu-zw-Kxk"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewExtra" destination="V3O-zm-NcA" id="Pbg-7Q-lCG"/>
+                <outlet property="viewVerMas" destination="O03-JM-dI9" id="Lfl-dz-XBl"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -31,22 +38,69 @@
             <point key="canvasLocation" x="182" y="510"/>
         </view>
         <view contentMode="scaleToFill" id="V3O-zm-NcA">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="400"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="457"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Excelente!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="umj-Xj-ATb">
-                    <rect key="frame" x="8" y="112" width="304" height="21"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="template6@3x.png" id="rtt-c4-Ebl">
+                    <rect key="frame" x="10" y="0.0" width="300" height="300"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PORTADA AZUL" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ig9-QQ-afa">
+                    <rect key="frame" x="20" y="308" width="280" height="35"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                    <color key="textColor" red="0.18431372549019609" green="0.63921568627450975" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unicamente los siguientes campos estarán disponibles para este template:" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YbI-vY-sBW">
+                    <rect key="frame" x="20" y="343" width="280" height="114"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                    <color key="textColor" red="0.59607843137254901" green="0.59607843137254901" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="182" y="1086"/>
+            <point key="canvasLocation" x="182" y="1114.5"/>
         </view>
+        <view contentMode="scaleToFill" id="O03-JM-dI9">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="457"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="temporal.png" id="Psg-Ty-yaa">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="388"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ZOj-Qs-cx8">
+                    <rect key="frame" x="122" y="407" width="77" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.18431372549019609" green="0.63921568627450975" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                    <state key="normal" title="Ver más">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="verMasTemplatesAct:" destination="-1" eventType="touchUpInside" id="FdX-u8-Eof"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="555" y="1109.5"/>
+        </view>
+        <barButtonItem image="btnaceptar.png" id="P4R-UG-khy">
+            <connections>
+                <action selector="btnAceptarAct:" destination="-1" id="vXt-VZ-ksT"/>
+            </connections>
+        </barButtonItem>
     </objects>
+    <resources>
+        <image name="btnaceptar.png" width="36" height="36"/>
+        <image name="template6@3x.png" width="720" height="668"/>
+        <image name="temporal.png" width="789" height="1200"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

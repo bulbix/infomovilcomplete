@@ -448,3 +448,4 @@
 "codigoCompletoMoviliza" = "¡Hola!\n\nEs muy importante para mi negocio que mi sitio web se vea bien en smartphones.\nPor ello, quiero ligar mi dominio actual con el nuevo sitio móvil que acabo de crear con la app de Infomovil.\n\nPor favor ayúdame con estos pasos:\nColoca el siguiente código entre las etiquetas <header></header> del archivo principal (index)\n\n%@\n\nMuchas gracias!";
 "errorCambiarPassword1" = "Usuario no encontrado, intentalo nuevamente.";
 "tituloDominiosDisponibles" = "SELECCIONA TU DOMINIO PREFERIDO";
+"templateCreativosDesc" = "Unicamente los siguientes campos estarán disponibles para este template:\n* Nombre de empresa\n* Contactos\n* Descripción corta";

@@ -440,5 +440,4 @@
 "codigoCompletoMoviliza" = "Hi there!\n\nIt's really important for my business that my website looks great on smartphones. For this reason, I want to link my current domain with the new mobile-friendly site I've just built with the Infomovil app.\n\nPlease help me by pasting the following snippet of code between the <header></header> tags in the principal index file.\n\n%@\n\nMany thanks!";
 "errorCambiarPassword1" = "User not found. Please try again.";
 "tituloDominiosDisponibles" = "SELECT YOUR PREFERRED DOMAIN";
-
-
+"templateCreativosDesc" = "Only the following fields are available for this template:\n* Name or Company\n* Contacts\n* Short description";

@@ -46,13 +46,7 @@ BOOL actualizo;
     [self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"elegirEstilo", nil) nombreImagen:@"barraturquesa.png"];
     
     self.navigationItem.rightBarButtonItems = Nil;
-    UIImage *imageAceptar = [UIImage imageNamed:@"btnaceptar.png"];
-    UIButton *btAceptar = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btAceptar setFrame:CGRectMake(0, 0, imageAceptar.size.width, imageAceptar.size.height)];
-    [btAceptar setImage:imageAceptar forState:UIControlStateNormal];
-    [btAceptar addTarget:self action:@selector(guardarTemplate:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *botonAceptar = [[UIBarButtonItem alloc] initWithCustomView:btAceptar];
-    self.navigationItem.rightBarButtonItem = botonAceptar;
+    self.navigationItem.rightBarButtonItem = self.btnAceptar;
     
     UIImage *image = defRegresar;
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -93,16 +87,16 @@ BOOL actualizo;
         UIImage *image;
         
         if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
-           image = [UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"template%i.png", i+1] ofType:nil]]];
+           image = [UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"template%i@3x.png", i+1] ofType:nil]]];
             pController.view.frame = CGRectMake(375*i, 40, 375, 667);
        }else if(IS_IPAD){
             pController.view.frame = CGRectMake(768*i, 0, 768, 1024);
            image = [UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"template%i@3x.png", i+1] ofType:nil]]];
         }else if(IS_IPHONE_5){
-            image = [UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"template%i.png", i+1] ofType:nil]]];
+            image = [UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"template%i@3x.png", i+1] ofType:nil]]];
             pController.view.frame = CGRectMake(320*i, 10, 320, 480);
         }else{
-            image = [UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"template%i.png", i+1] ofType:nil]]];
+            image = [UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"template%i@3x.png", i+1] ofType:nil]]];
             pController.view.frame = CGRectMake(320*i, 0, 320, 480);
         }
         
@@ -192,22 +186,56 @@ BOOL actualizo;
         [self.scrollTemplate addSubview:pController.view];
     }
    
-
-    [self.viewExtra setFrame: CGRectMake(768*5, 0, 320, 480)];
+    
+    self.labelDelViewExtra2.text = NSLocalizedString(@"templateCreativosDesc",Nil);
+    
+    if(IS_IPAD){
+            [self.imgVerMasAzul setFrame:CGRectMake(84, 40, 600, 600)];
+            self.labelDelViewExtra1.frame = CGRectMake(100,680,600,20);
+            [self.labelDelViewExtra1 setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
+            self.labelDelViewExtra2.frame = CGRectMake(100, 690, 600, 200 );
+            [self.labelDelViewExtra2 setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
+            [self.viewExtra setFrame: CGRectMake(768*5, 00, 768, 1024)];
+    }else if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
+            [self.imgVerMasAzul setFrame:CGRectMake(28, 0, 320, 338)];
+            self.labelDelViewExtra1.frame = CGRectMake(30,350,315,35);
+            self.labelDelViewExtra2.frame = CGRectMake(30, 385, 315, 115 );
+            [self.viewExtra setFrame: CGRectMake(375*5, 40, 375, 480)];
+    }else if(IS_IPHONE_4){
+        self.labelDelViewExtra1.frame = CGRectMake(30,270,315,35);
+        self.labelDelViewExtra2.frame = CGRectMake(30, 300, 315, 115 );
+            [self.viewExtra setFrame: CGRectMake(320*5, 0, 320, 420)];
+    }else {
+            [self.viewExtra setFrame: CGRectMake(320*5, 30, 320, 420)];
+    }
+    
     [self.scrollTemplate addSubview:self.viewExtra];
     
+    if(IS_IPAD){
+        [self.imgVerMasTemplates setFrame:CGRectMake(84, 40, 600, 600)];
+        [self.verMasTemplates setFrame:CGRectMake(234, 700, 300, 40)];
+        [self.viewVerMas setFrame: CGRectMake(768*6, 40, 768, 1024)];
+    }else if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
+        [self.imgVerMasTemplates setFrame:CGRectMake(28, 0, 320, 338)];
+        [self.verMasTemplates setFrame:CGRectMake(87, 430, 200, 35)];
+        [self.viewVerMas setFrame: CGRectMake(375*6, 50, 375, 480)];
+    }else if(IS_IPHONE_4){
+        [self.verMasTemplates setFrame:CGRectMake(60, 360, 200, 35)];
+        [self.viewVerMas setFrame: CGRectMake(320*6, 5, 320, 420)];
+    }else {
+        [self.viewVerMas setFrame: CGRectMake(320*6, 30, 320, 457)];
+    }
     
-    
-    
+    [self.scrollTemplate addSubview:self.viewVerMas];
     
     if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         self.scrollTemplate.frame = CGRectMake(0, 0, 375, 667);
     }else if(IS_IPAD){
-        self.scrollTemplate.frame = CGRectMake(0, 30, 768, 1024 );
+        self.scrollTemplate.frame = CGRectMake(0, 0, 768, 1024 );
     }
     
     
-     [self.scrollTemplate setContentSize:CGSizeMake(self.scrollTemplate.frame.size.width*6, self.scrollTemplate.frame.size.height)];
+     [self.scrollTemplate setContentSize:CGSizeMake(self.scrollTemplate.frame.size.width*7, self.scrollTemplate.frame.size.height)];
 
 }
 
@@ -259,6 +287,11 @@ BOOL actualizo;
     CGFloat pageWidth = scrollView.frame.size.width;
     float fractionalPage = scrollView.contentOffset.x / pageWidth;
     NSInteger page = lround(fractionalPage);
+    if(page == 6 || page == 5){
+        self.navigationItem.rightBarButtonItem = nil ;
+    }else{
+        self.navigationItem.rightBarButtonItem = self.btnAceptar;
+    }
     if (previousPage != 6) {
         self.plantillaAPublicar = page;
         previousPage = page;
@@ -270,49 +303,6 @@ BOOL actualizo;
         [self.navigationController popViewControllerAnimated:YES];
 }
 
-
--(void)guardarTemplate:(id)sender {
-  
-    self.datosUsuario = [DatosUsuario sharedInstance];
-    switch (self.plantillaAPublicar) {
-        case 0:{
-            self.datosUsuario.nombreTemplate = @"Divertido";
-        }
-            break;
-        case 1:{
-            self.datosUsuario.nombreTemplate = @"Clasico";
-        }
-            break;
-        case 2:{
-            self.datosUsuario.nombreTemplate = @"Creativo";
-        }
-            break;
-        case 3:{
-            self.datosUsuario.nombreTemplate = @"Moderno";
-        }
-            break;
-        case 4:{
-            self.datosUsuario.nombreTemplate = @"Estandar1";
-        }
-            break;
-        default:
-            break;
-    }
-   
-        
-   
-        if ([CommonUtils hayConexion]) {
-       
-            [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
-            [self performSelectorInBackground:@selector(actualizar) withObject:Nil];
-        }
-        else {
-            AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
-            [alert show];
-        }
-   
-    
-}
 
 -(void) mostrarActivity {
     self.alertActivity = [AlertView initWithDelegate:self message:NSLocalizedString(@"msgGuardarTemplate", Nil) andAlertViewType:AlertViewTypeActivity];
@@ -375,9 +365,9 @@ BOOL actualizo;
     }
     AlertView *alertAct = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
     [alertAct show];
-    [StringUtils terminarSession];
-    MainViewController *inicio = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:Nil];
-    [self.navigationController pushViewController:inicio animated:YES];
+   // [StringUtils terminarSession];
+  //  MainViewController *inicio = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:Nil];
+  //  [self.navigationController pushViewController:inicio animated:YES];
     
 }
 
@@ -391,11 +381,49 @@ BOOL actualizo;
 }
 
 
-
-
-
-
-
-
-
+- (IBAction)verMasTemplatesAct:(id)sender {
+    VerEjemploPlantillaViewController *verEjemplo = [[VerEjemploPlantillaViewController alloc]  initWithNibName:@"VerEjemploPlantillaViewController" bundle:Nil];
+    [verEjemplo setIndex:5];
+    [self.navigationController pushViewController:verEjemplo animated:YES];
+    
+}
+- (IBAction)btnAceptarAct:(id)sender {
+    self.datosUsuario = [DatosUsuario sharedInstance];
+    switch (self.plantillaAPublicar) {
+        case 0:{
+            self.datosUsuario.nombreTemplate = @"Divertido";
+        }
+            break;
+        case 1:{
+            self.datosUsuario.nombreTemplate = @"Clasico";
+        }
+            break;
+        case 2:{
+            self.datosUsuario.nombreTemplate = @"Creativo";
+        }
+            break;
+        case 3:{
+            self.datosUsuario.nombreTemplate = @"Moderno";
+        }
+            break;
+        case 4:{
+            self.datosUsuario.nombreTemplate = @"Estandar1";
+        }
+            break;
+        default:
+            break;
+    }
+    
+    
+    
+    if ([CommonUtils hayConexion]) {
+        
+        [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
+        [self performSelectorInBackground:@selector(actualizar) withObject:Nil];
+    }
+    else {
+        AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+        [alert show];
+    }
+}
 @end
