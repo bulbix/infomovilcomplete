@@ -36,14 +36,6 @@
                     <color key="textColor" red="0.59607843137254901" green="0.59607843137254901" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="L8O-12-rXd">
-                    <rect key="frame" x="201" y="328" width="97" height="25"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
-                    <state key="normal" title="   " backgroundImage="verEjemplo-es.png">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="nWC-ta-cmz">
                     <rect key="frame" x="20" y="0.0" width="280" height="315"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
@@ -53,7 +45,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <state key="normal" image="tempOn.png">
+                    <state key="normal" image="tempOff@3x.png">
                         <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </state>
@@ -66,9 +58,17 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="slider1.png" id="hCo-AA-q5T">
-                    <rect key="frame" x="72" y="457" width="176" height="13"/>
+                    <rect key="frame" x="52" y="458" width="215" height="11"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="L8O-12-rXd">
+                    <rect key="frame" x="203" y="328" width="97" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                    <state key="normal" title="   " backgroundImage="verEjemplo-es@3x.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -76,9 +76,9 @@
         </view>
     </objects>
     <resources>
-        <image name="slider1.png" width="300" height="22"/>
-        <image name="tempOn.png" width="36" height="37"/>
-        <image name="verEjemplo-es.png" width="97" height="25"/>
+        <image name="slider1.png" width="300" height="14"/>
+        <image name="tempOff@3x.png" width="110" height="113"/>
+        <image name="verEjemplo-es@3x.png" width="293" height="75"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

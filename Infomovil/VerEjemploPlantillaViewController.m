@@ -35,7 +35,7 @@
       htmlStringToLoad = @"http://qa.mobileinfo.io:8080/divertido?vistaPrevia=true";
 #endif
              */
-            [self.navigationItem setTitle:@"Divertido"];
+            [self.navigationItem setTitle:NSLocalizedString(@"template1preview", Nil)];
             break;
         case 1:
             htmlStringToLoad = @"http://infomovil.com/clasico?vistaPrevia=true";
@@ -44,7 +44,7 @@
             htmlStringToLoad = @"http://qa.mobileinfo.io:8080/clasico?vistaPrevia=true";
 #endif
              */
-            [self.navigationItem setTitle:@"Clásico"];
+            [self.navigationItem setTitle:NSLocalizedString(@"template2preview", Nil)];
             break;
         case 2:
             htmlStringToLoad = @"http://infomovil.com/creativo?vistaPrevia=true";
@@ -53,7 +53,7 @@
             htmlStringToLoad = @"http://qa.mobileinfo.io:8080/creativo?vistaPrevia=true";
 #endif
             */
-            [self.navigationItem setTitle:@"Creativo"];
+            [self.navigationItem setTitle:NSLocalizedString(@"template3preview", Nil)];
             break;
         case 3:
             htmlStringToLoad = @"http://infomovil.com/moderno?vistaPrevia=true";
@@ -62,7 +62,7 @@
             htmlStringToLoad = @"http://qa.mobileinfo.io:8080/moderno?vistaPrevia=true";
 #endif
             */
-            [self.navigationItem setTitle:@"Moderno"];
+            [self.navigationItem setTitle:NSLocalizedString(@"template4preview", Nil)];
             break;
         case 4:
             htmlStringToLoad = @"http://infomovil.com/estandar1?vistaPrevia=true";
@@ -72,11 +72,21 @@
 #endif
              */
             
-            [self.navigationItem setTitle:@"Estandar"];
+            [self.navigationItem setTitle:NSLocalizedString(@"template5preview", Nil)];
             break;
-            case 5:
+        case 5:
+            htmlStringToLoad = @"http://infomovil.com/Coverpage1azul?vistaPrevia=true";
+            /*
+             #if DEBUG
+             htmlStringToLoad = @"http://qa.mobileinfo.io:8080/Coverpage1azul?vistaPrevia=true";
+             #endif
+             */
+            
+            [self.navigationItem setTitle:NSLocalizedString(@"template6preview", Nil)];
+            break;
+            case 6:
             htmlStringToLoad = @"https://s3.amazonaws.com/images.infomovil/templates/templates.html";
-            [self.navigationItem setTitle:@"Estilos"];
+            [self.navigationItem setTitle:NSLocalizedString(@"template7preview", Nil)];
             break;
         default:
             break;
@@ -147,6 +157,7 @@
 
 
 -(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
+    NSLog(@"EL ERROR ES: %@", error.description);
     if(!self.pagCargada){
         [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
         AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];

@@ -449,3 +449,12 @@
 "errorCambiarPassword1" = "Usuario no encontrado, intentalo nuevamente.";
 "tituloDominiosDisponibles" = "SELECCIONA TU DOMINIO PREFERIDO";
 "templateCreativosDesc" = "Unicamente los siguientes campos estarán disponibles para este template:\n* Nombre de empresa\n* Contactos\n* Descripción corta";
+"templateCreativosTit" = "PORTADA AZUL";
+"template1preview"= "Divertido";
+"template2preview"= "Clásico";
+"template3preview"= "Creativo";
+"template4preview"= "Moderno";
+"template5preview"= "Estándar";
+"template6preview"= "Portada azul";
+"template7preview"= "Estilos";
+"templateProximamente" = "Próximamente";

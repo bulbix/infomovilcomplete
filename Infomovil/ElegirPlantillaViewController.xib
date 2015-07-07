@@ -8,6 +8,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ElegirPlantillaViewController">
             <connections>
                 <outlet property="btnAceptar" destination="P4R-UG-khy" id="d9v-bB-jhd"/>
+                <outlet property="btnTemplateSeleccionado1" destination="FAz-G1-h5G" id="ewo-R8-HrI"/>
+                <outlet property="btnVerEjemplo1" destination="sVK-Ym-DIv" id="etj-sK-YGo"/>
+                <outlet property="imgBullet" destination="XWX-94-eTB" id="pfM-sV-IgQ"/>
                 <outlet property="imgVerMasAzul" destination="rtt-c4-Ebl" id="9n1-yj-QGy"/>
                 <outlet property="imgVerMasTemplates" destination="Psg-Ty-yaa" id="haW-zy-AlC"/>
                 <outlet property="labelDelViewExtra1" destination="ig9-QQ-afa" id="xaJ-tv-Wsc"/>
@@ -38,45 +41,63 @@
             <point key="canvasLocation" x="182" y="510"/>
         </view>
         <view contentMode="scaleToFill" id="V3O-zm-NcA">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="457"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="477"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="template6@3x.png" id="rtt-c4-Ebl">
-                    <rect key="frame" x="10" y="0.0" width="300" height="300"/>
+                    <rect key="frame" x="10" y="0.0" width="300" height="266"/>
                     <autoresizingMask key="autoresizingMask"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PORTADA AZUL" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ig9-QQ-afa">
-                    <rect key="frame" x="20" y="308" width="280" height="35"/>
+                    <rect key="frame" x="20" y="306" width="280" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                     <color key="textColor" red="0.18431372549019609" green="0.63921568627450975" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unicamente los siguientes campos estarán disponibles para este template:" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YbI-vY-sBW">
-                    <rect key="frame" x="20" y="343" width="280" height="114"/>
+                    <rect key="frame" x="20" y="332" width="280" height="107"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
                     <color key="textColor" red="0.59607843137254901" green="0.59607843137254901" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="FAz-G1-h5G">
+                    <rect key="frame" x="20" y="268" width="36" height="37"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" image="tempOn@3x.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="sVK-Ym-DIv">
+                    <rect key="frame" x="201" y="306" width="97" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" backgroundImage="verEjemplo-es@3x.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="btnVerEjemploAzulAct:" destination="-1" eventType="touchUpInside" id="4wY-uo-FYU"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="slider6.png" id="XWX-94-eTB">
+                    <rect key="frame" x="40" y="458" width="215" height="11"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="182" y="1114.5"/>
+            <point key="canvasLocation" x="182" y="1124.5"/>
         </view>
         <view contentMode="scaleToFill" id="O03-JM-dI9">
             <rect key="frame" x="0.0" y="0.0" width="320" height="457"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="templatesWebView.png" id="Psg-Ty-yaa">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="388"/>
-                    <autoresizingMask key="autoresizingMask"/>
-                </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ZOj-Qs-cx8">
-                    <rect key="frame" x="60" y="381" width="200" height="51"/>
+                    <rect key="frame" x="60" y="329" width="200" height="35"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <state key="normal" backgroundImage="verEjemplo-es@3x.png">
+                    <color key="backgroundColor" red="0.18431372549019609" green="0.63921568627450975" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
+                    <state key="normal" title="Ver más">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -84,10 +105,14 @@
                         <action selector="verMasTemplatesAct:" destination="-1" eventType="touchUpInside" id="FdX-u8-Eof"/>
                     </connections>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ultimoTemplate-es.png" id="Psg-Ty-yaa">
+                    <rect key="frame" x="0.0" y="75" width="320" height="225"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="555" y="1109.5"/>
+            <point key="canvasLocation" x="555" y="1114.5"/>
         </view>
         <barButtonItem image="btnaceptar.png" id="P4R-UG-khy">
             <connections>
@@ -97,8 +122,10 @@
     </objects>
     <resources>
         <image name="btnaceptar.png" width="36" height="36"/>
+        <image name="slider6.png" width="300" height="14"/>
+        <image name="tempOn@3x.png" width="110" height="113"/>
         <image name="template6@3x.png" width="720" height="668"/>
-        <image name="templatesWebView.png" width="720" height="668"/>
+        <image name="ultimoTemplate-es.png" width="805" height="501"/>
         <image name="verEjemplo-es@3x.png" width="293" height="75"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

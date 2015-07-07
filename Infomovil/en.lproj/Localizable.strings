@@ -441,3 +441,12 @@
 "errorCambiarPassword1" = "User not found. Please try again.";
 "tituloDominiosDisponibles" = "SELECT YOUR PREFERRED DOMAIN";
 "templateCreativosDesc" = "Only the following fields are available for this template:\n* Name or Company\n* Contacts\n* Short description";
+"templateCreativosTit" = "COVER BLUE";
+"template1preview"= "Funny";
+"template2preview"= "Clasic";
+"template3preview"= "Creative";
+"template4preview"= "Modern";
+"template5preview"= "Standard";
+"template6preview"= "Blue cover";
+"template7preview"= "Styles";
+"templateProximamente" = "Coming soon";

@@ -10,7 +10,7 @@
 #import "WS_HandlerProtocol.h"
 #import <StoreKit/StoreKit.h>
 #import "CuentaViewProtocol.h"
-#import "TablaDominioViewController.h"
+
 
 
 
@@ -18,7 +18,7 @@
 
 @interface CuentaViewController : InfomovilViewController <AlertViewDelegate, WS_HandlerProtocol, UIScrollViewDelegate, UITextFieldDelegate>{
     NSArray *validProducts;
-    TablaDominioViewController *tablaDominio;
+  
 }
 
 

@@ -21,7 +21,6 @@
 
 @interface CrearPaso2ViewController () {
     id textoPulsado;
-//    BOOL self.modifico;
     BOOL actualizoDominio;
     BOOL esCamara;
     BOOL estaBorrando;

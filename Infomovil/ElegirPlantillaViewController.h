@@ -12,11 +12,6 @@
 @interface ElegirPlantillaViewController : InfomovilViewController<UIScrollViewDelegate, AlertViewDelegate, WS_HandlerProtocol>
 {
 
-   
-  
-   
-    
-   
 }
 
 
@@ -39,9 +34,14 @@
 @property (weak, nonatomic) IBOutlet UIButton *verMasTemplates;
 @property (weak, nonatomic) IBOutlet UIImageView *imgVerMasAzul;
 @property (weak, nonatomic) IBOutlet UIImageView *imgVerMasTemplates;
+@property (weak, nonatomic) IBOutlet UIButton *btnVerEjemplo1;
+@property (weak, nonatomic) IBOutlet UIImageView *imgBullet;
+
+- (IBAction)btnVerEjemploAzulAct:(id)sender;
 
 - (IBAction)verMasTemplatesAct:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UIButton *btnTemplateSeleccionado1;
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *btnAceptar;
 - (IBAction)btnAceptarAct:(id)sender;

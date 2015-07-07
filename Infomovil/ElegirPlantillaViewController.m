@@ -54,8 +54,6 @@ BOOL actualizo;
     [backButton setImage:image forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(regresar:) forControlEvents:UIControlEventTouchUpInside];
     
-    
-    
 }
 -(void)viewWillAppear:(BOOL)animated{
     if(self.vistaInferior.hidden==NO){
@@ -111,20 +109,16 @@ BOOL actualizo;
         if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
             pController.nombrePlantilla.text = [self.nombrePlantillaEn objectAtIndex:i];
             pController.descripcionPlantilla.text = [self.descripcionPlantillaEn objectAtIndex:i];
-            if(IS_IPAD){
-            [pController.btnVerEjemploPlantilla setBackgroundImage:[UIImage imageNamed:@"verEjemplo-en@3x.png"] forState:UIControlStateNormal];
-            }else{
-            [pController.btnVerEjemploPlantilla setBackgroundImage:[UIImage imageNamed:@"verEjemplo-en.png"] forState:UIControlStateNormal];
-            }
+         
+            [pController.btnVerEjemploPlantilla setBackgroundImage:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"verEjemplo-en@3x.png"] ofType:nil]]] forState:UIControlStateNormal];
+            
             
         }else{
             pController.nombrePlantilla.text = [self.nombrePlantilla objectAtIndex:i];
             pController.descripcionPlantilla.text = [self.descripcionPlantilla objectAtIndex:i];
-            if(IS_IPAD){
-            [pController.btnVerEjemploPlantilla setBackgroundImage:[UIImage imageNamed:@"verEjemplo-es@3x.png"] forState:UIControlStateNormal];
-            }else{
-            [pController.btnVerEjemploPlantilla setBackgroundImage:[UIImage imageNamed:@"verEjemplo-es.png"] forState:UIControlStateNormal];
-            }
+          
+            [pController.btnVerEjemploPlantilla setBackgroundImage:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"verEjemplo-es@3x.png"] ofType:nil]]] forState:UIControlStateNormal];
+           
         }
         NSString *bullString =  [NSString stringWithFormat:@"slider%i",i+1];
         UIImage *imgBullet = [UIImage imageNamed:bullString];
@@ -133,17 +127,13 @@ BOOL actualizo;
         pController.etiquetaEstatica.text = NSLocalizedString(@"etiquetaEstilo", nil);
         
         if([[self.nombreWebServiceTemplate objectAtIndex:i] isEqualToString:self.datosUsuario.nombreTemplate]){
-            if(IS_IPAD){
-            [pController.btnTemplateSeleccionado setImage:[UIImage imageNamed:@"tempOn-"] forState:UIControlStateNormal];
-            }else{
-                [pController.btnTemplateSeleccionado setImage:[UIImage imageNamed:@"tempOn.png"] forState:UIControlStateNormal];
-            }
+           
+            [pController.btnTemplateSeleccionado setImage:[UIImage imageNamed:@"tempOn@3x.png"] forState:UIControlStateNormal];
+            
         }else{
-            if(IS_IPAD){
-            [pController.btnTemplateSeleccionado setImage:[UIImage imageNamed:@"tempOff-"] forState:UIControlStateNormal];
-            }else{
-            [pController.btnTemplateSeleccionado setImage:[UIImage imageNamed:@"tempOff.png"] forState:UIControlStateNormal];
-            }
+            
+            [pController.btnTemplateSeleccionado setImage:[UIImage imageNamed:@"tempOff@3x.png"] forState:UIControlStateNormal];
+            
         }
         
        
@@ -160,7 +150,7 @@ BOOL actualizo;
             pController.btnVerEjemploPlantilla.frame = CGRectMake(231, 361, 97, 25);
             pController.descripcionPlantilla.frame = CGRectMake(40, 386, 280, 67);
             pController.imgTemplate.frame = CGRectMake(25, 0, 315, 315);
-            pController.imgBullets.frame = CGRectMake(100, 480, 176, 13);
+            pController.imgBullets.frame = CGRectMake(77, 510, 220, 13);
      
         }else if(IS_IPAD){
             pController.btnTemplateSeleccionado.frame = CGRectMake(134, 590, 60, 60);
@@ -177,7 +167,7 @@ BOOL actualizo;
             pController.descripcionPlantilla.frame = CGRectMake(134, 690, 500, 67);
             [pController.descripcionPlantilla setFont:[UIFont fontWithName:@"Avenir-Book" size:18]];
             pController.imgTemplate.frame = CGRectMake(100, 50, 580, 540);
-            pController.imgBullets.frame = CGRectMake(296, 800, 176, 13);
+            pController.imgBullets.frame = CGRectMake(234, 860, 300, 16);
         
         }
         
@@ -190,27 +180,71 @@ BOOL actualizo;
         [self.scrollTemplate addSubview:pController.view];
     }
    
+    //////////// AQUI VAN LOS VIEWS EXTRAS ////////////////
+  
+    if([self.datosUsuario.nombreTemplate isEqualToString:@"Coverpage1azul"]){
+        
+            [self.btnTemplateSeleccionado1 setImage:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"tempOn@3x.png"] ofType:nil]]] forState:UIControlStateNormal];
+        
+    }else{
+       
+            [self.btnTemplateSeleccionado1 setImage:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"tempOff@3x.png"] ofType:nil]]] forState:UIControlStateNormal];
+        
+    }
+    
+    
+    if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
+    
+       
+            [self.btnVerEjemplo1 setBackgroundImage:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"verEjemplo-en@3x.png"] ofType:nil]]] forState:UIControlStateNormal];
+       
+        
+    }else{
+     
+            [self.btnVerEjemplo1 setBackgroundImage:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"verEjemplo-es@3x.png"] ofType:nil]]] forState:UIControlStateNormal];
+       
+    }
+ 
+    
+    if(IS_IPHONE_4){
+        [self.imgBullet setHidden:YES];
+    }else if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
+        self.imgBullet.frame = CGRectMake(77, 510, 220, 13);
+    }else if(IS_IPAD){
+        self.imgBullet.frame = CGRectMake(234, 860, 300, 16);
+    }else{
+        self.imgBullet.frame = CGRectMake(52, 458, 216, 11);
+    }
+    
     
     self.labelDelViewExtra2.text = NSLocalizedString(@"templateCreativosDesc",Nil);
-    
+    self.labelDelViewExtra1.text = NSLocalizedString(@"templateCreativosTit", Nil);
+    [self.verMasTemplates setTitle:NSLocalizedString(@"templateProximamente",Nil ) forState:UIControlStateNormal];
+    self.verMasTemplates.layer.cornerRadius = 10;
     if(IS_IPAD){
-            [self.imgVerMasAzul setFrame:CGRectMake(84, 40, 600, 600)];
-            self.labelDelViewExtra1.frame = CGRectMake(100,680,600,20);
+            [self.btnTemplateSeleccionado1 setFrame:CGRectMake(134, 590, 36, 37)];
+            [self.imgVerMasAzul setFrame:CGRectMake(84, 40, 580 , 540)];
+            [self.btnVerEjemplo1 setFrame: CGRectMake(484, 630, 150, 40)];
+            self.labelDelViewExtra1.frame = CGRectMake(100,650,600,20);
             [self.labelDelViewExtra1 setFont:[UIFont fontWithName:@"Avenir-Medium" size:20]];
-            self.labelDelViewExtra2.frame = CGRectMake(100, 690, 600, 200 );
+            self.labelDelViewExtra2.frame = CGRectMake(100, 670, 600, 140 );
             [self.labelDelViewExtra2 setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
-            [self.viewExtra setFrame: CGRectMake(768*5, 00, 768, 1024)];
+            [self.viewExtra setFrame: CGRectMake(768*5, 0, 768, 1024)];
     }else if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
-            [self.imgVerMasAzul setFrame:CGRectMake(28, 0, 320, 338)];
+            [self.imgVerMasAzul setFrame:CGRectMake(28, 0, 320, 300)];
+            [self.btnTemplateSeleccionado1 setFrame:CGRectMake(30, 310, 36, 37)];
+            [self.btnVerEjemplo1 setFrame:CGRectMake(231, 350, 97, 25)];
             self.labelDelViewExtra1.frame = CGRectMake(30,350,315,35);
             self.labelDelViewExtra2.frame = CGRectMake(30, 385, 315, 115 );
             [self.viewExtra setFrame: CGRectMake(375*5, 40, 375, 480)];
     }else if(IS_IPHONE_4){
-        [self.imgVerMasAzul setFrame:CGRectMake(10, 0, 300, 300)];
-        self.labelDelViewExtra1.frame = CGRectMake(30,300,315,20);
-        self.labelDelViewExtra2.frame = CGRectMake(30, 310, 315, 115 );
-        [self.labelDelViewExtra1 setFont:[UIFont fontWithName:@"Avenir-Medium" size:14]];
-        [self.labelDelViewExtra2 setFont:[UIFont fontWithName:@"Avenir-Book" size:13]];
+            [self.imgVerMasAzul setFrame:CGRectMake(20, 0, 280, 300)];
+            [self.btnTemplateSeleccionado1 setFrame:CGRectMake(20, 270, 36, 37)];
+            [self.btnVerEjemplo1 setFrame:CGRectMake(200, 300, 97, 25)];
+            self.labelDelViewExtra1.frame = CGRectMake(30,310,315,20);
+            self.labelDelViewExtra2.frame = CGRectMake(30, 320, 315, 100 );
+            [self.labelDelViewExtra1 setFont:[UIFont fontWithName:@"Avenir-Medium" size:14]];
+            [self.labelDelViewExtra2 setFont:[UIFont fontWithName:@"Avenir-Book" size:13]];
             [self.viewExtra setFrame: CGRectMake(320*5, 0, 320, 420)];
     }else {
             [self.viewExtra setFrame: CGRectMake(320*5, 10, 320, 420)];
@@ -218,21 +252,32 @@ BOOL actualizo;
     
     [self.scrollTemplate addSubview:self.viewExtra];
     
+    
+    if([[[NSLocale preferredLanguages] objectAtIndex:0] rangeOfString:@"en"].location != NSNotFound){
+        [self.imgVerMasTemplates setImage:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"ultimoTemplate-en.png"] ofType:nil]]]];
+    }else{
+       [self.imgVerMasTemplates setImage:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"ultimoTemplate-es.png"] ofType:nil]]]];
+    }
+    
+    
+    
+    
+    
+    
     if(IS_IPAD){
-        [self.imgVerMasTemplates setFrame:CGRectMake(84, 40, 600, 600)];
-        [self.verMasTemplates setFrame:CGRectMake(234, 700, 300, 40)];
+        [self.imgVerMasTemplates setFrame:CGRectMake(134, 140, 500, 350)];
+        [self.verMasTemplates.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
+        [self.verMasTemplates setFrame:CGRectMake(234, 600, 300, 40)];
         [self.viewVerMas setFrame: CGRectMake(768*6, 40, 768, 1024)];
     }else if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
-        [self.imgVerMasTemplates setFrame:CGRectMake(28, 0, 320, 338)];
-        [self.verMasTemplates setFrame:CGRectMake(87, 430, 200, 35)];
+        [self.imgVerMasTemplates setFrame:CGRectMake(7, 50, 360, 250)];
+        [self.verMasTemplates setFrame:CGRectMake(87, 360, 200, 35)];
         [self.viewVerMas setFrame: CGRectMake(375*6, 50, 375, 480)];
     }else if(IS_IPHONE_4){
-         [self.imgVerMasTemplates setFrame:CGRectMake(10, 5, 300,300 )];
-        [self.verMasTemplates setFrame:CGRectMake(60, 360, 200, 35)];
+         [self.imgVerMasTemplates setFrame:CGRectMake(0, 20, 320,240 )];
+        [self.verMasTemplates setFrame:CGRectMake(60, 270, 200, 35)];
         [self.viewVerMas setFrame: CGRectMake(320*6, 5, 320, 420)];
     }else {
-        [self.imgVerMasTemplates setFrame:CGRectMake(10, 50, 300,270 )];
-        [self.verMasTemplates setFrame:CGRectMake(60, 350, 200, 50)];
         [self.viewVerMas setFrame: CGRectMake(320*6, 15, 320, 457)];
     }
     
@@ -281,7 +326,12 @@ BOOL actualizo;
                 [self.navigationController pushViewController:verEjemplo animated:YES];
             }
             break;
-            
+        case 5: {
+            VerEjemploPlantillaViewController *verEjemplo = [[VerEjemploPlantillaViewController alloc]  initWithNibName:@"VerEjemploPlantillaViewController" bundle:Nil];
+            [verEjemplo setIndex:5];
+            [self.navigationController pushViewController:verEjemplo animated:YES];
+        }
+            break;
         default:
             break;
     }
@@ -297,7 +347,7 @@ BOOL actualizo;
     CGFloat pageWidth = scrollView.frame.size.width;
     float fractionalPage = scrollView.contentOffset.x / pageWidth;
     NSInteger page = lround(fractionalPage);
-    if(page == 6 || page == 5){
+    if(page == 6){
         self.navigationItem.rightBarButtonItem = nil ;
     }else{
         self.navigationItem.rightBarButtonItem = self.btnAceptar;
@@ -391,13 +441,20 @@ BOOL actualizo;
 }
 
 
-- (IBAction)verMasTemplatesAct:(id)sender {
+- (IBAction)btnVerEjemploAzulAct:(id)sender {
     VerEjemploPlantillaViewController *verEjemplo = [[VerEjemploPlantillaViewController alloc]  initWithNibName:@"VerEjemploPlantillaViewController" bundle:Nil];
     [verEjemplo setIndex:5];
+    [self.navigationController pushViewController:verEjemplo animated:YES];
+}
+
+- (IBAction)verMasTemplatesAct:(id)sender {
+    VerEjemploPlantillaViewController *verEjemplo = [[VerEjemploPlantillaViewController alloc]  initWithNibName:@"VerEjemploPlantillaViewController" bundle:Nil];
+    [verEjemplo setIndex:6];
     [self.navigationController pushViewController:verEjemplo animated:YES];
     
 }
 - (IBAction)btnAceptarAct:(id)sender {
+    NSLog(@"SE OPRIMIO BTN ACEPTAR CON %@", self.datosUsuario.nombreTemplate);
     self.datosUsuario = [DatosUsuario sharedInstance];
     switch (self.plantillaAPublicar) {
         case 0:{
@@ -418,6 +475,10 @@ BOOL actualizo;
             break;
         case 4:{
             self.datosUsuario.nombreTemplate = @"Estandar1";
+        }
+            break;
+        case 5:{
+            self.datosUsuario.nombreTemplate = @"Coverpage1azul";
         }
             break;
         default:
