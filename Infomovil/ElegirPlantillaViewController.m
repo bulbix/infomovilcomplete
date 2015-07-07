@@ -61,7 +61,11 @@ BOOL actualizo;
     if(self.vistaInferior.hidden==NO){
         self.vistaInferior.hidden = YES;
     }
-
+    
+    
+    [[NSURLCache sharedURLCache] removeAllCachedResponses];
+    [[NSURLCache sharedURLCache] setDiskCapacity:0];
+    [[NSURLCache sharedURLCache] setMemoryCapacity:0];
 }
 
 - (void)setupScrollView {
@@ -192,7 +196,7 @@ BOOL actualizo;
     if(IS_IPAD){
             [self.imgVerMasAzul setFrame:CGRectMake(84, 40, 600, 600)];
             self.labelDelViewExtra1.frame = CGRectMake(100,680,600,20);
-            [self.labelDelViewExtra1 setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
+            [self.labelDelViewExtra1 setFont:[UIFont fontWithName:@"Avenir-Medium" size:20]];
             self.labelDelViewExtra2.frame = CGRectMake(100, 690, 600, 200 );
             [self.labelDelViewExtra2 setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
             [self.viewExtra setFrame: CGRectMake(768*5, 00, 768, 1024)];
@@ -202,11 +206,14 @@ BOOL actualizo;
             self.labelDelViewExtra2.frame = CGRectMake(30, 385, 315, 115 );
             [self.viewExtra setFrame: CGRectMake(375*5, 40, 375, 480)];
     }else if(IS_IPHONE_4){
-        self.labelDelViewExtra1.frame = CGRectMake(30,270,315,35);
-        self.labelDelViewExtra2.frame = CGRectMake(30, 300, 315, 115 );
+        [self.imgVerMasAzul setFrame:CGRectMake(10, 0, 300, 300)];
+        self.labelDelViewExtra1.frame = CGRectMake(30,300,315,20);
+        self.labelDelViewExtra2.frame = CGRectMake(30, 310, 315, 115 );
+        [self.labelDelViewExtra1 setFont:[UIFont fontWithName:@"Avenir-Medium" size:14]];
+        [self.labelDelViewExtra2 setFont:[UIFont fontWithName:@"Avenir-Book" size:13]];
             [self.viewExtra setFrame: CGRectMake(320*5, 0, 320, 420)];
     }else {
-            [self.viewExtra setFrame: CGRectMake(320*5, 30, 320, 420)];
+            [self.viewExtra setFrame: CGRectMake(320*5, 10, 320, 420)];
     }
     
     [self.scrollTemplate addSubview:self.viewExtra];
@@ -220,10 +227,13 @@ BOOL actualizo;
         [self.verMasTemplates setFrame:CGRectMake(87, 430, 200, 35)];
         [self.viewVerMas setFrame: CGRectMake(375*6, 50, 375, 480)];
     }else if(IS_IPHONE_4){
+         [self.imgVerMasTemplates setFrame:CGRectMake(10, 5, 300,300 )];
         [self.verMasTemplates setFrame:CGRectMake(60, 360, 200, 35)];
         [self.viewVerMas setFrame: CGRectMake(320*6, 5, 320, 420)];
     }else {
-        [self.viewVerMas setFrame: CGRectMake(320*6, 30, 320, 457)];
+        [self.imgVerMasTemplates setFrame:CGRectMake(10, 50, 300,270 )];
+        [self.verMasTemplates setFrame:CGRectMake(60, 350, 200, 50)];
+        [self.viewVerMas setFrame: CGRectMake(320*6, 15, 320, 457)];
     }
     
     [self.scrollTemplate addSubview:self.viewVerMas];

@@ -582,6 +582,7 @@
 		BFF448BB1B4AE149009458CA /* template5@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFF448B51B4AE149009458CA /* template5@3x.png */; };
 		BFF448BC1B4AE149009458CA /* template6@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFF448B61B4AE149009458CA /* template6@3x.png */; };
 		BFF448BE1B4AF87C009458CA /* temporal.png in Resources */ = {isa = PBXBuildFile; fileRef = BFF448BD1B4AF87C009458CA /* temporal.png */; };
+		BFF448C01B4B5A68009458CA /* templatesWebView.png in Resources */ = {isa = PBXBuildFile; fileRef = BFF448BF1B4B5A68009458CA /* templatesWebView.png */; };
 		BFFB04961B33811E001A9777 /* WS_Moviliza.m in Sources */ = {isa = PBXBuildFile; fileRef = BFFB04951B33811E001A9777 /* WS_Moviliza.m */; };
 		BFFB049B1B338FD1001A9777 /* EnviarPedacitoCodigoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFFB04991B338FD1001A9777 /* EnviarPedacitoCodigoViewController.m */; };
 		BFFB049C1B338FD1001A9777 /* EnviarPedacitoCodigoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFFB049A1B338FD1001A9777 /* EnviarPedacitoCodigoViewController.xib */; };
@@ -1401,6 +1402,7 @@
 		BFF448B51B4AE149009458CA /* template5@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "template5@3x.png"; path = "Infomovil/imagenesInfomovil/Templates/template5@3x.png"; sourceTree = SOURCE_ROOT; };
 		BFF448B61B4AE149009458CA /* template6@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "template6@3x.png"; path = "Infomovil/imagenesInfomovil/Templates/template6@3x.png"; sourceTree = SOURCE_ROOT; };
 		BFF448BD1B4AF87C009458CA /* temporal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = temporal.png; sourceTree = "<group>"; };
+		BFF448BF1B4B5A68009458CA /* templatesWebView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = templatesWebView.png; path = Infomovil/imagenesInfomovil/Templates/templatesWebView.png; sourceTree = SOURCE_ROOT; };
 		BFFB04941B33811E001A9777 /* WS_Moviliza.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WS_Moviliza.h; sourceTree = "<group>"; };
 		BFFB04951B33811E001A9777 /* WS_Moviliza.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WS_Moviliza.m; sourceTree = "<group>"; };
 		BFFB04981B338FD1001A9777 /* EnviarPedacitoCodigoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnviarPedacitoCodigoViewController.h; sourceTree = "<group>"; };
@@ -2592,6 +2594,7 @@
 		BFD292661AB36A140066AF30 /* templates */ = {
 			isa = PBXGroup;
 			children = (
+				BFF448BF1B4B5A68009458CA /* templatesWebView.png */,
 				BFF448BD1B4AF87C009458CA /* temporal.png */,
 				BFF448B11B4AE149009458CA /* template1@3x.png */,
 				BFF448B21B4AE149009458CA /* template2@3x.png */,
@@ -2840,6 +2843,7 @@
 				65581B2B19350C9300B5D4ED /* reportsEn.png in Resources */,
 				0F69406218E09112008A8F07 /* linea.png in Resources */,
 				0F9F532D18989413000F9FA5 /* btnyoutube@2x.png in Resources */,
+				BFF448C01B4B5A68009458CA /* templatesWebView.png in Resources */,
 				65065DEC190FEB8000189316 /* tipsTwit@2x.png in Resources */,
 				0FCB0F6A18E2139600C37A37 /* compartirtwitter@2x.png in Resources */,
 				0F9F52AC189890C6000F9FA5 /* basura.png in Resources */,

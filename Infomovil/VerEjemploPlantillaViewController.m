@@ -75,8 +75,8 @@
             [self.navigationItem setTitle:@"Estandar"];
             break;
             case 5:
-            htmlStringToLoad = @"http://landing.infomovil.com/";
-            [self.navigationItem setTitle:@"Estandar"];
+            htmlStringToLoad = @"https://s3.amazonaws.com/images.infomovil/templates/templates.html";
+            [self.navigationItem setTitle:@"Estilos"];
             break;
         default:
             break;
@@ -105,8 +105,9 @@
     self.navigationItem.leftBarButtonItem = buttonBack;
     
     // URL PARA CARGAR //
-    
-    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:htmlStringToLoad]]];
+    self.webView.dataDetectorTypes = UIDataDetectorTypeNone;
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:htmlStringToLoad]];
+    [self.webView loadRequest:urlRequest];
     [self.view addSubview:self.webView];
     [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
 
@@ -118,12 +119,26 @@
         [self.webView setFrame:CGRectMake(0, 0, 768, 1024)];
     }
     
+   
+    [[NSURLCache sharedURLCache] removeCachedResponseForRequest:urlRequest];
 }
 
 -(IBAction)regresar:(id)sender {
     self.pagCargada = NO;
+    [self.webView loadHTMLString:@"" baseURL:nil];
+    [self.webView stopLoading];
+    self.webView.delegate = nil;
+    [self.webView removeFromSuperview];
+    self.webView = nil;
+    self.webView.dataDetectorTypes = UIDataDetectorTypeNone;
+    [[NSURLCache sharedURLCache] removeAllCachedResponses];
+    [[NSURLCache sharedURLCache] setDiskCapacity:0];
+    [[NSURLCache sharedURLCache] setMemoryCapacity:0];
+    self.webView = nil;
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     self.pagCargada = YES;
