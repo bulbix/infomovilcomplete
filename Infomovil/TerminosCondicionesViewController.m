@@ -95,6 +95,16 @@
 }
 
 -(IBAction)guardarInformacion:(id)sender {
+    [self.webView loadHTMLString:@"" baseURL:nil];
+    [self.webView stopLoading];
+    self.webView.delegate = nil;
+    [self.webView removeFromSuperview];
+    self.webView = nil;
+    self.webView.dataDetectorTypes = UIDataDetectorTypeNone;
+    [[NSURLCache sharedURLCache] removeAllCachedResponses];
+    [[NSURLCache sharedURLCache] setDiskCapacity:0];
+    [[NSURLCache sharedURLCache] setMemoryCapacity:0];
+    self.webView = nil;
     [self.navigationController dismissViewControllerAnimated:YES completion:Nil];
 }
 

@@ -52,8 +52,6 @@
 		0F4C66F218F5E1D100CC6DA8 /* iconomensajes@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F4C66EF18F5E1D100CC6DA8 /* iconomensajes@2x.png */; };
 		0F4C7C2B18B6575700891238 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4C7C2A18B6575700891238 /* Reachability.m */; };
 		0F4C7C2E18B657C000891238 /* CommonUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4C7C2D18B657C000891238 /* CommonUtils.m */; };
-		0F4D573518BCF02D00A003A3 /* EliminarCuentaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4D573318BCF02D00A003A3 /* EliminarCuentaViewController.m */; };
-		0F4D573618BCF02D00A003A3 /* EliminarCuentaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F4D573418BCF02D00A003A3 /* EliminarCuentaViewController.xib */; };
 		0F4D573A18BD7AB200A003A3 /* WS_HandlerUsuario.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4D573918BD7AB200A003A3 /* WS_HandlerUsuario.m */; };
 		0F4EB7E718B50F5B003F4DBA /* UsuariosWS.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4EB7E618B50F5B003F4DBA /* UsuariosWS.m */; };
 		0F5104D418BE50CF00538435 /* CatalogoInformacion.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F5104D318BE50CF00538435 /* CatalogoInformacion.plist */; };
@@ -424,6 +422,7 @@
 		BF3322281B1E7C67004FBF24 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF3322271B1E7C67004FBF24 /* HockeySDK.framework */; };
 		BF33222C1B1E7C87004FBF24 /* HockeySDK.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = BF33222A1B1E7C87004FBF24 /* HockeySDK.xcconfig */; };
 		BF33222D1B1E7C87004FBF24 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BF33222B1B1E7C87004FBF24 /* HockeySDKResources.bundle */; };
+		BF3517801B4DE00A009B4B97 /* btncancelar.png in Resources */ = {isa = PBXBuildFile; fileRef = BF35177F1B4DE00A009B4B97 /* btncancelar.png */; };
 		BF35BAE11A9D5BE200E85F7A /* play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF35BAE01A9D5BE200E85F7A /* play@2x.png */; };
 		BF35BAE31A9D5C0600E85F7A /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = BF35BAE21A9D5C0600E85F7A /* play.png */; };
 		BF3C0AB11B4C524B00315340 /* ElegirPlantillaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF3C0AB01B4C524B00315340 /* ElegirPlantillaViewController.xib */; };
@@ -658,9 +657,6 @@
 		0F4C7C2A18B6575700891238 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		0F4C7C2C18B657C000891238 /* CommonUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtils.h; sourceTree = "<group>"; };
 		0F4C7C2D18B657C000891238 /* CommonUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtils.m; sourceTree = "<group>"; };
-		0F4D573218BCF02D00A003A3 /* EliminarCuentaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EliminarCuentaViewController.h; sourceTree = "<group>"; };
-		0F4D573318BCF02D00A003A3 /* EliminarCuentaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EliminarCuentaViewController.m; sourceTree = "<group>"; };
-		0F4D573418BCF02D00A003A3 /* EliminarCuentaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EliminarCuentaViewController.xib; sourceTree = "<group>"; };
 		0F4D573718BD704E00A003A3 /* WS_HandlerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WS_HandlerProtocol.h; sourceTree = "<group>"; };
 		0F4D573818BD7AB200A003A3 /* WS_HandlerUsuario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WS_HandlerUsuario.h; sourceTree = "<group>"; };
 		0F4D573918BD7AB200A003A3 /* WS_HandlerUsuario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WS_HandlerUsuario.m; sourceTree = "<group>"; };
@@ -1151,6 +1147,7 @@
 		BF3322271B1E7C67004FBF24 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HockeySDK.framework; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDK.framework"; sourceTree = "<group>"; };
 		BF33222A1B1E7C87004FBF24 /* HockeySDK.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = HockeySDK.xcconfig; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDK.framework/Versions/A/Resources/HockeySDK.xcconfig"; sourceTree = "<group>"; };
 		BF33222B1B1E7C87004FBF24 /* HockeySDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = HockeySDKResources.bundle; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDK.framework/Versions/A/Resources/HockeySDKResources.bundle"; sourceTree = "<group>"; };
+		BF35177F1B4DE00A009B4B97 /* btncancelar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btncancelar.png; sourceTree = "<group>"; };
 		BF35BAE01A9D5BE200E85F7A /* play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play@2x.png"; sourceTree = "<group>"; };
 		BF35BAE21A9D5C0600E85F7A /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
 		BF3C0AB01B4C524B00315340 /* ElegirPlantillaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ElegirPlantillaViewController.xib; sourceTree = "<group>"; };
@@ -1597,6 +1594,7 @@
 		0F5CFA4A189733E100D27B2E /* iPhone */ = {
 			isa = PBXGroup;
 			children = (
+				BF35177F1B4DE00A009B4B97 /* btncancelar.png */,
 				BFE270301B2675AC007D4316 /* lineCompraDominio.png */,
 				BF35BAE21A9D5C0600E85F7A /* play.png */,
 				BFB69B6F1A8426BD0022107C /* miFeed.png */,
@@ -2269,9 +2267,6 @@
 				0F578E3A18BC306B00888C87 /* InformacionRegistroViewController.h */,
 				0F578E3B18BC306B00888C87 /* InformacionRegistroViewController.m */,
 				0F578E3C18BC306B00888C87 /* InformacionRegistroViewController.xib */,
-				0F4D573218BCF02D00A003A3 /* EliminarCuentaViewController.h */,
-				0F4D573318BCF02D00A003A3 /* EliminarCuentaViewController.m */,
-				0F4D573418BCF02D00A003A3 /* EliminarCuentaViewController.xib */,
 				0F54842E18BFF56F00707C34 /* CambiarPasswordViewController.h */,
 				0F54842F18BFF56F00707C34 /* CambiarPasswordViewController.m */,
 				0F54843018BFF56F00707C34 /* CambiarPasswordViewController.xib */,
@@ -2804,6 +2799,7 @@
 				BFF448BC1B4AE149009458CA /* template6@3x.png in Resources */,
 				0F578E4A18BC355F00888C87 /* btnsiguiente2.png in Resources */,
 				0F4C66F018F5E1D100CC6DA8 /* btnaceptarmensajes@2x.png in Resources */,
+				BF3517801B4DE00A009B4B97 /* btncancelar.png in Resources */,
 				65C153791933EED400C426B3 /* plecaroja.png in Resources */,
 				0F56BE6118B28AA600497F99 /* Puntodemira.png in Resources */,
 				0F9F52C1189890C6000F9FA5 /* contrasena.png in Resources */,
@@ -2893,7 +2889,6 @@
 				65065DE6190FEB8000189316 /* tips3@2x.png in Resources */,
 				0F9F533B18989413000F9FA5 /* ctelefono@2x.png in Resources */,
 				0F9F532618989413000F9FA5 /* btnno@2x.png in Resources */,
-				0F4D573618BCF02D00A003A3 /* EliminarCuentaViewController.xib in Resources */,
 				0F9F52D3189890C6000F9FA5 /* micuentaon.png in Resources */,
 				0F5E042B18EF8CDA00AC4657 /* login.png in Resources */,
 				0F5E042F18EF8FA900AC4657 /* cemail@2x.png in Resources */,
@@ -3176,7 +3171,6 @@
 				BF66D6EB1B1CD491001FA40F /* GTLObject.m in Sources */,
 				0F8B213F1884733700F016B3 /* GaleriaImagenesViewController.m in Sources */,
 				0FE02825186E48FF007C27B0 /* Infomovil.xcdatamodeld in Sources */,
-				0F4D573518BCF02D00A003A3 /* EliminarCuentaViewController.m in Sources */,
 				0F70B50B18AD4BA300049C47 /* VideoCell.m in Sources */,
 				BF66D6E71B1CD491001FA40F /* GTLDateTime.m in Sources */,
 				0F58C8A518FEE4D200F2C0A4 /* SABuble.m in Sources */,

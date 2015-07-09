@@ -110,6 +110,16 @@
         [alertView show];
     }
     else {
+        [self.webView loadHTMLString:@"" baseURL:nil];
+        [self.webView stopLoading];
+        self.webView.delegate = nil;
+        [self.webView removeFromSuperview];
+        self.webView = nil;
+        self.webView.dataDetectorTypes = UIDataDetectorTypeNone;
+        [[NSURLCache sharedURLCache] removeAllCachedResponses];
+        [[NSURLCache sharedURLCache] setDiskCapacity:0];
+        [[NSURLCache sharedURLCache] setMemoryCapacity:0];
+        self.webView = nil;
         NSArray *vcs = [self.navigationController viewControllers];
         [self.navigationController popToViewController:[vcs objectAtIndex:vcs.count-3] animated:YES];
     }
@@ -118,7 +128,7 @@
 -(IBAction)guardarInformacion:(id)sender {
     self.datosUsuario = [DatosUsuario sharedInstance];
     self.datosUsuario.videoSeleccionado = self.videoSeleccionado;
-    self.datosUsuario.urlVideo = self.videoSeleccionado.linkSolo;//[NSString stringWithFormat:@"//www.youtube.com/embed/%@", idVideoSel];
+    self.datosUsuario.urlVideo = self.videoSeleccionado.linkSolo;
     [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:6 withObject:@YES];
     self.modifico = NO;
     
@@ -129,14 +139,24 @@
 
 -(void) accionNo {
     self.datosUsuario.videoSeleccionado = Nil;
+    [self.webView loadHTMLString:@"" baseURL:nil];
+    [self.webView stopLoading];
+    self.webView.delegate = nil;
+    [self.webView removeFromSuperview];
+    self.webView = nil;
+    self.webView.dataDetectorTypes = UIDataDetectorTypeNone;
+    [[NSURLCache sharedURLCache] removeAllCachedResponses];
+    [[NSURLCache sharedURLCache] setDiskCapacity:0];
+    [[NSURLCache sharedURLCache] setMemoryCapacity:0];
+    self.webView = nil;
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void) accionSi {
     self.datosUsuario = [DatosUsuario sharedInstance];
     self.datosUsuario.videoSeleccionado = self.videoSeleccionado;
-//    self.datosUsuario.urlVideo = self.videoSeleccionado.linkSolo;
-    self.datosUsuario.urlVideo = self.videoSeleccionado.linkSolo; //[NSString stringWithFormat:@"//www.youtube.com/embed/%@", idVideoSel];
+
+    self.datosUsuario.urlVideo = self.videoSeleccionado.linkSolo;
     [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:6 withObject:@YES];
     self.modifico = NO;
    
@@ -199,10 +219,11 @@
     }
     AlertView *alertAct = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
     [alertAct show];
-    [StringUtils terminarSession];
+  //  [StringUtils terminarSession];
     
-    MainViewController *inicio = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:Nil];
+  /*  MainViewController *inicio = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:Nil];
     [self.navigationController pushViewController:inicio animated:YES];
+   */
 }
 
 -(void) errorConsultaWS {

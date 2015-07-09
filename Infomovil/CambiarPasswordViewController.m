@@ -66,16 +66,21 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     if(IS_IPAD){
-        self.label.frame = CGRectMake(84, 40, 600, 20);
-        self.txtEmail.frame = CGRectMake(84, 80, 600, 40);
+        self.label.frame = CGRectMake(84, 150, 600, 80);
+        [self.label setFont:[UIFont fontWithName:@"Avenir-Book" size:22]];
+        self.txtEmail.frame = CGRectMake(84, 250, 600, 40);
     }else if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
-        self.label.frame = CGRectMake(0, 40, 375, 80);
-        self.txtEmail.frame = CGRectMake(47, 80, 280, 40);
+        self.label.frame = CGRectMake(47, 60, 280, 80);
+        self.txtEmail.frame = CGRectMake(47, 160, 280, 40);
     }
 
 }
 
-
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self.txtEmail becomeFirstResponder];
+    
+}
 
 - (void)didReceiveMemoryWarning
 {

@@ -69,10 +69,7 @@
         [alert show];
     
     }
-    
-    
-    
-    
+   
 }
 -(void)viewWillAppear:(BOOL)animated{
     [self.vistaInferior setHidden:YES];
@@ -81,21 +78,31 @@
 
 -(IBAction)regresar:(id)sender {
     self.pagCargada = NO;
+    [self.webView loadHTMLString:@"" baseURL:nil];
+    [self.webView stopLoading];
+    self.webView.delegate = nil;
+    [self.webView removeFromSuperview];
+    self.webView = nil;
+    self.webView.dataDetectorTypes = UIDataDetectorTypeNone;
+    [[NSURLCache sharedURLCache] removeAllCachedResponses];
+    [[NSURLCache sharedURLCache] setDiskCapacity:0];
+    [[NSURLCache sharedURLCache] setMemoryCapacity:0];
+    self.webView = nil;
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-    //self.pagCargada = YES;
+    self.pagCargada = YES;
     [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
 }
 
 
 -(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
-   // if(!self.pagCargada){
+    if(!self.pagCargada){
         [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
         AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"errorVerMiSitio", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
         [alert show];
-    //}
+    }
     
 }
 

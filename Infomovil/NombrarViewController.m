@@ -198,6 +198,7 @@
     
 }
 -(void)viewDidAppear:(BOOL)animated{
+     [super viewDidAppear:animated];
     [self.nombreDominio becomeFirstResponder];
     [self performSelectorInBackground:@selector(descargarDominios) withObject:Nil];
 

@@ -352,7 +352,7 @@ BOOL actualizo;
     }else{
         self.navigationItem.rightBarButtonItem = self.btnAceptar;
     }
-    if (previousPage != 6) {
+    if (previousPage != 7) {
         self.plantillaAPublicar = page;
         previousPage = page;
     }
@@ -454,7 +454,7 @@ BOOL actualizo;
     
 }
 - (IBAction)btnAceptarAct:(id)sender {
-    NSLog(@"SE OPRIMIO BTN ACEPTAR CON %@", self.datosUsuario.nombreTemplate);
+  
     self.datosUsuario = [DatosUsuario sharedInstance];
     switch (self.plantillaAPublicar) {
         case 0:{
@@ -484,7 +484,6 @@ BOOL actualizo;
         default:
             break;
     }
-    
     
     
     if ([CommonUtils hayConexion]) {

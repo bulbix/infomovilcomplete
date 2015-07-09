@@ -77,7 +77,7 @@
         self.boton.frame = CGRectMake(25, 420, 325, 50);
         [self.boton.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16]];
         self.label.frame = CGRectMake(30,360 ,165, 31);
-        self.btnOlvidePass.frame = CGRectMake(190, 364, 170, 31);
+        self.btnOlvidePass.frame = CGRectMake(30, 364, 170, 31);
         [self.txtPassword setBackgroundColor:[UIColor clearColor]];
         [self.txtPassword setBackground:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"input_semitrans@1x.png"] ofType:nil]]]];
         self.txtPassword.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"contrasena", nil) attributes:@{NSForegroundColorAttributeName: color}];

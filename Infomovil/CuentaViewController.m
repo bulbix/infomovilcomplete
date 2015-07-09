@@ -255,7 +255,6 @@ int opcionButton = 0 ;
                 [self.conoceMasCodigo setFont:[UIFont fontWithName:@"Avenir-Book" size:24]];
                 [self.btnPedacitoCodigo setFrame:CGRectMake(184, 450, 400, 40)];
                 [self.btnPedacitoCodigo.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:24]];
-                
             }
 
             self.MensajePlanProComprado.text = [NSString stringWithFormat:NSLocalizedString(@"cuentaConPlanPro", nil),self.datosUsuario.fechaInicial, self.datosUsuario.fechaFinal];

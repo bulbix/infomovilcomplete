@@ -8,7 +8,6 @@
 
 #import "ConfiguracionViewController.h"
 #import "InformacionRegistroViewController.h"
-#import "EliminarCuentaViewController.h"
 #import "CambiarPasswordViewController.h"
 #import "MenuPasosViewController.h"
 #import "WS_HandlerCambiarPassword.h"
@@ -110,8 +109,7 @@
 
 -(IBAction)regresar:(id)sender {
 
-	[self.navigationController popToViewController:((AppDelegate *)[[UIApplication sharedApplication] delegate]).ultimoView
-										  animated:YES];
+	[self.navigationController popToViewController:((AppDelegate *)[[UIApplication sharedApplication] delegate]).ultimoView animated:YES];
 }
 
 #pragma mark - UITableViewDatasource
