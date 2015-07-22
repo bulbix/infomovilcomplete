@@ -25,7 +25,7 @@
 @property(nonatomic, strong) NSString * plantillaSeccionada;
 @property(nonatomic, assign) NSInteger plantillaAPublicar;
 
-@property (weak, nonatomic) IBOutlet UIView *viewExtra;
+@property (strong, nonatomic) IBOutlet UIView *viewExtra;
 @property (weak, nonatomic) IBOutlet UILabel *labelDelViewExtra1;
 @property (weak, nonatomic) IBOutlet UILabel *labelDelViewExtra2;
 

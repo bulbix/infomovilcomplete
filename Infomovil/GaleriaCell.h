@@ -12,7 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *imagenPrevia;
 @property (weak, nonatomic) IBOutlet UILabel *pieFoto;
-@property (weak, nonatomic) IBOutlet UIView *vistaGaleria;
+@property (strong, nonatomic) IBOutlet UIView *vistaGaleria;
 @property (weak, nonatomic) IBOutlet UILabel *sombrearCelda;
 
 @end

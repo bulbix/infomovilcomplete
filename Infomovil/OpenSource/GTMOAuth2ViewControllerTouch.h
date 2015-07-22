@@ -209,7 +209,9 @@ typedef void (^GTMOAuth2ViewControllerCompletionHandler)(GTMOAuth2ViewController
 // - (void)viewController:(GTMOAuth2ViewControllerTouch *)viewController
 //       finishedWithAuth:(GTMOAuth2Authentication *)auth
 //                  error:(NSError *)error;
-//
+
+
+
 #if !GTM_OAUTH2_SKIP_GOOGLE_SUPPORT
 + (id)controllerWithScope:(NSString *)scope
                  clientID:(NSString *)clientID

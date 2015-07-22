@@ -60,7 +60,9 @@
         [parser setDelegate:self];
         if ([parser parse]) {
             if (requiereEncriptar) {
-                datos = [DatosUsuario sharedInstance];
+                if(self.token != nil && [self.token length]>0){
+                    datos.token = self.token;
+                }
                 NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
                 if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                     [self.direccionDelegate errorToken];

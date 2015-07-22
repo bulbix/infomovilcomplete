@@ -19,7 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *vistaHorarios;
 @property (weak, nonatomic) IBOutlet UITableView *tablaHorarios;
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerHorarios;
-@property (weak, nonatomic) IBOutlet UIView *vistaPicker;
+@property (strong, nonatomic) IBOutlet UIView *vistaPicker;
 @property (weak, nonatomic) IBOutlet UIButton *btnEliminar;
 @property (weak, nonatomic) IBOutlet UILabel *labelTituloHorarios;
 @property (weak, nonatomic) IBOutlet UILabel *labelInformacion;

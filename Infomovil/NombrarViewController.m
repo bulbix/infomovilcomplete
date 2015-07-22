@@ -324,6 +324,7 @@
 
 
 -(void) ocultarActivity {
+    NSLog(@"self.datosUsuario.tipoDeUsuario : %@", self.datosUsuario.tipoDeUsuario);
     if (alertActivity)
     {
         [NSThread sleepForTimeInterval:1];
@@ -646,8 +647,8 @@
 }
 
 -(void)seleccionaDominioGratuito{
+    NSLog(@"ENTRO A SELECCIONA DOMINIO GRATUITO!!!!!!");
     [self navigationController].navigationBarHidden = YES;
-    //[self.tableDominios reloadData];
     [self.view addSubview:self.viewContenidoDominios];
     self.view.transform = CGAffineTransformMakeScale(1.3, 1.3);
     [UIView animateWithDuration:.40 animations:^{
@@ -704,6 +705,7 @@
 
 - (void)showInView:(UIView *)aView animated:(BOOL)animated
 {
+    NSLog(@"NO TENGO IDEA A QUE HORA ENTRA EN SHOWINVIEW!!!");
     [aView addSubview:self.view];
     if (animated) {
         [self showAnimate];

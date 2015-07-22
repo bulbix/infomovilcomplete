@@ -14,7 +14,7 @@
  
 }
 
-@property (weak, nonatomic) IBOutlet UIView *vistaEstadisticas;
+@property (strong, nonatomic) IBOutlet UIView *vistaEstadisticas;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *botonCambioEstadisticas;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *botonTotales;
 

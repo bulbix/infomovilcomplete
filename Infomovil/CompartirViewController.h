@@ -11,7 +11,7 @@
 
 @interface CompartirViewController : InfomovilViewController<AlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *labelNombreDominio;
-@property (weak, nonatomic) IBOutlet UIView *vistaContenidoCompartir;
+@property (strong, nonatomic) IBOutlet UIView *vistaContenidoCompartir;
 
 @property (weak, nonatomic) IBOutlet UILabel *label1;
 @property (weak, nonatomic) IBOutlet UILabel *label2;

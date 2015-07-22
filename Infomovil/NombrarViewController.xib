@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NombrarViewController">
@@ -26,7 +26,7 @@
                 <outlet property="scroll" destination="oOj-Bw-2F4" id="AOl-Rt-cbY"/>
                 <outlet property="tableDominios" destination="FVP-M7-0Xl" id="6zK-le-dTT"/>
                 <outlet property="view" destination="1" id="3"/>
-                <outlet property="viewContenidoDominios" destination="Mui-lZ-nw5" id="XGA-k6-R8R"/>
+                <outlet property="viewContenidoDominios" destination="Mui-lZ-nw5" id="Oew-8I-er0"/>
                 <outlet property="viewDominiosTable" destination="NuY-Fr-IE6" id="nsl-1J-Adh"/>
             </connections>
         </placeholder>
@@ -211,6 +211,7 @@
                 </view>
             </subviews>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="236" y="1121"/>
         </view>
     </objects>

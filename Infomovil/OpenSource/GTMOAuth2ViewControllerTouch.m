@@ -1085,6 +1085,66 @@ static Class gSignInClass = Nil;
   }
   return status == noErr;
 }
+/*
+- (void)viewController:(GTMOAuth2ViewControllerTouch * )viewController
+      finishedWithAuth:(GTMOAuth2Authentication * )auth
+                 error:(NSError * )error
+{
+    if ([[_auth userEmail] rangeOfString:@"@mycompanyname.com"].location == NSNotFound && error != nil ) {
+        // Loop for no mycompanyname mail domain and also error in login
+        NSLog(@"Loop 1 - Non mycompanyname domain email OR Google login error.");
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                         message:@"Please Login with your mycompanyname email."
+                                                        delegate:nil
+                                               cancelButtonTitle:@"OK"
+                                               otherButtonTitles:nil];
+        [alert show];
+    } else if ([[_auth userEmail] rangeOfString:@"@mycompanyname.com"].location == NSNotFound) {
+        // Loop for no error in login but without mycompanyname mail domain
+        NSLog(@"Loop 2 - Non mycompanyname domain email AND no Google login error.");
+        
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Authentication Denied"
+                                                         message:@"Please Login with your mycompanyname email."
+                                                        delegate:nil
+                                               cancelButtonTitle:@"OK"
+                                               otherButtonTitles:nil];
+        [alert show];
+    } else if (error != nil) {
+        NSLog(@"Loop 3 - mycompanyname domain email AND Google login error.");
+        if ([[error localizedDescription] rangeOfString:@"error -1000"].location != NSNotFound)
+        {
+            NSLog(@"Loop 3.1 - Error message contains 'error -1000'.");
+            // Loop to catch unwanted error message from GTMOAuth which will show if user enters the app and decides not to sign in but enters the app after again.
+        } else
+        {
+            // Loop for error in authentication of user for google account
+            NSLog(@"Loop 3.2 - Error message caused by no internet connection.");
+            
+            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                             message:@"Your internet connection seems to be lost."
+                                                            delegate:nil
+                                                   cancelButtonTitle:@"OK"
+                                                   otherButtonTitles:nil];
+            [alert show];
+            
+        }
+    } else {
+        // Loop for mycompanyname mail domain and no authentication error
+        NSLog(@"Loop 4 - mycompanyname domain email AND no Google login error.");
+        
+        // initialize app
+    }
+*/
+
+
+
+
+
+
+
+
+
+
 
 #endif // ! TARGET_IPHONE_SIMULATOR
 

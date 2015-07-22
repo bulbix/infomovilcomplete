@@ -11,7 +11,7 @@
 @interface LMDefaultMenuItemCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *menuItemLabel;
-@property (weak, nonatomic) IBOutlet UIView *viewCell;
+@property (strong, nonatomic) IBOutlet UIView *viewCell;
 
 
 @end

@@ -28,9 +28,9 @@ typedef enum {
 @property (weak, nonatomic) IBOutlet UILabel *label1;
 @property (weak, nonatomic) IBOutlet UILabel *label2;
 @property (weak, nonatomic) IBOutlet UIButton *boton;
-@property (weak, nonatomic) IBOutlet UIView *popUpCenter;
+@property (strong, nonatomic) IBOutlet UIView *popUpCenter;
 @property (weak, nonatomic) IBOutlet UIButton *btnPublicar;
-@property (weak, nonatomic) IBOutlet UIView *popUpView;
+@property (strong, nonatomic) IBOutlet UIView *popUpView;
 @property (weak, nonatomic) IBOutlet UILabel *estaDisponibleBtn;
 
 
@@ -42,9 +42,9 @@ typedef enum {
 @property (weak, nonatomic) IBOutlet UIButton *cerrarBtn;
 
 //////////// POPUPDOMINIOS //////////
-@property (weak, nonatomic) IBOutlet UIView *viewContenidoDominios;
+@property (strong, nonatomic) IBOutlet UIView *viewContenidoDominios;
 @property (weak, nonatomic) IBOutlet UITableView *tableDominios;
-@property (weak, nonatomic) IBOutlet UIView *viewDominiosTable;
+@property (strong, nonatomic) IBOutlet UIView *viewDominiosTable;
 @property (weak, nonatomic) IBOutlet UILabel *dominioCompleto;
 
 @property (nonatomic, strong) NSString *idDominio;

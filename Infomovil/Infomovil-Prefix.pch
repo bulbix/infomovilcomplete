@@ -71,7 +71,7 @@ typedef enum {
 
 
 /* desarrollo */
-//#define rutaWS @"http://172.17.4.214:8080"
+//#define rutaWS @"http://172.16.51.30:8080"
 //#define rutaWS @"http://172.17.3.181:9090"
 /* productivo */
 #define dominioTipo @"recurso"

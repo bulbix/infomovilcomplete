@@ -32,8 +32,8 @@ typedef enum {
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollFoto;
 @property (weak, nonatomic) IBOutlet UITextField *pieFoto;
-@property (weak, nonatomic) IBOutlet UIView *vistaTomar;
-@property (weak, nonatomic) IBOutlet UIView *vistaUsar;
+@property (strong, nonatomic) IBOutlet UIView *vistaTomar;
+@property (strong, nonatomic) IBOutlet UIView *vistaUsar;
 @property (weak, nonatomic) IBOutlet UIImageView *vistaPreviaImagen;
 @property GaleriaImagenesOperacion operacion;
 @property (nonatomic) NSInteger index;
@@ -45,7 +45,7 @@ typedef enum {
 @property (weak, nonatomic) IBOutlet UILabel *labelTomarFoto;
 @property (nonatomic, assign) PhotoGaleryType galeryType;
 @property (nonatomic, strong) NSString *tituloPaso;
-@property (weak, nonatomic) IBOutlet UIView *vistaContenedorBoton;
+@property (strong, nonatomic) IBOutlet UIView *vistaContenedorBoton;
 
 @property (weak, nonatomic) id<GaleriaPaso2Delegate>delegadoGaleria;
 @property (strong, nonatomic) NSString *strImagenPath;

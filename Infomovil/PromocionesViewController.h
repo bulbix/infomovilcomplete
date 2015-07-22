@@ -19,8 +19,8 @@
 @property (weak, nonatomic) IBOutlet UITextView *textDescripcion;
 @property (weak, nonatomic) IBOutlet UITextView *textInformacion;
 @property (weak, nonatomic) IBOutlet UIDatePicker *fechaPicker;
-@property (weak, nonatomic) IBOutlet UIView *vistaPicker;
-@property (weak, nonatomic) IBOutlet UIView *vistaVigencia;
+@property (strong, nonatomic) IBOutlet UIView *vistaPicker;
+@property (strong, nonatomic) IBOutlet UIView *vistaVigencia;
 @property (weak, nonatomic) IBOutlet UITableView *tablaPromociones;
 @property (weak, nonatomic) IBOutlet UILabel *labelVigencia;
 @property (weak, nonatomic) IBOutlet UILabel *labelNombrePromocion;

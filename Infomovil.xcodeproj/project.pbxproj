@@ -420,7 +420,6 @@
 		BF1D50E71B3CB94000910E7A /* btn_done.png in Resources */ = {isa = PBXBuildFile; fileRef = BF1D50E61B3CB94000910E7A /* btn_done.png */; };
 		BF2B5D931B2F54BD00947D0F /* WS_RedimirCodigo.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2B5D921B2F54BD00947D0F /* WS_RedimirCodigo.m */; };
 		BF3322281B1E7C67004FBF24 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF3322271B1E7C67004FBF24 /* HockeySDK.framework */; };
-		BF33222C1B1E7C87004FBF24 /* HockeySDK.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = BF33222A1B1E7C87004FBF24 /* HockeySDK.xcconfig */; };
 		BF33222D1B1E7C87004FBF24 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BF33222B1B1E7C87004FBF24 /* HockeySDKResources.bundle */; };
 		BF3517801B4DE00A009B4B97 /* btncancelar.png in Resources */ = {isa = PBXBuildFile; fileRef = BF35177F1B4DE00A009B4B97 /* btncancelar.png */; };
 		BF35BAE11A9D5BE200E85F7A /* play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF35BAE01A9D5BE200E85F7A /* play@2x.png */; };
@@ -2692,7 +2691,7 @@
 		0FE02804186E48FE007C27B0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = "Sergio Sánchez Flores";
 				TargetAttributes = {
 					0FE0280B186E48FF007C27B0 = {
@@ -2972,7 +2971,6 @@
 				0F9F52D7189890C6000F9FA5 /* noeditado.png in Resources */,
 				0F9F533918989413000F9FA5 /* cskype@2x.png in Resources */,
 				0F079C231872378D007AFCC2 /* CrearPaso1ViewController.xib in Resources */,
-				BF33222C1B1E7C87004FBF24 /* HockeySDK.xcconfig in Resources */,
 				0F4A16A1187B002B005F5786 /* ListaTelefonosViewController.xib in Resources */,
 				65065DE4190FEB8000189316 /* tips1@2x.png in Resources */,
 				0F5CFA421896C30700D27B2E /* ContactosCell.xib in Resources */,

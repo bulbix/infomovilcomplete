@@ -293,7 +293,7 @@
                                  (_txtCodigoPostal.text.length > 0 && !borrar ) ? _txtCodigoPostal.text: @""];
         NSArray *arrayKeys = @[@"a1", @"a2", @"a3", @"tc", @"sp", @"c", @"pc"];
         
-        //DatosUsuario * datos = [DatosUsuario sharedInstance];
+        self.datosUsuario = [DatosUsuario sharedInstance];
         arregloDireccionAux = [[NSMutableArray alloc] initWithArray:[self.datosUsuario direccion] copyItems:YES];
         int i = 0;
         for(KeywordDataModel * data in self.datosUsuario.direccion){

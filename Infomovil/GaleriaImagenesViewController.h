@@ -17,7 +17,7 @@ typedef enum {
 
 @interface GaleriaImagenesViewController : InfomovilViewController <UITableViewDataSource, UITableViewDelegate, AlertViewDelegate, WS_HandlerProtocol>
 
-@property (weak, nonatomic) IBOutlet UIView *vistaInfo;
+@property (strong, nonatomic) IBOutlet UIView *vistaInfo;
 @property (nonatomic) NSInteger indiceItem;
 @property (weak, nonatomic) IBOutlet UITableView *tablaGaleria;
 @property (weak, nonatomic) IBOutlet UILabel *labelNumeroImagenes;

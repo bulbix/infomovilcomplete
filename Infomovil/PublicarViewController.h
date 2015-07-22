@@ -38,7 +38,7 @@ typedef enum {
 
 @property (weak, nonatomic) IBOutlet UIImageView *imgBull;
 
-@property (weak, nonatomic) IBOutlet UIView *vistaCombo;
+@property (strong, nonatomic) IBOutlet UIView *vistaCombo;
 @property (weak, nonatomic) IBOutlet UIButton *botonCombo;
 @property (weak, nonatomic) IBOutlet UIScrollView *scroll;
 

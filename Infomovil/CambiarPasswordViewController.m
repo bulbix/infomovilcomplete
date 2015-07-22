@@ -90,9 +90,7 @@
 
 -(IBAction)guardarInformacion:(id)sender {
     [self.view endEditing:YES];
-    
-    
-    
+
     
     if ([CommonUtils validarEmail:self.txtEmail.text]) {
 		if ([CommonUtils hayConexion]) {

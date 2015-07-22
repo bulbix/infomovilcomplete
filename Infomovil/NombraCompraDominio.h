@@ -29,8 +29,8 @@
 @property (nonatomic, strong) NSMutableArray *arregloDominios;
 
 // POPUP //
-@property (weak, nonatomic) IBOutlet UIView *viewPopUp;
-@property (weak, nonatomic) IBOutlet UIView *viewCenterPopUp;
+@property (strong, nonatomic) IBOutlet UIView *viewPopUp;
+@property (strong, nonatomic) IBOutlet UIView *viewCenterPopUp;
 @property (weak, nonatomic) IBOutlet UILabel *dominioPopUp;
 @property (weak, nonatomic) IBOutlet UILabel *msjPopUp;
 @property (weak, nonatomic) IBOutlet UIButton *comprarPopUp;

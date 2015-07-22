@@ -24,8 +24,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *verTutorialbtn;
 - (IBAction)verTutorialAct:(id)sender;
 
-@property (weak, nonatomic) IBOutlet UIView *viewDominioNoPublicado;
-@property (weak, nonatomic) IBOutlet UIView *viewDominioPublicado;
+@property (strong, nonatomic) IBOutlet UIView *viewDominioNoPublicado;
+@property (strong, nonatomic) IBOutlet UIView *viewDominioPublicado;
 @property (weak, nonatomic) IBOutlet UIImageView *line1;
 @property (weak, nonatomic) IBOutlet UIImageView *line2;
 @property (weak, nonatomic) IBOutlet UIImageView *line3;

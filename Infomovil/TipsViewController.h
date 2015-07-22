@@ -14,10 +14,10 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollVistaTips;
 @property (weak, nonatomic) IBOutlet UIPageControl *myPageControl;
 
-@property (weak, nonatomic) IBOutlet UIView *vistaTip1;
-@property (weak, nonatomic) IBOutlet UIView *vistaTip2;
-@property (weak, nonatomic) IBOutlet UIView *vistaTip3;
-@property (weak, nonatomic) IBOutlet UIView *vistaTip4;
+@property (strong, nonatomic) IBOutlet UIView *vistaTip1;
+@property (strong, nonatomic) IBOutlet UIView *vistaTip2;
+@property (strong, nonatomic) IBOutlet UIView *vistaTip3;
+@property (strong, nonatomic) IBOutlet UIView *vistaTip4;
 
 @property (weak, nonatomic) IBOutlet UILabel *seccionUnoTItulo;
 @property (weak, nonatomic) IBOutlet UILabel *seccionUnoLabel1;

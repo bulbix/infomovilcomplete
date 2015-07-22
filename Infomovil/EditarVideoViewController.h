@@ -23,9 +23,9 @@
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scroll;
 
-@property (weak, nonatomic) IBOutlet UIView *viewImg;
+@property (strong, nonatomic) IBOutlet UIView *viewImg;
 
-@property (weak, nonatomic) IBOutlet UIView *viewDatos;
+@property (strong, nonatomic) IBOutlet UIView *viewDatos;
 
 @property (weak, nonatomic) IBOutlet UILabel *datosVideo;
 

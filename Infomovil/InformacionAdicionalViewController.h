@@ -11,7 +11,7 @@
 @interface InformacionAdicionalViewController : InfomovilViewController <UITableViewDataSource, UITableViewDelegate, AlertViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray *arregloInformacion;
-@property (weak, nonatomic) IBOutlet UIView *vistaInformacion;
+@property (strong, nonatomic) IBOutlet UIView *vistaInformacion;
 @property (weak, nonatomic) IBOutlet UITableView *tablaInformacion;
 @property (weak, nonatomic) IBOutlet UILabel *imgBull1;
 @property (weak, nonatomic) IBOutlet UILabel *imgBull2;

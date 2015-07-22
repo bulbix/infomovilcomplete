@@ -32,7 +32,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imgBeneficios;
 @property (weak, nonatomic) IBOutlet UILabel *MensajePlanProComprado;
 
-@property (weak, nonatomic) IBOutlet UIView *viewPlanProComprado;
+@property (strong, nonatomic) IBOutlet UIView *viewPlanProComprado;
 @property (weak, nonatomic) IBOutlet UIButton *conocerMasBeneficios;
 
 @property (weak, nonatomic) IBOutlet UILabel *precioUno;
@@ -58,15 +58,15 @@
 // Views que contienen el plan pro y el dominio //
 @property (weak, nonatomic) IBOutlet UIScrollView *vistaPlanPro;
 @property (weak, nonatomic) IBOutlet UIScrollView *vistaDominio;
-@property (weak, nonatomic) IBOutlet UIView *viewCompraPlanPro;
+@property (strong, nonatomic) IBOutlet UIView *viewCompraPlanPro;
 
 @property (weak, nonatomic) IBOutlet UILabel *rayaLabel;
 // view mensaje exitoso redimido //
 @property (weak, nonatomic) IBOutlet UILabel *msjCodigoRedimido;
 @property (weak, nonatomic) IBOutlet UILabel *tituloCodigoRedimido;
 @property (weak, nonatomic) IBOutlet UIButton *btnAceptar;
-@property (weak, nonatomic) IBOutlet UIView *viewFelicidadesRedimir;
-@property (weak, nonatomic) IBOutlet UIView *viewContenidoRedimir;
+@property (strong, nonatomic) IBOutlet UIView *viewFelicidadesRedimir;
+@property (strong, nonatomic) IBOutlet UIView *viewContenidoRedimir;
 - (IBAction)aceptarAct:(id)sender;
 
 
@@ -79,7 +79,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *ComprarDominio;
 - (IBAction)comprarDominioBtn:(id)sender;
 
-@property (weak, nonatomic) IBOutlet UIView *viewEnviarCodigo;
+@property (strong, nonatomic) IBOutlet UIView *viewEnviarCodigo;
 @property (weak, nonatomic) IBOutlet UILabel *labelPromocion;
 @property (weak, nonatomic) IBOutlet UITextField *txtPromocion;
 @property (weak, nonatomic) IBOutlet UIButton *Enviar;

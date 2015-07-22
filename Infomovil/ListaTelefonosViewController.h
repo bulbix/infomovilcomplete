@@ -17,7 +17,7 @@ typedef enum {
 
 @interface ListaTelefonosViewController : InfomovilViewController <UITableViewDataSource, UITableViewDelegate, AlertViewDelegate, WS_HandlerProtocol>
 @property (weak, nonatomic) IBOutlet UITableView *tablaContactos;
-@property (weak, nonatomic) IBOutlet UIView *vistaInfo;
+@property (strong, nonatomic) IBOutlet UIView *vistaInfo;
 @property (weak, nonatomic) IBOutlet UILabel *labelEditar;
 @property (weak, nonatomic) IBOutlet UILabel *labelTelefono;
 @property (weak, nonatomic) IBOutlet UILabel *labelEmail;

@@ -14,13 +14,13 @@
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollVideo;
 @property (nonatomic, strong) NSString *urlVideo;
-@property (weak, nonatomic) IBOutlet UIView *vistaSeleccionaVideo;
-@property (weak, nonatomic) IBOutlet UIView *vistaVisualizaVideo;
+@property (strong, nonatomic) IBOutlet UIView *vistaSeleccionaVideo;
+@property (strong, nonatomic) IBOutlet UIView *vistaVisualizaVideo;
 @property (weak, nonatomic) IBOutlet UIImageView *imagenVistaPrevia;
 @property (weak, nonatomic) IBOutlet UILabel *labelTitulo;
 @property (weak, nonatomic) IBOutlet UILabel *labelAutor;
 @property (weak, nonatomic) IBOutlet UILabel *labelCategoria;
-@property (weak, nonatomic) IBOutlet UIView *vistaDatosVideo;
+@property (strong, nonatomic) IBOutlet UIView *vistaDatosVideo;
 @property (weak, nonatomic) IBOutlet UILabel *labelBuscaYoutube;
 @property (weak, nonatomic) IBOutlet UILabel *labelTituloVideo;
 @property (weak, nonatomic) IBOutlet UILabel *labelAutorVideo;

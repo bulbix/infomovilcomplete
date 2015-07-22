@@ -10,7 +10,7 @@
 
 @interface PromocionesCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIView *vistaFondo;
+@property (strong, nonatomic) IBOutlet UIView *vistaFondo;
 @property (weak, nonatomic) IBOutlet UILabel *labelConcepto;
 @property (weak, nonatomic) IBOutlet UIImageView *imagenEstatus;
 

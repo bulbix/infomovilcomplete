@@ -26,7 +26,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *txtTelefono;
 @property (weak, nonatomic) IBOutlet UILabel *labelDescripcion;
 @property (weak, nonatomic) IBOutlet UIButton *btnEliminar;
-@property (weak, nonatomic) IBOutlet UIView *vistaPais;
+@property (strong, nonatomic) IBOutlet UIView *vistaPais;
 @property (weak, nonatomic) IBOutlet UILabel *labelPais;
 @property (weak, nonatomic) IBOutlet UILabel *labelCodigo;
 @property (weak, nonatomic) IBOutlet UIImageView *imagenTipoContacto;
