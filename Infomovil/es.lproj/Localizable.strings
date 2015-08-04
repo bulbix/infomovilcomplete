@@ -458,3 +458,7 @@
 "template6preview"= "Portada azul";
 "template7preview"= "Estilos";
 "templateProximamente" = "Próximamente";
+"cuentaVaciaFace" = "Tu cuenta no tiene albumes de Facebook" ;
+"NoConexionFace" = "No se pudo conectar a Facebook" ;
+"albumsFace" = "Álbumes de Facebook";
+"photosFace" = "Seleccionar imagen";

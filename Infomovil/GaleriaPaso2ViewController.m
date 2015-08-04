@@ -14,6 +14,8 @@
 #import "NSStringUtiles.h"
 #import "MainViewController.h"
 #import "MenuPasosViewController.h"
+#import "AlbumsFacebookViewController.h"
+
 
 @interface GaleriaPaso2ViewController () {
     UITextField *textoPieFoto;
@@ -109,17 +111,7 @@
         estaEditando = NO;
     }
     
-    /*
-    if(IS_STANDARD_IPHONE_6_PLUS){
-        [self.vistaContenedorBoton setFrame:CGRectMake(70, 260, 280, 61)];
-        [self.vistaTomar setFrame:CGRectMake(0, 0, 280, 30)];
-        [self.vistaUsar setFrame:CGRectMake(0, 31, 280, 30)];
-        [self.btnEliminar setFrame:CGRectMake(310, 370, 29, 35)];
-        [self.labelTituloFoto setFrame:CGRectMake(70, 186 ,203, 21)];
-        [self.pieFoto setFrame:CGRectMake(70,215 ,300 ,30 )];
-        [self.scrollFoto setContentSize:CGSizeMake(414, 600)];
-    }else
-     */
+   
     if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         [self.vistaContenedorBoton setFrame:CGRectMake(40, 280, 280, 61)];
         [self.vistaTomar setFrame:CGRectMake(0, 0, 280, 30)];
@@ -259,6 +251,19 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)irAFacebook:(id)sender {
+    if([CommonUtils hayConexion]){
+        AlbumsFacebookViewController *cambiaPass = [[AlbumsFacebookViewController alloc] initWithNibName:@"AlbumsFacebookViewController" bundle:Nil];
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:cambiaPass];
+        [self.navigationController presentViewController:navController animated:YES completion:Nil];
+    
+    }else {
+        AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+        [alert show];
+			 }
+    
 }
 
 - (IBAction)tomarFoto:(UIButton *)sender {

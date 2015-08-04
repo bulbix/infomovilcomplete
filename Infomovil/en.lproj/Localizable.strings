@@ -450,3 +450,7 @@
 "template6preview"= "Blue cover";
 "template7preview"= "Styles";
 "templateProximamente" = "Coming soon";
+"cuentaVaciaFace" = "Your account does not have Facebook albums" ;
+"NoConexionFace" = "Could not connect to Facebook" ;
+"albumsFace" = "Facebook albums";
+"photosFace" = "Select image";

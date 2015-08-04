@@ -56,7 +56,9 @@ typedef enum {
 @property (nonatomic, strong) NSString *idImagen;
 @property (nonatomic, strong) NSString *urlImagen;
 
+@property (weak, nonatomic) IBOutlet UIButton *btnIrAFacebook;
 
+- (IBAction)irAFacebook:(id)sender;
 - (IBAction)tomarFoto:(UIButton *)sender;
 - (IBAction)usarFoto:(UIButton *)sender;
 - (IBAction)eliminarFoto:(UIButton *)sender;

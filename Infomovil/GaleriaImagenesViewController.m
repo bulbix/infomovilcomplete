@@ -56,11 +56,9 @@
     UIBarButtonItem *buttonAdd = [[UIBarButtonItem alloc] initWithCustomView:botonAgregar];
     self.navigationItem.rightBarButtonItem = buttonAdd;
 
-	if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
-		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"imagenes", @" ") nombreImagen:@"barraverde.png"];
-	}else{
-		[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"imagenes", @" ") nombreImagen:@"NBverde.png"];
-	}
+	
+	//	[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"imagenes", @" ") nombreImagen:@"barraverde.png"];
+	
     
     [self.labelImagenesMensaje setText:NSLocalizedString(@"galeriaVertical", Nil)];
     [self.labelImagenesMensaje2 setText:NSLocalizedString(@"redimensionaImagen", Nil)];
@@ -277,7 +275,7 @@
         [cell.imagenPrevia setImage:[UIImage imageNamed:@"previsualizador.png"]];
     }
     
-    if( [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && [self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"] && indexPath.row > 1){
+    if( [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && [self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"] && indexPath.row > 4){
         cell.sombrearCelda.hidden = NO;
     }else{
         cell.sombrearCelda.hidden = YES;
@@ -290,7 +288,7 @@
 #pragma mark - UITableViewDelegate
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if(indexPath.row <= 1 ){
+    if(indexPath.row <= 4 ){
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         GaleriaPaso2ViewController *galeria = [[GaleriaPaso2ViewController alloc] initWithNibName:@"GaleriaPaso2ViewController" bundle:nil];
         [galeria setOperacion:GaleriaImagenesEditar];
@@ -298,7 +296,7 @@
         [galeria setGaleryType:PhotoGaleryTypeImage];
         [galeria setIndex:indexPath.row];
         [self.navigationController pushViewController:galeria animated:YES];
-    }else if(indexPath.row > 1 && ![self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]){
+    }else if(indexPath.row > 4 && ![self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]){
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         GaleriaPaso2ViewController *galeria = [[GaleriaPaso2ViewController alloc] initWithNibName:@"GaleriaPaso2ViewController" bundle:nil];
         [galeria setOperacion:GaleriaImagenesEditar];

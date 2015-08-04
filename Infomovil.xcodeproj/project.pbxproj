@@ -580,6 +580,17 @@
 		BFFB04A01B3392C8001A9777 /* ico_mail_moviliza.png in Resources */ = {isa = PBXBuildFile; fileRef = BFFB049E1B3392C8001A9777 /* ico_mail_moviliza.png */; };
 		BFFBD4361B45AA490091372D /* ir.png in Resources */ = {isa = PBXBuildFile; fileRef = BFFBD4351B45AA490091372D /* ir.png */; };
 		BFFBD4381B45F25C0091372D /* slider2.png in Resources */ = {isa = PBXBuildFile; fileRef = BFFBD4371B45F25C0091372D /* slider2.png */; };
+		BFFC36891B62AA9C009E3E14 /* AlbumsFacebookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFFC36811B62AA9C009E3E14 /* AlbumsFacebookViewController.m */; };
+		BFFC368A1B62AA9C009E3E14 /* AlbumsFacebookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFFC36821B62AA9C009E3E14 /* AlbumsFacebookViewController.xib */; };
+		BFFC368B1B62AA9C009E3E14 /* CellAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = BFFC36841B62AA9C009E3E14 /* CellAlbum.m */; };
+		BFFC368C1B62AA9C009E3E14 /* CellAlbum.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFFC36851B62AA9C009E3E14 /* CellAlbum.xib */; };
+		BFFC368D1B62AA9C009E3E14 /* CollectionPhotos.m in Sources */ = {isa = PBXBuildFile; fileRef = BFFC36871B62AA9C009E3E14 /* CollectionPhotos.m */; };
+		BFFC368E1B62AA9C009E3E14 /* CollectionPhotos.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFFC36881B62AA9C009E3E14 /* CollectionPhotos.xib */; };
+		BFFC36901B62AABF009E3E14 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFFC368F1B62AABF009E3E14 /* FBSDKCoreKit.framework */; };
+		BFFC36971B62AAE2009E3E14 /* PhotosFacebookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFFC36921B62AAE2009E3E14 /* PhotosFacebookViewController.m */; };
+		BFFC36981B62AAE2009E3E14 /* PhotosFacebookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFFC36931B62AAE2009E3E14 /* PhotosFacebookViewController.xib */; };
+		BFFC36991B62AAE2009E3E14 /* SeleccionarPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = BFFC36951B62AAE2009E3E14 /* SeleccionarPhoto.m */; };
+		BFFC369A1B62AAE2009E3E14 /* SeleccionarPhoto.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFFC36961B62AAE2009E3E14 /* SeleccionarPhoto.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1391,6 +1402,22 @@
 		BFFB049E1B3392C8001A9777 /* ico_mail_moviliza.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ico_mail_moviliza.png; path = imagenesWeb/ico_mail_moviliza.png; sourceTree = "<group>"; };
 		BFFBD4351B45AA490091372D /* ir.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ir.png; path = imagenesWeb/ir.png; sourceTree = "<group>"; };
 		BFFBD4371B45F25C0091372D /* slider2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slider2.png; sourceTree = "<group>"; };
+		BFFC36801B62AA9C009E3E14 /* AlbumsFacebookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumsFacebookViewController.h; sourceTree = "<group>"; };
+		BFFC36811B62AA9C009E3E14 /* AlbumsFacebookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumsFacebookViewController.m; sourceTree = "<group>"; };
+		BFFC36821B62AA9C009E3E14 /* AlbumsFacebookViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlbumsFacebookViewController.xib; sourceTree = "<group>"; };
+		BFFC36831B62AA9C009E3E14 /* CellAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellAlbum.h; sourceTree = "<group>"; };
+		BFFC36841B62AA9C009E3E14 /* CellAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellAlbum.m; sourceTree = "<group>"; };
+		BFFC36851B62AA9C009E3E14 /* CellAlbum.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellAlbum.xib; sourceTree = "<group>"; };
+		BFFC36861B62AA9C009E3E14 /* CollectionPhotos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionPhotos.h; sourceTree = "<group>"; };
+		BFFC36871B62AA9C009E3E14 /* CollectionPhotos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionPhotos.m; sourceTree = "<group>"; };
+		BFFC36881B62AA9C009E3E14 /* CollectionPhotos.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionPhotos.xib; sourceTree = "<group>"; };
+		BFFC368F1B62AABF009E3E14 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = Infomovil/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		BFFC36911B62AAE2009E3E14 /* PhotosFacebookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotosFacebookViewController.h; sourceTree = "<group>"; };
+		BFFC36921B62AAE2009E3E14 /* PhotosFacebookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotosFacebookViewController.m; sourceTree = "<group>"; };
+		BFFC36931B62AAE2009E3E14 /* PhotosFacebookViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotosFacebookViewController.xib; sourceTree = "<group>"; };
+		BFFC36941B62AAE2009E3E14 /* SeleccionarPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeleccionarPhoto.h; sourceTree = "<group>"; };
+		BFFC36951B62AAE2009E3E14 /* SeleccionarPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeleccionarPhoto.m; sourceTree = "<group>"; };
+		BFFC36961B62AAE2009E3E14 /* SeleccionarPhoto.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SeleccionarPhoto.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1398,6 +1425,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFFC36901B62AABF009E3E14 /* FBSDKCoreKit.framework in Frameworks */,
 				6551AF511912B62200846B72 /* Security.framework in Frameworks */,
 				BF9DF2AF1B1E8281007E5310 /* QuickLook.framework in Frameworks */,
 				BF9DF2AD1B1E8269007E5310 /* CoreText.framework in Frameworks */,
@@ -2103,6 +2131,7 @@
 		0FE0280E186E48FF007C27B0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BFFC368F1B62AABF009E3E14 /* FBSDKCoreKit.framework */,
 				BF9DF2AE1B1E8281007E5310 /* QuickLook.framework */,
 				BF9DF2AC1B1E8269007E5310 /* CoreText.framework */,
 				BF3322251B1E7C1D004FBF24 /* HockeySDK-iOS */,
@@ -2197,6 +2226,7 @@
 		0FE02844186E4992007C27B0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				BFFC367F1B62AA63009E3E14 /* AlbumsFacebook */,
 				BFFB04971B338F8E001A9777 /* PedacitoDeCodigo */,
 				BF4963BE1AB0C78A008E6DD7 /* ElegirPlantilla */,
 				68C200C119F964D90062B2D3 /* Widgets */,
@@ -2646,6 +2676,28 @@
 			name = PedacitoDeCodigo;
 			sourceTree = "<group>";
 		};
+		BFFC367F1B62AA63009E3E14 /* AlbumsFacebook */ = {
+			isa = PBXGroup;
+			children = (
+				BFFC36801B62AA9C009E3E14 /* AlbumsFacebookViewController.h */,
+				BFFC36811B62AA9C009E3E14 /* AlbumsFacebookViewController.m */,
+				BFFC36821B62AA9C009E3E14 /* AlbumsFacebookViewController.xib */,
+				BFFC36831B62AA9C009E3E14 /* CellAlbum.h */,
+				BFFC36841B62AA9C009E3E14 /* CellAlbum.m */,
+				BFFC36851B62AA9C009E3E14 /* CellAlbum.xib */,
+				BFFC36911B62AAE2009E3E14 /* PhotosFacebookViewController.h */,
+				BFFC36921B62AAE2009E3E14 /* PhotosFacebookViewController.m */,
+				BFFC36931B62AAE2009E3E14 /* PhotosFacebookViewController.xib */,
+				BFFC36861B62AA9C009E3E14 /* CollectionPhotos.h */,
+				BFFC36871B62AA9C009E3E14 /* CollectionPhotos.m */,
+				BFFC36881B62AA9C009E3E14 /* CollectionPhotos.xib */,
+				BFFC36941B62AAE2009E3E14 /* SeleccionarPhoto.h */,
+				BFFC36951B62AAE2009E3E14 /* SeleccionarPhoto.m */,
+				BFFC36961B62AAE2009E3E14 /* SeleccionarPhoto.xib */,
+			);
+			name = AlbumsFacebook;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2844,6 +2896,7 @@
 				BFF448B71B4AE149009458CA /* template1@3x.png in Resources */,
 				BFD29D621AC2139D008EADB9 /* input_semitrans@1x.png in Resources */,
 				BF66D7491B1D29AF001FA40F /* llamanos.png in Resources */,
+				BFFC369A1B62AAE2009E3E14 /* SeleccionarPhoto.xib in Resources */,
 				0FF4211E1899845B003EEBB1 /* tomarfoto@2x.png in Resources */,
 				BF0919B71B20D81B0067A4E6 /* NombraCompraDominio.xib in Resources */,
 				0F9F532E18989413000F9FA5 /* camara@2x.png in Resources */,
@@ -2875,6 +2928,7 @@
 				0F680EE218EC75E500A02347 /* barramorada.png in Resources */,
 				0F6CBD1C190801D70077B065 /* barrarosa@2x.png in Resources */,
 				0F6CBD16190801C90077B065 /* barrarosa.png in Resources */,
+				BFFC368C1B62AA9C009E3E14 /* CellAlbum.xib in Resources */,
 				65581B1B19350C8000B5D4ED /* shareEn@2x.png in Resources */,
 				0F4C66F218F5E1D100CC6DA8 /* iconomensajes@2x.png in Resources */,
 				0F850E021885BFC60008A0CA /* PublicarViewController.xib in Resources */,
@@ -2883,6 +2937,7 @@
 				0F5104DA18BEC37400538435 /* flechas@2x.png in Resources */,
 				0F5104D418BE50CF00538435 /* CatalogoInformacion.plist in Resources */,
 				65608FF3197088DE00B3C914 /* btniPhone@2x.png in Resources */,
+				BFFC368E1B62AA9C009E3E14 /* CollectionPhotos.xib in Resources */,
 				65C153771933EEC800C426B3 /* plecaroja@2x.png in Resources */,
 				0F9E0E8F18A5485A00657EEA /* Localizable.strings in Resources */,
 				65065DE6190FEB8000189316 /* tips3@2x.png in Resources */,
@@ -3021,6 +3076,7 @@
 				0F68945C18E53E3800025050 /* btniniciarsesion@2x.png in Resources */,
 				BFD29D7D1AC2139D008EADB9 /* verTutorial@2x.png in Resources */,
 				BFD2929B1AB37A7B0066AF30 /* elegirestilo-en.png in Resources */,
+				BFFC368A1B62AA9C009E3E14 /* AlbumsFacebookViewController.xib in Resources */,
 				BFA858941AA018AE00A9CB6F /* splash-750x1334@2x.png in Resources */,
 				0F9F534818989413000F9FA5 /* micuentaon@2x.png in Resources */,
 				0F680EF918ECD79300A02347 /* mireportes.png in Resources */,
@@ -3059,6 +3115,7 @@
 				0F8B21541884B7EA00F016B3 /* PerfilPaso2ViewController.xib in Resources */,
 				BFD29D531AC2139D008EADB9 /* btn_blanco@2x.png in Resources */,
 				0F9F52BC189890C6000F9FA5 /* cfacebook.png in Resources */,
+				BFFC36981B62AAE2009E3E14 /* PhotosFacebookViewController.xib in Resources */,
 				0FF421311899D5DF003EEBB1 /* TipoContactoCell.xib in Resources */,
 				65065DD4190FEB6600189316 /* tipsEmail.png in Resources */,
 				BF3C0AB51B4C88C400315340 /* ultimoTemplate-es.png in Resources */,
@@ -3150,6 +3207,7 @@
 				BF0919BA1B20D8600067A4E6 /* NombraCompraDominio.m in Sources */,
 				0F5EF9D618C955360013D37B /* WS_HandlerActualizarMapa.m in Sources */,
 				0FC0F3731888B6C9000ED438 /* SeleccionaVideoViewController.m in Sources */,
+				BFFC368D1B62AA9C009E3E14 /* CollectionPhotos.m in Sources */,
 				0F850E061885F8D20008A0CA /* EstadisticasViewController.m in Sources */,
 				0FE02822186E48FF007C27B0 /* AppDelegate.m in Sources */,
 				0F850DF21885AF550008A0CA /* InformacionAdicionalViewController.m in Sources */,
@@ -3186,6 +3244,7 @@
 				0F54843118BFF56F00707C34 /* CambiarPasswordViewController.m in Sources */,
 				0F58739F18F6E99900DA0CFD /* PNBarChart.m in Sources */,
 				0F4C7C2E18B657C000891238 /* CommonUtils.m in Sources */,
+				BFFC36891B62AA9C009E3E14 /* AlbumsFacebookViewController.m in Sources */,
 				0F4EB7E718B50F5B003F4DBA /* UsuariosWS.m in Sources */,
 				6512ABCE190AC9E400AEA2CE /* WS_CompraDominio.m in Sources */,
 				0F8B2FDF19B8D9EE007045F5 /* EditarVideoViewController.m in Sources */,
@@ -3235,6 +3294,7 @@
 				BF66D7171B1CD4A9001FA40F /* GTLPlusConstants.m in Sources */,
 				BF66D6C11B1CD466001FA40F /* GTMOAuth2Authentication.m in Sources */,
 				0F079BFC1871D2BD007AFCC2 /* InfomovilViewController.m in Sources */,
+				BFFC368B1B62AA9C009E3E14 /* CellAlbum.m in Sources */,
 				BF66D71F1B1CD4A9001FA40F /* GTLServicePlus.m in Sources */,
 				BF66D7141B1CD4A9001FA40F /* GTLPlusActivityFeed.m in Sources */,
 				BFFB04961B33811E001A9777 /* WS_Moviliza.m in Sources */,
@@ -3278,7 +3338,9 @@
 				0F65E93C187620A70009EC3F /* TipoContactoViewController.m in Sources */,
 				BFD0AB981A9E44FF00D5FF63 /* VerEjemploViewController.m in Sources */,
 				BF66D6C51B1CD466001FA40F /* GTMObjC2Runtime.m in Sources */,
+				BFFC36991B62AAE2009E3E14 /* SeleccionarPhoto.m in Sources */,
 				BF66D6EF1B1CD491001FA40F /* GTLUploadParameters.m in Sources */,
+				BFFC36971B62AAE2009E3E14 /* PhotosFacebookViewController.m in Sources */,
 				BF66D71B1B1CD4A9001FA40F /* GTLPlusPeopleFeed.m in Sources */,
 				BF648FAF1A950ED600AFDEAD /* VerTutorialViewController.m in Sources */,
 				0F5EF9D918C96E080013D37B /* WS_ActualizarDireccion.m in Sources */,
@@ -3406,7 +3468,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "67c2a020-4a9e-4e78-a546-55454ee7861e";
+				PROVISIONING_PROFILE = "5b80bdbe-19b1-463d-b241-a354ec832f51";
 				SDKROOT = iphoneos;
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};
@@ -3442,7 +3504,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = NO;
-				PROVISIONING_PROFILE = "8e07c7bf-38a1-4d44-9916-c6ea2134136f";
+				PROVISIONING_PROFILE = "b49ab7b7-a0b3-4a3f-a466-06c5cb2ea320";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 				VALID_ARCHS = "armv7 armv7s arm64";
@@ -3477,7 +3539,7 @@
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "67c2a020-4a9e-4e78-a546-55454ee7861e";
+				PROVISIONING_PROFILE = "5b80bdbe-19b1-463d-b241-a354ec832f51";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
@@ -3512,7 +3574,7 @@
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8e07c7bf-38a1-4d44-9916-c6ea2134136f";
+				PROVISIONING_PROFILE = "b49ab7b7-a0b3-4a3f-a466-06c5cb2ea320";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
