@@ -40,9 +40,8 @@
 
 
 
-
-
-
+@property (weak, nonatomic) IBOutlet UILabel *etiquetaImg;
+@property (weak, nonatomic) IBOutlet UILabel *etiquetaSelecciona;
 @property (weak, nonatomic) IBOutlet UITextField *txtNombreImagen;
 
 @property (nonatomic,strong) NSString* urlPhoto;

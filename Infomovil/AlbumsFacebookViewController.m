@@ -52,6 +52,16 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
+        [self.tableView setFrame:CGRectMake(0, 0, 375, 667)];
+    }else if(IS_IPAD){
+        [self.tableView setFrame:CGRectMake(0, 0, 768, 1024)];
+    }else if(IS_IPHONE_4){
+        [self.tableView setFrame:CGRectMake(0, 0, 320, 480)];
+    }
+    
+    
+    
     self.btnReintentar.layer.cornerRadius = 5.0f;
     self.navigationItem.rightBarButtonItem = nil;
     [self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"albumsFace" , Nil) nombreImagen:@"barraverde.png"];
@@ -105,18 +115,10 @@
   
     dispatch_async( dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0 ), ^(void)
     {
-      /*  NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:[self.urlPicture objectAtIndex:indexPath.row]]];
-        
-        
-        dispatch_async( dispatch_get_main_queue(), ^(void){
-             cell.imgCel.image = [UIImage imageWithData:data];
-        });
-        */
         
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:  [self.urlPicture objectAtIndex:indexPath.row] ]
                                                  cachePolicy:NSURLRequestReturnCacheDataElseLoad
                                              timeoutInterval:10.0];
-        //NSURLRequestUseProtocolCachePolicy
         NSError *requestError;
         [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue]
                                completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
@@ -130,8 +132,6 @@
                                        UIImage *image = [UIImage imageWithData:data];
                                        [ cell.imgCel setImage:image];
                                    }
-                                   
-                                   
                                    
                                }];
         

@@ -454,3 +454,6 @@
 "NoConexionFace" = "Could not connect to Facebook" ;
 "albumsFace" = "Facebook albums";
 "photosFace" = "Select image";
+"imgSeleccionadaFace" = "Selected image";
+"tituloFotoFace" = "Image name";
+"fotosFacebtn" = "Facebook photos";

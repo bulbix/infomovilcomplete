@@ -7,6 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SeleccionarPhoto">
             <connections>
+                <outlet property="etiquetaImg" destination="J0q-6E-qJX" id="OHR-oo-Z6V"/>
+                <outlet property="etiquetaSelecciona" destination="EAa-HN-J6e" id="7cu-uX-cpZ"/>
                 <outlet property="imgPrevia" destination="pY7-pd-vj7" id="czK-e7-Cre"/>
                 <outlet property="txtNombreImagen" destination="eJS-4A-EjB" id="al7-Fx-XrC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -24,9 +26,10 @@
                     <color key="textColor" red="0.18431372549019609" green="0.63921568627450975" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="eJS-4A-EjB">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="eJS-4A-EjB">
                     <rect key="frame" x="20" y="252" width="280" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <color key="textColor" red="0.31764705882352939" green="0.20784313725490194" blue="0.36470588235294116" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                     <textInputTraits key="textInputTraits"/>

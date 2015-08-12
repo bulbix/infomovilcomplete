@@ -13,12 +13,14 @@
                 <outlet property="btnUsarFoto" destination="dfU-Fi-7pZ" id="g15-R4-Ohf"/>
                 <outlet property="imgBullet" destination="SP4-rI-bbJ" id="oDP-Yu-QcX"/>
                 <outlet property="imgBullet2" destination="Cam-AZ-UZe" id="HIc-kq-75n"/>
+                <outlet property="imgbullet3" destination="3hP-7v-cXC" id="PR9-kQ-cet"/>
                 <outlet property="labelFotoExistente" destination="PvL-va-hZc" id="522-aC-yPw"/>
                 <outlet property="labelTituloFoto" destination="Qg1-QP-jL3" id="GvU-9b-I8d"/>
                 <outlet property="labelTomarFoto" destination="98T-IZ-8fD" id="Lyh-9R-EDg"/>
                 <outlet property="pieFoto" destination="4ob-Ab-sKW" id="B42-gf-eZl"/>
                 <outlet property="scrollFoto" destination="cIE-OD-vfP" id="KpQ-Zy-CFV"/>
                 <outlet property="view" destination="1" id="3"/>
+                <outlet property="viewFacebok" destination="Zci-eS-36k" id="vBF-Ky-nTP"/>
                 <outlet property="vistaContenedorBoton" destination="twn-gy-c6t" id="v9B-3T-GjR"/>
                 <outlet property="vistaPreviaImagen" destination="40B-l1-VXL" id="vda-ew-zcQ"/>
                 <outlet property="vistaTomar" destination="0g2-Sw-on8" id="kmb-Nt-W2M"/>
@@ -57,7 +59,7 @@
                             </connections>
                         </textField>
                         <view contentMode="scaleToFill" id="twn-gy-c6t">
-                            <rect key="frame" x="20" y="253" width="280" height="61"/>
+                            <rect key="frame" x="20" y="253" width="280" height="104"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                             <subviews>
                                 <view contentMode="scaleToFill" id="0g2-Sw-on8">
@@ -118,34 +120,34 @@
                                         <action selector="usarFoto:" destination="-1" eventType="touchUpInside" id="TsZ-0N-869"/>
                                     </connections>
                                 </button>
+                                <view contentMode="scaleToFill" id="Zci-eS-36k">
+                                    <rect key="frame" x="0.0" y="62" width="280" height="34"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="xgd-Q8-KJQ">
+                                            <rect key="frame" x="8" y="1" width="232" height="35"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                            <state key="normal" title="Fotos de Facebook">
+                                                <color key="titleColor" red="0.18431372549019609" green="0.63921568627450975" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="irAFacebook:" destination="-1" eventType="touchUpInside" id="FG1-np-vMx"/>
+                                            </connections>
+                                        </button>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btnsiguiente.png" id="3hP-7v-cXC">
+                                            <rect key="frame" x="261" y="8" width="11" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </view>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
-                        <view contentMode="scaleToFill" id="Zci-eS-36k">
-                            <rect key="frame" x="20" y="315" width="280" height="34"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="xgd-Q8-KJQ">
-                                    <rect key="frame" x="8" y="0.0" width="232" height="35"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                                    <state key="normal" title="Fotos de Facebook">
-                                        <color key="titleColor" red="0.18431372549019609" green="0.63921568627450975" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="irAFacebook:" destination="-1" eventType="touchUpInside" id="FG1-np-vMx"/>
-                                    </connections>
-                                </button>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btnsiguiente.png" id="3hP-7v-cXC">
-                                    <rect key="frame" x="259" y="8" width="11" height="18"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                </imageView>
-                            </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </view>
                         <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="f0G-MN-u6W">
-                            <rect key="frame" x="271" y="386" width="29" height="35"/>
+                            <rect key="frame" x="271" y="373" width="29" height="35"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <state key="normal" backgroundImage="basura.png">

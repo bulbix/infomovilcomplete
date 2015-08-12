@@ -322,7 +322,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>3.0.6</string>
+	<string>4.0.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
@@ -330,14 +330,14 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb422690184604551</string>
+				<string>fb346859792130678</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1.0.1</string>
 	<key>FacebookAppID</key>
-	<string>422690184604551</string>
+	<string>346859792130678</string>
 	<key>FacebookBundleName</key>
 	<string>FacebookSDKOverrides</string>
 	<key>LSRequiresIPhoneOS</key>

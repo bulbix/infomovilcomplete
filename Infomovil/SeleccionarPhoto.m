@@ -33,7 +33,6 @@
     
     NSLog(@"La url de la foto es: %@" , self.urlPhoto);
     NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:self.urlPhoto]];
-    //[self.imgPhoto setImage:[UIImage imageWithData: data]];
     PECropViewController *controller = [[PECropViewController alloc] init];
     controller.delegate = self;
     controller.image = [UIImage imageWithData: data];
@@ -63,9 +62,32 @@
     [backButton addTarget:self action:@selector(regresar:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *buttonBack = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     self.navigationItem.leftBarButtonItem = buttonBack;
-   // self.navigationItem.rightBarButtonItem = nil;
     [self.vistaInferior setHidden:YES];
     
+    self.etiquetaSelecciona.text = NSLocalizedString(@"tituloFotoFace", nil);
+    self.etiquetaImg.text = NSLocalizedString(@"imgSeleccionadaFace", nil);
+    self.txtNombreImagen.layer.cornerRadius = 5.0f;
+    if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
+        [self.imgPrevia setFrame:CGRectMake(115,30 , 144,144 )];
+        [self.etiquetaImg setFrame:CGRectMake(0, 180 , 375, 30)];
+        [self.etiquetaSelecciona setFrame:CGRectMake(32, 228, 315, 30)];
+        [self.txtNombreImagen setFrame:CGRectMake(30, 260, 315, 30)];
+    }else if(IS_IPAD){
+        [self.imgPrevia setFrame:CGRectMake(292,50 , 184,184 )];
+        [self.etiquetaImg setFrame:CGRectMake(0, 244 , 768, 40)];
+        [self.etiquetaImg setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
+        [self.etiquetaSelecciona setFrame:CGRectMake(134, 308, 500, 40)];
+        [self.etiquetaSelecciona setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
+        [self.txtNombreImagen setFrame:CGRectMake(134, 350, 500, 35)];
+        [self.txtNombreImagen setFont:[UIFont fontWithName:@"Avenir-Book" size:20]];
+    }else if(IS_IPHONE_4){
+        [self.imgPrevia setFrame:CGRectMake(113, 10 , 94,94 )];
+        [self.etiquetaImg setFrame:CGRectMake(0, 106 , 320, 30)];
+        [self.etiquetaImg setFont:[UIFont fontWithName:@"Avenir-Book" size:15]];
+        [self.etiquetaSelecciona setFrame:CGRectMake(20, 135, 280, 30)];
+        [self.etiquetaSelecciona setFont:[UIFont fontWithName:@"Avenir-Book" size:15]];
+        [self.txtNombreImagen setFrame:CGRectMake(20, 160, 280, 30)];
+    }
 
 }
 
@@ -97,6 +119,7 @@
 
 -(IBAction)guardarInformacion:(id)sender {
     if ([CommonUtils hayConexion]) {
+        [self.txtNombreImagen resignFirstResponder];
         [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
         [self performSelectorInBackground:@selector(salvaImagen) withObject:nil];
         

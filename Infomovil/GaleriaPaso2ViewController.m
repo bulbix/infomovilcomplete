@@ -94,8 +94,10 @@
     [self.labelTituloFoto setText:NSLocalizedString(@"tituloFoto", Nil)];
     [self.labelTomarFoto setText:NSLocalizedString(@"tomarFoto", Nil)];
     [self.labelFotoExistente setText:NSLocalizedString(@"fotoExistente", Nil)];
+    [self.btnIrAFacebook.titleLabel setText:NSLocalizedString(@"fotosFacebtn", nil)];
     self.vistaTomar.layer.cornerRadius = 5.0f;
     self.vistaUsar.layer.cornerRadius = 5.0f;
+    self.viewFacebok.layer.cornerRadius = 5.0f;
     self.vistaPreviaImagen.layer.cornerRadius = 5.0f;
     self.vistaPreviaImagen.layer.masksToBounds = YES;
     self.pieFoto.layer.cornerRadius = 5.0f;
@@ -113,19 +115,25 @@
     
    
     if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
-        [self.vistaContenedorBoton setFrame:CGRectMake(40, 280, 280, 61)];
+        [self.vistaContenedorBoton setFrame:CGRectMake(40, 280, 280, 104)];
         [self.vistaTomar setFrame:CGRectMake(0, 0, 280, 30)];
         [self.vistaUsar setFrame:CGRectMake(0, 31, 280, 30)];
-        [self.btnEliminar setFrame:CGRectMake(270, 370, 29, 35)];
+        [self.btnEliminar setFrame:CGRectMake(290, 400, 29, 35)];
         [self.labelTituloFoto setFrame:CGRectMake(40, 186 ,203, 21)];
         [self.pieFoto setFrame:CGRectMake(40,215 ,280 ,30 )];
         [self.scrollFoto setContentSize:CGSizeMake(375, 500)];
+       
     }else if(IS_IPAD){
-        [self.vistaContenedorBoton setFrame:CGRectMake(134, 280, 500, 61)];
-        [self.vistaTomar setFrame:CGRectMake(0, 0, 500, 30)];
-        [self.vistaUsar setFrame:CGRectMake(0, 31, 500, 30)];
-        [self.btnEliminar setFrame:CGRectMake(570, 370, 29, 35)];
+        [self.vistaContenedorBoton setFrame:CGRectMake(134, 280, 500, 119)];
+        [self.vistaTomar setFrame:CGRectMake(0, 0, 500, 45)];
+        [self.vistaUsar setFrame:CGRectMake(0, 46, 500, 45)];
+        [self.viewFacebok setFrame:CGRectMake(0, 92, 500, 45)];
+        [self.btnEliminar setFrame:CGRectMake(590, 440, 29, 35)];
+        [self.imgbullet3 setFrame:CGRectMake(480, 5, 11, 18)];
         [self.labelTituloFoto setFrame:CGRectMake(134, 186 ,500, 21)];
+        [self.labelTomarFoto setFrame:CGRectMake(self.labelTomarFoto.frame.origin.x, self.labelTomarFoto.frame.origin.y, self.labelTomarFoto.frame.size.width, 40)];
+        [self.labelFotoExistente setFrame:CGRectMake(self.labelFotoExistente.frame.origin.x, self.labelFotoExistente.frame.origin.y, self.labelFotoExistente.frame.size.width, 40)];
+        [self.btnIrAFacebook setFrame:CGRectMake(self.btnIrAFacebook.frame.origin.x, self.btnIrAFacebook.frame.origin.y, self.btnIrAFacebook.frame.size.width, 40)];
         [self.pieFoto setFrame:CGRectMake(134,215 , 500 ,30 )];
         [self.scrollFoto setContentSize:CGSizeMake(768, 800)];
         [self.imgBullet setFrame:CGRectMake(480, 6, 11, 18)];

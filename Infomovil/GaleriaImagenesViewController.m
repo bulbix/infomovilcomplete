@@ -13,7 +13,7 @@
 #import "WS_HandlerGaleria.h"
 #import "ItemsDominio.h"
 #import "CuentaViewController.h"
-
+#import "CrearPaso1ViewController.h"
 #import "AppDelegate.h"
 #import "MainViewController.h"
 
@@ -44,6 +44,7 @@
 }
 
 - (void)viewDidLoad{
+    NSLog(@"ESTOY EN GALERIA DE IMAGENES");
     [super viewDidLoad];
     self.datosUsuario = [DatosUsuario sharedInstance];
 
@@ -55,9 +56,6 @@
     
     UIBarButtonItem *buttonAdd = [[UIBarButtonItem alloc] initWithCustomView:botonAgregar];
     self.navigationItem.rightBarButtonItem = buttonAdd;
-
-	
-	//	[self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"imagenes", @" ") nombreImagen:@"barraverde.png"];
 	
     
     [self.labelImagenesMensaje setText:NSLocalizedString(@"galeriaVertical", Nil)];
@@ -133,6 +131,20 @@
     
     }
     
+    UIImage *image =[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"btnregresar.png"] ofType:nil]]];
+    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [backButton setFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
+    [backButton setImage:image forState:UIControlStateNormal];
+    [backButton addTarget:self action:@selector(regresar:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *buttonBack = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+    self.navigationItem.leftBarButtonItem = buttonBack;
+}
+
+-(IBAction)regresar:(id)sender {
+    [[self view] endEditing:YES];
+    CrearPaso1ViewController *CrearPaso1 = [[CrearPaso1ViewController alloc] initWithNibName:@"CrearPaso1ViewController" bundle:Nil];
+    [self.navigationController pushViewController:CrearPaso1 animated:YES];
     
 }
 
@@ -253,22 +265,25 @@
         
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:  self.urlImagen ]
                                              cachePolicy:NSURLRequestReturnCacheDataElseLoad
-                                         timeoutInterval:20.0];
+                                         timeoutInterval:10.0];
         //NSURLRequestUseProtocolCachePolicy
         NSError *requestError;
-        NSURLResponse *urlResponse = nil;
-        NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&requestError];
-        if (response == nil) {
-            if (requestError != nil) {
-               
-                [cell.imagenPrevia setImage:[UIImage imageNamed:@"previsualizador.png"]];
-            }
-        }else {
-          
-            UIImage *image = [UIImage imageWithData:response];
-            [cell.imagenPrevia setImage:image];
-        }
-        
+        //NSURLResponse *urlResponse = nil;
+        //NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&requestError];
+        [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue]
+                               completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+                                   if (response == nil) {
+                                       if (requestError != nil) {
+                                           
+                                           [cell.imagenPrevia setImage:[UIImage imageNamed:@"previsualizador.png"]];
+                                       }
+                                   }else {
+                                       
+                                       UIImage *image = [UIImage imageWithData:data];
+                                       [cell.imagenPrevia setImage:image];
+                                   }
+                                   
+                                    }];
         
         
     }else{

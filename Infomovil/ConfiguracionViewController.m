@@ -306,7 +306,7 @@
         actualizoCorrecto = NO;
     }else{
          actualizoCorrecto = YES;
-        [[Appboy sharedInstance].user setCustomAttributeWithKey:@"hashCambioPassword" andStringValue:resultado];
+       // [[Appboy sharedInstance].user setCustomAttributeWithKey:@"hashCambioPassword" andStringValue:resultado];
         [[Appboy sharedInstance] logCustomEvent:@"ChangePassword"];
     
     

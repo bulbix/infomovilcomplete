@@ -80,7 +80,6 @@
     CollectionPhotos *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     dispatch_async( dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0 ), ^(void)
                    {
-                    //   NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:[self.urlsAlbum objectAtIndex:indexPath.row]]];
                        
                        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[self.urlsAlbum objectAtIndex:indexPath.row]]
                                                                 cachePolicy:NSURLRequestReturnCacheDataElseLoad
@@ -148,6 +147,24 @@
 
 }
 
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
+        return CGSizeMake(110, 110);
+    }else if(IS_IPAD){
+        return CGSizeMake(95, 95);
+    }
+    return CGSizeMake(95, 95);
+}
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
+    if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
+        return UIEdgeInsetsMake(15, 25, 20, 10);
+    }else if(IS_IPAD){
+        return UIEdgeInsetsMake(10, 10, 10, 10);
+    }
+    return UIEdgeInsetsMake(10, 10, 10, 10);
+}
 
 
 @end
