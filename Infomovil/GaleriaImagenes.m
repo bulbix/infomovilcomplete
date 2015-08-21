@@ -10,8 +10,8 @@
 
 @implementation GaleriaImagenes
 
-@synthesize rutaImagen, pieFoto;
-@synthesize ancho, alto, idImagen;
+@synthesize rutaImagen, pieFoto, idImagen;
+//@synthesize ancho, alto, ;
 
 -(id) initWithPath:(NSString *)ruta andFooter:(NSString *)pie {
     self = [super init];

@@ -48,7 +48,7 @@
 @property (nonatomic,strong) NSString* idAlbum;
 @property (weak, nonatomic) IBOutlet UIImageView *imgPhoto;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
-@property (nonatomic, strong) AlertView *alertaMapa;
+@property (nonatomic, strong) AlertView *alertaPhoto;
 @property (nonatomic,assign) BOOL pagCargada;
 @property (weak, nonatomic) id<GaleriaPaso2Delegate>delegadoGaleria;
 @property (weak, nonatomic) IBOutlet UIImageView *imgPrevia;

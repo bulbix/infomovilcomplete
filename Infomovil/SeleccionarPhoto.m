@@ -40,8 +40,8 @@
     [self presentViewController:navigationController animated:YES completion:NULL];
 }
 -(void) mostrarActivity {
-    self.alertaMapa = [AlertView initWithDelegate:self message:NSLocalizedString(@"cargando", Nil) andAlertViewType:AlertViewTypeActivity];
-    [self.alertaMapa show];
+    self.alertaPhoto = [AlertView initWithDelegate:self message:NSLocalizedString(@"cargando", Nil) andAlertViewType:AlertViewTypeActivity];
+    [self.alertaPhoto show];
 }
 
 
@@ -186,10 +186,10 @@
     [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
 }
 -(void) ocultarActivity {
-    if ( self.alertaMapa )
+    if ( self.alertaPhoto )
     {
         [NSThread sleepForTimeInterval:1];
-        [self.alertaMapa hide];
+        [self.alertaPhoto hide];
     }
     if(exitoModificar == YES){
     AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"actualizacionCorrecta", Nil) andAlertViewType:AlertViewTypeInfo];
@@ -203,5 +203,11 @@
     }
     
 }
+
+-(void) errorConsultaWS {
+    [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
+}
+
+
 
 @end

@@ -125,7 +125,7 @@
         
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
         [parser setDelegate:self];
-        NSLog(@"WS_HandlerLogin: La Respuesta es %s", [dataResult bytes]);
+        //NSLog(@"WS_HandlerLogin: La Respuesta es %s", [dataResult bytes]);
         NSString* newStr = [NSString stringWithUTF8String:[dataResult bytes]];
         NSInteger errorCodeInt = [newStr intValue];
         if(errorCodeInt  == -1001   ){
@@ -787,7 +787,7 @@
     else if ([elementName isEqualToString:@"idKeyword"]) {
         self.keywordData.idAuxKeyword = [StringUtils desEncriptar:self.currentElementString conToken:self.token];
         self.keywordData.idKeyword = [[StringUtils desEncriptar:self.currentElementString conToken:self.token]integerValue];
-        NSLog(@"LOS IDKEYWORD SON: %@", self.currentElementString);
+        
     }
     else if ([elementName isEqualToString:@"keywordField"]) {
         self.keywordData.keywordField = self.currentElementString;
@@ -803,7 +803,7 @@
         if( [self.token length] > 0){
             self.datosUsuario.token = self.token;
         }
-        NSLog(@"EL TOKEN KE tengo ES: %@ y el token ke me envia es: %@", self.datosUsuario.token , self.token);
+       
     }
     else if ([elementName isEqualToString:@"calleNum"]) {
         if (requiereEncriptar) {

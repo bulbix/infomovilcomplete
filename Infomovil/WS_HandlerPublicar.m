@@ -196,32 +196,6 @@
             
         }
         
-//        if (datos.diccionarioPromocion != Nil) {
-//            NSMutableDictionary *dictPromo = datos.diccionarioPromocion;
-//            [stringXML appendString:@"<listOffertRecordVO>"];
-//            if ([dictPromo objectForKey:@"descripcionPromocion"] != nil) {
-//                [stringXML appendFormat:@"<descOffer>%@</descOffer>", [dictPromo objectForKey:@"descripcionPromocion"]];
-//            }
-//            if ([dictPromo objectForKey:@"fechaSeleccionada"] != nil) {
-//                NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
-//                [formatter setDateFormat:@"dd/MM/YYYY"];
-//                [stringXML appendFormat:@"<endDateOffer>%@</endDateOffer>", [formatter stringFromDate:[dictPromo objectForKey:@"fechaSeleccionada"]]];
-//            }
-//            if (datos.rutaImagenPromocion != nil) {
-//                NSData *dataImage = [NSData dataWithContentsOfFile:datos.rutaImagenPromocion];
-//                [stringXML appendFormat:@"<imageClobOffer>%@</imageClobOffer>", [Base64 encode:dataImage]];
-//            }
-//            if ([dictPromo objectForKey:@"redencion"]!= nil) {
-//                [stringXML appendFormat:@"<redeemOffer>%@</redeemOffer>", [dictPromo objectForKey:@"redencion"]];
-//            }
-//            if ([dictPromo objectForKey:@"informacionPromocion"] != nil) {
-//                [stringXML appendFormat:@"<termsOffer>%@</termsOffer>", [dictPromo objectForKey:@"informacionPromocion"]];
-//            }
-//            if ([dictPromo objectForKey:@"tituloPromocion"] != nil) {
-//                [stringXML appendFormat:@"<titleOffer>%@</titleOffer>", [dictPromo objectForKey:@"tituloPromocion"]];
-//            }
-//            [stringXML appendString:@"</listOffertRecordVO>"];
-//        }
         
         //recuperacion de direccion
         NSDictionary *dictCatalogo = [[NSDictionary alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"CatalogoInformacion" ofType:@"plist"]];

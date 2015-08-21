@@ -25,6 +25,8 @@
 	AlertView * alertaImagenes;
 }
 @property (nonatomic, strong) NSMutableArray *arregloImagenes;
+@property (nonatomic, strong) NSMutableArray *arregloDescripcion;
+@property (nonatomic, strong) NSMutableArray *arregloIdImagenes;
 @property (nonatomic, strong) AlertView *alertaGaleria;
 
 @end
@@ -35,8 +37,7 @@
 
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
     }
@@ -44,56 +45,35 @@
 }
 
 - (void)viewDidLoad{
-    NSLog(@"ESTOY EN GALERIA DE IMAGENES");
     [super viewDidLoad];
+    [self mostrarBotones];
     self.datosUsuario = [DatosUsuario sharedInstance];
-
-    UIImage *imagenAgregar = [UIImage imageNamed:@"btnagregar.png"];
-    UIButton *botonAgregar = [UIButton buttonWithType:UIButtonTypeCustom];
-    [botonAgregar setFrame:CGRectMake(0, 0, imagenAgregar.size.width, imagenAgregar.size.height)];
-    [botonAgregar setBackgroundImage:imagenAgregar forState:UIControlStateNormal];
-    [botonAgregar addTarget:self action:@selector(agregarImagen:) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIBarButtonItem *buttonAdd = [[UIBarButtonItem alloc] initWithCustomView:botonAgregar];
-    self.navigationItem.rightBarButtonItem = buttonAdd;
-	
-    
-    [self.labelImagenesMensaje setText:NSLocalizedString(@"galeriaVertical", Nil)];
-    [self.labelImagenesMensaje2 setText:NSLocalizedString(@"redimensionaImagen", Nil)];
-    self.vistaInfo.layer.cornerRadius = 5.0f;
+    self.arregloImagenes = self.datosUsuario.arregloUrlImagenesGaleria;
+    self.arregloDescripcion = self.datosUsuario.arregloDescripcionImagenGaleria;
+    self.arregloIdImagenes = self.datosUsuario.arregloIdImagenGaleria;
     
 }
 
 -(void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-     [self.labelNumeroImagenes setText:NSLocalizedString(@"5Imagenes", Nil)];
-   
+    self.vistaInfo.layer.cornerRadius = 5.0f;
+    [self.labelImagenesMensaje setText:NSLocalizedString(@"galeriaVertical", Nil)];
+    [self.labelImagenesMensaje2 setText:NSLocalizedString(@"redimensionaImagen", Nil)];
+    [self.labelNumeroImagenes setText:NSLocalizedString(@"5Imagenes", Nil)];
     [self acomodarBarraNavegacionConTitulo:NSLocalizedString(@"imagenes", @" ") nombreImagen:@"barraverde.png"];
-	
-    self.datosUsuario = [DatosUsuario sharedInstance];
-    self.arregloImagenes = self.datosUsuario.arregloUrlImagenesGaleria;
+    
     if ([self.arregloImagenes count] > 0) {
         [self.tablaGaleria setHidden:NO];
         [self.vistaInfo setHidden:YES];
         [self.tablaGaleria reloadData];
-        [self mostrarBotones];
         [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:8 withObject:@YES];
     }
     else {
         [self.tablaGaleria setHidden:YES];
         [self.vistaInfo setHidden:NO];
         [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:8 withObject:@NO];
-        
-        self.navigationItem.rightBarButtonItems = Nil;
-        UIImage *imageAceptar = [UIImage imageNamed:@"btnagregar.png"];
-        UIButton *btAceptar = [UIButton buttonWithType:UIButtonTypeCustom];
-        [btAceptar setFrame:CGRectMake(0, 0, imageAceptar.size.width, imageAceptar.size.height)];
-        [btAceptar setImage:imageAceptar forState:UIControlStateNormal];
-        [btAceptar addTarget:self action:@selector(agregarImagen:) forControlEvents:UIControlEventTouchUpInside];
-        UIBarButtonItem *botonAceptar = [[UIBarButtonItem alloc] initWithCustomView:btAceptar];
-        self.navigationItem.rightBarButtonItem = botonAceptar;
     }
-	[self mostrarBotones];
+	
  if(IS_IPAD){
         [self.vistaInfo setFrame:CGRectMake(84, 40, 600, 500)];
         [self.labelNumeroImagenes setFrame: CGRectMake(40, 60, 550, 60)];
@@ -173,23 +153,13 @@
         [btEdit setFrame:CGRectMake(0, 0, imagenEdit.size.width, imagenEdit.size.height)];
         [btEdit setImage:imagenEdit forState:UIControlStateNormal];
         [btEdit addTarget:self action:@selector(editarTabla:) forControlEvents:UIControlEventTouchUpInside];
-       // UIBarButtonItem *botonEdit = [[UIBarButtonItem alloc] initWithCustomView:btEdit];
-        
-	
-        // IRC ordenar imagenes quitar esta linea y descomentar las de abajo //
-        self.navigationItem.rightBarButtonItems = @[botonAdd];
-        /*
-        if([self.arregloImagenes count]>1){
-			self.navigationItem.rightBarButtonItems = @[botonEdit, botonAdd];
-		}else{
-			self.navigationItem.rightBarButtonItems = @[botonAdd];
-		}
-         */
+        UIBarButtonItem *botonEdit = [[UIBarButtonItem alloc] initWithCustomView:btEdit];
+        self.navigationItem.rightBarButtonItems = @[botonEdit, botonAdd];
+		
     }
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
@@ -197,18 +167,18 @@
 -(IBAction)agregarImagen:(id)sender {
 
     if ([self.arregloImagenes count] < 5) {
-        GaleriaPaso2ViewController *galeria = [[GaleriaPaso2ViewController alloc] initWithNibName:@"GaleriaPaso2ViewController" bundle:nil];
-        [galeria setOperacion:GaleriaImagenesAgregar];
-        [galeria setGaleryType:PhotoGaleryTypeImage];
-        [galeria setTituloPaso:NSLocalizedString(@"anadirImagen", @" ")];
-        [self.navigationController pushViewController:galeria animated:YES];
+        GaleriaPaso2ViewController *galeriaPaso2 = [[GaleriaPaso2ViewController alloc] initWithNibName:@"GaleriaPaso2ViewController" bundle:nil];
+        [galeriaPaso2 setOperacion:GaleriaImagenesAgregar];
+        [galeriaPaso2 setGaleryType:PhotoGaleryTypeImage];
+        [galeriaPaso2 setTituloPaso:NSLocalizedString(@"anadirImagen", @" ")];
+        [self.navigationController pushViewController:galeriaPaso2 animated:YES];
         
     }else if([self.arregloImagenes count] >= 5 && [self.arregloImagenes count] < 12 && [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && ![self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]){
-        GaleriaPaso2ViewController *galeria = [[GaleriaPaso2ViewController alloc] initWithNibName:@"GaleriaPaso2ViewController" bundle:nil];
-        [galeria setOperacion:GaleriaImagenesAgregar];
-        [galeria setGaleryType:PhotoGaleryTypeImage];
-        [galeria setTituloPaso:NSLocalizedString(@"anadirImagen", @" ")];
-        [self.navigationController pushViewController:galeria animated:YES];
+        GaleriaPaso2ViewController *galeriaPaso2 = [[GaleriaPaso2ViewController alloc] initWithNibName:@"GaleriaPaso2ViewController" bundle:nil];
+        [galeriaPaso2 setOperacion:GaleriaImagenesAgregar];
+        [galeriaPaso2 setGaleryType:PhotoGaleryTypeImage];
+        [galeriaPaso2 setTituloPaso:NSLocalizedString(@"anadirImagen", @" ")];
+        [self.navigationController pushViewController:galeriaPaso2 animated:YES];
     
     }else if([self.arregloImagenes count] >= 5 && [self.arregloImagenes count] < 12 && [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && [self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]){
         AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeImagenesPrueba", Nil) andAlertViewType:AlertViewTypeQuestion];
@@ -266,10 +236,7 @@
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:  self.urlImagen ]
                                              cachePolicy:NSURLRequestReturnCacheDataElseLoad
                                          timeoutInterval:10.0];
-        //NSURLRequestUseProtocolCachePolicy
         NSError *requestError;
-        //NSURLResponse *urlResponse = nil;
-        //NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&requestError];
         [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue]
                                completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
                                    if (response == nil) {
@@ -295,8 +262,6 @@
     }else{
         cell.sombrearCelda.hidden = YES;
     }
-    
-    
     return cell;
 }
 
@@ -305,20 +270,20 @@
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if(indexPath.row <= 4 ){
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
-        GaleriaPaso2ViewController *galeria = [[GaleriaPaso2ViewController alloc] initWithNibName:@"GaleriaPaso2ViewController" bundle:nil];
-        [galeria setOperacion:GaleriaImagenesEditar];
-        [galeria setTituloPaso:NSLocalizedString(@"anadirImagen", @" ")];
-        [galeria setGaleryType:PhotoGaleryTypeImage];
-        [galeria setIndex:indexPath.row];
-        [self.navigationController pushViewController:galeria animated:YES];
+        GaleriaPaso2ViewController *galeriaPaso2 = [[GaleriaPaso2ViewController alloc] initWithNibName:@"GaleriaPaso2ViewController" bundle:nil];
+        [galeriaPaso2 setOperacion:GaleriaImagenesEditar];
+        [galeriaPaso2 setTituloPaso:NSLocalizedString(@"anadirImagen", @" ")];
+        [galeriaPaso2 setGaleryType:PhotoGaleryTypeImage];
+        [galeriaPaso2 setIndex:indexPath.row];
+        [self.navigationController pushViewController:galeriaPaso2 animated:YES];
     }else if(indexPath.row > 4 && ![self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]){
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
-        GaleriaPaso2ViewController *galeria = [[GaleriaPaso2ViewController alloc] initWithNibName:@"GaleriaPaso2ViewController" bundle:nil];
-        [galeria setOperacion:GaleriaImagenesEditar];
-        [galeria setTituloPaso:NSLocalizedString(@"anadirImagen", @" ")];
-        [galeria setGaleryType:PhotoGaleryTypeImage];
-        [galeria setIndex:indexPath.row];
-        [self.navigationController pushViewController:galeria animated:YES];
+        GaleriaPaso2ViewController *galeriaPaso2 = [[GaleriaPaso2ViewController alloc] initWithNibName:@"GaleriaPaso2ViewController" bundle:nil];
+        [galeriaPaso2 setOperacion:GaleriaImagenesEditar];
+        [galeriaPaso2 setTituloPaso:NSLocalizedString(@"anadirImagen", @" ")];
+        [galeriaPaso2 setGaleryType:PhotoGaleryTypeImage];
+        [galeriaPaso2 setIndex:indexPath.row];
+        [self.navigationController pushViewController:galeriaPaso2 animated:YES];
     
     }
 }
@@ -328,9 +293,19 @@
 }
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-    GaleriaImagenes *imagen = [self.arregloImagenes objectAtIndex:fromIndexPath.row];
-    [self.arregloImagenes removeObject:imagen];
-    [self.arregloImagenes insertObject:imagen atIndex:toIndexPath.row];
+   
+    NSString * imgAux = [self.arregloImagenes objectAtIndex:fromIndexPath.row];
+    [self.arregloImagenes removeObjectAtIndex:fromIndexPath.row];
+    [self.arregloImagenes insertObject:imgAux atIndex:toIndexPath.row];
+    
+    NSString * descAux = [self.arregloDescripcion objectAtIndex:fromIndexPath.row];
+    [self.arregloDescripcion removeObjectAtIndex:fromIndexPath.row];
+    [self.arregloDescripcion insertObject:descAux atIndex:toIndexPath.row];
+    
+    NSString * idImgAux = [self.arregloIdImagenes objectAtIndex:fromIndexPath.row];
+    [self.arregloIdImagenes removeObjectAtIndex:fromIndexPath.row];
+    [self.arregloIdImagenes insertObject:idImgAux atIndex:toIndexPath.row];
+    
     movio = YES;
 }
 
@@ -345,20 +320,13 @@
 -(IBAction)editarTabla:(id)sender {
    
     if (self.editing) {
+        NSLog(@"LE DIO EN EDITAR TABLA!!!!!!!");
         [self.tablaGaleria setEditing:NO animated:YES];
         [self setEditing:NO animated:YES];
         self.arregloImagenes = [[NSMutableArray alloc] initWithCapacity:[self.datosUsuario.arregloGaleriaImagenes count]];
-        for (GaleriaImagenes *galeria in self.datosUsuario.arregloGaleriaImagenes) {
-            GaleriaImagenes *galeriaAux = [[GaleriaImagenes alloc] init];
-            [galeriaAux setIdImagen:[galeria idImagen]];
-            [galeriaAux setPieFoto:[galeria pieFoto]];
-            [galeriaAux setRutaImagen:[galeria rutaImagen]];
-            [galeriaAux setImagenIdAux:[galeria imagenIdAux]];
-            [galeriaAux setAlto:[galeria alto]];
-            [galeriaAux setAncho:[galeria ancho]];
-            [self.arregloImagenes addObject:galeriaAux];
-        }
+        
         if (movio ) {
+            NSLog(@"ENTRO A SI MOVIO LA TABLA !!!!!!!");
             if ([CommonUtils hayConexion]) {
                 [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
                 [self performSelectorInBackground:@selector(actualizarGaleria) withObject:Nil];
@@ -367,10 +335,10 @@
                 AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
                 [alert show];
             }
-            
         }
     }
     else {
+        NSLog(@"NOOOOOO LE DIO EN EDITAR TABLA!!!!!!!");
         [self.tablaGaleria setEditing:YES animated:YES];
         [self setEditing:YES animated:YES];
     }
@@ -388,7 +356,6 @@
 -(void) mostrarActivity {
     self.alertaGaleria = [AlertView initWithDelegate:self message:NSLocalizedString(@"msgGuardarImagen", Nil) andAlertViewType:AlertViewTypeActivity];
     [self.alertaGaleria show];
-    
 }
 
 -(void) ocultarActivity {
@@ -404,7 +371,6 @@
 }
 
 -(void) actualizarGaleria {
-
         WS_HandlerGaleria *handlerGaleria = [[WS_HandlerGaleria alloc] init];
         [handlerGaleria setArregloGaleria:self.arregloImagenes];
         [handlerGaleria setGaleriaDelegate:self];
@@ -413,7 +379,7 @@
 
 -(void) resultadoConsultaDominio:(NSString *)resultado {
     if ([resultado isEqualToString:@"Exito"]) {
-        [self enviarEventoGAconCategoria:@"Edito" yEtiqueta:@"Imagenes"];
+        //[self enviarEventoGAconCategoria:@"Edito" yEtiqueta:@"Imagenes"];
         exito = YES;
     }
     else {
@@ -434,8 +400,6 @@
     MainViewController *inicio = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:Nil];
     [self.navigationController pushViewController:inicio animated:YES];
 }
-
-
 -(void) errorConsultaWS {
     [self performSelectorOnMainThread:@selector(errorActualizar) withObject:Nil waitUntilDone:YES];
 }
@@ -447,6 +411,5 @@
         [self.alertaGaleria hide];
     }
     [self performSelectorOnMainThread:@selector(ocultarActivity) withObject:Nil waitUntilDone:YES];
-   // [[AlertView initWithDelegate:Nil message:NSLocalizedString(@"ocurrioError", Nil) andAlertViewType:AlertViewTypeInfo] show];
 }
 @end

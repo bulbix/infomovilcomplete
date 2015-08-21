@@ -159,7 +159,7 @@
             [self.labelTituloFoto setHidden:YES];
             [self.pieFoto setHidden:YES];
             [self.vistaContenedorBoton setFrame:CGRectMake(20, 186, 280, 61)];
-            [self.btnEliminar setFrame:CGRectMake(271, 257, 29, 35)];
+           // [self.btnEliminar setFrame:CGRectMake(271, 373, 29, 35)];
             
             NSMutableString * tipoAux = nil;
             for(int i = 0; i < [self.datosUsuario.arregloTipoImagen count]; i++){
@@ -185,7 +185,7 @@
             [self.labelTituloFoto setHidden:YES];
             [self.pieFoto setHidden:YES];
             [self.vistaContenedorBoton setFrame:CGRectMake(20, 186, 280, 61)];
-            [self.btnEliminar setFrame:CGRectMake(271, 257, 29, 35)];
+            //[self.btnEliminar setFrame:CGRectMake(271, 373, 29, 35)];
             self.operacion = GaleriaImagenesEditar;
             estaEditando = YES;
            
@@ -232,6 +232,7 @@
     }
  
     if ([CommonUtils hayConexion] && existeFoto) {
+        [self.btnEliminar setEnabled:YES];
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.urlImagen]
                                              cachePolicy:NSURLRequestUseProtocolCachePolicy
                                          timeoutInterval:25.0];
@@ -249,10 +250,11 @@
             [self.vistaPreviaImagen setImage:image];
         }
     }else{
+        [self.btnEliminar setEnabled:NO];
         [self.vistaPreviaImagen setImage:[UIImage imageNamed:@"previsualizador.png"]];
     }
-        // existeFoto = YES;
-        [self.btnEliminar setEnabled:YES];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -538,7 +540,6 @@
     self.datosUsuario = [DatosUsuario sharedInstance];
     
     if (self.galeryType == PhotoGaleryTypeOffer) {
-        self.datosUsuario = [DatosUsuario sharedInstance];
         if (self.modifico && eliminarFotoOferta == NO) {
             [self performSelectorInBackground:@selector(salvaImagen) withObject:Nil];
             [self mostrarActivity];
@@ -649,6 +650,7 @@
     if (exitoModificar) {
         AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"actualizacionCorrecta", Nil) andAlertViewType:AlertViewTypeInfo];
         [alert show];
+        [self.navigationController popViewControllerAnimated:YES];
     }
 	else if(cambioPie){
         [self validaEditados];
@@ -694,8 +696,6 @@
 }
 
 -(void) resultadoConsultaDominio:(NSString *)resultado {
-   
-	self.datosUsuario = [DatosUsuario sharedInstance];
     if ([resultado isEqualToString:@"Exito"] || [resultado integerValue] > 0) {
         exitoModificar = YES;
        
@@ -830,8 +830,7 @@
     }
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
     [self.pieFoto resignFirstResponder];
     return YES;
 }

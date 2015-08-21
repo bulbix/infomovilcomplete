@@ -305,7 +305,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-    Contacto *contacto = [self.arregloContactos objectAtIndex:fromIndexPath.row];
+    Contacto *contacto = [arregloContactos objectAtIndex:fromIndexPath.row];
     [self.arregloContactos removeObject:contacto];
     [self.arregloContactos insertObject:contacto atIndex:toIndexPath.row];
     self.modifico = YES;

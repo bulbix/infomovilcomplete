@@ -21,11 +21,12 @@
 @implementation WS_HandlerGaleria
 @synthesize datosUsuario;
 
--(void) actualizarGaleria { NSLog(@"ENTRO EN ACTUALIZAR GALERA DE WS_HANDLERGALERIA");
+-(void) actualizarGaleria { NSLog(@"ENTRO EN ACTUALIZAR GALERA DE WS_HANDLERGALERIA actualizarGaleria");
 	ids = [[NSMutableArray alloc] init];
     DatosUsuario *datos = [DatosUsuario sharedInstance];
     NSMutableString *stringXML;
-    if (requiereEncriptar) {
+   
+    
         stringXML = [[NSMutableString alloc] initWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.webservice.infomovil.org/\">"
                      "<soapenv:Header/>"
                      "<soapenv:Body>"
@@ -36,7 +37,7 @@
                      [StringUtils encriptar:@"IOS" conToken:datos.token],
                      [StringUtils encriptar:versionDefault conToken:datos.token],
                      [StringUtils encriptar:[NSString stringWithFormat:@"%li", (long)datos.idDominio] conToken:datos.token]];
-        NSLog(@"LOS VALORES ENVIADOS SON: %li y de arreglogariea son %lu", (long)datos.idDominio, (unsigned long)[self.arregloGaleria count]);
+        NSLog(@"LOS VALORES ENVIADOS SON: %li y de arreglo galeria son %lu", (long)datos.idDominio, (unsigned long)[self.arregloGaleria count]);
         for (int i = 0; i < [self.arregloGaleria count]; i++) {
             GaleriaImagenes *galeria = [self.arregloGaleria objectAtIndex:i];
             NSData *dataImage = [NSData dataWithContentsOfFile:galeria.rutaImagen];
@@ -53,13 +54,13 @@
             NSLog(@"LOS VALORES ENVIADOS SON: %@", galeria.pieFoto);
         }
         [stringXML appendFormat:@"<token>%@</token></ws:updateImage></soapenv:Body></soapenv:Envelope>", [StringUtils encriptar:datos.emailUsuario conToken:passwordEncriptar]];
-    }
     
     
-    NSLog(@"El string es %@", stringXML);
+    
+   // NSLog(@"El string es %@", stringXML);
     self.strSoapAction = @"WSInfomovilDomain";
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
-    NSLog(@"La Respuesta en WS_HandlerGaleria del metodo actualizarGaleria es %s", [dataResult bytes]);
+   // NSLog(@"La Respuesta en WS_HandlerGaleria del metodo actualizarGaleria es %s", [dataResult bytes]);
     if (dataResult != nil) {
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
         [parser setDelegate:self];
@@ -103,12 +104,12 @@
 }
 
 -(void) actualizarGaleriaDescripcion:(NSInteger)indexImage descripcion:(NSString *)descImage{
-    NSLog(@"ENTRO EN ACTUALIZAR GALERA DE WS_HANDLERGALERIA DESCRIPCION");
+    NSLog(@"ENTRO EN ACTUALIZAR GALERA DE WS_HANDLERGALERIA DESCRIPCION actualizarGaleriaDescripcion");
     ids = [[NSMutableArray alloc] init];
     DatosUsuario *datos = [DatosUsuario sharedInstance];
     NSMutableString *stringXML;
     NSString *idImagenInt = [datos.arregloIdImagenGaleria objectAtIndex:indexImage];
-     NSLog(@"LOS VALORES ENVIADOS SON: %@ y LA DESCRIPCIONIMAGE %@", idImagenInt, descImage);
+    NSLog(@"LOS VALORES ENVIADOS SON: %@ y LA DESCRIPCION IMAGE %@", idImagenInt, descImage);
     
     
     if (requiereEncriptar) {
@@ -145,7 +146,7 @@
     NSLog(@"El string es %@", stringXML);
     self.strSoapAction = @"WSInfomovilDomain";
     NSData *dataResult = [self getXmlRespuesta:stringXML conURL:[NSString stringWithFormat:@"%@/%@/wsInfomovildomain", rutaWS, nombreServicio]];
-    NSLog(@"La Respuesta en WS_HandlerGaleria del metodo actualizarGaleria es %s", [dataResult bytes]);
+    //NSLog(@"La Respuesta en WS_HandlerGaleria del metodo actualizarGaleria es %s", [dataResult bytes]);
     if (dataResult != nil) {
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
         [parser setDelegate:self];
@@ -295,7 +296,6 @@
         [parser setDelegate:self];
         if ([parser parse]) {
             if (requiereEncriptar) {
-                datos = [DatosUsuario sharedInstance];
                 NSString *stringResult = self.resultado;
                     if (stringResult == nil || [[stringResult stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [stringResult isEqualToString:@"Error de token"]) {
                     [self.galeriaDelegate errorToken];

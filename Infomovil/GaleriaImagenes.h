@@ -11,11 +11,12 @@
 @interface GaleriaImagenes : NSObject <NSCoding>
 
 
-@property (nonatomic) NSInteger ancho;
-@property (nonatomic) NSInteger alto;
-@property (nonatomic, strong) NSString *imagenIdAux;
+//@property (nonatomic) NSInteger ancho;
+//@property (nonatomic) NSInteger alto;
+
 
 // Estos valores los utilizo para las imagenes los demas no!//
+@property (nonatomic, strong) NSString *imagenIdAux;
 @property (nonatomic, strong) NSString *rutaImagen;
 @property (nonatomic) NSInteger idImagen;
 @property (nonatomic, strong) NSString *pieFoto;

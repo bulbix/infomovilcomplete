@@ -156,8 +156,7 @@
     self.consultaDomainType = Nil;
     self.consultaDomainName = Nil;
     self.consultaLista = Nil;
-    self.arregloGaleriaImagenes = Nil;
-
+   
     self.arregloUrlImagenes = Nil;
     self.arregloDescripcionImagen = Nil;
     self.arregloIdImagen = Nil;
