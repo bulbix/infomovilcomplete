@@ -295,7 +295,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-   
+    
     NSString * imgAux = [self.arregloImagenes objectAtIndex:fromIndexPath.row];
     [self.arregloImagenes removeObjectAtIndex:fromIndexPath.row];
     [self.arregloImagenes insertObject:imgAux atIndex:toIndexPath.row];
@@ -307,12 +307,10 @@
     NSString * idImgAux = [self.arregloIdImagenes objectAtIndex:fromIndexPath.row];
     [self.arregloIdImagenes removeObjectAtIndex:fromIndexPath.row];
     [self.arregloIdImagenes insertObject:idImgAux atIndex:toIndexPath.row];
-    
-    self.arregloImagenes = self.datosUsuario.arregloUrlImagenesGaleria;
-    self.arregloDescripcion = self.datosUsuario.arregloDescripcionImagenGaleria;
-    self.arregloIdImagenes = self.datosUsuario.arregloIdImagenGaleria;
+   
     
     movio = YES;
+ 
 }
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {

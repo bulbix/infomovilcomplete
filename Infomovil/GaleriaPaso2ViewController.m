@@ -149,7 +149,8 @@
                 {
                     [self.labelTituloFoto setHidden:YES];
                     [self.pieFoto setHidden:YES];
-                    [self.vistaContenedorBoton setFrame:CGRectMake(20, 186, 280, 61)];
+                    [self.vistaContenedorBoton setFrame:CGRectMake(20, 186, 280, 101)];
+                    [self.viewFacebok setHidden:YES];
                     NSMutableString * tipoAux = nil;
                     for(int i = 0; i < [self.datosUsuario.arregloTipoImagen count]; i++){
                         NSMutableString *arrAux = [self.datosUsuario.arregloTipoImagen objectAtIndex:i];
@@ -169,9 +170,10 @@
                 }
             break;
         case PhotoGaleryTypeOffer:
+                [self.viewFacebok setHidden:YES];
                 [self.labelTituloFoto setHidden:YES];
                 [self.pieFoto setHidden:YES];
-                [self.vistaContenedorBoton setFrame:CGRectMake(20, 186, 280, 61)];
+                [self.vistaContenedorBoton setFrame:CGRectMake(20, 186, 280, 101)];
                 self.operacion = GaleriaImagenesEditar;
                 estaEditando = YES;
            
@@ -250,15 +252,23 @@
 }
 
 - (IBAction)irAFacebook:(id)sender {
-    if([CommonUtils hayConexion]){
-        AlbumsFacebookViewController *cambiaPass = [[AlbumsFacebookViewController alloc] initWithNibName:@"AlbumsFacebookViewController" bundle:Nil];
-        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:cambiaPass];
-        [self.navigationController presentViewController:navController animated:YES completion:Nil];
-    
-    }else {
-        AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
-        [alert show];
-			 }
+   /* if (existeFoto) {
+        AlertView *alertaFoto = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"eliminaImagenAviso", Nil) andAlertViewType:AlertViewTypeInfo];
+        [alertaFoto show];
+    }
+    else {
+    */
+    NSLog(@"RECIBIO EL CLICK A FACEBOOK ");
+            if([CommonUtils hayConexion]){
+                AlbumsFacebookViewController *cambiaPass = [[AlbumsFacebookViewController alloc] initWithNibName:@"AlbumsFacebookViewController" bundle:Nil];
+                UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:cambiaPass];
+                [self.navigationController presentViewController:navController animated:YES completion:Nil];
+            
+            }else {
+                AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+                [alert show];
+            }
+    //}
     
 }
 
@@ -712,14 +722,15 @@
 -(void) validaEditados {
     self.datosUsuario = [DatosUsuario sharedInstance];
     if (self.galeryType == PhotoGaleryTypeLogo) {
-        for(int i = 0; i < [self.datosUsuario.arregloTipoImagen count]; i++){
-            NSMutableString *arrAux = [self.datosUsuario.arregloTipoImagen objectAtIndex:i];
-            if([arrAux isEqualToString:@"LOGO"]){
-                
-                self.urlImagen = [self.datosUsuario.arregloUrlImagenes objectAtIndex:i];
+                NSLog(@"Entro en valida editados PhotoGaleryTypeLogo");
+            self.urlImagen = nil;
+            for(int i = 0; i < [self.datosUsuario.arregloTipoImagen count]; i++){
+                NSMutableString *arrAux = [self.datosUsuario.arregloTipoImagen objectAtIndex:i];
+                if([arrAux isEqualToString:@"LOGO"]){
+                    self.urlImagen = [self.datosUsuario.arregloUrlImagenes objectAtIndex:i];
+                }
             }
-        }
-            if (self.urlImagen != nil && [self.urlImagen length] > 0) {
+            if ([self.urlImagen length] > 0 || [self.datosUsuario.imagenLogo.rutaImagen length] > 0) {
                 [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:1 withObject:@YES];
             }
             else {

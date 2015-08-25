@@ -213,6 +213,12 @@
                         switch (self.tipoGaleria) {
                             case PhotoGaleryTypeLogo:
                                 datos.imagenLogo = [[GaleriaImagenes alloc] init];
+                                [datos.arregloUrlImagenes removeObjectAtIndex:self.indiceSeleccionado];
+                                [datos.arregloIdImagen removeObjectAtIndex:self.indiceSeleccionado];
+                                [datos.arregloDescripcionImagen removeObjectAtIndex:self.indiceSeleccionado];
+                                [datos.arregloTipoImagen removeObjectAtIndex:self.indiceSeleccionado];
+                                NSLog(@"Vamos a imprimir todo: %@  -   %@   -    %@     -     %@  y el indie es: %li",datos.arregloUrlImagenes, datos.arregloIdImagen, datos.arregloDescripcionImagen, datos.arregloTipoImagen , (long)self.indiceSeleccionado);
+                                
                                 break;
                             case PhotoGaleryTypeImage:
                                 NSLog(@"SI SE PUDO ELIMINAR LA FOTO DE GALERIA");
