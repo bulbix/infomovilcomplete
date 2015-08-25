@@ -44,18 +44,27 @@
     return self;
 }
 
-- (void)viewDidLoad{
+- (void)viewDidLoad{ NSLog(@"ENTRO A VIEWDIDLOAD DE GALERIAIMAGENESVIEWCONTROLLER");
     [super viewDidLoad];
     [self mostrarBotones];
-    self.datosUsuario = [DatosUsuario sharedInstance];
-    self.arregloImagenes = self.datosUsuario.arregloUrlImagenesGaleria;
-    self.arregloDescripcion = self.datosUsuario.arregloDescripcionImagenGaleria;
-    self.arregloIdImagenes = self.datosUsuario.arregloIdImagenGaleria;
+    UIImage *image =[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"btnregresar.png"] ofType:nil]]];
+    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [backButton setFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
+    [backButton setImage:image forState:UIControlStateNormal];
+    [backButton addTarget:self action:@selector(regresar:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *buttonBack = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+    self.navigationItem.leftBarButtonItem = buttonBack;
+    
     
 }
 
 -(void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    self.datosUsuario = [DatosUsuario sharedInstance];
+    self.arregloImagenes = self.datosUsuario.arregloUrlImagenesGaleria;
+    self.arregloDescripcion = self.datosUsuario.arregloDescripcionImagenGaleria;
+    self.arregloIdImagenes = self.datosUsuario.arregloIdImagenGaleria;
     self.vistaInfo.layer.cornerRadius = 5.0f;
     [self.labelImagenesMensaje setText:NSLocalizedString(@"galeriaVertical", Nil)];
     [self.labelImagenesMensaje2 setText:NSLocalizedString(@"redimensionaImagen", Nil)];
@@ -111,14 +120,7 @@
     
     }
     
-    UIImage *image =[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"btnregresar.png"] ofType:nil]]];
-    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [backButton setFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
-    [backButton setImage:image forState:UIControlStateNormal];
-    [backButton addTarget:self action:@selector(regresar:) forControlEvents:UIControlEventTouchUpInside];
     
-    UIBarButtonItem *buttonBack = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-    self.navigationItem.leftBarButtonItem = buttonBack;
 }
 
 -(IBAction)regresar:(id)sender {
@@ -212,8 +214,8 @@
 }
 
 -(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    self.datosUsuario = [DatosUsuario sharedInstance];
-    self.urlImagen = [self.datosUsuario.arregloUrlImagenesGaleria objectAtIndex:indexPath.row];
+  
+    self.urlImagen = [self.arregloImagenes objectAtIndex:indexPath.row];
     
     static NSString *identificador = @"GaleriaCell";
     GaleriaCell *cell = [tableView dequeueReusableCellWithIdentifier:identificador];
@@ -224,7 +226,7 @@
     cell.vistaGaleria.layer.cornerRadius = 5.0f;
     cell.pieFoto.frame = CGRectMake(69, 11, 450, 50);
      @try {
-        [cell.pieFoto setText:[self.datosUsuario.arregloDescripcionImagenGaleria objectAtIndex:indexPath.row]];
+        [cell.pieFoto setText:[self.arregloDescripcion objectAtIndex:indexPath.row]];
     }
     @catch (NSException *exception) {
         [cell.pieFoto setText:@""];
@@ -306,6 +308,10 @@
     [self.arregloIdImagenes removeObjectAtIndex:fromIndexPath.row];
     [self.arregloIdImagenes insertObject:idImgAux atIndex:toIndexPath.row];
     
+    self.arregloImagenes = self.datosUsuario.arregloUrlImagenesGaleria;
+    self.arregloDescripcion = self.datosUsuario.arregloDescripcionImagenGaleria;
+    self.arregloIdImagenes = self.datosUsuario.arregloIdImagenGaleria;
+    
     movio = YES;
 }
 
@@ -323,7 +329,7 @@
         NSLog(@"LE DIO EN EDITAR TABLA!!!!!!!");
         [self.tablaGaleria setEditing:NO animated:YES];
         [self setEditing:NO animated:YES];
-        self.arregloImagenes = [[NSMutableArray alloc] initWithCapacity:[self.datosUsuario.arregloGaleriaImagenes count]];
+       
         
         if (movio ) {
             NSLog(@"ENTRO A SI MOVIO LA TABLA !!!!!!!");
@@ -372,10 +378,10 @@
 
 -(void) actualizarGaleria {
         WS_HandlerGaleria *handlerGaleria = [[WS_HandlerGaleria alloc] init];
-        [handlerGaleria setArregloGaleria:self.arregloImagenes];
         [handlerGaleria setGaleriaDelegate:self];
-        [handlerGaleria actualizarGaleria];
-   }
+        [handlerGaleria actualizarGaleria:self.arregloImagenes idImages:self.arregloDescripcion descImages:self.arregloIdImagenes];
+    
+}
 
 -(void) resultadoConsultaDominio:(NSString *)resultado {
     if ([resultado isEqualToString:@"Exito"]) {

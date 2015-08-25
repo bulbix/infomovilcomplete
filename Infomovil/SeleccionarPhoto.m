@@ -166,7 +166,7 @@
     if ([CommonUtils hayConexion]) {
         NSLog(@"SI HUBO CONEZION");
         WS_HandlerGaleria *galeria = [[WS_HandlerGaleria alloc] init];
-        [galeria setArregloGaleria:self.arregloImagenes];
+        //[galeria setArregloGaleria:self.arregloImagenes];
         [galeria setImagenInsertarAux:self.imagenActual];
         [galeria setIndiceSeleccionado:0];
         [galeria setTipoGaleria:2]; // PhotoGaleryTypeImage

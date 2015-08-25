@@ -56,7 +56,7 @@ typedef enum {
 //IRC Estas variables las utilice para imagenes //
 @property (nonatomic, strong) NSString *idImagen;
 @property (nonatomic, strong) NSString *urlImagen;
-
+@property (nonatomic) NSInteger modificoImagen;
 
 @property (weak, nonatomic) IBOutlet UIView *viewFacebok;
 
