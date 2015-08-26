@@ -258,13 +258,11 @@
                 [self.txtTelefono setPlaceholder:@""];
                 [self.txtTelefono setKeyboardType:UIKeyboardTypeURL];
                 
-                
-                
                 break;
         }
         
         NSDictionary *dictAux = [arregloTitulos objectAtIndex:self.opcionSeleccionada];
-        [self.imagenTipoContacto setImage: [UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"image.png"] ofType:nil]]]];
+        [self.imagenTipoContacto setImage: [UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[dictAux objectForKey:@"image"] ofType:nil]]]];
         [self.labelNumeroTelefonico setText:[dictAux objectForKey:@"mensaje"]];
         if (self.txtTelefono.text.length == 0) {
             [self.txtTelefono setPlaceholder:[dictAux objectForKey:@"ejemplo"]];
@@ -418,7 +416,10 @@
         }
         NSDictionary *dictAux = [arregloTitulos objectAtIndex:self.contactoSeleccionado.indice];
         [self.labelTipoContacto setText:[dictAux objectForKey:@"text"]];
-        [self.imagenTipoContacto setImage:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"image.png"] ofType:nil]]]];
+        
+        [self.imagenTipoContacto setImage:[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[dictAux objectForKey:@"image"] ofType:nil]]]];
+        NSLog(@"LA IMAGEN ES : %@", [dictAux objectForKey:@"image"]);
+        
         [self.labelNumeroTelefonico setText:[dictAux objectForKey:@"mensaje"]];
         if (self.txtTelefono.text.length == 0) {
             [self.txtTelefono setPlaceholder:[dictAux objectForKey:@"ejemplo"]];
