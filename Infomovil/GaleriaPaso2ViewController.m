@@ -42,6 +42,7 @@
 @property(nonatomic, strong) NSString *InicioTexto;
 @property(nonatomic, strong) NSString *FinalizoTexto;
 @property(nonatomic, strong) NSString *descripcionTemp;
+
 @end
 
 @implementation GaleriaPaso2ViewController
@@ -193,7 +194,9 @@
           // Ya guarde el id y la url del logo anteriormente en acomodarvista //
             break;
         case PhotoGaleryTypeImage:
+            NSLog(@"EL INDEX ES: %li", (long)self.index);
             self.urlImagen = [self.datosUsuario.arregloUrlImagenesGaleria objectAtIndex:self.index];
+            NSLog(@"LA URL ES: %@", self.urlImagen);
             if([self.urlImagen length] > 0){
                 existeFoto = YES;
                 
@@ -329,15 +332,17 @@
 -(void)textFieldDidBeginEditing:(UITextField *)textField {
     textoPieFoto = textField;
     self.modifico = YES;
-    
+
 }
 
 -(void) textFieldDidEndEditing:(UITextField *)textField{
     noEditando = YES;
     if(self.operacion == GaleriaImagenesEditar){
-        self.descripcionTemp = textField.text;
 		cambioPie = YES;
-	}
+    }else{
+        cambioPie = NO;
+    }
+    NSLog(@"entra aqui con el resign? ");
 }
 
 - (IBAction)openEditor:(id)sender {
@@ -387,6 +392,7 @@
 
 -(IBAction)guardarInformacion:(id)sender {
     NSLog(@"ENTRO A GUARDAR INFORMACION y la operacion es: %u", self.operacion);
+    [self.pieFoto resignFirstResponder];
     self.datosUsuario = [DatosUsuario sharedInstance];
     if (self.operacion == GaleriaImagenesAgregar) {
         NSLog(@"AQUI VA A AGREGAR IMAGENES DEL LOGO");
@@ -400,9 +406,9 @@
 			
 		}
     }else if(self.operacion == GaleriaImagenesEditar){
-      
+        
 		if(cambioPie){
-         
+            
            
                 if ([CommonUtils hayConexion]) {
 					estaBorrando = NO;
@@ -430,6 +436,7 @@
         }else{
             [self validaEditados];
 			[self.navigationController popViewControllerAnimated:YES];
+            NSLog(@"AQUI FUE DONDE REGRESO!!!");
 		}
 	}
     
@@ -640,7 +647,6 @@
 
     if ([CommonUtils hayConexion]) {
         WS_HandlerGaleria *galeria = [[WS_HandlerGaleria alloc] init];
-        //[galeria setArregloGaleria:self.arregloImagenes];
         [galeria setImagenInsertarAux:self.imagenActual];
         [galeria setIndiceSeleccionado:self.index];
         [galeria setTipoGaleria:self.galeryType];
@@ -682,12 +688,7 @@
         [self.alertGaleria hide];
     }
     [[AlertView initWithDelegate:Nil message:NSLocalizedString(@"noGuardoImagen", Nil) andAlertViewType:AlertViewTypeInfo] show];
-  /*  AlertView *alertAct = [AlertView initWithDelegate:Nil message:NSLocalizedString(@"sessionUsada", Nil) andAlertViewType:AlertViewTypeInfo];
-    [alertAct show];
-    [StringUtils terminarSession];
-    
-    MainViewController *inicio = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:Nil];
-    [self.navigationController pushViewController:inicio animated:YES]; */
+ 
 }
 
 -(void) errorConsultaWS {
@@ -808,6 +809,7 @@
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    NSLog(@"cambio desde text field");
     [self.pieFoto resignFirstResponder];
     return YES;
 }

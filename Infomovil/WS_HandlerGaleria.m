@@ -50,7 +50,10 @@
              
         }
         [stringXML appendFormat:@"<token>%@</token></ws:updateImage></soapenv:Body></soapenv:Envelope>", [StringUtils encriptar:datos.emailUsuario conToken:passwordEncriptar]];
-    
+    self.arregloUrlGaleriaAux = [[NSMutableArray alloc] init];
+    self.arregloTypeImageGaleriaAux = [[NSMutableArray alloc] init];
+    self.arregloDescripcionImageGaleriaAux = [[NSMutableArray alloc] init];
+    self.arregloIdImagenGaleriaAux = [[NSMutableArray alloc] init];
     
     
    // NSLog(@"El string es %@", stringXML);
@@ -61,34 +64,23 @@
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataResult];
         [parser setDelegate:self];
         if ([parser parse]) {
-            if (requiereEncriptar) {
-            
-				
-                    NSUInteger aux=0;
-                    NSUInteger idAux=0;
-                    for(int x = 0;x < ids.count;x++)
-                    {
-                        GaleriaImagenes *imagen = [self.arregloGaleria objectAtIndex:x];
-                        
-                        imagen.idImagen = [[StringUtils desEncriptar:[ids objectAtIndex:x] conToken:datos.token] integerValue];
-                        aux++;
-                        idAux = imagen.idImagen;
-                    }
-                    if(aux==1){
-                        [self.galeriaDelegate resultadoConsultaDominio:[NSString stringWithFormat:@"%lu",(unsigned long)idAux]];
-                    } else if(self.resultado == nil){
-                        [datos setArregloGaleriaImagenes:self.arregloGaleria];
-                        NSLog(@"REGRESSO resultadoConsultaDominio DEL METODO ACTUALIZAR GALERIA");
-                        [self.galeriaDelegate resultadoConsultaDominio:@"Exito"];
-                    } else {
-                        NSString *stringResult = [StringUtils desEncriptar:self.resultado conToken:datos.token];
-                        [self.galeriaDelegate resultadoConsultaDominio:stringResult];
-                    }
+            if (self.resultadoLista == nil || [[self.resultadoLista stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0|| [self.resultadoLista isEqualToString:@"Error de token"]) {
+                NSLog(@"ENTRO A ERROR DE TOKEN");
+                [self.galeriaDelegate errorToken];
+            }else{
+                datos.arregloUrlImagenesGaleria = nil;
+                datos.arregloTipoImagenGaleria = nil;
+                datos.arregloIdImagenGaleria = nil;
+                datos.arregloDescripcionImagenGaleria = nil;
                 
+                datos.arregloUrlImagenesGaleria = [[NSMutableArray alloc] initWithArray:self.arregloUrlGaleriaAux copyItems:YES];
+                datos.arregloTipoImagenGaleria = [[NSMutableArray alloc] initWithArray:self.arregloTypeImageGaleriaAux copyItems:YES];
+                datos.arregloIdImagenGaleria = [[NSMutableArray alloc] initWithArray:self.arregloIdImagenGaleriaAux copyItems:YES];
+                datos.arregloDescripcionImagenGaleria = [[NSMutableArray alloc] initWithArray:self.arregloDescripcionImageGaleriaAux copyItems:YES];
+                [self.galeriaDelegate resultadoConsultaDominio:@"Exito"];
             }
-            else {
-                [self.galeriaDelegate resultadoConsultaDominio:self.resultado];
-            }
+            
+            
         }
         else {
             [self.galeriaDelegate errorConsultaWS];
@@ -282,7 +274,7 @@
          [StringUtils encriptar:[NSString stringWithFormat:@"%li", (long)imagenInsertar.idImagen] conToken:datos.token],
          [Base64 encode:[NSData dataWithContentsOfFile:imagenInsertar.rutaImagen]],
          [StringUtils encriptar:datos.emailUsuario conToken:passwordEncriptar]];
-        NSLog(@"EL PIE QUE SE INSERTA SERA: %@", imagenInsertar.pieFoto);
+        NSLog(@"EL PIE QUE SE INSERTA SERA: %@  y la imagen a insertar es:", imagenInsertar.pieFoto);
         [stringXML appendString:@"</ws:insertImage>"
          "</soapenv:Body>"
          "</soapenv:Envelope>" ];

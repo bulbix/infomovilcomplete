@@ -46,7 +46,7 @@
 
 - (void)viewDidLoad{ NSLog(@"ENTRO A VIEWDIDLOAD DE GALERIAIMAGENESVIEWCONTROLLER");
     [super viewDidLoad];
-    [self mostrarBotones];
+    
     UIImage *image =[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"btnregresar.png"] ofType:nil]]];
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [backButton setFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
@@ -56,10 +56,12 @@
     UIBarButtonItem *buttonBack = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     self.navigationItem.leftBarButtonItem = buttonBack;
     
+    [self mostrarBotones];
     
 }
 
 -(void) viewWillAppear:(BOOL)animated {
+    NSLog(@"ENTRO AL VIEWWILLAPPEAR");
     [super viewWillAppear:animated];
     self.datosUsuario = [DatosUsuario sharedInstance];
     self.arregloImagenes = self.datosUsuario.arregloUrlImagenesGaleria;
@@ -120,7 +122,7 @@
     
     }
     
-    
+    [self mostrarBotones];
 }
 
 -(IBAction)regresar:(id)sender {
@@ -132,17 +134,36 @@
 
 -(void) mostrarBotones {
     
-    if (self.editing) {
-        self.navigationItem.rightBarButtonItems = Nil;
-        UIImage *imageAceptar = [UIImage imageNamed:@"btnaceptar.png"];
-        UIButton *btAceptar = [UIButton buttonWithType:UIButtonTypeCustom];
-        [btAceptar setFrame:CGRectMake(0, 0, imageAceptar.size.width, imageAceptar.size.height)];
-        [btAceptar setImage:imageAceptar forState:UIControlStateNormal];
-        [btAceptar addTarget:self action:@selector(editarTabla:) forControlEvents:UIControlEventTouchUpInside];
-        UIBarButtonItem *botonAceptar = [[UIBarButtonItem alloc] initWithCustomView:btAceptar];
-        self.navigationItem.rightBarButtonItem = botonAceptar;
-    }
-    else {
+    if([self.arregloImagenes count] > 0){
+    
+            if (self.editing) {
+                self.navigationItem.rightBarButtonItems = Nil;
+                UIImage *imageAceptar = [UIImage imageNamed:@"btnaceptar.png"];
+                UIButton *btAceptar = [UIButton buttonWithType:UIButtonTypeCustom];
+                [btAceptar setFrame:CGRectMake(0, 0, imageAceptar.size.width, imageAceptar.size.height)];
+                [btAceptar setImage:imageAceptar forState:UIControlStateNormal];
+                [btAceptar addTarget:self action:@selector(editarTabla:) forControlEvents:UIControlEventTouchUpInside];
+                UIBarButtonItem *botonAceptar = [[UIBarButtonItem alloc] initWithCustomView:btAceptar];
+                self.navigationItem.rightBarButtonItem = botonAceptar;
+            }
+            else {
+                self.navigationItem.rightBarButtonItem = Nil;
+                UIImage *imageAdd = [UIImage imageNamed:@"btnagregar.png"];
+                UIButton *btAdd = [UIButton buttonWithType:UIButtonTypeCustom];
+                [btAdd setFrame:CGRectMake(0, 0, imageAdd.size.width, imageAdd.size.height)];
+                [btAdd setImage:imageAdd forState:UIControlStateNormal];
+                [btAdd addTarget:self action:@selector(agregarImagen:) forControlEvents:UIControlEventTouchUpInside];
+                UIBarButtonItem *botonAdd = [[UIBarButtonItem alloc] initWithCustomView:btAdd];
+                UIImage *imagenEdit = [UIImage imageNamed:@"btnorganizar.png"];
+                UIButton *btEdit = [UIButton buttonWithType:UIButtonTypeCustom];
+                [btEdit setFrame:CGRectMake(0, 0, imagenEdit.size.width, imagenEdit.size.height)];
+                [btEdit setImage:imagenEdit forState:UIControlStateNormal];
+                [btEdit addTarget:self action:@selector(editarTabla:) forControlEvents:UIControlEventTouchUpInside];
+                UIBarButtonItem *botonEdit = [[UIBarButtonItem alloc] initWithCustomView:btEdit];
+                self.navigationItem.rightBarButtonItems = @[botonEdit, botonAdd];
+                
+            }
+    }else{
         self.navigationItem.rightBarButtonItem = Nil;
         UIImage *imageAdd = [UIImage imageNamed:@"btnagregar.png"];
         UIButton *btAdd = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -150,14 +171,7 @@
         [btAdd setImage:imageAdd forState:UIControlStateNormal];
         [btAdd addTarget:self action:@selector(agregarImagen:) forControlEvents:UIControlEventTouchUpInside];
         UIBarButtonItem *botonAdd = [[UIBarButtonItem alloc] initWithCustomView:btAdd];
-        UIImage *imagenEdit = [UIImage imageNamed:@"btnorganizar.png"];
-        UIButton *btEdit = [UIButton buttonWithType:UIButtonTypeCustom];
-        [btEdit setFrame:CGRectMake(0, 0, imagenEdit.size.width, imagenEdit.size.height)];
-        [btEdit setImage:imagenEdit forState:UIControlStateNormal];
-        [btEdit addTarget:self action:@selector(editarTabla:) forControlEvents:UIControlEventTouchUpInside];
-        UIBarButtonItem *botonEdit = [[UIBarButtonItem alloc] initWithCustomView:btEdit];
-        self.navigationItem.rightBarButtonItems = @[botonEdit, botonAdd];
-		
+        self.navigationItem.rightBarButtonItems = @[botonAdd];
     }
 }
 
@@ -295,22 +309,20 @@
 }
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-    
-    NSString * imgAux = [self.arregloImagenes objectAtIndex:fromIndexPath.row];
-    [self.arregloImagenes removeObjectAtIndex:fromIndexPath.row];
-    [self.arregloImagenes insertObject:imgAux atIndex:toIndexPath.row];
-    
-    NSString * descAux = [self.arregloDescripcion objectAtIndex:fromIndexPath.row];
-    [self.arregloDescripcion removeObjectAtIndex:fromIndexPath.row];
-    [self.arregloDescripcion insertObject:descAux atIndex:toIndexPath.row];
-    
-    NSString * idImgAux = [self.arregloIdImagenes objectAtIndex:fromIndexPath.row];
-    [self.arregloIdImagenes removeObjectAtIndex:fromIndexPath.row];
-    [self.arregloIdImagenes insertObject:idImgAux atIndex:toIndexPath.row];
-   
-    
-    movio = YES;
- 
+    if(fromIndexPath.row != toIndexPath.row){
+        NSString * imgAux = [self.arregloImagenes objectAtIndex:fromIndexPath.row];
+        [self.arregloImagenes removeObjectAtIndex:fromIndexPath.row];
+        [self.arregloImagenes insertObject:imgAux atIndex:toIndexPath.row];
+        
+        NSString * descAux = [self.arregloDescripcion objectAtIndex:fromIndexPath.row];
+        [self.arregloDescripcion removeObjectAtIndex:fromIndexPath.row];
+        [self.arregloDescripcion insertObject:descAux atIndex:toIndexPath.row];
+        
+        NSString * idImgAux = [self.arregloIdImagenes objectAtIndex:fromIndexPath.row];
+        [self.arregloIdImagenes removeObjectAtIndex:fromIndexPath.row];
+        [self.arregloIdImagenes insertObject:idImgAux atIndex:toIndexPath.row];
+        movio = YES;
+    }
 }
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -353,7 +365,8 @@
 
 -(void)accionAceptar {
     if (exito) {
-        [self.navigationController popViewControllerAnimated:YES];
+        NSLog(@"ENTRO EN ACCION ACEPTAR!!!");
+       // [self.navigationController popViewControllerAnimated:YES];
     }
 }
 
@@ -382,8 +395,8 @@
 }
 
 -(void) resultadoConsultaDominio:(NSString *)resultado {
+    NSLog(@"QUE ME REGRESO??? %@", resultado);
     if ([resultado isEqualToString:@"Exito"]) {
-        //[self enviarEventoGAconCategoria:@"Edito" yEtiqueta:@"Imagenes"];
         exito = YES;
     }
     else {
