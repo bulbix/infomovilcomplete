@@ -16,5 +16,5 @@
 @property (nonatomic,strong) NSMutableArray* urlsAlbum;
 @property (nonatomic,strong) NSMutableArray* urlsAlbumGrande;
 @property (weak, nonatomic) IBOutlet UICollectionView *tableView;
-
+@property(strong, nonatomic) NSString * textDescription;
 @end

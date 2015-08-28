@@ -87,10 +87,7 @@
     self.modifico = NO;
     seleccionoImagen = NO;
     existeFoto = NO;
-    [self.labelTituloFoto setText:NSLocalizedString(@"tituloFoto", Nil)];
-    [self.labelTomarFoto setText:NSLocalizedString(@"tomarFoto", Nil)];
-    [self.labelFotoExistente setText:NSLocalizedString(@"fotoExistente", Nil)];
-    [self.btnIrAFacebook.titleLabel setText:NSLocalizedString(@"fotosFacebtn", nil)];
+    
     self.vistaTomar.layer.cornerRadius = 5.0f;
     self.vistaUsar.layer.cornerRadius = 5.0f;
     self.viewFacebok.layer.cornerRadius = 5.0f;
@@ -119,27 +116,37 @@
         [self.labelTituloFoto setFrame:CGRectMake(40, 186 ,203, 21)];
         [self.pieFoto setFrame:CGRectMake(40,215 ,280 ,30 )];
         [self.scrollFoto setContentSize:CGSizeMake(375, 500)];
-       
+        [self.btnIrAFacebook setFrame:CGRectMake(self.btnIrAFacebook.frame.origin.x, self.btnIrAFacebook.frame.origin.y, 280, 30)];
+        [self.btnTomarFoto setFrame:CGRectMake(0,0,280,30)];
+        //[self.btnUsarFoto setFrame:CGRectMake(0, 0, 280, 100)];
     }else if(IS_IPAD){
-        [self.vistaContenedorBoton setFrame:CGRectMake(134, 280, 500, 119)];
+        [self.vistaContenedorBoton setFrame:CGRectMake(134, 280, 500, 135)];
         [self.vistaTomar setFrame:CGRectMake(0, 0, 500, 45)];
         [self.vistaUsar setFrame:CGRectMake(0, 46, 500, 45)];
         [self.viewFacebok setFrame:CGRectMake(0, 92, 500, 45)];
         [self.btnEliminar setFrame:CGRectMake(590, 440, 29, 35)];
-        [self.imgbullet3 setFrame:CGRectMake(480, 5, 11, 18)];
+        [self.imgBullet setFrame:CGRectMake(480, 14, 11, 18)];
+        [self.imgBullet2 setFrame:CGRectMake(480, 14, 11, 18)];
+        [self.imgbullet3 setFrame:CGRectMake(480, 14, 11, 18)];
         [self.labelTituloFoto setFrame:CGRectMake(134, 186 ,500, 21)];
         [self.labelTomarFoto setFrame:CGRectMake(self.labelTomarFoto.frame.origin.x, self.labelTomarFoto.frame.origin.y, self.labelTomarFoto.frame.size.width, 40)];
         [self.labelFotoExistente setFrame:CGRectMake(self.labelFotoExistente.frame.origin.x, self.labelFotoExistente.frame.origin.y, self.labelFotoExistente.frame.size.width, 40)];
-        [self.btnIrAFacebook setFrame:CGRectMake(self.btnIrAFacebook.frame.origin.x, self.btnIrAFacebook.frame.origin.y, self.btnIrAFacebook.frame.size.width, 40)];
-        [self.pieFoto setFrame:CGRectMake(134,215 , 500 ,30 )];
+        [self.btnIrAFacebook setFrame:CGRectMake(self.btnIrAFacebook.frame.origin.x, self.btnIrAFacebook.frame.origin.y, 500, 40)];
+        [self.btnTomarFoto setFrame:CGRectMake(0,0,500,45)];
+        [self.btnUsarFoto setFrame:CGRectMake(0, 0, 500, 45)];
         [self.scrollFoto setContentSize:CGSizeMake(768, 800)];
-        [self.imgBullet setFrame:CGRectMake(480, 6, 11, 18)];
-        [self.imgBullet2 setFrame:CGRectMake(480, 6, 11, 18)];
+        [self.pieFoto setFrame:CGRectMake(134,215 , 500 ,30 )];
+        
+       
     }
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-        [self acomodarBarraNavegacionConTitulo:self.tituloPaso nombreImagen:@"barraverde.png"];
+    [self.labelTituloFoto setText:NSLocalizedString(@"tituloFoto", Nil)];
+    [self.labelTomarFoto setText:NSLocalizedString(@"tomarFoto", Nil)];
+    [self.labelFotoExistente setText:NSLocalizedString(@"fotoExistente", Nil)];
+    [self.btnIrAFacebook setTitle:NSLocalizedString(@"fotosFacebtn", Nil) forState:UIControlStateNormal];
+    [self acomodarBarraNavegacionConTitulo:self.tituloPaso nombreImagen:@"barraverde.png"];
     
 }
 
@@ -264,6 +271,7 @@
     NSLog(@"RECIBIO EL CLICK A FACEBOOK ");
             if([CommonUtils hayConexion]){
                 AlbumsFacebookViewController *cambiaPass = [[AlbumsFacebookViewController alloc] initWithNibName:@"AlbumsFacebookViewController" bundle:Nil];
+                [cambiaPass setTextDescription:self.pieFoto.text];
                 UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:cambiaPass];
                 [self.navigationController presentViewController:navController animated:YES completion:Nil];
             

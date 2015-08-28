@@ -37,7 +37,7 @@
     controller.delegate = self;
     controller.image = [UIImage imageWithData: data];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:controller];
-    [self presentViewController:navigationController animated:YES completion:NULL];
+    [self presentViewController:navigationController animated:NO completion:NULL];
 }
 -(void) mostrarActivity {
     self.alertaPhoto = [AlertView initWithDelegate:self message:NSLocalizedString(@"cargando", Nil) andAlertViewType:AlertViewTypeActivity];
@@ -88,12 +88,13 @@
         [self.etiquetaSelecciona setFont:[UIFont fontWithName:@"Avenir-Book" size:15]];
         [self.txtNombreImagen setFrame:CGRectMake(20, 160, 280, 30)];
     }
-
+    self.txtNombreImagen.text = self.textDescription;
 }
 
 -(IBAction)regresar:(id)sender {
     PhotosFacebookViewController *photos = [[PhotosFacebookViewController alloc] initWithNibName:@"PhotosFacebookViewController" bundle:Nil];
     [photos setIdAlbum:self.idAlbum];
+    [photos setTextDescription:self.textDescription];
     [self.navigationController pushViewController:photos animated:NO];
     
 }

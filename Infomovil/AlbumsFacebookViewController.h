@@ -20,7 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnReintentar;
 @property (weak, nonatomic) IBOutlet UIView *viewReintentar;
 @property (weak, nonatomic) IBOutlet UILabel *labelReconectar;
-
+@property (strong, nonatomic) NSString * textDescription;
 - (IBAction)btnReintentarAct:(id)sender;
 
 

@@ -63,6 +63,7 @@
 
 -(IBAction)regresar:(id)sender {
     AlbumsFacebookViewController *photos = [[AlbumsFacebookViewController alloc] initWithNibName:@"AlbumsFacebookViewController" bundle:Nil];
+    [photos setTextDescription:self.textDescription];
     [self.navigationController pushViewController:photos animated:YES];
     
 }
@@ -112,6 +113,7 @@
     
     if ([CommonUtils hayConexion]) {
         SeleccionarPhoto *photosDeAlbum = [[SeleccionarPhoto alloc]  initWithNibName:@"SeleccionarPhoto" bundle:Nil];
+        [photosDeAlbum setTextDescription:self.textDescription];
         [photosDeAlbum setUrlPhoto:[self.urlsAlbumGrande objectAtIndex:indexPath.row ]];
         [photosDeAlbum setIdAlbum:self.idAlbum];
         [self.navigationController pushViewController:photosDeAlbum animated:YES];
@@ -125,7 +127,7 @@
 }
 
 -(void)cargarImagenesFacebook{
-    [FBRequestConnection startWithGraphPath:[NSString stringWithFormat:@"%@/photos?fields=images", self.idAlbum] completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+    [FBRequestConnection startWithGraphPath:[NSString stringWithFormat:@"%@/photos?fields=images&limit=50", self.idAlbum] completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
         if (!error){
             NSArray *imageFeed = [result objectForKey:@"data"];
             if([result count] > 0){

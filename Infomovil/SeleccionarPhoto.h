@@ -52,5 +52,5 @@
 @property (nonatomic,assign) BOOL pagCargada;
 @property (weak, nonatomic) id<GaleriaPaso2Delegate>delegadoGaleria;
 @property (weak, nonatomic) IBOutlet UIImageView *imgPrevia;
-
+@property (strong, nonatomic) NSString * textDescription;
 @end

@@ -395,7 +395,7 @@
 }
 
 -(void) resultadoConsultaDominio:(NSString *)resultado {
-    NSLog(@"QUE ME REGRESO??? %@", resultado);
+    
     if ([resultado isEqualToString:@"Exito"]) {
         exito = YES;
     }

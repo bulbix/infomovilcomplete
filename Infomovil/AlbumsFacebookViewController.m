@@ -54,8 +54,10 @@
 -(void)viewWillAppear:(BOOL)animated{
     if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         [self.tableView setFrame:CGRectMake(0, 0, 375, 667)];
+        [self.viewReintentar setFrame:CGRectMake(0, 100, 375, 200)];
     }else if(IS_IPAD){
         [self.tableView setFrame:CGRectMake(0, 0, 768, 1024)];
+        [self.viewReintentar setFrame:CGRectMake(0, 300, 768, 200)];
     }else if(IS_IPHONE_4){
         [self.tableView setFrame:CGRectMake(0, 0, 320, 480)];
     }
@@ -141,6 +143,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     PhotosFacebookViewController *photosDeAlbum = [[PhotosFacebookViewController alloc]  initWithNibName:@"PhotosFacebookViewController" bundle:Nil];
+    [photosDeAlbum setTextDescription:self.textDescription];
     [photosDeAlbum setIdAlbum:[self.idAlbumes objectAtIndex:indexPath.row ]];
     [self.navigationController pushViewController:photosDeAlbum animated:YES];
     
