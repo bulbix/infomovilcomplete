@@ -58,6 +58,20 @@
     
     [self mostrarBotones];
     
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    [self.tablaGaleria addSubview:refreshControl];
+    
+}
+
+- (void)refresh:(UIRefreshControl *)refreshControl {
+   if ([CommonUtils hayConexion]) {
+       [self.tablaGaleria reloadData];
+   }else {
+       AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+       [alert show];
+   }
+    [refreshControl endRefreshing];
 }
 
 -(void) viewWillAppear:(BOOL)animated {
@@ -181,34 +195,37 @@
 }
 
 -(IBAction)agregarImagen:(id)sender {
-
-    if ([self.arregloImagenes count] < 5) {
-        GaleriaPaso2ViewController *galeriaPaso2 = [[GaleriaPaso2ViewController alloc] initWithNibName:@"GaleriaPaso2ViewController" bundle:nil];
-        [galeriaPaso2 setOperacion:GaleriaImagenesAgregar];
-        [galeriaPaso2 setGaleryType:PhotoGaleryTypeImage];
-        [galeriaPaso2 setTituloPaso:NSLocalizedString(@"anadirImagen", @" ")];
-        [self.navigationController pushViewController:galeriaPaso2 animated:YES];
+     if ([CommonUtils hayConexion]) {
+            if ([self.arregloImagenes count] < 5) {
+                GaleriaPaso2ViewController *galeriaPaso2 = [[GaleriaPaso2ViewController alloc] initWithNibName:@"GaleriaPaso2ViewController" bundle:nil];
+                [galeriaPaso2 setOperacion:GaleriaImagenesAgregar];
+                [galeriaPaso2 setGaleryType:PhotoGaleryTypeImage];
+                [galeriaPaso2 setTituloPaso:NSLocalizedString(@"anadirImagen", @" ")];
+                [self.navigationController pushViewController:galeriaPaso2 animated:YES];
+                
+            }else if([self.arregloImagenes count] >= 5 && [self.arregloImagenes count] < 12 && [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && ![self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]){
+                GaleriaPaso2ViewController *galeriaPaso2 = [[GaleriaPaso2ViewController alloc] initWithNibName:@"GaleriaPaso2ViewController" bundle:nil];
+                [galeriaPaso2 setOperacion:GaleriaImagenesAgregar];
+                [galeriaPaso2 setGaleryType:PhotoGaleryTypeImage];
+                [galeriaPaso2 setTituloPaso:NSLocalizedString(@"anadirImagen", @" ")];
+                [self.navigationController pushViewController:galeriaPaso2 animated:YES];
+            
+            }else if([self.arregloImagenes count] >= 5 && [self.arregloImagenes count] < 12 && [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && [self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]){
+                AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeImagenesPrueba", Nil) andAlertViewType:AlertViewTypeQuestion];
+                [alert show];
+            }else if([self.arregloImagenes count] >= 5 && [self.arregloImagenes count] < 12 && ![((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] ){
+                AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeImagenesPrueba", Nil) andAlertViewType:AlertViewTypeQuestion];
+                [alert show];
+                
+            }else if([self.arregloImagenes count] >= 12){
+                alertaImagenes = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeImagenesPro", nil) andAlertViewType:AlertViewTypeInfo];
+                [alertaImagenes show];
+            }
         
-    }else if([self.arregloImagenes count] >= 5 && [self.arregloImagenes count] < 12 && [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && ![self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]){
-        GaleriaPaso2ViewController *galeriaPaso2 = [[GaleriaPaso2ViewController alloc] initWithNibName:@"GaleriaPaso2ViewController" bundle:nil];
-        [galeriaPaso2 setOperacion:GaleriaImagenesAgregar];
-        [galeriaPaso2 setGaleryType:PhotoGaleryTypeImage];
-        [galeriaPaso2 setTituloPaso:NSLocalizedString(@"anadirImagen", @" ")];
-        [self.navigationController pushViewController:galeriaPaso2 animated:YES];
-    
-    }else if([self.arregloImagenes count] >= 5 && [self.arregloImagenes count] < 12 && [((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] && [self.datosUsuario.descripcionDominio isEqualToString:@"DOWNGRADE"]){
-        AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeImagenesPrueba", Nil) andAlertViewType:AlertViewTypeQuestion];
-        [alert show];
-    }else if([self.arregloImagenes count] >= 5 && [self.arregloImagenes count] < 12 && ![((AppDelegate*)[[UIApplication sharedApplication] delegate]).statusDominio isEqualToString:@"Pago"] ){
-        AlertView *alert = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeImagenesPrueba", Nil) andAlertViewType:AlertViewTypeQuestion];
-        [alert show];
-        
-    }else if([self.arregloImagenes count] >= 12){
-        alertaImagenes = [AlertView initWithDelegate:self message:NSLocalizedString(@"mensajeImagenesPro", nil) andAlertViewType:AlertViewTypeInfo];
-        [alertaImagenes show];
-    }
-    
-    
+     }else {
+         AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+         [alert show];
+     }
 }
 
 -(void) accionSi{
@@ -305,7 +322,8 @@
 }
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
+        return YES;
+    
 }
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
@@ -334,31 +352,30 @@
 }
 
 -(IBAction)editarTabla:(id)sender {
-   
-    if (self.editing) {
-        NSLog(@"LE DIO EN EDITAR TABLA!!!!!!!");
-        [self.tablaGaleria setEditing:NO animated:YES];
-        [self setEditing:NO animated:YES];
-       
-        
-        if (movio ) {
-            NSLog(@"ENTRO A SI MOVIO LA TABLA !!!!!!!");
-            if ([CommonUtils hayConexion]) {
-                [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
-                [self performSelectorInBackground:@selector(actualizarGaleria) withObject:Nil];
-            }
-            else {
-                AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
-                [alert show];
+   if ([CommonUtils hayConexion]) {
+        if (self.editing) {
+            [self.tablaGaleria setEditing:NO animated:YES];
+            [self setEditing:NO animated:YES];
+            if (movio ) {
+                if ([CommonUtils hayConexion]) {
+                    [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
+                    [self performSelectorInBackground:@selector(actualizarGaleria) withObject:Nil];
+                }
+                else {
+                    AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+                    [alert show];
+                }
             }
         }
-    }
-    else {
-        NSLog(@"NOOOOOO LE DIO EN EDITAR TABLA!!!!!!!");
-        [self.tablaGaleria setEditing:YES animated:YES];
-        [self setEditing:YES animated:YES];
-    }
-    [self mostrarBotones];
+        else {
+            [self.tablaGaleria setEditing:YES animated:YES];
+            [self setEditing:YES animated:YES];
+        }
+        [self mostrarBotones];
+   }else {
+       AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+       [alert show];
+   }
 }
 
 

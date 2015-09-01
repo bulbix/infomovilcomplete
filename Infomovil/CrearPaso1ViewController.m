@@ -253,9 +253,14 @@
         [self.navigationController pushViewController:promociones animated:YES];
     }
     else if (indexPath.row == 8) {
-        GaleriaImagenesViewController *galeria = [[GaleriaImagenesViewController alloc] initWithNibName:@"GaleriaImagenesViewController" bundle:Nil];
-        [galeria setIndiceItem:indexPath.row];
-        [self.navigationController pushViewController:galeria animated:YES];
+        if ([CommonUtils hayConexion]) {
+            GaleriaImagenesViewController *galeria = [[GaleriaImagenesViewController alloc] initWithNibName:@"GaleriaImagenesViewController" bundle:Nil];
+            [galeria setIndiceItem:indexPath.row];
+            [self.navigationController pushViewController:galeria animated:YES];
+        }else {
+            AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+            [alert show];
+        }
     }
     else if (indexPath.row == 6) {
 
@@ -289,10 +294,15 @@
         [self.navigationController pushViewController:info animated:YES];
     }
     else if (indexPath.row == 1) {
-        GaleriaPaso2ViewController *galeriaPaso2 = [[GaleriaPaso2ViewController alloc] initWithNibName:@"GaleriaPaso2ViewController" bundle:Nil];
-        [galeriaPaso2 setGaleryType:PhotoGaleryTypeLogo];
-        [galeriaPaso2 setTituloPaso:NSLocalizedString(@"logo", nil)];
-        [self.navigationController pushViewController:galeriaPaso2 animated:YES];
+        if ([CommonUtils hayConexion]) {
+            GaleriaPaso2ViewController *galeriaPaso2 = [[GaleriaPaso2ViewController alloc] initWithNibName:@"GaleriaPaso2ViewController" bundle:Nil];
+            [galeriaPaso2 setGaleryType:PhotoGaleryTypeLogo];
+            [galeriaPaso2 setTituloPaso:NSLocalizedString(@"logo", nil)];
+            [self.navigationController pushViewController:galeriaPaso2 animated:YES];
+        }else {
+            AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+            [alert show];
+        }
     }
     else if (indexPath.row == 2) {
         PerfilPaso2ViewController *perfilPaso2 = [[PerfilPaso2ViewController alloc] initWithNibName:@"PerfilPaso2ViewController" bundle:Nil];

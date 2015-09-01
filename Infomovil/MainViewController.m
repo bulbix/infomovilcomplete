@@ -58,7 +58,7 @@
     [self fbDidlogout];
     FBLoginView *loginView = [[FBLoginView alloc] init];
     loginView.delegate = self;
-    loginView.readPermissions = @[@"public_profile", @"email"];
+    loginView.readPermissions = @[@"public_profile", @"email",@"user_photos"];
 
     UIColor *color = [UIColor whiteColor];
     if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){

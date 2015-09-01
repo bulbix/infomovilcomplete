@@ -170,7 +170,7 @@
      [self fbDidlogout];
     FBLoginView *loginView = [[FBLoginView alloc] init];
     loginView.delegate = self;
-    loginView.readPermissions = @[@"public_profile", @"email"];
+    loginView.readPermissions = @[@"public_profile", @"email",@"user_photos"];
     if(IS_STANDARD_IPHONE_6 || IS_STANDARD_IPHONE_6_PLUS){
         loginView.frame = CGRectMake(20, 150, 335, 50);
         self.raya1.frame = CGRectMake(20, 264, 155, 2);

@@ -103,7 +103,7 @@ static NSString * const kClientId = @"585514192998.apps.googleusercontent.com";
     [[GAI sharedInstance] trackerWithTrackingId:@"UA-53077061-2"];
 	
     if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {
-        [FBSession openActiveSessionWithReadPermissions:@[@"public_profile"]
+        [FBSession openActiveSessionWithReadPermissions:@[@"public_profile",@"user_photos",@"email"]
                                            allowLoginUI:NO
                                       completionHandler:^(FBSession *session, FBSessionState state, NSError *error) {
                                       }];

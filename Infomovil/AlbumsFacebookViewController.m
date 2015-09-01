@@ -164,7 +164,7 @@
 -(void)cargarImagenesFacebook{
     if([CommonUtils hayConexion] && [self estaConectado]){
         
-        [FBSession openActiveSessionWithReadPermissions:@[@"public_profile", @"user_photos",@"publish_actions"]
+        [FBSession openActiveSessionWithReadPermissions:@[@"public_profile", @"user_photos",@"email"]
                                            allowLoginUI:YES
                                       completionHandler:^(FBSession *session, FBSessionState state, NSError *error) {
                                           if (session.isOpen) {

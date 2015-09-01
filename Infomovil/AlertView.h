@@ -28,21 +28,17 @@ typedef enum {
 @property (nonatomic,weak) id<AlertViewDelegate> delegado;
 @property (nonatomic) AlertViewType type;
 
-@property (nonatomic, strong) UIView *vistaAlert;
-
-@property (nonatomic, strong) UIImageView *imagenEncabezado;
-
-@property (nonatomic, strong) UIButton *botonSi;
-@property (nonatomic, strong) UIButton *botonNo;
-@property (nonatomic, strong) UIButton *botonAceptar;
-
-@property (nonatomic, strong) UILabel *labelTitulo;
-@property (nonatomic, strong) UILabel *labelPregunta;
-
-@property (nonatomic, strong) UILabel *labelMensaje;
-@property (nonatomic, strong) UILabel *labelDominio;
-@property (nonatomic, strong) UILabel *labelMensaje2;
-@property (nonatomic, strong) UIImageView *imagenLogo;
+@property  (nonatomic, retain) UIView *vistaAlert;
+@property  (nonatomic, retain) UIImageView *imagenEncabezado;
+@property  (nonatomic, retain) UIButton *botonSi;
+@property  (nonatomic, retain) UIButton *botonNo;
+@property  (nonatomic, retain) UIButton *botonAceptar;
+@property  (nonatomic, retain) UILabel *labelTitulo;
+@property  (nonatomic, retain) UILabel *labelPregunta;
+@property  (nonatomic, retain) UILabel *labelMensaje;
+@property  (nonatomic, retain) UILabel *labelDominio;
+@property  (nonatomic, retain) UILabel *labelMensaje2;
+@property  (nonatomic, strong) UIImageView *imagenLogo;
 
 @property (nonatomic, weak) ETActivityIndicatorView *activityIndicator;
 

@@ -344,7 +344,7 @@
 }
 
 -(void) textFieldDidEndEditing:(UITextField *)textField{
-    noEditando = YES;
+    noEditando = NO;
     if(self.operacion == GaleriaImagenesEditar){
 		cambioPie = YES;
     }else{
@@ -405,19 +405,20 @@
     if (self.operacion == GaleriaImagenesAgregar) {
         NSLog(@"AQUI VA A AGREGAR IMAGENES DEL LOGO");
         if (self.modifico && seleccionoImagen) {
-           
-            [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
-            [self performSelectorInBackground:@selector(salvaImagen) withObject:nil];
+           if ([CommonUtils hayConexion]) {
+                [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
+                [self performSelectorInBackground:@selector(salvaImagen) withObject:nil];
+           }else {
+                   AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+                   [alert show];
+            }
         }else{
             AlertView *alert = [AlertView initWithDelegate:Nil titulo:nil message:NSLocalizedString(@"faltaImagenActualizar", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
             [alert show];
 			
 		}
     }else if(self.operacion == GaleriaImagenesEditar){
-        
 		if(cambioPie){
-            
-           
                 if ([CommonUtils hayConexion]) {
 					estaBorrando = NO;
                     [self performSelectorOnMainThread:@selector(mostrarActivity) withObject:Nil waitUntilDone:YES];
@@ -439,8 +440,6 @@
                 else {
                     [self.navigationController popViewControllerAnimated:YES];
                 }
-            
-            
         }else{
             [self validaEditados];
 			[self.navigationController popViewControllerAnimated:YES];
@@ -530,12 +529,16 @@
 }
 
 -(void)accionSi {
-    NSLog(@"entro en accion si");
     self.datosUsuario = [DatosUsuario sharedInstance];
     if (self.galeryType == PhotoGaleryTypeOffer) {
         if (self.modifico && eliminarFotoOferta == NO) {
-            [self performSelectorInBackground:@selector(salvaImagen) withObject:Nil];
-            [self mostrarActivity];
+            if ([CommonUtils hayConexion]) {
+                [self performSelectorInBackground:@selector(salvaImagen) withObject:Nil];
+                [self mostrarActivity];
+            }else {
+                AlertView *alert = [AlertView initWithDelegate:Nil titulo:NSLocalizedString(@"sentimos", @" ") message:NSLocalizedString(@"noConexion", @" ") dominio:Nil andAlertViewType:AlertViewTypeInfo];
+                [alert show];
+            }
         }else if(eliminarFotoOferta == YES){
             if ( _delegadoGaleria != nil )
                 [_delegadoGaleria imagenSeleccionada:nil];
@@ -594,7 +597,6 @@
 }
 
 -(void) accionAceptar {
-    NSLog(@"NO SE CUANDO ENTRE EN ACCION ACEPTAR!!!!  ");
     if (estaBorrando) {
         self.urlImagen = nil;
         [self validaEditados];
@@ -607,7 +609,6 @@
     }
     else {
         if (exitoModificar) {
-          
             [self validaEditados];
             [self.datosUsuario.arregloEstatusEdicion replaceObjectAtIndex:1 withObject:@YES];
             [self.navigationController popViewControllerAnimated:YES];

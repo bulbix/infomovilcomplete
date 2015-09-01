@@ -42,7 +42,7 @@
     
     FBLoginView *loginView = [[FBLoginView alloc] init];
     loginView.delegate = self;
-    loginView.readPermissions = @[@"public_profile", @"email"];
+    loginView.readPermissions = @[@"public_profile", @"email",@"user_photos"];
    
     
     if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {
